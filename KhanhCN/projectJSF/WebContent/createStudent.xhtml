@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+<h:form>
+	<h1>Create</h1><br/>
+	
+	<p>MaSV</p>
+	<h:inputText value="#{sinhVienForm.MASV}" /><br/>
+	
+	<p>TenSV</p>
+	<h:inputText value="#{sinhVienForm.TEN}" /><br/>
+	
+	<p>Pass</p>
+	<h:inputText value="#{sinhVienForm.PASS}" /><br/>
+	
+	<h:commandButton value="Add" action="#{sinhVienForm.addSinhVien()}" />
+
+</h:form>
+
+</body>
+</html>
