@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+
+    xmlns:f="http://java.sun.com/jsf/core"
+
+    xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+    <title>JSF 2.0 Hello Word</title>
+    </h:head>
+
+    <h:body>
+
+       <h:outputLabel value ="Hello Word" />
+	<h:form>
+		<h:inputText id ="user" value = "#{userBean.username}"></h:inputText>
+		<h:commandButton value = "Hien thi" action= "#{userBean.sayHelloUser}"></h:commandButton>
+	</h:form>
+    </h:body>
+
+</html>
