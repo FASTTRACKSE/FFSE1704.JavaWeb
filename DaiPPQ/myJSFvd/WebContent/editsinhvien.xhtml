@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+	Sửa
+	<h:form>
+		<table border="1">
+			<tr>
+				<td>ID</td>
+				<td><h:inputHidden value="#{sinhVienForm.id}" /></td>
+			</tr>
+			<tr>
+				<td>Ma Sinh Vien</td>
+				<td><h:inputText value="#{sinhVienForm.masv}" /></td>
+			</tr>
+			<tr>
+				<td>Ho</td>
+				<td><h:inputText value="#{sinhVienForm.ho}" /></td>
+			</tr>
+			<tr>
+				<td>Ten</td>
+				<td><h:inputText value="#{sinhVienForm.ten}" /></td>
+			</tr>
+			<tr>
+				<td>Gioi Tinh</td>
+				<td><h:selectOneRadio value="#{sinhVienForm.gioiTinh}">
+						<f:selectItem itemValue="Nam" itemLabel="Nam" />
+						<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td>Nam Sinh</td>
+				<td><h:inputText value="#{sinhVienForm.namsinh}" /></td>
+			</tr>
+			<tr>
+				<td>Lop</td>
+				<td><h:inputText value="#{sinhVienForm.lop}" /></td>
+			</tr>
+			<tr>
+				<td />
+				<td><h:commandButton action="#{sinhVienForm.updateSinhVien}" value="Update" /></td>
+			</tr>
+		</table>
+	</h:form>
+
+</body>
+</html>
