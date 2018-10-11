@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:dataTable value="#{sinhVienForm.viewSinhVien()}" border="1"
+			var="sv" style="margin: auto;width: 100%;">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+			#{sv.id}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Tài Khoản</f:facet>
+			#{sv.user}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Mật Khẩu</f:facet>
+			#{sv.password}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Họ và tên</f:facet>
+			#{sv.fullname}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Chức Năng</f:facet>
+				<h:commandButton id="Edit" value="Edit"
+					action="#{sinhVienForm.viewEdit(sv.id)}" />
+				<h:commandButton id="Delete" value="Delete"
+					action="#{sinhVienForm.delSinhVien(sv.id)}" />
+
+			</h:column>
+
+
+
+		</h:dataTable>
+		<center>
+			<h:form>
+				<h:commandButton action="add.xhtml" value="ADD"
+					class="btn btn-success"></h:commandButton>
+			</h:form>
+		</center>
+	</h:form>
+
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+	<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h:form style="text-align: right;margin-right: 40%;">
+	id: <h:outputText id="id" value="#{sinhVienForm.id}"></h:outputText>
+		<br />
+	
+Tài Khoản: <h:inputText id="user" value="#{sinhVienForm.user}"></h:inputText>
+		<br />
+Mật Khẩu: <h:inputText id="password" value="#{sinhVienForm.password}"></h:inputText>
+		<br />
+Họ Và Tên: <h:inputText id="fullname" value="#{sinhVienForm.fullname}"></h:inputText>
+		<br />
+
+		
+		<h:commandButton value="Sửa" action="#{sinhVienForm.editSinhVien()}"></h:commandButton>
+	</h:form>
+
+</body>
+</html>
