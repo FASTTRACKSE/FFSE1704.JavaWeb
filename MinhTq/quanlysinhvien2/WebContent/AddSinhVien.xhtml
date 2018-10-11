@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+<h:form>
+maSV:<h:inputText value="#{sinhVienForm.maSinhVien}" /><br/>
+tenSV:<h:inputText value="#{sinhVienForm.tenSinhVien}" /><br/>
+tuoiSV:<h:inputText value="#{sinhVienForm.tuoiSinhVien}"/><br/>
+lophoc:<h:inputText value="#{sinhVienForm.lopHoc}"/><br/>
+diachi:<h:inputText value="#{sinhVienForm.diaChi}"/><br/>
+
+<h:commandButton action="#{sinhVienForm.addSinhVien}" value="thêm"/>
+
+
+</h:form>
+</body>
+</html>

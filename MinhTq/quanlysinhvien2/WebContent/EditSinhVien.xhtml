@@ -1,0 +1,31 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+
+	<title>Insert title here</title>
+
+</h:head>
+
+<h:body>
+
+
+	<h:form style="text-aline: center">
+	<h:inputText value="#{sinhVienForm.maSinhVien}"/><br/>
+	<h:inputText value="#{sinhVienForm.tenSinhVien}"/><br/>
+	<h:inputText value="#{sinhVienForm.tuoiSinhVien}"/><br/>
+	<h:inputText value="#{sinhVienForm.lopHoc}"/><br/>
+	<h:inputText value="#{sinhVienForm.diaChi}"/><br/>
+	<h:commandButton value="sửa" action="#{sinhVienForm.editSinhVien}"/>
+	
+	</h:form>
+
+</h:body>
+
+</html>
