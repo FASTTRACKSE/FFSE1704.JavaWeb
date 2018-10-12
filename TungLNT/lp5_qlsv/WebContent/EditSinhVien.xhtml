@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+
+	<title>Edit</title>
+
+</h:head>
+
+<h:body>
+
+
+	<h:form>
+Mã Sinh Viên   :<h:inputText value="#{sinhVienForm.maSinhVien}" />
+		<br />
+Tên Sinh Viên  :<h:inputText value="#{sinhVienForm.tenSinhVien}" />
+		<br />
+Tuổi Sinh Viên :<h:inputText value="#{sinhVienForm.tuoiSinhVien}" />
+		<br />
+Lớp Học        :<h:inputText value="#{sinhVienForm.lopHoc}" />
+		<br />
+Địa Chỉ        	:<h:inputText value="#{sinhVienForm.diaChi}" />
+		<br />
+		<h:commandButton action="#{sinhVienForm.editSinhVien}" value="sửa" />
+
+
+	</h:form>
+</h:body>
+
+</html>
