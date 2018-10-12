@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 
@@ -14,8 +15,13 @@
 
 <h:body>
 	<h:form>
-		<h:dataTable value="#{sinhVienForm.viewSinhVien()}" border="1"
-			var="sv" style="margin: auto;width: 100%;">
+
+		<h:commandButton action="add.xhtml" value="ADD"
+			class="btn btn-success"></h:commandButton>
+
+
+		<h:dataTable value="#{sinhVienForm.listSinhVien}" border="1" var="sv"
+			style="margin: auto;width: 100%;">
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 			#{sv.id}
@@ -44,12 +50,39 @@
 
 
 		</h:dataTable>
-		<center>
-			<h:form>
-				<h:commandButton action="add.xhtml" value="ADD"
-					class="btn btn-success"></h:commandButton>
-			</h:form>
-		</center>
+
+		<h:commandLink value="first" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage gt 2}">
+			<f:param name="page" value="1" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="&lt;" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage ne 1}">
+			<f:param name="page" value="#{sinhVienForm.currentPage - 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+
+		<ui:repeat var="item" value="#{sinhVienForm.pageLink}">
+			<h:commandLink value="#{item}" action="#{sinhVienForm.showPage()}"
+				rendered="#{item ne sinhVienForm.currentPage}">
+				<f:param name="page" value="#{item}" />
+			</h:commandLink>
+			<h:outputText value="#{item}"
+				rendered="#{item eq sinhVienForm.currentPage}" />
+			<h:outputText value="&#160;" />
+		</ui:repeat>
+
+		<h:commandLink value="&gt;" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage ne sinhVienForm.totalPage}">
+			<f:param name="page" value="#{sinhVienForm.currentPage + 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="last" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage lt (sinhVienForm.totalPage - 1)}">
+			<f:param name="page" value="#{sinhVienForm.totalPage}" />
+		</h:commandLink>
+
+
 	</h:form>
 
 
