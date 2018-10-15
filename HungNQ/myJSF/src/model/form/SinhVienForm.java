@@ -2,12 +2,15 @@ package model.form;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 /*import javax.servlet.annotation.MultipartConfig;
 
@@ -21,6 +24,8 @@ import model.entity.SinhVien;
 public class SinhVienForm {
 
 	private String id;
+	private SinhVien sinhVien;
+	
 	private int currentPage;
 	private int totalPage;
 	private Integer[] pageLink;
@@ -59,6 +64,14 @@ public class SinhVienForm {
 
 	public void setSinhVienDAO(SinhVienDAO sinhVienDAO) {
 		this.sinhVienDAO = sinhVienDAO;
+	}
+
+	public SinhVien getSinhVien() {
+		return sinhVien;
+	}
+
+	public void setSinhVien(SinhVien sinhVien) {
+		this.sinhVien = sinhVien;
 	}
 
 	public int getCurrentPage() {
@@ -112,20 +125,18 @@ public class SinhVienForm {
 	}
 
 	public String viewEditSinhVien(String maSV) {
-		SinhVien sinhvien = sinhVienDAO.searchSinhVien(maSV);
-		sinhvien.getId();
+		sinhVien = sinhVienDAO.searchSinhVien(maSV);
 		return "editSinhVien";
 	}
 
-	public String updateSinhVien(SinhVien sinhVien) {
+	public String updateSinhVien() {
 		sinhVienDAO.editSinhVien(sinhVien);
 		init();
 		return "index?faces-redirec=true";
 	}
 
 	public String viewDeleteSinhVien(String maSV) {
-		SinhVien sinhvien = sinhVienDAO.searchSinhVien(maSV);
-		sinhvien.getId();
+		sinhVien = sinhVienDAO.searchSinhVien(maSV);
 		return "deleteSinhVien";
 	}
 
@@ -138,7 +149,29 @@ public class SinhVienForm {
 	public void showPage() {
 		init();
 	}
-	
+
+	/*
+	 * public String loadSinhVien(int sinhvienId) { Logger.info("loading student:" +
+	 * sinhvienId);
+	 * 
+	 * try { SinhVien theSinhvien = sinhVienDAO.getAllSinhVien(sinhvienId);
+	 * 
+	 * ExternalContext externalContext =
+	 * FacesContext.getCurrentInstance().getExternalContext();
+	 * 
+	 * Map<String, Object> requestMap = externalContext.getRequestMap();
+	 * requestMap.put("sinhvien", theSinhvien);
+	 * 
+	 * } catch(Exception exc) { Logger.log(Level.SEVERE,"Error loading student id" +
+	 * sinhvienId,exc);
+	 * 
+	 * addErrorMessage(exc);
+	 * 
+	 * return null; }
+	 * 
+	 * return "editSinhVien.xhtml"; }
+	 */
+
 	public void setPageLink() {
 		if (currentPage == 1 && totalPage == 1) {
 			pageLink = new Integer[] { 1 };

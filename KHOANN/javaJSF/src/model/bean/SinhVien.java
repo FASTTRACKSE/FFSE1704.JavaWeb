@@ -1,5 +1,10 @@
 package model.bean;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class SinhVien {
 
 	protected String id;
