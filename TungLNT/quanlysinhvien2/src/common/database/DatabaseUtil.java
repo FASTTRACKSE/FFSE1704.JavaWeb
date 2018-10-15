@@ -15,17 +15,17 @@ import java.util.Properties;
  * @author Chicken VIP
  *
  */
-public class DatabaseUltil {
+public class DatabaseUtil {
 
 	/**
 	 * Database config info
 	 */
 	private static final String HOST_NAME = "localhost";
 	private static final String PORT = "3306";
-	private static final String DATABASE_NAME = "baitap";
+	private static final String DATABASE_NAME = "lp5";
 	private static final String URL_CONNECT = "jdbc:mysql://" + HOST_NAME + ":" + PORT + "/" + DATABASE_NAME;
-	private static final String USER = "khoa2311";
-	private static final String PASS = "ngockhoa2311";
+	private static final String USER = "baitap";
+	private static final String PASS = "baitap";
 
 	/**
 	 * Config properties for get connection
