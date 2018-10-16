@@ -7,21 +7,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h:form>
-	<h1>Create</h1><br/>
-	
-	<p>MaSV</p>
-	<h:inputText value="#{sinhVienForm.MASV}" /><br/>
-	
-	<p>TenSV</p>
-	<h:inputText value="#{sinhVienForm.TEN}" /><br/>
-	
-	<p>Pass</p>
-	<h:inputText value="#{sinhVienForm.PASS}" /><br/>
-	
-	<h:commandButton value="Add" action="#{sinhVienForm.addSinhVien()}" />
+	<f:view>
+		<h:form enctype="multipart/form-data">
+			<h1>Create</h1>
+			<br />
 
-</h:form>
+			<p>MaSV</p>
+			<h:inputText value="#{sinhVienForm.MASV}" />
+			<br />
 
+			<p>TenSV</p>
+			<h:inputText value="#{sinhVienForm.TEN}" />
+			<br />
+
+			<p>Pass</p>
+			<h:inputText value="#{sinhVienForm.PASS}" />
+			<br />
+
+			<p>Image</p>
+			<h:inputFile value="#{sinhVienForm.file}" />
+			<br />
+
+			<h:commandButton value="Add" action="#{sinhVienForm.addSinhVien()}" />
+
+		</h:form>
+	</f:view>
 </body>
 </html>
