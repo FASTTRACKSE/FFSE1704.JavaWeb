@@ -1,20 +1,38 @@
 package model.entity;
 
+import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class SinhVien {
 	private String maSinhVien;
 	private String tenSinhVien;
 	private String tuoiSinhVien;
 	private String lopHoc;
 	private String diaChi;
+	private String image;
 
-	public SinhVien(String maSinhVien, String tenSinhVien, String tuoiSinhVien, String lopHoc, String diaChi) {
-	
+	public SinhVien(String maSinhVien, String tenSinhVien, String tuoiSinhVien, String lopHoc, String diaChi,
+			String image) {
+		super();
 		this.maSinhVien = maSinhVien;
 		this.tenSinhVien = tenSinhVien;
 		this.tuoiSinhVien = tuoiSinhVien;
 		this.lopHoc = lopHoc;
 		this.diaChi = diaChi;
+		this.image = image;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	
 
 	public String getMaSinhVien() {
 		return maSinhVien;

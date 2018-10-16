@@ -1,14 +1,18 @@
 package model.form;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.FaceletContext;
+import javax.servlet.http.Part;
 
 import model.Dao.SinhVienDAO;
 import model.entity.SinhVien;
@@ -20,36 +24,41 @@ public class SinhVienForm {
 	private int currentPage;
 	private int totalPage;
 	private Integer[] pageLink;
-	
-	
-	
+
 	public SinhVien getSinhVienDAO() {
 		return sinhVienDAO;
 	}
+
 	public void setSinhVienDAO(SinhVien sinhVienDAO) {
 		this.sinhVienDAO = sinhVienDAO;
 	}
+
 	public int getCurrentPage() {
 		return currentPage;
 	}
+
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
+
 	public int getTotalPage() {
 		return totalPage;
 	}
+
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+
 	public Integer[] getPageLink() {
 		return pageLink;
 	}
+
 	public void setPageLink(Integer[] pageLink) {
 		this.pageLink = pageLink;
 	}
-	
+
 	@PostConstruct
-	public void init() { 
+	public void init() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String page = (String) params.get("page");
 		currentPage = (page != null && !"".equals(page) && page.matches("[0-9]+")) ? Integer.parseInt(page) : 1;
@@ -62,16 +71,27 @@ public class SinhVienForm {
 
 		listSinhVien = sinhVienDao.getSinhVienPage(currentPage);
 	}
-/////////////////////////////////////
+
+	/////////////////////////////////////
 	private String maSinhVien;
 	private String tenSinhVien;
 	private String tuoiSinhVien;
 	private String lopHoc;
 	private String diaChi;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public String getMaSinhVien() {
 		return maSinhVien;
 	}
+
 	public void setMaSinhVien(String maSinhVien) {
 		this.maSinhVien = maSinhVien;
 	}
@@ -142,14 +162,52 @@ public class SinhVienForm {
 	}
 
 	public String addSinhVien() {
-		SinhVien ad = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi);
+		try {
+			// get name of selected file
+			fileName = file.getSubmittedFileName();
+			System.out.println(fileName);
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+
+			File fileDir = new File(dirPath);
+			if (!fileDir.exists())
+				fileDir.mkdirs();
+
+			// write file to upload folder
+			file.write(dirPath + "/" + fileName);
+
+		} catch (IOException ex) {
+			Logger.getLogger(SinhVienForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		SinhVien ad = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi,fileName);
 		sinhVienDao.add(ad);
 		init();
 		return "SinhVien?faces-redirect=true";
 	}
 
 	public String editSinhVien() {
-		SinhVien ed = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi);
+		try {
+			// get name of selected file
+			fileName = file.getSubmittedFileName();
+			System.out.println(fileName);
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+
+			File fileDir = new File(dirPath);
+			if (!fileDir.exists())
+				fileDir.mkdirs();
+
+			// write file to upload folder
+			file.write(dirPath + "/" + fileName);
+
+		} catch (IOException ex) {
+			Logger.getLogger(SinhVienForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		SinhVien ed = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi, fileName);
 		sinhVienDao.edit(ed);
 		init();
 		return "SinhVien?faces-redirect=true";
@@ -166,29 +224,81 @@ public class SinhVienForm {
 		return "EditSinhVien";
 
 	}
+
 	public void showPage() {
 		init();
 	}
+
 	public void setPageLink() {
-		if(currentPage == 1 && totalPage == 1) {
-			pageLink = new Integer[] {1};
-		}else  if(currentPage <3 && totalPage >1){
+		if (currentPage == 1 && totalPage == 1) {
+			pageLink = new Integer[] { 1 };
+		} else if (currentPage < 3 && totalPage > 1) {
 			int endpageLink = totalPage;
-			if(totalPage >2) {
+			if (totalPage > 2) {
 				endpageLink = 3;
 			}
 			pageLink = new Integer[endpageLink];
-			for (int i = 0; i < endpageLink ; i++) {
+			for (int i = 0; i < endpageLink; i++) {
 				pageLink[i] = i + 1;
 			}
-		}else if(currentPage == totalPage) {
-			pageLink = new Integer[] {
-					currentPage - 2, currentPage -1 , currentPage
-			};
-		}else {
-			pageLink = new Integer[] {
-					currentPage - 1, currentPage , currentPage + 1
-			};
+		} else if (currentPage == totalPage) {
+			pageLink = new Integer[] { currentPage - 2, currentPage - 1, currentPage };
+		} else {
+			pageLink = new Integer[] { currentPage - 1, currentPage, currentPage + 1 };
 		}
 	}
+
+	// upload file
+	private Part file;
+	private String fileName;
+	private long fileSize;
+
+	public Part getFile() {
+		return file;
+	}
+
+	public void setFile(Part file) {
+		this.file = file;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String upload() {
+		try {
+			// get name of selected file
+			fileName = file.getSubmittedFileName();
+			System.out.println(fileName);
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+
+			File fileDir = new File(dirPath);
+			if (!fileDir.exists())
+				fileDir.mkdirs();
+
+			// write file to upload folder
+			file.write(dirPath + "/" + fileName);
+
+		} catch (IOException ex) {
+			Logger.getLogger(SinhVienForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		return "SinhVien?faces-redirect=true";
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+	// /upload file
 }
