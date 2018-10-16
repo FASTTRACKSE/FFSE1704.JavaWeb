@@ -125,7 +125,7 @@ public class DatabaseUltil {
 		return executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		});
@@ -169,7 +169,7 @@ public class DatabaseUltil {
 
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}) > 0 ? true : false;
@@ -239,7 +239,7 @@ public class DatabaseUltil {
 		return selectForList(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}, iPareEntity);
@@ -289,7 +289,7 @@ public class DatabaseUltil {
 		List<E> result = selectForList(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}, iPareEntity);

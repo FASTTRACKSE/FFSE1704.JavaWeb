@@ -11,14 +11,21 @@ public class SinhVien {
 	private String tuoiSinhVien;
 	private String lopHoc;
 	private String diaChi;
+	private String images;
 
-	public SinhVien(String maSinhVien, String tenSinhVien, String tuoiSinhVien, String lopHoc, String diaChi) {
-	
+	public SinhVien(String maSinhVien, String tenSinhVien, String tuoiSinhVien, String lopHoc, String diaChi,
+			String images) {
+
 		this.maSinhVien = maSinhVien;
 		this.tenSinhVien = tenSinhVien;
 		this.tuoiSinhVien = tuoiSinhVien;
 		this.lopHoc = lopHoc;
 		this.diaChi = diaChi;
+		this.images = images;
+	}
+
+	public SinhVien() {
+
 	}
 
 	public String getMaSinhVien() {
@@ -59,5 +66,13 @@ public class SinhVien {
 
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
+	}
+
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
 	}
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+
+	<title>Anh Kỳ đẹp trai</title>
+
+</h:head>
+
+<h:body>
+
+	<h2>Edit Sinh Viên</h2>
+	<h:form enctype="multipart/form-data">
+tenSV:<h:inputText value="#{sinhVienForm.tenSinhVien}" />
+		<br />
+tuoiSV:<h:inputText value="#{sinhVienForm.tuoiSinhVien}" />
+		<br />
+lophoc:<h:inputText value="#{sinhVienForm.lopHoc}" />
+		<br />
+diachi:<h:inputText value="#{sinhVienForm.diaChi}" />
+		<br />
+		image: <h:inputFile value="#{sinhVienForm.file}" />
+		<br />
+                File:${upload_File.fileName} - #{upload_File.fileSize} bytes !
+		<h:commandButton action="#{sinhVienForm.editSinhVien}" value="sửa" />
+
+
+	</h:form>
+</h:body>
+</html>
