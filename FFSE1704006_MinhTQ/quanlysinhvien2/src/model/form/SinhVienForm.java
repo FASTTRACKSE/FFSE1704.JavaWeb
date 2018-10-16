@@ -1,13 +1,17 @@
 package model.form;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import model.Dao.SinhVienDAO;
 import model.entity.SinhVien;
@@ -19,7 +23,7 @@ public class SinhVienForm {
 	private int currentPage;
 	private int totalPage;
 	private Integer[] pageLink;
-	
+
 	public SinhVien getSinhVienDAO() {
 		return sinhVienDAO;
 	}
@@ -53,7 +57,7 @@ public class SinhVienForm {
 	}
 
 	@PostConstruct
-	public void init() { 
+	public void init() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String page = (String) params.get("page");
 		currentPage = (page != null && !"".equals(page) && page.matches("[0-9]+")) ? Integer.parseInt(page) : 1;
@@ -72,6 +76,7 @@ public class SinhVienForm {
 	private String tuoiSinhVien;
 	private String lopHoc;
 	private String diaChi;
+	private String images;
 
 	public String getMaSinhVien() {
 		return maSinhVien;
@@ -113,6 +118,14 @@ public class SinhVienForm {
 		this.diaChi = diaChi;
 	}
 
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
 	//////
 	@ManagedProperty(value = "#{sinhVienDAO}")
 	private SinhVienDAO sinhVienDao;
@@ -146,16 +159,19 @@ public class SinhVienForm {
 		return "SinhVien?faces-redirect=true";
 	}
 
-	public String addSinhVien() {
-		SinhVien ad = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi);
-		sinhVienDao.add(ad);
+	public String addSinhVien(SinhVien sinhvien) {
+		upload();
+		sinhvien.setImages(fileName);
+		sinhVienDao.add(sinhvien);
 		init();
 		return "SinhVien?faces-redirect=true";
 	}
 
 	public String editSinhVien() {
-		SinhVien ed = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi);
-		sinhVienDao.add(ed);
+		upload();
+		SinhVien sinhvien= new SinhVien(maSinhVien,tenSinhVien,tuoiSinhVien,lopHoc,diaChi,images);
+		sinhvien.setImages(fileName);
+		sinhVienDao.edit(sinhvien);
 		init();
 		return "SinhVien?faces-redirect=true";
 	}
@@ -195,4 +211,60 @@ public class SinhVienForm {
 		}
 	}
 
+	///// upload file//////
+
+	private Part file;
+	private String fileName;
+	private long fileSize;
+	
+
+	/**
+	 * Creates a new instance of Upload_File
+	 */
+	 public  SinhVienForm() {
+		
+	}
+
+	public Part getFile() {
+		return file;
+	}
+
+	public void setFile(Part file) {
+		this.file = file;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public void upload() {
+		try {
+			// get name of selected file
+			fileName = file.getSubmittedFileName();
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+			//if(!fileDir.exists()) fileDir.mkdirs();
+			// write file to upload folder
+			file.write(dirPath + "/" + fileName);
+
+		} catch (IOException ex) {
+
+			Logger.getLogger(SinhVienForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
 }
