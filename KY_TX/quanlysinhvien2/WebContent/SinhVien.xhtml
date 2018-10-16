@@ -9,41 +9,64 @@
 	<title>Anh Kỳ đẹp trai</title>
 </h:head>
 <body>
+	<h2>Danh Sách Sinh Viên</h2>
 
-	<h:form>
-
-		<h:commandButton value="Thêm"
+	<h:form enctype="multipart/form-data">
+		<h:commandButton value="#{msg['btn_add']}"
 			action="AddSinhVien.xhtml?faces-redirect=true"></h:commandButton>
-		<h:dataTable border="1" cellpadding="10" cellspacing="0"
-			value="#{sinhVienForm.listSinhVien}" var="sv">
+		<h:dataTable value="#{sinhVienForm.listSinhVien}" var="sv" border="1"
+			cellpadding="0" cellspacing="0">
 			<h:column>
-				<f:facet name="header">Mã</f:facet>
+				<f:facet name="header">#{msg['th_CodeSV']}</f:facet>
              #{sv.maSinhVien}
          </h:column>
 			<h:column>
-				<f:facet name="header">Tên</f:facet>
+				<f:facet name="header">#{msg['th_NameSV']}</f:facet>
              #{sv.tenSinhVien}
          </h:column>
 			<h:column>
-				<f:facet name="header">Tuổi</f:facet>
-           #{sv.tuoiSinhVien}
+				<f:facet name="header">#{msg['th_Arg']}</f:facet>
+             #{sv.tuoiSinhVien}
          </h:column>
 			<h:column>
-				<f:facet name="header">Lớp</f:facet>
-		  #{sv.lopHoc}
+				<f:facet name="header">#{msg['th_Class']}</f:facet>
+             #{sv.lopHoc}
          </h:column>
 			<h:column>
-				<f:facet name="header">Địa chỉ</f:facet>  
-           #{sv.diaChi}
+				<f:facet name="header">#{msg['th_address']}</f:facet>
+             #{sv.diaChi}
          </h:column>
 			<h:column>
-				<f:facet name="header">Chức năng</f:facet>
-				<h:commandButton value="sửa"
+				<f:facet name="header">#{msg['th_image']}</f:facet>
+           <h:graphicImage  value = "/upload/#{sv.image}" width="100px"/>   
+         </h:column>
+
+			<h:column>
+				<f:facet name="header">#{msg['th_Function']}</f:facet>
+				<h:commandButton value="#{msg['Function_update']}"
 					action="#{sinhVienForm.viewEditSinhVien(sv.maSinhVien)}"></h:commandButton>
-				<h:commandButton value="xóa"
+				<h:commandButton value="#{msg['Function_delete']}"
 					action="#{sinhVienForm.delete(sv.maSinhVien)}"></h:commandButton>
 			</h:column>
+
+
 		</h:dataTable>
+
+
+
+		<h:panelGrid columns="2"> 
+            Language : 
+            <h:selectOneMenu value="#{languageBean.locale}"
+				onchange="submit()"
+				valueChangeListener="#{languageBean.localeChanged}">
+				<f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
+		<h:inputFile value="#{sinhVienForm.file}" />
+		<br />
+		<h:commandButton value="Upload" action="#{sinhVienForm.upload}" />
+		<br />
+                File:${upload_File.fileName} - #{upload_File.fileSize} bytes !
 		<h:commandLink value="first" action="#{sinhVienForm.showPage()}"
 			rendered="#{sinhVienForm.currentPage gt 2}">
 			<f:param name="page" value="1" />
@@ -55,13 +78,13 @@
 			<h:outputText value="&#160;" />
 		</h:commandLink>
 
-		<ui:repeat var="item" value="#{sinhVienForm.pageLink}">
-			<h:commandLink value="item" action="#{sinhVienForm.showPage()}"
-				rendered="#{item ne sinhVienForm.currentPage}">
-				<f:param name="page" value="#{item}" />
+		<ui:repeat var="next" value="#{sinhVienForm.pageLink}">
+			<h:commandLink value="next" action="#{sinhVienForm.showPage()}"
+				rendered="#{next ne sinhVienForm.currentPage}">
+				<f:param name="page" value="#{next}" />
 			</h:commandLink>
-			<h:outputText value="#{item}"
-				rendered="#{item eq sinhVienForm.currentPage}" />
+			<h:outputText value="#{next}"
+				rendered="#{next eq sinhVienForm.currentPage}" />
 			<h:outputText value="&#160;" />
 		</ui:repeat>
 
@@ -74,6 +97,7 @@
 			rendered="#{sinhVienForm.currentPage lt (sinhVienForm.totalPage - 1)}">
 			<f:param name="page" value="#{sinhVienForm.totalPage}" />
 		</h:commandLink>
+
 	</h:form>
 </body>
 </html>

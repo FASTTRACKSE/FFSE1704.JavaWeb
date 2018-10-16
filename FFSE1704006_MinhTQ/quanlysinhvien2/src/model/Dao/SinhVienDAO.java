@@ -1,4 +1,4 @@
-package model.Dao;
+ package model.Dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ public class SinhVienDAO {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
 			return new SinhVien(result.getString("maSinhVien"), result.getString("tenSinhVien"),
-					result.getString("tuoiSinhVien"), result.getString("lopHoc"), result.getString("diaChi"));
+					result.getString("tuoiSinhVien"), result.getString("lopHoc"), result.getString("diaChi"), result.getString("images"));
 		}
 	};
 
@@ -45,7 +45,7 @@ public class SinhVienDAO {
 	}
 
 	public int add(final SinhVien sv) {
-		String sql = "INSERT INTO dssinhvien( maSinhVien, tenSinhVien, tuoiSinhVien,lopHoc, diaChi) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO dssinhvien( maSinhVien, tenSinhVien, tuoiSinhVien,lopHoc, diaChi, images) VALUES(?,?,?,?,?,?)";
 		int listSinhVien = DatabaseUtil.executeUpdate(sql, new IPrePareStatementSetParam() {
 
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
@@ -54,6 +54,8 @@ public class SinhVienDAO {
 				statement.setString(3, sv.getTuoiSinhVien());
 				statement.setString(4, sv.getLopHoc());
 				statement.setString(5, sv.getDiaChi());
+				statement.setString(6, sv.getImages());
+				
 
 			}
 
@@ -62,7 +64,7 @@ public class SinhVienDAO {
 	}
 
 	public int edit(final SinhVien sv) {
-		String sql = "UPDATE dssinhvien SET tenSinhVien=? , tuoiSinhVien=? , lopHoc=? , diaChi=? WHERE maSinhVien=?";
+		String sql = "UPDATE dssinhvien SET tenSinhVien=? , tuoiSinhVien=? , lopHoc=? , diaChi=? ,images=? WHERE maSinhVien=?";
 		int listSinhVien = DatabaseUtil.executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 
@@ -70,7 +72,8 @@ public class SinhVienDAO {
 				statement.setString(2, sv.getTuoiSinhVien());
 				statement.setString(3, sv.getLopHoc());
 				statement.setString(4, sv.getDiaChi());
-				statement.setString(5, sv.getMaSinhVien());
+				statement.setString(5, sv.getImages());
+				statement.setString(6, sv.getMaSinhVien());
 
 			}
 		});
@@ -93,7 +96,7 @@ public class SinhVienDAO {
 		return DatabaseUtil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
 				return new SinhVien(result.getString("maSinhVien"), result.getString("tenSinhVien"),
-						result.getString("tuoiSinhVien"), result.getString("lopHoc"), result.getString("diaChi"));
+						result.getString("tuoiSinhVien"), result.getString("lopHoc"), result.getString("diaChi"), result.getString("images"));
 			}
 		}, start, recordinPage);
 
