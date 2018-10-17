@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>Insert title here</title>
+</h:head>
+<h:body>
+<form>
+		Họ tên: <input type="text" name="hovaten" /><br/>
+		Năm sinh: <input type="text" name="namsinh" /><br/>
+		Giới Tính: <input type="radio" name="gioitinh" value="Nam"/>Nam <input type="radio" name="gioitinh" value="Nữ" />Nữ <br/>
+		Hộ Khẩu: <select name="hokhau">
+    		<option value="Hanoi">Hà Nội</option>
+    		<option value="Danang">Đà Nẵng</option>
+    		<option value="Hochiminh">Hồ Chí Minh</option>
+  		</select><br/>
+		Image: <input type="text" name="image"/><br/>
+		<input type="submit" name="Submit" value="Them"/>	
+	</form>
+</h:body>
+</html>
