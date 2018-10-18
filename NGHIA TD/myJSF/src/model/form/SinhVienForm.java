@@ -1,5 +1,6 @@
 package model.form;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -191,8 +192,16 @@ public class SinhVienForm {
             fileSize = file.getSize();
             // get fullpath of opload folder in web root
             String dirPath= FacesContext.getCurrentInstance().getExternalContext().getRealPath("/images");
+            
+            File fileDir= new File(dirPath);
+			if (!fileDir.exists()) {
+				fileDir.mkdirs();
+			}
+			
+			
             // write file to upload folder
             file.write(dirPath + "/" + fileName);
+			
              
         } catch (IOException ex) {
             Logger.getLogger(Upload_File.class.getName()).log(Level.SEVERE, null, ex);
