@@ -1,5 +1,8 @@
 package ffse1704.jsfstaff.entity;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class nhanVien {
 	private int id;
 	private String hoVaTen;

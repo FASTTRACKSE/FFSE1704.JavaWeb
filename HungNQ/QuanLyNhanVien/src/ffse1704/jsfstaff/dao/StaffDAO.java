@@ -39,10 +39,10 @@ public class StaffDAO {
 		}
 	}
 	
-	public ArrayList<nhanVien> getAllNhanVien(){
+	public ArrayList<nhanVien> getAllNhanVien() throws Throwable, SQLException{
 		String sql = "SELECT nhanvien.hovaten, nhanvien.namsinh, nhanvien.gioitinh, hokhau.thanhpho, nhanvien.image FROM nhanvien INNER JOIN hokhau WHERE nhanvien.hokhau = hokhau.matp";
-		return null;
-		
+		ConnectionFactory.getInstance().getConnection().prepareStatement(sql);
+		return getAllNhanVien();
 	}
 	
 	public void addNewNhanVien(nhanVien st) {
@@ -65,4 +65,40 @@ public class StaffDAO {
 		}
 	}
 
+	public void updateNhanVien(nhanVien st) {
+		String query = "UPDATE nhanvien SET hovaten=?, namsinh=?, gioitinh=?, hokhau=?, image=? WHERE id=?";
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, st.getHoVaTen());
+			preparedStatement.setString(2, st.getNamSinh());
+			preparedStatement.setString(3, st.getGioiTinh());
+			preparedStatement.setString(4, st.getHoKhau());
+			preparedStatement.setString(5, st.getImage());
+			preparedStatement.setInt(6, st.getId());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+	}
+	
+	public void deleteNhanVien(int id) {
+		String query = "DELETE FROM nhanvien WHERE id=?";
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+	}
 }
