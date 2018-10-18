@@ -12,6 +12,8 @@ xmlns:p="http://primefaces.org/ui">
 <title>Insert title here</title>
 </h:head>
 <h:body>
+
+		
  <h2>JSF Internalization Language Example</h2>
   <h:form>
     <h3>
@@ -31,31 +33,39 @@ xmlns:p="http://primefaces.org/ui">
 	<h:commandButton value="Thêm Sinh Viên" action="Create.xhtml?faces-redirect"> </h:commandButton>
  	<h:dataTable value="#{sinhVienForm.listSinhVien}" var="sv" width="100%" border="1">
 	 	<h:column>
-	 		 <f:facet name="header">#{msg['Language4']}</f:facet> 
-	 		 
-	 		#{sv.id}
+	 		 <f:facet name="header">#{msg['Language1']}</f:facet> 
+	 		 #{sv.id}
+	 		
 	 	</h:column>
 	 	<h:column >
-	 	 <f:facet name="header">ten Sinh Viên</f:facet> 
+	 	 <f:facet name="header">#{msg['Language2']}</f:facet> 
 	 		#{sv.name}
 	 	</h:column>
 	
 	 		<h:column >
-	 		<f:facet name="header">Tuổi</f:facet> 
+	 		<f:facet name="header">#{msg['Language3']}</f:facet> 
 	 		#{sv.age}
 	 		</h:column>
 	 	
 	 		<h:column >
-	 		<f:facet name="header">Địa chỉ</f:facet> 
+	 		<f:facet name="header">#{msg['Language4']}</f:facet> 
 	 		#{sv.diaChi}
 	 		</h:column>
 	 	
-	 		<h:column headerText="Số điên thoại">
+	 		<h:column>
+	 		<f:facet name="header">#{msg['Language5']}</f:facet> 
 	 		#{sv.sdt}
+	 	</h:column>
+	 	<h:column>
+	 		<f:facet name="header">Ảnh</f:facet>
+	 		
+	 		<!-- <h:graphicImage value="images/#{sv.images}" width="100" ></h:graphicImage> -->
+	 		<h:graphicImage url="images/#{sv.images}" width="100"/>
+	 		<!-- #{sv.images} -->
 	 	</h:column>
 	 	<h:column headerText="action">
 	 	
-	 		<f:facet name="header">action</f:facet>
+	 		<f:facet name="header">#{msg['Language6']}</f:facet>
 	 		<h:link rel="stackjava.com">Demo JSF</h:link>
 	 		<h:commandButton action="#{sinhVienForm.viewEditSinhVien(sv.id)}" value="Edit"></h:commandButton>
 	 		<h:commandButton action="#{sinhVienForm.DeleteSinhVien(sv.id)}" value="Delete"></h:commandButton>

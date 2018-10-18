@@ -15,10 +15,8 @@
 
 <h:body>
 
-
-	<h:form>
-maSV:<h:inputText value="#{sinhVienForm.maSinhVien}" />
-		<br />
+	<h2>Edit Sinh Viên</h2>
+	<h:form enctype="multipart/form-data">
 tenSV:<h:inputText value="#{sinhVienForm.tenSinhVien}" />
 		<br />
 tuoiSV:<h:inputText value="#{sinhVienForm.tuoiSinhVien}" />
@@ -27,10 +25,12 @@ lophoc:<h:inputText value="#{sinhVienForm.lopHoc}" />
 		<br />
 diachi:<h:inputText value="#{sinhVienForm.diaChi}" />
 		<br />
+		image: <h:inputFile value="#{sinhVienForm.file}" />
+		<br />
+                File:${upload_File.fileName} - #{upload_File.fileSize} bytes !
 		<h:commandButton action="#{sinhVienForm.editSinhVien}" value="sửa" />
 
 
 	</h:form>
 </h:body>
-
 </html>

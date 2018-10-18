@@ -18,7 +18,7 @@ import model.bean.SinhVien;
 public class SinhVienDAO {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
-			return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"));
+			return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"), result.getString("IMG"));
 		}
 	};
 
@@ -28,7 +28,7 @@ public class SinhVienDAO {
 		String sql = "SELECT * FROM  sinh_vien";
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
 			}
 		});
 	}
@@ -44,13 +44,13 @@ public class SinhVienDAO {
 
 		}, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
 			}
 		});
 	}
 
 	public int updateSinhVien(final SinhVien sv) {
-		String sql = "UPDATE sinh_vien SET TEN = ?, PASS = ? WHERE MASV = ?";
+		String sql = "UPDATE sinh_vien SET TEN = ?, PASS = ? , IMG = ? WHERE MASV = ?";
 		int listSinhVien = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 
 			@Override
@@ -59,14 +59,16 @@ public class SinhVienDAO {
 				
 				statement.setString(1, sv.getTEN());
 				statement.setString(2, sv.getPASS());
-				statement.setString(3, sv.getMASV());
+				statement.setString(3, sv.getIMG());
+				statement.setString(4, sv.getMASV());
+				
 			}
 		});
 		return listSinhVien;
 	}
 
 	public int addSinhVien(final SinhVien sv) {
-		String sql = "INSERT INTO sinh_vien( MASV, TEN, PASS) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO sinh_vien( MASV, TEN, PASS , IMG) VALUES (?, ?, ?, ?)";
 
 		int listSinhVien = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 
@@ -76,6 +78,7 @@ public class SinhVienDAO {
 				statement.setString(1, sv.getMASV());
 				statement.setString(2, sv.getTEN());
 				statement.setString(3, sv.getPASS());
+				statement.setString(4, sv.getIMG());
 			}
 		});
 		return listSinhVien;
@@ -96,7 +99,7 @@ public class SinhVienDAO {
 
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
 			}
 		}, startRecord, RECORD_IN_PAGE);
 	}

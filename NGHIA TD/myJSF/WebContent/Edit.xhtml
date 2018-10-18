@@ -13,32 +13,32 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<table border="1">
 		<tr>
 			<td>Mã Sinh Viên</td>
-			<td><h:inputText value="#{sinhVien.id}"></h:inputText></td>
+			<td><h:inputText value="#{sinhVienForm.sinhVien.id}"></h:inputText></td>
 			
 			<TD />
 		</tr>
 		<tr>
 			<td>Tên Sinh Viên</td>
-			<td><h:inputText value="#{sinhVien.name}"></h:inputText></td>
+			<td><h:inputText value="#{sinhVienForm.sinhVien.name}"></h:inputText></td>
 
 		</tr>
 		<tr>
 			<td>Tuổi</td>
-			<td><h:inputText value="#{sinhVien.age}"></h:inputText></td>
+			<td><h:inputText value="#{sinhVienForm.sinhVien.age}"></h:inputText></td>
 		
 		</tr>
 		<tr>
 			<td>Địa chỉ</td>
-			<td><h:inputText value="#{sinhVien.diaChi}"></h:inputText></td>
+			<td><h:inputText value="#{sinhVienForm.sinhVien.diaChi}"></h:inputText></td>
 		
 		</tr>
 		<tr>
 			<td>Số điện thoại</td>
-			<td><h:inputText value="#{sinhVien.sdt}"></h:inputText></td>
+			<td><h:inputText value="#{sinhVienForm.sinhVien.sdt}"></h:inputText></td>
 		</tr>
 		<tr>
 			<td colspan="2">
-			<h:commandButton action="#{sinhVienForm.Edit(sinhVien)}" value="Sửa">
+			<h:commandButton action="#{sinhVienForm.Edit()}" value="Sửa">
 			</h:commandButton>
 			</td>
 			
