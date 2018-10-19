@@ -2,10 +2,10 @@ package ffse1704.JSFStaff.entity;
 
 public class TinhThanhPho {
 	
-	private String code;
+	private int code;
 	private String name;
 	private String type;
-	public TinhThanhPho(String code, String name, String type) {
+	public TinhThanhPho(int code, String name, String type) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -18,10 +18,10 @@ public class TinhThanhPho {
 	public TinhThanhPho() {
 	
 	}
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 	public String getName() {
