@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<!-- <meta charset="UTF-8"> -->
+	<title>♥Hưng♥</title>
+	<h:panelGroup>
+		<style>
+<!--
+body {
+	background-image:
+		url("https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg");
+}
+
+.one {
+	text-align: center;
+}
+-->
+</style>
+	</h:panelGroup>
+</h:head>
+<h:body>
+	<div class="one">
+		Xin chao
+		<h:outputLabel value="#{userBean.username}" />
+	</div>
+	<h2>
+		<h:outputText value="Hello #{user.name}" />
+	</h2>
+	<h4>
+		<h:outputText
+			value="You have Registered with us Successfully, Your Details are The Following." />
+	</h4>
+	<table>
+		<tr>
+			<td><b>Email: </b></td>
+			<td><h:outputText value="#{user.email}" /><br /></td>
+		</tr>
+		<tr>
+			<td><b>Password:</b></td>
+			<td><h:outputText value="#{user.password}" /><br /></td>
+		</tr>
+		<tr>
+			<td><b>Gender:</b></td>
+			<td><h:outputText value="#{user.gender}" /><br /></td>
+		</tr>
+		<tr>
+			<td><b>Address: </b></td>
+			<td><h:outputText value="#{user.address}" /></td>
+		</tr>
+	</table>
+</h:body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<!-- Phan trang bang primefaces -->
+	<!-- 
+	<h:form>
+		<h:commandButton value="Them moi sv" action="createsinhvien.xhtml?faces-redirect"/>
+		<p:dataTable value="#{sinhVienForm.viewAllSinhVien()}" var="sv"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+			lazy="true"
+			paginator="true" rows="5" rowsPerPageTemplate="5 10 15">
+			<p:column headerText="ID">
+				#{sv.id}
+			</p:column>
+			<p:column headerText="Ma SV">
+				#{sv.masv}
+			</p:column>
+			<p:column headerText="Ho">
+				#{sv.ho}
+			</p:column>
+			<p:column headerText="Ten">
+				#{sv.ten}
+			</p:column>
+			<p:column headerText="Gioi Tinh">
+				#{sv.gioiTinh}
+			</p:column>
+			<p:column headerText="Nam Sinh">
+				#{sv.namsinh}
+			</p:column>
+			<p:column headerText="Lop">
+				#{sv.lop}
+			</p:column>
+			<p:column headerText="action">
+				<h:commandButton action="#{sinhVienForm.viewEditSinhVien(sv.id)}" value="Edit" />
+				<h:commandButton action="#{sinhVienForm.deleteSinhVien(sv.id)}" value="Delete" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+ 	-->
+	<!-- Phan trang thuong -->
+
+	<h:form>
+		<h:commandButton value="Them moi sv" action="createsinhvien.xhtml?faces-redirect"/>
+		<h:dataTable value="#{sinhVienForm.viewAllSinhVien()}" var="sv"
+			border="1" style="width: 100%">
+			<h:column>
+				<f:facet name="header">id</f:facet>
+				#{sv.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ma Sinh Vien</f:facet>
+				#{sv.masv}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ho Sinh Vien</f:facet>
+				#{sv.ho}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ten Sinh Vien</f:facet>
+				#{sv.ten}
+			</h:column>
+			<h:column>
+				<f:facet name="header">gioi Tinh</f:facet>
+				#{sv.gioiTinh}
+			</h:column>
+			<h:column>
+				<f:facet name="header">nam Sinh</f:facet>
+				#{sv.namsinh}
+			</h:column>
+			<h:column>
+				<f:facet name="header">lop</f:facet>
+				#{sv.lop}
+			</h:column>
+			<h:column>
+				<f:facet name="header">action</f:facet>
+				<h:commandButton action="#{sinhVienForm.viewEditSinhVien(sv.id)}" value="Edit" />
+				<h:commandButton action="#{sinhVienForm.deleteSinhVien(sv.id)}" value="Delete" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+</h:body>
+</html>

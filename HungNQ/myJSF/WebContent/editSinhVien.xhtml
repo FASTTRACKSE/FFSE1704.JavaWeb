@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<!-- <meta charset="UTF-8"> -->
+	<title>♥Hưng♥</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" />
+	<style type="text/css">
+body {
+	background-image:
+		url("https://cdn-images-1.medium.com/max/1600/1*QV3voZYLAsILm7AN-oFLXg.png");
+	padding-top: 1px;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<h:inputHidden value="#{sinhVienForm.sinhVien.id}" />
+		<table border="1">
+			<tr>
+				<td>Tên Sinh Viên</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.tenSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Mã Sinh Viên</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.maSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Lớp</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.lopHoc}" /></td>
+			</tr>
+			<tr>
+				<td>Tuổi</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.tuoiSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Giới Tính</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.gioiTinh}" /></td>
+			</tr>
+			<tr>
+				<td>Địa Chỉ</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.diaChi}" /></td>
+			</tr>
+			<tr>
+				<td>Số Điện tdoại</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.soDT}" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><h:inputText value="#{sinhVienForm.sinhVien.email}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><h:commandButton
+						action="#{sinhVienForm.updateSinhVien()}" value="update" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

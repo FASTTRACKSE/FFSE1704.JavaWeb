@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>quanlysinhvien</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>SinhVienServlet</display-name>
+		<servlet-name>SinhVienServlet</servlet-name>
+		<servlet-class>controller.SinhVienServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SinhVienServlet</servlet-name>
+		<url-pattern>/sinhvien</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>AddSinhVienServlet</display-name>
+		<servlet-name>AddSinhVienServlet</servlet-name>
+		<servlet-class>controller.AddSinhVienServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddSinhVienServlet</servlet-name>
+		<url-pattern>/AddSinhVienServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>EditSinhVienServlet</display-name>
+		<servlet-name>EditSinhVienServlet</servlet-name>
+		<servlet-class>controller.EditSinhVienServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditSinhVienServlet</servlet-name>
+		<url-pattern>/EditSinhVienServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DeleteSinhVienServlet</display-name>
+		<servlet-name>DeleteSinhVienServlet</servlet-name>
+		<servlet-class>controller.DeleteSinhVienServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteSinhVienServlet</servlet-name>
+		<url-pattern>/DeleteSinhVienServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>LoginServlet</display-name>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<display-name>ChangeLanguage</display-name>
+		<filter-name>ChangeLanguage</filter-name>
+		<filter-class>controller.filter.ChangeLanguageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ChangeLanguage</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- <filter> <filter-name>setUnicode</filter-name> <filter-class>org.apache.catalina.filters.SetChẩcterEncodingFilter</filter-class> 
+		<init-param> <param-name>encoding</param-name> <param-value>UTF-8</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>setUnicode</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+</web-app>

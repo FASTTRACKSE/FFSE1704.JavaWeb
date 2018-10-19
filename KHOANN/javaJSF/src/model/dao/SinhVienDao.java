@@ -3,19 +3,22 @@ package model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import common.database.DatabaseUltil;
 import common.database.DatabaseUltil.IPareEntity;
 import common.database.DatabaseUltil.IPrePareStatementSetParam;
-import model.bean.*;
-
+import model.bean.SinhVien;
 
 @ManagedBean
+@SessionScoped
 public class SinhVienDao {
 	public static final int RECORD_IN_PAGE = 3;
+
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
 			return new SinhVien(result.getString("id"), result.getString("user"), result.getString("password"),
@@ -24,8 +27,6 @@ public class SinhVienDao {
 		}
 	};
 
-	
-	
 	public int getaddUser(final SinhVien us) {
 		String sql = "INSERT INTO baitap(user,password,fullname) VALUES(?,?,?)";
 
@@ -84,21 +85,19 @@ public class SinhVienDao {
 
 		return arrList;
 	}
-	
+
 	public List<SinhVien> getSinhVienInPage(int currentPage) {
+		return currentPage > 0 ? pt((currentPage - 1) * RECORD_IN_PAGE, RECORD_IN_PAGE) : new ArrayList<SinhVien>();
+	}
 
-		int startRecord = (currentPage - 1) * RECORD_IN_PAGE;
-
+	public List<SinhVien> pt(int start, int recordinPage) {
 		String sql = "SELECT * FROM  baitap LIMIT ?, ?";
-
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
-		public SinhVien pare(ResultSet result) throws SQLException {
-			return new SinhVien(result.getString("id"), result.getString("user"), result.getString("password"),
-					result.getString("fullname"));
-		}
-		}, startRecord, RECORD_IN_PAGE);
-		}
-		
-
+			public SinhVien pare(ResultSet result) throws SQLException {
+				return new SinhVien(result.getString("id"), result.getString("user"), result.getString("password"),
+						result.getString("fullname"));
+			}
+		}, start, recordinPage);
+	}
 
 }

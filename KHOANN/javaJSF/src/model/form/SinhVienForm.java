@@ -6,19 +6,15 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import model.bean.*;
-import model.dao.*;
+import model.bean.SinhVien;
+import model.dao.SinhVienDao;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class SinhVienForm {
-
-	
-
-	
 
 	private String id;
 	private String user, password, fullname;
@@ -56,7 +52,7 @@ public class SinhVienForm {
 	}
 
 	@ManagedProperty(value = "#{sinhVienDao}")
-	private SinhVienDao sinhVienDao;
+	private SinhVienDao sinhVienDao;	
 	private List<SinhVien> listSinhVien;
 
 	public SinhVienDao getSinhVienDao() {
@@ -95,7 +91,6 @@ public class SinhVienForm {
 	public String editSinhVien() {
 		SinhVien sv = new SinhVien(id, user, password, fullname);
 		sinhVienDao.getupdateUser(sv);
-		
 		return "index?faces-redirect=true";
 
 	}
@@ -149,13 +144,17 @@ public class SinhVienForm {
 	@PostConstruct
 	public void init() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String page = (String) params.get("page");
-		currentPage = (page != null && page.matches("[0-9]+")) ? Integer.parseInt(page) : 1;
-		int totalRecord = sinhVienDao.getAllUser().size();
-		totalRecord = (totalRecord / SinhVienDao.RECORD_IN_PAGE)
-				+ ((double) totalRecord % (double) SinhVienDao.RECORD_IN_PAGE == 0 ? 0 : 1);
+		java.lang.String page = (String) params.get("page");
 
+		currentPage = (page != null && !"".equals(page) && page.matches("[0-9]+")) ? Integer.parseInt(page) : 1;
+
+		int totalRecord = sinhVienDao.getAllUser().size();
+		totalPage = (totalRecord / sinhVienDao.RECORD_IN_PAGE)
+				+ ((double) totalRecord % (double) sinhVienDao.RECORD_IN_PAGE == 0 ? 0 : 1);
+
+		// config page link
 		setPageLink();
+
 		listSinhVien = sinhVienDao.getSinhVienInPage(currentPage);
 
 	}

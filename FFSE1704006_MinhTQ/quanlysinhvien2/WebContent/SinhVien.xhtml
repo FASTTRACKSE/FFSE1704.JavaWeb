@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<h:form>
+		<h:commandButton value="#{msg['btn_add']}"
+			action="AddSinhVien.xhtml?faces-redirect=true"></h:commandButton>
+
+
+		<h:dataTable value="#{sinhVienForm.listSinhVien}" var="sv" border="1"
+			cellpadding="0" cellspacing="0">
+			<h:column>
+				<f:facet name="header">#{msg['th_CodeSV']}</f:facet>
+             #{sv.maSinhVien}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_NameSV']}</f:facet>
+             #{sv.tenSinhVien}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_Arg']}</f:facet>
+             #{sv.tuoiSinhVien}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_Class']}</f:facet>
+             #{sv.lopHoc}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_address']}</f:facet>
+             #{sv.diaChi}
+         </h:column>
+
+
+			<h:column>
+				<f:facet name="header">avatar</f:facet>
+				<f:view>
+					 <h:graphicImage url="upload/#{sv.images}" width="100px" height="100px" /> 
+					
+				</f:view>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">#{msg['th_Function']}</f:facet>
+				<h:commandButton value="#{msg['Function_update']}"
+					action="#{sinhVienForm.viewEditSinhVien(sv.maSinhVien)}"></h:commandButton>
+				<h:commandButton value="#{msg['Function_delete']}"
+					action="#{sinhVienForm.delete(sv.maSinhVien)}"></h:commandButton>
+			</h:column>
+
+
+		</h:dataTable>
+
+
+
+		<h:panelGrid columns="2"> 
+            Language : 
+            <h:selectOneMenu value="#{languageBean.locale}"
+				onchange="submit()"
+				valueChangeListener="#{languageBean.localeChanged}">
+				<f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
+
+
+		<h:commandLink value="first" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage gt 2}">
+			<f:param name="page" value="1" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="&lt;" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage ne 1}">
+			<f:param name="page" value="#{sinhVienForm.currentPage - 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+
+		<ui:repeat var="next" value="#{sinhVienForm.pageLink}">
+			<!-- <h:commandLink value="next" action="#{sinhVienForm.showPage()}"
+				rendered="#{next ne sinhVienForm.currentPage}">
+				<f:param name="page" value="#{next}" />
+			</h:commandLink> -->
+			<h:outputText value="#{next}"
+				rendered="#{next eq sinhVienForm.currentPage}" />
+			<h:outputText value="&#160;" />
+		</ui:repeat>
+
+		<h:commandLink value="&gt;" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage ne sinhVienForm.totalPage}">
+			<f:param name="page" value="#{sinhVienForm.currentPage + 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="last" action="#{sinhVienForm.showPage()}"
+			rendered="#{sinhVienForm.currentPage lt (sinhVienForm.totalPage - 1)}">
+			<f:param name="page" value="#{sinhVienForm.totalPage}" />
+		</h:commandLink>
+
+	</h:form>
+
+
+</body>
+</html>

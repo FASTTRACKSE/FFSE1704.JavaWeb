@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>User Details</title>
+	<h:outputStylesheet name="/css/bootstrap.min.css" />
+	<style type="text/css">
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<center>
+			<h2>
+				<h:outputText value="User Records" />
+			</h2>
+		</center>
+		<h:dataTable binding="#{table}" value="#{sinhVienForm.viewSinhVien()}"
+			var="sv" class="table table-striped table-hover table-bordered">
+			<h:column>
+			
+				<f:facet name="header">ID</f:facet>  
+#{sv.id}
+</h:column>
+			<h:column>
+				<f:facet name="header">User Name</f:facet>  
+#{sv.name} 
+</h:column>
+			<h:column>
+				<f:facet name="header">Email ID</f:facet>  
+#{sv.email} 
+</h:column>
+			<h:column>
+				<f:facet name="header">Password</f:facet>  
+#{sv.password} 
+</h:column>
+			<h:column>
+				<f:facet name="header">Gender</f:facet>  
+#{sv.gender} 
+</h:column>
+			<h:column>
+				<f:facet name="header">Address</f:facet>  
+#{sv.address}
+</h:column>
+			<h:column>
+				<f:facet name="header">Update</f:facet>
+				<h:commandButton action="#{sinhVienForm.viewEdit(sv.id)}"
+					value="Update" class="btn btn-primary">
+				</h:commandButton>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton action="#{sinhVienForm.deleteSinhVien(sv.id)}"
+					value="Delete" class="btn btn-danger">
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+		<center>
+			<h:commandButton action="create.xhtml?faces-redirect=true"
+				value="Create New User" class="btn btn-success"></h:commandButton>
+		</center>
+		
+		<h:commandLink value="first" action="#{sinhVienForm.showPage()}" rendered="#{sinhVienForm.currentPage gt 2}">
+			<f:param name="page" value="1" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="&lt;" action="#{sinhVienForm.showPage()}" rendered="#{sinhVienForm.currentPage ne 1}">
+			<f:param name="page" value="#{sinhVienForm.currentPage - 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		
+		<ui:repeat var="next" value="#{sinhVienForm.pageLink}">
+			<h:commandLink value="next" action="#{sinhVienForm.showPage()}" rendered="#{next ne sinhVienForm.currentPage}">
+				<f:param name="page" value="#{next}" />
+			</h:commandLink>
+			<h:outputText value="#{next}" rendered="#{next eq sinhVienForm.currentPage}"/>
+			<h:outputText value="&#160;" />
+		</ui:repeat>
+		
+		<h:commandLink value="&gt;" action="#{sinhVienForm.showPage()}" rendered="#{sinhVienForm.currentPage ne sinhVienForm.totalPage}">
+			<f:param name="page" value="#{sinhVienForm.currentPage + 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="last" action="#{sinhVienForm.showPage()}" rendered="#{sinhVienForm.currentPage lt (sinhVienForm.totalPage - 1)}">
+			<f:param name="page" value="#{sinhVienForm.totalPage}" />
+		</h:commandLink>
+		
+	</h:form>
+</h:body>
+</html>

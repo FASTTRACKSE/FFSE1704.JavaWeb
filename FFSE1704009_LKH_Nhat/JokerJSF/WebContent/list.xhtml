@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="htth://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>List JSF</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+		crossorigin="anonymous" />
+</h:head>
+<h:body>
+<f:view locale="#{languageBean.locale}">
+
+	<div class="container">
+			<!-- <ui:include src="/WEB-INF/resources/page.xhtml" />
+ -->
+ 
+ <ui:remove> <ui:include src="/WEB-INF/resources/page.xhtml" /> </ui:remove>
+			<h:outputLabel style="color:red;" value="#{sinhVienBean.allPage}" />
+		<h:outputLabel value="#{sinhVienBean.indexPage}" />
+
+
+
+
+
+
+<h:form>
+    <h3>
+      <h:outputText value="#{msg['key1']}" />
+    </h3>
+    <h:panelGrid columns="2"> 
+            Language : 
+            <h:selectOneMenu value="#{languageBean.locale}"
+        onchange="submit()"
+        valueChangeListener="#{languageBean.localeChanged}">
+        <f:selectItems value="#{languageBean.countries}" />
+      </h:selectOneMenu>
+    </h:panelGrid>
+  </h:form>
+
+
+
+
+
+		<h:form>
+			<c:choose>
+				<c:when test="#{sinhVienBean.allPage eq 1}">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><h:commandLink class="page-link"
+									value="1" action="#{sinhVienBean.pageSV}">
+									<f:param name="page" value="#{1}"></f:param>
+								</h:commandLink></li>
+
+						</ul>
+					</nav>
+				</c:when>
+
+				<c:when
+					test="#{sinhVienBean.allPage gt 1 and sinhVienBean.allPage lt 3}">
+					<c:choose>
+						<c:when test="#{sinhVienBean.indexPage eq 1}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="1" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="2" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Next" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="#{sinhVienBean.indexPage eq 2}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Preious" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="1" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="2" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+								</ul>
+							</nav>
+						</c:when>
+					</c:choose>
+
+				</c:when>
+
+				<c:otherwise>
+					<c:choose>
+						<c:when
+							test="#{sinhVienBean.indexPage eq 1  or  sinhVienBean.indexPage eq 2  or  sinhVienBean.indexPage eq 3}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:forEach var="i" begin="1" end="5">
+
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{sinhVienBean.pageSV}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+
+
+									</c:forEach>
+
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Next" action="#{sinhVienBean.pageSV}">
+											<f:param name="page" value="#{sinhVienBean.indexPage + 1}"></f:param>
+										</h:commandLink></li>
+
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=#{sinhVienBean.allPage}"
+										aria-label="Next"> <span aria-hidden="true">Last page</span> <span
+											class="sr-only">Next</span>
+									</a></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when
+							test="#{sinhVienBean.indexPage eq sinhVienBean.allPage-1  or sinhVienBean.indexPage eq sinhVienBean.allPage-2  or sinhVienBean.indexPage eq sinhVienBean.allPage}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=1" aria-label="Previous"> <span
+											aria-hidden="true" > Fist page </span> <span class="sr-only">Previous</span>
+									</a></li>
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=#{sinhVienBean.indexPage - 1}">Previous</a></li>
+									<c:forEach var="i" begin="#{sinhVienBean.allPage - 4}"
+										end="#{sinhVienBean.allPage}">
+
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{sinhVienBean.pageSV}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+									</c:forEach>
+								</ul>
+							</nav>
+						</c:when>
+						<c:otherwise>
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=1" aria-label="Previous"> <span
+											aria-hidden="true"> Fist page</span> <span class="sr-only">Previous</span>
+									</a></li>
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=#{sinhVienBean.indexPage - 1}">Previous</a></li>
+									<c:forEach var="i" begin="#{sinhVienBean.indexPage - 2}"
+										end="#{sinhVienBean.indexPage + 2}">
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{sinhVienBean.pageSV}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+									</c:forEach>
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=#{sinhVienBean.indexPage + 1}">Next</a></li>
+									<li class="page-item"><a class="page-link"
+										href="list.xhtml?page=#{sinhVienBean.allPage}"
+										aria-label="Next"> <span aria-hidden="true">Last page</span> <span
+											class="sr-only">Next</span>
+									</a></li>
+								</ul>
+							</nav>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
+		</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<h:form>
+			<h:commandLink class="btn btn-success"
+				action="add.xhtml?faces-redirect=true" value="#{msg['menuadd']}"/>
+
+			<br />
+			<br />
+			<h:dataTable value="#{sinhVienBean.listSinhVien}" var="item"
+				class="table table-striped">
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key1']}" /></f:facet>
+					<h:outputText value="#{item.tenSinhVien}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key2']}" /></f:facet>
+					<h:outputText value="#{item.maSinhVien}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key3']}" /></f:facet>
+					<h:outputText value="#{item.lopHoc}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key4']}" /></f:facet>
+					<h:outputText value="#{item.tuoiSinhVien}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key5']}" /></f:facet>
+					<h:outputText value="#{item.gioiTinh}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key6']}" /></f:facet>
+					<h:outputText value="#{item.diaChi}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key7']}" /></f:facet>
+					<h:outputText value="#{item.soDT}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> <h:outputText value="#{msg['key8']}" /></f:facet>
+					<h:outputText value="#{item.email}" />
+				</h:column>
+				<h:column>
+				<f:facet name="header"> <h:outputText value="#{msg['key9']}" /></f:facet>
+					<h:commandButton class="btn btn-primary" value="#{msg['menuedit']}"
+						action="#{sinhVienBean.searchSVEdit(item.maSinhVien)}" />
+					<h:commandButton class="btn btn-danger" value="#{msg['menudelete']}"
+						action="#{sinhVienBean.deleteSV(item.maSinhVien)}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
+	</f:view>
+</h:body>
+</html>

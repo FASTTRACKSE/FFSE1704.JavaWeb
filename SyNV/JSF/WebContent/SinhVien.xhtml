@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:f="http://xmlns.jcp.org/jsf/core">  
+<h:head>  
+<title>Sinh Viên</title>  
+<h:outputStylesheet name="/css/bootstrap.min.css"/>
+<style type="text/css">  
+table {  
+border-collapse: collapse;  
+width: 100%;  
+}  
+th, td {  
+text-align: left;  
+padding: 8px;  
+}  
+  
+tr:nth-child(even){background-color: #f2f2f2}  
+th {  
+background-color: #4CAF50;  
+color: white;  
+}  
+</style>  
+</h:head>  
+<h:body>  
+<h:form>  
+<center>  
+<h2><h:outputText value="Danh Sách Sinh Viên"/></h2>  
+</center>  
+<h:dataTable value="#{sinhVienForm.viewSinhVien()}" border="1" var="sv" style="margin: auto;width: 100%;">
+<h:column>  
+<f:facet name="header">Mã Sinh Viên</f:facet>  
+<h:outputText value="#{sv.id}"/>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Tên Sinh Viên</f:facet>  
+<h:outputText value="#{sv.name}"/>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Tuổi</f:facet>  
+<h:outputText value="#{sv.age}"/>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Giới tính</f:facet>  
+<h:outputText value="#{sv.gender}"/>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Địa chỉ</f:facet>  
+<h:outputText value="#{sv.address}"/>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Update</f:facet>  
+<h:commandButton action = "#{sinhVienForm.viewUpdate(sv.id)}" value="Update" class="btn btn-primary">  
+</h:commandButton>  
+</h:column>  
+<h:column>  
+<f:facet name="header">Delete</f:facet>  
+<h:commandButton action = "#{sinhVienForm.deleteSinhVien(sv.id)}" value="Delete" class="btn btn-danger">  
+</h:commandButton>  
+</h:column>  
+</h:dataTable>  
+<center><h:commandButton action = "addSinhVien.xhtml"   
+value="Create New User" class="btn btn-success"></h:commandButton></center>  
+</h:form>  
+</h:body>  
+</html>

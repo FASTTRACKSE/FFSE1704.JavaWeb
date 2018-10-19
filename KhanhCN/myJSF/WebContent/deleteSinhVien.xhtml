@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<!-- <meta charset="UTF-8"> -->
+	<title>♥Hưng♥</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table border="1">
+			<tr>
+				<td>Tên Sinh Viên</td>
+				<td><h:inputText value="#{sinhVien.tenSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Mã Sinh Viên</td>
+				<td><h:inputText value="#{sinhVien.maSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Lớp</td>
+				<td><h:inputText value="#{sinhVien.lopHoc}" /></td>
+			</tr>
+			<tr>
+				<td>Tuổi</td>
+				<td><h:inputText value="#{sinhVien.tuoiSinhVien}" /></td>
+			</tr>
+			<tr>
+				<td>Giới Tính</td>
+				<td><h:inputText value="#{sinhVien.gioiTinh}" /></td>
+			</tr>
+			<tr>
+				<td>Địa Chỉ</td>
+				<td><h:inputText value="#{sinhVien.diaChi}" /></td>
+			</tr>
+			<tr>
+				<td>Số Điện tdoại</td>
+				<td><h:inputText value="#{sinhVien.soDT}" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><h:inputText value="#{sinhVien.email}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<h:commandButton action="#{sinhVienForm.deleteSinhVien(sinhVien.maSinhVien)}" value="Delete" />
+				</td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>
