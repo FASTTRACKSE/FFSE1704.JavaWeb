@@ -13,9 +13,9 @@
 <h:body>
 	<h:outputLabel style="color:red;" value="Hello Joker " />
 	<h:form>
-		<h:inputText id="username" value="#{userBean.userName}" />
-		<h:inputText id="password" value="#{userBean.passWord}" />
-		<h:commandButton value="submit" action="#{userBean.action}" />
+		<h:inputText id="username" value="#{userController.userName}" />
+		<h:inputText id="password" value="#{userController.passWord}" />
+		<h:commandButton value="submit" action="#{userController.action}" />
 	</h:form>
 </h:body>
 </html>

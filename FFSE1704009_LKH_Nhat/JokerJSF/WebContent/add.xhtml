@@ -19,49 +19,62 @@
 			action="list.xhtml?faces-redirect=true" />
 	</h:form>
 	<div class="container">
-		<h:form>
+		<h:form prependid="false" enctype="multipart/form-data">
 			<div class="form-group">
 				<h:outputLabel value="Mã Sinh Viên" />
-				<h:inputText class="form-control" name="masinhvien" value="#{sinhVienBean.maSinhVien}" />
+				<h:inputText class="form-control" name="masinhvien"
+					value="#{sinhVien.maSinhVien}" />
 			</div>
 
 			<div class="form-group">
-				<h:outputLabel value="Tên Sinh Viên" /> 
-				<h:inputText class="form-control" name="tensinhvien" value="#{sinhVienBean.tenSinhVien}"  />
+				<h:outputLabel value="Tên Sinh Viên" />
+				<h:inputText class="form-control" name="tensinhvien"
+					value="#{sinhVien.tenSinhVien}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Lớp Học" />
-				<h:inputText class="form-control" name="lop" value="#{sinhVienBean.lopHoc}"/>
+				<h:inputText class="form-control" name="lop"
+					value="#{sinhVien.lopHoc}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Tuổi" />
-				<h:inputText class="form-control" name="tuoi" value="#{sinhVienBean.tuoiSinhVien}"/>
+				<h:inputText class="form-control" name="tuoi"
+					value="#{sinhVien.tuoiSinhVien}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Giới Tính" />
-				<h:inputText class="form-control" name="gioitinh" value="#{sinhVienBean.gioiTinh}"/>
+				<h:inputText class="form-control" name="gioitinh"
+					value="#{sinhVien.gioiTinh}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Địa Chỉ" />
-				<h:inputText class="form-control" name="diachi" value="#{sinhVienBean.diaChi}"/>
+				<h:inputText class="form-control" name="diachi"
+					value="#{sinhVien.diaChi}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Số Điện Thoại" />
-				<h:inputText class="form-control" name="sdt"  value="#{sinhVienBean.soDT}"/>
+				<h:inputText class="form-control" name="sdt"
+					value="#{sinhVien.soDT}" />
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Email" />
-				<h:inputText class="form-control" name="email" value="#{sinhVienBean.email}" />
+				<h:inputText class="form-control" name="email"
+					value="#{sinhVien.email}" />
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Avatar" />
+				<h:inputFile value="#{sinhVienController.file}"></h:inputFile>
 			</div>
 
 			<h:commandButton class="btn btn-primary" value="Thực Hiện"
-				action="#{sinhVienBean.addSV}" />
+				action="#{sinhVienController.addSV(sinhVien)}" />
 			<h:commandButton class="btn btn-danger" value="Hủy" type="reset" />
 		</h:form>
 	</div>

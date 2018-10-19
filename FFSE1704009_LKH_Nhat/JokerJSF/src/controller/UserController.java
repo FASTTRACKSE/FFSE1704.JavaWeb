@@ -1,4 +1,4 @@
-package myJSF;
+package controller;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -11,7 +11,7 @@ import model.service.UserService;
 
 @ManagedBean
 @SessionScoped
-public class UserBean {
+public class UserController {
 	private String userName;
 	private String passWord;
 
