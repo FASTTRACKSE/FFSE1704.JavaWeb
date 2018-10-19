@@ -176,7 +176,7 @@ public class StaffDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.next()) {
-				totalNhanVien = rs.getInt(totalNhanVien);
+				totalNhanVien = rs.getInt("totalNhanVien");
 			}
 			
 		} catch (SQLException e) {

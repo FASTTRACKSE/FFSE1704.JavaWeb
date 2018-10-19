@@ -1,17 +1,23 @@
 package ffse1704.JSFStaff.controller;
 
-import java.lang.ProcessBuilder.Redirect;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import ffse1704.JSFStaff.dao.StaffDAO;
 import ffse1704.JSFStaff.entity.NhanVien;
 import ffse1704.JSFStaff.entity.TinhThanhPho;
+import ffse1704.JSFStaff.until.ViewImage;
+
 
 
 
@@ -25,9 +31,26 @@ public class StaffController {
 	private StaffDAO staffDAO = new StaffDAO();
 	
 	private int currentPage = 1;
-	private int perPage	 = 2;
+	private int perPage	 = 1;
 	private int totalPage = 1;
+	final String dirPath = "E:\\HOCT\\images";
+	private String fileName = "";
+	private Part file;
+	private long fileSize;
+	
 	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+	public Part getFile() {
+		return file;
+	}
+	public void setFile(Part file) {
+		this.file = file;
+	}
 	public List<NhanVien> getDsNhanVien() {
 		return dsNhanVien;
 	}
@@ -103,6 +126,8 @@ public class StaffController {
 		return "index?faces-redirect=true";
 	}
 	public String createStaff(NhanVien nv) {
+		upload();
+		nv.setImages(fileName);
 		staffDAO.addNewNhanVien(nv);
 		loadListStaffPage();
 		return "index?faces-redirect=true";
@@ -118,4 +143,26 @@ public class StaffController {
 		}
 		loadListStaffPage();
 	}
+	
+	public void upload()
+    {
+        try {
+            // get name of selected file
+        	fileName = file.getSubmittedFileName();
+            // get file's size
+            fileSize = file.getSize();
+            // get fullpath of opload folder in web root
+            
+            
+			
+            // write file to upload folder
+            file.write(dirPath + "/" + fileName);
+			
+             
+        } catch (IOException ex) {
+            Logger.getLogger(ViewImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+ 
+	
 }
