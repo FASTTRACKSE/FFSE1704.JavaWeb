@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Edit JSF</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+		crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandButton class="btn btn-success" value="Back"
+			action="index.xhtml?faces-redirect=true" />
+	</h:form>
+	<div class="container">
+		<h:form prependid="false" enctype="multipart/form-data">
+			<div class="form-group">
+				<h:outputLabel value="Tên Nhân Viên" />
+				<h:inputText class="form-control" name="tennhanvien" id="hoTen"
+					value="#{editedNhanSu.hoTen}" />
+				<h:message for="hoTen" style=" color: red" />
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Năm Sinh" />
+				<h:inputText class="form-control" name="namsinh" id="namSinh"
+					value="#{editedNhanSu.namSinh}" />
+				<h:message for="namSinh" style=" color: red" />
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Giới Tính: " id="gioiTinh" />
+				<h:selectOneRadio value="#{editedNhanSu.gioiTinh}">
+					<f:selectItem itemValue="Nam" itemLabel="Nam" />
+					<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+				</h:selectOneRadio>
+				<h:message for="gioiTinh" style=" color: red" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Hộ Khẩu:" />
+				<h:selectOneMenu value="#{editedNhanSu.hoKhau}" id="hoKhau">
+					<f:selectItems value="#{nhanSuController.listTinhThanh}" var="item"
+						itemValue="#{item.maTinh}" itemLabel="#{item.tenTinh}" />
+				</h:selectOneMenu>
+				<h:message for="hoKhau" style=" color: red" />
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Ảnh: " />
+				<br/>
+				<f:view>
+					<h:graphicImage url="images/#{editedNhanSu.avatar}" width="100px" />
+				</f:view>
+				<h:inputFile value="#{nhanSuController.file}"  id="avatar"></h:inputFile>
+				<h:message for="avatar" style=" color: red" />
+			</div>
+
+			<h:commandButton class="btn btn-primary" value="Thực Hiện"
+				action="#{nhanSuController.editNhanSu(editedNhanSu)}" />
+			
+		</h:form>
+	</div>
+</h:body>
+</html>

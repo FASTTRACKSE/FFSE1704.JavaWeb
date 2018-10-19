@@ -1,8 +1,13 @@
 package model.entity;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.validation.constraints.NotNull;
 
+@ManagedBean
+@RequestScoped
 public class SinhVien {
-	private String id;
+	@NotNull(message = "can't be empty")  
 	private String tenSinhVien;
 	private String maSinhVien;
 	private String lopHoc;
@@ -11,23 +16,14 @@ public class SinhVien {
 	private String diaChi;
 	private String soDT;
 	private String email;
+	private String avatar;
 
-	public SinhVien(String id, String tenSinhVien, String maSinhVien, String lopHoc, String tuoiSinhVien,
-			String gioiTinh, String diaChi, String soDT, String email) {
+	public SinhVien() {
 		super();
-		this.id = id;
-		this.tenSinhVien = tenSinhVien;
-		this.maSinhVien = maSinhVien;
-		this.lopHoc = lopHoc;
-		this.tuoiSinhVien = tuoiSinhVien;
-		this.gioiTinh = gioiTinh;
-		this.diaChi = diaChi;
-		this.soDT = soDT;
-		this.email = email;
 	}
 	
 	public SinhVien( String maSinhVien, String tenSinhVien, String lopHoc, String tuoiSinhVien,
-			String gioiTinh, String diaChi, String soDT, String email) {
+			String gioiTinh, String diaChi, String soDT, String email,String avatar) {
 		super();
 		this.maSinhVien = maSinhVien;
 		this.tenSinhVien = tenSinhVien;
@@ -37,15 +33,9 @@ public class SinhVien {
 		this.diaChi = diaChi;
 		this.soDT = soDT;
 		this.email = email;
+		this.avatar = avatar;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getTenSinhVien() {
 		return tenSinhVien;
@@ -109,5 +99,13 @@ public class SinhVien {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 }

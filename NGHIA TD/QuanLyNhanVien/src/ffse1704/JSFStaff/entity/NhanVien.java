@@ -1,14 +1,35 @@
 package ffse1704.JSFStaff.entity;
 
+import javax.faces.bean.ManagedBean;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
+
+
+@ManagedBean
 public class NhanVien {
 	
-	private String id;
-	private String name;
-	private String birthDay;
-	private String genDer;
-	private String address;
-	private String images;
-	public NhanVien(String id, String name, String birthDay, String genDer, String address, String images) {
+	 int id;
+	 
+	 @NotNull(message= "Tên không được để trống")
+	 @Size(min=1,message= "Tên không được để trống")
+	 String name;
+	 
+	 @NotNull(message= "Năm sinh không được để trống")
+	 @Range(min=1990, max=2000, message= "Năm sinh phải từ 1990-2000")
+	 int birthDay;
+	 
+	 int genDer;
+	 int address;
+	 String images;
+	 
+	 public NhanVien() {
+			super();
+		}
+
+	public NhanVien(int id, String name, int birthDay, int genDer, int address, String images) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -17,23 +38,12 @@ public class NhanVien {
 		this.address = address;
 		this.images = images;
 	}
-	
-	public NhanVien(String name, String birthDay, String genDer, String address, String images) {
-		this.name = name;
-		this.birthDay = birthDay;
-		this.genDer = genDer;
-		this.address = address;
-		this.images = images;
-	}
-	public NhanVien() {
-		
-	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -45,27 +55,27 @@ public class NhanVien {
 		this.name = name;
 	}
 
-	public String getBirthDay() {
+	public int getBirthDay() {
 		return birthDay;
 	}
 
-	public void setBirthDay(String birthDay) {
+	public void setBirthDay(int birthDay) {
 		this.birthDay = birthDay;
 	}
 
-	public String getGenDer() {
+	public int getGenDer() {
 		return genDer;
 	}
 
-	public void setGenDer(String genDer) {
+	public void setGenDer(int genDer) {
 		this.genDer = genDer;
 	}
 
-	public String getAddress() {
+	public int getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(int address) {
 		this.address = address;
 	}
 
@@ -76,4 +86,5 @@ public class NhanVien {
 	public void setImages(String images) {
 		this.images = images;
 	}
+	
 }

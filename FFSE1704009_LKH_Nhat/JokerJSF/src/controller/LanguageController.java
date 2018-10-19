@@ -1,4 +1,4 @@
-package myJSF;
+package controller;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -12,7 +12,7 @@ import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean
 @SessionScoped
-public class LanguageBean implements Serializable {
+public class LanguageController implements Serializable {
   private static final long serialVersionUID = 1L;
   private String locale;
   private final static Locale LOCALE_VI = new Locale("vi", "VN");

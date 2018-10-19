@@ -16,7 +16,7 @@
 	 Hello <!-- <h:outputLabel style="color:red;" value="#{userBean.admin}" /> -->
 
 	<h:form>
-		<ui:repeat value="#{userBean.admin}" var="admin">
+		<ui:repeat value="#{userController.admin}" var="admin">
 			<h:outputLabel style="color:red;" value="#{admin.userName}" />
 		</ui:repeat>
 		<h:commandButton value="showlist" action="list.xhtml?faces-redirect=true" />
