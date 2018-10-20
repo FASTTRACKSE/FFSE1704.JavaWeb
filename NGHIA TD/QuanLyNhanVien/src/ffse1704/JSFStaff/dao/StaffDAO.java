@@ -56,7 +56,6 @@ public class StaffDAO {
 			preparedStatement.setString(5, nv.getImages());
 			
 			
-			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -68,7 +67,9 @@ public class StaffDAO {
 	
 	public List<NhanVien> getAllStaff() {
 		List<NhanVien> arrNV = new ArrayList<NhanVien>();
-		String query = "SELECT * FROM nhanvien";
+		String query = "SELECT nhanvien.id,nhanvien.name,nhanvien.birthday,nhanvien.gender, "
+				+ "devvn_tinhthanhpho.name AS addressName,nhanvien.images "
+				+ "FROM nhanvien INNER JOIN devvn_tinhthanhpho ON nhanvien.address=devvn_tinhthanhpho.matp";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
@@ -82,13 +83,14 @@ public class StaffDAO {
 				nhanVien.setBirthDay(rs.getInt("birthday"));
 				nhanVien.setGenDer(rs.getInt("gender"));
 				nhanVien.setAddress(rs.getInt("address"));
+				nhanVien.setAddressName(rs.getString("addressName"));
 				nhanVien.setImages(rs.getString("images"));
 				
 				
 				arrNV.add(nhanVien);
 			}
 			
-			preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -111,9 +113,9 @@ public class StaffDAO {
 			preparedStatement.setString(5, nv.getImages());
 			preparedStatement.setInt(6, nv.getId());
 			
-			
-			
-			preparedStatement.executeUpdate();
+//			
+//			
+//			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -211,7 +213,7 @@ public class StaffDAO {
 				arrNV.add(nhanVien);
 			}
 			
-			preparedStatement.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -241,7 +243,7 @@ public class StaffDAO {
 				arrTp.add(tinhThanh);
 			}
 			
-			preparedStatement.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
