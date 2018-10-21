@@ -8,24 +8,24 @@ import javax.faces.bean.SessionScoped;
 public class SinhVien {
 
 	protected String id;
-	protected String user, password, fullname;
+	protected String user, password, fullname, image;
 
-	public SinhVien(String id, String user, String password, String fullname) {
+	public SinhVien(String id, String user, String password, String fullname ,String image) {
 
 		this.id = id;
 		this.user = user;
 		this.password = password;
 		this.fullname = fullname;
+		this.image = image;
 	}
 
-	public SinhVien(String user, String password, String fullname) {
+	public SinhVien(String user, String password, String fullname ,String image) {
 
 		this.user = user;
 		this.password = password;
 		this.fullname = fullname;
+		this.image = image;
 	}
-
-	
 
 	public String getId() {
 		return id;
@@ -59,4 +59,15 @@ public class SinhVien {
 		this.fullname = fullname;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	
+
+	
 }

@@ -1,13 +1,18 @@
 package model.form;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import model.bean.SinhVien;
 import model.dao.SinhVienDao;
@@ -17,7 +22,9 @@ import model.dao.SinhVienDao;
 public class SinhVienForm {
 
 	private String id;
-	private String user, password, fullname;
+	private String user, password, fullname, image;
+
+	
 
 	public String getId() {
 		return id;
@@ -51,8 +58,16 @@ public class SinhVienForm {
 		this.fullname = fullname;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@ManagedProperty(value = "#{sinhVienDao}")
-	private SinhVienDao sinhVienDao;	
+	private SinhVienDao sinhVienDao;
 	private List<SinhVien> listSinhVien;
 
 	public SinhVienDao getSinhVienDao() {
@@ -76,21 +91,26 @@ public class SinhVienForm {
 	}
 
 	public String addSinhVien() {
-		SinhVien sv = new SinhVien(user, password, fullname);
+		upload();
+		SinhVien sv = new SinhVien(user, password, fullname, image);
+		sv.setImage(fileName);
 		sinhVienDao.getaddUser(sv);
+		init();
 		return "index?faces-redirect=true";
 
 	}
 
 	public String delSinhVien(String id) {
 		sinhVienDao.getdeleteUser(id);
+		init();
 		return "index?faces-redirect=true";
 
 	}
 
 	public String editSinhVien() {
-		SinhVien sv = new SinhVien(id, user, password, fullname);
+		SinhVien sv = new SinhVien(id, user, password, fullname, image);
 		sinhVienDao.getupdateUser(sv);
+		init();
 		return "index?faces-redirect=true";
 
 	}
@@ -101,6 +121,7 @@ public class SinhVienForm {
 		user = sinhvien.getUser();
 		password = sinhvien.getPassword();
 		fullname = sinhvien.getFullname();
+		image = sinhvien.getImage();
 		return "edit";
 	}
 
@@ -180,5 +201,59 @@ public class SinhVienForm {
 		} else {
 			pageLink = new Integer[] { currentPage - 1, currentPage, currentPage + 1 };
 		}
+	}
+
+	private Part file;
+	private String fileName;
+	private long fileSize;
+
+	public SinhVienForm() {
+    }
+
+	public Part getFile() {
+		return file;
+	}
+
+	public void setFile(Part file) {
+		this.file = file;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public  void upload() {
+		try {
+			// get name of selected file
+			fileName = file.getSubmittedFileName();
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+			// write file to upload folder
+			File path = new File(dirPath);
+
+			if (!path.exists()) {
+				path.mkdirs();
+			}
+
+			file.write(dirPath + "/" + fileName);
+
+		} catch (IOException ex) {
+			Logger.getLogger(UploadFile.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
 	}
 }

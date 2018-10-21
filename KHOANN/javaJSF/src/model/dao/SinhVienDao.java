@@ -22,13 +22,13 @@ public class SinhVienDao {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
 			return new SinhVien(result.getString("id"), result.getString("user"), result.getString("password"),
-					result.getString("fullname"));
+					result.getString("fullname"), result.getString("image"));
 
 		}
 	};
 
 	public int getaddUser(final SinhVien us) {
-		String sql = "INSERT INTO baitap(user,password,fullname) VALUES(?,?,?)";
+		String sql = "INSERT INTO baitap(user,password,fullname,image) VALUES(?,MD5?,?,?)";
 
 		int listUser = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
@@ -36,6 +36,7 @@ public class SinhVienDao {
 				statement.setString(1, us.getUser());
 				statement.setString(2, us.getPassword());
 				statement.setString(3, us.getFullname());
+				statement.setString(4, us.getImage());
 			}
 		});
 		return listUser;
@@ -56,7 +57,7 @@ public class SinhVienDao {
 	}
 
 	public int getupdateUser(final SinhVien stt) {
-		String sql = "UPDATE baitap SET   user = ?, password = ?, fullname = ? WHERE id=?";
+		String sql = "UPDATE baitap SET   user = ?, password = ?, fullname = ?, image = ? WHERE id=?";
 
 		int listUser = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
@@ -64,7 +65,8 @@ public class SinhVienDao {
 				statement.setString(1, stt.getUser());
 				statement.setString(2, stt.getPassword());
 				statement.setString(3, stt.getFullname());
-				statement.setString(4, stt.getId());
+				statement.setString(4, stt.getImage());
+				statement.setString(5, stt.getId());
 			}
 		});
 		return listUser;
@@ -95,7 +97,7 @@ public class SinhVienDao {
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
 				return new SinhVien(result.getString("id"), result.getString("user"), result.getString("password"),
-						result.getString("fullname"));
+						result.getString("fullname"), result.getString("image"));
 			}
 		}, start, recordinPage);
 	}
