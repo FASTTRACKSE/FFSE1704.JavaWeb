@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Quản Lí Nhân Viên</h2>
+	<h:form>
+		<h:commandButton value="Thêm"
+			action="AddStaff.xhtml?faces-redirect=true"></h:commandButton>
+		<h:dataTable border="1" cellpadding="10" cellspacing="0"
+			value="#{staff.listStaff}" var="nv">
+			<h:column>
+				<f:facet name="header">Tên</f:facet>
+             #{nv.hoTen}
+         </h:column>
+			<h:column>
+				<f:facet name="header">Age</f:facet>
+             #{nv.namSinh}
+         </h:column>
+			<h:column>
+				<f:facet name="header">Địa chỉ</f:facet>
+           #{nv.gender}
+         </h:column>
+			<h:column>
+				<f:facet name="header"> Giới Tính </f:facet>
+		  #{nv.diaChi}
+         </h:column>
+			<h:column>
+				<f:facet name="header">Image</f:facet>  
+           #{nv.image}
+         </h:column>
+			<h:column>
+				<f:facet name="header">Chức năng</f:facet>
+				<!-- <h:commandButton value="sửa"
+					action="#{sinhVienForm.viewEditSinhVien(sv.maSinhVien)}"></h:commandButton>
+				<h:commandButton value="xóa"
+					action="#{sinhVienForm.delete(sv.maSinhVien)}"></h:commandButton> -->
+			</h:column>
+		</h:dataTable>
+	
+	</h:form>
+</body>
+</html>

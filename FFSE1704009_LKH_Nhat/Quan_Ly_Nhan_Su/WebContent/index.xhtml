@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="htth://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>List JSF</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+		crossorigin="anonymous" />
+</h:head>
+<h:body>
+
+	<div class="container">
+
+		<h:form>
+			<h:commandButton value="logout"  class="btn btn-danger"  action="#{loginController.logout}" />
+		</h:form>
+		<br />
+		<h:form>
+			<c:choose>
+				<c:when test="#{nhanSuController.allPage eq 1}">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><h:commandLink class="page-link"
+									value="1" action="#{nhanSuController.viewListNhanSu}">
+									<f:param name="page" value="#{1}"></f:param>
+								</h:commandLink></li>
+
+						</ul>
+					</nav>
+				</c:when>
+
+				<c:when
+					test="#{nhanSuController.allPage gt 1 and nhanSuController.allPage lt 3}">
+					<c:choose>
+						<c:when test="#{nhanSuController.indexPage eq 1}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="1" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="2" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Next" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="#{nhanSuController.indexPage eq 2}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Preious" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="1" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="2" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{2}"></f:param>
+										</h:commandLink></li>
+								</ul>
+							</nav>
+						</c:when>
+					</c:choose>
+
+				</c:when>
+
+				<c:otherwise>
+					<c:choose>
+						<c:when
+							test="#{nhanSuController.indexPage eq 1  or  nhanSuController.indexPage eq 2  or  nhanSuController.indexPage eq 3}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:forEach var="i" begin="1" end="5">
+
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{nhanSuController.viewListNhanSu}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+
+
+									</c:forEach>
+
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Next" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page"
+												value="#{nhanSuController.indexPage + 1}"></f:param>
+										</h:commandLink></li>
+
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Last Page" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{nhanSuController.allPage}"></f:param>
+										</h:commandLink></li>
+
+
+								</ul>
+							</nav>
+						</c:when>
+						<c:when
+							test="#{nhanSuController.indexPage eq nhanSuController.allPage-1  or nhanSuController.indexPage eq nhanSuController.allPage-2  or nhanSuController.indexPage eq nhanSuController.allPage}">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Fist Page" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="1"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Previous" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page"
+												value="#{nhanSuController.indexPage - 1}"></f:param>
+										</h:commandLink></li>
+									<c:forEach var="i" begin="#{nhanSuController.allPage - 4}"
+										end="#{nhanSuController.allPage}">
+
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{nhanSuController.viewListNhanSu}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+									</c:forEach>
+								</ul>
+							</nav>
+						</c:when>
+						<c:otherwise>
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Fist Page" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="1"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Previous" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page"
+												value="#{nhanSuController.indexPage - 1}"></f:param>
+										</h:commandLink></li>
+									<c:forEach var="i" begin="#{nhanSuController.indexPage - 2}"
+										end="#{nhanSuController.indexPage + 2}">
+										<li class="page-item"><h:commandLink class="page-link"
+												value="#{i}" action="#{nhanSuController.viewListNhanSu}">
+												<f:param name="page" value="#{i}"></f:param>
+											</h:commandLink></li>
+									</c:forEach>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Next" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page"
+												value="#{nhanSuController.indexPage + 1}"></f:param>
+										</h:commandLink></li>
+									<li class="page-item"><h:commandLink class="page-link"
+											value="Last Page" action="#{nhanSuController.viewListNhanSu}">
+											<f:param name="page" value="#{nhanSuController.allPage}"></f:param>
+										</h:commandLink></li>
+								</ul>
+							</nav>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
+		</h:form>
+
+
+		<h:form>
+			<h:commandLink class="btn btn-success"
+				action="add.xhtml?faces-redirect=true" value="Thêm" />
+
+			<br />
+			<br />
+			<h:dataTable value="#{nhanSuController.listNhanSu}" var="item"
+				binding="#{table}" class="table table-striped">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="STT " />
+					</f:facet>
+					<h:outputText
+						value="#{(nhanSuController.indexPage -1)*nhanSuController.reCordInPage + table.rowIndex + 1}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Họ Tên" />
+					</f:facet>
+					<h:outputText value="#{item.hoTen}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Năm Sinh" />
+					</f:facet>
+					<h:outputText value="#{item.namSinh}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Giới Tính" />
+					</f:facet>
+					<h:outputText value="#{item.gioiTinh}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Hộ Khẩu" />
+					</f:facet>
+					<h:outputText value="#{item.hoKhau}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ảnh" />
+					</f:facet>
+					<f:view>
+						<h:graphicImage url="images/#{item.avatar}" width="100px" />
+					</f:view>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Chức Năng" />
+					</f:facet>
+					<h:commandButton class="btn btn-primary" value="Sửa"
+						action="#{nhanSuController.viewEditNhanSu(item.id)}" />
+					<h:commandButton class="btn btn-danger" value="Xóa"
+						action="#{nhanSuController.viewDeleteNhanSu(item.id)}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
+
+</h:body>
+</html>

@@ -1,11 +1,8 @@
- <?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
 <h:head>
 
 
@@ -16,15 +13,29 @@
 <h:body>
 
 
-	<h:form style="text-aline: center">
-	<h:inputText value="#{sinhVienForm.maSinhVien}"/><br/>
-	<h:inputText value="#{sinhVienForm.tenSinhVien}"/><br/>
-	<h:inputText value="#{sinhVienForm.tuoiSinhVien}"/><br/>
-	<h:inputText value="#{sinhVienForm.lopHoc}"/><br/>
-	<h:inputText value="#{sinhVienForm.diaChi}"/><br/>
-	<h:commandButton value="sửa" action="#{sinhVienForm.editSinhVien}"/>
-	
-	</h:form>
+	<f:view>
+		<h:form enctype="multipart/form-data">
+maSV:<h:inputText value="#{sinhVienForm.maSinhVien}" />
+			<br />
+tenSV:<h:inputText value="#{sinhVienForm.tenSinhVien}" />
+			<br />
+tuoiSV:<h:inputText value="#{sinhVienForm.tuoiSinhVien}" />
+			<br />
+lophoc:<h:inputText value="#{sinhVienForm.lopHoc}" />
+			<br />
+diachi:<h:inputText value="#{sinhVienForm.diaChi}" />
+			<br />
+		
+avatar:               <h:inputFile value="#{sinhVienForm.file}" />
+			<br />
+
+			<h:commandButton action="#{sinhVienForm.editSinhVien}"
+				value="sửa" />
+
+
+		</h:form>
+
+	</f:view>
 
 </h:body>
 

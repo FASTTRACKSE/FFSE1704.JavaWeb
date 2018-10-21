@@ -23,7 +23,7 @@ public class UserDao {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
 			return new SinhVien(result.getString("id"), result.getString("name"), result.getString("age"),
-					result.getString("DiaChi"), result.getString("sdt"));
+					result.getString("DiaChi"), result.getString("sdt"), result.getString("images"));
 
 		}
 	};
@@ -71,7 +71,7 @@ public class UserDao {
 
 	public int insert(final SinhVien sv) {
 
-		String sql = "INSERT INTO sinhvien(name,age,DiaChi,sdt) VALUES(?,?,?,?) ";
+		String sql = "INSERT INTO sinhvien(name,age,DiaChi,sdt,images) VALUES(?,?,?,?,?) ";
 		int listSV = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(java.sql.PreparedStatement statement) throws SQLException {
 
@@ -79,6 +79,7 @@ public class UserDao {
 				statement.setString(2, sv.getAge());
 				statement.setString(3, sv.getDiaChi());
 				statement.setString(4, sv.getSdt());
+				statement.setString(5, sv.getImages());
 			}
 
 		});
@@ -88,7 +89,7 @@ public class UserDao {
 
 	public int edit(final SinhVien sv) {
 
-		String sql = "UPDATE sinhvien SET name=?, age=?, DiaChi=?, sdt=? where id=?";
+		String sql = "UPDATE sinhvien SET name=?, age=?, DiaChi=?, sdt=? images=? where id=?";
 		int listSV = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 
@@ -97,6 +98,7 @@ public class UserDao {
 				statement.setString(3, sv.getDiaChi());
 				statement.setString(4, sv.getSdt());
 				statement.setString(5, sv.getId());
+				statement.setString(5, sv.getImages());
 			}
 
 		});

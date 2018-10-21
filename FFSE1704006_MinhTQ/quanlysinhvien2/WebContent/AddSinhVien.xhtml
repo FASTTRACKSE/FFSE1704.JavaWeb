@@ -8,16 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h:form>
-maSV:<h:inputText value="#{sinhVienForm.maSinhVien}" /><br/>
-tenSV:<h:inputText value="#{sinhVienForm.tenSinhVien}" /><br/>
-tuoiSV:<h:inputText value="#{sinhVienForm.tuoiSinhVien}"/><br/>
-lophoc:<h:inputText value="#{sinhVienForm.lopHoc}"/><br/>
-diachi:<h:inputText value="#{sinhVienForm.diaChi}"/><br/>
+	<f:view>
+		<h:form enctype="multipart/form-data">
+maSV:<h:inputText value="#{sinhVien.maSinhVien}" />
+			<br />
+tenSV:<h:inputText value="#{sinhVien.tenSinhVien}" />
+			<br />
+tuoiSV:<h:inputText value="#{sinhVien.tuoiSinhVien}" />
+			<br />
+lophoc:<h:inputText value="#{sinhVien.lopHoc}" />
+			<br />
+diachi:<h:inputText value="#{sinhVien.diaChi}" />
+			<br />
+		
+avatar:               <h:inputFile value="#{sinhVienForm.file}" />
+			<br />
 
-<h:commandButton action="#{sinhVienForm.addSinhVien}" value="thêm"/>
+			<h:commandButton action="#{sinhVienForm.addSinhVien(sinhVien)}"
+				value="thêm" />
 
 
-</h:form>
+		</h:form>
+
+	</f:view>
 </body>
 </html>

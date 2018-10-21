@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Staff Management System</title>
+
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+
+	<div id="wrapper">
+		<div id="header">
+			<h2>Staff Management System</h2>
+		</div>
+	</div>
+
+	<div id="container">
+
+		<div id="content">
+
+			<h:messages globalOnly="true" />
+
+			<h:button value="Add Staff" styleClass="add-student-button"
+				outcome="staff-create" />
+
+			<h:form>
+
+				<h:dataTable binding="#{table}"
+					value="#{staffController.dsNhanVien}" var="tempStaff"
+					styleClass="demo-table" headerClass="demo-table-header"
+					rowClasses="demo-table-odd-row,demo-table-even-row">
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">STT</f:facet>
+
+						<!--  the value for each row -->
+					#{(staffController.currPage-1)*staffController.perPage + table.rowIndex + 1}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Họ Tên</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStaff.hoTen}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Năm Sinh</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStaff.namSinh}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Giới Tính</f:facet>
+
+						<!--  the value for each row -->
+					#{tempStaff.gioiTinh}
+				</h:column>
+
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Action</f:facet>
+
+						<!--  the value for each row -->
+						<h:commandLink value="Sửa"
+							action="#{staffController.getStaffForUpdate(tempStaff.id)}" />
+					|
+
+					<h:commandLink value="Xoá"
+							action="#{staffController.getStaffForDelete(tempStaff.id)}" />
+					</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+
+		</div>
+		<div style="clear: both;"></div>
+		<h:form>
+			<h:commandLink value="|&#60;" action="#{staffController.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+				action="#{staffController.goPage(staffController.currPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+				value="#{staffController.currPage}/#{staffController.totalPage}" />
+				&#160;<h:commandLink value=">"
+				action="#{staffController.goPage(staffController.currPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+				action="#{staffController.goPage(staffController.totalPage)}"></h:commandLink>
+		</h:form>
+
+
+	</div>
+
+</h:body>
+</html>

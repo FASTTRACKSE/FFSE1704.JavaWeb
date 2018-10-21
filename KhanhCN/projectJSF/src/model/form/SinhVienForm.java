@@ -1,13 +1,18 @@
 package model.form;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import model.bean.SinhVien;
 import model.dao.SinhVienDAO;
@@ -94,6 +99,8 @@ public class SinhVienForm {
 	private String MASV;
 	private String TEN;
 	private String PASS;
+	private String IMG;
+	
 
 	public String getMASV() {
 		return MASV;
@@ -117,6 +124,15 @@ public class SinhVienForm {
 
 	public void setPASS(String pASS) {
 		PASS = pASS;
+	}
+	
+
+	public String getIMG() {
+		return IMG;
+	}
+
+	public void setIMG(String iMG) {
+		IMG = iMG;
 	}
 
 	@ManagedProperty(value = "#{sinhVienDAO}")
@@ -147,7 +163,10 @@ public class SinhVienForm {
 	// crud
 
 	public String addSinhVien() {
-		SinhVien sv = new SinhVien(MASV, TEN, PASS);
+		
+		upload();
+		SinhVien sv = new SinhVien(MASV, TEN, PASS,IMG);
+		sv.setIMG(fileName);
 		sinhvienDao.addSinhVien(sv);
 		init();
 		return "SinhVien?faces-redirect=true";
@@ -161,7 +180,9 @@ public class SinhVienForm {
 	}
 
 	public String editSinhVien() {
-		SinhVien sv = new SinhVien(MASV, TEN, PASS);
+		upload();
+		SinhVien sv = new SinhVien(MASV, TEN, PASS,IMG);
+		sv.setIMG(fileName);
 		sinhvienDao.updateSinhVien(sv);
 		init();
 		return "SinhVien?faces-redirect=true";
@@ -174,4 +195,63 @@ public class SinhVienForm {
 		PASS = sinhVien.getPASS();
 		return "editStudent";
 	}
+	
+	private Part file;
+    private String fileName;
+    private long fileSize;
+     
+    /**
+     * Creates a new instance of Upload_File
+     */
+    public SinhVienForm() {
+    }
+ 
+    public Part getFile() {
+        return file;
+    }
+ 
+    public void setFile(Part file) {
+        this.file = file;
+    }
+ 
+    public String getFileName() {
+        return fileName;
+    }
+ 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+     
+    public void upload()
+    {
+        try {
+            // get name of selected file
+            fileName = file.getSubmittedFileName();
+            // get file's size
+            fileSize = file.getSize();
+            // get fullpath of opload folder in web root
+            String dirPath= FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+            // write file to upload folder
+            File path = new File(dirPath);
+
+            if (!path.exists()) {
+                path.mkdirs();
+            }
+
+
+            file.write(dirPath + "/" + fileName);
+             
+        } catch (IOException ex) {
+            Logger.getLogger(Upload_File.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+ 
+    public long getFileSize() {
+        return fileSize;
+    }
+ 
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
+    }
 }
