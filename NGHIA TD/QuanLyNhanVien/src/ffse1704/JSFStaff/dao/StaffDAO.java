@@ -122,7 +122,7 @@ public class StaffDAO {
 	}
 
 	public void deleteNhanVien(int id) {
-		String query = "DELETE * FROM nhanvien WHERE id=?";
+		String query = "DELETE FROM nhanvien WHERE id=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
@@ -139,7 +139,7 @@ public class StaffDAO {
 	}
 
 	public NhanVien getNhanVienbyId(int id) {
-		String query = "SELECT * FROM nhanvien	 WHERE id=?";
+		String query = "SELECT * FROM nhanvien WHERE id=?";
 		NhanVien nhanVien = new NhanVien();
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();

@@ -123,6 +123,8 @@ public class StaffController {
 	}
 	//update nhân viên
 	public String updateStaff(NhanVien nv) {
+		upload();
+		nv.setImages(fileName);
 		staffDAO.updateNhanVien(nv);
 		loadListStaffPage();
 		return "index?faces-redirect=true";
@@ -134,7 +136,12 @@ public class StaffController {
 		loadListStaffPage();
 		return "index?faces-redirect=true";
 	}
-	
+	public String getStaffForDelete(int id) {
+		
+		staffDAO.deleteNhanVien(id);
+		loadListStaffPage();
+		return "index?faces-redirect=true";
+	}
 	
 	
 	public void upload()
