@@ -88,12 +88,12 @@ xmlns:p="http://primefaces.org/ui">
 						<f:facet name="header">Action</f:facet>
 
 						<!--  the value for each row -->
-						<h:commandLink value="Sửa"
+						<h:commandLink value="Sửa #{item.id}"
 							action="#{staffController.getStaffById(item.id)}" />
 					|
 
 					<h:commandLink value="Xoá"
-							action="#{staffController.getStaffForDelete(tempStaff.id)}" />
+							action="#{staffController.getStaffForDelete(item.id)}" />
 					</h:column>
 
 				</h:dataTable>
