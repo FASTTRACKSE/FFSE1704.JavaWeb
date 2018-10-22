@@ -8,6 +8,36 @@
 </head>
 <body>
 <h1>bạn là ai </h1>
+	<!-- <h:commandLink value="first" action="#{nhanVienController.showPage()}"
+			rendered="#{nhanVienController.currentPage gt 2}">
+			<f:param name="page" value="1" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="&lt;" action="#{nhanVienController.showPage()}"
+			rendered="#{nhanVienController.currentPage ne 1}">
+			<f:param name="page" value="#{nhanVienController.currentPage - 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
 
+		<ui:repeat var="next" value="#{nhanVienController.pageLink}">
+			<h:commandLink value="next" action="#{sinhVienForm.showPage()}"
+				rendered="#{next ne sinhVienForm.currentPage}">
+				<f:param name="page" value="#{next}" />
+			</h:commandLink>
+			<h:outputText value="#{next}"
+				rendered="#{next eq nhanVienController.currentPage}" />
+			<h:outputText value="&#160;" />
+		</ui:repeat>
+
+		<h:commandLink value="&gt;" action="#{nhanVienController.showPage()}"
+			rendered="#{nhanVienController.currentPage ne nhanVienController.totalPage}">
+			<f:param name="page" value="#{nhanVienController.currentPage + 1}" />
+			<h:outputText value="&#160;" />
+		</h:commandLink>
+		<h:commandLink value="last" action="#{nhanVienController.showPage()}"
+			rendered="#{nhanVienController.currentPage lt (nhanVienController.totalPage - 1)}">
+			<f:param name="page" value="#{nhanVienController.totalPage}" />
+		</h:commandLink>
+ -->
 </body>
 </html>

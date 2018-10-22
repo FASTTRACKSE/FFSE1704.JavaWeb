@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<f:view>
+		<h:form enctype="multipart/form-data">
+manhanvien:<h:inputText value="#{nhanVien.maNhanVien}" />
+			<br />
+tennhanvien:<h:inputText value="#{nhanVien.tenNhanVien}" />
+			<br />
+namsinh:<h:inputText value="#{nhanVien.namSinh}" />
+			<br />
+gioitinh:<h:selectOneRadio value="#{nhanVien.gioiTinh}">
+				<f:selectItem itemValue="Nam" itemLabel="Nam" />
+				<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+			</h:selectOneRadio>
+hộ khẩu:<h:selectOneMenu value="#{nhanVien.hoKhau}" >
+				<f:selectItems var="item" value="#{nhanVienController.listTinhThanh}"
+					itemValue="#{item.matinh}" itemLabel="#{item.tenTinh}" />
+			</h:selectOneMenu>
+			<br />
+			
+avatar:<h:inputFile value="#{nhanVienController.file}" />
+			<br />
+			<br />
+			<h:commandButton action="#{nhanVienController.addNhanVien(nhanVien)}"
+				value="update" />
+			<h:button value="Cancel" outcome="NhanVien.xhtml" />
+		</h:form>
+
+	</f:view>
+</body>
+</html>

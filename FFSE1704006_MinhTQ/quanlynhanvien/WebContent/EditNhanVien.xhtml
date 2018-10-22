@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+
+
+	<title>Insert title here</title>
+
+</h:head>
+
+<h:body>
+
+
+	<f:view>
+		<h:form prependid="false" >
+maNV:<h:outputText value="#{checkEditNhanSu.maNhanVien}" /><br />
+			
+tenNV:<h:outputText value="#{checkEditNhanSu.tenNhanVien}" /><br />
+			
+namSinh:<h:outputText value="#{viewEditNhanVien.namSinh}" /><br />
+			
+gioitinh:<h:outputText value="#{viewEditNhanVien.gioiTinh}"/><br />
+hộ khẩu:<h:outputText value="#{checkDeleteNhanSu.hoKhau}"/><br />
+avatar:<h:graphicImage url="upload/#{checkNhanSu.images}" width="100px" height="100px"/>
+			<br />	
+			<br />
+
+			<h:commandButton action="#{nhanVienController.editNhanVien(checkDeleteNhanSu.maNhanVien)}"
+				value="Updata" />
+
+			<h:button value="Cancel" outcome="NhanVien.xhtml" />
+
+		</h:form>
+
+	</f:view>
+
+</h:body>
+
+</html>

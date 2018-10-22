@@ -1,5 +1,7 @@
 package model.form;
 
+
+	import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
+
+import org.primefaces.mobile.component.field.Field;
 
 import model.Dao.SinhVienDAO;
 import model.entity.SinhVien;
@@ -169,7 +173,7 @@ public class SinhVienForm {
 
 	public String editSinhVien() {
 		upload();
-		SinhVien sinhvien= new SinhVien(maSinhVien,tenSinhVien,tuoiSinhVien,lopHoc,diaChi,images);
+		SinhVien sinhvien = new SinhVien(maSinhVien, tenSinhVien, tuoiSinhVien, lopHoc, diaChi, images);
 		sinhvien.setImages(fileName);
 		sinhVienDao.edit(sinhvien);
 		init();
@@ -184,6 +188,7 @@ public class SinhVienForm {
 		tuoiSinhVien = sinhvien.getTuoiSinhVien();
 		lopHoc = sinhvien.getLopHoc();
 		diaChi = sinhvien.getDiaChi();
+	
 		return "EditSinhVien";
 
 	}
@@ -216,13 +221,12 @@ public class SinhVienForm {
 	private Part file;
 	private String fileName;
 	private long fileSize;
-	
 
 	/**
 	 * Creates a new instance of Upload_File
 	 */
-	 public  SinhVienForm() {
-		
+	public SinhVienForm() {
+
 	}
 
 	public Part getFile() {
@@ -249,7 +253,11 @@ public class SinhVienForm {
 			fileSize = file.getSize();
 			// get fullpath of opload folder in web root
 			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
-			//if(!fileDir.exists()) fileDir.mkdirs();
+			File fileDir= new File(dirPath);
+			if (!fileDir.exists()) {
+				fileDir.mkdirs();
+
+			}
 			// write file to upload folder
 			file.write(dirPath + "/" + fileName);
 

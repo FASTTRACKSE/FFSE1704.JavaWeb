@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="model.entity.SinhVien"%>
+<%@ page import="ffse1704.jsfstaff.dao.SinhVien"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
