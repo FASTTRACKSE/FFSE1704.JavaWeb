@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<h:form>
+		<h:commandButton value="#{msg['btn_add']}"
+			action="AddNhanVien.xhtml?faces-redirect=true"></h:commandButton>
+
+
+		<h:dataTable value="#{nhanVienController.listNhanVien}" var="nv"
+			border="1" cellpadding="0" cellspacing="0">
+			<h:column>
+				<f:facet name="header">#{msg['th_CodeSV']}</f:facet>
+             #{nv.maNhanVien}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_NameSV']}</f:facet>
+             #{nv.tenNhanVien}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_Arg']}</f:facet>
+             #{nv.namSinh}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_Class']}</f:facet>
+             #{nv.gioiTinh}
+         </h:column>
+			<h:column>
+				<f:facet name="header">#{msg['th_address']}</f:facet>
+             #{nv.hoKhau}
+         </h:column>
+
+
+			<h:column>
+				<f:facet name="header">avatar</f:facet>
+				<f:view>
+					<h:graphicImage url="upload/#{nv.images}" width="100px"
+						height="100px" />
+
+				</f:view>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">#{msg['th_Function']}</f:facet>
+				<h:commandButton value="#{msg['Function_update']}"
+					action="#{nhanVienController.viewEditNhanVien(nv.maNhanVien)}"></h:commandButton>
+				<h:commandButton value="#{msg['Function_delete']}"
+					action="#{nhanVienController.viewDeleteNhanVien(nv.maNhanVien)}"></h:commandButton>
+			</h:column>
+
+
+		</h:dataTable>
+
+
+
+		<h:panelGrid columns="2"> 
+            Language : 
+            <h:selectOneMenu value="#{languageBean.locale}"
+				onchange="submit()"
+				valueChangeListener="#{languageBean.localeChanged}">
+				<f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
+
+
+
+	</h:form>
+
+
+	<h:form>
+		<h:commandLink value="|&#60;" action="#{nhanVienController.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+			action="#{nhanVienController.goPage(nhanVienController.currPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+			value="#{nhanVienController.currPage}/#{nhanVienController.totalPage}" />
+				&#160;<h:commandLink value=">"
+			action="#{nhanVienController.goPage(nhanVienController.currPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+			action="#{nhanVienController.goPage(nhanVienController.totalPage)}"></h:commandLink>
+	</h:form>
+
+</body>
+</html>
