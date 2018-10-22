@@ -184,4 +184,59 @@ public class StaffDAO {
 		return nhanVien;
 	}
 
+	public int countNhanVien() {
+		String query = "SELECT count(*) as totalStaff FROM quanly_nhanvien";
+		int totalStaff = 0;
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			if (rs.next()) {
+				totalStaff = rs.getInt("totalStaff");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return totalStaff;
+	}
+
+	public List<Staff> getListNhanVienByPage(int currPage, int perPage) {
+		int start = (currPage - 1) * perPage;
+		List<Staff> dsNhanVien = new ArrayList<Staff>();
+		String query = "SELECT * FROM quanly_nhanvien LIMIT " + start + "," + perPage;
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				Staff nhanVien = new Staff();
+				nhanVien.setId(rs.getInt("id"));
+				nhanVien.setHoTen(rs.getString("hoten"));
+				nhanVien.setNamSinh(rs.getInt("namsinh"));
+				nhanVien.setGioiTinh(rs.getString("gioitinh"));
+				nhanVien.setHoKhau(rs.getInt("hokhau"));
+				nhanVien.setAnh(rs.getString("anh"));
+
+				dsNhanVien.add(nhanVien);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return dsNhanVien;
+	}
+
 }

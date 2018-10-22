@@ -20,6 +20,34 @@ public class StaffForm {
 	private List<TinhThanh> dsTinhThanh;
 	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 
+	private int totalPage = 1;
+	private int currPage = 1;
+	private int perPage = 3;
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public int getCurrPage() {
+		return currPage;
+	}
+
+	public void setCurrPage(int currPage) {
+		this.currPage = currPage;
+	}
+
+	public int getPerPage() {
+		return perPage;
+	}
+
+	public void setPerPage(int perPage) {
+		this.perPage = perPage;
+	}
+
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
 	}
@@ -56,8 +84,10 @@ public class StaffForm {
 		listStaff = new ArrayList<Staff>();
 
 		staffDAO = new StaffDAO();
-		loadStaff();
+		loadStaffList();
 		loaddsTinhThanh();
+		loadStaffListByPage();
+		
 	}
 
 	public void loadStaff() {
@@ -82,18 +112,38 @@ public class StaffForm {
 
 		return "Edit?faces-redirect=true";
 	}
-	
+
 	public String updateStaff(Staff st) {
 		staffDAO.updateNewSinhVien(st);
 		loadStaff();
 		return "NhanVien?faces-redirect=true";
 	}
-	
+
 	public String deleteStaff(int id) {
 		staffDAO.deleteNhanVien(id);
 		loadStaff();
 		return "NhanVien?faces-redirect=true";
 	}
-	
+
+	public void loadStaffList() {
+		listStaff = staffDAO.getAllNhanVien();
+		totalPage = (int) Math.ceil(listStaff.size() * 1.0 / perPage);
+	}
+
+	public void loadStaffListByPage() {
+		listStaff = staffDAO.getListNhanVienByPage(currPage, perPage);
+		totalPage = (int) Math.ceil(staffDAO.countNhanVien() * 1.0 / perPage);
+	}
+
+	public void goPage(int page) {
+		currPage = page;
+		if (currPage < 1) {
+			currPage = 1;
+		} else if (currPage > totalPage) {
+			currPage = totalPage;
+		}
+
+		loadStaffListByPage();
+	}
 
 }

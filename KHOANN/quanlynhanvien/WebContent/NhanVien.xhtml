@@ -17,7 +17,8 @@
 	<f:view>
 		<h:form>
 
-			<h:commandButton action="Add.xhtml" value="Add" class="btn btn-success"></h:commandButton>
+			<h:commandButton action="Add.xhtml" value="Add"
+				class="btn btn-success"></h:commandButton>
 
 
 			<h:dataTable value="#{staffForm.listStaff}" border="1" var="sv"
@@ -38,7 +39,7 @@
 					<f:facet name="header">Năm Sinh</f:facet>#{sv.namSinh}
 
 				</h:column>
-				<h:column>	
+				<h:column>
 					<f:facet name="header">Hộ Khẩu</f:facet>#{sv.hoKhau}
 
 				</h:column>
@@ -63,6 +64,18 @@
 
 
 
+		</h:form>
+
+		<h:form>
+			<h:commandLink value="|&#60;" action="#{staffForm.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+				action="#{staffForm.goPage(staffForm.currPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+				value="#{staffForm.currPage}/#{staffForm.totalPage}" />
+				&#160;<h:commandLink value=">"
+				action="#{staffForm.goPage(staffForm.currPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+				action="#{staffForm.goPage(staffForm.totalPage)}"></h:commandLink>
 		</h:form>
 	</f:view>
 
