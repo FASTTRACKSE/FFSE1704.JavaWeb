@@ -11,10 +11,28 @@ import javax.validation.constraints.NotNull;
 public class Staff {
 	@NotNull(message = "Họ Tên Không được để trống")
 	private String hoTen;
-	private String gender,diaChi,image;
-	@Min(18)
-	@Max(28)
+	private String image;
+	@Min(1900)
+	@Max(2018)
 	private int namSinh;
+	private int diaChi,gender,id;
+	private String tenTinh;
+
+	public String getTenTinh() {
+		return tenTinh;
+	}
+
+	public void setTenTinh(String tenTinh) {
+		this.tenTinh = tenTinh;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getHoTen() {
 		return hoTen;
@@ -32,19 +50,19 @@ public class Staff {
 		this.namSinh = namSinh;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
-	public String getDiaChi() {
+	public int getDiaChi() {
 		return diaChi;
 	}
 
-	public void setDiaChi(String diaChi) {
+	public void setDiaChi(int diaChi) {
 		this.diaChi = diaChi;
 	}
 
@@ -56,13 +74,16 @@ public class Staff {
 		this.image = image;
 	}
 	
-	public Staff( String hoTen, int namSinh, String gender, String diaChi, String image) {
+	public Staff(int id, String hoTen, int namSinh, int gender, int diaChi, String image) {
 		super();
-		
+		this.id = id;
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;
 		this.gender = gender;
 		this.diaChi = diaChi;
 		this.image = image;
+	}
+	public Staff() {
+		super();
 	}
 }

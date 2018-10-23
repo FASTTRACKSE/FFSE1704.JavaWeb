@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<h:form id="form" enctype="multipart/form-data">
+		<h:inputHidden value="#{editStaff.id}" />
+
+		<h:outputLabel for="hoTen">Họ Tên</h:outputLabel>
+		<h:inputText id="hoTen" value="#{editStaff.hoTen}" />
+		<h:message for="hoTen" style="color: red" />
+
+		<h:outputLabel for="namSinh">Năm Sinh</h:outputLabel>
+		<h:inputText id="namSinh" value="#{editStaff.namSinh}" />
+		<h:message for="namSinh" style="color: red" />
+
+		<h:outputLabel>Giới tính:</h:outputLabel>
+		<h:selectOneRadio value="#{editStaff.gender}">
+			<f:selectItem itemValue="0" itemLabel="Nam" />
+			<f:selectItem itemValue="1" itemLabel="Nữ" />
+		</h:selectOneRadio>
+		
+		<h:outputLabel>Hộ Khẩu:</h:outputLabel>
+		<h:selectOneMenu value="#{editStaff.diaChi}">
+			<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
+				itemValue="#{d.id}" itemLabel="#{d.tenTinh}" />
+		</h:selectOneMenu>
+
+
+		<h:commandButton action="#{staffForm.updateStaff(editStaff)}"
+			value="sửa" />
+	</h:form>
+	
+		<p>
+			<h:outputLink value="index.xhtml">Back to List</h:outputLink>
+		</p>
+</body>
+</html>
