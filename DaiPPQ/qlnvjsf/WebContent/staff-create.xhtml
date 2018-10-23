@@ -9,26 +9,33 @@
 	<title>Insert title here</title>
 </h:head>
 <body>
-	<h:messages globalOnly="true" />
+	<!-- <h:messages globalOnly="true" /> -->
 	<h:form enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Name</td>
-				<td><h:inputText value="#{nhanVien.name}" /></td>
-				<h:message for="name" style="color: red"></h:message>
+				<td>
+					<h:inputText value="#{nhanVien.name}" id="name"/>
+					<h:message for="name" style="color: red"></h:message>
+				</td>
+				
 			</tr>
 			<tr>
 				<td>Date</td>
-				<td><h:inputText value="#{nhanVien.date}" /></td>
-				<h:message for="date" style="color: red"></h:message>
+				<td>
+					<h:inputText value="#{nhanVien.date}" id="date"/>
+					<h:message for="date" style="color: red"></h:message>
+				</td>
 			</tr>
 			<tr>
 				<td>Gender</td>
-				<td><h:selectOneRadio value="#{nhanVien.gender}">
+				<td><h:selectOneRadio value="#{nhanVien.gender}" id="gender">
 						<f:selectItem itemValue="Nam" itemLabel="Nam" />
 						<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
-					</h:selectOneRadio></td>
-				<h:message for="gender" style="color: red"></h:message>
+					</h:selectOneRadio>
+					<h:message for="gender" style="color: red"></h:message>
+				</td>
+				
 			</tr>
 			<tr>
 				<td>Address</td>
