@@ -54,13 +54,8 @@ public class StaffDAO {
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery(query);
 			while (result.next()) {
-				Staff list = new Staff(
-						result.getInt("id"),
-						result.getString("name"),
-						result.getInt("namsinh"),
-						result.getInt("gender"),
-						result.getInt("provinceid"),
-						result.getString("image"));
+				Staff list = new Staff(result.getInt("id"), result.getString("name"), result.getInt("namsinh"),
+						result.getInt("gender"), result.getInt("provinceid"), result.getString("image"));
 				listResult.add(list);
 			}
 
@@ -77,7 +72,7 @@ public class StaffDAO {
 	}
 
 	public void addNewStaff(Staff st) {
-		String query = "INSERT INTO `QuanLiNhanVien`(`name`, `namsinh`, `provinceid`, `gender`) VALUES (?,?,?,?)";
+		String query = "INSERT INTO `QuanLiNhanVien`(`name`, `namsinh`, `provinceid`, `gender`,image) VALUES (?,?,?,?,?)";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
@@ -85,6 +80,7 @@ public class StaffDAO {
 			preparedStatement.setInt(2, st.getNamSinh());
 			preparedStatement.setInt(3, st.getDiaChi());
 			preparedStatement.setInt(4, st.getGender());
+			preparedStatement.setString(5, st.getImage());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,6 +90,7 @@ public class StaffDAO {
 			close(connection, preparedStatement);
 		}
 	}
+
 	public void editStaff(Staff st) {
 		String query = "UPDATE `QuanLiNhanVien` SET `name`=?,`namsinh`=?,`provinceid`=?,`gender`=? WHERE id=?";
 		try {
@@ -113,6 +110,7 @@ public class StaffDAO {
 			close(connection, preparedStatement);
 		}
 	}
+
 	public Staff getNhanVienById(int id) {
 		String query = "SELECT * FROM QuanLiNhanVien WHERE id=?";
 		Staff nhanVien = new Staff();
@@ -129,6 +127,7 @@ public class StaffDAO {
 				nhanVien.setNamSinh(rs.getInt("namsinh"));
 				nhanVien.setGender(rs.getInt("gender"));
 				nhanVien.setDiaChi(rs.getInt("provinceid"));
+				nhanVien.setImage(rs.getString("image"));
 			}
 
 		} catch (SQLException e) {
@@ -141,13 +140,13 @@ public class StaffDAO {
 
 		return nhanVien;
 	}
+
 	public void deleteNhanVien(int id) {
 		String query = "DELETE FROM QuanLiNhanVien WHERE id=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, id);
-
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,6 +156,7 @@ public class StaffDAO {
 			close(connection, preparedStatement);
 		}
 	}
+
 	public List<province> getListTinhThanh() {
 		List<province> dsTinhThanh = new ArrayList<province>();
 		String query = "SELECT * FROM province";
@@ -166,9 +166,7 @@ public class StaffDAO {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
-				province dsTinh = new province(
-				rs.getString("provinceid"),
-				rs.getString("name"));
+				province dsTinh = new province(rs.getString("provinceid"), rs.getString("name"));
 				dsTinhThanh.add(dsTinh);
 			}
 		} catch (SQLException e) {
@@ -181,10 +179,12 @@ public class StaffDAO {
 
 		return dsTinhThanh;
 	}
+
 	public List<Staff> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<Staff> dsNhanVien = new ArrayList<Staff>();
-		String query = "SELECT id, QuanLiNhanVien.name, namsinh, gender, province.name FROM QuanLiNhanVien LEFT JOIN province ON province.provinceid = QuanLiNhanVien.provinceid LIMIT " + start + "," + perPage;
+		String query = "SELECT id, QuanLiNhanVien.name AS tenNV, namsinh, gender, province.name as tentinh,image FROM QuanLiNhanVien LEFT JOIN province ON province.provinceid = QuanLiNhanVien.provinceid LIMIT "
+				+ start + "," + perPage;
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
@@ -194,10 +194,11 @@ public class StaffDAO {
 			while (rs.next()) {
 				Staff nhanVien = new Staff();
 				nhanVien.setId(rs.getInt("id"));
-				nhanVien.setHoTen(rs.getString("QuanLiNhanVien.name"));
+				nhanVien.setHoTen(rs.getString("tenNV"));
 				nhanVien.setNamSinh(rs.getInt("namsinh"));
 				nhanVien.setGender(rs.getInt("gender"));
-				nhanVien.setTenTinh(rs.getString("province.name"));
+				nhanVien.setTenTinh(rs.getString("tentinh"));
+				nhanVien.setImage(rs.getString("image"));
 				dsNhanVien.add(nhanVien);
 			}
 		} catch (SQLException e) {
@@ -210,6 +211,7 @@ public class StaffDAO {
 
 		return dsNhanVien;
 	}
+
 	public int countNhanVien() {
 		String query = "SELECT count(*) as totalStaff FROM QuanLiNhanVien";
 		int totalStaff = 0;

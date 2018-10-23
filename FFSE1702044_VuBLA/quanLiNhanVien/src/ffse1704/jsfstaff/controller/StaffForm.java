@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -16,7 +13,6 @@ import javax.servlet.http.Part;
 import ffse1704.jsfstaff.dao.StaffDAO;
 import ffse1704.jsfstaff.entity.Staff;
 import ffse1704.jsfstaff.entity.province;
-import model.form.Upload_File;
 
 @ManagedBean
 @SessionScoped
@@ -123,37 +119,30 @@ public class StaffForm {
 		dsTinhThanh = staffDAO.getListTinhThanh();
 
 	}
-	 public String upload()
+	 public String upload() throws IOException
 	    {
-	        try {
-	        	
-	            // get name of selected file
-	            fileName = file.getSubmittedFileName();
-	            // get file's size
-	            fileSize = file.getSize();
-	            // get fullpath of opload folder in web root
-	            String dirPath= FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
-	            // write file to upload folder
-	           
-	           
-	            File path = new File(dirPath);
+	        // get name of selected file
+			fileName = file.getSubmittedFileName();
+			// get file's size
+			fileSize = file.getSize();
+			// get fullpath of opload folder in web root
+			String dirPath= "C:/Users/vubui/Pictures/";
+			// write file to upload folder
+			File path = new File(dirPath);
 
-				if (!path.exists()) {
-				    path.mkdirs();
-				}
-				 file.write(dirPath + "/" + fileName);
-	        } catch (IOException ex) {
-	            Logger.getLogger(StaffForm.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	         
-	        return "view";
+			if (!path.exists()) {
+			    path.mkdirs();
+			}
+			 file.write(dirPath + "/" + fileName);
+	        return fileName;
 	    }
-	public void loadStafflist() {
-		listStaff = staffDAO.getAllStaff();
-	}
+	
 
-	public String addStaff(Staff st) {
+	public String addStaff(Staff st) throws IOException {
+		upload();
+		st.setImage(fileName);
 		staffDAO.addNewStaff(st);
+		
 		loadStaffListByPage();
 		return "index?faces-redirect=true";
 	}

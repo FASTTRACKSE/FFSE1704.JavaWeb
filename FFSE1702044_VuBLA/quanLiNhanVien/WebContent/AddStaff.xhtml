@@ -33,17 +33,28 @@ table {
 				<td><h:inputText id="namSinh" value="#{staff.namSinh}" /> <h:message
 						for="namSinh" style="color: red" /></td>
 			</tr>
-			 <h:outputLabel>Giới tính:</h:outputLabel>
-                <h:selectOneRadio value="#{staff.gender}">
-                    <f:selectItem itemValue="0" itemLabel="Nam" /><f:selectItem itemValue="1" itemLabel="Nữ" />
-                </h:selectOneRadio>
-                 <h:outputLabel>Hộ Khẩu:</h:outputLabel>
-                <h:selectOneMenu value="#{staff.diaChi}">
-					<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
-						itemValue="#{d.id}" itemLabel="#{d.tenTinh}" />
-				</h:selectOneMenu>
 			<tr>
-			
+				<td><h:outputLabel>Giới tính:</h:outputLabel></td>
+				<td><h:selectOneRadio value="#{staff.gender}">
+						<f:selectItem itemValue="0" itemLabel="Nam" />
+						<f:selectItem itemValue="1" itemLabel="Nữ" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel>Hộ Khẩu:</h:outputLabel></td>
+				<td><h:selectOneMenu value="#{staff.diaChi}">
+						<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
+							itemValue="#{d.id}" itemLabel="#{d.tenTinh}" />
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>File: <h:inputFile value="#{staffForm.file}" />
+				
+				</td>
+				<td><h:commandButton value="Upload"
+						action="#{staffForm.upload()}" /></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><h:commandButton value="OK"
 						action="#{staffForm.addStaff(staff)}" /></td>

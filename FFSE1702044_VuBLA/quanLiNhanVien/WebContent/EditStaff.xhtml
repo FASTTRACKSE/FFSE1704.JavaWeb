@@ -15,11 +15,11 @@
 		<h:outputLabel for="hoTen">Họ Tên</h:outputLabel>
 		<h:inputText id="hoTen" value="#{editStaff.hoTen}" />
 		<h:message for="hoTen" style="color: red" />
-
+		
 		<h:outputLabel for="namSinh">Năm Sinh</h:outputLabel>
 		<h:inputText id="namSinh" value="#{editStaff.namSinh}" />
 		<h:message for="namSinh" style="color: red" />
-
+		
 		<h:outputLabel>Giới tính:</h:outputLabel>
 		<h:selectOneRadio value="#{editStaff.gender}">
 			<f:selectItem itemValue="0" itemLabel="Nam" />
@@ -31,14 +31,19 @@
 			<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
 				itemValue="#{d.id}" itemLabel="#{d.tenTinh}" />
 		</h:selectOneMenu>
-
-
+		
+		<h:outputLabel>Image:</h:outputLabel>
+		
+		
+		
+		<h:graphicImage width="100" height="100"
+			value="images/#{editStaff.image}" />
 		<h:commandButton action="#{staffForm.updateStaff(editStaff)}"
 			value="sửa" />
 	</h:form>
-	
-		<p>
-			<h:outputLink value="index.xhtml">Back to List</h:outputLink>
-		</p>
+
+	<p>
+		<h:outputLink value="index.xhtml">Back to List</h:outputLink>
+	</p>
 </body>
 </html>
