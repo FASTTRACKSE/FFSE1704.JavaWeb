@@ -19,9 +19,15 @@ xmlns:p="http://primefaces.org/ui">
 <div id="wrapper">
 		<div id="header">
 			<h2>Staff Management System</h2>
+			<h:form style="font-size: large;
+    margin-left: 616px;">
+			<h:commandButton value="Đăng Xuất"  class="btn btn-danger"  action="#{loginController.logout}" />
+		</h:form>
+	
 		</div>
 	</div>
-
+		
+		
 	<div id="container">
 
 		<div id="content">
@@ -30,7 +36,7 @@ xmlns:p="http://primefaces.org/ui">
 
 			<h:button value="Add Staff" styleClass="add-student-button"
 				outcome="create" />
-
+			
 			<h:form>	
 				<h:dataTable binding="#{table}" value="#{staffController.dsNhanVien}" var="item"
 				styleClass="demo-table" headerClass="demo-table-header"

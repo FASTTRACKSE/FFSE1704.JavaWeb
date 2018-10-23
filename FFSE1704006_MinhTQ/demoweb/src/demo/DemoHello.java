@@ -1,6 +1,7 @@
 package demo;
 
 import java.io.IOException;
+import java.io.Writer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class DemoHello extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+
 	public DemoHello() {
         super();
        

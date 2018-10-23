@@ -23,7 +23,7 @@ import ffse1704.jsfstaff.dao.NhanVienDAO;
 @ManagedBean
 @SessionScoped
 public class NhanVienController {
-	
+	final String dirPath = "E://file//images//Zalo";
 	
 
 	///// listNhanVien and DAO

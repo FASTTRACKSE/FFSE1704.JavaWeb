@@ -15,12 +15,12 @@
 			<tr>
 				<td>Name</td>
 				<td><h:inputText value="#{nhanVien.name}" /></td>
-				<h:message for="name" />
+				<h:message for="name" style="color: red"></h:message>
 			</tr>
 			<tr>
 				<td>Date</td>
 				<td><h:inputText value="#{nhanVien.date}" /></td>
-				<h:message for="birthDay" />
+				<h:message for="date" style="color: red"></h:message>
 			</tr>
 			<tr>
 				<td>Gender</td>
@@ -28,6 +28,7 @@
 						<f:selectItem itemValue="Nam" itemLabel="Nam" />
 						<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
 					</h:selectOneRadio></td>
+				<h:message for="gender" style="color: red"></h:message>
 			</tr>
 			<tr>
 				<td>Address</td>
@@ -41,6 +42,7 @@
 				<td>
 					<h:inputFile value="#{staffController.file}"/>
 				</td>
+				<h:message for="images" style="color: red"></h:message>
 			</tr>
 			<tr>
 				<td />
