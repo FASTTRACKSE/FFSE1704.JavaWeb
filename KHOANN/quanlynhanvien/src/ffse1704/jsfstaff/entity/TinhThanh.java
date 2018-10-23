@@ -6,25 +6,25 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class TinhThanh {
-	protected int id;
+	protected int hoKhau;
 	protected String thanhPho;
 
 	public TinhThanh() {
 		super();
 	}
 
-	public TinhThanh(int id, String thanhPho) {
+	public TinhThanh(int hoKhau, String thanhPho) {
 		super();
-		this.id = id;
+		this.hoKhau = hoKhau;
 		this.thanhPho = thanhPho;
 	}
 
-	public int getId() {
-		return id;
+	public int getHoKhau() {
+		return hoKhau;
 	}
 
-	public void setId(int i) {
-		this.id = i;
+	public void setHoKhau(int i) {
+		this.hoKhau = i;
 	}
 
 	public String getThanhPho() {

@@ -10,8 +10,8 @@
 </head>
 <body>
 	<f:view>
-	
-		<h:form  enctype="multipart/form-data">
+
+		<h:form enctype="multipart/form-data">
 Họ Tên: <h:inputText id="tenNV" value="#{staff.hoTen}">
 			</h:inputText>
 			<br />
@@ -31,21 +31,18 @@ Năm Sinh: <h:inputText id="namSinh" value="#{staff.namSinh}">
 		
  Hộ Khẩu: <h:selectOneMenu id="hoKhau" value="#{staff.hoKhau}">
 				<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
-						itemValue="#{d.id}" itemLabel="#{d.thanhPho}" />
-				
+					itemValue="#{d.hoKhau}" itemLabel="#{d.thanhPho}" />
+
 			</h:selectOneMenu>
 			<br />
 			<br />
 			
-		
- 
-
-
-
-			<h:commandButton value="Thêm" action="#{staffForm.createStaff(staff)}"></h:commandButton>
-			<h:commandButton value="Hủy" outcome="NhanVien.xhtml"></h:commandButton>
+			
+			<h:commandButton value="Thêm"
+				action="#{staffForm.createStaff(staff)}"></h:commandButton>
+			<h:commandButton value="Hủy" action="NhanVien.xhtml"></h:commandButton>
 		</h:form>
-		
+
 	</f:view>
 
 </body>

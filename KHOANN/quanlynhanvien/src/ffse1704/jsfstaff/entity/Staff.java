@@ -21,15 +21,17 @@ public class Staff {
 	@Range(min = 1900, max = 2000, message = "Năm sinh từ 1900 - 2000")
 	int namSinh;
 
-	String gioiTinh;
+	int gioiTinh;
 	int hoKhau;
+	String tenTinh;
+
 	String anh;
 
 	public Staff() {
 		super();
 	}
 
-	public Staff(int id, String hoTen,  String gioiTinh, int namSinh, int hoKhau, String anh) {
+	public Staff(int id, String hoTen, int gioiTinh, int namSinh, int hoKhau, String anh) {
 		super();
 		this.id = id;
 		this.hoTen = hoTen;
@@ -63,11 +65,11 @@ public class Staff {
 		this.namSinh = namSinh;
 	}
 
-	public String getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(String gioiTinh) {
+	public void setGioiTinh(int gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -85,6 +87,14 @@ public class Staff {
 
 	public void setAnh(String anh) {
 		this.anh = anh;
+	}
+
+	public String getTenTinh() {
+		return tenTinh;
+	}
+
+	public void setTenTinh(String tenTinh) {
+		this.tenTinh = tenTinh;
 	}
 
 }

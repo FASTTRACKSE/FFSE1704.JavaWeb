@@ -32,7 +32,11 @@
 
 				</h:column>
 				<h:column>
-					<f:facet name="header">Giới Tính</f:facet>#{sv.gioiTinh}
+					<f:facet name="header">Giới Tính</f:facet>
+					<h:outputFormat rendered="#{sv.gioiTinh=='0'}"
+						value="Nam" />
+					<h:outputFormat rendered="#{sv.gioiTinh=='1'}"
+						value="Nữ" />
 
 				</h:column>
 				<h:column>
@@ -40,7 +44,7 @@
 
 				</h:column>
 				<h:column>
-					<f:facet name="header">Hộ Khẩu</f:facet>#{sv.hoKhau}
+					<f:facet name="header">Hộ Khẩu</f:facet>#{sv.tenTinh}
 
 				</h:column>
 				<h:column>

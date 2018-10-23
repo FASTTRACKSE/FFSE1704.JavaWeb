@@ -48,7 +48,7 @@ public class StaffDAO {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, st.getHoTen());
-			preparedStatement.setString(2, st.getGioiTinh());
+			preparedStatement.setInt(2, st.getGioiTinh());
 			preparedStatement.setInt(3, st.getNamSinh());
 			preparedStatement.setInt(4, st.getHoKhau());
 			preparedStatement.setString(5, st.getAnh());
@@ -69,7 +69,7 @@ public class StaffDAO {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, st.getHoTen());
-			preparedStatement.setString(2, st.getGioiTinh());
+			preparedStatement.setInt(2, st.getGioiTinh());
 			preparedStatement.setInt(3, st.getNamSinh());
 			preparedStatement.setInt(4, st.getHoKhau());
 			preparedStatement.setString(5, st.getAnh());
@@ -111,7 +111,7 @@ public class StaffDAO {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
-				Staff list = new Staff(rs.getInt("id"), rs.getString("hoTen"), rs.getString("gioiTinh"),
+				Staff list = new Staff(rs.getInt("id"), rs.getString("hoTen"), rs.getInt("gioiTinh"),
 						rs.getInt("namSinh"), rs.getInt("hoKhau"), rs.getString("anh"));
 				dsnhanvien.add(list);
 			}
@@ -138,7 +138,7 @@ public class StaffDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				TinhThanh tinhThanh = new TinhThanh();
-				tinhThanh.setId(rs.getInt("id"));
+				tinhThanh.setHoKhau(rs.getInt("hoKhau"));
 				tinhThanh.setThanhPho(rs.getString("thanhPho"));
 
 				dsTinhThanh.add(tinhThanh);
@@ -168,7 +168,7 @@ public class StaffDAO {
 				nhanVien.setId(rs.getInt("id"));
 				nhanVien.setHoTen(rs.getString("hoten"));
 				nhanVien.setNamSinh(rs.getInt("namsinh"));
-				nhanVien.setGioiTinh(rs.getString("gioitinh"));
+				nhanVien.setGioiTinh(rs.getInt("gioitinh"));
 				nhanVien.setHoKhau(rs.getInt("hokhau"));
 				nhanVien.setAnh(rs.getString("anh"));
 			}
@@ -210,7 +210,7 @@ public class StaffDAO {
 	public List<Staff> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<Staff> dsNhanVien = new ArrayList<Staff>();
-		String query = "SELECT * FROM quanly_nhanvien LIMIT " + start + "," + perPage;
+		String query = "SELECT id, hoTen, gioiTinh, namSinh, quanly_thanhpho.thanhPho, anh  FROM quanly_nhanvien LEFT JOIN quanly_thanhpho ON quanly_nhanvien.hoKhau = quanly_thanhpho.hoKhau LIMIT " + start + "," + perPage;
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
@@ -222,8 +222,8 @@ public class StaffDAO {
 				nhanVien.setId(rs.getInt("id"));
 				nhanVien.setHoTen(rs.getString("hoten"));
 				nhanVien.setNamSinh(rs.getInt("namsinh"));
-				nhanVien.setGioiTinh(rs.getString("gioitinh"));
-				nhanVien.setHoKhau(rs.getInt("hokhau"));
+				nhanVien.setGioiTinh(rs.getInt("gioitinh"));
+				nhanVien.setTenTinh(rs.getString("quanly_thanhpho.thanhPho"));
 				nhanVien.setAnh(rs.getString("anh"));
 
 				dsNhanVien.add(nhanVien);

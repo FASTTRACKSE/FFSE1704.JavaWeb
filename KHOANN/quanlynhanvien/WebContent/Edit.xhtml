@@ -29,9 +29,9 @@ Năm Sinh: <h:inputText id="namSinh" value="#{editStaff.namSinh}">
 			<br />
 			<br />
 		
- Hộ Khẩu: <h:selectOneMenu id="hoKhau" value="#{staff.hoKhau}">
+ Hộ Khẩu: <h:selectOneMenu id="hoKhau" value="#{editStaff.hoKhau}">
 				<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
-						itemValue="#{d.id}" itemLabel="#{d.thanhPho}" />
+						itemValue="#{d.hoKhau}" itemLabel="#{d.thanhPho}" />
 				
 			</h:selectOneMenu>
 			<br />

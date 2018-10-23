@@ -22,7 +22,7 @@ public class StaffForm {
 
 	private int totalPage = 1;
 	private int currPage = 1;
-	private int perPage = 3;
+	private int perPage = 5;
 
 	public int getTotalPage() {
 		return totalPage;
@@ -101,7 +101,7 @@ public class StaffForm {
 	public String createStaff(Staff st) {
 		staffDAO.addNewSinhVien(st);
 
-		loadStaff();
+		loadStaffListByPage();
 
 		return "NhanVien?faces-redirect=true";
 	}
@@ -115,13 +115,13 @@ public class StaffForm {
 
 	public String updateStaff(Staff st) {
 		staffDAO.updateNewSinhVien(st);
-		loadStaff();
+		loadStaffListByPage();
 		return "NhanVien?faces-redirect=true";
 	}
 
 	public String deleteStaff(int id) {
 		staffDAO.deleteNhanVien(id);
-		loadStaff();
+		loadStaffListByPage();
 		return "NhanVien?faces-redirect=true";
 	}
 
