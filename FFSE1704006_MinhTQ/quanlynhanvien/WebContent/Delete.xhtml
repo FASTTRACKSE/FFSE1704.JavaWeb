@@ -22,12 +22,18 @@ tenNV:<h:outputText value="#{checkDeleteNhanSu.tenNhanVien}" /><br />
 namSinh:<h:outputText value="#{checkDeleteNhanSu.namSinh}" /><br />
 			
 gioitinh:<h:outputText value="#{checkDeleteNhanSu.gioiTinh}"/><br />
-hộ khẩu:<h:outputText value="#{checkDeleteNhanSu.hoKhau}"/><br />
+hộ khẩu:<h:selectOneMenu value="#{checkEditNhanVien.hoKhau}">
+				<f:selectItems var="item"
+					value="#{nhanVienController.listTinhThanh}"
+					itemValue="#{item.maTinh}" itemLabel="#{item.tenTinh}" />
+			</h:selectOneMenu>
+			<br />
 avatar:<h:graphicImage url="upload/#{checkDeleteNhanSu.images}" width="100px" height="100px"/>
 			<br />	
 			<br />
 
-			<h:commandButton action="#{nhanVienController.delete()}"
+			<h:commandButton
+				action="#{nhanVienController.delete(checkDeleteNhanSu.maNhanVien)}"
 				value="Delete" />
 
 			<h:button value="Cancel" outcome="NhanVien.xhtml" />

@@ -10,8 +10,7 @@
 </head>
 <body>
 	<h:form>
-		<h:commandButton value="#{msg['btn_add']}"
-			action="AddNhanVien.xhtml?faces-redirect=true"></h:commandButton>
+		<h:button value="thêm nhân viên" outcome="AddNhanVien" />
 
 
 		<h:dataTable value="#{nhanVienController.listNhanVien}" var="nv"
