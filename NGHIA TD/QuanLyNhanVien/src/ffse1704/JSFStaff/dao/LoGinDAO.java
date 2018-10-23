@@ -42,19 +42,17 @@ public class LoGinDAO {
 	
 	public int checkLogin(String userName,String passWord) {
 		int kq=0;
-		String query = "SELECT COUNT(*) FROM member WHERE username=? and password=?";
+		String query = "SELECT COUNT(*) as totalmember FROM member WHERE username=? and password=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userName);
-			preparedStatement.setString(1, passWord);
+			preparedStatement.setString(2, passWord);
 			ResultSet rs = preparedStatement.executeQuery();
-
+			
 			while (rs.next()) {
-
-				kq=rs.getInt("count(*)");
-				
-			}
+				kq=rs.getInt("totalmember");
+				}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
