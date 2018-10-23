@@ -1,16 +1,22 @@
 package ffse1704.jsfstaff.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import ffse1704.jsfstaff.DAO.StaffDAO;
 import ffse1704.jsfstaff.entity.Staff;
 import ffse1704.jsfstaff.entity.TinhThanh;
+
 
 @ManagedBean
 @SessionScoped
@@ -87,7 +93,7 @@ public class StaffForm {
 		loadStaffList();
 		loaddsTinhThanh();
 		loadStaffListByPage();
-		
+
 	}
 
 	public void loadStaff() {
@@ -98,9 +104,11 @@ public class StaffForm {
 		dsTinhThanh = staffDAO.getListTinhThanh();
 	}
 
-	public String createStaff(Staff st) {
+	public String createStaff(Staff st) throws IOException {
+		upload();
+		st.setAnh(fileName);
 		staffDAO.addNewSinhVien(st);
-
+		
 		loadStaffListByPage();
 
 		return "NhanVien?faces-redirect=true";
@@ -144,6 +152,54 @@ public class StaffForm {
 		}
 
 		loadStaffListByPage();
+	}
+
+	private Part file;
+	private String fileName;
+	private long fileSize;
+
+	
+
+	public Part getFile() {
+		return file;
+	}
+
+	public void setFile(Part file) {
+		this.file = file;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String upload() throws IOException {
+		// get name of selected file
+		fileName = file.getSubmittedFileName();
+		// get file's size
+		fileSize = file.getSize();
+		// get fullpath of opload folder in web root
+		String dirPath= "C:/Users/PC/Pictures";
+		// write file to upload folder
+		File path = new File(dirPath);
+		if (!path.exists()) {
+			path.mkdirs();
+		}
+
+		file.write(dirPath + "/" + fileName);
+		return fileName;
+
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
 	}
 
 }
