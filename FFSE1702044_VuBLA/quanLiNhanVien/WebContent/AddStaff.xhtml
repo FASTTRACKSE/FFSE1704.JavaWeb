@@ -9,53 +9,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-<style>
+	<style>
 table, td, tr {
-    border: 1px solid black;
+	border: 1px solid black;
 }
 
 table {
-    border-collapse: collapse;
-    width: 30%;
+	border-collapse: collapse;
+	width: 30%;
 }
-
-
 </style>
-<h2>Thêm Nhân Viên</h2>
+	<h2>Thêm Nhân Viên</h2>
 	<table>
 		<h:form id="form" enctype="multipart/form-data">
 			<tr>
 				<td><h:outputLabel for="hoTen">Họ Tên</h:outputLabel></td>
-				<td><h:inputText id="hoTen" value="#{staffForm.hoTen}" /> <h:message
+				<td><h:inputText id="hoTen" value="#{staff.hoTen}" /> <h:message
 						for="hoTen" style="color: red" /></td>
+
 			</tr>
 			<tr>
 				<td><h:outputLabel for="namSinh">Năm Sinh</h:outputLabel></td>
-				<td><h:inputText id="namSinh" value="#{staffForm.namSinh}" />
-					<h:message for="namSinh" style="color: red" /></td>
+				<td><h:inputText id="namSinh" value="#{staff.namSinh}" /> <h:message
+						for="namSinh" style="color: red" /></td>
 			</tr>
+			 <h:outputLabel>Giới tính:</h:outputLabel>
+                <h:selectOneRadio value="#{staff.gender}">
+                    <f:selectItem itemValue="0" itemLabel="Nam" /><f:selectItem itemValue="1" itemLabel="Nữ" />
+                </h:selectOneRadio>
+                 <h:outputLabel>Hộ Khẩu:</h:outputLabel>
+                <h:selectOneMenu value="#{staff.diaChi}">
+					<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
+						itemValue="#{d.id}" itemLabel="#{d.tenTinh}" />
+				</h:selectOneMenu>
 			<tr>
-				<td>Giới Tính</td>
-				<td><h:selectOneRadio>
-						<f:selectItem itemValue="1" itemLabel="Nam" />
-						<f:selectItem itemValue="2" itemLabel="Nữ" />
-					</h:selectOneRadio></td>
+			
+				<td></td>
+				<td><h:commandButton value="OK"
+						action="#{staffForm.addStaff(staff)}" /></td>
 			</tr>
- <tr>
-				<td>Hộ Khẩu:		</td>
-				<td><h:selectOneMenu>
-				<f:selectItem itemValue="1" itemLabel="Bình Định" />
-				<f:selectItem itemValue="2" itemLabel="Đà Nẵng" />
-			</h:selectOneMenu>
-			</td>
-			</tr>
- <tr>
- <td> File:</td>
-               <td> <h:inputFile />
-
-			<h:commandButton value="Upload" action="}" /></td>
-		</tr>
-		<tr><td></td><td><h:commandButton value="OK" action="#{staffForm.addStaff}"/></td></tr>
 		</h:form>
 	</table>
 </body>

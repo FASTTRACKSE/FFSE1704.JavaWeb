@@ -18,6 +18,11 @@
 <h:body>
 
 	<div class="container">
+
+		<h:form>
+			<h:commandButton value="logout"  class="btn btn-danger"  action="#{loginController.logout}" />
+		</h:form>
+		<br />
 		<h:form>
 			<c:choose>
 				<c:when test="#{nhanSuController.allPage eq 1}">
@@ -173,13 +178,14 @@
 
 			<br />
 			<br />
-			<h:dataTable value="#{nhanSuController.listNhanSu}" var="item" binding="#{table}"
-				class="table table-striped">
+			<h:dataTable value="#{nhanSuController.listNhanSu}" var="item"
+				binding="#{table}" class="table table-striped">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="STT" />
+						<h:outputText value="STT " />
 					</f:facet>
-					<h:outputText value="#{(nhanSuController.indexPage -1)*nhanSuController.reCordInPage + table.rowIndex + 1}" />
+					<h:outputText
+						value="#{(nhanSuController.indexPage -1)*nhanSuController.reCordInPage + table.rowIndex + 1}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

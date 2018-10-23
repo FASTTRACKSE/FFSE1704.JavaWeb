@@ -1,12 +1,18 @@
 package ffse1704.jsfstaff.entity;
 
-public class province {
-	private String id,name;
+import javax.faces.bean.ManagedBean;
 
-	public province(String id, String name) {
+public class province {
+	private String id, tenTinh;
+
+	public province(String id, String tenTinh) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.tenTinh = tenTinh;
+	}
+
+	public province() {
+		super();
 	}
 
 	public String getId() {
@@ -17,12 +23,12 @@ public class province {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String gettenTinh() {
+		return tenTinh;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void settenTinh(String tenTinh) {
+		this.tenTinh = tenTinh;
 	}
-	
+
 }

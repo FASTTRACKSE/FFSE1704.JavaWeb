@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+
+
+	<title>Insert title here</title>
+
+</h:head>
+
+<h:body>
+
+
+	<f:view>
+		<h:form prependid="false" enctype="multipart/form-data">
+maNV:<h:outputText value="#{checkEditNhanVien.maNhanVien}" />
+			<br />
+			
+tenNV:<h:inputText value="#{checkEditNhanVien.tenNhanVien}" />
+			<br />
+			
+namSinh:<h:inputText value="#{checkEditNhanVien.namSinh}" />
+			<br />
+			
+gioitinh:<h:selectOneRadio value="#{checkEditNhanVien.gioiTinh}">
+				<f:selectItem itemValue="Nam" itemLabel="Nam" />
+				<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+			</h:selectOneRadio>
+hộ khẩu:<h:selectOneMenu value="#{checkEditNhanVien.hoKhau}">
+				<f:selectItems var="item"
+					value="#{nhanVienController.listTinhThanh}"
+					itemValue="#{item.maTinh}" itemLabel="#{item.tenTinh}" />
+			</h:selectOneMenu>
+			<br />
+avatar:<h:graphicImage url="upload/#{checkEditNhanVien.images}"
+				width="100px" height="100px" />
+			<br />
+			<h:inputFile value="#{nhanVienController.file}" />
+			<br />
+			<br />
+
+			<h:commandButton
+				action="#{nhanVienController.editNhanVien(checkEditNhanVien)}"
+				value="Updata" />
+
+			<h:button value="Cancel" outcome="NhanVien.xhtml" />
+
+		</h:form>
+
+	</f:view>
+
+</h:body>
+
+</html>

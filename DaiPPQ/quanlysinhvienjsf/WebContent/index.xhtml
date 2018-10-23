@@ -54,6 +54,10 @@
 				#{sv.lop}
 			</h:column>
 			<h:column>
+				<f:facet name="header">image</f:facet>
+				<h:graphicImage url="images/#{sv.image}" width="200px"/>
+			</h:column>
+			<h:column>
 				<f:facet name="header">action</f:facet>
 				<h:commandButton action="#{sinhVienForm.viewEditSinhVien(sv.id)}"
 					value="Edit" />

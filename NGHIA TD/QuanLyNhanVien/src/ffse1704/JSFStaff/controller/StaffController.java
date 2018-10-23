@@ -1,17 +1,23 @@
 package ffse1704.JSFStaff.controller;
 
-import java.lang.ProcessBuilder.Redirect;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import ffse1704.JSFStaff.dao.StaffDAO;
 import ffse1704.JSFStaff.entity.NhanVien;
 import ffse1704.JSFStaff.entity.TinhThanhPho;
+import ffse1704.JSFStaff.until.ViewImage;
+
 
 
 
@@ -25,9 +31,25 @@ public class StaffController {
 	private StaffDAO staffDAO = new StaffDAO();
 	
 	private int currentPage = 1;
-	private int perPage	 = 2;
+	private int perPage	 = 1;
 	private int totalPage = 1;
-	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+	final String dirPath = "E:\\HOCT\\images";
+	private String fileName = "";
+	private Part file;
+	private long fileSize;
+	
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+	public Part getFile() {
+		return file;
+	}
+	public void setFile(Part file) {
+		this.file = file;
+	}
 	public List<NhanVien> getDsNhanVien() {
 		return dsNhanVien;
 	}
@@ -64,13 +86,6 @@ public class StaffController {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
-	public Map<String, Object> getSessionMap() {
-		return sessionMap;
-	}
-	public void setSessionMap(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
-	}
-	
 	public StaffController() throws Exception {
 		dsTinhThanh = staffDAO.getListTinhThanh();
 		
@@ -88,26 +103,6 @@ public class StaffController {
 		dsNhanVien = staffDAO.getAllStaff();
 		totalPage = (int)Math.ceil(dsNhanVien.size() * 1.0/perPage);
 	}
-	
-	//lấy ds 1 nhân viên dựa trên id
-	public String getStaffById(int id){
-		NhanVien nv = staffDAO.getNhanVienbyId(id);
-		sessionMap.put("editStaff", nv);
-		
-		return "update-Staff?faces-redirect=true";
-	}
-	//update nhân viên
-	public String updateStaff(NhanVien nv) {
-		staffDAO.updateNhanVien(nv);
-		loadListStaffPage();
-		return "index?faces-redirect=true";
-	}
-	public String createStaff(NhanVien nv) {
-		staffDAO.addNewNhanVien(nv);
-		loadListStaffPage();
-		return "index?faces-redirect=true";
-	}
-	
 	public void goPage(int page) {
 		currentPage = page;
 		if(currentPage<1) {
@@ -118,4 +113,57 @@ public class StaffController {
 		}
 		loadListStaffPage();
 	}
+	//lấy ds 1 nhân viên dựa trên id
+	public String getStaffById(int id){
+		NhanVien nv = staffDAO.getNhanVienbyId(id);
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessionMap.put("editStaff", nv);
+		
+		return "update?faces-redirect=true";
+	}
+	//update nhân viên
+	public String updateStaff(NhanVien nv) {
+		upload();
+		nv.setImages(fileName);
+		staffDAO.updateNhanVien(nv);
+		loadListStaffPage();
+		return "index?faces-redirect=true";
+	}
+	public String createStaff(NhanVien nv) {
+		upload();
+		nv.setImages(fileName);
+		staffDAO.addNewNhanVien(nv);
+		loadListStaffPage();
+		return "index?faces-redirect=true";
+	}
+	public String getStaffForDelete(int id) {
+		
+		staffDAO.deleteNhanVien(id);
+		loadListStaffPage();
+		return "index?faces-redirect=true";
+	}
+	
+	
+	public void upload()
+    {
+        try {
+            // get name of selected file
+        	fileName = file.getSubmittedFileName();
+            // get file's size
+            fileSize = file.getSize();
+            // get fullpath of opload folder in web root
+            
+            
+			
+            // write file to upload folder
+            file.write(dirPath + "/" + fileName);
+			
+             
+        } catch (IOException ex) {
+            Logger.getLogger(ViewImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+ 
+	
 }

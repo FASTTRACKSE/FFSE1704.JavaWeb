@@ -12,6 +12,7 @@ xmlns:p="http://primefaces.org/ui">
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet library="css" name="style.css" />
+	
 <title>Insert title here</title>
 </h:head>
 <h:body>
@@ -57,47 +58,62 @@ xmlns:p="http://primefaces.org/ui">
 						<!--  the value for each row -->
 					#{item.birthDay}
 					</h:column>
-					
 					<h:column>
 						<!-- the column header -->
-						<f:facet name="header">GenDer</f:facet>
-
+						<f:facet name="header">Giới Tính</f:facet>
 						<!--  the value for each row -->
-					#{item.genDer}
+						<h:outputLabel value="Nam" rendered="#{item.genDer == 0}" />
+						<h:outputLabel value="Nữ" rendered="#{item.genDer == 1}" />
 					</h:column>
 					
 					<h:column>
 						<!-- the column header -->
 						<f:facet name="header">address</f:facet>
-
+					
 						<!--  the value for each row -->
-					#{item.address}
+						
+								#{item.addressName}
 					</h:column>
 						
-					<h:column>
-						<!-- the column header -->
-						<f:facet name="header">images</f:facet>
-
-						<!--  the value for each row -->
-					#{item.images}
-					</h:column>
+						<h:column>
+	 							<f:facet name="header">Ảnh</f:facet>
+	 		
+	 							
+	 							<h:graphicImage url="images/#{item.images}" width="100" />
+	 		
+	 					</h:column>
+	 	
 					<h:column>
 						<!-- the column header -->
 						<f:facet name="header">Action</f:facet>
 
 						<!--  the value for each row -->
-						<h:commandLink value="Sửa"
+						<h:commandLink value="Sửa "
 							action="#{staffController.getStaffById(item.id)}" />
 					|
 
 					<h:commandLink value="Xoá"
-							action="#{staffController.getStaffForDelete(tempStaff.id)}" />
+							action="#{staffController.getStaffForDelete(item.id)}" />
 					</h:column>
 
 				</h:dataTable>
 
 			</h:form>
 		</div>
+		
+		<div style="clear: both;"></div>
+		<h:form>
+			<h:commandLink value="|&#60;" action="#{staffController.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+				action="#{staffController.goPage(staffController.currentPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+				value="#{staffController.currentPage}/#{staffController.totalPage}" />
+				&#160;<h:commandLink value=">"
+				action="#{staffController.goPage(staffController.currentPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+				action="#{staffController.goPage(staffController.totalPage)}"></h:commandLink>
+		</h:form>
+		
 	</div>
 </h:body>
 </html>
