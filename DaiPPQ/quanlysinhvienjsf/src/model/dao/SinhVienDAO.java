@@ -17,7 +17,7 @@ import model.entity.SinhVien;
 @ManagedBean
 @SessionScoped
 public class SinhVienDAO {
-	public static final int RECORD_IN_PAGE = 3;
+	public static final int RECORD_IN_PAGE = 5;
 	
 	public List<SinhVien> getSinhVienInPage(int currentPage) {
 		return currentPage > 0 ? getSinhVienLimit((currentPage - 1) * RECORD_IN_PAGE, RECORD_IN_PAGE) : new ArrayList<SinhVien>();
@@ -31,7 +31,7 @@ public class SinhVienDAO {
 			public SinhVien pare(ResultSet result) throws SQLException {
 				return new SinhVien(result.getString("id"), result.getString("masv"), result.getString("ho"),
 						result.getString("ten"), result.getString("gioitinh"),
-						result.getString("namsinh"), result.getString("lop"));
+						result.getString("namsinh"), result.getString("lop"), result.getString("image"));
 			}
 		}, start, recordinPage);
 	}
@@ -40,7 +40,7 @@ public class SinhVienDAO {
 		public SinhVien pare(ResultSet result) throws SQLException {
 			return new SinhVien(result.getString("id"), result.getString("masv"), result.getString("ho"),
 					result.getString("ten"), result.getString("gioitinh"),
-					result.getString("namsinh"), result.getString("lop"));
+					result.getString("namsinh"), result.getString("lop"), result.getString("image"));
 		}
 	};
 
@@ -69,7 +69,7 @@ public class SinhVienDAO {
 	}
 
 	public int editSinhVien(final SinhVien sv) {
-		String sql = "UPDATE sinhvien SET masv=?, ho=?, ten=?, gioitinh=?, namsinh=?, lop=? WHERE id=?";
+		String sql = "UPDATE sinhvien SET masv=?, ho=?, ten=?, gioitinh=?, namsinh=?, lop=?, image=? WHERE id=?";
 
 		int updateSinhVien = DatabaseUltil.executeUpdate(sql, new IPrePareStatementSetParam() {
 
@@ -80,16 +80,17 @@ public class SinhVienDAO {
 				statement.setString(4, sv.getGioiTinh());
 				statement.setString(5, sv.getNamsinh());
 				statement.setString(6, sv.getLop());
-				statement.setString(7, sv.getId());
+				statement.setString(7, sv.getImage());
+				statement.setString(8, sv.getId());
 			}
 		});
 		return updateSinhVien;
 	}
 
 	public int addSinhVien(final SinhVien sv) {
-		String sql = "INSERT INTO sinhvien(masv, ho, ten, gioitinh, namsinh, lop) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO sinhvien(masv, ho, ten, gioitinh, namsinh, lop, image) VALUES (?, ?, ?, ?, ?, ?, image)";
 		int addSV = DatabaseUltil.executeUpdateWithValues(sql, sv.getMasv(), sv.getHo(), sv.getTen(),
-				sv.getGioiTinh(), sv.getNamsinh(), sv.getLop());
+				sv.getGioiTinh(), sv.getNamsinh(), sv.getLop(), sv.getImage());
 		 return addSV;
 		// int addSinhVien = DatabaseUltil.executeUpdate(sql, new
 		// IPrePareStatementSetParam() {

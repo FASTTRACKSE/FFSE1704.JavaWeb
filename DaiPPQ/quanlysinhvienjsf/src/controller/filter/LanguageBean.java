@@ -1,4 +1,4 @@
-package model.form;
+package controller.filter;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
