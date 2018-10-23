@@ -136,13 +136,12 @@ public class StaffController {
 		nhanVien st = staffDAO.getNhanVienById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("editStaff", st);
-		
 		return "staff-update?faces-redirect=true";
 	}
 	
 	public String getStaffForDelete(int id) {
 		staffDAO.deleteNhanVien(id);
-		
+		loadStaffListByPage();
 		return "index.xhtml";
 	}
 	
