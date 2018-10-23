@@ -190,7 +190,11 @@ public class StaffDAO {
 	public List<NhanVien> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<NhanVien> dsNhanVien = new ArrayList<NhanVien>();
-		String query = "SELECT * FROM nhanvien LIMIT " + start + "," + perPage;
+		String query = "SELECT nhanvien.id, nhanvien.name, nhanvien.date, nhanvien.gender, nhanvien.address, devvn_tinhthanhpho.name AS addressname, nhanvien.images "
+				+ "FROM nhanvien "
+				+ "LEFT JOIN devvn_tinhthanhpho "
+				+ "ON nhanvien.address=devvn_tinhthanhpho.matp "
+				+ "LIMIT " + start + "," + perPage;
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
@@ -204,6 +208,7 @@ public class StaffDAO {
 				nhanVien.setDate(rs.getInt("date"));
 				nhanVien.setGender(rs.getString("gender"));
 				nhanVien.setAddress(rs.getInt("address"));
+				nhanVien.setAddressname(rs.getString("addressname"));
 				nhanVien.setImages(rs.getString("images"));
 
 				dsNhanVien.add(nhanVien);

@@ -10,39 +10,43 @@ import org.hibernate.validator.constraints.Range;
 public class NhanVien {
 	int id;
 	
-	@NotNull(message = "Tên không được để trống")
-	@Size(min=1, message = "Tên không được để trống")
+	@NotNull(message = "name không được để trống")
 	String name;
 	
-	@NotNull(message = "Năm sinh không được để trống")
-	@Range (min=1900, max=2000, message = "Năm sinh từ 1900 - 2000")
+	@NotNull(message = "date không được để trống")
+	@Range (min=1900, max=2000, message = "date từ 1900 - 2000")
 	int date;
 	
+	@NotNull(message = "gender không được để trống")
 	String gender;
+	
 	int address;
+	String addressname;
+	
+	@NotNull(message = "images không được để trống")
 	String images;
 	
 	public NhanVien() {
 		super();
 	}
-
-	public NhanVien(String name, int date, String gender, int address, String images) {
-		super();
-		this.name = name;
-		this.date = date;
-		this.gender = gender;
-		this.address = address;
-		this.images = images;
-	}
 	
-	public NhanVien(int id, String name, int date, String gender, int address, String images) {
+	public NhanVien(int id, String name, int date, String gender, int address, String addressname, String images) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.gender = gender;
 		this.address = address;
+		this.addressname = addressname;
 		this.images = images;
+	}
+
+	public String getAddressname() {
+		return addressname;
+	}
+
+	public void setAddressname(String addressname) {
+		this.addressname = addressname;
 	}
 
 	public int  getId() {

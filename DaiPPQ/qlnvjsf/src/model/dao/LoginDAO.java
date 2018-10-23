@@ -40,14 +40,14 @@ public class LoginDAO {
 	}
 
 	
-	public int checkLogin(String userName,String passWord) {
+	public int checkLogin(String username,String password) {
 		int kq=0;
-		String query = "SELECT COUNT(*) FROM member WHERE username=? and password=?";
+		String query = "SELECT COUNT(*) FROM user WHERE username=? and password=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, userName);
-			preparedStatement.setString(1, passWord);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
