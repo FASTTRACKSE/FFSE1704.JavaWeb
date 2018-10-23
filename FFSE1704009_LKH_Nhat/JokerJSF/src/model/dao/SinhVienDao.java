@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import common.database.DatabaseUltil;
 import common.database.DatabaseUltil.IPareEntity;
@@ -13,12 +14,13 @@ import common.database.DatabaseUltil.IPrePareStatementSetParam;
 import model.entity.SinhVien;
 
 @ManagedBean
+@SessionScoped
 public class SinhVienDao {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
-			return new SinhVien(result.getString("id"), result.getString("tensinhvien"), result.getString("masinhvien"),
+			return new SinhVien(result.getString("masinhvien"), result.getString("tensinhvien"), 
 					result.getString("lop"), result.getString("tuoi"), result.getString("gioitinh"),
-					result.getString("diachi"), result.getString("sodt"), result.getString("email"));
+					result.getString("diachi"), result.getString("sodt"), result.getString("email"), result.getString("avatar"));
 		}
 	};
 
@@ -49,16 +51,16 @@ public class SinhVienDao {
 	}
 
 	public int editSinhVien(final SinhVien sv) {
-		String sql = "UPDATE sinhvien SET tensinhvien=?, lop=?, tuoi=?, gioitinh=?, diachi=?, sodt=?, email=? WHERE masinhvien=?";
+		String sql = "UPDATE sinhvien SET tensinhvien=?, lop=?, tuoi=?, gioitinh=?, diachi=?, sodt=?, email=?, avatar=? WHERE masinhvien=?";
 		return DatabaseUltil.executeUpdateWithValues(sql, sv.getTenSinhVien(), sv.getLopHoc(), sv.getTuoiSinhVien(),
-				sv.getGioiTinh(), sv.getDiaChi(), sv.getSoDT(), sv.getEmail(), sv.getMaSinhVien());
+				sv.getGioiTinh(), sv.getDiaChi(), sv.getSoDT(), sv.getEmail(), sv.getAvatar(), sv.getMaSinhVien());
 
 	}
 
 	public int addSinhVien(final SinhVien sv) {
-		String sql = "INSERT INTO sinhvien(tensinhvien,masinhvien,lop,tuoi,gioitinh,diachi,sodt,email) VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO sinhvien(tensinhvien,masinhvien,lop,tuoi,gioitinh,diachi,sodt,email,avatar) VALUES (?,?,?,?,?,?,?,?,?)";
 		return DatabaseUltil.executeUpdateWithValues(sql, sv.getTenSinhVien(), sv.getMaSinhVien(), sv.getLopHoc(),
-				sv.getTuoiSinhVien(), sv.getGioiTinh(), sv.getDiaChi(), sv.getSoDT(), sv.getEmail());
+				sv.getTuoiSinhVien(), sv.getGioiTinh(), sv.getDiaChi(), sv.getSoDT(), sv.getEmail(), sv.getAvatar());
 
 	}
 

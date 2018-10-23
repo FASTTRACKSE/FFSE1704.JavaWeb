@@ -14,35 +14,41 @@
 </h:head>
 
 <h:body>
+<f:view>
 	<h:form>
 
-		<h:commandButton action="add.xhtml" value="ADD"
-			class="btn btn-success"></h:commandButton>
+		<h:commandButton action="add.xhtm?faces-redirect=truel"
+			value="#{msg['btn_Add']}" class="btn btn-success"></h:commandButton>
 
 
 		<h:dataTable value="#{sinhVienForm.listSinhVien}" border="1" var="sv"
 			style="margin: auto;width: 100%;">
 			<h:column>
-				<f:facet name="header">ID</f:facet>
+				<f:facet name="header">#{msg['th_ID']}</f:facet>				
 			#{sv.id}
 		</h:column>
 			<h:column>
-				<f:facet name="header">Tài Khoản</f:facet>
+				<f:facet name="header">#{msg['th_User']}</f:facet>
 			#{sv.user}
 		</h:column>
 			<h:column>
-				<f:facet name="header">Mật Khẩu</f:facet>
+				<f:facet name="header">#{msg['th_Pass']}</f:facet>
 			#{sv.password}
 		</h:column>
 			<h:column>
-				<f:facet name="header">Họ và tên</f:facet>
+				<f:facet name="header">#{msg['th_Fullname']}</f:facet>
 			#{sv.fullname}
 		</h:column>
+		<h:column>
+			<f:facet name="header">#{msg['th_Image']}</f:facet>
+			<h:graphicImage url="/upload/#{sv.image}" width="50px" />
+		</h:column>
+			
 			<h:column>
-				<f:facet name="header">Chức Năng</f:facet>
-				<h:commandButton id="Edit" value="Edit"
+				<f:facet name="header">#{msg['th_Function']}</f:facet>
+				<h:commandButton id="Edit" value="#{msg['btn_Edit']}"
 					action="#{sinhVienForm.viewEdit(sv.id)}" />
-				<h:commandButton id="Delete" value="Delete"
+				<h:commandButton id="Delete" value="#{msg['btn_Detele']}"
 					action="#{sinhVienForm.delSinhVien(sv.id)}" />
 
 			</h:column>
@@ -50,6 +56,15 @@
 
 
 		</h:dataTable>
+
+		<h:panelGrid columns="2"> 
+            Language : 
+            <h:selectOneMenu value="#{languageBean.locale}"
+				onchange="submit()"
+				valueChangeListener="#{languageBean.localeChanged}">
+				<f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
 
 		<h:commandLink value="first" action="#{sinhVienForm.showPage()}"
 			rendered="#{sinhVienForm.currentPage gt 2}">
@@ -83,8 +98,9 @@
 		</h:commandLink>
 
 
-	</h:form>
 
+	</h:form>
+</f:view>
 
 
 </h:body>

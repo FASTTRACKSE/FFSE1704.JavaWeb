@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *
  */
 public class ConnectionFactory {
-	String url = "jdbc:mysql://localhost/ffse1704?useUnicode=true&characterEncoding=utf-8";
+	String url = "jdbc:mysql://localhost/jsf_qlnv?useUnicode=true&characterEncoding=utf-8";
 	String user = "root";
 	String password = "";
 	String driverClass = "com.mysql.jdbc.Driver";

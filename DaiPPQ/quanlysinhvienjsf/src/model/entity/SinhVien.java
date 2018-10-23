@@ -1,5 +1,8 @@
 package model.entity;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class SinhVien {
 	private String id;
 	private String masv;
@@ -8,9 +11,10 @@ public class SinhVien {
 	private String gioiTinh;
 	private String namsinh;
 	private String lop;
+	private String image;
 
-	public SinhVien(String id, String masv, String ho, String ten, 
-			String gioiTinh, String namsinh, String lop) {
+	public SinhVien(String id, String masv, String ho, String ten, String gioiTinh, String namsinh, String lop,
+			String image) {
 		super();
 		this.id = id;
 		this.masv = masv;
@@ -19,10 +23,10 @@ public class SinhVien {
 		this.gioiTinh = gioiTinh;
 		this.namsinh = namsinh;
 		this.lop = lop;
+		this.image = image;
 	}
-	
-	public SinhVien(String masv, String ho, String ten, 
-			String gioiTinh, String namsinh, String lop) {
+
+	public SinhVien(String masv, String ho, String ten, String gioiTinh, String namsinh, String lop, String image) {
 		super();
 		this.masv = masv;
 		this.ho = ho;
@@ -30,6 +34,11 @@ public class SinhVien {
 		this.gioiTinh = gioiTinh;
 		this.namsinh = namsinh;
 		this.lop = lop;
+		this.image = image;
+	}
+
+	public SinhVien() {
+
 	}
 
 	public String getId() {
@@ -87,5 +96,12 @@ public class SinhVien {
 	public void setLop(String lop) {
 		this.lop = lop;
 	}
+	
+	public String getImage() {
+		return image;
+	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
 }

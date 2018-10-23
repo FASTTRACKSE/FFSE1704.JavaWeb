@@ -5,21 +5,35 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <head>
-	<meta charset="UTF-8" />
+<meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
-	<h:form style="text-align: right;margin-right: 40%;">
-Tài Khoản: <h:inputText id="user" value="#{sinhVienForm.user}"></h:inputText>
+<f:view>
+	<h:form style="text-align: right;margin-right: 40%;"
+		enctype="multipart/form-data">
+Tài Khoản: <h:inputText id="user" value="#{sinhVienForm.user}">
+			<f:validateLength minimum="5" maximum="10" />
+		</h:inputText>
 		<br />
-Mật Khẩu: <h:inputText id="password" value="#{sinhVienForm.password}"></h:inputText>
+Mật Khẩu: <h:inputText id="password" value="#{sinhVienForm.password}">
+			<f:validateLength minimum="5" maximum="10" />
+		</h:inputText>
 		<br />
-Họ Và Tên: <h:inputText id="fullname" value="#{sinhVienForm.fullname}"></h:inputText>
+Họ Và Tên: <h:inputText id="fullname" value="#{sinhVienForm.fullname}">
+			<f:validateLength minimum="5" maximum="10" />
+		</h:inputText>
 		<br />
+		
+	Image: <h:inputFile value="#{sinhVienForm.file}" />
+		<br />
+		
+				
 
 		
 		<h:commandButton value="Thêm" action="#{sinhVienForm.addSinhVien()}"></h:commandButton>
 	</h:form>
+	</f:view>
 
 </body>
 </html>

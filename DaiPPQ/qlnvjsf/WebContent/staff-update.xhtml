@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="add-student-style.css" />
+</h:head>
+<h:body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>Staff Management System</h2>
+		</div>
+	</div>
+	<div id="container">
+		<h3>Create Staff</h3>
+
+		<h:messages globalOnly="true" />
+		<h:form enctype="multipart/form-data" id="form"
+			style="margin-top: 10px;">
+			<h:panelGrid columns="3">
+
+				<h:outputLabel>Name:</h:outputLabel>
+				<h:inputText value="#{editStaff.name}" id="name" />
+				<h:message for="name" />
+
+				<h:outputLabel>Date:</h:outputLabel>
+				<h:inputText value="#{editStaff.date}" id="date" />
+				<h:message for="date" />
+
+				<h:outputLabel>Gender:</h:outputLabel>
+				<h:selectOneRadio value="#{editStaff.gender}">
+					<f:selectItem itemValue="Nam" itemLabel="Nam" />
+					<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+				</h:selectOneRadio>
+				<h:message for="" />
+
+				<h:outputLabel>Address:</h:outputLabel>
+				<h:selectOneMenu value="#{editStaff.address}">
+					<f:selectItems var="d" value="#{staffController.dsTinhThanh}"
+						itemValue="#{d.code}" itemLabel="#{d.name}" />
+				</h:selectOneMenu>
+				<h:message for="" />
+
+				<h:outputLabel>Images:</h:outputLabel>
+				<h:graphicImage width="100" value="images/#{editStaff.images}"></h:graphicImage>
+				<h:inputFile value="#{staffController.file}" />
+				
+			</h:panelGrid>
+
+			<h:panelGrid columns="4">
+				<h:outputLabel />
+
+				<h:commandButton value="Sửa" styleClass="save"
+					action="#{staffController.updateStaff(editStaff)}" />
+				<h:button value="Cancel" styleClass="save" outcome="index.xhtml" />
+			</h:panelGrid>
+
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+		<p>
+			<h:outputLink value="index.xhtml">Back to List</h:outputLink>
+		</p>
+
+	</div>
+</h:body>
+</html>

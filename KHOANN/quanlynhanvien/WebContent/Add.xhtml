@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<f:view>
+
+		<h:form enctype="multipart/form-data">
+Họ Tên: <h:inputText id="tenNV" value="#{staff.hoTen}">
+			</h:inputText>
+			<br />
+			<br />
+			
+Giới Tính: <h:selectOneRadio id="gioiTinh" value="#{staff.gioiTinh}">
+				<f:selectItem itemValue="0" itemLabel="Nam" />
+				<f:selectItem itemValue="1" itemLabel="Nữ" />
+			</h:selectOneRadio>
+			<br />
+			
+			
+Năm Sinh: <h:inputText id="namSinh" value="#{staff.namSinh}">
+			</h:inputText>
+			<br />
+			<br />
+		
+ Hộ Khẩu: <h:selectOneMenu id="hoKhau" value="#{staff.hoKhau}">
+				<f:selectItems var="d" value="#{staffForm.dsTinhThanh}"
+					itemValue="#{d.hoKhau}" itemLabel="#{d.thanhPho}" />
+
+			</h:selectOneMenu>
+			<br />
+			<br />
+			
+			
+			<h:commandButton value="Thêm"
+				action="#{staffForm.createStaff(staff)}"></h:commandButton>
+			<h:commandButton value="Hủy" action="NhanVien.xhtml"></h:commandButton>
+		</h:form>
+
+	</f:view>
+
+</body>
+</html>
