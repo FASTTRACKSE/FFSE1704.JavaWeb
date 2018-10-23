@@ -38,7 +38,6 @@ public class StaffController {
 	private Part file;
 	private long fileSize;
 	
-	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	public long getFileSize() {
 		return fileSize;
 	}
@@ -87,13 +86,6 @@ public class StaffController {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
-	public Map<String, Object> getSessionMap() {
-		return sessionMap;
-	}
-	public void setSessionMap(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
-	}
-	
 	public StaffController() throws Exception {
 		dsTinhThanh = staffDAO.getListTinhThanh();
 		
@@ -111,16 +103,28 @@ public class StaffController {
 		dsNhanVien = staffDAO.getAllStaff();
 		totalPage = (int)Math.ceil(dsNhanVien.size() * 1.0/perPage);
 	}
-	
+	public void goPage(int page) {
+		currentPage = page;
+		if(currentPage<1) {
+			currentPage =1;
+		}
+		else if(currentPage > totalPage) {
+			currentPage= totalPage;
+		}
+		loadListStaffPage();
+	}
 	//lấy ds 1 nhân viên dựa trên id
 	public String getStaffById(int id){
 		NhanVien nv = staffDAO.getNhanVienbyId(id);
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("editStaff", nv);
 		
-		return "update-Staff?faces-redirect=true";
+		return "update?faces-redirect=true";
 	}
 	//update nhân viên
 	public String updateStaff(NhanVien nv) {
+		upload();
+		nv.setImages(fileName);
 		staffDAO.updateNhanVien(nv);
 		loadListStaffPage();
 		return "index?faces-redirect=true";
@@ -132,17 +136,13 @@ public class StaffController {
 		loadListStaffPage();
 		return "index?faces-redirect=true";
 	}
-	
-	public void goPage(int page) {
-		currentPage = page;
-		if(currentPage<1) {
-			currentPage =1;
-		}
-		else if(currentPage > totalPage) {
-			currentPage= totalPage;
-		}
+	public String getStaffForDelete(int id) {
+		
+		staffDAO.deleteNhanVien(id);
 		loadListStaffPage();
+		return "index?faces-redirect=true";
 	}
+	
 	
 	public void upload()
     {
@@ -163,6 +163,7 @@ public class StaffController {
             Logger.getLogger(ViewImage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
  
 	
 }

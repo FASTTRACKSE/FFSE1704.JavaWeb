@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * Execute query database
  * 
- * @author Chicken VIP
+ * @author ChickenDance
  *
  */
 public class DatabaseUltil {
