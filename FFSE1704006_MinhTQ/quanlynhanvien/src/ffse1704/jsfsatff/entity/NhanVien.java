@@ -24,7 +24,7 @@ public class NhanVien {
 	}
 
 	public NhanVien() {
-
+		super();
 	}
 
 	public String getMaNhanVien() {

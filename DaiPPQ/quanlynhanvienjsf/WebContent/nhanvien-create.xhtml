@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<body>
+	them moi
+	<h:form>
+		<table border="1">
+			<tr>
+				<td>Name</td>
+				<td><h:inputText value="#{nhanVien.name}" /></td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td><h:inputText value="#{nhanVien.date}" /></td>
+			</tr>
+			<tr>
+				<td>Gender</td>			
+				<td>
+					<h:selectOneRadio value="#{nhanVien.gender}">
+						<f:selectItem itemValue="Nam" itemLabel="Nam" />
+						<f:selectItem itemValue="Nữ" itemLabel="Nữ" />
+					</h:selectOneRadio>
+				</td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td>
+					<h:selectOneMenu value="#{nhanVien.address}">
+						<c:forEach var="item" items="#{TTPController.viewAllTinhThanhPho}">
+							<f:selectItem itemValue="#{item.ma}" />
+						</c:forEach>
+					</h:selectOneMenu>
+				</td>
+				<td><h:inputText value="#{nhanVien.address}" /></td>
+			</tr>
+			<tr>
+				<td>Images</td>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<td />
+				<td><h:commandButton action="#{nVController.a}" value="Submit" /></td>
+			</tr>
+		</table>
+	</h:form>
+
+</body>
+</html>

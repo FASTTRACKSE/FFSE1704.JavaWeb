@@ -11,7 +11,7 @@
 <body>
 	them moi
 	<h:form>
-		<table border="1">
+		<table >
 			<tr>
 				<td>Ma Sinh Vien</td>
 				<td><h:inputText value="#{sinhVienForm.masv}" /></td>
@@ -33,16 +33,29 @@
 			</tr>
 			<tr>
 				<td>Nam Sinh</td>
-				<td><h:inputText value="#{sinhVienForm.namsinh}" /></td>
+				<td>
+					<h:inputText id="yearInput" value="#{sinhVienForm.namsinh}" label="year">
+						<f:validateRegex pattern="(1|2)([0-9]{3})" />
+					</h:inputText>
+				</td>
 			</tr>
 			<tr>
 				<td>#{msg['class']}</td>
 				<td><h:inputText value="#{sinhVienForm.lop}" /></td>
 			</tr>
 			<tr>
+				<td>Image</td>
+				<td>
+					<f:view>
+						 <h:inputFile value="#{sinhVienForm.file}"/>
+					</f:view>
+				</td>
+			</tr>
+			<tr>
 				<td />
 				<td><h:commandButton action="#{sinhVienForm.addSinhVien}" value="Submit" /></td>
 			</tr>
+			<h:message for="yearInput" style="color:red"></h:message>
 		</table>
 	</h:form>
 

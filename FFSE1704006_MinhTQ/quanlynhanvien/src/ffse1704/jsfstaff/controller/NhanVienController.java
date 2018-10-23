@@ -2,6 +2,7 @@ package ffse1704.jsfstaff.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -16,78 +17,21 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 import ffse1704.jsfsatff.entity.NhanVien;
-import ffse1704.jsfsatff.entity.tinhThanh;
+import ffse1704.jsfsatff.entity.TinhThanh;
 import ffse1704.jsfstaff.dao.NhanVienDAO;
 
 @ManagedBean
 @SessionScoped
 public class NhanVienController {
-	@PostConstruct
-    public void init() {
-         listTinhThanh = nhanVienDao.getListTinhThanh();
-    }
-	// getParameter
-	private String maNhanVien;
-	private String tenNhanVien;
-	private String namSinh;
-	private String gioiTinh;
-	private String hoKhau;
-	private String images;
-
-	public String getMaNhanVien() {
-		return maNhanVien;
-	}
-
-	public void setMaNhanVien(String maNhanVien) {
-		this.maNhanVien = maNhanVien;
-	}
-
-	public String getTenNhanVien() {
-		return tenNhanVien;
-	}
-
-	public void setTenNhanVien(String tenNhanVien) {
-		this.tenNhanVien = tenNhanVien;
-	}
-
-	public String getNamSinh() {
-		return namSinh;
-	}
-
-	public void setNamSinh(String namSinh) {
-		this.namSinh = namSinh;
-	}
-
-	public String getGioiTinh() {
-		return gioiTinh;
-	}
-
-	public void setGioiTinh(String gioiTinh) {
-		this.gioiTinh = gioiTinh;
-	}
-
-	public String getHoKhau() {
-		return hoKhau;
-	}
-
-	public void setHoKhau(String hoKhau) {
-		this.hoKhau = hoKhau;
-	}
-
-	public String getImages() {
-		return images;
-	}
-
-	public void setImages(String images) {
-		this.images = images;
-	}
+	
+	
 
 	///// listNhanVien and DAO
 
 	@ManagedProperty(value = "#{nhanVienDAO}")
-	private NhanVienDAO nhanVienDao;
-	private List<NhanVien> listNhanVien;
-	private List<tinhThanh> listTinhThanh;
+	private NhanVienDAO nhanVienDao = new NhanVienDAO();
+	private List<NhanVien> listNhanVien = new ArrayList<NhanVien>();;
+	private List<TinhThanh> listTinhThanh= new ArrayList<TinhThanh>();
 	// get set listNhanVien and DAO
 
 	public NhanVienDAO getNhanVienDao() {
@@ -107,17 +51,21 @@ public class NhanVienController {
 	}
 
 	/// list tỉnh thành
-	public List<tinhThanh> getListTinhThanh() {
+	public List<TinhThanh> getListTinhThanh() {
 		return listTinhThanh;
 	}
 
-	public void setListTinhThanh(List<tinhThanh> listTinhThanh) {
+	public void setListTinhThanh(List<TinhThanh> listTinhThanh) {
 		this.listTinhThanh = listTinhThanh;
 	}
 
 		
 	
-	
+
+	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+	private int totalPage = 1;
+	private int currPage = 1;
+	private int perPage = 3;
 	
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
@@ -151,16 +99,12 @@ public class NhanVienController {
 		this.perPage = perPage;
 	}
 
-	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-	private int totalPage = 1;
-	private int currPage = 1;
-	private int perPage = 3;
 
 	
-	public void NVController() throws Exception {
+	public NhanVienController() throws Exception {
 		listTinhThanh = nhanVienDao.getListTinhThanh();
 
-		// Get list of staff
+		// Get lisNt of staff
 		loadNhanVienListByPage();
 	}
 	
@@ -188,6 +132,7 @@ public class NhanVienController {
 	///// CRUD//////
 	public String delete(String maNhanVien) {
 		nhanVienDao.delete(maNhanVien);
+		loadNhanVienListByPage();
 		return "NhanVien?faces-redirect=true";
 	}
 
@@ -195,25 +140,26 @@ public class NhanVienController {
 		upload();
 		nhanvien.setImages(fileName);
 		nhanVienDao.add(nhanvien);
+		loadNhanVienListByPage();
 		return "NhanVien?faces-redirect=true";
 	}
 
-	public String editNhanVien() {
+	public String editNhanVien(NhanVien nhanvien) {
 		upload();
-		NhanVien nhanvien = new NhanVien(maNhanVien, tenNhanVien, namSinh, gioiTinh, hoKhau, images);
 		nhanvien.setImages(fileName);
 		nhanVienDao.update(nhanvien);
+		loadNhanVienListByPage();
 		return "NhanVien?faces-redirect=true";
 	}
 
 	public String viewEditNhanVien(String maNV) {
-		NhanVien nhanvien = nhanVienDao.seach(maNV);
+		NhanVien nhanvien = nhanVienDao.seachEdit(maNV);
 
 	
 		// put in the session attribute ... so we can use it on the form page
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		sessionMap.put("checkEditNhanSu", nhanvien);
+		sessionMap.put("checkEditNhanVien", nhanvien);
 
 
 		return "EditNhanVien?faces-redirect=true";
@@ -221,7 +167,7 @@ public class NhanVienController {
 	}
 
 	public String viewDeleteNhanVien(String maNV) {
-		NhanVien nhanvien = nhanVienDao.seach(maNV);
+		NhanVien nhanvien = nhanVienDao.seachDelete(maNV);
 
 
 		// put in the session attribute ... so we can use it on the form page
@@ -274,9 +220,7 @@ public class NhanVienController {
 	/**
 	 * Creates a new instance of Upload_File
 	 */
-	public NhanVienController() {
 
-	}
 
 	public Part getFile() {
 		return file;

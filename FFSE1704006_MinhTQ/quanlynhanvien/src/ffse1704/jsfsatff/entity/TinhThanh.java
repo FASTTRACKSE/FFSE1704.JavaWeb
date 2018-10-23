@@ -3,18 +3,18 @@ package ffse1704.jsfsatff.entity;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class tinhThanh {
+public class TinhThanh {
 	private String maTinh;
 	private String tenTinh;
 
-	public tinhThanh(String maTinh, String tenTinh) {
+	public TinhThanh(String maTinh, String tenTinh) {
 		super();
 		this.maTinh = maTinh;
 		this.tenTinh = tenTinh;
 	}
 
-	public tinhThanh() {
-
+	public TinhThanh() {
+		super();
 	}
 
 	public String getMaTinh() {

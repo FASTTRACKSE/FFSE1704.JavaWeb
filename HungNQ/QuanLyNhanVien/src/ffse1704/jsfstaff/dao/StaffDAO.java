@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ffse1704.jsfstaff.entity.hoKhau;
 import ffse1704.jsfstaff.entity.nhanVien;
 import ffse1704.jsfstaff.util.ConnectionFactory;
 
@@ -101,4 +102,147 @@ public class StaffDAO {
 			close(connection, preparedStatement);
 		}
 	}
+	
+	public nhanVien getNhanVienById(int id) {
+		String query = "SELECT * FROM nhanvien WHERE id=?";
+		nhanVien nhanVien = new nhanVien();
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {
+				nhanVien.setId(rs.getInt("id"));
+				nhanVien.setHoVaTen(rs.getString("hovaten"));
+				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setGioiTinh(rs.getString("gioitinh"));
+				nhanVien.setHoKhau(rs.getString("hokhau"));
+				nhanVien.setImage(rs.getString("image"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return nhanVien;
+	}
+	
+	public List<nhanVien> getListNhanVien() {
+		List<nhanVien> dsNhanVien = new ArrayList<nhanVien>();
+		String query = "SELECT * FROM nhanvien";
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				nhanVien nhanVien = new nhanVien();
+				nhanVien.setId(rs.getInt("id"));
+				nhanVien.setHoVaTen(rs.getString("hovaten"));
+				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setGioiTinh(rs.getString("gioitinh"));
+				nhanVien.setHoKhau(rs.getString("hokhau"));
+				nhanVien.setImage(rs.getString("image"));
+
+				dsNhanVien.add(nhanVien);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return dsNhanVien;
+	}
+	
+	public int countNhanVien() {
+		String query = "SELECT count(*) as totalStaff FROM nhanvien";
+		int totalStaff = 0;
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			if (rs.next()) {
+				totalStaff = rs.getInt("totalStaff");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return totalStaff;
+	}
+	
+	public List<nhanVien> getListNhanVienByPage(int currPage, int perPage) {
+		int start = (currPage - 1) * perPage;
+		List<nhanVien> dsNhanVien = new ArrayList<nhanVien>();
+		String query = "SELECT * FROM nhanvien LIMIT " + start + "," + perPage;
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				nhanVien nhanVien = new nhanVien();
+				nhanVien.setId(rs.getInt("id"));
+				nhanVien.setHoVaTen(rs.getString("hovaten"));
+				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setGioiTinh(rs.getString("gioitinh"));
+				nhanVien.setHoKhau(rs.getString("hokhau"));
+				nhanVien.setImage(rs.getString("image"));
+
+				dsNhanVien.add(nhanVien);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return dsNhanVien;
+	}
+	public List<hoKhau> getListTinhThanh() {
+		List<hoKhau> dsTinhThanh = new ArrayList<hoKhau>();
+		String query = "SELECT * FROM hokhau";
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				hoKhau tinhThanh = new hoKhau();
+				tinhThanh.setMaTP(rs.getString("matp"));
+				tinhThanh.setThanhPho(rs.getString("thanhpho"));
+
+				dsTinhThanh.add(tinhThanh);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return dsTinhThanh;
+	}
+
 }

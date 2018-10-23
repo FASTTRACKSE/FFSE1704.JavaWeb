@@ -11,7 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import ffse1704.jsfsatff.entity.NhanVien;
-import ffse1704.jsfsatff.entity.tinhThanh;
+import ffse1704.jsfsatff.entity.TinhThanh;
 import ffse1704.jsfstaff.databasse.ConnectionFactory;
 
 @ManagedBean
@@ -72,7 +72,7 @@ public class NhanVienDAO {
 	}
 
 	public void update(NhanVien nv) {
-		String query = "UPDATE danhsachnhanvien set maNhanVien=?, tenNhanVien=?, namSinh=?, gioiTinh=?, hoKhau=? images=? WHERE maNhanVien=?";
+		String query = "UPDATE danhsachnhanvien SET  tenNhanVien=? , namSinh=? , gioiTinh=? , hoKhau=? ,images=? WHERE  maNhanVien=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
@@ -113,10 +113,10 @@ public class NhanVienDAO {
 
 	public List<NhanVien> ListNhanVien() {
 		List<NhanVien> dsNhanVien = new ArrayList<NhanVien>();
-		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images\\r\\n\" + \r\n" + 
-				"				\"FROM danhsachnhanvien\\r\\n\" + \r\n" + 
-				"				\"INNER JOIN tinhthanh\\r\\n\" + \r\n" + 
-				"				\"ON  danhsachnhanvien.hoKhau=tinhthanh.matinh ";
+		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images\\r\\n\" + \r\n"
+				+ "				\"FROM danhsachnhanvien\\r\\n\" + \r\n"
+				+ "				\"INNER JOIN tinhthanh\\r\\n\" + \r\n"
+				+ "				\"ON  danhsachnhanvien.hoKhau=tinhthanh.matinh ";
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
@@ -145,11 +145,8 @@ public class NhanVienDAO {
 		return dsNhanVien;
 	}
 
-	public NhanVien seach(String id) {
-		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images\r\n" + 
-				"FROM danhsachnhanvien\r\n" + 
-				"INNER JOIN tinhthanh\r\n" + 
-				"ON  danhsachnhanvien.hoKhau=tinhthanh.matinh WHERE maNhanVien=? ";
+	public NhanVien seachEdit(String id) {
+		String query = "SELECT danhsachnhanvien.maNhanVien, danhsachnhanvien.tenNhanVien, danhsachnhanvien.namSinh, danhsachnhanvien.gioiTinh,danhsachnhanvien.hoKhau, danhsachnhanvien.images FROM danhsachnhanvien WHERE maNhanVien=? ";
 		NhanVien nhanVien = new NhanVien();
 
 		try {
@@ -177,8 +174,39 @@ public class NhanVienDAO {
 
 		return nhanVien;
 	}
-	public List<tinhThanh> getListTinhThanh() {
-		List<tinhThanh> dsTinhThanh = new ArrayList<tinhThanh>();
+	
+	public NhanVien seachDelete(String id) {
+		String query = "SELECT danhsachnhanvien.maNhanVien, danhsachnhanvien.tenNhanVien, danhsachnhanvien.namSinh, danhsachnhanvien.gioiTinh,danhsachnhanvien.hoKhau, danhsachnhanvien.images FROM danhsachnhanvien WHERE maNhanVien=? ";
+		NhanVien nhanVien = new NhanVien();
+
+		try {
+			connection = ConnectionFactory.getInstance().getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {
+				nhanVien.setMaNhanVien(rs.getString("maNhanVien"));
+				nhanVien.setTenNhanVien(rs.getString("tenNhanVien"));
+				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setGioiTinh(rs.getString("gioiTinh"));
+				nhanVien.setHoKhau(rs.getString("hoKhau"));
+				nhanVien.setImages(rs.getString("images"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, preparedStatement);
+		}
+
+		return nhanVien;
+	}
+
+	public List<TinhThanh> getListTinhThanh() {
+		List<TinhThanh> dsTinhThanh = new ArrayList<TinhThanh>();
 		String query = "SELECT * FROM tinhthanh";
 
 		try {
@@ -187,7 +215,7 @@ public class NhanVienDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				tinhThanh tinhThanh = new tinhThanh ();
+				TinhThanh tinhThanh = new TinhThanh();
 				tinhThanh.setMaTinh(rs.getString("matinh"));
 				tinhThanh.setTenTinh(rs.getString("tentinh"));
 
@@ -203,16 +231,14 @@ public class NhanVienDAO {
 
 		return dsTinhThanh;
 	}
-	
-	
-	//phân trang
-	
-	
+
+	// phân trang
+
 	public int countNhanVien() {
 		String query = "SELECT count(*) as totalStaff FROM danhsachnhanvien";
 		int totalStaff = 0;
 
-		try {	
+		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
 
@@ -230,11 +256,12 @@ public class NhanVienDAO {
 
 		return totalStaff;
 	}
-	
+
 	public List<NhanVien> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<NhanVien> dsNhanVien = new ArrayList<NhanVien>();
-		String query = "SELECT * FROM danhsachnhanvien LIMIT " + start + "," + perPage;
+		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images FROM danhsachnhanvien INNER JOIN tinhthanh ON danhsachnhanvien.hoKhau=tinhthanh.matinh LIMIT "
+				+ start + "," + perPage;
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
