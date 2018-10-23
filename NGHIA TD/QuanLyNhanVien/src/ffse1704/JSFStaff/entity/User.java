@@ -4,7 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@ManagedBean
+@ManagedBean(name="user")
 public class User {
 
 	

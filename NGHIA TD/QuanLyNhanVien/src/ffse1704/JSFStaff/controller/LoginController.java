@@ -1,7 +1,12 @@
 package ffse1704.JSFStaff.controller;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import ffse1704.JSFStaff.dao.LoGinDAO;
 
+@ManagedBean
+@SessionScoped
 public class LoginController {
 	
 	LoGinDAO loginDAO = new LoGinDAO();
