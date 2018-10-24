@@ -56,7 +56,7 @@ public class NhanVienDAO {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, nv.getMaNhanVien());
 			preparedStatement.setString(2, nv.getTenNhanVien());
-			preparedStatement.setString(3, nv.getNamSinh());
+			preparedStatement.setInt(3, nv.getNamSinh());
 			preparedStatement.setString(4, nv.getGioiTinh());
 			preparedStatement.setString(5, nv.getHoKhau());
 			preparedStatement.setString(6, nv.getImages());
@@ -78,7 +78,7 @@ public class NhanVienDAO {
 			preparedStatement = connection.prepareStatement(query);
 
 			preparedStatement.setString(1, nv.getTenNhanVien());
-			preparedStatement.setString(2, nv.getNamSinh());
+			preparedStatement.setInt(2, nv.getNamSinh());
 			preparedStatement.setString(3, nv.getGioiTinh());
 			preparedStatement.setString(4, nv.getHoKhau());
 			preparedStatement.setString(5, nv.getImages());
@@ -127,7 +127,7 @@ public class NhanVienDAO {
 				NhanVien nhanVien = new NhanVien();
 				nhanVien.setMaNhanVien(rs.getString("maNhanVien"));
 				nhanVien.setTenNhanVien(rs.getString("tenNhanVien"));
-				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setNamSinh(rs.getInt("namSinh"));
 				nhanVien.setGioiTinh(rs.getString("gioiTinh"));
 				nhanVien.setHoKhau(rs.getString("hoKhau"));
 				nhanVien.setImages(rs.getString("images"));
@@ -158,7 +158,7 @@ public class NhanVienDAO {
 			if (rs.next()) {
 				nhanVien.setMaNhanVien(rs.getString("maNhanVien"));
 				nhanVien.setTenNhanVien(rs.getString("tenNhanVien"));
-				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setNamSinh(rs.getInt("namSinh"));
 				nhanVien.setGioiTinh(rs.getString("gioiTinh"));
 				nhanVien.setHoKhau(rs.getString("hoKhau"));
 				nhanVien.setImages(rs.getString("images"));
@@ -176,7 +176,7 @@ public class NhanVienDAO {
 	}
 	
 	public NhanVien seachDelete(String id) {
-		String query = "SELECT danhsachnhanvien.maNhanVien, danhsachnhanvien.tenNhanVien, danhsachnhanvien.namSinh, danhsachnhanvien.gioiTinh,danhsachnhanvien.hoKhau, danhsachnhanvien.images FROM danhsachnhanvien WHERE maNhanVien=? ";
+		String query = " SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images FROM danhsachnhanvien INNER JOIN tinhthanh ON danhsachnhanvien.hoKhau=tinhthanh.matinh WHERE maNhanVien=? ";
 		NhanVien nhanVien = new NhanVien();
 
 		try {
@@ -188,7 +188,7 @@ public class NhanVienDAO {
 			if (rs.next()) {
 				nhanVien.setMaNhanVien(rs.getString("maNhanVien"));
 				nhanVien.setTenNhanVien(rs.getString("tenNhanVien"));
-				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setNamSinh(rs.getInt("namSinh"));
 				nhanVien.setGioiTinh(rs.getString("gioiTinh"));
 				nhanVien.setHoKhau(rs.getString("hoKhau"));
 				nhanVien.setImages(rs.getString("images"));
@@ -260,7 +260,7 @@ public class NhanVienDAO {
 	public List<NhanVien> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<NhanVien> dsNhanVien = new ArrayList<NhanVien>();
-		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images FROM danhsachnhanvien INNER JOIN tinhthanh ON danhsachnhanvien.hoKhau=tinhthanh.matinh LIMIT "
+		String query = "SELECT danhsachnhanvien.maNhanVien,danhsachnhanvien.tenNhanVien,danhsachnhanvien.namSinh,danhsachnhanvien.gioiTinh,tinhthanh.tentinh AS hoKhau,danhsachnhanvien.images FROM danhsachnhanvien INNER JOIN tinhthanh ON danhsachnhanvien.hoKhau=tinhthanh.matinh ORDER BY maNhanVien ASC LIMIT "
 				+ start + "," + perPage;
 
 		try {
@@ -272,7 +272,7 @@ public class NhanVienDAO {
 				NhanVien nhanVien = new NhanVien();
 				nhanVien.setMaNhanVien(rs.getString("maNhanVien"));
 				nhanVien.setTenNhanVien(rs.getString("tenNhanVien"));
-				nhanVien.setNamSinh(rs.getString("namSinh"));
+				nhanVien.setNamSinh(rs.getInt("namSinh"));
 				nhanVien.setGioiTinh(rs.getString("gioiTinh"));
 				nhanVien.setHoKhau(rs.getString("hoKhau"));
 				nhanVien.setImages(rs.getString("images"));
