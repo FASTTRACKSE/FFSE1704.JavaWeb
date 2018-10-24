@@ -20,6 +20,14 @@ public class SinhVienForm {
 	private String age;
 	private String gender;
 	private String address;
+	private String city;
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 	public String getId() {
 		return id;
@@ -63,7 +71,12 @@ public class SinhVienForm {
 
 //////////////////////////
 	@ManagedProperty(value = "#{sinhVienDao}")
-	private SinhVienDao sinhVienDAO;
+	private SinhVienDao sinhVienDao;
+	
+	public void setSinhVienDao(SinhVienDao sinhVienDao) {
+		this.sinhVienDao = sinhVienDao;
+	}
+
 	private List<SinhVien> listSinhVien;
 
 	public List<SinhVien> getListSinhVien() {
@@ -74,39 +87,35 @@ public class SinhVienForm {
 		this.listSinhVien = listSinhVien;
 	}
 
-	public SinhVienDao getSinhVienDAO() {
-		return sinhVienDAO;
-	}
-
-	public void setSinhVienDao(SinhVienDao sinhVienDAO) {
-		this.sinhVienDAO = sinhVienDAO;
+	public SinhVienDao getSinhVienDao() {
+		return sinhVienDao;
 	}
 
 	public List<SinhVien> viewSinhVien() {
-		return sinhVienDAO.getSinhVien();
+		return sinhVienDao.getSinhVien();
 	}
 
 ///////////////////
 	public String addSinhVien() {
 		SinhVien sv = new SinhVien(name, age, gender, address);
-		sinhVienDAO.addSinhVien(sv);
+		sinhVienDao.addSinhVien(sv);
 		return "SinhVien?faces-redirect=true";
 	}
 
 	public String deleteSinhVien(String id) {
 
-		sinhVienDAO.deleteSinhVien(id);
+		sinhVienDao.deleteSinhVien(id);
 		return "SinhVien?faces-redirect=true";
 	}
 
 	public String updateSinhVien() {
 		SinhVien sv = new SinhVien(id, name, age, gender, address);
-		sinhVienDAO.editSinhVien(sv);
+		sinhVienDao.editSinhVien(sv);
 		return "SinhVien?faces-redirect=true";
 	}
 
 	public String viewUpdate(String madm) {
-		SinhVien sinhvien = sinhVienDAO.seach(madm);
+		SinhVien sinhvien = sinhVienDao.seach(madm);
 		id = sinhvien.getId();
 		name = sinhvien.getName();
 		age = sinhvien.getAge();
@@ -158,12 +167,12 @@ public class SinhVienForm {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String page = (String) params.get("page");
 		currentPage = (page != null && page.matches("[0-9]+")) ? Integer.parseInt(page) : 1;
-		int totalRecord = sinhVienDAO.getSinhVien().size();
+		int totalRecord = sinhVienDao.getSinhVien().size();
 		totalRecord = (totalRecord / SinhVienDao.RECORD_IN_PAGE)
 				+ ((double) totalRecord % (double) SinhVienDao.RECORD_IN_PAGE == 0 ? 0 : 1);
 
 		setPageLink();
-		listSinhVien = sinhVienDAO.getSinhVienInPage(currentPage);
+		listSinhVien = sinhVienDao.getSinhVienInPage(currentPage);
 
 	}
 

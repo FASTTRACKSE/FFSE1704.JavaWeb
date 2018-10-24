@@ -124,7 +124,7 @@ public class DatabaseUntil {
 		return executeUpdate(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		});
@@ -168,7 +168,7 @@ public class DatabaseUntil {
 
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}) > 0 ? true : false;
@@ -238,7 +238,7 @@ public class DatabaseUntil {
 		return selectForList(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}, iPareEntity);
@@ -288,7 +288,7 @@ public class DatabaseUntil {
 		List<E> result = selectForList(sql, new IPrePareStatementSetParam() {
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				for (int i = 0; i < values.length; i++) {
-					statement.setObject(i + 1, values[0]);
+					statement.setObject(i + 1, values[i]);
 				}
 			}
 		}, iPareEntity);

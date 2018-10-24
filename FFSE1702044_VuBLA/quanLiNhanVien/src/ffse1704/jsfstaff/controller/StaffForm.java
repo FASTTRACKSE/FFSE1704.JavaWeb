@@ -21,12 +21,13 @@ public class StaffForm {
 	private List<Staff> listStaff;
 	private List<province> dsTinhThanh = new ArrayList<province>();
 	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-	private int totalPage =1 ;
-	private int currPage=1;
-	private int perPage=3;
+	private int totalPage = 1;
+	private int currPage = 1;
+	private int perPage = 3;
 	private Part file;
 	private String fileName;
-    private long fileSize;
+	private long fileSize;
+
 	public String getFileName() {
 		return fileName;
 	}
@@ -119,61 +120,64 @@ public class StaffForm {
 		dsTinhThanh = staffDAO.getListTinhThanh();
 
 	}
-	 public String upload() throws IOException
-	    {
-	        // get name of selected file
-			fileName = file.getSubmittedFileName();
-			// get file's size
-			fileSize = file.getSize();
-			// get fullpath of opload folder in web root
-			String dirPath= "C:/Users/vubui/Pictures/";
-			// write file to upload folder
-			File path = new File(dirPath);
 
-			if (!path.exists()) {
-			    path.mkdirs();
-			}
-			 file.write(dirPath + "/" + fileName);
-	        return fileName;
-	    }
-	
+	public String upload() throws IOException {
+		// get name of selected file
+		fileName = file.getSubmittedFileName();
+		// get file's size
+		fileSize = file.getSize();
+		// get fullpath of opload folder in web root
+		String dirPath = "C:/Users/vubui/Pictures/";
+		// write file to upload folder
+		File path = new File(dirPath);
+
+		if (!path.exists()) {
+			path.mkdirs();
+		}
+		file.write(dirPath + "/" + fileName);
+		return fileName;
+	}
 
 	public String addStaff(Staff st) throws IOException {
 		upload();
 		st.setImage(fileName);
 		staffDAO.addNewStaff(st);
-		
+
 		loadStaffListByPage();
 		return "index?faces-redirect=true";
 	}
+
 	public String getStaffForUpdate(int id) {
 		Staff st = staffDAO.getNhanVienById(id);
 		sessionMap.put("editStaff", st);
-		
+
 		return "EditStaff?faces-redirect=true";
 	}
+
 	public String updateStaff(Staff st) {
 
 		staffDAO.editStaff(st);
 		loadStaffListByPage();
 		return "index?faces-redirect=true";
 	}
+
 	public String deleteStaff(int id) {
 		staffDAO.deleteNhanVien(id);
-		
+
 		loadStaffListByPage();
 		return "index?faces-redirect=true";
 	}
+
 	public void loadStaffListByPage() {
 		listStaff = staffDAO.getListNhanVienByPage(currPage, perPage);
-		totalPage = (int)Math.ceil(staffDAO.countNhanVien() * 1.0 / perPage);
+		totalPage = (int) Math.ceil(staffDAO.countNhanVien() * 1.0 / perPage);
 	}
+
 	public void goPage(int page) {
 		currPage = page;
 		if (currPage < 1) {
 			currPage = 1;
-		}
-		else if (currPage > totalPage) {
+		} else if (currPage > totalPage) {
 			currPage = totalPage;
 		}
 
