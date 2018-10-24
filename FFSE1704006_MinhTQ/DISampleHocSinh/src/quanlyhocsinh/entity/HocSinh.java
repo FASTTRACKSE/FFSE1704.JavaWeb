@@ -1,7 +1,9 @@
 package quanlyhocsinh.entity;
 
+import hedaotao.GiangVien;
 import hedaotao.HeDaoTao;
 import hedaotao.LoaiHinhDaoTao;
+import hedaotao.MonHoc;
 
 public class HocSinh {
 
@@ -11,17 +13,23 @@ public class HocSinh {
 	String dienThoai;
 	String email;
 	LoaiHinhDaoTao loaiHinhDaotao;
+	GiangVien giangVien;
+	MonHoc monHoc;
 	HeDaoTao heDaoTao;
 
 	public String getThongTinHocSinh() {
-		return hoTen + "-" + namSinh + "-" + diaChi;
+		return "* " + hoTen + " -- " + namSinh + " -- " + diaChi + " -- " + dienThoai + " -- " + email;
 	}
 
 	public String getThongTinHeDaoTao() {
-		return "*------"+heDaoTao.getMaHeDaoTao() + " --- " + heDaoTao.getThongTinHeDaoTao() +" -- "+ loaiHinhDaotao.getThongTinLoaiHinhDaoTao();
+		return "* MÃ HỆ ĐÀO TẠO: " + heDaoTao.getMaHeDaoTao() + " \n- Thông tin hệ đào tạo: "
+				+ heDaoTao.getThongTinHeDaoTao() + "\n* LOẠI HÌNH ĐÀO TẠO: "
+				+ loaiHinhDaotao.getThongTinLoaiHinhDaoTao() + "\n* MÔN HỌC: " + monHoc.getTenMonHoc()
+				+ "\n* GIẢNG VIÊN: " + giangVien.getTenGianVien();
 	}
 
-	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,LoaiHinhDaoTao loaiHinhDaotao) {
+	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,
+			LoaiHinhDaoTao loaiHinhDaotao, MonHoc monHoc, GiangVien giangVien) {
 		super();
 
 		this.hoTen = hoTen;
@@ -30,6 +38,8 @@ public class HocSinh {
 		this.dienThoai = dienThoai;
 		this.email = email;
 		this.heDaoTao = heDaoTao;
+		this.monHoc = monHoc;
+		this.giangVien = giangVien;
 		this.loaiHinhDaotao = loaiHinhDaotao;
 	}
 

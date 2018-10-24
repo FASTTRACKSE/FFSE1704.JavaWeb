@@ -2,12 +2,12 @@ package quanlyhocsinh.entity;
 
 import hedaotao.MonHoc;
 
-public class LapTrinhWed implements MonHoc {
+public class LapTrinhWedFrontend implements MonHoc {
 
 	@Override
 	public String getMaMonHoc() {
 		// TODO Auto-generated method stub
-		return "LTWE";
+		return "LTWEFE";
 	}
 
 	@Override

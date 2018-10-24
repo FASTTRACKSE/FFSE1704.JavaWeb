@@ -18,7 +18,7 @@ public class LoaiHinhDaoTaoOnLine implements LoaiHinhDaoTao {
 	@Override
 	public String getThongTinLoaiHinhDaoTao() {
 		// TODO Auto-generated method stub
-		return "Chương trình đào tao online";
+		return "- Chương trình đào tạo online \n- Thời gian: 24/24 \n- Địa chỉ: trang web LMS.FASTTRACK.EDU.VN" ;
 	}
 
 }
