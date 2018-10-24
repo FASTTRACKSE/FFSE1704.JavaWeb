@@ -10,20 +10,20 @@ import org.hibernate.validator.constraints.Range;
 public class NhanVien {
 	int id;
 	
-	@NotNull(message = "name không được để trống")
+	@NotNull(message = " name không được để trống")
 	String name;
 	
-	@NotNull(message = "date không được để trống")
+	@NotNull(message = " date không được để trống")
 	@Range (min=1900, max=2000, message = "date từ 1900 - 2000")
 	int date;
 	
-	@NotNull(message = "gender không được để trống")
+	@NotNull(message = " gender không được để trống")
 	String gender;
 	
 	int address;
 	String addressname;
 	
-	@NotNull(message = "images không được để trống")
+	@NotNull(message = " images không được để trống")
 	String images;
 	
 	public NhanVien() {

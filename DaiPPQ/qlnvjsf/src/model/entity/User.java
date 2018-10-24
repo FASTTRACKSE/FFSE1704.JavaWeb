@@ -9,10 +9,10 @@ public class User {
 
 	int id;
 
-	@NotNull(message = "username không được để trống")
+	@NotNull(message = " username không được để trống")
 	String username;
 	
-	@NotNull(message = "password không được để trống")
+	@NotNull(message = " password không được để trống")
 	String password;
 
 	public User() {
