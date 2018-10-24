@@ -14,7 +14,7 @@ public class NhanVien {
 	 int id;
 	 
 	 @NotNull(message= "Tên không được để trống")
-	 @Size(min=1,message= "Tên không được để trống")
+	 @Size(min=3,message= "Tên không được để trống")
 	 String name;
 	 
 	 @NotNull(message= "Năm sinh không được để trống")

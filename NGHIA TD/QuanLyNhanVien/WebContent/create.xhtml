@@ -6,7 +6,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputStylesheet library="css" name="add-student-style.css" />
 </h:head>
@@ -20,14 +20,14 @@
 		<h3>Create Staff</h3>
 
 		<h:messages globalOnly="true" />
-		<h:form enctype="multipart/form-data" id="form" style="margin-top: 10px;">
+		<h:form prependId="false" enctype="multipart/form-data" id="form" runat="server" style="margin-top: 10px;">
 			<h:panelGrid columns="3">
 
 				<h:outputLabel>Họ Tên:</h:outputLabel>
 				<h:inputText value="#{nhanVien.name}" id="name" />
 				<h:message for="name" />
 			
-			<h:outputLabel>Năm Sinh:</h:outputLabel>
+				<h:outputLabel>Năm Sinh:</h:outputLabel>
 				<h:inputText value="#{nhanVien.birthDay}" id="birthDay" />
 				<h:message for="birthDay" />
 				
@@ -40,10 +40,15 @@
 					<f:selectItems var="d" value="#{staffController.dsTinhThanh}"
 						itemValue="#{d.code}" itemLabel="#{d.name}" />
 				</h:selectOneMenu>
-	
+			
 			<h:outputLabel>Images:</h:outputLabel>
-				<h:inputFile value="#{staffController.file}"/>
 				
+				<h:inputFile id="imgInp" value="#{staffController.file}" required="true" alt="up"/>
+				<img id="blah" src="#" alt="your image" />
+			
+				
+				
+			
 				
 			</h:panelGrid>
 			
