@@ -6,14 +6,14 @@ import javax.faces.bean.ManagedBean;
 public class NhanVien {
 	private String maNhanVien;
 	private String tenNhanVien;
-	private String namSinh;
+	private int namSinh;
 	private String gioiTinh;
 	private String hoKhau;
 	private String images;
 
 	
 
-	public NhanVien(String maNhanVien, String tenNhanVien, String namSinh, String gioiTinh, String hoKhau, String images) {
+	public NhanVien(String maNhanVien, String tenNhanVien, int namSinh, String gioiTinh, String hoKhau, String images) {
 		super();
 		this.maNhanVien = maNhanVien;
 		this.tenNhanVien = tenNhanVien;
@@ -43,11 +43,11 @@ public class NhanVien {
 		this.tenNhanVien = tenNhanVien;
 	}
 
-	public String getNamSinh() {
+	public int getNamSinh() {
 		return namSinh;
 	}
 
-	public void setNamSinh(String namSinh) {
+	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
 	}
 
