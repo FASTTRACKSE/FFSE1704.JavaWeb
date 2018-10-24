@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity;
+package quanlyhocsinh.entity.LoaiHinhDaoTao;
 
 public class DaoTaoOffline implements LoaiHinhDaoTao {
 

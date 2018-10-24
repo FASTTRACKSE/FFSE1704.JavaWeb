@@ -1,35 +1,44 @@
 package quanlyhocsinh.main;
 
 import quanlyhocsinh.entity.*;
+import quanlyhocsinh.entity.GiangVien.GiangVienEL;
+import quanlyhocsinh.entity.GiangVien.GiangVienIT;
+import quanlyhocsinh.entity.HeDaoTao.HeDaoTaoDaiHan;
+import quanlyhocsinh.entity.HeDaoTao.HeDaoTaoHavardFastTrack;
+import quanlyhocsinh.entity.HeDaoTao.HeDaoTaoNganHanJava;
+import quanlyhocsinh.entity.HeDaoTao.HeDaoTaoNganHanPHP;
+import quanlyhocsinh.entity.LoaiHinhDaoTao.DaoTaoOffline;
+import quanlyhocsinh.entity.LoaiHinhDaoTao.DaoTaoOnline;
+import quanlyhocsinh.entity.MonHoc.LapTrinhCoBan;
+import quanlyhocsinh.entity.MonHoc.LapTrinhJavaCoBan;
+import quanlyhocsinh.entity.MonHoc.LapTrinhJavaWeb;
+import quanlyhocsinh.entity.MonHoc.LapTrinhWebPHPMySQL;
 
 
 public class QuanLy {
 	public static void main(String[] args) {
 		HocSinh hsKyBody = new HocSinh("Trần Xuân Kỳ", 1998, "Núi Thành, Quảng Nam", "0909999000", "kybody@gmail.com",
-				new HeDaoTaoDaiHan(), new DaoTaoOnline());
+				new HeDaoTaoDaiHan(), new DaoTaoOnline(), new GiangVienEL(), new LapTrinhCoBan());
 		HocSinh hsHoQuanHieu = new HocSinh("Hồ Quang Hiếu", 2000, "TP HCM", "0909999999", "hieuho@gmail.com",
-				new HeDaoTaoNganHanJava(), new DaoTaoOnline());
-		HocSinh hsDavidVy = new HocSinh("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com",
-				new HeDaoTaoHavardFastTrack(), new DaoTaoOnline());
-		HocSinh hsNgocKhoa = new HocSinh("Nguyễn Ngọc Khoa", 1999, "ĐN", "0123456789", "KhoaKhoa@gmail.com",
-				new HeDaoTaoNganHanPHP(), new DaoTaoOnline());
+				new HeDaoTaoNganHanJava(), new DaoTaoOffline() , new GiangVienIT(), new LapTrinhJavaCoBan());
+		
 
 		System.out.println("Thông tin sinh viên 1: ");
 		System.out.println("   - " + hsKyBody.getThongTinSinhVien());
 		System.out.println("   - " + hsKyBody.getThongTinHeDaoTao());
+		System.out.println("   - " + hsKyBody.getphuongThucDaoTao());
+		System.out.println("   - " + hsKyBody.getthongTinGiangVien());
+		System.out.println("   - " + hsKyBody.getmonHoc());
 
 		System.out.println("Thông tin sinh viên 2: ");
 		System.out.println("   - " + hsHoQuanHieu.getThongTinSinhVien());
 		System.out.println("   - " + hsHoQuanHieu.getThongTinHeDaoTao());
+		System.out.println("   - " + hsHoQuanHieu.getphuongThucDaoTao());
+		System.out.println("   - " + hsHoQuanHieu.getthongTinGiangVien());
+		System.out.println("   - " + hsHoQuanHieu.getmonHoc());
 
-		System.out.println("Thông tin sinh viên 3: ");
-		System.out.println("   - " + hsDavidVy.getThongTinSinhVien());
-		System.out.println("   - " + hsDavidVy.getThongTinHeDaoTao());
 		
-		System.out.println("Thông tin sinh viên 4: ");
-		System.out.println("   - " + hsNgocKhoa.getThongTinSinhVien());
-		System.out.println("   - " + hsNgocKhoa.getThongTinHeDaoTao());
-		System.out.println("   - " + hsNgocKhoa.getphuongThucDaoTao());
+		
 		
 	}
 

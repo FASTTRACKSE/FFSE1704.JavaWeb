@@ -1,14 +1,14 @@
-package quanlyhocsinh.entity;
+package quanlyhocsinh.entity.HeDaoTao;
 
-public class HeDaoTaoDaiHan implements HeDaoTao {
-	String maHeDaoTao = "FFSEDH";
-	String thongTinHeDaoTao = "16 tháng, sáng 8h30, chiều 13h30";
+public class HeDaoTaoNganHanJava implements HeDaoTao {
+	String maHeDaoTao = "FFSENHJ";
+	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn Java 6 tháng";
 
-	public HeDaoTaoDaiHan() {
+	public HeDaoTaoNganHanJava() {
 		super();
 	}
 
-	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao) {
+	public HeDaoTaoNganHanJava(String maHeDaoTao, String thongTinHeDaoTao) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
 		this.thongTinHeDaoTao = thongTinHeDaoTao;

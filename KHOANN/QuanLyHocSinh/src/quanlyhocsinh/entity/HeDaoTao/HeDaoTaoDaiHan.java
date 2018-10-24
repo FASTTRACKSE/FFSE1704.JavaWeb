@@ -1,14 +1,14 @@
-package quanlyhocsinh.entity;
+package quanlyhocsinh.entity.HeDaoTao;
 
-public class HeDaoTaoLienKetCD implements HeDaoTao {
-	String maHeDaoTao = "FFSECDCN";
-	String thongTinHeDaoTao = "Đào tạo dài hạn + cao đẳng 2 năm trời thương nhớ";
+public class HeDaoTaoDaiHan implements HeDaoTao {
+	String maHeDaoTao = "FFSEDH";
+	String thongTinHeDaoTao = "16 tháng, sáng 8h30, chiều 13h30";
 
-	public HeDaoTaoLienKetCD() {
+	public HeDaoTaoDaiHan() {
 		super();
 	}
 
-	public HeDaoTaoLienKetCD(String maHeDaoTao, String thongTinHeDaoTao) {
+	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
 		this.thongTinHeDaoTao = thongTinHeDaoTao;

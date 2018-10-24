@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity;
+package quanlyhocsinh.entity.HeDaoTao;
 
 public class HeDaoTaoHavardFastTrack implements HeDaoTao {
 
