@@ -5,4 +5,4 @@ Java EE, JSF, Spring MVC, Hibernate, Spring Security
  
  2 [Quản Lý Nhân Viên JSF](https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/tree/master/KHOANN/quanlynhanvien)
 
- 3 [Quản Lý Học Sinh DI](https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/tree/master/KHOANN/QuanLyHocSinh/src/quanlyhocsinh)
+ 3 [Quản Lý Học Sinh ĐI](https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/tree/master/KHOANN/QuanLyHocSinh/src/quanlyhocsinh)
