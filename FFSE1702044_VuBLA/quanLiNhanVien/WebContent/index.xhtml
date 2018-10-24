@@ -32,16 +32,19 @@
          </h:column>
 			<h:column>
 				<f:facet name="header">Giới Tính</f:facet>
-           <h:outputFormat rendered="#{nv.gender==0}" value="Nam"/>
-       		 <h:outputFormat rendered="#{nv.gender==1}" value="Nữ"/>
-         </h:column>
+				<h:outputFormat rendered="#{nv.gender==0}" value="Nam" />
+				<h:outputFormat rendered="#{nv.gender==1}" value="Nữ" />
+			</h:column>
 			<h:column>
-				<f:facet name="header"> Địa chỉ </f:facet>
-		  #{nv.tenTinh}
-         </h:column>
+				<f:facet name="header"> Image </f:facet>
+				<h:graphicImage width="70" height="70" rendered="#{nv.image!=null}"
+					value="images/#{nv.image}" />
+				<h:graphicImage width="70" height="70" rendered="#{nv.image==null}"
+					value="images/anhnull.jpg" />
+			</h:column>
 			<h:column>
-				<f:facet name="header">Image</f:facet>  
-           #{nv.image}
+				<f:facet name="header">Địa Chỉ</f:facet>  
+           #{nv.tenTinh}
          </h:column>
 			<h:column>
 				<f:facet name="header">Chức năng</f:facet>

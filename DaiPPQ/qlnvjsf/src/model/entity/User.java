@@ -9,26 +9,22 @@ public class User {
 
 	int id;
 
-	@NotNull(message = "Tên đăng nhập không được để trống")
-	@Size(min = 1, message = "Tên không được để trống")
-	String userName;
-	String passWord;
+	@NotNull(message = " username không được để trống")
+	String username;
+	
+	@NotNull(message = " password không được để trống")
+	String password;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String userName, String passWord) {
+	public User(int id, String username, String password) {
 		super();
 		this.id = id;
-		this.userName = userName;
-		this.passWord = passWord;
-	}
-
-	public User(String userName, String passWord) {
-		this.userName = userName;
-		this.passWord = passWord;
+		this.username = username;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -39,19 +35,19 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

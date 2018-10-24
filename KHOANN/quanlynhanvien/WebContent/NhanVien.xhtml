@@ -48,7 +48,8 @@
 
 				</h:column>
 				<h:column>
-					<f:facet name="header">Ảnh</f:facet>#{sv.anh}
+					<f:facet name="header">Ảnh</f:facet><h:graphicImage rendered="#{sv.anh!=null}" width="50px"
+					value="images/#{sv.anh}" />
 
 				</h:column>
 

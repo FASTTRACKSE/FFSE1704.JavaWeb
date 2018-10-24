@@ -1,17 +1,17 @@
-package model.dao;
+package ffse1704.jsfstaff.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.util.ConnectionFactory;
+import ffse1704.jsfstaff.util.ConnectionFactory;
 
-public class LoginDAO {
+public class LoGinDAO {
 	private Connection connection;
 	private PreparedStatement preparedStatement;
 
-	public LoginDAO() {
+	public LoGinDAO() {
 		super();
 	}
 
@@ -40,14 +40,14 @@ public class LoginDAO {
 	}
 
 	
-	public int checkLogin(String username,String password) {
+	public int checkLogin(String userName,String passWord) {
 		int kq=0;
-		String query = "SELECT COUNT(*) FROM user WHERE username=? and password=?";
+		String query = "SELECT COUNT(*) FROM member WHERE username=? and password=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, username);
-			preparedStatement.setString(2, password);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, passWord);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
