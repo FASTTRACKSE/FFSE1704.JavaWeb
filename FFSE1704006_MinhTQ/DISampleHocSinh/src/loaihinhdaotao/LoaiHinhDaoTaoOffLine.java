@@ -1,6 +1,4 @@
-package quanlyhocsinh.entity;
-
-import hedaotao.LoaiHinhDaoTao;
+package loaihinhdaotao;
 
 public class LoaiHinhDaoTaoOffLine implements LoaiHinhDaoTao {
 

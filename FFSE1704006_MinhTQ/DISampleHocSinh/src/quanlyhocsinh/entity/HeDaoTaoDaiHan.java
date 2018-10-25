@@ -1,11 +1,25 @@
 package quanlyhocsinh.entity;
 
-import hedaotao.HeDaoTao;
+import java.util.List;
+
+import monhoc.MonHoc;
 
 public class HeDaoTaoDaiHan implements HeDaoTao {
 	String maHeDaoTao = "FFSEDTDH";
 	String thongTinHeDaoTao = "Đào tạo dài hạn 16 tháng ,full các môn lập trình không che ";
-	
+	List<MonHoc> danhsachmonhoc;
+
+	public HeDaoTaoDaiHan() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao, List<MonHoc> danhsachmonhoc) {
+		super();
+		this.maHeDaoTao = maHeDaoTao;
+		this.thongTinHeDaoTao = thongTinHeDaoTao;
+		this.danhsachmonhoc = danhsachmonhoc;
+	}
 
 	public String getMaHeDaoTao() {
 		return maHeDaoTao;
@@ -23,19 +37,15 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
+	public List<MonHoc> getDanhsachmonhoc() {
+		return danhsachmonhoc;
+	}
+
+	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
+		this.danhsachmonhoc = danhsachmonhoc;
+	}
+
 	
-
-	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-		
-	}
-
-	public HeDaoTaoDaiHan() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	
 }
