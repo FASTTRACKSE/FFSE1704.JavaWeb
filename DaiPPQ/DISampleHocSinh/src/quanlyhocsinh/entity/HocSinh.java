@@ -10,34 +10,34 @@ public class HocSinh {
 	String dienThoai;
 	String email;
 
-	HeDaoTao heDaoTao;
 	LoaiHinhDaoTao loaiHinhDaoTao;
+	HeDaoTao heDaoTao;	
 
 	public String getThongTinSinhVien() {
 		return hoTen + " - " + namSinh + " - " + diaChi + " - " + dienThoai + " - " + email;
-	}
-
-	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao();
 	}
 	
 	public String getThongTinLoaiHinhDaoTao() {
 		return loaiHinhDaoTao.getMaLoaiHinhDaoTao() + " - " + loaiHinhDaoTao.getThongTinLoaiHinhDaoTao();
 	}
 
+	public String getThongTinHeDaoTao() {
+		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao();
+	}
+
 	public HocSinh() {
 		super();
 	}
 
-	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao, LoaiHinhDaoTao loaiHinhDaoTao) {
+	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, LoaiHinhDaoTao loaiHinhDaoTao, HeDaoTao heDaoTao) {
 		super();
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;
 		this.diaChi = diaChi;
 		this.dienThoai = dienThoai;
 		this.email = email;
-		this.heDaoTao = heDaoTao;
 		this.loaiHinhDaoTao = loaiHinhDaoTao;
+		this.heDaoTao = heDaoTao;	
 	}
 
 	public String getHoTen() {

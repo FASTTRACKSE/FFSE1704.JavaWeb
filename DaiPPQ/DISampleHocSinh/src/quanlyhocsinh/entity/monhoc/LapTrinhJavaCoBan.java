@@ -1,17 +1,25 @@
 package quanlyhocsinh.entity.monhoc;
 
-public class LapTrinhJavaCoBan implements MonHoc {
+import quanlyhocsinh.entity.giangvien.*;
 
-	@Override
-	public String getMaMonHoc() {
-		// TODO Auto-generated method stub
-		return "LP#5";
+public class LapTrinhJavaCoBan implements MonHoc {
+	GiangVien giangVien;
+	
+	public LapTrinhJavaCoBan(GiangVien giangVien) {
+		super();
+		this.giangVien = giangVien;
 	}
 
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập trình Java Cơ bản";
+		return "Lập Trình Java Cơ Bản";
+	}
+
+	@Override
+	public String getThongTinGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getThongTinGiangVien();
 	}
 
 }
