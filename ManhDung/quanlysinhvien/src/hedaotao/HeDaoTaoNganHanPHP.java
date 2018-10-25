@@ -1,9 +1,13 @@
-package entity;
+package hedaotao;
+
+import java.util.List;
+
+import monhoc.MonHoc;
 
 public class HeDaoTaoNganHanPHP implements HeDaoTao {
 	String maHeDaoTao = "FFSENHP";
 	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
-
+	List<MonHoc> danhsachmonhoc;
 	public HeDaoTaoNganHanPHP() {
 		super();
 	}
@@ -14,9 +18,8 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
-	public String getTenMonHoc() {
-		return " o Lập trình Web frontend"
-				+ " o Lập trình Web PHP & MySQL";
+	public void getTenMonHoc() {
+		
 	}
 	public String getMaHeDaoTao() {
 		return maHeDaoTao;
@@ -30,5 +33,13 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 	}
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	}
+	
+	public List<MonHoc> getDanhsachmonhoc() {
+		return danhsachmonhoc;
+	}
+
+	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
+		this.danhsachmonhoc = danhsachmonhoc;
 	}
 }

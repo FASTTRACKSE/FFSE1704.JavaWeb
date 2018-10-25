@@ -1,4 +1,4 @@
-package entity;
+package lotrinhhoc;
 
 public class LoTrinhHocOffline implements LoTrinhHoc {
 	@Override

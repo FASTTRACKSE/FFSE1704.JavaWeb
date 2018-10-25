@@ -1,9 +1,13 @@
-package entity;
+package hedaotao;
+
+import java.util.List;
+
+import monhoc.MonHoc;
 
 public class HeDaoTaoDaiHan implements HeDaoTao {
 	String maHeDaoTao = "FFSEDH";
 	String thongTinHeDaoTao = "Đào tạo dài hạn 16 tháng full các môn học";
-
+	List<MonHoc> danhsachmonhoc;
 	public HeDaoTaoDaiHan() {
 		super();
 	}
@@ -14,15 +18,14 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
-	public String getTenMonHoc() {
-		return " Tin học văn phòng" 
-				+ " Lập trình cơ bản"
-				+ " Lập trình Web frontend "
-				+ " Lập trình Web PHP & MySQL "
-				+ " Lập trình Java cơ bản "
-				+ " Lập trình Java Web "
-				+ " Quy trình dự án ";
-				
+	
+	
+	public List<MonHoc> getDanhsachmonhoc() {
+		return danhsachmonhoc;
+	}
+
+	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
+		this.danhsachmonhoc = danhsachmonhoc;
 	}
 	public String getMaHeDaoTao() {
 		return maHeDaoTao;
@@ -37,4 +40,5 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
+	
 }

@@ -1,9 +1,13 @@
-package entity;
+package hedaotao;
+
+import java.util.List;
+
+import monhoc.MonHoc;
 
 public class HeDaoTaoNganHanJava implements HeDaoTao {
 	String maHeDaoTao = "FFSENHJ";
 	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn Java 6 tháng";
-
+	List<MonHoc> danhsachmonhoc;
 	public HeDaoTaoNganHanJava() {
 		super();
 	}
@@ -14,9 +18,8 @@ public class HeDaoTaoNganHanJava implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 	
-	public String getTenMonHoc() {
-		return " o Lập trình Java cơ bản"
-				+ " o Lập trình Java Web";
+	public void getTenMonHoc() {
+		
 	}
 
 	public String getMaHeDaoTao() {
@@ -31,5 +34,13 @@ public class HeDaoTaoNganHanJava implements HeDaoTao {
 	}
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	}
+	
+	public List<MonHoc> getDanhsachmonhoc() {
+		return danhsachmonhoc;
+	}
+
+	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
+		this.danhsachmonhoc = danhsachmonhoc;
 	}
 }

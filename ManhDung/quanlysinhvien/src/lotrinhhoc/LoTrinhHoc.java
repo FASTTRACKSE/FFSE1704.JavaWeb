@@ -1,4 +1,4 @@
-package entity;
+package lotrinhhoc;
 
 public interface LoTrinhHoc {
   String getLoTrinhHoc();
