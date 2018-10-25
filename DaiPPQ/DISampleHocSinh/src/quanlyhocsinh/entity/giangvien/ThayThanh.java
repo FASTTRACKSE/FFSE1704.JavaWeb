@@ -5,8 +5,7 @@ public class ThayThanh implements GiangVien {
 	@Override
 	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return "Giảng viên: Cao Le Thanh \n"
-				+ " 	Email: ThanhCL@gmail.com";
+		return "Cao Le Thanh";
 	}
 
 	@Override
