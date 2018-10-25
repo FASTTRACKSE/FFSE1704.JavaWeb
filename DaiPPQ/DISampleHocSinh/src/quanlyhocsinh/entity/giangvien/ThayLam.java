@@ -3,10 +3,15 @@ package quanlyhocsinh.entity.giangvien;
 public class ThayLam implements GiangVien {
 
 	@Override
-	public String getThongTinGiangVien() {
+	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return "Giảng viên: Nguyen Thanh Lam \n"
-				+ " 	Email: LamNT@gmail.com";
+		return "Nguyen Thanh Lam";
+	}
+	
+	@Override
+	public String getEmailGiangVien() {
+		// TODO Auto-generated method stub
+		return "LamNT@gmail.com";
 	}
 
 }

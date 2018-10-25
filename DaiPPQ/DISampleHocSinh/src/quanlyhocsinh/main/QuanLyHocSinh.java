@@ -38,9 +38,9 @@ public class QuanLyHocSinh {
 		heDaoTaoNganHanPHP.setDsMonHoc(dtNganHanPHP);
 		heDaoTaoNganHanJava.setDsMonHoc(dtNganHanJava);
 		
-		HocSinh hsky = new HocSinh("Trần Xuân Kỳ", 1998, "Núi Thành, Quảng Nam", "0909999000", "kybody@gmail.com", new DaoTaoOffline(), heDaoTaoDaiHan);
-		HocSinh hsHoQuanHieu = new HocSinh("Hồ Quang Hiếu", 2000, "TP HCM", "0909999999", "hieuho@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanJava);
-		HocSinh hsDavidVy = new HocSinh("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanPHP);
+		SinhVien hsky = new SinhVien("Trần Xuân Kỳ", 1998, "Núi Thành, Quảng Nam", "0909999000", "kybody@gmail.com", new DaoTaoOffline(), heDaoTaoDaiHan);
+		SinhVien hsHoQuanHieu = new SinhVien("Hồ Quang Hiếu", 2000, "TP HCM", "0909999999", "hieuho@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanJava);
+		SinhVien hsDavidVy = new SinhVien("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanPHP);
 		
 		System.out.println("Thông tin sinh viên 1: ");
 		System.out.println("   - " + hsky.getThongTinSinhVien());
@@ -48,7 +48,7 @@ public class QuanLyHocSinh {
 		System.out.println("   - " + hsky.getThongTinHeDaoTao());
 		System.out.println("   - Môn Học: ");
 		for (MonHoc monHoc : hsky.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getThongTinGiangVien());
+			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
 		}
 		
 		System.out.println(" --------------------------------------------------------------------------------------------- ");
@@ -58,7 +58,7 @@ public class QuanLyHocSinh {
 		System.out.println("   - " + hsHoQuanHieu.getThongTinHeDaoTao());
 		System.out.println("   - Môn Học: ");
 		for (MonHoc monHoc : hsky.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getThongTinGiangVien());
+			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getTenGiangVien());
 		}
 		
 		System.out.println(" --------------------------------------------------------------------------------------------- ");
@@ -68,7 +68,7 @@ public class QuanLyHocSinh {
 		System.out.println("   - " + hsDavidVy.getThongTinHeDaoTao());
 		System.out.println("   - Môn Học: ");
 		for (MonHoc monHoc : hsky.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getThongTinGiangVien());
+			System.out.println("     * " + monHoc.getThongTinMonHoc() + " \n 	" + monHoc.getTenGiangVien());
 		}
 	}
 

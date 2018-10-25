@@ -3,7 +3,7 @@ package quanlyhocsinh.entity;
 import quanlyhocsinh.entity.hedaotao.HeDaoTao;
 import quanlyhocsinh.entity.loaihinhdaotao.LoaiHinhDaoTao;
 
-public class HocSinh {
+public class SinhVien {
 	String hoTen;
 	int namSinh;
 	String diaChi;
@@ -25,11 +25,11 @@ public class HocSinh {
 		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao();
 	}
 
-	public HocSinh() {
+	public SinhVien() {
 		super();
 	}
 
-	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, LoaiHinhDaoTao loaiHinhDaoTao, HeDaoTao heDaoTao) {
+	public SinhVien(String hoTen, int namSinh, String diaChi, String dienThoai, String email, LoaiHinhDaoTao loaiHinhDaoTao, HeDaoTao heDaoTao) {
 		super();
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;

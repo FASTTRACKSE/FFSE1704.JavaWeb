@@ -17,9 +17,14 @@ public class LapTrinhJavaCoBan implements MonHoc {
 	}
 
 	@Override
-	public String getThongTinGiangVien() {
+	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return giangVien.getThongTinGiangVien();
+		return giangVien.getTenGiangVien();
 	}
-
+	
+	@Override
+	public String getEmailGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getEmailGiangVien();
+	}
 }
