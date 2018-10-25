@@ -12,26 +12,29 @@ import quanlyhocsinh.entity.giangvien.*;
 public class QuanLyHocSinh {
 
 	public static void main(String[] args) {
+		GiangVien gv1 = new GiangVien("Cao Lê Thành", "ThanhCL@fasttrack.edu.vn");
+		GiangVien gv2 = new GiangVien("Trần Minh Thắng", "ThangTM@fasttrack.edu.vn");
+		GiangVien gv3 = new GiangVien("Nguyễn Thành Lâm", "LamNT@fasttrack.edu.vn");
 		
 		// Add ds mom hoc vao list dao tao dai han
 		List<MonHoc> dtDaiHan = new ArrayList<MonHoc>();
-		dtDaiHan.add(new TinHocVanPhong(new ThayThanh()));
-		dtDaiHan.add(new LapTrinhCoBan(new ThayThanh()));
-		dtDaiHan.add(new LapTrinhWebFrontend(new ThayLam()));
-		dtDaiHan.add(new LapTrinhWebPHPMySQL(new ThayThang()));
-		dtDaiHan.add(new LapTrinhJavaCoBan(new ThayThang()));
-		dtDaiHan.add(new LapTrinhJavaWeb(new ThayThanh()));
-		dtDaiHan.add(new QuyTrinhDuAn(new ThayThang()));
+		dtDaiHan.add(new TinHocVanPhong(gv1));
+		dtDaiHan.add(new LapTrinhCoBan(gv3));
+		dtDaiHan.add(new LapTrinhWebFrontend(gv3));
+		dtDaiHan.add(new LapTrinhWebPHPMySQL(gv2));
+		dtDaiHan.add(new LapTrinhJavaCoBan(gv2));
+		dtDaiHan.add(new LapTrinhJavaWeb(gv1));
+		dtDaiHan.add(new QuyTrinhDuAn(gv1));
 		
 		// Add ds mom hoc vao list dao tao ngan han PHP
 		List<MonHoc> dtNganHanPHP = new ArrayList<MonHoc>();
-		dtNganHanPHP.add(new LapTrinhWebFrontend(new ThayLam()));
-		dtNganHanPHP.add(new LapTrinhWebPHPMySQL(new ThayThang()));
+		dtDaiHan.add(new LapTrinhWebFrontend(gv3));
+		dtDaiHan.add(new LapTrinhWebPHPMySQL(gv2));
 		
 		// Add ds mom hoc vao list dao tao ngan han Java
 		List<MonHoc> dtNganHanJava = new ArrayList<MonHoc>();
-		dtNganHanJava.add(new LapTrinhJavaCoBan(new ThayThang()));
-		dtNganHanJava.add(new LapTrinhJavaWeb(new ThayThanh()));
+		dtDaiHan.add(new LapTrinhJavaCoBan(gv2));
+		dtDaiHan.add(new LapTrinhJavaWeb(gv1));
 		
 		
 		HeDaoTaoDaiHan heDaoTaoDaiHan = new HeDaoTaoDaiHan();
@@ -44,7 +47,7 @@ public class QuanLyHocSinh {
 		
 		SinhVien sv1 = new SinhVien("Trần Xuân Kỳ", 1998, "Núi Thành, Quảng Nam", "0909999000", "kybody@gmail.com", new DaoTaoOffline(), heDaoTaoDaiHan);
 		SinhVien sv2 = new SinhVien("Hồ Quang Hiếu", 2000, "TP HCM", "0909999999", "hieuho@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanJava);
-		SinhVien sv3 = new SinhVien("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com", new DaoTaoOffline(), heDaoTaoNganHanPHP);
+		SinhVien sv3 = new SinhVien("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com", new DaoTaoOnline(), heDaoTaoNganHanPHP);
 		
 		System.out.println("Thông tin sinh viên 1: ");
 		System.out.println("	- " + sv1.getThongTinSinhVien());
@@ -81,7 +84,6 @@ public class QuanLyHocSinh {
 		
 		System.out.println(" --------------------------------------------------------------------------------------------- ");
 		System.out.println("Thông tin sinh viên 3: ");
-		System.out.println("Thông tin sinh viên 2: ");
 		System.out.println("	- " + sv3.getThongTinSinhVien());
 		
 		System.out.println("	- Loại Hình Đào Tạo: " + sv3.getLoaiHinhDaoTao().getThongTinLoaiHinhDaoTao());
