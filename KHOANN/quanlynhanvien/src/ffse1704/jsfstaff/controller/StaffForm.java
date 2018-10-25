@@ -17,7 +17,6 @@ import ffse1704.jsfstaff.DAO.StaffDAO;
 import ffse1704.jsfstaff.entity.Staff;
 import ffse1704.jsfstaff.entity.TinhThanh;
 
-
 @ManagedBean
 @SessionScoped
 public class StaffForm {
@@ -108,7 +107,7 @@ public class StaffForm {
 		upload();
 		st.setAnh(fileName);
 		staffDAO.addNewSinhVien(st);
-		
+
 		loadStaffListByPage();
 
 		return "NhanVien?faces-redirect=true";
@@ -158,8 +157,6 @@ public class StaffForm {
 	private String fileName;
 	private long fileSize;
 
-	
-
 	public Part getFile() {
 		return file;
 	}
@@ -182,7 +179,7 @@ public class StaffForm {
 		// get file's size
 		fileSize = file.getSize();
 		// get fullpath of opload folder in web root
-		String dirPath= "C:/Users/PC/Pictures";
+		String dirPath = "C:/Users/PC/Pictures";
 		// write file to upload folder
 		File path = new File(dirPath);
 		if (!path.exists()) {

@@ -92,7 +92,7 @@ public class StaffDAO {
 	}
 
 	public void editStaff(Staff st) {
-		String query = "UPDATE `QuanLiNhanVien` SET `name`=?,`namsinh`=?,`provinceid`=?,`gender`=? WHERE id=?";
+		String query = "UPDATE `QuanLiNhanVien` SET `name`=?,`namsinh`=?,`provinceid`=?,`gender`=? ,image=? WHERE id=?";
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();
 			preparedStatement = connection.prepareStatement(query);
@@ -100,7 +100,8 @@ public class StaffDAO {
 			preparedStatement.setInt(2, st.getNamSinh());
 			preparedStatement.setInt(3, st.getDiaChi());
 			preparedStatement.setInt(4, st.getGender());
-			preparedStatement.setInt(5, st.getId());
+			preparedStatement.setString(5, st.getImage());
+			preparedStatement.setInt(6, st.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
