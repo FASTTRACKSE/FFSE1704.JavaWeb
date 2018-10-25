@@ -1,32 +1,35 @@
 package quanlyhocsinh.entity.HeDaoTao;
 
+import java.util.List;
+
+import quanlyhocsinh.entity.MonHoc.MonHoc;
+
 public class HeDaoTaoDaiHan implements HeDaoTao {
-	String maHeDaoTao = "FFSEDH";
-	String thongTinHeDaoTao = "16 tháng, sáng 8h30, chiều 13h30";
+	List<MonHoc> danhSachMonHoc;
 
-	public HeDaoTaoDaiHan() {
-		super();
+	public List<MonHoc> getDsMonHoc() {
+		return danhSachMonHoc;
 	}
 
-	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	public void setDsMonHoc(List<MonHoc> danhSachMonHoc) {
+		this.danhSachMonHoc = danhSachMonHoc;
+	}
+	
+	@Override
+	public List<MonHoc> getDanhSachMonHoc() {
+		// TODO Auto-generated method stub
+		return danhSachMonHoc;
 	}
 
+	@Override
 	public String getMaHeDaoTao() {
-		return maHeDaoTao;
+		return "FFSEDH";
 	}
 
-	public void setMaHeDaoTao(String maHeDaoTao) {
-		this.maHeDaoTao = maHeDaoTao;
-	}
-
+	@Override
 	public String getThongTinHeDaoTao() {
-		return thongTinHeDaoTao;
+		return "16 tháng, sáng 8h30, chiều 13h30";
 	}
 
-	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-	}
+	
 }

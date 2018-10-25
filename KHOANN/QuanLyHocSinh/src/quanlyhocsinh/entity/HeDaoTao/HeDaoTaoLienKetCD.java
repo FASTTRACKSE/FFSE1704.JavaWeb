@@ -1,32 +1,24 @@
 package quanlyhocsinh.entity.HeDaoTao;
 
+import java.util.List;
+
+import quanlyhocsinh.entity.MonHoc.MonHoc;
+
 public class HeDaoTaoLienKetCD implements HeDaoTao {
-	String maHeDaoTao = "FFSECDCN";
-	String thongTinHeDaoTao = "Đào tạo dài hạn + cao đẳng 2 năm trời thương nhớ";
-
-	public HeDaoTaoLienKetCD() {
-		super();
-	}
-
-	public HeDaoTaoLienKetCD(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-	}
-
+	
+	@Override
 	public String getMaHeDaoTao() {
-		return maHeDaoTao;
+		return "FFSECDCN";
 	}
 
-	public void setMaHeDaoTao(String maHeDaoTao) {
-		this.maHeDaoTao = maHeDaoTao;
-	}
-
+	@Override
 	public String getThongTinHeDaoTao() {
-		return thongTinHeDaoTao;
+		return "Đào tạo dài hạn + cao đẳng 2 năm trời thương nhớ";
 	}
 
-	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	@Override
+	public List<MonHoc> getDanhSachMonHoc() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

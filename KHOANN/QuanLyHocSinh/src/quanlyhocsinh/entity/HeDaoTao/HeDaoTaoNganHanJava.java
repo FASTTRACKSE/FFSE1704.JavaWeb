@@ -1,32 +1,34 @@
 package quanlyhocsinh.entity.HeDaoTao;
 
+import java.util.List;
+
+import quanlyhocsinh.entity.MonHoc.MonHoc;
+
 public class HeDaoTaoNganHanJava implements HeDaoTao {
-	String maHeDaoTao = "FFSENHJ";
-	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn Java 6 tháng";
 
-	public HeDaoTaoNganHanJava() {
-		super();
-	}
-
-	public HeDaoTaoNganHanJava(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-	}
-
+	@Override
 	public String getMaHeDaoTao() {
-		return maHeDaoTao;
+		return "FFSENHJ";
 	}
 
-	public void setMaHeDaoTao(String maHeDaoTao) {
-		this.maHeDaoTao = maHeDaoTao;
-	}
-
+	@Override
 	public String getThongTinHeDaoTao() {
-		return thongTinHeDaoTao;
+		return "Đào tạo dài hạn ngắn hạn Java 6 tháng";
 	}
 
-	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	List<MonHoc> danhSachMonHoc;
+
+	public List<MonHoc> getDsMonHoc() {
+		return danhSachMonHoc;
+	}
+
+	public void setDsMonHoc(List<MonHoc> danhSachMonHoc) {
+		this.danhSachMonHoc = danhSachMonHoc;
+	}
+
+	@Override
+	public List<MonHoc> getDanhSachMonHoc() {
+		// TODO Auto-generated method stub
+		return danhSachMonHoc;
 	}
 }
