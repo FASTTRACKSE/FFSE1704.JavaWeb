@@ -14,7 +14,7 @@ public class SinhVien {
 
 	public SinhVien(String id, String name, String age, String gender, String address) {
 		this.id = id;
-		this.name = name;
+		this.name = name;	
 		this.age = age;
 		this.gender = gender;
 		this.address = address;

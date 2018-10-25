@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Edit Staff</title>
+</h:head>
+<body>
+	<f:view>
+		<h:form enctype="multipart/form-data">
+			<h1>Edit</h1>
+			<br />
+
+			<p>TenNV</p>
+			<h:inputText value="#{edit.tenNhanVien}" />
+			<br />
+
+			<p>NamSinh</p>
+			<h:inputText value="#{edit.namSinh}" />
+			<br />
+
+			<p>GioiTinh</p>
+			<h:selectOneRadio value="#{edit.gioiTinh}">
+				<f:selectItem itemValue="0" itemLabel="Nam" />
+				<f:selectItem itemValue="1" itemLabel="Nu" />
+			</h:selectOneRadio>
+			<br />
+
+			<p>HoKhau</p>
+
+			<h:selectOneMenu value="#{edit.hoKhau}" style="width:100px">
+				<f:selectItems var="d" value="#{staffController.dsTinhThanh}"
+						itemValue="#{d.maTinh}" itemLabel="#{d.tenTinh}" />
+			</h:selectOneMenu>
+			<br />
+
+			<p>HinhAnh</p>
+			<h:inputFile value="#{edit.hinhAnh}" />
+			<br />
+			<br />
+			<h:commandButton value="Update" action="#{staffController.updateStaff(edit)}" />
+
+		</h:form>
+	</f:view>
+</body>
+</html>

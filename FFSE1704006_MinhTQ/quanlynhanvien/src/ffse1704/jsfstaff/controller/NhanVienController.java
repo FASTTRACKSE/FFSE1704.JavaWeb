@@ -23,7 +23,7 @@ import ffse1704.jsfstaff.dao.NhanVienDAO;
 @ManagedBean
 @SessionScoped
 public class NhanVienController {
-	final String dirPath = "E://file//images//Zalo";
+	final String dirPath = "D:\\images";
 	
 
 	///// listNhanVien and DAO
@@ -245,7 +245,7 @@ public class NhanVienController {
 			// get file's size
 			fileSize = file.getSize();
 			// get fullpath of opload folder in web root
-			String dirPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/upload");
+			
 			File fileDir = new File(dirPath);
 			if (!fileDir.exists()) {
 				fileDir.mkdirs();
