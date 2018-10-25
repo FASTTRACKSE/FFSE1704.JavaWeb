@@ -1,16 +1,14 @@
 package ffse1704.jsf.entity;
 
-import ffse1704.jsf.giangvien.GiangVien;
+public class GiangVien {
+	private String tenGiangVien;
+	private String emailGiangVien;
 
-public class GiangVienThanh implements GiangVien {
-	private String tenGiangVien = "Cao Lê Thành";
-	private String emailGiangVien = "ThanhCL@fasttrack.edu.vn";
-
-	public GiangVienThanh() {
+	public GiangVien() {
 		super();
 	}
 
-	public GiangVienThanh(String tenGiangVien, String emailGiangVien) {
+	public GiangVien(String tenGiangVien, String emailGiangVien) {
 		super();
 		this.tenGiangVien = tenGiangVien;
 		this.emailGiangVien = emailGiangVien;
@@ -31,5 +29,4 @@ public class GiangVienThanh implements GiangVien {
 	public void setEmailGiangVien(String emailGiangVien) {
 		this.emailGiangVien = emailGiangVien;
 	}
-
 }

@@ -1,7 +1,7 @@
 package ffse1704.jsf.entity;
 
 import ffse1704.jsf.entity.monhoc.MonHoc;
-import ffse1704.jsf.giangvien.GiangVien;
+import ffse1704.jsf.entity.GiangVien;
 
 public class MonTinHocVanPhong implements MonHoc {
 	private String maMonHoc = "LP #0";

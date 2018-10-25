@@ -3,6 +3,7 @@ package ffse1704.jsf.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import ffse1704.jsf.entity.GiangVien;
 import ffse1704.jsf.entity.GiangVienLam;
 import ffse1704.jsf.entity.GiangVienThang;
 import ffse1704.jsf.entity.GiangVienThanh;
@@ -25,23 +26,26 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		GiangVien thanhCL = new GiangVien("Cao Lê Thành", "ThanhCL@fasttrack.edu.vn");
+		GiangVien lamNT = new GiangVien("Nguyễn Thành Lâm", "LamNT@fasttrack.edu.vn");
+		GiangVien thangTM = new GiangVien("Trần Minh Thắng", "ThangTM@fasttrack.edu.vn");
 		
 		List<MonHoc> dtDaiHan = new ArrayList<MonHoc>();
-		dtDaiHan.add(new MonTinHocVanPhong( new GiangVienThanh()));
-		dtDaiHan.add(new MonLapTrinhCoBan( new GiangVienThanh()));
-		dtDaiHan.add(new MonLapTrinhFrontend(new GiangVienLam()));
-		dtDaiHan.add(new MonLapTrinhPHPMySQL( new GiangVienThang()));
-		dtDaiHan.add(new MonLapTrinhJavaCoBan(new GiangVienThang()));
-		dtDaiHan.add(new MonLapTrinhJavaWeb( new GiangVienThanh()));
-		dtDaiHan.add(new MonQuyTrinhDuAn( new GiangVienThang()));
+		dtDaiHan.add(new MonTinHocVanPhong( thanhCL));
+		dtDaiHan.add(new MonLapTrinhCoBan( thanhCL));
+		dtDaiHan.add(new MonLapTrinhFrontend(lamNT));
+		dtDaiHan.add(new MonLapTrinhPHPMySQL( lamNT));
+		dtDaiHan.add(new MonLapTrinhJavaCoBan(thangTM));
+		dtDaiHan.add(new MonLapTrinhJavaWeb( thanhCL));
+		dtDaiHan.add(new MonQuyTrinhDuAn( thanhCL));
 		
 		List<MonHoc> dtNganHanPHP = new ArrayList<MonHoc>();
-		dtNganHanPHP.add(new MonLapTrinhFrontend( new GiangVienLam()));
-		dtNganHanPHP.add(new MonLapTrinhPHPMySQL( new GiangVienThang()));
+		dtNganHanPHP.add(new MonLapTrinhFrontend( lamNT));
+		dtNganHanPHP.add(new MonLapTrinhPHPMySQL( lamNT));
 		
 		List<MonHoc> dtNganHanJava = new ArrayList<MonHoc>();
-		dtNganHanJava.add(new MonLapTrinhJavaCoBan(new GiangVienThang()));
-		dtNganHanJava.add(new MonLapTrinhJavaWeb(new GiangVienThanh()));
+		dtNganHanJava.add(new MonLapTrinhJavaCoBan(thangTM));
+		dtNganHanJava.add(new MonLapTrinhJavaWeb(thanhCL));
 		
 		HeDaoTaoDaiHan heDaoTaoDaiHan = new HeDaoTaoDaiHan();
 		HeDaoTaoPHPCapToc heDaoTaoPHPCapToc = new HeDaoTaoPHPCapToc();
