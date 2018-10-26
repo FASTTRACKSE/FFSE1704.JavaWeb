@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ffse1704.jsf.entity.GiangVien;
-import ffse1704.jsf.entity.GiangVienLam;
-import ffse1704.jsf.entity.GiangVienThang;
-import ffse1704.jsf.entity.GiangVienThanh;
 import ffse1704.jsf.entity.HeDaoTaoDaiHan;
 import ffse1704.jsf.entity.HeDaoTaoJavaCapToc;
 import ffse1704.jsf.entity.HeDaoTaoPHPCapToc;

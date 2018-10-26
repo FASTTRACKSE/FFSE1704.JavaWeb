@@ -1,14 +1,12 @@
-package ffse1704.jsf.entity;
+package entity;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import java.util.List;
 
-import ffse1704.jsf.entity.hedaotao.HeDaoTao;
-import ffse1704.jsf.entity.loaihinhdaotao.LoaiHinhDaoTao;
-import ffse1704.jsf.entity.monhoc.MonHoc;
+import ffse1704.spring.entity.hedaotao.HeDaoTao;
+import ffse1704.spring.entity.loaihinhdaotao.LoaiHinhDaoTao;
+import ffse1704.spring.entity.monhoc.MonHoc;
 
-@ManagedBean
-@RequestScoped
+
 public class SinhVien {
 	private String id;
 	private String hoTenSinhVien;
@@ -18,16 +16,23 @@ public class SinhVien {
 	private String emailSinhVien;
 	HeDaoTao heDaoTao;
 	LoaiHinhDaoTao loaiHinhDaoTao;
+	
+
+
+	public LoaiHinhDaoTao getLoaiHinhDaoTao() {
+		return loaiHinhDaoTao;
+	}
+
+	public void setLoaiHinhDaoTao(LoaiHinhDaoTao loaiHinhDaoTao) {
+		this.loaiHinhDaoTao = loaiHinhDaoTao;
+	}
 
 	public SinhVien() {
 		super();
 	}
 
-	
-	
-	
 	public SinhVien(String id, String hoTenSinhVien, String namSinhSinhVien, String diaChiSinhVien, String sdtSinhVien,
-			String emailSinhVien, HeDaoTao heDaoTao, LoaiHinhDaoTao loaiHinhDaoTao)  {
+			String emailSinhVien, HeDaoTao heDaoTao, LoaiHinhDaoTao loaiHinhDaoTao) {
 		super();
 		this.id = id;
 		this.hoTenSinhVien = hoTenSinhVien;
@@ -40,6 +45,9 @@ public class SinhVien {
 
 
 	}
+
+	
+	
 
 	public String getId() {
 		return id;
@@ -98,28 +106,15 @@ public class SinhVien {
 	}
 
 	public String getThongTinHLoaiHinhDaoTao() {
-		return loaiHinhDaoTao.getThongTinLoaiHinhDaoTao();
+		return  loaiHinhDaoTao.getMaLoaiHinhDaoTao() + "---" + loaiHinhDaoTao.getThongTinLoaiHinhDaoTao();
 	}
-
-
-
 
 	public HeDaoTao getHeDaoTao() {
 		return heDaoTao;
 	}
 
-
-
-
 	public void setHeDaoTao(HeDaoTao heDaoTao) {
 		this.heDaoTao = heDaoTao;
 	}
-
-
-
-
-	
-
-	
 
 }
