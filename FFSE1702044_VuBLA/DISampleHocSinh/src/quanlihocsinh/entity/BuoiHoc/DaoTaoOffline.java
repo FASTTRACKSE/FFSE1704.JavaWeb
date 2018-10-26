@@ -1,4 +1,4 @@
-package quanlihocsinh.entity;
+package quanlihocsinh.entity.BuoiHoc;
 
 public class DaoTaoOffline implements BuoiHoc {
 	String loaiDaoTao = "Dao Tao Offline";

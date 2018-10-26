@@ -1,4 +1,4 @@
-package quanlihocsinh.entity;
+package quanlihocsinh.entity.BuoiHoc;
 
 public interface BuoiHoc {
 	public String getLoaiDaoTao();
