@@ -1,14 +1,16 @@
-package fasttrackse.entity;
+package fasttrackse.hedaotao;
 
-public class HeDaoTaoCapTocPHP implements HeDaoTao {
-	String maHeDaoTao = "FFSENHP";
-	String thongTinHeDaoTao = "Đào tào ngắn hạn PHP trong 6 tháng";
+import fasttrackse.entity.HeDaoTao;
 
-	public HeDaoTaoCapTocPHP() {
+public class HeDaoTaoCapTocJava implements HeDaoTao {
+	String maHeDaoTao = "FFSENHJ";
+	String thongTinHeDaoTao = "Đào tào ngắn hạn Java trong 6 tháng";
+
+	public HeDaoTaoCapTocJava() {
 		super();
 	}
 	
-	public HeDaoTaoCapTocPHP(String maHeDaoTao, String thongTinHeDaoTao) {
+	public HeDaoTaoCapTocJava(String maHeDaoTao, String thongTinHeDaoTao) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
 		this.thongTinHeDaoTao = thongTinHeDaoTao;

@@ -9,6 +9,20 @@ public class SinhVien {
 	
 	HeDaoTao heDaoTao;
 	LoaiHinhDaoTao loaiHinhDaoTao;
+
+
+	public SinhVien(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,
+			LoaiHinhDaoTao loaiHinhDaoTao) {
+		super();
+		this.hoTen = hoTen;
+		this.namSinh = namSinh;
+		this.diaChi = diaChi;
+		this.dienThoai = dienThoai;
+		this.email = email;
+		this.heDaoTao = heDaoTao;
+		this.loaiHinhDaoTao = loaiHinhDaoTao;
+	}
+
 	public String getThongTinSinhVien() {
 		return hoTen + "  - " + namSinh + " - " + email + " - " + dienThoai ;
 	}
