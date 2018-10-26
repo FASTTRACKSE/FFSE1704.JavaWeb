@@ -12,17 +12,9 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 		crossorigin="anonymous" />
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </h:head>
 <h:body>
 	<h:form>
@@ -30,7 +22,8 @@
 			action="index.xhtml?faces-redirect=true" />
 	</h:form>
 	<div class="container">
-		<h:form prependid="false" enctype="multipart/form-data">
+		<h:form prependid="false" enctype="multipart/form-data" id="form"
+			runat="server">
 			<div class="form-group">
 				<h:outputLabel value="Tên Nhân Viên" />
 				<h:inputText class="form-control" name="tennhanvien" id="hoTen"
@@ -65,16 +58,18 @@
 			<div class="form-group">
 				<h:outputLabel value="Ảnh: " />
 				<br/>
-				<f:view>
-					<h:graphicImage url="images/#{editedNhanSu.avatar}" width="100px" />
-				</f:view>
-				<h:inputFile value="#{nhanSuController.file}"  id="avatar"></h:inputFile>
-				<h:message for="avatar" style=" color: red" />
+				
+					<h:graphicImage url="images/#{editedNhanSu.avatar}" width="100px" height="120px" />
+			
+				<h:inputFile id="imgInp" value="#{nhanSuController.file}"
+					required="true" alt="upload file" />
+				<img id="blah" src="#" alt="ảnh mới" width="100px" height="120px" />
 			</div>
 
 			<h:commandButton class="btn btn-primary" value="Thực Hiện"
 				action="#{nhanSuController.editNhanSu(editedNhanSu)}" />
-			
+				
+			<h:outputScript library="js" name="viewimages.js?v=1.001" />
 		</h:form>
 	</div>
 </h:body>

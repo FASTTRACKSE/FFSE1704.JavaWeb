@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/upload/*")
 public class ViewImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final String dirPath = "E://file//images//Zalo";
+	final String dirPath = "D:\\images";
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String filename = request.getPathInfo().substring(1);
