@@ -1,17 +1,30 @@
 package quanlyhocsinh.entity.monhoc;
 
+import quanlyhocsinh.entity.giangvien.*;
+
 public class LapTrinhWebPHPMySQL implements MonHoc {
-
-	@Override
-	public String getMaMonHoc() {
-		// TODO Auto-generated method stub
-		return "LP#4";
+	GiangVien giangVien;
+	
+	public LapTrinhWebPHPMySQL(GiangVien giangVien) {
+		super();
+		this.giangVien = giangVien;
 	}
-
+	
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập trình Web PHP & MySQL";
+		return "Lập Trình Web PHP&MySQL";
 	}
 
+	@Override
+	public String getTenGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getTenGiangVien();
+	}
+	
+	@Override
+	public String getEmailGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getEmailGiangVien();
+	}
 }

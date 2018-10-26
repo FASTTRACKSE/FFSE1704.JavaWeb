@@ -77,9 +77,15 @@ public class NhanSuDao {
 
 	}
 
-	public NhanSu searchNhanSu(final String id) {
+	public NhanSu searchNhanSuEdit(final String id) {
 		String sql = "SELECT * FROM nhansu  WHERE id=?";
 		return DatabaseUltil.selectForObject(sql, iPareEntitySeachNhansu, id);
+
+	}
+	
+	public NhanSu searchNhanSuDelete(final String id) {
+		String sql = "SELECT nhansu.id, nhansu.hotennhanvien, nhansu.namsinh, nhansu.gioitinh, tinhthanh.ten_tinh, nhansu.avatar FROM nhansu inner join tinhthanh on nhansu.hokhau = tinhthanh.ma_tinh   WHERE nhansu.id=?";
+		return DatabaseUltil.selectForObject(sql, iPareEntityNhanSu, id);
 
 	}
 	

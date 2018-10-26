@@ -19,23 +19,28 @@
 
 	<div class="container">
 		<h:form id="form">
+
+			<h:messages globalOnly="true" style="color:red;margin:8px;" />
 			<div class="form-group">
 				<h:outputLabel value="User Name" />
-				<h:inputText class="form-control" value="#{loginController.username}" />
+				<h:inputText class="form-control"
+					value="#{loginController.username}" />
 
 			</div>
 
 			<div class="form-group">
 				<h:outputLabel value="Pass Word" />
-				<h:inputSecret class="form-control" value="#{loginController.password}" />
+				<h:inputSecret class="form-control"
+					value="#{loginController.password}" />
 
 			</div>
 
 			<h:commandButton class="btn btn-primary" value="Login"
 				action="#{loginController.login}" />
-			<h:commandButton class="btn btn-danger" value="Hủy" type="reset" style="margin: 10px;" />
+			<h:commandButton class="btn btn-danger" value="Hủy" type="reset"
+				style="margin: 10px;" />
 		</h:form>
 	</div>
-	
+
 </h:body>
 </html>
