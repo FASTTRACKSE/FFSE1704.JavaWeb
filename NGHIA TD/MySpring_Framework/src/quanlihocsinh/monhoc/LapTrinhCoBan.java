@@ -3,25 +3,23 @@ package quanlihocsinh.monhoc;
 import giangvien.GiangVien;
 
 public class LapTrinhCoBan implements MonHoc {
-	GiangVien giangVien;
-	public LapTrinhCoBan(GiangVien giangVien) {
+	public LapTrinhCoBan() {
 		super();
-		this.giangVien = giangVien;
+		// TODO Auto-generated constructor stub
 	}
-	
+
+	GiangVien giangVien;
+
 	@Override
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập trình cơ bản";
-	}
-	@Override
-	public String getGiangVien() {
-		// TODO Auto-generated method stub
-		return giangVien.getTenGiangVien();
+		return null;
 	}
 
-	public void setGiangVien(GiangVien giangVien) {
-		this.giangVien = giangVien;
+	@Override
+	public String getTenGiangVien() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -29,4 +27,14 @@ public class LapTrinhCoBan implements MonHoc {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
+
 }
