@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="libs/spring-aop-5.1.1.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="libs/spring-aop-5.1.1.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="libs/spring-aop-5.1.1.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="libs/spring-aop-5.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="libs/spring-aspects-5.1.1.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="libs/spring-aspects-5.1.1.RELEASE-sources.jar"/>

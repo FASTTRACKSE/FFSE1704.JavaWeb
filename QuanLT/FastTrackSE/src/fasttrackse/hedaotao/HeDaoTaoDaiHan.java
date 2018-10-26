@@ -1,14 +1,15 @@
-package fasttrackse.entity;
+package fasttrackse.hedaotao;
 
-public class HeDaoTaoCapTocJava implements HeDaoTao {
-	String maHeDaoTao = "FFSENHJ";
-	String thongTinHeDaoTao = "Đào tào ngắn hạn Java trong 6 tháng";
+import fasttrackse.entity.HeDaoTao;
+public class HeDaoTaoDaiHan implements HeDaoTao {
+	String maHeDaoTao = "FFSEDH";
+	String thongTinHeDaoTao = "Đào tạo Full A-Z trong 16 tháng";
 
-	public HeDaoTaoCapTocJava() {
+	public HeDaoTaoDaiHan() {
 		super();
 	}
 	
-	public HeDaoTaoCapTocJava(String maHeDaoTao, String thongTinHeDaoTao) {
+	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinHeDaoTao) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
@@ -28,4 +29,5 @@ public class HeDaoTaoCapTocJava implements HeDaoTao {
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
+
 }
