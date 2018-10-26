@@ -11,7 +11,7 @@ public class TinHocVanPhong implements MonHoc {
 	@Override
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().getSimpleName();
 	}
 	@Override
 	public String getTenGiangVien() {
@@ -23,9 +23,12 @@ public class TinHocVanPhong implements MonHoc {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
 	public GiangVien getGiangVien() {
 		return giangVien;
 	}
+	
 	public void setGiangVien(GiangVien giangVien) {
 		this.giangVien = giangVien;
 	}

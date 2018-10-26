@@ -62,10 +62,13 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		class="quanlihocsinh.entity.HeDaoTaoDaiHan">
 		<property name="dsMonHoc">
 			<list>
-				<ref bean="tinHocVanPhong" />
+				<ref bean="tinHocVanPhong"/>
 			</list>
 		</property>
 	</bean>
+	
+	
+	
 	<bean id="heDaoTaoNganHanJaVa"
 		class="quanlihocsinh.entity.HeDaoTaoNganHanJaVa">
 		<property name="dsMonHoc">
