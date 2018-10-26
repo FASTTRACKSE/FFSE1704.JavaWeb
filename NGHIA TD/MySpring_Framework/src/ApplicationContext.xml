@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<bean id="lapTrinhCoBan" class="quanlihocsinh.monhoc.LapTrinhCoBan"></bean>
+<bean id="lapTrinhJaVaCoBan" class="quanlihocsinh.monhoc.LapTrinhJaVaCoBan"></bean>
+<bean id="lapTrinhJaVaWeb" class="quanlihocsinh.monhoc.LapTrinhJaVaWeb"></bean>
+<bean id="lapTrinhPHPMySQL" class="quanlihocsinh.monhoc.LapTrinhPHPMySQL"></bean>
+<bean id="lapTrinhWebFrontEnd" class="quanlihocsinh.monhoc.LapTrinhWebFrontEnd"></bean>
+<bean id="quyTrinhDuAn" class="quanlihocsinh.monhoc.QuyTrinhDuAn"></bean>
+<bean id="tinHocVanPhong" class="quanlihocsinh.monhoc.TinHocVanPhong"></bean>
+
+<bean id="heDaoTaoDaiHan" class="quanlihocsinh.entity.HeDaoTaoDaiHan"></bean>
+<bean id="heDaoTaoNganHanJaVa" class="quanlihocsinh.entity.HeDaoTaoNganHanJaVa"></bean>
+<bean id="heDaoTaoNganHanPHP" class="quanlihocsinh.entity.HeDaoTaoNganHanPHP"></bean>
+
+<bean id="sinhvien1" class="quanlihocsinh.entity.SinhVien" scope="prototype">
+
+<property name="hoTen" value="Cao Lê Thành"></property>
+<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+<property name="monHoc">
+<list>
+<ref bean="lapTrinhCoBan" />
+<ref bean="lapTrinhJaVaCoBan" />
+<ref bean="lapTrinhJaVaWeb" />
+</list>
+</property>
+</bean>
+<bean id="sinhvien2" class="quanlihocsinh.entity.SinhVien"
+scope="prototype">
+<property name="hoTen" value="Mỹ Hồng"></property>
+<property name="heDaoTao" ref="heDaoTaoNganHanJaVa"></property>
+<property name="monHoc">
+<list>
+<ref bean="tinHocVanPhong" />
+<ref bean="lapTrinhWebFrontEnd" />
+</list>
+</property>
+</bean>
+</beans>
+
