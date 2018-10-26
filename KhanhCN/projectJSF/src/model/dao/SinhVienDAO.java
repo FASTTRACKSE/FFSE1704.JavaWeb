@@ -18,7 +18,8 @@ import model.bean.SinhVien;
 public class SinhVienDAO {
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {
-			return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"), result.getString("IMG"));
+			return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),
+					result.getString("IMG"));
 		}
 	};
 
@@ -28,7 +29,8 @@ public class SinhVienDAO {
 		String sql = "SELECT * FROM  sinh_vien";
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),
+						result.getString("IMG"));
 			}
 		});
 	}
@@ -44,7 +46,8 @@ public class SinhVienDAO {
 
 		}, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),
+						result.getString("IMG"));
 			}
 		});
 	}
@@ -56,12 +59,12 @@ public class SinhVienDAO {
 			@Override
 			public void setParameterQuery(PreparedStatement statement) throws SQLException {
 				// TODO Auto-generated method stub
-				
+
 				statement.setString(1, sv.getTEN());
 				statement.setString(2, sv.getPASS());
 				statement.setString(3, sv.getIMG());
 				statement.setString(4, sv.getMASV());
-				
+
 			}
 		});
 		return listSinhVien;
@@ -99,7 +102,8 @@ public class SinhVienDAO {
 
 		return DatabaseUltil.selectForList(sql, new IPareEntity<SinhVien>() {
 			public SinhVien pare(ResultSet result) throws SQLException {
-				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),result.getString("IMG"));
+				return new SinhVien(result.getString("MASV"), result.getString("TEN"), result.getString("PASS"),
+						result.getString("IMG"));
 			}
 		}, startRecord, RECORD_IN_PAGE);
 	}

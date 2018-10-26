@@ -198,6 +198,7 @@ public class NhanSuController implements Serializable {
 				setMessage("Chưa chọn Tỉnh ");
 				return null;
 			} else {
+				System.out.println("alalalalalalal"+file);
 				nhanSuDao.addNhanSu(nhansu);
 				init();
 				return "index.xhtml?faces-redirect=true";
@@ -212,7 +213,7 @@ public class NhanSuController implements Serializable {
 	}
 
 	public String viewEditNhanSu(String id) {
-		nhanSu = nhanSuDao.searchNhanSu(id);
+		nhanSu = nhanSuDao.searchNhanSuEdit(id);
 		// put in the session attribute ... so we can use it on the form page
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
@@ -267,7 +268,7 @@ public class NhanSuController implements Serializable {
 	}
 
 	public String viewDeleteNhanSu(String id) {
-		nhanSu = nhanSuDao.searchNhanSu(id);
+		nhanSu = nhanSuDao.searchNhanSuDelete(id);
 		// put in the session attribute ... so we can use it on the form page
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();

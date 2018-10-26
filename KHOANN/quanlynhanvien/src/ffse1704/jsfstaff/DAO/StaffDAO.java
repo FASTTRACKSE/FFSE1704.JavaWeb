@@ -210,7 +210,8 @@ public class StaffDAO {
 	public List<Staff> getListNhanVienByPage(int currPage, int perPage) {
 		int start = (currPage - 1) * perPage;
 		List<Staff> dsNhanVien = new ArrayList<Staff>();
-		String query = "SELECT id, hoTen, gioiTinh, namSinh, quanly_thanhpho.thanhPho, anh  FROM quanly_nhanvien LEFT JOIN quanly_thanhpho ON quanly_nhanvien.hoKhau = quanly_thanhpho.hoKhau LIMIT " + start + "," + perPage;
+		String query = "SELECT id, hoTen, gioiTinh, namSinh, quanly_thanhpho.thanhPho, anh  FROM quanly_nhanvien LEFT JOIN quanly_thanhpho ON quanly_nhanvien.hoKhau = quanly_thanhpho.hoKhau LIMIT "
+				+ start + "," + perPage;
 
 		try {
 			connection = ConnectionFactory.getInstance().getConnection();

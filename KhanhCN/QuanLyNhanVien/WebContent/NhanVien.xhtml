@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Nhân Viên</title>
+</h:head>
+<body>
+	
+		<h:form>
+			<h:commandButton value="Thêm"
+				action="createStaff.xhtml?faces-redirect=true" />
+			<h:dataTable value="#{staffController.dsNhanVien}" var="nv" border="1"
+				cellspacing="0" cellpadding="0" style="width:100%">
+				<h:column>
+					<f:facet name="header">STT</f:facet>
+			#{nv.id}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Tên nhân viên</f:facet>
+			#{nv.tenNhanVien}
+			</h:column>
+				<h:column>
+					<f:facet name="header">Sinh năm</f:facet>
+			#{nv.namSinh}
+			</h:column>
+			<h:column>
+					<f:facet name="header">Giới Tính</f:facet>
+			  <h:outputFormat rendered="#{nv.gioiTinh=='0'}" value="Nam"/>
+              <h:outputFormat rendered="#{nv.gioiTinh=='1'}" value="Nu"/>
+			</h:column>
+			<h:column>
+					<f:facet name="header">Hộ Khẩu</f:facet>
+			#{nv.hoKhau}
+			</h:column>
+			
+			<h:column>
+					<f:facet name="header">Hình Anh</f:facet>
+					<f:view>
+					<!-- <img src="upload/#{nv.hinhAnh}" width="60px" height="60px" /> -->
+			<h:graphicImage url="upload/#{nv.hinhAnh}" width="60px" height="60px" /> 
+			      </f:view>
+			</h:column>
+			
+				<h:column>
+					<f:facet name="header">Chức năng</f:facet>
+					
+					<h:commandButton value="Edit"
+						action="#{staffController.getStaffForUpdate(nv.id)}"></h:commandButton>
+					<h:commandButton value="Delete"
+						action="#{staffController.deleteStaff(nv.id)}"></h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+		
+		<h:form>
+			<h:commandLink value="|&#60;" action="#{staffController.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+				action="#{staffController.goPage(staffController.currPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+				value="#{staffController.currPage}/#{staffController.totalPage}" />
+				&#160;<h:commandLink value=">"
+				action="#{staffController.goPage(staffController.currPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+				action="#{staffController.goPage(staffController.totalPage)}"></h:commandLink>
+		</h:form>
+	
+</body>
+</html>
