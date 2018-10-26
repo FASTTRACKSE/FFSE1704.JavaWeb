@@ -3,11 +3,6 @@ package monhoc;
 import giangvien.GiangVien;
 
 public class MonQuyTrinhDuAn implements MonHoc {
-	public MonQuyTrinhDuAn() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	GiangVien giangvien;
 
 	public MonQuyTrinhDuAn(GiangVien giangvien) {

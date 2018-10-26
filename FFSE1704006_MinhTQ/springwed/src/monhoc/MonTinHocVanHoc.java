@@ -2,15 +2,10 @@ package monhoc;
 
 import giangvien.GiangVien;
 
-public class MonQuyTrinhDuAn implements MonHoc {
-	public MonQuyTrinhDuAn() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+public class MonTinHocVanHoc implements MonHoc {
 	GiangVien giangvien;
 
-	public MonQuyTrinhDuAn(GiangVien giangvien) {
+	public MonTinHocVanHoc(GiangVien giangvien) {
 		super();
 		this.giangvien = giangvien;
 	}
@@ -18,7 +13,7 @@ public class MonQuyTrinhDuAn implements MonHoc {
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub
-		return "Môn quy trình dự án";
+		return "Môn đào tạo tin học văn phòng ";
 	}
 
 	@Override

@@ -2,29 +2,20 @@ package monhoc;
 
 import giangvien.GiangVien;
 
-public class MonDaoTaoJavaCapToc implements MonHoc {
-
-	public MonDaoTaoJavaCapToc(GiangVien giangVien) {
-		super();
-		this.giangVien = giangVien;
-	}
-
+public class MonLapTrinhWebFrontend implements MonHoc {
 	GiangVien giangVien;
 
-	
-
-	public MonDaoTaoJavaCapToc() {
+	public MonLapTrinhWebFrontend(GiangVien giangVien) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.giangVien = giangVien;
 	}
 
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub
-		return "Môn đào tạo lập trình java WED cấp Tốc";
+		return "Môn lập trình Wed Frontend";
 	}
 
-	
 	@Override
 	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
@@ -34,8 +25,7 @@ public class MonDaoTaoJavaCapToc implements MonHoc {
 	@Override
 	public String getEmailGiangVien() {
 		// TODO Auto-generated method stub
-		return giangVien.getEmailGiangVien();
-		
+		return giangVien.getTenGiangVien();
 	}
 
 }
