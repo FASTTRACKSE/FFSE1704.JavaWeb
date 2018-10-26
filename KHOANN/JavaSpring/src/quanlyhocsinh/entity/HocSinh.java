@@ -28,6 +28,22 @@ public class HocSinh {
 	public String getphuongThucDaoTao() {
 		return loaiHinhDaoTao.getDiaChiDaoTao() + " - " + loaiHinhDaoTao.getThoiGianDaoTao();
 	}
+	
+	public String getMonHoc() {
+		return monHoc.getTenMonHoc();
+	}
+
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
+	public void setMonHoc(MonHoc monHoc) {
+		this.monHoc = monHoc;
+	}
 
 	public HocSinh() {
 		super();

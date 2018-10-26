@@ -13,7 +13,9 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 
 
 	<bean id="lapTrinhCoBan"
-		class="quanlyhocsinh.entity.MonHoc.LapTrinhCoBan"></bean>
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhCoBan">
+		<property name="giangVien" ref="giangvien1"></property>
+	</bean>
 
 	<bean id="lapTrinhJavaCoBan"
 		class="quanlyhocsinh.entity.MonHoc.LapTrinhJavaCoBan"></bean>
@@ -37,9 +39,23 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		class="quanlyhocsinh.entity.HeDaoTao.HeDaoTaoNganHanJava"></bean>
 
 	<bean id="heDaoTaoDaiHan"
-		class="quanlyhocsinh.entity.HeDaoTao.HeDaoTaoDaiHan"></bean>
+		class="quanlyhocsinh.entity.HeDaoTao.HeDaoTaoDaiHan">
+		<property name="dsMonHoc">
+			<list>
 
-	
+				<ref bean="lapTrinhCoBan" />
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="giangvien1"
+		class="quanlyhocsinh.entity.GiangVien.GiangVien" scope="prototype">
+		<property name="tenGiangVien" value="Cao Le Thanh"></property>
+		<property name="emailGiangVien" value="ThanhCL@gmail.com"></property>
+	</bean>
+
+
 	<bean id="hocSinh1" class="quanlyhocsinh.entity.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="Ngoc Khoa"></property>
@@ -47,6 +63,12 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="diaChi" value="Da Nang"></property>
 		<property name="email" value="nnk@gmail"></property>
 		<property name="dienThoai" value="012345679"></property>
-		
+		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="monHoc">
+			<list>
+				<ref bean="tinHocVanPhong" />
+			</list>
+		</property>
+
 	</bean>
 </beans>
