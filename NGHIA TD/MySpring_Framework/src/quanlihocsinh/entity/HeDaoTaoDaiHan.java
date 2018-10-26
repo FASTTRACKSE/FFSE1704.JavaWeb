@@ -15,13 +15,13 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 	@Override
 	public String getMaHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "ê3";
+		return "HIHI";
 	}
 
 	@Override
 	public String getThongTinHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "Dai hạn";
+		return "Dài Hạn";
 	}
 
 

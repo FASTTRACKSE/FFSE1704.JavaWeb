@@ -9,7 +9,7 @@ public class LapTrinhJavaCoBan implements MonHoc {
 		// TODO Auto-generated constructor stub
 	}
 
-	String tenMonHoc = "Lập Trình Java Cơ Bản";
+	String tenMonHoc = "Lập Trình Java Cơ Bản";
 	GiangVien giangVien;
 
 	public LapTrinhJavaCoBan(GiangVien giangVien) {
@@ -50,6 +50,6 @@ public class LapTrinhJavaCoBan implements MonHoc {
 	@Override
 	public String getTenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Java Cơ Bản";
+		return "Láº­p TrÃ¬nh Java CÆ¡ Báº£n";
 	}
 }

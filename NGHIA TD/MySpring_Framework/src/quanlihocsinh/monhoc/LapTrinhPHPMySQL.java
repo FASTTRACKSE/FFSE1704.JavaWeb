@@ -4,27 +4,32 @@ import giangvien.GiangVien;
 
 public class LapTrinhPHPMySQL implements MonHoc {
 	GiangVien giangVien;
-	public LapTrinhPHPMySQL(GiangVien giangVien) {
+	public LapTrinhPHPMySQL() {
 		super();
-		this.giangVien = giangVien;
+		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập trình PHP & My SQL";
+		return null;
 	}
 	@Override
-	public String getGiangVien() {
+	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return giangVien.getTenGiangVien();
+		return null;
 	}
-
 	@Override
 	public String getEmail() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
 
 	
 }
