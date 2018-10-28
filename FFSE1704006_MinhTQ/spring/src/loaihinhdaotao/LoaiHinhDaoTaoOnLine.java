@@ -1,22 +1,34 @@
 package loaihinhdaotao;
 
-public class LoaiHinhDaoTaoOnLine implements LoaiHinhDaoTao {
+public class LoaiHinhDaoTaoOnline implements  LoaiHinhDaoTao{
+	String maLoaiHinhDaoTao ="OL";
+	String thongTinLoaiHinhDaoTao="Đào tạo online";
 
-	public LoaiHinhDaoTaoOnLine() {
+	public LoaiHinhDaoTaoOnline() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String getMaLoaiHinhDaoTao() {
-		// TODO Auto-generated method stub
-		return "DTOL";
+	public LoaiHinhDaoTaoOnline(String maLoaiHinhDaoTao, String thongTinLoaiHinhDaoTao) {
+		super();
+		this.maLoaiHinhDaoTao = maLoaiHinhDaoTao;
+		this.thongTinLoaiHinhDaoTao = thongTinLoaiHinhDaoTao;
 	}
 
-	@Override
+	public String getMaLoaiHinhDaoTao() {
+		return maLoaiHinhDaoTao;
+	}
+
+	public void setMaLoaiHinhDaoTao(String maLoaiHinhDaoTao) {
+		this.maLoaiHinhDaoTao = maLoaiHinhDaoTao;
+	}
+
 	public String getThongTinLoaiHinhDaoTao() {
-		// TODO Auto-generated method stub
-		return "- Chương trình đào tạo online \n- Thời gian: 24/24 \n- Địa chỉ: trang web LMS.FASTTRACK.EDU.VN" ;
+		return thongTinLoaiHinhDaoTao;
+	}
+
+	public void setThongTinLoaiHinhDaoTao(String thongTinLoaiHinhDaoTao) {
+		this.thongTinLoaiHinhDaoTao = thongTinLoaiHinhDaoTao;
 	}
 
 }

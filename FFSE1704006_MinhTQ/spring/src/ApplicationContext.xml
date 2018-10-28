@@ -32,36 +32,17 @@
 		<property name="tenGiangVien" value="Nguyễn Lam"></property>
 		<property name="emailGiangVien" value="lamnguyen@gmail.com"></property>
 	</bean>
-	<!--hết phần been nhập thông tin giảng viên -->
+	<!-- *****************************************************************************hết 
+		phần been nhập thông tin giảng viên -->
 
 
-
-
-
-	<!-- been của loại hình đào tạo -->
-
-	<!-- loại hình đào tạo Offline -->
-	<bean id="loaiHinhDaoTaoOffline"
-		class="loaihinhdaotao.LoaiHinhDaoTaoOffLine"></bean>
-
-	<!-- loại hình đào tạo Online -->
-	<bean id="loaiHinhDaoTaoOnline"
-		class="loaihinhdaotao.LoaiHinhDaoTaoOnLine"></bean>
-	<!-- hết phần been của loại hình đào tạo -->
-
-
-
-	<!-- Been nhập thông tin các môn học -->
+	<!-- ***********************************************************************************Been 
+		nhập thông tin các môn học -->
 	<bean id="monDaoTaoJavaCapToc" class="monhoc.MonDaoTaoJavaCapToc">
 		<property name="thongTinMonHoc"
 			value="Lập trình Java Cấp tốc"></property>
 		<property name="giangVien" ref="giangVienTranMinhThang">
 		</property>
-	</bean>
-
-	<bean id="monLapTrinhCoBan" class="entity.MonLapTrinhCoBan">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="giangVienThanh"></property>
 	</bean>
 
 	<bean id="monDaoTaoJavaWeb" class="monhoc.MonDaoTaoJavaWed">
@@ -75,97 +56,164 @@
 		<property name="giangVien" ref="giangVienCaoLeThanh">
 		</property>
 	</bean>
-	<bean id="monLapTrinhWebFrontend" class="monhoc.MonLapTrinhWebFrontend">
-		<property name="thongTinMonHoc" value="Lập trình Web Frontend"></property>
+
+
+	<bean id="monLapTrinhWebFrontend"
+		class="monhoc.MonLapTrinhWebFrontend">
+		<property name="thongTinMonHoc"
+			value="Lập trình Web Frontend"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
 		</property>
 	</bean>
-	<bean id="monLapTrinhWedPHPMySQL" class="monhoc.MonLapTrinhWebPHPMySQL">
-		<property name="thongTinMonHoc" value="Lập trình PHP và MYSQL"></property>
+
+
+	<bean id="monLapTrinhWedPHPMySQL"
+		class="monhoc.MonLapTrinhWebPHPMySQL">
+		<property name="thongTinMonHoc"
+			value="Lập trình PHP và MYSQL"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
 		</property>
 	</bean>
+
 	<bean id="monQuyTrinhDuAn" class="monhoc.MonQuyTrinhDuAn">
-		<property name="maMonHoc" value="LP#6"></property>
+
 		<property name="thongTinMonHoc" value="Quy trình dự án"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
 		</property>
 	</bean>
+
+
 	<bean id="monTinHocVanPhong" class="monhoc.MonTinHocVanHoc">
-		<property name="maMonHoc" value="LP#7"></property>
+
 		<property name="thongTinMonHoc" value="tin học văn phòng"></property>
 		<property name="giangVien" ref="giangVienTranMinhThang">
 		</property>
 	</bean>
-	<!-- hết phần nhập thông tin các môn học -->
+	<!-- **************************************************************************************hết 
+		phần nhập thông tin các môn học -->
 
 
 
-	<!-- been các hệ đào tạo -->
+
+	<!-- been các loại hệ đào tạo -->
+	<bean id="loaiHinhDaoTaoOffline"
+		class="loaihinhdaotao.LoaiHinhDaoTaoOffline">
+
+	</bean>
+	<bean id="loaiHinhDaoTaoOnline"
+		class="loaihinhdaotao.LoaiHinhDaoTaoOnline">
+
+	</bean>
+	<!-- ***********************************************************************************************hết 
+		been các loại hệ đào tạo -->
+
+
+
+
+
+
+
+	<!-- ******************************************************************************************************been 
+		các hệ đào tạo -->
 	<bean id="heDaoTaoDaiHan"
 		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
-		<property name="maHeDaoTao" value="HDTDH"></property>
-		<property name="thongTinHeDaoTao" value=""></property>
-		
+		<property name="maHeDaoTao" value="DTDH"></property>
+		<property name="thongTinHeDaoTao"
+			value="chương trình đào tạo java dài hạn, full các kỹ năng lập trình về java. "></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="monDaoTaoJavaCapToc" />
+				<ref bean="monDaoTaoJavaWeb" />
+				<ref bean="monLapTrinhCanBan" />
+				<ref bean="monLapTrinhWebFrontend" />
+				<ref bean="monLapTrinhWedPHPMySQL" />
+				<ref bean="monQuyTrinhDuAn" />
+				<ref bean="monTinHocVanPhong" />
+
+			</list>
+		</property>
 	</bean>
+
+
+
 	<bean id="heDaoTaoNganHanJava"
 		class="quanlyhocsinh.entity.HeDaoTaoNganHanJava">
-		<property name="maMonHoc" value="LP#7"></property>
-		<property name="thongTinMonHoc"
-			value="Lập trình Java Cấp tốc"></property>
-		
+		<property name="maHeDaoTao" value="DTNH"></property>
+		<property name="thongTinHeDaoTao"
+			value="chương trình đào tạo ngắn hạn java 6 tháng full skill."></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="monDaoTaoJavaCapToc" />
+				<ref bean="monLapTrinhCanBan" />
+
+
+			</list>
+		</property>
+
 	</bean>
 	<bean id="heDaoTaoNganHanPHP"
 		class="quanlyhocsinh.entity.HeDaoTaoNganHanPHP">
-		<property name="maMonHoc" value="LP#8"></property>
-		<property name="thongTinMonHoc" value="Lập trình PHP Cấp tốc"></property>
-		
-		
+		<property name="maHeDaoTao" value="DTNHPHP"></property>
+		<property name="thongTinHeDaoTao"
+			value="chương trình đào tạo ngắn hạn php 6 tháng full skill."></property>
+		<property name="danhSachMonHoc">
+			<list>
+
+				<ref bean="monLapTrinhWebFrontend" />
+				<ref bean="monLapTrinhWedPHPMySQL" />
+
+			</list>
+		</property>
+
 	</bean>
-	<!-- hết phần been các hệ đào tạo -->
+
+	<!-- ********************************************************************************************hết 
+		phần been các hệ đào tạo -->
 
 
 
 
-	<!-- been nhập thông tin sinh viên -->
+	<!-- ************************************************************************************************been 
+		nhập thông tin sinh viên -->
 
-	<bean id="sinhvien1" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="sinhVien1" class="quanlyhocsinh.entity.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="Trương Quang Minh"></property>
 		<property name="namSinh" value="1996"></property>
 		<property name="diaChi" value="quang bình"></property>
 		<property name="dienThoai" value="01669938191"></property>
 		<property name="email" value="QuangMinh@gmail.com"></property>
-		<property name="loaiHinhDaoTaoOffline"
-			ref="loaiHinhDaoTaoOffline"></property>
-		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHanJava"></property>
+		<property name="loaiHinhDaotao" ref="loaiHinhDaoTaoOffline"></property>
+
 
 	</bean>
 
-	<bean id="sinhvien2" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="sinhVien2" class="quanlyhocsinh.entity.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="Lê Khả Hồng Nhật"></property>
 		<property name="namSinh" value="1998"></property>
 		<property name="diaChi" value="Thanh Hóa"></property>
 		<property name="dienThoai" value="01681354512"></property>
 		<property name="email" value="Hongnhat@gmail.com"></property>
-		<property name="loaiHinhDaoTaoOffline"
-			ref="loaiHinhDaoTaoOffline"></property>
-		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHanJava"></property>
+		<property name="loaiHinhDaotao" ref="loaiHinhDaoTaoOffline"></property>
 
 	</bean>
 
-	<bean id="sinhvien3" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="sinhVien3" class="quanlyhocsinh.entity.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="Cao Ngọc Khánh"></property>
 		<property name="namSinh" value="1996"></property>
 		<property name="diaChi" value="Quảng Bình"></property>
 		<property name="dienThoai" value="01669726852"></property>
 		<property name="email" value="NgocKhanh@gmail.com"></property>
-		<property name="loaiHinhDaoTaoOffline"
-			ref="loaiHinhDaoTaoOffline"></property>
 		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="loaiHinhDaotao" ref="loaiHinhDaoTaoOffline"></property>
+
+
 
 	</bean>
-	<!--hết been nhập thông tin sinh viên -->
+	<!-- *****************************************************************************************hết 
+		been nhập thông tin sinh viên -->
 </beans>

@@ -5,20 +5,20 @@ import java.util.List;
 import monhoc.MonHoc;
 
 public class HeDaoTaoNganHanPHP implements HeDaoTao {
-	String maHeDaoTao = "FFSEDTDTNHPHP";
-	String thongTinHeDaoTao = "Đào tạo Php ngắn hạn 6 tháng ,full môn lập trình php không che ";
-	List<MonHoc> danhsachmonhoc;
+	String maHeDaoTao ;
+	String thongTinHeDaoTao ;
+	List<MonHoc> danhSachMonHoc;
 
 	public HeDaoTaoNganHanPHP() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public HeDaoTaoNganHanPHP(String maHeDaoTao, String thongTinHeDaoTao, List<MonHoc> danhsachmonhoc) {
+	public HeDaoTaoNganHanPHP(String maHeDaoTao, String thongTinHeDaoTao, List<MonHoc> danhSachMonHoc) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
-		this.danhsachmonhoc = danhsachmonhoc;
+		this.danhSachMonHoc = danhSachMonHoc;
 	}
 
 	public String getMaHeDaoTao() {
@@ -37,12 +37,14 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
-	public List<MonHoc> getDanhsachmonhoc() {
-		return danhsachmonhoc;
+	public List<MonHoc> getDanhSachMonHoc() {
+		return danhSachMonHoc;
 	}
 
-	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
-		this.danhsachmonhoc = danhsachmonhoc;
+	public void setDanhSachMonHoc(List<MonHoc> danhSachMonHoc) {
+		this.danhSachMonHoc = danhSachMonHoc;
 	}
+
+	
 
 }

@@ -4,11 +4,6 @@ import loaihinhdaotao.LoaiHinhDaoTao;
 
 public class HocSinh {
 
-	public HocSinh() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	String hoTen;
 	int namSinh;
 	String diaChi;
@@ -17,12 +12,9 @@ public class HocSinh {
 	LoaiHinhDaoTao loaiHinhDaotao;
 	HeDaoTao heDaoTao;
 
-	public String getThongTinHocSinh() {
-		return "* " + hoTen + " -- " + namSinh + " -- " + diaChi + " -- " + dienThoai + " -- " + email;
-	}
-
-	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + heDaoTao.getThongTinHeDaoTao() + loaiHinhDaotao.getThongTinLoaiHinhDaoTao();
+	public HocSinh() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email,
@@ -77,6 +69,8 @@ public class HocSinh {
 		this.email = email;
 	}
 
+	
+
 	public LoaiHinhDaoTao getLoaiHinhDaotao() {
 		return loaiHinhDaotao;
 	}
@@ -92,5 +86,18 @@ public class HocSinh {
 	public void setHeDaoTao(HeDaoTao heDaoTao) {
 		this.heDaoTao = heDaoTao;
 	}
+	
+	public String getThongTinHocSinh() {
+		return hoTen + "---" + namSinh + "---" + diaChi + "---" + dienThoai + "---" + email;
+	}
+
+	public String getThongTinHeDaoTao() {
+		return heDaoTao.getMaHeDaoTao() + "---" + heDaoTao.getThongTinHeDaoTao();
+	}
+
+	public String getThongTinLoaiHinhDaoTao() {
+		return loaiHinhDaotao.getMaLoaiHinhDaoTao() + "-----" +  loaiHinhDaotao.getThongTinLoaiHinhDaoTao();
+	}
+
 
 }

@@ -13,7 +13,6 @@ public class MonDaoTaoJavaCapToc implements MonHoc {
 
 	public MonDaoTaoJavaCapToc() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public GiangVien getGiangVien() {
@@ -28,20 +27,18 @@ public class MonDaoTaoJavaCapToc implements MonHoc {
 		this.thongTinMonHoc = thongTinMonHoc;
 	}
 
+	
 	public String getThongTinMonHoc() {
-		// TODO Auto-generated method stub
 		return thongTinMonHoc;
 	}
 
 	@Override
 	public String getTenGiangVien() {
-		// TODO Auto-generated method stub
 		return giangVien.getTenGiangVien();
 	}
 
 	@Override
 	public String getEmailGiangVien() {
-		// TODO Auto-generated method stub
 		return giangVien.getEmailGiangVien();
 	}
 

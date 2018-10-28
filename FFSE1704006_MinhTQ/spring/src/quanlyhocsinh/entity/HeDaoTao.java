@@ -9,7 +9,7 @@ public interface HeDaoTao {
 
 	public String getThongTinHeDaoTao();
 	
-	public List<MonHoc> getDanhsachmonhoc();	
+	public List<MonHoc> getDanhSachMonHoc();	
 	
 
 }

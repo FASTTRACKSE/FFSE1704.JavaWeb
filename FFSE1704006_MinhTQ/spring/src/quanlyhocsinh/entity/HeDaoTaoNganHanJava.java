@@ -5,52 +5,48 @@ import java.util.List;
 import monhoc.MonHoc;
 
 public class HeDaoTaoNganHanJava implements HeDaoTao {
-	String maHeDaoTao = "FFSEDTNHJV";
-	String thongTinHeDaoTao = "Đào tạo java ngắn hạn 6 tháng,full môn java lập trình không che";
-	List<MonHoc> danhsachmonhoc;
+	String maHeDaoTao ;
+	String thongTinHeDaoTao ;
+	List<MonHoc> danhSachMonHoc;
 
 	public HeDaoTaoNganHanJava() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public HeDaoTaoNganHanJava(String maHeDaoTao, String thongTinHeDaoTao, List<MonHoc> danhSachMonHoc) {
+		super();
+		this.maHeDaoTao = maHeDaoTao;
+		this.thongTinHeDaoTao = thongTinHeDaoTao;
+		this.danhSachMonHoc = danhSachMonHoc;
+	}
+
 	public String getMaHeDaoTao() {
 		return maHeDaoTao;
 	}
-
 
 	public void setMaHeDaoTao(String maHeDaoTao) {
 		this.maHeDaoTao = maHeDaoTao;
 	}
 
-
 	public String getThongTinHeDaoTao() {
 		return thongTinHeDaoTao;
 	}
-
 
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
-
-	public List<MonHoc> getDanhsachmonhoc() {
-		return danhsachmonhoc;
+	public List<MonHoc> getDanhSachMonHoc() {
+		return danhSachMonHoc;
 	}
 
-
-	public void setDanhsachmonhoc(List<MonHoc> danhsachmonhoc) {
-		this.danhsachmonhoc = danhsachmonhoc;
+	public void setDanhSachMonHoc(List<MonHoc> danhSachMonHoc) {
+		this.danhSachMonHoc = danhSachMonHoc;
 	}
 
-
-	public HeDaoTaoNganHanJava(String maHeDaoTao, String thongTinHeDaoTao, List<MonHoc> danhsachmonhoc) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-		this.danhsachmonhoc = danhsachmonhoc;
-	}
+	
+	
 
 
 	

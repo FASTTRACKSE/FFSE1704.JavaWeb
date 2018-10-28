@@ -2,6 +2,7 @@ package main;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import monhoc.MonHoc;
 import quanlyhocsinh.entity.HocSinh;
 
 public class MainHocSinh {
@@ -9,43 +10,43 @@ public class MainHocSinh {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// Tạo bean từ spring containner
-		HocSinh sinhvien1 = context.getBean("sinhvien1", HocSinh.class);
-		HocSinh sinhvien2 = context.getBean("sinhvien2", HocSinh.class);
-		HocSinh sinhvien3 = context.getBean("sinhvien3", HocSinh.class);
-	
-		
-		System.out.println("Thông tin của  sinh viên 1");
-		System.out.println( sinhvien1.getThongTinHocSinh());
-		System.out.println( sinhvien1.getThongTinHeDaoTao());
-//		for (MonHoc c : sinhvien1.getHeDaoTao().getDanhsachmonhoc()) {
-//			System.out.println("*Môn học:" + c.getThongTinMonHoc() +  "\n"
-//					+ "*Giảng Viên: " + c.getTenGiangVien() + "\n" + c.getEmailGiangVien());
-//		}
-//		
+		HocSinh sinhVien1 = context.getBean("sinhVien1", HocSinh.class);
+		HocSinh sinhVien2 = context.getBean("sinhVien2", HocSinh.class);
+		HocSinh sinhVien3 = context.getBean("sinhVien3", HocSinh.class);
+
+		System.out.println("Sinh viên 1:");
+		System.out.println("*Thông tin cá nhân: " + sinhVien1.getThongTinHocSinh());
+		System.out.println("*Thông tin về hệ đào tạo: " + sinhVien1.getThongTinHeDaoTao());
+		System.out.println("*Thông tin về loại hình đào tạo: " + sinhVien1.getThongTinLoaiHinhDaoTao());
+		System.out.println("Môn Học:");
+		for (MonHoc monHoc : sinhVien1.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println("*" + monHoc.getThongTinMonHoc()+"Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+		}
 		System.out.println("\n");
+
 		
 		
-		System.out.println("Thông tin của  sinh viên 2");
-		System.out.println( sinhvien2.getThongTinHocSinh());
-		System.out.println( sinhvien2.getThongTinHeDaoTao());
-//		for (MonHoc c : sinhvien1.getHeDaoTao().getDanhsachmonhoc()) {
-//			System.out.println("*Môn học:" + c.getThongTinMonHoc() +  "\n"
-//					+ "*Giảng Viên: " + c.getTenGiangVien() + "\n" + c.getEmailGiangVien());
-//		}
-//		
+		
+		System.out.println("Sinh viên 2:");
+		System.out.println("*Thông tin cá nhân: " + sinhVien2.getThongTinHocSinh());
+		System.out.println("*Thông tin về hệ đào tạo: " + sinhVien2.getThongTinHeDaoTao());
+		System.out.println("*Thông tin về loại hình đào tạo: " + sinhVien1.getThongTinLoaiHinhDaoTao());
+		System.out.println("Môn Học:");
+		
 		System.out.println("\n");
+
 		
 		
-		System.out.println("Thông tin của  sinh viên 3");
-		System.out.println( sinhvien3.getThongTinHocSinh());
-		System.out.println( sinhvien3.getThongTinHeDaoTao());
-//		for (MonHoc c : sinhvien1.getHeDaoTao().getDanhsachmonhoc()) {
-//			System.out.println("*Môn học:" + c.getThongTinMonHoc() +  "\n"
-//					+ "*Giảng Viên: " + c.getTenGiangVien() + "\n" + c.getEmailGiangVien());
-//		}
-//		
+		
+		
+		
+		System.out.println("Sinh viên 3:");
+		System.out.println("*Thông tin cá nhân: " + sinhVien3.getThongTinHocSinh());
+		System.out.println("*Thông tin về hệ đào tạo: " + sinhVien3.getThongTinHeDaoTao());
+		System.out.println("*Thông tin về loại hình đào tạo: " + sinhVien1.getThongTinLoaiHinhDaoTao());
+		System.out.println("Môn Học:");
+		
 		System.out.println("\n");
-		
 		context.close();
 
 	}

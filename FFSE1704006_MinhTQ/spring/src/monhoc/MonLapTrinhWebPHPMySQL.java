@@ -30,7 +30,7 @@ public class MonLapTrinhWebPHPMySQL implements MonHoc {
 	}
 
 	public String getThongTinMonHoc() {
-		// TODO Auto-generated method stub
+		
 		return thongTinMonHoc;
 	}
 

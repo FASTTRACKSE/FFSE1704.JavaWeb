@@ -1,7 +1,7 @@
 package giangvien;
 
 public class GiangVien {
-	public String TenGiangVien;
+	public String tenGiangVien;
 	public String emailGiangVien;
 
 	public GiangVien() {
@@ -11,16 +11,16 @@ public class GiangVien {
 
 	public GiangVien(String tenGiangVien, String emailGiangVien) {
 		super();
-		TenGiangVien = tenGiangVien;
+		this.tenGiangVien = tenGiangVien;
 		this.emailGiangVien = emailGiangVien;
 	}
 
 	public String getTenGiangVien() {
-		return TenGiangVien;
+		return tenGiangVien;
 	}
 
 	public void setTenGiangVien(String tenGiangVien) {
-		TenGiangVien = tenGiangVien;
+		this.tenGiangVien = tenGiangVien;
 	}
 
 	public String getEmailGiangVien() {
