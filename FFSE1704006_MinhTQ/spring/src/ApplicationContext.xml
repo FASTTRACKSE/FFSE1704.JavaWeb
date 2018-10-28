@@ -16,19 +16,19 @@
 
 	<!-- giảng vien1 -->
 	<bean id="giangVienCaoLeThanh" class="giangvien.GiangVien"
-		scope="property">
+		scope="prototype">
 		<property name="tenGiangVien" value="Cao Lê Thành "></property>
 		<property name="emailGiangVien" value="ThanhCL@gmail.com"></property>
 	</bean>
 	<!-- giảng vien2 -->
 	<bean id="giangVienTranMinhThang" class="giangvien.GiangVien"
-		scope="property">
+		scope="prototype">
 		<property name="tenGiangVien" value="Nguyễn Thành lâm"></property>
 		<property name="emailGiangVien" value="MinhThang@gmail.com"></property>
 	</bean>
 	<!-- giảng vien3 -->
 	<bean id="giangVienNguyenThanhLam" class="giangvien.GiangVien"
-		scope="property">
+		scope="prototype">
 		<property name="tenGiangVien" value="Nguyễn Lam"></property>
 		<property name="emailGiangVien" value="lamnguyen@gmail.com"></property>
 	</bean>
@@ -38,20 +38,20 @@
 
 	<!-- ***********************************************************************************Been 
 		nhập thông tin các môn học -->
-	<bean id="monDaoTaoJavaCapToc" class="monhoc.MonDaoTaoJavaCapToc">
+	<bean id="monLapTrinhJavaCoBan" class="monhoc.MonLapTrinhJavaCoBan" >
 		<property name="thongTinMonHoc"
 			value="Lập trình Java Cấp tốc"></property>
 		<property name="giangVien" ref="giangVienTranMinhThang">
 		</property>
 	</bean>
 
-	<bean id="monDaoTaoJavaWeb" class="monhoc.MonDaoTaoJavaWed">
+	<bean id="monDaoTaoJavaWeb" class="monhoc.MonDaoTaoJavaWed" >
 		<property name="thongTinMonHoc" value="Lập trình Java Wed"></property>
 		<property name="giangVien" ref="giangVienCaoLeThanh"></property>
 
 	</bean>
 
-	<bean id="monLapTrinhCanBan" class="monhoc.MonLapTrinhCanBan">
+	<bean id="monLapTrinhCanBan" class="monhoc.MonLapTrinhCanBan" >
 		<property name="thongTinMonHoc" value="Lập trình Căn Bản"></property>
 		<property name="giangVien" ref="giangVienCaoLeThanh">
 		</property>
@@ -59,7 +59,7 @@
 
 
 	<bean id="monLapTrinhWebFrontend"
-		class="monhoc.MonLapTrinhWebFrontend">
+		class="monhoc.MonLapTrinhWebFrontend" >
 		<property name="thongTinMonHoc"
 			value="Lập trình Web Frontend"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
@@ -68,23 +68,21 @@
 
 
 	<bean id="monLapTrinhWedPHPMySQL"
-		class="monhoc.MonLapTrinhWebPHPMySQL">
+		class="monhoc.MonLapTrinhWebPHPMySQL" >
 		<property name="thongTinMonHoc"
 			value="Lập trình PHP và MYSQL"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
 		</property>
 	</bean>
 
-	<bean id="monQuyTrinhDuAn" class="monhoc.MonQuyTrinhDuAn">
-
+	<bean id="monQuyTrinhDuAn" class="monhoc.MonQuyTrinhDuAn" >
 		<property name="thongTinMonHoc" value="Quy trình dự án"></property>
 		<property name="giangVien" ref="giangVienNguyenThanhLam">
 		</property>
 	</bean>
 
 
-	<bean id="monTinHocVanPhong" class="monhoc.MonTinHocVanHoc">
-
+	<bean id="monTinHocVanPhong" class="monhoc.MonTinHocVanPhong" >
 		<property name="thongTinMonHoc" value="tin học văn phòng"></property>
 		<property name="giangVien" ref="giangVienTranMinhThang">
 		</property>
@@ -116,13 +114,13 @@
 	<!-- ******************************************************************************************************been 
 		các hệ đào tạo -->
 	<bean id="heDaoTaoDaiHan"
-		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
+		class="quanlyhocsinh.entity.HeDaoTaoDaiHan" >
 		<property name="maHeDaoTao" value="DTDH"></property>
 		<property name="thongTinHeDaoTao"
 			value="chương trình đào tạo java dài hạn, full các kỹ năng lập trình về java. "></property>
 		<property name="danhSachMonHoc">
 			<list>
-				<ref bean="monDaoTaoJavaCapToc" />
+				<ref bean="monLapTrinhJavaCoBan" />
 				<ref bean="monDaoTaoJavaWeb" />
 				<ref bean="monLapTrinhCanBan" />
 				<ref bean="monLapTrinhWebFrontend" />
@@ -137,13 +135,13 @@
 
 
 	<bean id="heDaoTaoNganHanJava"
-		class="quanlyhocsinh.entity.HeDaoTaoNganHanJava">
+		class="quanlyhocsinh.entity.HeDaoTaoNganHanJava" >
 		<property name="maHeDaoTao" value="DTNH"></property>
 		<property name="thongTinHeDaoTao"
 			value="chương trình đào tạo ngắn hạn java 6 tháng full skill."></property>
 		<property name="danhSachMonHoc">
 			<list>
-				<ref bean="monDaoTaoJavaCapToc" />
+				<ref bean="monLapTrinhJavaCoBan" />
 				<ref bean="monLapTrinhCanBan" />
 
 
@@ -152,7 +150,7 @@
 
 	</bean>
 	<bean id="heDaoTaoNganHanPHP"
-		class="quanlyhocsinh.entity.HeDaoTaoNganHanPHP">
+		class="quanlyhocsinh.entity.HeDaoTaoNganHanPHP" >
 		<property name="maHeDaoTao" value="DTNHPHP"></property>
 		<property name="thongTinHeDaoTao"
 			value="chương trình đào tạo ngắn hạn php 6 tháng full skill."></property>

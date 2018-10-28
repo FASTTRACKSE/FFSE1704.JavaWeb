@@ -2,16 +2,16 @@ package monhoc;
 
 import giangvien.GiangVien;
 
-public class MonTinHocVanHoc implements MonHoc {
+public class MonTinHocVanPhong implements MonHoc {
 	
 	String thongTinMonHoc;
 	GiangVien giangVien;
-	public MonTinHocVanHoc() {
+	public MonTinHocVanPhong() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public MonTinHocVanHoc(GiangVien giangVien) {
+	public MonTinHocVanPhong(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}

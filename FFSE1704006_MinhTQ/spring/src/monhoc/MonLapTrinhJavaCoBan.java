@@ -2,16 +2,16 @@ package monhoc;
 
 import giangvien.GiangVien;
 
-public class MonDaoTaoJavaCapToc implements MonHoc {
+public class MonLapTrinhJavaCoBan implements MonHoc {
 	String thongTinMonHoc;
 	GiangVien giangVien;
 
-	public MonDaoTaoJavaCapToc(GiangVien giangVien) {
+	public MonLapTrinhJavaCoBan(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
 
-	public MonDaoTaoJavaCapToc() {
+	public MonLapTrinhJavaCoBan() {
 		super();
 	}
 

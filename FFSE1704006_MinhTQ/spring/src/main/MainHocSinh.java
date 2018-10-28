@@ -33,6 +33,9 @@ public class MainHocSinh {
 		System.out.println("*Thông tin về loại hình đào tạo: " + sinhVien1.getThongTinLoaiHinhDaoTao());
 		System.out.println("Môn Học:");
 		
+		for (MonHoc monHoc : sinhVien2.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println("*" + monHoc.getThongTinMonHoc()+"Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+		}
 		System.out.println("\n");
 
 		
@@ -45,7 +48,9 @@ public class MainHocSinh {
 		System.out.println("*Thông tin về hệ đào tạo: " + sinhVien3.getThongTinHeDaoTao());
 		System.out.println("*Thông tin về loại hình đào tạo: " + sinhVien1.getThongTinLoaiHinhDaoTao());
 		System.out.println("Môn Học:");
-		
+		for (MonHoc monHoc : sinhVien3.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println("*" + monHoc.getThongTinMonHoc()+"Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+		}
 		System.out.println("\n");
 		context.close();
 
