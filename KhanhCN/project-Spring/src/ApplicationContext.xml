@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Bean môn học -->
+	<bean id="LapTrinhCoBan"
+		class="quanlyhocsinh.monhoc.LapTrinhCoBan">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="LapTrinhJavaCoBan"
+		class="quanlyhocsinh.monhoc.LapTrinhJavaCoBan">
+		<property name="tenMonHoc" value="Lập trình java cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="LapTrinhJavaWeb"
+		class="quanlyhocsinh.monhoc.LapTrinhJavaWeb">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="LapTrinhWeb" class="quanlyhocsinh.monhoc.LapTrinhWeb">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="QuyTrinhDuAn" class="quanlyhocsinh.monhoc.QuyTrinhDuAn">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="TinHocVanPhong"
+		class="quanlyhocsinh.monhoc.TinHocVanPhong">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="WebPHP" class="quanlyhocsinh.monhoc.WebPHP">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+
+	<!-- Bean hệ đào tạo -->
+	<bean id="heDaoTaoDaiHan"
+		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhJavaCoBan" />
+				<ref bean="lapTrinhJavaWeb" />
+				<ref bean="lapTrinhWeb" />
+				<ref bean="quyTrinhDuAn" />
+				<ref bean="tinHocVanPhong" />
+				<ref bean="WebPHP" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="heDaoTaoNganHan"
+		class="quanlyhocsinh.entity.HeDaoTaoNganHan">
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhJavaCoBan" />
+			</list>
+		</property>
+	</bean>
+
+	<!--Bean loại hình học -->
+	<bean id="loaiHinhHocOnline"
+		class="quanlyhocsinh.entity.LoaiHinhHocOnline"></bean>
+
+	<bean id="loaiHinhHocOffline"
+		class="quanlyhocsinh.entity.LoaiHinhHocOffline"></bean>
+
+	<!-- Bean giảng viên -->
+	<bean id="GVThanh" class="quanlyhocsinh.giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Cao Lê Thành"></property>
+		<property name="email" value="thanhlt@gmail.com"></property>
+	</bean>
+
+	<bean id="GVLam" class="quanlyhocsinh.giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Nguyễn Văn Lâm"></property>
+		<property name="email" value="lamnv@gmail.com"></property>
+	</bean>
+
+	<bean id="GVThang" class="quanlyhocsinh.giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Trần Minh Thắng"></property>
+		<property name="email" value="thangtm@gmail.com"></property>
+	</bean>
+
+
+
+
+	<bean id="sinhvien1" class="quanlyhocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Cao Ngọc Khánh"></property>
+		<property name="namSinh" value="1996"></property>
+		<property name="email" value="caongockhanh@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="theLoaiHinhHoc" ref="loaiHinhHocOnline"></property>
+	</bean>
+</beans>

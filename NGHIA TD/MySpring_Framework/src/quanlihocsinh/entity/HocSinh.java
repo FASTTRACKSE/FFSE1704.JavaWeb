@@ -11,7 +11,7 @@ public class HocSinh {
 	LoaiDaoTao loaiDaoTao;
 	
 	public String getThongTinSinhVien() {
-		return hoTen+ " - "+ namSinh + "-"+email;
+		return hoTen+ " - "+ namSinh  + diaChi + "-"+email;
 	}
 	public String getThongTinHeDaoTao() {
 		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao();
