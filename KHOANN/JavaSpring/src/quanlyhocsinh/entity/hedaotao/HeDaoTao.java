@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public interface HeDaoTao {
 	public String getMaHeDaoTao();

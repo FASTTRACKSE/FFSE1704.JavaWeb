@@ -1,18 +1,18 @@
-package quanlyhocsinh.entity.MonHoc;
+package quanlyhocsinh.entity.monhoc;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
+import quanlyhocsinh.entity.giangvien.GiangVien;
 
-public class LapTrinhJavaCoBan implements MonHoc {
+public class LapTrinhWebPHPMySQL implements MonHoc {
 
-	public LapTrinhJavaCoBan() {
+	public LapTrinhWebPHPMySQL() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	String tenMonHoc = "Lập Trình Java Cơ Bản";
+	String tenMonHoc = "Lap Trinh web PHP va MySQL";
 	GiangVien giangVien;
 
-	public LapTrinhJavaCoBan(GiangVien giangVien) {
+	public LapTrinhWebPHPMySQL(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
@@ -50,6 +50,7 @@ public class LapTrinhJavaCoBan implements MonHoc {
 	@Override
 	public String getTenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Láº­p TrÃ¬nh Java CÆ¡ Báº£n";
+		return "Lap Trinh web PHP va MySQL";
 	}
+
 }

@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HeDaoTaoHavardFastTrack implements HeDaoTao {
 
@@ -13,7 +13,7 @@ public class HeDaoTaoHavardFastTrack implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "Học Havard tại Đà Nẵng, 14KUSD/tuần";
+		return "H�?c Havard tại �?à Nẵng, 14KUSD/tuần";
 	}
 
 	@Override

@@ -1,19 +1,19 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
-public class HeDaoTaoNganHanJava implements HeDaoTao {
+public class HeDaoTaoNganHanPHP implements HeDaoTao {
 
 	@Override
 	public String getMaHeDaoTao() {
-		return "FFSENHJ";
+		return "FFSENHP";
 	}
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "Đào tạo dài hạn ngắn hạn Java 6 tháng";
+		return "�?ào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
 	}
 
 	List<MonHoc> danhSachMonHoc;

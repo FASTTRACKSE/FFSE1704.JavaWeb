@@ -1,10 +1,21 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
-public class HeDaoTaoDaiHan implements HeDaoTao {
+public class HeDaoTaoNganHanJava implements HeDaoTao {
+
+	@Override
+	public String getMaHeDaoTao() {
+		return "FFSENHJ";
+	}
+
+	@Override
+	public String getThongTinHeDaoTao() {
+		return "�?ào tạo dài hạn ngắn hạn Java 6 tháng";
+	}
+
 	List<MonHoc> danhSachMonHoc;
 
 	public List<MonHoc> getDsMonHoc() {
@@ -14,22 +25,10 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 	public void setDsMonHoc(List<MonHoc> danhSachMonHoc) {
 		this.danhSachMonHoc = danhSachMonHoc;
 	}
-	
+
 	@Override
 	public List<MonHoc> getDanhSachMonHoc() {
 		// TODO Auto-generated method stub
 		return danhSachMonHoc;
 	}
-
-	@Override
-	public String getMaHeDaoTao() {
-		return "FFSEDH";
-	}
-
-	@Override
-	public String getThongTinHeDaoTao() {
-		return "16 tháng, sáng 8h30, chiều 13h30";
-	}
-
-	
 }

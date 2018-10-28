@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity.GiangVien;
+package quanlyhocsinh.entity.giangvien;
 
 public class GiangVien {
 	private String tenGiangVien;

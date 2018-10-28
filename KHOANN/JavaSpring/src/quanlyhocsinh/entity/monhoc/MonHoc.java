@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity.MonHoc;
+package quanlyhocsinh.entity.monhoc;
 
 public interface MonHoc {
 	public String getTenMonHoc();

@@ -1,18 +1,18 @@
-package quanlyhocsinh.entity.MonHoc;
+package quanlyhocsinh.entity.monhoc;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
+import quanlyhocsinh.entity.giangvien.GiangVien;
 
-public class LapTrinhCoBan implements MonHoc {
+public class LapTrinhJavaCoBan implements MonHoc {
 
-	public LapTrinhCoBan() {
+	public LapTrinhJavaCoBan() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	String tenMonHoc = "Lập Trình Cơ Bản";
+	String tenMonHoc = "Lập Trình Java Cơ Bản";
 	GiangVien giangVien;
 
-	public LapTrinhCoBan(GiangVien giangVien) {
+	public LapTrinhJavaCoBan(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
@@ -33,11 +33,7 @@ public class LapTrinhCoBan implements MonHoc {
 		this.giangVien = giangVien;
 	}
 
-	@Override
-	public String getTenMonHoc() {
-		// TODO Auto-generated method stub
-		return "Láº­p TrÃ¬nh CÆ¡ Báº£n";
-	}
+	
 
 	@Override
 	public String getTenGiangVien() {
@@ -49,5 +45,11 @@ public class LapTrinhCoBan implements MonHoc {
 	public String getEmailGiangVien() {
 		// TODO Auto-generated method stub
 		return giangVien.getEmailGiangVien();
+	}
+
+	@Override
+	public String getTenMonHoc() {
+		// TODO Auto-generated method stub
+		return "Lap Trinh Java Co Ban";
 	}
 }

@@ -1,9 +1,9 @@
 package quanlyhocsinh.entity;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
-import quanlyhocsinh.entity.HeDaoTao.HeDaoTao;
-import quanlyhocsinh.entity.LoaiHinhDaoTao.LoaiHinhDaoTao;
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.giangvien.GiangVien;
+import quanlyhocsinh.entity.hedaotao.HeDaoTao;
+import quanlyhocsinh.entity.loaihinhdaotao.LoaiHinhDaoTao;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HocSinh {
 	String hoTen;
