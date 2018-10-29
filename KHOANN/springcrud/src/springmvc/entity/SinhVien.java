@@ -1,10 +1,23 @@
-package com.javatpoint.entity;
+package springmvc.entity;
 
 public class SinhVien {
 	private int id;
 	private String name;
 	private int year;
 	private String gender;
+
+	public SinhVien(int id, String name, int year, String gender) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.year = year;
+		this.gender = gender;
+	}
+
+	public SinhVien() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getId() {
 		return id;
