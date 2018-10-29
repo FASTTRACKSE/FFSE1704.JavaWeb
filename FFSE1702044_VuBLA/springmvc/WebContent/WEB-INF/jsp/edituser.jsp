@@ -12,7 +12,7 @@
 
 
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/UserController/editsave">
+	<form:form method="POST" action="/springmvc/edit">
 		<table>
 			<tr>
 				<td></td>
