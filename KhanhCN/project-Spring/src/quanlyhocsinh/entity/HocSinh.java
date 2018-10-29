@@ -15,9 +15,11 @@ public class HocSinh {
 	}
 
 	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinDaoTao() + "\n" + "   -" + " Thể loại học  : "
-				+ theLoaiHinhHoc.getTheLoai() + "\n " + "  -" + " Thời gian : " + theLoaiHinhHoc.getThoiGian() + "\n "
-				+ "  -" + " Địa chỉ : " + theLoaiHinhHoc.getDiaChi();
+		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinDaoTao();
+	}
+
+	public String getLoaiHinhDaoTao() {
+		return theLoaiHinhHoc.getTheLoai() + "---" + theLoaiHinhHoc.getThoiGian() + "---" + theLoaiHinhHoc.getDiaChi();
 	}
 
 	public String getHoTen() {

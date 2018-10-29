@@ -7,7 +7,7 @@ import quanlyhocsinh.monhoc.MonHoc;
 public class HeDaoTaoNganHan implements HeDaoTao {
 
 	String maHeDaoTao = "FFSENHJ";
-	String thongTinDaoTao = " Đào tạo 6 tháng java.....!!";
+	String thongTinDaoTao = "Đào tạo 6 tháng java.....!!";
 	List<MonHoc> danhSachMonHoc;
 
 	public HeDaoTaoNganHan() {
