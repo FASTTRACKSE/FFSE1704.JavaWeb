@@ -92,11 +92,11 @@ public class HocSinh {
 	}
 
 	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + "---" + heDaoTao.getThongTinHeDaoTao();
+		return " MA"+heDaoTao.getMaHeDaoTao() + "---" + heDaoTao.getThongTinHeDaoTao();
 	}
 
 	public String getThongTinLoaiHinhDaoTao() {
-		return loaiHinhDaotao.getMaLoaiHinhDaoTao() + "-----" +  loaiHinhDaotao.getThongTinLoaiHinhDaoTao();
+		return " Mã loại hình đào tạo: "+loaiHinhDaotao.getMaLoaiHinhDaoTao() + " -- ; Tên hệ đào tạo: " +  loaiHinhDaotao.getThongTinLoaiHinhDaoTao();
 	}
 
 

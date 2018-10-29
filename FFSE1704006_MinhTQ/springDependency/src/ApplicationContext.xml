@@ -23,13 +23,13 @@
 	<!-- giảng vien2 -->
 	<bean id="giangVienTranMinhThang" class="giangvien.GiangVien"
 		scope="prototype">
-		<property name="tenGiangVien" value="Nguyễn Thành lâm"></property>
+		<property name="tenGiangVien" value="Trần Minh Thắng"></property>
 		<property name="emailGiangVien" value="MinhThang@gmail.com"></property>
 	</bean>
 	<!-- giảng vien3 -->
 	<bean id="giangVienNguyenThanhLam" class="giangvien.GiangVien"
 		scope="prototype">
-		<property name="tenGiangVien" value="Nguyễn Lam"></property>
+		<property name="tenGiangVien" value="Nguyễn Thành Lâm"></property>
 		<property name="emailGiangVien" value="lamnguyen@gmail.com"></property>
 	</bean>
 	<!-- *****************************************************************************hết 
@@ -38,7 +38,7 @@
 
 	<!-- ***********************************************************************************Been 
 		nhập thông tin các môn học -->
-	<bean id="monLapTrinhJavaCoBan" class="monhoc.MonLapTrinhJavaCoBan" >
+	<bean id="monLapTrinhJavaCoBan" class="monhoc.MonLapTrinhJavaCoBan"  >
 		<property name="thongTinMonHoc"
 			value="Lập trình Java Cấp tốc"></property>
 		<property name="giangVien" ref="giangVienTranMinhThang">
