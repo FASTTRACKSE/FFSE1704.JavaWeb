@@ -3,7 +3,7 @@ package quanlyhocsinh.entity;
 public class LoaiHinhHocOffline implements TheLoaiHinhHoc {
 	String theLoai = "Offline";
 	String thoiGian = "27/7";
-	String diaChi = "ToÃ  nhÃ  FPT, KCN An Ä�á»“n";
+	String diaChi = "Tòa nhà  FPT, KCN An Đồn";
 
 	public LoaiHinhHocOffline() {
 		super();

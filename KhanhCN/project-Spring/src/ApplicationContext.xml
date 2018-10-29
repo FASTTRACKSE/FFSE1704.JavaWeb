@@ -32,10 +32,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	</bean>
 
 
-
-
-
-
 	<!-- Bean môn học -->
 	<bean id="lapTrinhCoBan"
 		class="quanlyhocsinh.monhoc.LapTrinhCoBan">
@@ -76,11 +72,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="giangVien" ref="GVThanh"></property>
 	</bean>
 
-
-
-
-
-
 	<!-- Bean hệ đào tạo -->
 	<bean id="heDaoTaoDaiHan"
 		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
@@ -115,22 +106,12 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	</bean>
 
 
-
-
-
 	<!--Bean loại hình học -->
 	<bean id="loaiHinhHocOnline"
 		class="quanlyhocsinh.entity.LoaiHinhHocOnline"></bean>
 
 	<bean id="loaiHinhHocOffline"
 		class="quanlyhocsinh.entity.LoaiHinhHocOffline"></bean>
-
-
-
-
-
-
-
 
 
 
@@ -141,5 +122,14 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="email" value="caongockhanh@gmail.com"></property>
 		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
 		<property name="theLoaiHinhHoc" ref="loaiHinhHocOnline"></property>
+	</bean>
+	
+	<bean id="sinhvien2" class="quanlyhocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Cao Ngọc Hà Vy"></property>
+		<property name="namSinh" value="2000"></property>
+		<property name="email" value="caongochavy@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHan"></property>
+		<property name="theLoaiHinhHoc" ref="loaiHinhHocOffline"></property>
 	</bean>
 </beans>
