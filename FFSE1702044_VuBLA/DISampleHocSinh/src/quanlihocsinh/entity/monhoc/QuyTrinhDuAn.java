@@ -4,12 +4,12 @@ import quanlihocsinh.entity.giangvien.GiangVien;
 
 public class QuyTrinhDuAn implements MonHoc{
 	
-	String tenMonHoc="Lập Trình Java Cơ Bản";
+	String tenMonHoc;
 	GiangVien giangVien;
 
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Cơ Bản";
+		return "Tin Học Văn Phòng";
 	}
 	
 	

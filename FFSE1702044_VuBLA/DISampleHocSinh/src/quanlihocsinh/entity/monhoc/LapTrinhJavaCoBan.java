@@ -9,7 +9,7 @@ public class LapTrinhJavaCoBan implements MonHoc{
 
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Cơ Bản";
+		return "Lập Trình JaVA Cơ Bản";
 	}
 	
 	

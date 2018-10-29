@@ -15,52 +15,69 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="tenGV" value="Tran Minh Thang"></property>
 		<property name="emaiGV" value="ThangTM@gmail.com"></property>
 	</bean>
+	<bean id="giangvien2"
+		class="quanlihocsinh.entity.giangvien.GiangVien" scope="prototype">
+		<property name="tenGV" value="Cao Lê Thành"></property>
+		<property name="emaiGV" value="ThanhCL@gmail.com"></property>
+	</bean>
+	<bean id="lapTrinhJavaWeb"
+		class="quanlihocsinh.entity.monhoc.LapTrinhJavaWeb">
+		<property name="giangVien" ref="giangvien2"></property>
+	</bean>
+
+	<bean id="tinHocVanPhong"
+		class="quanlihocsinh.entity.monhoc.TinHocVanPhong">
+		<property name="giangVien" ref="giangvien1"></property>
+	</bean>
+
+	<bean id="lapTrinhCoBan"
+		class="quanlihocsinh.entity.monhoc.LapTrinhCoBan">
+		<property name="giangVien" ref="giangvien1"></property>
+	</bean>
+
+	<bean id="lapTrinhWebFontend"
+		class="quanlihocsinh.entity.monhoc.LapTrinhWebFontend">
+		<property name="giangVien" ref="giangvien1"></property>
+	</bean>
+
+	<bean id="lapTrinhWebPHPvaMySQL"
+		class="quanlihocsinh.entity.monhoc.LapTrinhWebPHPvaMySQL">
+		<property name="giangVien" ref="giangvien2"></property>
+	</bean>
+
+	<bean id="lapTrinhJavaCoBan"
+		class="quanlihocsinh.entity.monhoc.LapTrinhJavaCoBan">
+		<property name="giangVien" ref="giangvien2"></property>
+	</bean>
 
 
-	<bean id="tinHocVanPhong" class="quanlihocsinh.entity.monhoc.TinHocVanPhong">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="lapTrinhCoBan" class="quanlihocsinh.entity.monhoc.LapTrinhCoBan">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="lapTrinhWebFrontend" class="quanlihocsinh.entity.monhoc.LapTrinhWebFontend">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="lapTrinhWebPHPMySQL" class="quanlihocsinh.entity.monhoc.LapTrinhWebPHPvaMySQL">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="lapTrinhJavaCoBan" class="quanlihocsinh.entity.monhoc.LapTrinhJavaCoBan">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="lapTrinhJavaWeb" class="quanlihocsinh.entity.monhoc.LapTrinhJavaWeb">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-	
-	<bean id="quyTrinhDuAn" class="quanlihocsinh.entity.monhoc.QuyTrinhDuAn">
+
+	<bean id="quyTrinhDuAn"
+		class="quanlihocsinh.entity.monhoc.QuyTrinhDuAn">
 		<property name="giangVien" ref="giangvien1"></property>
 	</bean>
 	<bean id="HeDaoTaoNganHanJava"
-		class="quanlihocsinh.entity.hedaotao.HeDaoTaoNganHanJava"></bean>
+		class="quanlihocsinh.entity.hedaotao.HeDaoTaoNganHanJava">
+		<property name="dsMonHoc">
+			<list>
+				<ref bean="lapTrinhJavaCoBan" />
+				<ref bean="lapTrinhJavaWeb" />
+			</list>
+		</property>
+	</bean>
 
 	<bean id="HeDaoTaoNganHanPHP"
 		class="quanlihocsinh.entity.hedaotao.HeDaoTaoNganHanPHP"></bean>
-		
+
 	<bean id="heDaoTaoDaiHan"
 		class="quanlihocsinh.entity.hedaotao.HeDaoTaoDaiHan">
 		<property name="dsMonHoc">
 			<list>
 				<ref bean="tinHocVanPhong" />
 				<ref bean="lapTrinhCoBan" />
-				<ref bean="lapTrinhWebFontend" />
-				<ref bean="LapTrinhWebPHPvaMySQL" />
 				<ref bean="lapTrinhJavaCoBan" />
-				<ref bean="lapTrinhJavaWeb" />
 				<ref bean="quyTrinhDuAn" />
+				<ref bean="lapTrinhJavaWeb" />
 			</list>
 		</property>
 	</bean>
@@ -76,6 +93,17 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="email" value="MỹHồng@gmail.com"></property>
 		<property name="dienThoai" value="959595999"></property>
 		<property name="heDaoTao" ref="heDaoTaoDaiHan">
+		</property>
+
+	</bean>
+	<bean id="sinhvien1" class="quanlihocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Bùi Vũ"></property>
+		<property name="namSinh" value="1999"></property>
+		<property name="diaChi" value="Bình Định"></property>
+		<property name="email" value="VũBLA@gmail.com"></property>
+		<property name="dienThoai" value="9591595999"></property>
+		<property name="heDaoTao" ref="HeDaoTaoNganHanJava">
 		</property>
 
 	</bean>
