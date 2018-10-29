@@ -14,6 +14,8 @@ public class QuanLyHocSinh {
 		
 		HocSinh sinhvien1 = context.getBean("sinhvien1", HocSinh.class);
 		HocSinh sinhvien2 = context.getBean("sinhvien2", HocSinh.class);
+		HocSinh sinhvien3 = context.getBean("sinhvien3", HocSinh.class);
+		HocSinh sinhvien4 = context.getBean("sinhvien4", HocSinh.class);
 
 		
 		System.out.println(sinhvien1.getthongtinsinhvien());
@@ -25,6 +27,18 @@ public class QuanLyHocSinh {
 		System.out.println(sinhvien2.getthongtinsinhvien());
 		System.out.println(sinhvien2.getthongtinhedaotao());
 		for (MonHoc monHoc : sinhvien2.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println(monHoc.getTenMonHoc());
+		}
+		
+		System.out.println(sinhvien3.getthongtinsinhvien());
+		System.out.println(sinhvien3.getthongtinhedaotao());
+		for (MonHoc monHoc : sinhvien3.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println(monHoc.getTenMonHoc());
+		}
+		
+		System.out.println(sinhvien4.getthongtinsinhvien());
+		System.out.println(sinhvien4.getthongtinhedaotao());
+		for (MonHoc monHoc : sinhvien4.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 		}
 		

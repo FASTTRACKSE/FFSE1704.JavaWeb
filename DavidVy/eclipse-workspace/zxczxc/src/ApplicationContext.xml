@@ -23,9 +23,26 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		</list>
 	</property>
 	</bean>
-		<bean id="heDaoTaoNganHan" class="entity.HeDaoTaoNganHan">
+	<bean id="heDaoTaoNganHan" class="entity.HeDaoTaoNganHan">
 	<property name="dsMonHoc">
 		<list>
+			<ref bean="LapTrinhPhpMySql" />
+		</list>
+	</property>
+	</bean>
+	<bean id="heDaoTaoOnLine" class="entity.HeDaoTaoOnLine">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhJavaWeb" />
+			<ref bean="LapTrinhPhpMySql" />
+		</list>
+	</property>
+	</bean>
+	<bean id="heDaoTaoOffLine" class="entity.HeDaoTaoOffLine">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhCoBan" />
+			<ref bean="LapTrinhJavaWeb" />
 			<ref bean="LapTrinhPhpMySql" />
 		</list>
 	</property>
@@ -42,7 +59,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		
 	</bean>
 	
-		<bean id="sinhvien2" class="entity.HocSinh"
+	<bean id="sinhvien2" class="entity.HocSinh"
 		scope="prototype">
 		<property name="hoten" value="ngô gia vỹ"></property>
 		<property name="namsinh" value="1995"></property>
@@ -53,5 +70,25 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		
 	</bean>
 
+	<bean id="sinhvien3" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="lê khả hồng nhât"></property>
+		<property name="namsinh" value="1998"></property>
+		<property name="diachi" value="thanh hóa"></property>
+		<property name="dienthoai" value="0905256084"></property>
+		<property name="email" value="lekhahongnhat@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoOnLine"></property>
+		
+	</bean>
 	
+	<bean id="sinhvien4" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="trương đai nghĩa"></property>
+		<property name="namsinh" value="1993"></property>
+		<property name="diachi" value="hội an"></property>
+		<property name="dienthoai" value="0905256084"></property>
+		<property name="email" value="truongdainghia@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoOffLine"></property>
+		
+	</bean>
 </beans>
