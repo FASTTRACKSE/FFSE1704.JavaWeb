@@ -15,12 +15,19 @@ public class MainApp {
 
 		System.out.println(sinhVien1.getThongTinSinhVien());
 		System.out.println(sinhVien1.getThongTinHeDaoTao());
+		System.out.println(sinhVien1.getLoaiHinhDaoTao());
+
+		
 
 		System.out.println("                                  ");
 		System.out.println("----****---THÔNG TIN GIÁO VIÊN VÀ MÔN HỌC  ---****----");
 		System.out.println("                                  ");
 
-		
+		for (MonHoc monHoc : sinhVien1.getHeDaoTao().getDanhSachMonHoc()) {
+			System.out.println("     * " +  monHoc.getTenMonHoc() + " \n 	"
+					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmail());
+		}
+		System.out.println("******************************************************");
 
 		context.close();
 

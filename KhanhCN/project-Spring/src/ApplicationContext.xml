@@ -12,82 +12,6 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<!-- Bean môn học -->
-	<bean id="LapTrinhCoBan"
-		class="quanlyhocsinh.monhoc.LapTrinhCoBan">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVLam"></property>
-	</bean>
-
-	<bean id="LapTrinhJavaCoBan"
-		class="quanlyhocsinh.monhoc.LapTrinhJavaCoBan">
-		<property name="tenMonHoc" value="Lập trình java cơ bản"></property>
-		<property name="giangVien" ref="GVThanh"></property>
-	</bean>
-
-	<bean id="LapTrinhJavaWeb"
-		class="quanlyhocsinh.monhoc.LapTrinhJavaWeb">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVThanh"></property>
-	</bean>
-
-	<bean id="LapTrinhWeb" class="quanlyhocsinh.monhoc.LapTrinhWeb">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVLam"></property>
-	</bean>
-
-	<bean id="QuyTrinhDuAn" class="quanlyhocsinh.monhoc.QuyTrinhDuAn">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVThanh"></property>
-	</bean>
-
-	<bean id="TinHocVanPhong"
-		class="quanlyhocsinh.monhoc.TinHocVanPhong">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVLam"></property>
-	</bean>
-
-	<bean id="WebPHP" class="quanlyhocsinh.monhoc.WebPHP">
-		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
-		<property name="giangVien" ref="GVThanh"></property>
-	</bean>
-
-
-	<!-- Bean hệ đào tạo -->
-	<bean id="heDaoTaoDaiHan"
-		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
-		<property name="danhSachMonHoc">
-			<list>
-				<ref bean="lapTrinhCoBan" />
-				<ref bean="lapTrinhJavaCoBan" />
-				<ref bean="lapTrinhJavaWeb" />
-				<ref bean="lapTrinhWeb" />
-				<ref bean="quyTrinhDuAn" />
-				<ref bean="tinHocVanPhong" />
-				<ref bean="WebPHP" />
-			</list>
-		</property>
-	</bean>
-
-
-
-	<bean id="heDaoTaoNganHan"
-		class="quanlyhocsinh.entity.HeDaoTaoNganHan">
-		<property name="danhSachMonHoc">
-			<list>
-				<ref bean="lapTrinhCoBan" />
-				<ref bean="lapTrinhJavaCoBan" />
-			</list>
-		</property>
-	</bean>
-
-	<!--Bean loại hình học -->
-	<bean id="loaiHinhHocOnline"
-		class="quanlyhocsinh.entity.LoaiHinhHocOnline"></bean>
-
-	<bean id="loaiHinhHocOffline"
-		class="quanlyhocsinh.entity.LoaiHinhHocOffline"></bean>
-
 	<!-- Bean giảng viên -->
 	<bean id="GVThanh" class="quanlyhocsinh.giangvien.GiangVien"
 		scope="prototype">
@@ -106,6 +30,106 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="tenGiangVien" value="Trần Minh Thắng"></property>
 		<property name="email" value="thangtm@gmail.com"></property>
 	</bean>
+
+
+
+
+
+
+	<!-- Bean môn học -->
+	<bean id="lapTrinhCoBan"
+		class="quanlyhocsinh.monhoc.LapTrinhCoBan">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="lapTrinhJavaCoBan"
+		class="quanlyhocsinh.monhoc.LapTrinhJavaCoBan">
+		<property name="tenMonHoc" value="Lập trình java cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="lapTrinhJavaWeb"
+		class="quanlyhocsinh.monhoc.LapTrinhJavaWeb">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="lapTrinhWeb" class="quanlyhocsinh.monhoc.LapTrinhWeb">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="quyTrinhDuAn" class="quanlyhocsinh.monhoc.QuyTrinhDuAn">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+	<bean id="tinHocVanPhong"
+		class="quanlyhocsinh.monhoc.TinHocVanPhong">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+
+	<bean id="webPHP" class="quanlyhocsinh.monhoc.WebPHP">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+
+
+
+
+
+
+	<!-- Bean hệ đào tạo -->
+	<bean id="heDaoTaoDaiHan"
+		class="quanlyhocsinh.entity.HeDaoTaoDaiHan">
+		<property name="maHeDaoTao" value="FFSE1704"></property>
+		<property name="thongTinDaoTao"
+			value="Làm được không là tại mình"></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhJavaCoBan" />
+				<ref bean="lapTrinhJavaWeb" />
+				<ref bean="lapTrinhWeb" />
+				<ref bean="quyTrinhDuAn" />
+				<ref bean="tinHocVanPhong" />
+				<ref bean="webPHP" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="heDaoTaoNganHan"
+		class="quanlyhocsinh.entity.HeDaoTaoNganHan">
+		<property name="maHeDaoTao" value="FFSE1701"></property>
+		<property name="thongTinDaoTao" value="khanh"></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhJavaCoBan" />
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+	<!--Bean loại hình học -->
+	<bean id="loaiHinhHocOnline"
+		class="quanlyhocsinh.entity.LoaiHinhHocOnline"></bean>
+
+	<bean id="loaiHinhHocOffline"
+		class="quanlyhocsinh.entity.LoaiHinhHocOffline"></bean>
+
+
+
+
+
+
 
 
 
