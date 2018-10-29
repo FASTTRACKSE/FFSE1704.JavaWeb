@@ -2,14 +2,14 @@ package quanlihocsinh.entity.monhoc;
 
 import quanlihocsinh.entity.giangvien.GiangVien;
 
-public class LapTrinhJavaWeb {
+public class LapTrinhJavaWeb implements MonHoc{
 	
 	String tenMonHoc="Lập Trình Java Cơ Bản";
 	GiangVien giangVien;
 
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Cơ Bản";
+		return "Lập Trìnhjavaweb";
 	}
 	
 	
@@ -31,7 +31,6 @@ public class LapTrinhJavaWeb {
 		return giangVien.getEmaiGV();
 	}
 
-
 	public String getTenMonHoc() {
 		return tenMonHoc;
 	}
@@ -50,4 +49,8 @@ public class LapTrinhJavaWeb {
 	public void setGiangVien(GiangVien giangVien) {
 		this.giangVien = giangVien;
 	}
+
+
+
+
 }
