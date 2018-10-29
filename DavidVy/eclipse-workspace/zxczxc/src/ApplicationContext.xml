@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="LapTrinhCoBan" class="monhoc.LapTrinhCoBan"></bean>
+	<bean id="LapTrinhJavaWeb" class="monhoc.LapTrinhJavaWeb"></bean>
+	<bean id="LapTrinhPhpMySql" class="monhoc.LapTrinhPhpMySql"></bean>
+ 
+	<bean id="heDaoTaoDaiHan" class="entity.HeDaoTaoDaiHan">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhCoBan" />
+			<ref bean="LapTrinhJavaWeb" />
+		</list>
+	</property>
+	</bean>
+		<bean id="heDaoTaoNganHan" class="entity.HeDaoTaoNganHan">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhPhpMySql" />
+		</list>
+	</property>
+	</bean>
+
+	<bean id="sinhvien1" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="Cao Lê Thành"></property>
+		<property name="namsinh" value="1996"></property>
+		<property name="diachi" value="hà nội"></property>
+		<property name="dienthoai" value="0905056294"></property>
+		<property name="email" value="ngogiavy221199@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		
+	</bean>
+	
+		<bean id="sinhvien2" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="ngô gia vỹ"></property>
+		<property name="namsinh" value="1995"></property>
+		<property name="diachi" value="đa nẵng"></property>
+		<property name="dienthoai" value="0905056294"></property>
+		<property name="email" value="ngogiavy221199@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHan"></property>
+		
+	</bean>
+
+	
+</beans>
