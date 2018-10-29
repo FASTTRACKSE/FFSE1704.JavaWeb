@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity.HocSinh;
+package quanlyhocsinh.entity;
 
 import quanlyhocsinh.entity.GiangVien.GiangVien;
 import quanlyhocsinh.entity.HeDaoTao.HeDaoTao;
