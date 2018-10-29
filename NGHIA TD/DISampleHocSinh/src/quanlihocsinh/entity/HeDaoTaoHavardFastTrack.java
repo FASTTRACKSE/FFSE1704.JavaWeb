@@ -1,7 +1,11 @@
 package quanlihocsinh.entity;
 
-public class HeDaoTaoHavardFastTrack implements HeDaoTao {
+import java.util.List;
 
+import quanlihocsinh.monhoc.MonHoc;
+
+public class HeDaoTaoHavardFastTrack implements HeDaoTao {
+	List<MonHoc> dsMonHoc;
 	@Override
 	public String getMaHeDaoTao() {
 		// TODO Auto-generated method stub
@@ -11,7 +15,21 @@ public class HeDaoTaoHavardFastTrack implements HeDaoTao {
 	@Override
 	public String getThongTinHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "Học Làm người tử tế/5trieu đô";
+		return "Fasttrack´";
 	}
+
+
+
+	public void setDsMonHoc(List<MonHoc> dsMonHoc) {
+		this.dsMonHoc = dsMonHoc;
+	}
+
+	@Override
+	public List<MonHoc> getDsMonHoc() {
+		// TODO Auto-generated method stub
+		return dsMonHoc;
+	}
+
+	
 
 }

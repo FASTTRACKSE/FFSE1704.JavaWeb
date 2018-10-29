@@ -4,9 +4,9 @@ import quanlihocsinh.entity.giangvien.GiangVien;
 
 public class LapTrinhCoBan implements MonHoc{
 	
-	String tenMonHoc="Lập Trình Java Cơ Bản";
+	String tenMonHoc;
 	GiangVien giangVien;
-
+	String EmailGV;
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
 		return "Lập Trình Cơ Bản";

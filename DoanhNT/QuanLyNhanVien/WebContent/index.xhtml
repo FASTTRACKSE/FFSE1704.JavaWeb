@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet library="css" name="style.css" />
+	
+<title>Insert title here</title>
+</h:head>
+<h:body>
+<div id="wrapper">
+		<div id="header">
+			<h2>Staff Management System</h2>
+		</div>
+	</div>
+
+	<div id="container">
+
+		<div id="content">
+
+			<h:messages globalOnly="true" />
+
+			<h:button value="Add Staff" styleClass="add-student-button"
+				outcome="create" />
+
+			<h:form>	
+				<h:dataTable binding="#{table}" value="#{staffController.dsNhanVien}" var="item"
+				styleClass="demo-table" headerClass="demo-table-header"
+					rowClasses="demo-table-odd-row,demo-table-even-row">
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">STT</f:facet>
+
+						<!--  the value for each row -->
+					#{(staffController.currentPage-1)*staffController.perPage + table.rowIndex + 1}
+					</h:column>
+					
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Họ Tên</f:facet>
+
+						<!--  the value for each row -->
+					#{item.name}
+					</h:column>
+					
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Birthday</f:facet>
+
+						<!--  the value for each row -->
+					#{item.birthDay}
+					</h:column>
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Giới Tính</f:facet>
+						<!--  the value for each row -->
+						<h:outputLabel value="Nam" rendered="#{item.genDer == 0}" />
+						<h:outputLabel value="Nữ" rendered="#{item.genDer == 1}" />
+					</h:column>
+					
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">address</f:facet>
+					
+						<!--  the value for each row -->
+						
+								#{item.addressName}
+					</h:column>
+						
+						<h:column>
+	 							<f:facet name="header">Ảnh</f:facet>
+	 		
+	 							
+	 							<h:graphicImage url="images/#{item.images}" width="100" />
+	 		
+	 					</h:column>
+	 	
+					<h:column>
+						<!-- the column header -->
+						<f:facet name="header">Action</f:facet>
+
+						<!--  the value for each row -->
+						<h:commandLink value="Sửa "
+							action="#{staffController.getStaffById(item.id)}" />
+					|
+
+					<h:commandLink value="Xoá"
+							action="#{staffController.getStaffForDelete(item.id)}" />
+					</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+		</div>
+		
+		<div style="clear: both;"></div>
+		<h:form>
+			<h:commandLink value="|&#60;" action="#{staffController.goPage(1)}"></h:commandLink>
+				&#160;<h:commandLink value="&#60;"
+				action="#{staffController.goPage(staffController.currentPage-1)}"></h:commandLink>
+				&#160;<h:outputText
+				value="#{staffController.currentPage}/#{staffController.totalPage}" />
+				&#160;<h:commandLink value=">"
+				action="#{staffController.goPage(staffController.currentPage+1)}"></h:commandLink>
+				&#160;<h:commandLink value=">|"
+				action="#{staffController.goPage(staffController.totalPage)}"></h:commandLink>
+		</h:form>
+		
+	</div>
+</h:body>
+</html>

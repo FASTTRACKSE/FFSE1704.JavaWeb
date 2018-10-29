@@ -5,16 +5,33 @@ import quanlyhocsinh.giangvien.GiangVien;
 public class TinHocVanPhong implements MonHoc {
 
 	GiangVien giangVien;
+	String tenMonHoc;
 
-	public TinHocVanPhong(GiangVien giangVien) {
+	public TinHocVanPhong() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TinHocVanPhong(GiangVien giangVien, String tenMonHoc) {
+		super();
+		this.giangVien = giangVien;
+		this.tenMonHoc = tenMonHoc;
+	}
+
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+
+	public void setGiangVien(GiangVien giangVien) {
 		this.giangVien = giangVien;
 	}
 
-	@Override
 	public String getTenMonHoc() {
-		// TODO Auto-generated method stub
-		return "Tin há»�c vÄƒn phÃ²ng";
+		return tenMonHoc;
+	}
+
+	public void setTenMonHoc(String tenMonHoc) {
+		this.tenMonHoc = tenMonHoc;
 	}
 
 	@Override
@@ -28,12 +45,5 @@ public class TinHocVanPhong implements MonHoc {
 		// TODO Auto-generated method stub
 		return giangVien.getEmail();
 	}
-
-	public TinHocVanPhong() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 
 }
