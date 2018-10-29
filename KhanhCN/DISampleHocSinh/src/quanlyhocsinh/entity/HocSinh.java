@@ -9,14 +9,15 @@ public class HocSinh {
 
 	HeDaoTao heDaoTao;
 	TheLoaiHinhHoc theLoaiHinhHoc;
-    GiangVien giangVien;
 
 	public String getThongTinSinhVien() {
 		return hoTen + "  - " + namSinh + " - " + email;
 	}
 
 	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinDaoTao() + " - " + theLoaiHinhHoc.getTheLoai()+ " - " + giangVien.getTenGiangVien();
+		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinDaoTao() + "\n" + "   -" + " Thể loại học : "
+				+ theLoaiHinhHoc.getTheLoai() + "\n " + "  -" + " Thời gian : " + theLoaiHinhHoc.getThoiGian() + "\n "
+				+ "  -" + " Địa chỉ : " + theLoaiHinhHoc.getDiaChi();
 	}
 
 	public String getHoTen() {
@@ -59,7 +60,24 @@ public class HocSinh {
 		this.email = email;
 	}
 
-	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao ,TheLoaiHinhHoc theLoaiHinhHoc , GiangVien giangVien) {
+	public HeDaoTao getHeDaoTao() {
+		return heDaoTao;
+	}
+
+	public void setHeDaoTao(HeDaoTao heDaoTao) {
+		this.heDaoTao = heDaoTao;
+	}
+
+	public TheLoaiHinhHoc getTheLoaiHinhHoc() {
+		return theLoaiHinhHoc;
+	}
+
+	public void setTheLoaiHinhHoc(TheLoaiHinhHoc theLoaiHinhHoc) {
+		this.theLoaiHinhHoc = theLoaiHinhHoc;
+	}
+
+	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,
+			TheLoaiHinhHoc theLoaiHinhHoc) {
 		super();
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;
@@ -68,7 +86,7 @@ public class HocSinh {
 		this.email = email;
 		this.heDaoTao = heDaoTao;
 		this.theLoaiHinhHoc = theLoaiHinhHoc;
-		this.giangVien = giangVien ; 
+
 	}
 
 	public HocSinh() {

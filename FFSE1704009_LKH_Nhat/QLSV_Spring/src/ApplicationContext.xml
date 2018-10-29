@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<!-- ********************************************** Bean Giảng Viên ******************************************************** -->
+<bean id="giangVienThanh" class="entity.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Cao Lê thành"></property>
+<property name="emailGiangVien" value="ThanhCL@fasttrack.edu.vn"></property>
+</bean>
+
+<bean id="giangVienLam" class="entity.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Nguyễn Thành Lâm"></property>
+<property name="emailGiangVien" value="LamNT@fasttrack.edu.vn"></property>
+</bean>
+
+<bean id="giangVienThang" class="entity.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Trần Minh Thắng"></property>
+<property name="emailGiangVien" value="ThangTM@fasttrack.edu.vn"></property>
+</bean>
+
+
+<!-- ***************************************************** bean Môn Học *********************************************************** -->
+<bean id="monTinHocVanPhong" class="entity.MonTinHocVanPhong">
+<property name="maMonHoc" value="LP #0"></property>
+<property name="tenMonHoc" value="Tin Học Văn Phòng"></property>
+<property name="giangVien" ref="giangVienThanh"></property>
+</bean>
+
+<bean id="monLapTrinhCoBan" class="entity.MonLapTrinhCoBan">
+<property name="maMonHoc" value="LP #1"></property>
+<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+<property name="giangVien" ref="giangVienThanh"></property></bean>
+
+<bean id="monLapTrinhFrontend" class="entity.MonLapTrinhFrontend">
+<property name="maMonHoc" value="LP #2"></property>
+<property name="tenMonHoc" value="Lập Trình Web Frontend"></property>
+<property name="giangVien" ref="giangVienLam"></property></bean>
+
+<bean id="monLapTrinhPHPMySQL" class="entity.MonLapTrinhPHPMySQL">
+<property name="maMonHoc" value="LP #3"></property>
+<property name="tenMonHoc" value="Lập trình Web PHP và MySQL"></property>
+<property name="giangVien" ref="giangVienLam"></property></bean>
+
+<bean id="monLapTrinhJavaCoBan" class="entity.MonLapTrinhJavaCoBan">
+<property name="maMonHoc" value="LP #4"></property>
+<property name="tenMonHoc" value="Lập Trình Java Cơ Bản"></property>
+<property name="giangVien" ref="giangVienThang"></property></bean>
+
+<bean id="monLapTrinhJavaWeb" class="entity.MonLapTrinhJavaWeb">
+<property name="maMonHoc" value="LP #5"></property>
+<property name="tenMonHoc" value="Lập Trình Java Web"></property>
+<property name="giangVien" ref="giangVienThang"></property></bean>
+
+<bean id="monQuyTrinhDuAn" class="entity.MonQuyTrinhDuAn">
+<property name="maMonHoc" value="LP #6"></property>
+<property name="tenMonHoc" value="Quy trình dự án"></property>
+<property name="giangVien" ref="giangVienThanh"></property></bean>
+
+
+<!-- *********************************************** bean Hệ đào tạo ************************************************************** -->
+<bean id="heDaoTaoDaiHan" class="entity.HeDaoTaoDaiHan">
+<property name="maHeDaoTao" value="FFSE FULL TIME"></property>
+<property name="thongTinHeDaoTao" value="Chương trình đào tạo full môn 16 tháng"></property>
+ <property name="danhSachMonHoc">
+<list>
+<ref bean="monTinHocVanPhong" />
+<ref bean="monLapTrinhCoBan" />
+<ref bean="monLapTrinhFrontend" />
+<ref bean="monLapTrinhPHPMySQL" />
+<ref bean="monLapTrinhJavaCoBan" />
+<ref bean="monLapTrinhJavaCoBan" />
+<ref bean="monQuyTrinhDuAn" />
+</list>
+</property> 
+</bean>
+
+<bean id="heDaoTaoJavaCapToc" class="entity.HeDaoTaoJavaCapToc" >
+<property name="maHeDaoTao" value="FFSE Java"></property>
+<property name="thongTinHeDaoTao" value="Chương trình đào tạo lập trình Java 6 tháng"></property>
+<property name="danhSachMonHoc">
+<list>
+<ref bean="monLapTrinhJavaCoBan" />
+<ref bean="monLapTrinhJavaWeb" />
+</list>
+</property>
+</bean>
+
+<bean id="heDaoTaoPHPCapToc" class="entity.HeDaoTaoPHPCapToc" >
+<property name="maHeDaoTao" value="FFSE PHP"></property>
+<property name="thongTinHeDaoTao" value="Chương trình đào tạo lập trình PHP 6 tháng"></property>
+<property name="danhSachMonHoc">
+<list>
+<ref bean="monLapTrinhFrontend" />
+<ref bean="monLapTrinhPHPMySQL" />
+</list>
+</property>
+</bean>
+
+<!-- ********************************************** bean loại hình đào tạo ******************************************************** -->
+<bean id="loaiHinhDaoTaoOffline" class="entity.LoaiHinhDaoTaoOffline"></bean>
+<bean id="loaiHinhDaoTaoOnline" class="entity.LoaiHinhDaoTaoOnline"></bean>
+
+
+
+<!-- *********************************************** bean sinh viên ***************************************************************** -->
+<bean id="sinhvien1" class="entity.SinhVien" scope="prototype">
+<property name="hoTenSinhVien" value="Lê Khả Hồng Nhật"></property>
+<property name="namSinhSinhVien" value="1998"></property>
+<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+<property name="loaiHinhDaoTao" ref="loaiHinhDaoTaoOffline"></property>
+</bean>
+
+<bean id="sinhvien2" class="entity.SinhVien" scope="prototype">
+<property name="hoTenSinhVien" value="Trương Quang Minh"></property>
+<property name="namSinhSinhVien" value="1996"></property>
+<property name="heDaoTao" ref="heDaoTaoJavaCapToc"></property>
+<property name="loaiHinhDaoTao" ref="loaiHinhDaoTaoOnline"></property>
+</bean>
+
+<bean id="sinhvien3" class="entity.SinhVien" scope="prototype">
+<property name="hoTenSinhVien" value="Phan Phạm Quang Đại"></property>
+<property name="namSinhSinhVien" value="1992"></property>
+<property name="heDaoTao" ref="heDaoTaoPHPCapToc"></property>
+<property name="loaiHinhDaoTao" ref="loaiHinhDaoTaoOnline"></property>
+</bean>
+</beans>

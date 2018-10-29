@@ -29,13 +29,7 @@ public class HocSinh {
 		return loaiHinhDaoTao.getDiaChiDaoTao() + " - " + loaiHinhDaoTao.getThoiGianDaoTao();
 	}
 
-	public String getthongTinGiangVien() {
-		return giangVien.getTenGiangVien() + " - " + giangVien.getEmailGiangVien();
-	}
 	
-	public String getmonHoc() {
-		return monHoc.getTenMonHoc() + " - " + monHoc.getGiangVienPhuTrach();
-	}
 
 	public String getHoTen() {
 		return hoTen;
@@ -78,7 +72,7 @@ public class HocSinh {
 	}
 
 	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,
-			LoaiHinhDaoTao loaiHinhDaoTao, GiangVien giangVien, MonHoc monHoc) {
+			LoaiHinhDaoTao loaiHinhDaoTao) {
 		super();
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;
@@ -87,11 +81,24 @@ public class HocSinh {
 		this.email = email;
 		this.heDaoTao = heDaoTao;
 		this.loaiHinhDaoTao = loaiHinhDaoTao;
-		this.giangVien = giangVien;
-		this.monHoc = monHoc;
+		
 	}
 
-	public HocSinh() {
-		super();
+	public HeDaoTao getHeDaoTao() {
+		return heDaoTao;
 	}
+
+	public void setHeDaoTao(HeDaoTao heDaoTao) {
+		this.heDaoTao = heDaoTao;
+	}
+
+	public LoaiHinhDaoTao getLoaiHinhDaoTao() {
+		return loaiHinhDaoTao;
+	}
+
+	public void setLoaiHinhDaoTao(LoaiHinhDaoTao loaiHinhDaoTao) {
+		this.loaiHinhDaoTao = loaiHinhDaoTao;
+	}
+
+	
 }

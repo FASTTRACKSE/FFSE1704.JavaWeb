@@ -216,7 +216,7 @@
 						<h:outputText value="Ảnh" />
 					</f:facet>
 					<f:view>
-						<h:graphicImage url="images/#{item.avatar}" width="100px" />
+						<h:graphicImage url="images/#{item.avatar}" width="100px" height="120px" />
 					</f:view>
 
 				</h:column>
@@ -227,7 +227,7 @@
 					<h:commandButton class="btn btn-primary" value="Sửa"
 						action="#{nhanSuController.viewEditNhanSu(item.id)}" />
 					<h:commandButton class="btn btn-danger" value="Xóa"
-						action="#{nhanSuController.viewDeleteNhanSu(item.id)}" />
+						action="#{nhanSuController.viewDeleteNhanSu(item.id)}" style="margin: 10px;"/>
 				</h:column>
 			</h:dataTable>
 		</h:form>
