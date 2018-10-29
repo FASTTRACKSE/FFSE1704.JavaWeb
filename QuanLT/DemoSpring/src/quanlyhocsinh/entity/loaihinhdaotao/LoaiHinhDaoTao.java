@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity.LoaiHinhDaoTao;
+package quanlyhocsinh.entity.loaihinhdaotao;
 
 public interface LoaiHinhDaoTao  {
 	public String getThoiGianDaoTao();

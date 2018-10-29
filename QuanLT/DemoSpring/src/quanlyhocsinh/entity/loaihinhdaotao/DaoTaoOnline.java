@@ -1,4 +1,4 @@
-package quanlyhocsinh.entity.LoaiHinhDaoTao;
+package quanlyhocsinh.entity.loaihinhdaotao;
 
 public class DaoTaoOnline implements LoaiHinhDaoTao {
 	
