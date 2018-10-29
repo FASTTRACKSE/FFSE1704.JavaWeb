@@ -1,27 +1,32 @@
 package quanlihocsinh.entity;
 
+
+
+import java.util.List;
+
+import quanlihocsinh.monhoc.MonHoc;
+
 public class HeDaoTaoNganHanJaVa implements HeDaoTao{
-	String maHeDaoTao = "FFSENHJ";
-	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn Java 6 tháng";
-	public HeDaoTaoNganHanJaVa(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
-	}
-	public HeDaoTaoNganHanJaVa() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	List<MonHoc> dsMonHoc;
+	@Override
 	public String getMaHeDaoTao() {
-		return maHeDaoTao;
+		// TODO Auto-generated method stub
+		return "ffse1704";
 	}
-	public void setMaHeDaoTao(String maHeDaoTao) {
-		this.maHeDaoTao = maHeDaoTao;
-	}
+
+	@Override
 	public String getThongTinHeDaoTao() {
-		return thongTinHeDaoTao;
+		// TODO Auto-generated method stub
+		return "Đào tạo ngắn hạn java";
 	}
-	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+
+
+	public List<MonHoc> getDsMonHoc() {
+		return dsMonHoc;
 	}
+
+	public void setDsMonHoc(List<MonHoc> dsMonHoc) {
+		this.dsMonHoc = dsMonHoc;
+	}
+
 }

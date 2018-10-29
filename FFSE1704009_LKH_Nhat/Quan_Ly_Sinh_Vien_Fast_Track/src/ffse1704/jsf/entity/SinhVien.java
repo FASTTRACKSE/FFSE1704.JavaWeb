@@ -118,16 +118,7 @@ public class SinhVien {
 
 
 
-	public LoaiHinhDaoTao getLoaiHinhDaoTao() {
-		return loaiHinhDaoTao;
-	}
-
-
-
-
-	public void setLoaiHinhDaoTao(LoaiHinhDaoTao loaiHinhDaoTao) {
-		this.loaiHinhDaoTao = loaiHinhDaoTao;
-	}
+	
 
 	
 
