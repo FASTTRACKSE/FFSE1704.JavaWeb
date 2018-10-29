@@ -13,7 +13,7 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "�?ào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
+		return "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
 	}
 
 	List<MonHoc> danhSachMonHoc;
