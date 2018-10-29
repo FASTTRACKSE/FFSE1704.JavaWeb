@@ -13,7 +13,7 @@ import monhoc.MonLapTrinhWebFrontend;
 import monhoc.MonLapTrinhWebPHPMySQL;
 import monhoc.MonQuyTrinhDuAn;
 import monhoc.MonTinHocVanHoc;
-import monhoc.MonĐaoTaoJavaWed;
+import monhoc.MonDaoTaoJavaWed;
 import quanlyhocsinh.entity.HeDaoTaoDaiHan;
 import quanlyhocsinh.entity.HeDaoTaoNganHanJava;
 import quanlyhocsinh.entity.HeDaoTaoNganHanPHP;
@@ -35,7 +35,7 @@ public class main {
 		
 		//taoj arraylisst để luu thông tin
 		List<MonHoc> daoTaoDaiHan= new ArrayList<>();
-		daoTaoDaiHan.add(new MonĐaoTaoJavaWed(ClThanh));
+		daoTaoDaiHan.add(new MonDaoTaoJavaWed(ClThanh));
 		daoTaoDaiHan.add(new MonDaoTaoJavaCapToc(TMThang));
 		daoTaoDaiHan.add(new MonLapTrinhWebPHPMySQL(NTLam));
 		daoTaoDaiHan.add(new MonTinHocVanHoc(NTLam));

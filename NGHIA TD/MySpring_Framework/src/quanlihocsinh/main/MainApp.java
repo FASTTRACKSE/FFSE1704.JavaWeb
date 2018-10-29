@@ -30,9 +30,9 @@ public class MainApp {
 		
 		System.out.println("Môn Học:");
 		for(MonHoc monHoc : sinhvien1.getHeDaoTao().getDsMonHoc()) {
-			System.out.println(monHoc.gettenMonHoc());/*
-			System.out.println(monHoc.getTenGiangVien());
-			System.out.println(monHoc.getEmail());*/
+			System.out.println(monHoc.getGiangVien().getTenGiangVien());
+			System.out.println(monHoc.gettenMonHoc());
+			System.out.println(monHoc.getGiangVien().getEmail());
 		}
 		
 		System.out.println(sinhvien2.getThongTinSinhVien());

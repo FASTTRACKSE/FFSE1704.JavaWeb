@@ -3,12 +3,15 @@ package monhoc;
 import giangvien.GiangVien;
 
 public class MonDaoTaoJavaCapToc implements MonHoc {
-	GiangVien giangVien;
 
 	public MonDaoTaoJavaCapToc(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
+
+	GiangVien giangVien;
+
+	
 
 	public MonDaoTaoJavaCapToc() {
 		super();

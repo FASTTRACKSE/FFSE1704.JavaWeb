@@ -8,7 +8,7 @@ public class DaoTaoOnline implements LoaiDaoTao{
 	 		"o	Địa chỉ: trang web LMS.FASTTRACK.EDU.VN";
 	public DaoTaoOnline() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public DaoTaoOnline(String maLoaiDaoTao, String thongTinLoaiDaoTao) {
 		super();
