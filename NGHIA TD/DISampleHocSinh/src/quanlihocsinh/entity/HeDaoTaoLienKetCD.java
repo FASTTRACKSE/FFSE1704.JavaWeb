@@ -1,8 +1,12 @@
 package quanlihocsinh.entity;
 
+import java.util.List;
+
+import quanlihocsinh.monhoc.MonHoc;
+
 public class HeDaoTaoLienKetCD implements HeDaoTao{
 	String maHeDaoTao="MAD1103";
-	String thongTinHeDaoTao="Đào tạo dài hạn + Thương cha nhớ nội";
+	String thongTinHeDaoTao="Đào tạo liên kết cd";
 	public HeDaoTaoLienKetCD(String maHeDaoTao, String thongTinHeDaoTao) {
 		super();
 		this.maHeDaoTao = maHeDaoTao;
@@ -23,6 +27,11 @@ public class HeDaoTaoLienKetCD implements HeDaoTao{
 	}
 	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	}
+	@Override
+	public List<MonHoc> getDsMonHoc() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

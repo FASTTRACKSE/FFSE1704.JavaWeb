@@ -1,34 +1,35 @@
 package quanlyhocsinh.entity.hedaotao;
 
+import java.util.List;
+
+import quanlyhocsinh.entity.monhoc.MonHoc;
+
 public class HeDaoTaoNganHanPHP  implements HeDaoTao {
-	String maHeDaoTao = "FFSE-NHPHP";
-	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
-	
-	public HeDaoTaoNganHanPHP() {
-		super();
-	}
-	
-	public HeDaoTaoNganHanPHP(String maHeDaoTao, String thongTinHeDaoTao) {
-		super();
-		this.maHeDaoTao = maHeDaoTao;
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	List<MonHoc> dsMonHoc;
+
+	public List<MonHoc> getDsMonHoc() {
+		return dsMonHoc;
 	}
 
+	public void setDsMonHoc(List<MonHoc> dsMonHoc) {
+		this.dsMonHoc = dsMonHoc;
+	}
+
+	@Override
 	public String getMaHeDaoTao() {
-		return maHeDaoTao;
+		// TODO Auto-generated method stub
+		return "FFSE-NHPHP";
 	}
 
-	public void setMaHeDaoTao(String maHeDaoTao) {
-		this.maHeDaoTao = maHeDaoTao;
-	}
-
+	@Override
 	public String getThongTinHeDaoTao() {
-		return thongTinHeDaoTao;
+		// TODO Auto-generated method stub
+		return "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
 	}
 
-	public void setThongTinHeDaoTao(String thongTinHeDaoTao) {
-		this.thongTinHeDaoTao = thongTinHeDaoTao;
+	@Override
+	public List<MonHoc> getDanhSachMonHoc() {
+		// TODO Auto-generated method stub
+		return dsMonHoc;
 	}
-	
-	
 }
