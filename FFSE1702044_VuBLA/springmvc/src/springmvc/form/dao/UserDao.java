@@ -25,7 +25,7 @@ public class UserDao {
 		return template.update(sql);
 	}
 	public User getUserById(int id) {
-		String sql= "select * form quanlisinhvien where id=?";
+		String sql= "SELECT * FROM `quanlisinhvien` WHERE id =?";
 		return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<User>(User.class));  
 	}
 	public int update(User sv) {
@@ -34,7 +34,7 @@ public class UserDao {
 	return template.update(sql);
 	}
 	public int delete(int id) {
-		String sql="delete form quanlisinhvien where id='"+id+"'";
+		String sql="DELETE FROM `quanlisinhvien` WHERE `id`='"+id+"'";
 		return template.update(sql);
 	}
 	public List<User> getAllSV() {

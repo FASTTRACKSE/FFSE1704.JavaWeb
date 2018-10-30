@@ -14,7 +14,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 <property name="prefix" value="/WEB-INF/jsp/"></property>  
 <property name="suffix" value=".jsp"></property>  
 </bean>  
-  <bean id="ds"
+  <bean id="ds"	
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>

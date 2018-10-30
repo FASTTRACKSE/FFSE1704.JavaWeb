@@ -23,19 +23,19 @@
 				<td><form:input path="maSV" /></td>
 			</tr>
 			<tr>
-				<td>Tên SV :</td>
+				<td>ten SV :</td>
 				<td><form:input path="tenSV" /></td>
 			</tr>
 			<tr>
-				<td>Năm Sinh :</td>
+				<td>nam sinh :</td>
 				<td><form:input path="namSinh" /></td>
 			</tr>
 			<tr>
-				<td>Địa CHỉ:</td>
+				<td>dia chi:</td>
 				<td><form:input path="diaChi" /></td>
 			</tr>
 			<tr>
-				<td>Lớp Học :</td>
+				<td>lop hoc :</td>
 				<td><form:input path="lopHoc" /></td>
 			</tr>
 			<tr>
