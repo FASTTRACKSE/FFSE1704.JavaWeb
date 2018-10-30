@@ -4,16 +4,16 @@ import entity.GiangVien;
 
 public class LapTrinhCoBan implements MonHoc{
 	public GiangVien getGiangvien() {
-		return giangvien;
+		return giangVien;
 	}
 
 	public void setGiangvien(GiangVien giangvien) {
-		this.giangvien = giangvien;
+		this.giangVien = giangvien;
 	}
 
 	private String maMonHoc;
 	private String tenMonHoc;
-	GiangVien giangvien;
+	GiangVien giangVien;
 	
 	public LapTrinhCoBan() {
 		super();
@@ -21,7 +21,7 @@ public class LapTrinhCoBan implements MonHoc{
 	
 	public LapTrinhCoBan(GiangVien giangvien) {
 		super();
-		this.giangvien = giangvien;
+		this.giangVien = giangvien;
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class LapTrinhCoBan implements MonHoc{
 		super();
 		this.maMonHoc = maMonHoc;
 		this.tenMonHoc = tenMonHoc;
-		this.giangvien = giangvien;
+		this.giangVien = giangvien;
 	}
 
 	public void setTenMonHoc(String tenMonHoc) {
@@ -51,19 +51,19 @@ public class LapTrinhCoBan implements MonHoc{
 	
 	@Override
 	public String getTenGiangVien() {
-		return giangvien.getTenGiangVien();
+		return giangVien.getTenGiangVien();
 	}
 	@Override
 	public String getEmailGiangVien() {
-		return giangvien.getEmailGiangVien();
+		return giangVien.getEmailGiangVien();
 	}
 	
 	public GiangVien getGiangVien() {
-		return giangvien;
+		return giangVien;
 	}
 	
 	public void setGiangVien(GiangVien giangVien) {
-		this.giangvien = giangVien;
+		this.giangVien = giangVien;
 	}
 
 }

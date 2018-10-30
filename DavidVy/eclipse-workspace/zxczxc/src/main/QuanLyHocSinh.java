@@ -24,6 +24,7 @@ public class QuanLyHocSinh {
 		for (MonHoc monHoc : sinhvien1.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 			System.out.println(monHoc.getTenGiangVien());
+			System.out.println(monHoc.getEmailGiangVien());
 		}
 		
 		System.out.println(sinhvien2.getthongtinsinhvien());
@@ -31,6 +32,7 @@ public class QuanLyHocSinh {
 		for (MonHoc monHoc : sinhvien2.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 			System.out.println(monHoc.getTenGiangVien());
+			System.out.println(monHoc.getEmailGiangVien());
 		}
 		
 		System.out.println(sinhvien3.getthongtinsinhvien());
@@ -38,6 +40,7 @@ public class QuanLyHocSinh {
 		for (MonHoc monHoc : sinhvien3.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 			System.out.println(monHoc.getTenGiangVien());
+			System.out.println(monHoc.getEmailGiangVien());
 		}
 		
 		System.out.println(sinhvien4.getthongtinsinhvien());
@@ -45,6 +48,7 @@ public class QuanLyHocSinh {
 		for (MonHoc monHoc : sinhvien4.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 			System.out.println(monHoc.getTenGiangVien());
+			System.out.println(monHoc.getEmailGiangVien());
 		}
 		
 		System.out.println(sinhvien5.getthongtinsinhvien());
@@ -52,6 +56,7 @@ public class QuanLyHocSinh {
 		for (MonHoc monHoc : sinhvien5.getHeDaoTao().getDanhSachMonHoc()) {
 			System.out.println(monHoc.getTenMonHoc());
 			System.out.println(monHoc.getTenGiangVien());
+			System.out.println(monHoc.getEmailGiangVien());
 		}
 		
 		
