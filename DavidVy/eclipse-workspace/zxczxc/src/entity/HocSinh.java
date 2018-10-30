@@ -11,7 +11,16 @@ public class HocSinh {
 	
 	HeDaoTao heDaoTao;
 	MonHoc monHoc;
+	LoaiHinhDaoTao loaiHinhDaoTao;
 	
+	public LoaiHinhDaoTao getLoaiHinhDaoTao() {
+		return loaiHinhDaoTao;
+	}
+
+	public void setLoaiHinhDaoTao(LoaiHinhDaoTao loaiHinhDaoTao) {
+		this.loaiHinhDaoTao = loaiHinhDaoTao;
+	}
+
 	public String getMonHoc() {
 		return monHoc.getTenMonHoc();
 	}
@@ -33,7 +42,7 @@ public class HocSinh {
 	}
 
 	public String getthongtinhedaotao() {
-		return heDaoTao.getMaHeDaoTao()+ " - "+heDaoTao.getthongtinHeDaoTao();
+		return heDaoTao.getMaHeDaoTao()+ " - "+heDaoTao.getthongtinHeDaoTao() ;
 	}
 
 	public String getHoten() {
