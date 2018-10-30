@@ -28,7 +28,7 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "16 tháng, sáng 8h30, chi�?u 13h30";
+		return "16 Tháng , Chiều 13h30 , Sáng 8h30";
 	}
 
 	
