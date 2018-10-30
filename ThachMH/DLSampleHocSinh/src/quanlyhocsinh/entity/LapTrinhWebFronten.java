@@ -1,21 +1,22 @@
 package quanlyhocsinh.entity;
 
-public class LapTrinhJavaWed implements MonHoc {
-	GiangVien giangVien;
-
-	public LapTrinhJavaWed(GiangVien giangVien) {
+public class LapTrinhWebFronten implements MonHoc	{	
+	
+GiangVien giangVien;
+	
+	public LapTrinhWebFronten(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
-	public LapTrinhJavaWed() {
-		// TODO Auto-generated constructor stub
+	
+	public LapTrinhWebFronten() {
 		super();
 	}
-
+	
 	@Override
 	public String getThongTonMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Java Wed";
+		return "Lập Trình Wed Fronten";
 	}
 
 	@Override

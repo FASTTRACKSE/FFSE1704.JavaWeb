@@ -1,21 +1,21 @@
 package quanlyhocsinh.entity;
 
-public class LapTrinhJavaWed implements MonHoc {
+public class LapTrinhWebPHPMySQL implements MonHoc {
 	GiangVien giangVien;
 
-	public LapTrinhJavaWed(GiangVien giangVien) {
+	public LapTrinhWebPHPMySQL(GiangVien giangVien) {
 		super();
 		this.giangVien = giangVien;
 	}
-	public LapTrinhJavaWed() {
+	 public LapTrinhWebPHPMySQL() {
 		// TODO Auto-generated constructor stub
-		super();
+		 super();
 	}
 
 	@Override
 	public String getThongTonMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Java Wed";
+		return "Lập Trình Wed PHP và My SQL";
 	}
 
 	@Override
@@ -29,5 +29,5 @@ public class LapTrinhJavaWed implements MonHoc {
 		// TODO Auto-generated method stub
 		return giangVien.getEmailGV();
 	}
-
+	
 }
