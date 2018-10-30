@@ -1,5 +1,59 @@
 package quanlysinhvien.controller;
 
-public class SinhVienController {
+import java.util.List;
 
-}
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import quanlysinhvien.entity.SinhVien;
+import quanlysinhvien.model.SinhVienDAO;
+
+@Controller  
+public class SinhVienController {  
+    @Autowired  
+    SinhVienDAO dao;//will inject dao from xml file  
+      
+    /*It displays a form to input data, here "command" is a reserved request attribute 
+     *which is used to display object data into form 
+     */  
+    @RequestMapping("/addsinhvien")  
+    public ModelAndView showform(){  
+        return new ModelAndView("addsinhvien","command",new SinhVien());  
+    }  
+    /*It saves object into database. The @ModelAttribute puts request data 
+     *  into model object. You need to mention RequestMethod.POST method  
+     *  because default request is GET*/  
+//    @RequestMapping(value="/save",method = RequestMethod.POST)  
+//    public ModelAndView save(@ModelAttribute("sinhvien") SinhVien sinhvien){  
+//        dao.save(sinhvien);  
+//        return new ModelAndView("redirect:/viewemp");//will redirect to viewemp request mapping  
+//    }  
+    /* It provides list of employees in model object */  
+    @RequestMapping("/sinhvien")  
+    public ModelAndView viewSinhVien(){  
+        List<SinhVien> list=dao.getEmployees();  
+        return new ModelAndView("sinhvien","list",list);  
+    }  
+    /* It displays object data into form for the given id.  
+     * The @PathVariable puts URL data into variable.*/  
+//    @RequestMapping(value="/editemp/{id}")  
+//    public ModelAndView edit(@PathVariable int id){  
+//        Emp emp=dao.getEmpById(id);  
+//        return new ModelAndView("empeditform","command",emp);  
+//    }  
+//    /* It updates model object. */  
+//    @RequestMapping(value="/editsave",method = RequestMethod.POST)  
+//    public ModelAndView editsave(@ModelAttribute("emp") Emp emp){  
+//        dao.update(emp);  
+//        return new ModelAndView("redirect:/viewemp");  
+//    }  
+//    /* It deletes record for the given id in URL and redirects to /viewemp */  
+//    @RequestMapping(value="/deleteemp/{id}",method = RequestMethod.GET)  
+//    public ModelAndView delete(@PathVariable int id){  
+//        dao.delete(id);  
+//        return new ModelAndView("redirect:/viewemp");  
+//    }  
+  
+}  
