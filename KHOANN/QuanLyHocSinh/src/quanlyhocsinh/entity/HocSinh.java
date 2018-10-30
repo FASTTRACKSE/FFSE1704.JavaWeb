@@ -1,5 +1,10 @@
 package quanlyhocsinh.entity;
 
+import quanlyhocsinh.entity.GiangVien.GiangVien;
+import quanlyhocsinh.entity.HeDaoTao.HeDaoTao;
+import quanlyhocsinh.entity.LoaiHinhDaoTao.LoaiHinhDaoTao;
+import quanlyhocsinh.entity.MonHoc.MonHoc;
+
 public class HocSinh {
 	String hoTen;
 	int namSinh;
@@ -9,18 +14,22 @@ public class HocSinh {
 
 	HeDaoTao heDaoTao;
 	LoaiHinhDaoTao loaiHinhDaoTao;
+	GiangVien giangVien;
+	MonHoc monHoc;
 
 	public String getThongTinSinhVien() {
 		return hoTen + "  - " + namSinh + " - " + diaChi + " - " + email;
 	}
 
 	public String getThongTinHeDaoTao() {
-		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao()  ;
+		return heDaoTao.getMaHeDaoTao() + " - " + heDaoTao.getThongTinHeDaoTao();
 	}
-	
+
 	public String getphuongThucDaoTao() {
 		return loaiHinhDaoTao.getDiaChiDaoTao() + " - " + loaiHinhDaoTao.getThoiGianDaoTao();
 	}
+
+	
 
 	public String getHoTen() {
 		return hoTen;
@@ -62,7 +71,8 @@ public class HocSinh {
 		this.email = email;
 	}
 
-	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao, LoaiHinhDaoTao loaiHinhDaoTao ) {
+	public HocSinh(String hoTen, int namSinh, String diaChi, String dienThoai, String email, HeDaoTao heDaoTao,
+			LoaiHinhDaoTao loaiHinhDaoTao) {
 		super();
 		this.hoTen = hoTen;
 		this.namSinh = namSinh;
@@ -71,9 +81,24 @@ public class HocSinh {
 		this.email = email;
 		this.heDaoTao = heDaoTao;
 		this.loaiHinhDaoTao = loaiHinhDaoTao;
+		
 	}
 
-	public HocSinh() {
-		super();
+	public HeDaoTao getHeDaoTao() {
+		return heDaoTao;
 	}
+
+	public void setHeDaoTao(HeDaoTao heDaoTao) {
+		this.heDaoTao = heDaoTao;
+	}
+
+	public LoaiHinhDaoTao getLoaiHinhDaoTao() {
+		return loaiHinhDaoTao;
+	}
+
+	public void setLoaiHinhDaoTao(LoaiHinhDaoTao loaiHinhDaoTao) {
+		this.loaiHinhDaoTao = loaiHinhDaoTao;
+	}
+
+	
 }

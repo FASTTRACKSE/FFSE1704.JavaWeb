@@ -60,7 +60,7 @@ public class DeleteSevlet extends HttpServlet {
 		SinhVien sinhVien = svDAO.seach(maSinhVien);
 		request.setAttribute("SinhVien", sinhVien);
 		request.getRequestDispatcher("DeleteView.jsp").forward(request, response);
-	}
+	}	 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

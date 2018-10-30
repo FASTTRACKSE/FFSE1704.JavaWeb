@@ -1,17 +1,30 @@
 package quanlyhocsinh.entity.monhoc;
 
-public class QuyTrinhDuAn implements MonHoc {
+import quanlyhocsinh.entity.giangvien.*;
 
-	@Override
-	public String getMaMonHoc() {
-		// TODO Auto-generated method stub
-		return "LP#7";
+public class QuyTrinhDuAn implements MonHoc {
+	GiangVien giangVien;
+	
+	public QuyTrinhDuAn(GiangVien giangVien) {
+		super();
+		this.giangVien = giangVien;
 	}
 
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub
-		return "Quy trình dự án";
+		return "Quy Trình Dự Án";
 	}
 
+	@Override
+	public String getTenGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getTenGiangVien();
+	}
+	
+	@Override
+	public String getEmailGiangVien() {
+		// TODO Auto-generated method stub
+		return giangVien.getEmailGiangVien();
+	}
 }

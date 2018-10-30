@@ -1,5 +1,8 @@
 package quanlihocsinh.entity;
 
+import quanlihocsinh.entity.BuoiHoc.BuoiHoc;
+import quanlihocsinh.entity.hedaotao.HeDaoTao;
+
 public class HocSinh {
 	private String hoTen;
 	private int namSinh;
@@ -9,7 +12,7 @@ public class HocSinh {
 	HeDaoTao heDaoTao;
 	BuoiHoc buoiHoc;
 	public String getThongTinSinhVien() {
-		return hoTen + "  - " + namSinh + " - " + email;
+		return hoTen+"-"+diaChi+ "-" + "  - " + namSinh + " - " + email + "-"+dienThoai;
 	}
 
 	public String getThongTinHeDaoTao() {
@@ -18,6 +21,23 @@ public class HocSinh {
 	public String getThongTinBuoiHoc() {
 		return buoiHoc.getLoaiDaoTao() + " - " + buoiHoc.getThoiGianHoc();
 	}
+	
+	public HeDaoTao getHeDaoTao() {
+		return heDaoTao;
+	}
+
+	public void setHeDaoTao(HeDaoTao heDaoTao) {
+		this.heDaoTao = heDaoTao;
+	}
+
+	public BuoiHoc getBuoiHoc() {
+		return buoiHoc;
+	}
+
+	public void setBuoiHoc(BuoiHoc buoiHoc) {
+		this.buoiHoc = buoiHoc;
+	}
+
 	public String getHoTen() {
 		return hoTen;
 	}

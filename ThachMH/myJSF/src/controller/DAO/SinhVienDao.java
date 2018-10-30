@@ -1,5 +1,5 @@
 package controller.DAO;
-
+ 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import model.bean.SinhVien;
 
 @ManagedBean
 public class SinhVienDao {
-	public static final int RECORD_IN_PAGE = 5;
+	public static final int RECORD_IN_PAGE = 6;
 
 	private IPareEntity<SinhVien> iPareEntity = new IPareEntity<SinhVien>() {
 		public SinhVien pare(ResultSet result) throws SQLException {

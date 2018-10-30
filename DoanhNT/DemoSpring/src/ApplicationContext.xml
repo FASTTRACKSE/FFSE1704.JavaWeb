@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="lapTrinhCoBan"
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhCoBan"></bean>
+
+	<bean id="lapTrinhJavaCoBan"
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhJavaCoBan"></bean>
+
+	<bean id="lapTrinhJavaWeb"
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhJavaWeb"></bean>
+
+	<bean id="LapTrinhWebFrontend"
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhWebFrontend"></bean>
+
+	<bean id="lapTrinhWebPHPMySQL"
+		class="quanlyhocsinh.entity.MonHoc.LapTrinhWebPHPMySQL"></bean>
+
+	<bean id="quyTrinhDuAn"
+		class="quanlyhocsinh.entity.MonHoc.QuyTrinhDuAn"></bean>
+
+	<bean id="tinHocVanPhong"
+		class="quanlyhocsinh.entity.MonHoc.TinHocVanPhong"></bean>
+
+	<bean id="heDaoTaoNganHanJava"
+		class="quanlyhocsinh.entity.HeDaoTao.HeDaoTaoNganHanJava"></bean>
+
+	<bean id="heDaoTaoDaiHan"
+		class="quanlyhocsinh.entity.HeDaoTao.HeDaoTaoDaiHan"></bean>
+
+	
+	<bean id="hocSinh1" class="quanlyhocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Quan Le Trong"></property>
+		<property name="namSinh" value="1998"></property>
+		<property name="diaChi" value="HCMC"></property>
+		<property name="email" value="quanlt@gmail"></property>
+		<property name="dienThoai" value="0925808838"></property>
+		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		
+	</bean>
+	
+	<bean id="giangvien1" class="quanlyhocsinh.entity.GiangVien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Ho Quang Hieu"></property>
+		<property name="emailGiangViwn" value="hieuhq@gmail.com"></property>
+		
+	</bean>
+</beans>
