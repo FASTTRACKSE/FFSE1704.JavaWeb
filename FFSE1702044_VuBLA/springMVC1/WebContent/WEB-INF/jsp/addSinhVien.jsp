@@ -1,5 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,37 +11,22 @@
 </head>
 <body>
 
-
-	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/springmvc/edit">
+	<form:form method="post" action="save">
 		<table>
 			<tr>
-				<td></td>
-				<td><form:hidden path="id" /></td>
+				<td>Id :</td>
+				<td><form:input path="id" /></td>
 			</tr>
 			<tr>
-				<td>MaSV :</td>
+				<td>name :</td>
 				<td><form:input path="maSV" /></td>
 			</tr>
 			<tr>
-				<td>Tên SV :</td>
+				<td>Môn Học :</td>
 				<td><form:input path="tenSV" /></td>
 			</tr>
 			<tr>
-				<td>Năm Sinh :</td>
-				<td><form:input path="namSinh" /></td>
-			</tr>
-			<tr>
-				<td>Địa CHỉ:</td>
-				<td><form:input path="diaChi" /></td>
-			</tr>
-			<tr>
-				<td>Lớp Học :</td>
-				<td><form:input path="lopHoc" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Edit Save" /></td>
+				<td colspan="2"><input type="submit" value="Save" /></td>
 			</tr>
 		</table>
 	</form:form>
