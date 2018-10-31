@@ -136,7 +136,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<!--***************Hoc Sinh************** -->
 
 
-	<bean id="hocSinh1" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="hocSinh1" class="quanlyhocsinh.entity.HocSinh.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="SyNV"></property>
 		<property name="namSinh" value="1999"></property>
@@ -147,7 +147,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="loaiHinhDaoTao" ref="daoTaoOnline"></property>
 
 	</bean>
-	<bean id="hocSinh2" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="hocSinh2" class="quanlyhocsinh.entity.HocSinh.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="qeqe"></property>
 		<property name="namSinh" value="1979"></property>
@@ -158,7 +158,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		<property name="loaiHinhDaoTao" ref="daoTaoOffline"></property>
 
 	</bean>
-	<bean id="hocSinh3" class="quanlyhocsinh.entity.HocSinh"
+	<bean id="hocSinh3" class="quanlyhocsinh.entity.HocSinh.HocSinh"
 		scope="prototype">
 		<property name="hoTen" value="ABCCCC"></property>
 		<property name="namSinh" value="1979"></property>

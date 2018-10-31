@@ -1,43 +1,67 @@
 package fasttrack.com.javatpoint;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import fasttrack.dao.HocSinhDao;
 import fasttrack.entity.HocSinh;
 
+@Controller
 public class HocSinhController {
 
-	@RequestMapping("/hocsinh")
+	@Autowired
+	HocSinhDao hsDao;
+
+	public HocSinhDao getHsDao() {
+		return hsDao;
+	}
+
+	public void setHsDao(HocSinhDao hsDao) {
+		this.hsDao = hsDao;
+	}
+
+	@RequestMapping("/hocsinhform")
 	public ModelAndView showform() {
-		// command is a reserved request attribute name, now use <form> tag to show
-		// object data
-		return new ModelAndView("hocsinh", "command", new HocSinh());
+		
+		return new ModelAndView("hocsinhform", "command", new HocSinh());
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("hs") HocSinh hs) {
-		// write code to save emp object
-		// here, we are displaying emp object to prove emp has data
-		System.out.println(hs.getNameStudent() + " " + hs.getClassStudent() + " " + hs.getGender());
 
-		// return new ModelAndView("empform","command",emp);//will display object data
-		return new ModelAndView("redirect:/viewhs");// will redirect to viewemp request mapping
+		hsDao.save(hs);
+		return new ModelAndView("redirect:/viewhs");
 	}
 
-	@RequestMapping("/viewhocsinh")
-	public ModelAndView viewhocsinh() {
-		// write the code to get all employees from DAO
-		// here, we are writing manual code of list for easy understanding
-		List<HocSinh> list = new ArrayList<HocSinh>();
-		list.add(new HocSinh(1,"Khánh", "FFSE1701","Nam"));
-		list.add(new HocSinh(2, "Minh", "FFSE1704", "Nữ"));
-		list.add(new HocSinh(3, "Kỳ", "FFSE1701", "3D"));
+	@RequestMapping(value = "/editStudent/{id}")
+	public ModelAndView edit(@PathVariable int id) {
+		HocSinh hs = hsDao.getStudentById(id);
+		return new ModelAndView("editForm", "command", hs);
+	}
 
-		return new ModelAndView("viewhocsinh", "list", list);
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
+	public ModelAndView editsave(@ModelAttribute("hs") HocSinh hs) {
+		hsDao.update(hs);
+		return new ModelAndView("redirect:/viewhs");
+	}
+	
+	  @RequestMapping(value="/deleteStudent/{id}",method = RequestMethod.GET)  
+	    public ModelAndView delete(@PathVariable int id){  
+	        hsDao.delete(id);  
+	        return new ModelAndView("redirect:/viewhs");  
+	    }  
+
+	@RequestMapping("/viewhs")
+	public ModelAndView viewhocsinh() {
+		
+		List<HocSinh> list = hsDao.getStudent();
+		return new ModelAndView("viewhs", "list", list);
 	}
 }

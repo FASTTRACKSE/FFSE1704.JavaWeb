@@ -2,6 +2,7 @@ package springmvc.form.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,8 @@ import springmvc.form.entity.User;
 @Controller
 public class UserController {
 	List<User> list;
-	UserDao userDAO = new UserDao();
+	@Autowired
+	UserDao dao ;
 
 	@RequestMapping("/userform")
 	public ModelAndView showForm() {
@@ -27,32 +29,32 @@ public class UserController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("user") User user) {
 
-		userDAO.addUser(user);
+		dao.add(user);
 		return new ModelAndView("redirect:/viewuser");
 	}
 
 	@RequestMapping(value = "/edituser/{id}")
-	public ModelAndView edituser(@PathVariable String id) {
-		User user = userDAO.getUserById(id);
+	public ModelAndView edituser(@PathVariable int id) {
+		User user = dao.getUserById(id);
 		return new ModelAndView("edituser", "command", user);
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView edit(@ModelAttribute("user") User user) {
-		userDAO.editUser(user);
+		dao.update(user);
 		return new ModelAndView("redirect:/viewuser");
 	}
 
 	@RequestMapping(value = "/deleteuser/{id}", method = RequestMethod.GET)
-	public ModelAndView deluser(@PathVariable String id) {
-		userDAO.deleteUser(id);
+	public ModelAndView deluser(@PathVariable int id) {
+		dao.delete(id);
 		return new ModelAndView("redirect:/viewuser");
 	}
 
 	@RequestMapping("/viewuser")
 	public ModelAndView viewUser() {
-		List<User> list = userDAO.getAllUser();
-		
+		List<User> list = dao.getAllSV();
+
 		return new ModelAndView("viewuser", "list", list);
 	}
 

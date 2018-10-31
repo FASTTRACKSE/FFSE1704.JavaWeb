@@ -77,5 +77,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-5.1.1.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-5.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.46.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
