@@ -16,7 +16,7 @@ public class LapTrinhJavaCoBan implements MonHoc  {
 	@Override
 	public String getThongTonMonHoc() {
 		// TODO Auto-generated method stub
-		return "LapTrinhJavaCoBan";
+		return "Lập Trình Java Cơ Bản";
 	}
 
 	@Override
