@@ -1,50 +1,55 @@
 package springmvc.form.dao;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import springmvc.form.entity.User;
 
 public class UserDao {
-	private static final Map<String, User> userMap = new HashMap<String, User>();
 
-	public void getUser() {
+	JdbcTemplate template;
 
-		User user1 = new User("1", "anh vũ", "anh văn");
-		User user2 = new User("2", "anh vũ2", "anh văn");
-		User user3 = new User("3", "anh vũ3", "anh văn");
-		userMap.put(user1.getId(), user1);
-		userMap.put(user2.getId(), user2);
-		userMap.put(user3.getId(), user3);
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
 	}
 
-	public User getUserById(String id) {
-		return userMap.get(id);
+	public int add(User sv) {
+		String sql = "INSERT INTO `quanlisinhvien`(`ma_sv`, `ten_sv`, `nam_sinh`, `dia_chi`, `lop_hoc`)" + " VALUES ('"
+				+ sv.getMaSV() + "','" + sv.getTenSV() + "','" + sv.getNamSinh() + "','" + sv.getDiaChi() + "','"
+				+ sv.getLopHoc() + "')";
+		return template.update(sql);
 	}
+	public User getUserById(int id) {
+		String sql= "SELECT * FROM `quanlisinhvien` WHERE id =?";
+		return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<User>(User.class));  
+	}
+	public int update(User sv) {
+		String sql = "UPDATE `quanlisinhvien` SET `ma_sv`='"+sv.getMaSV()+"',`ten_sv`='"+sv.getTenSV()+"',"
+				+ "`nam_sinh`='"+sv.getNamSinh()+"',`dia_chi`='"+sv.getDiaChi()+"',`lop_hoc`='"+sv.getLopHoc()+"' WHERE `id`='"+sv.getId()+"' ";
+	return template.update(sql);
+	}
+	public int delete(int id) {
+		String sql="DELETE FROM `quanlisinhvien` WHERE `id`='"+id+"'";
+		return template.update(sql);
+	}
+	public List<User> getAllSV() {
+		return template.query("SELECT * FROM `quanlisinhvien`", new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet rs, int row) throws SQLException {
+				User sv = new User();
+				sv.setId(rs.getInt(1));
+				sv.setMaSV(rs.getString(2));
+				sv.setTenSV(rs.getString(3));
+				sv.setDiaChi(rs.getString(4));
+				sv.setLopHoc(rs.getString(5));
+				return sv;
+			}
 
-	public User editUser(User user) {
-		userMap.put(user.getId(), user);
-		return user;
+		});
 	}
-	public void deleteUser(String id) {
-		userMap.remove(id);
-	}
-	public User addUser(User user) {
-		userMap.put(user.getId(), user);
-		return user;
-	}
-	public List<User> getAllUser() {
-		if (!(userMap.size() > 0)) {
-			getUser();
-		}
-		
-		Collection<User> us = userMap.values();
-		List<User> list = new ArrayList<User>();
-		list.addAll(us);
-		return list;
-	}
-
 }

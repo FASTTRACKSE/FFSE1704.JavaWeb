@@ -11,14 +11,14 @@
 		<th>Chức Năng</th>
 	</tr>
 	<c:forEach var="user" items="${list}">
-		
 		<tr>
 			<td>${user.id}</td>
-			<td>${user.name}</td>
-			<td>${user.monhoc}</td>
-			<td><a href="edituser/${user.id}">Edit</a>-+-<a href="deleteuser/${user.id}">Del</a></td>
+			<td>${user.maSV}</td>
+			<td>${user.tenSV}</td>
+			<td><a href="edituser/${user.id}">Edit</a>-+-<a
+				href="deleteuser/${user.id}">Del</a></td>
 		</tr>
 	</c:forEach>
 
 </table>
-<a href="index.jsp">Back Home</a> 
+<a href="index.jsp">Back Home</a>
