@@ -7,31 +7,42 @@
 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="thayThanh"
-		class="giangvien.GiangVienThanh"></bean>
-	<bean id="thayThang"
-		class="giangvien.GiangVienThang"></bean>
+	<bean id="thayThanh" class="giangvien.GiangVienThanh"></bean>
+	<bean id="thayThang" class="giangvien.GiangVienThang"></bean>
 	<bean id="thayLam" class="giangvien.GiangVienLam"></bean>
-	<bean id="monHocLapTrinhCoBan"
-		class="monhoc.MonHocLapTrinhCoBan"></bean>
+	<bean id="monHocLapTrinhCoBan" class="monhoc.MonHocLapTrinhCoBan">
+		<property name="giangVien" ref="thayThang"></property>
+	</bean>
 	<bean id="monHocLapTrinhJavaCoBan"
-		class="monhoc.MonHocLapTrinhJavaCoBan"></bean>
+		class="monhoc.MonHocLapTrinhJavaCoBan">
+		<property name="giangVien" ref="thayLam"></property>
+	</bean>
 	<bean id="monHocLapTrinhJavaWeb"
-		class="monhoc.MonHocLapTrinhJavaWeb"></bean>
-	<bean id="monHocLapTrinhWeb"
-		class="monhoc.MonHocLapTrinhWeb"></bean>
+		class="monhoc.MonHocLapTrinhJavaWeb">
+		<property name="giangVien" ref="thayThanh"></property>
+
+	</bean>
+	<bean id="monHocLapTrinhWeb" class="monhoc.MonHocLapTrinhWeb">
+		<property name="giangVien" ref="thayLam"></property>
+
+	</bean>
 	<bean id="monHocLapTrinhWebPHP"
-		class="monhoc.MonHocLapTrinhWebPHP"></bean>
-	<bean id="monHocQuyTrinhDuAn"
-		class="monhoc.MonHocQuyTrinhDuAn"></bean>
+		class="monhoc.MonHocLapTrinhWebPHP">
+
+		<property name="giangVien" ref="thayThang"></property>
+	</bean>
+	<bean id="monHocQuyTrinhDuAn" class="monhoc.MonHocQuyTrinhDuAn">
+		<property name="giangVien" ref="thayThanh"></property>
+
+	</bean>
 	<bean id="monHocTinHocVanPhong"
-		class="monhoc.MonHocTinHocVanPhong"></bean>
-	<bean id="loTrinhHocOffline"
-		class="lotrinhhoc.LoTrinhHocOffline"></bean>
-	<bean id="loTrinhHocOnline"
-		class="lotrinhhoc.LoTrinhHocOnline"></bean>
-	<bean id="heDaoTaoDaiHan"
-		class="hedaotao.HeDaoTaoDaiHan">
+		class="monhoc.MonHocTinHocVanPhong">
+		<property name="giangVien" ref="thayLam"></property>
+	</bean>
+	<bean id="loTrinhHocOffline" class="lotrinhhoc.LoTrinhHocOffline">
+	</bean>
+	<bean id="loTrinhHocOnline" class="lotrinhhoc.LoTrinhHocOnline"></bean>
+	<bean id="heDaoTaoDaiHan" class="hedaotao.HeDaoTaoDaiHan">
 		<property name="danhsachmonhoc">
 			<list>
 				<ref bean="monHocLapTrinhCoBan" />
@@ -44,35 +55,54 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 			</list>
 		</property>
 	</bean>
-	<bean id="heDaoTaoNganHanPHP"
-		class="hedaotao.HeDaoTaoNganHanPHP">
+	<bean id="heDaoTaoNganHanPHP" class="hedaotao.HeDaoTaoNganHanPHP">
 		<property name="danhsachmonhoc">
-		<list>
-			<ref bean="monHocLapTrinhCoBan" />
-			<ref bean="monHocLapTrinhWeb" />
-			<ref bean="monHocLapTrinhWebPHP" />
-		</list>
+			<list>
+				<ref bean="monHocLapTrinhCoBan" />
+				<ref bean="monHocLapTrinhWeb" />
+				<ref bean="monHocLapTrinhWebPHP" />
+			</list>
 		</property>
 	</bean>
 	<bean id="heDaoTaoNganHanJava"
 		class="hedaotao.HeDaoTaoNganHanJava">
 		<property name="danhsachmonhoc">
-		<list>
-			<ref bean="monHocLapTrinhJavaCoBan" />
-			<ref bean="monHocLapTrinhJavaWeb" />
-			<ref bean="monHocLapTrinhWeb" />
-		</list>
+			<list>
+				<ref bean="monHocLapTrinhJavaCoBan" />
+				<ref bean="monHocLapTrinhJavaWeb" />
+				<ref bean="monHocLapTrinhWeb" />
+			</list>
 		</property>
 	</bean>
 
-	<bean id="sv1" class="hocsinh.HocSinh"
-		scope="prototype">
+	<bean id="sv1" class="hocsinh.HocSinh" scope="prototype">
 		<property name="hoTen" value="Nguyen Manh Dung"></property>
-		<property name="diaChi" value="Da Nang"></property>
+		<property name="diaChi" value="Đà Nẵng"></property>
 		<property name="namSinh" value="1999"></property>
 		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
 		<property name="loTrinhHoc" ref="loTrinhHocOffline"></property>
 		<property name="dienThoai" value="01256487956"></property>
 		<property name="email" value="dung@gmail.com"></property>
 	</bean>
+	
+		<bean id="sv2" class="hocsinh.HocSinh" scope="prototype">
+		<property name="hoTen" value="Nguyen Văn Nam"></property>
+		<property name="diaChi" value="Đà Nẵng"></property>
+		<property name="namSinh" value="1999"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHanJava"></property>
+		<property name="loTrinhHoc" ref="loTrinhHocOnline"></property>
+		<property name="dienThoai" value="01256487956"></property>
+		<property name="email" value="nam@gmail.com"></property>
+	</bean>
+	
+		<bean id="sv3" class="hocsinh.HocSinh" scope="prototype">
+		<property name="hoTen" value="Nguyen Thị Nữ "></property>
+		<property name="diaChi" value="Quảng Nam"></property>
+		<property name="namSinh" value="1999"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHanPHP"></property>
+		<property name="loTrinhHoc" ref="loTrinhHocOffline"></property>
+		<property name="dienThoai" value="01256487956"></property>
+		<property name="email" value="nu@gmail.com"></property>
+	</bean>
+	
 </beans>

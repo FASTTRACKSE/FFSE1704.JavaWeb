@@ -7,7 +7,13 @@ public class MonHocLapTrinhCoBan implements MonHoc {
 	public String getThongTinMonHoc() {
 		return " Lập trình cơ bản";
 	}
- public String getTenGiangVien() {
+ public GiangVien getGiangVien() {
+		return giangVien;
+	}
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+public String getTenGiangVien() {
 	 return giangVien.getTenGiangVien();
  }
  

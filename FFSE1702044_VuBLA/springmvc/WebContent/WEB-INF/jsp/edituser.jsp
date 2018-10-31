@@ -12,22 +12,32 @@
 
 
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/UserController/editsave">
+	<form:form method="POST" action="/springmvc/edit">
 		<table>
 			<tr>
 				<td></td>
 				<td><form:hidden path="id" /></td>
 			</tr>
 			<tr>
-				<td>Name :</td>
-				<td><form:input path="name" /></td>
+				<td>MaSV :</td>
+				<td><form:input path="maSV" /></td>
 			</tr>
 			<tr>
-				<td>môn Học :</td>
-				<td><form:input path="monhoc" /></td>
+				<td>ten SV :</td>
+				<td><form:input path="tenSV" /></td>
 			</tr>
-			
-
+			<tr>
+				<td>nam sinh :</td>
+				<td><form:input path="namSinh" /></td>
+			</tr>
+			<tr>
+				<td>dia chi:</td>
+				<td><form:input path="diaChi" /></td>
+			</tr>
+			<tr>
+				<td>lop hoc :</td>
+				<td><form:input path="lopHoc" /></td>
+			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Edit Save" /></td>

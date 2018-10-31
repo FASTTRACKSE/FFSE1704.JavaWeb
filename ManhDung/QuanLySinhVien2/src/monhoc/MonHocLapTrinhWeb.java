@@ -3,7 +3,14 @@ package monhoc;
 import giangvien.GiangVien;
 
 public class MonHocLapTrinhWeb implements MonHoc {
-    GiangVien giangVien; 
+    public GiangVien getGiangVien() {
+		return giangVien;
+	}
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
+	GiangVien giangVien; 
 	public String getThongTinMonHoc() {
 		return " Lập trình web";
 	}
