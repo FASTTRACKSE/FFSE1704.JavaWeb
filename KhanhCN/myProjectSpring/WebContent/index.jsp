@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +8,8 @@
 </head>
 <body>
 
+	<a href="hocsinhform">Add Student</a>
+	</br>
+	<a href="viewhs">View Student</a>
 </body>
 </html>

@@ -11,9 +11,33 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="LapTrinhCoBan" class="monhoc.LapTrinhCoBan"></bean>
-	<bean id="LapTrinhJavaWeb" class="monhoc.LapTrinhJavaWeb"></bean>
-	<bean id="LapTrinhPhpMySql" class="monhoc.LapTrinhPhpMySql"></bean>
+	<bean id="LapTrinhCoBan" class="monhoc.LapTrinhCoBan">
+	<property name="giangVien" ref="giangVienThanh"></property>
+	</bean>
+	<bean id="LapTrinhJavaWeb" class="monhoc.LapTrinhJavaWeb">
+	<property name="giangVien" ref="giangVienThang"></property>
+	</bean>
+	<bean id="LapTrinhPhpMySql" class="monhoc.LapTrinhPhpMySql">
+	<property name="giangVien" ref="giangVienLam"></property>
+	</bean>
+	<bean id="LapTrinhFrontend" class="monhoc.LapTrinhFrontend">
+	<property name="giangVien" ref="giangVienLam"></property>
+	</bean>
+	
+	<bean id="giangVienThanh" class="entity.GiangVien"  scope="prototype">
+	<property name="tenGiangVien" value="Cao Lê thành"></property>
+	<property name="emailGiangVien" value="ThanhCL@fasttrack.edu.vn"></property>
+	</bean>
+
+	<bean id="giangVienLam" class="entity.GiangVien"  scope="prototype">
+	<property name="tenGiangVien" value="Nguyễn Thành Lâm"></property>
+	<property name="emailGiangVien" value="LamNT@fasttrack.edu.vn"></property>
+	</bean>
+
+	<bean id="giangVienThang" class="entity.GiangVien"  scope="prototype">
+	<property name="tenGiangVien" value="Trần Minh Thắng"></property>
+	<property name="emailGiangVien" value="ThangTM@fasttrack.edu.vn"></property>
+	</bean>
  
 	<bean id="heDaoTaoDaiHan" class="entity.HeDaoTaoDaiHan">
 	<property name="dsMonHoc">
@@ -23,26 +47,46 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		</list>
 	</property>
 	</bean>
-		<bean id="heDaoTaoNganHan" class="entity.HeDaoTaoNganHan">
+	<bean id="heDaoTaoNganHan" class="entity.HeDaoTaoNganHan">
 	<property name="dsMonHoc">
 		<list>
 			<ref bean="LapTrinhPhpMySql" />
 		</list>
 	</property>
 	</bean>
+	<bean id="heDaoTaoOnLine" class="entity.HeDaoTaoOnLine">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhJavaWeb" />
+			<ref bean="LapTrinhPhpMySql" />
+		</list>
+	</property>
+	</bean>
+	<bean id="heDaoTaoOffLine" class="entity.HeDaoTaoOffLine">
+	<property name="dsMonHoc">
+		<list>
+			<ref bean="LapTrinhCoBan" />
+			<ref bean="LapTrinhJavaWeb" />
+			<ref bean="LapTrinhPhpMySql" />
+		</list>
+	</property>
+	</bean>
+	<bean id="LoaiHinhDaoTaoOnLine" class="entity.LoaiHinhDaoTaoOnLine">
+	
+	</bean>
 
 	<bean id="sinhvien1" class="entity.HocSinh"
 		scope="prototype">
-		<property name="hoten" value="Cao Lê Thành"></property>
+		<property name="hoten" value="quang minh"></property>
 		<property name="namsinh" value="1996"></property>
-		<property name="diachi" value="hà nội"></property>
+		<property name="diachi" value="quảng bình"></property>
 		<property name="dienthoai" value="0905056294"></property>
 		<property name="email" value="ngogiavy221199@gmail.com"></property>
 		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
 		
 	</bean>
 	
-		<bean id="sinhvien2" class="entity.HocSinh"
+	<bean id="sinhvien2" class="entity.HocSinh"
 		scope="prototype">
 		<property name="hoten" value="ngô gia vỹ"></property>
 		<property name="namsinh" value="1995"></property>
@@ -53,5 +97,36 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 		
 	</bean>
 
+	<bean id="sinhvien3" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="lê khả hồng nhât"></property>
+		<property name="namsinh" value="1998"></property>
+		<property name="diachi" value="thanh hóa"></property>
+		<property name="dienthoai" value="0905256084"></property>
+		<property name="email" value="lekhahongnhat@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoOnLine"></property>
+		
+	</bean>
 	
+	<bean id="sinhvien4" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="trương đai nghĩa"></property>
+		<property name="namsinh" value="1993"></property>
+		<property name="diachi" value="hội an"></property>
+		<property name="dienthoai" value="0905256084"></property>
+		<property name="email" value="truongdainghia@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoOffLine"></property>
+		
+	</bean>
+	
+		<bean id="sinhvien5" class="entity.HocSinh"
+		scope="prototype">
+		<property name="hoten" value="pham phạm quan đại"></property>
+		<property name="namsinh" value="1991"></property>
+		<property name="diachi" value="hội an"></property>
+		<property name="dienthoai" value="0905256084"></property>
+		<property name="email" value="truongdainghia@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoOffLine"></property>
+		
+	</bean>
 </beans>
