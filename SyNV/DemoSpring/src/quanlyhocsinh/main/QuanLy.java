@@ -4,7 +4,7 @@ package quanlyhocsinh.main;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import quanlyhocsinh.entity.*;
+import quanlyhocsinh.entity.HocSinh.*;
 import quanlyhocsinh.entity.MonHoc.*;
 
 

@@ -7,13 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="hello.html" method="post">
-		Name:<input type="text" name="name" /><br /> 
-		Password:<inputtype="password" name="password" /><br /> 
-		<input type="submit" value="login" />
-	</form>
 
-	<a href="hocsinh">Add Student</a>
+	<a href="hocsinhform">Add Student</a>
 	</br>
 	<a href="viewhs">View Student</a>
 </body>
