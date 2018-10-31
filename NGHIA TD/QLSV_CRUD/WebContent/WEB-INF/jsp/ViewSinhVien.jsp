@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <h1>Sinh Viên List</h1>
+
+<a href="addSV">Add New Students</a>
 <table border="2" width="70%" cellpadding="2">
 	<tr>
 		<th>Id</th>
@@ -14,20 +16,18 @@
 		<th>Lớp học</th>
 		<th>Chức Năng</th>
 	</tr>
-	<c:forEach var="emp" items="${list}">
+	<c:forEach var="sv" items="${list}">
 		<tr>
-			<td>${emp.id}</td>
-			<td>${emp.name}</td>
-			<td>${emp.salary}</td>
-			<td>${emp.designation}</td>
-			<td><a href="editemp/${emp.id}">Edit</a></td>
-			<td><a href="deleteSV/${emp.id}">Delete</a></td>
+			<td>${sv.id}</td>
+			<td>${sv.maSV}</td>
+			<td>${sv.tenSV}</td>
+			<td>${sv.namSinh}</td>
+			<td>${sv.email}</td>
+			<td>${sv.diaChi}</td>
+			<td>${sv.lopHoc}</td>
+			<td><a href="editSV/${sv.id}">Edit</a></td>
+			<td><a href="deleteSV/${sv.id}">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
 <br />
-<a href="empform">Add New Employee</a>
-
-<a href="/CRUD_MVC_SPRING/viewemp/1">1</a>
-<a href="/CRUD_MVC_SPRING/viewemp/2">2</a>
-<a href="/CRUD_MVC_SPRING/viewemp/3">3</a>
