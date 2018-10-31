@@ -12,19 +12,16 @@
 </head>
 <body>
 
-       <form:form method="post" action="save">    
+       <form:form method="post" action="/springcrudmvc/themsinhvien" enctype="multipart/form-data">    
         <table >    
-         <tr>    
-          <td>id : </td>   
-          <td><form:input path="id"  /></td>  
-         </tr>    
+           
          <tr>    
           <td>tên:</td>    
-          <td><form:input path="tenHocSinh" /></td>  
+          <td><form:input path="tenSinhVien" /></td>  
          </tr>   
          <tr>    
           <td>tuổi:</td>    
-          <td><form:input path="tuoiHocSinh" /></td>  
+          <td><form:input path="tuoiSinhVien" /></td>  
          </tr>
          
              <tr>    
@@ -32,11 +29,16 @@
           <td><form:input path="diaChi" /></td>  
          </tr>
           <tr>    
+          <td>avatar:</td>    
+          <td><form:input path="" tepy /></td>  
+         </tr>
+          <tr>    
           <td>email:</td>    
           <td><form:input path="email" /></td>  
          </tr>
+         
          <tr>    
-          <td colspan="2"><input type="submit" value="thêm " /></td>    
+          <td colspan="2"><input type="submit" value="thêm" /></td>    
          </tr>    
         </table>    
        </form:form>    

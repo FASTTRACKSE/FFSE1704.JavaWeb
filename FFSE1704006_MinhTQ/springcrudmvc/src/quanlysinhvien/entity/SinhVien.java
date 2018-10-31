@@ -2,8 +2,8 @@ package quanlysinhvien.entity;
 
 public class SinhVien {
 	String id;
-	String tenHocSinh;
-	String tuoiHocSinh;
+	String tenSinhVien;
+	String tuoiSinhVien;
 	String diaChi;
 	String email;
 
@@ -12,11 +12,11 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(String id, String tenHocSinh, String tuoiHocSinh, String diaChi, String email) {
+	public SinhVien(String id, String tenSinhVien, String tuoiSinhVien, String diaChi, String email) {
 		super();
 		this.id = id;
-		this.tenHocSinh = tenHocSinh;
-		this.tuoiHocSinh = tuoiHocSinh;
+		this.tenSinhVien = tenSinhVien;
+		this.tuoiSinhVien = tuoiSinhVien;
 		this.diaChi = diaChi;
 		this.email = email;
 	}
@@ -29,20 +29,20 @@ public class SinhVien {
 		this.id = id;
 	}
 
-	public String getTenHocSinh() {
-		return tenHocSinh;
+	public String getTenSinhVien() {
+		return tenSinhVien;
 	}
 
-	public void setTenHocSinh(String tenHocSinh) {
-		this.tenHocSinh = tenHocSinh;
+	public void setTenSinhVien(String tenSinhVien) {
+		this.tenSinhVien = tenSinhVien;
 	}
 
-	public String getTuoiHocSinh() {
-		return tuoiHocSinh;
+	public String getTuoiSinhVien() {
+		return tuoiSinhVien;
 	}
 
-	public void setTuoiHocSinh(String tuoiHocSinh) {
-		this.tuoiHocSinh = tuoiHocSinh;
+	public void setTuoiSinhVien(String tuoiSinhVien) {
+		this.tuoiSinhVien = tuoiSinhVien;
 	}
 
 	public String getDiaChi() {
