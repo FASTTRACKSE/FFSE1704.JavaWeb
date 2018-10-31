@@ -12,29 +12,29 @@
 
 
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/UserController/editsave">
+	<form:form method="POST" action="/springcrud/EditSave">
 		<table>
 			<tr>
-				<td>Id :</td>
-				<td><form:input path="id" /></td>
+				<td></td>
+				<td><form:hidden path="id" /></td>
 			</tr>
 			<tr>
-				<td>name :</td>
+				<td>Name :</td>
 				<td><form:input path="name" /></td>
 			</tr>
 			<tr>
-				<td>year :</td>
+				<td>Year :</td>
 				<td><form:input path="year" /></td>
 			</tr>
 			<tr>
-				<td>gender :</td>
+				<td>Gender :</td>
 				<td><form:input path="gender" /></td>
 			</tr>
-		
+			
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Edit Save" /></td>
+				<td><input type="submit" value="EditSave" /></td>
 			</tr>
 		</table>
 	</form:form>
