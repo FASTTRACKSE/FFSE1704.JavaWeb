@@ -2,10 +2,14 @@ package com.javatpoint.beans;
 
 public class Emp {
 	private int id;
-	private String name;
-	private float salary;
-	private String designation;
+	private String masv;
+	private String tensv;
+	private int namsinh;
+	private String email;
+	private String diachi;
+	private String lophoc;
 
+	
 	public int getId() {
 		return id;
 	}
@@ -14,28 +18,52 @@ public class Emp {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getMasv() {
+		return masv;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMasv(String masv) {
+		this.masv = masv;
 	}
 
-	public float getSalary() {
-		return salary;
+	public String getTensv() {
+		return tensv;
 	}
 
-	public void setSalary(float salary) {
-		this.salary = salary;
+	public void setTensv(String tensv) {
+		this.tensv = tensv;
 	}
 
-	public String getDesignation() {
-		return designation;
+	public int getNamsinh() {
+		return namsinh;
 	}
 
-	public void setDesignation(String designation) {
-		this.designation = designation;
+	public void setNamsinh(int namsinh) {
+		this.namsinh = namsinh;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDiachi() {
+		return diachi;
+	}
+
+	public void setDiachi(String diachi) {
+		this.diachi = diachi;
+	}
+
+	public String getLophoc() {
+		return lophoc;
+	}
+
+	public void setLophoc(String lophoc) {
+		this.lophoc = lophoc;
 	}
 
 }

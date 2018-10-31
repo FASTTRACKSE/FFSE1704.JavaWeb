@@ -9,16 +9,28 @@
 			<td><form:hidden path="id" /></td>
 		</tr>
 		<tr>
-			<td>Name :</td>
-			<td><form:input path="name" /></td>
+			<td>MaSV :</td>
+			<td><form:input path="masv" /></td>
 		</tr>
 		<tr>
-			<td>Salary :</td>
-			<td><form:input path="salary" /></td>
+			<td>TenSV :</td>
+			<td><form:input path="tensv" /></td>
 		</tr>
 		<tr>
-			<td>Designation :</td>
-			<td><form:input path="designation" /></td>
+			<td>Namsinh :</td>
+			<td><form:input path="namsinh" /></td>
+		</tr>
+		<tr>
+			<td>Email :</td>
+			<td><form:input path="email" /></td>
+		</tr>
+		<tr>
+			<td>DiaChi :</td>
+			<td><form:input path="diachi" /></td>
+		</tr>
+		<tr>
+			<td>LopHoc :</td>
+			<td><form:input path="lophoc" /></td>
 		</tr>
 
 		<tr>
