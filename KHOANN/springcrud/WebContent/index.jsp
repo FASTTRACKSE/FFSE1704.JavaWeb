@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<a href="SinhVienForm">Add User</a>
-	<a href="ViewSinhVien">View User</a>
+	<a href="sinhvienform">Add User</a>
+	<a href="viewsinhvien">View User</a>
 </body>
 </html>

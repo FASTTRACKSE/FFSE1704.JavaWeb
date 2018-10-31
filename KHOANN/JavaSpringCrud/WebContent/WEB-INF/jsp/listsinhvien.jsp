@@ -5,11 +5,11 @@
 
 	<tr>
 		<th>Id</th>
-		
 		<th>Name</th>
-		<th>Năm Sinh</th>
-		<th>Giới Tính</th>
-		
+		<th>Birhday</th>
+		<th>Email</th>
+		<th>Address</th>
+		<th>Class</th>
 		<th>Chức Năng</th>
 	</tr>
 	<c:forEach var="user" items="${list}">
@@ -17,10 +17,12 @@
 		<tr>
 			<td>${user.id}</td>
 			<td>${user.name}</td>
-			<td>${user.year}</td>
-			<td>${user.gender}</td>
-			<td><a href="edituser/${user.id}">Edit</a>-+-<a
-				href="deleteuser/${user.id}">Del</a></td>
+			<td>${user.birthday}</td>
+			<td>${user.email}</td>
+			<td>${user.address}</td>
+			<td>${user.classsv}</td>
+			<td><a href="editsinhvien/${user.id}">Edit</a>-+-<a
+				href="deletesinhvien/${user.id}">Del</a></td>
 		</tr>
 	</c:forEach>
 
