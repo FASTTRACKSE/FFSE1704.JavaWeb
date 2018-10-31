@@ -9,13 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/Spring_MVC_CRUD_Example/editsave">
+	<h1>Add New Employee</h1>
+	<form:form method="post" action="save">
 		<table>
-			<tr>
-				<td></td>
-				<td><form:hidden path="id" /></td>
-			</tr>
 			<tr>
 				<td>Name :</td>
 				<td><form:input path="name" /></td>
@@ -28,10 +24,9 @@
 				<td>Designation :</td>
 				<td><form:input path="designation" /></td>
 			</tr>
-
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Edit Save" /></td>
+				<td><input type="submit" value="Save" /></td>
 			</tr>
 		</table>
 	</form:form>

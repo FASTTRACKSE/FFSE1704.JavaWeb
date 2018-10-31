@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/Spring_MVC_CRUD_Example/editsave">
+	<form:form method="POST" action="/DISampleHocSinh3/editsave">
 		<table>
 			<tr>
 				<td></td>
