@@ -1,7 +1,33 @@
 package quanlyhocsinh.entity;
 
-public interface GiangVien {
-	public String getMaGiangVien();
-	public String getTenGiangVien();
-	public String getEmailGiangVien();
+public class GiangVien {
+	String TenGiangVien;
+	String EmailGV;
+
+	public GiangVien() {
+		super();
+	}
+
+	public GiangVien(String tenGiangVien, String emailGV) {
+		super();
+		TenGiangVien = tenGiangVien;
+		EmailGV = emailGV;
+	}
+
+	public String getTenGiangVien() {
+		return TenGiangVien;
+	}
+
+	public void setTenGiangVien(String tenGiangVien) {
+		TenGiangVien = tenGiangVien;
+	}
+
+	public String getEmailGV() {
+		return EmailGV;
+	}
+
+	public void setEmailGV(String emailGV) {
+		EmailGV = emailGV;
+	}
+
 }

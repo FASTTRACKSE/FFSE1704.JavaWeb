@@ -34,7 +34,7 @@ public class HeDaoTaoNganHan implements HeDaoTao {
 	
 	@Override
 	public String getthongtinHeDaoTao() {
-		return "6 tháng";
+		return " full 6 tháng";
 	}
 
 }

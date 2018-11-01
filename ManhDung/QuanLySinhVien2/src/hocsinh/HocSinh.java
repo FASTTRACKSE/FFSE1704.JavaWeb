@@ -40,7 +40,7 @@ public class HocSinh {
 	}
 	
 	public String getThongTinLoTrinhHoc() {
-	   return loTrinhHoc.getLoTrinhHoc()+ " - "	+ loTrinhHoc.thongTinLoTrinhHoc();
+	   return loTrinhHoc.getLoTrinhHoc()+ " : "	+ loTrinhHoc.thongTinLoTrinhHoc();
 	}
 	public String getTenGiangVien() {
 		return giangVien.getTenGiangVien();

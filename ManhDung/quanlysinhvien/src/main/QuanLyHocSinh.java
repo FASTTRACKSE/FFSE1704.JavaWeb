@@ -5,36 +5,6 @@ import entity.*;
 
 public class QuanLyHocSinh {
 
-	public static void main(String[] args) {
-		HocSinh hsKyBody = new HocSinh("Trần Xuân Kỳ", 1998, "Núi Thành, Quảng Nam", "0909999000", "kybody@gmail.com", new HeDaoTaoDaiHan(),new LoTrinhHocOnline());
-		HocSinh hsHoQuanHieu = new HocSinh("Hồ Quang Hiếu", 2000, "TP HCM", "0909999999", "hieuho@gmail.com", new HeDaoTaoNganHanJava(),new LoTrinhHocOffline());
-		HocSinh hsDavidVy = new HocSinh("Vy Thiếu Gia", 1995, "ĐN", "0999999999", "vy@gmail.com", new HeDaoTaoHavardFastTrack(),new LoTrinhHocOnline());
-=======
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
-import giangvien.GiangVienLam;
-import giangvien.GiangVienThang;
-import giangvien.GiangVienThanh;
-import hedaotao.HeDaoTaoDaiHan;
-import hedaotao.HeDaoTaoNganHanJava;
-import hedaotao.HeDaoTaoNganHanPHP;
-import hocsinh.*;
-import lotrinhhoc.LoTrinhHocOffline;
-import lotrinhhoc.LoTrinhHocOnline;
-import monhoc.MonHoc;
-import monhoc.MonHocLapTrinhCoBan;
-import monhoc.MonHocLapTrinhJavaCoBan;
-import monhoc.MonHocLapTrinhJavaWeb;
-import monhoc.MonHocLapTrinhWeb;
-import monhoc.MonHocLapTrinhWebPHP;
-import monhoc.MonHocQuyTrinhDuAn;
-import monhoc.MonHocTinHocVanPhong;
-
-public class QuanLyHocSinh {
-
 	
 
 	

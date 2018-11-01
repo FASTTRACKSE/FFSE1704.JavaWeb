@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="addsinhvien">Add Employee</a>  
+<a href="sinhvien">View Employees</a>  
 </body>
 </html>
