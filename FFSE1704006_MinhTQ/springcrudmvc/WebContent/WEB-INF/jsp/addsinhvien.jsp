@@ -12,7 +12,7 @@
 </head>
 <body>
 
-       <form:form method="post" action="/springcrudmvc/themsinhvien" enctype="multipart/form-data">    
+       <form:form method="post" action="/springcrudmvc/themsinhvien"  enctype="multipart/form-data">    
         <table >    
            
          <tr>    
@@ -29,9 +29,10 @@
           <td><form:input path="diaChi" /></td>  
          </tr>
           <tr>    
-          <td>avatar:</td>    
-          <td><form:input path="" tepy /></td>  
+          <td>email:</td>    
+          <td><form:input path="avatar" id="fileToUpload" type="file" /></td>  
          </tr>
+   
           <tr>    
           <td>email:</td>    
           <td><form:input path="email" /></td>  

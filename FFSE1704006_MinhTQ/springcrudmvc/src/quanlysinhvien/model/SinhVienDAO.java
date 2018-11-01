@@ -18,15 +18,17 @@ public class SinhVienDAO {
 	}
 
 	public int add(SinhVien sv) {
-		String sql = "INSERT INTO sinhvien(tenSinhVien,tuoiSinhVien,diaChi,email) VALUES('" + sv.getTenSinhVien() + "','"
-				+ sv.getTuoiSinhVien() + "','" + sv.getDiaChi() + "','" + sv.getEmail() + "')";
+		String sql = "INSERT INTO sinhvien(tenSinhVien,tuoiSinhVien,diaChi,avatar,email) VALUES('" + sv.getTenSinhVien()
+				+ "','" + sv.getTuoiSinhVien() + "','" + sv.getDiaChi() + "','" + sv.getAvatar() + "','" + sv.getEmail()
+				+ "')";
 		return template.update(sql);
 
 	}
 
 	public int update(SinhVien sv) {
-		String sql = "UPDATE sinhvien SET tenSinhVien='" + sv.getTenSinhVien() + "', tuoiSinhVien=" + sv.getTuoiSinhVien()
-				+ ",diaChi='" + sv.getDiaChi() + "',email='" + sv.getEmail() + "' WHERE id=" + sv.getId() + "";
+		String sql = "UPDATE sinhvien SET tenSinhVien='" + sv.getTenSinhVien() + "', tuoiSinhVien="
+				+ sv.getTuoiSinhVien() + ",diaChi='" + sv.getDiaChi() + "',avatar='" + sv.getAvatar() + "',email='"
+				+ sv.getEmail() + "' WHERE id=" + sv.getId() + "";
 		return template.update(sql);
 
 	}
@@ -41,7 +43,7 @@ public class SinhVienDAO {
 		return template.update(sql);
 	}
 
-	public List<SinhVien> getEmployees() {
+	public List<SinhVien> getSinhVien() {
 		return template.query("SELECT * FROM sinhvien", new RowMapper<SinhVien>() {
 			public SinhVien mapRow(ResultSet rs, int row) throws SQLException {
 				SinhVien list = new SinhVien();
@@ -49,9 +51,12 @@ public class SinhVienDAO {
 				list.setTenSinhVien(rs.getString(2));
 				list.setTuoiSinhVien(rs.getString(3));
 				list.setDiaChi(rs.getString(4));
-				list.setEmail(rs.getString(5));
+				list.setAvatar(rs.getString(5));
+				list.setEmail(rs.getString(6));
 				return list;
 			}
 		});
 	}
+
+	
 }

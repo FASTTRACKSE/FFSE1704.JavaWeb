@@ -16,6 +16,7 @@
 			<th>tên</th>
 			<th>tuổi</th>
 			<th>địa chỉ</th>
+			<th>avatar</th>
 			<th>email</th>
 			<th>Chức năng</th>
 		</tr>
@@ -25,6 +26,7 @@
 				<td>${sv.tenSinhVien}</td>
 				<td>${sv.tuoiSinhVien}</td>
 				<td>${sv.diaChi}</td>
+				<td><img src="${filename}"/>  </td>
 				<td>${sv.email}</td>
 				<td>  <button><a href="/springcrudmvc/editview/${sv.id}">Edit</a></button> <button><a href="/springcrudmvc/deletesinhvien/${sv.id }">Delete</a></button>	</td>
 				

@@ -14,6 +14,9 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -33,6 +36,5 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="template" ref="jt"></property>
 	</bean>
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 </beans>  

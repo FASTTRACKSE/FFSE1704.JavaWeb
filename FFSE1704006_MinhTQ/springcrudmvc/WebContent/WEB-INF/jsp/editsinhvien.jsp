@@ -11,7 +11,7 @@
 </head>
 <body>
   <h1>Edit Sinh Viên</h1>  
-       <form:form method="POST" action="/springcrudmvc/editsave" enctype="multipart/form-data">    
+       <form:form method="POST" action="/springcrudmvc/editsave" >    
         <table >    
         <tr>  
         <td>id: </td>    
