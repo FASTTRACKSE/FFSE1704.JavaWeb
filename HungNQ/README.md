@@ -6,4 +6,4 @@
 
 2. [Assignment 2: QLSinhVien](https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/edit/master/HungNQ/QLSinhVien)
 
-3.[QLSV Spring] (https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/edit/master/HungNQ/QLSV_Spring)
+3. [QLSV Spring] (https://github.com/FASTTRACKSE/FFSE1704.JavaWeb/edit/master/HungNQ/QLSV_Spring)
