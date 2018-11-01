@@ -29,8 +29,8 @@ public int add(Emp p) {
 	return template.update(sql);
 }
 public int update(Emp p) {
-	String sql="update emp set name="+p.getName()+"', salary="+p.getOld()+"," + 
-			"designation='"+p.getIdol()+"' where id="+p.getId()+"";  
+	String sql="update emp set name='"+p.getName()+"', old="+p.getOld()+"," + 
+			"idol='"+p.getIdol()+"' where id="+p.getId()+"";  
 	return template.update(sql); 
 }
 public int delete(int id){  

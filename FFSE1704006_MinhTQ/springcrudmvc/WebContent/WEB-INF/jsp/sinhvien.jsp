@@ -10,27 +10,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="2" width="100%" height="150" cellpadding="0" cellspacing="0">
+	<table border="2" width="100%" height="150" cellpadding="0" cellspacing="0" style="text-align: center;">
 		<tr>
 			<th>Id</th>
 			<th>tên</th>
 			<th>tuổi</th>
 			<th>địa chỉ</th>
+			<th>avatar</th>
 			<th>email</th>
 			<th>Chức năng</th>
 		</tr>
 		<c:forEach var="sv" items="${list}">
 			<tr>
 				<td>${sv.id}</td>
-				<td>${sv.tenHocSinh}</td>
-				<td>${sv.tuoiHocSinh}</td>
+				<td>${sv.tenSinhVien}</td>
+				<td>${sv.tuoiSinhVien}</td>
 				<td>${sv.diaChi}</td>
+				<td><img src="${filename}"/>  </td>
 				<td>${sv.email}</td>
-				<td><span><a href="">Edit</a></span>  <span><a href="">Delete</a></span></td>
+				<td>  <button><a href="/springcrudmvc/editview/${sv.id}">Edit</a></button> <button><a href="/springcrudmvc/deletesinhvien/${sv.id }">Delete</a></button>	</td>
 				
-
+ 
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+
+	<button ><a href="/springcrudmvc/addsinhvien"> thêm </a></button>
 </body>
 </html>

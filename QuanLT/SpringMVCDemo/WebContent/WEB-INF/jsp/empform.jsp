@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<h1>Add New Employee</h1>
+	<h1>Add New Fans</h1>
 	<form:form method="post" action="save">
 		<table>
 			<tr>
@@ -19,7 +19,7 @@
 				<td><form:input path="name" /></td>
 			</tr>
 			<tr>
-				<td>Tuổi :</td>
+				<td>Old :</td>
 				<td><form:input path="old" /></td>
 			</tr>
 			<tr>
