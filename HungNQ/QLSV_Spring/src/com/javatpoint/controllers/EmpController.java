@@ -2,7 +2,8 @@ package com.javatpoint.controllers;
 import java.util.ArrayList;  
 import java.util.List;  
 import org.springframework.beans.factory.annotation.Autowired;  
-import org.springframework.stereotype.Controller;  
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.PathVariable;  
 import org.springframework.web.bind.annotation.RequestMapping;  
@@ -55,5 +56,10 @@ public class EmpController {
         dao.delete(id);  
         return new ModelAndView("redirect:/viewemp");  
     }  
+    
+    @RequestMapping(value = { "/", "/viewemp1" })
+    public String staticResource() {
+        return "viewemp";
+    }
   
 }  
