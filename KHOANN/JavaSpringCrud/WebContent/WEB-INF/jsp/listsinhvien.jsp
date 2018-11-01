@@ -9,7 +9,7 @@
 		<th>Birhday</th>
 		<th>Email</th>
 		<th>Address</th>
-		<th>Class</th>
+		<th>Class</th>	
 		<th>Chức Năng</th>
 	</tr>
 	<c:forEach var="user" items="${list}">
@@ -21,10 +21,26 @@
 			<td>${user.email}</td>
 			<td>${user.address}</td>
 			<td>${user.classsv}</td>
-			<td><a href="editsinhvien/${user.id}">Edit</a>-+-<a
-				href="deletesinhvien/${user.id}">Del</a></td>
+			<td><a href="/JavaSpringCrud/editsinhvien/${user.id}">Edit</a>-+-<a
+				href="/JavaSpringCrud/deletesinhvien/${user.id}">Del</a></td>
 		</tr>
 	</c:forEach>
 
 </table>
-<a href="index.jsp">Back Home</a>
+<a href="/JavaSpringCrud/index.jsp">Back Home</a>
+<center>
+	<c:if test="${pageid > 1}">
+		<a href="/JavaSpringCrud/listsinhvien/1">First</a>
+	</c:if>
+	<c:if test="${pageid > 1}">
+		<a href="/JavaSpringCrud/listsinhvien/${pageid-1}">${pageid-1}</a>
+	</c:if>
+	<a href="/JavaSpringCrud/listsinhvien/${pageid}">${pageid}</a>
+	<c:if test="${pageid < pagetotal}">
+		<a href="/JavaSpringCrud/listsinhvien/${pageid+1}">${pageid+1}</a>
+	</c:if>
+	<c:if test="${pageid < pagetotal}">
+		<a href="/JavaSpringCrud/listsinhvien/${pagetotal}">Last</a>
+	</c:if>
+
+</center>

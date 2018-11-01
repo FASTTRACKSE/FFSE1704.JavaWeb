@@ -1,9 +1,11 @@
 package fasttrack.entity;
 
-public class SinhVien {
+import java.util.Date;
+
+public class SinhVien  {
 	private int id;
 	private String name;
-	private String birthday;
+	private Date birthday;
 	private String email;
 	private String address;
 	private String classsv;
@@ -13,7 +15,7 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(int id, String name, String birthday, String email, String address, String classsv) {
+	public SinhVien(int id, String name, Date birthday, String email, String address, String classsv) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,11 +41,11 @@ public class SinhVien {
 		this.name = name;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

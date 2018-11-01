@@ -1,9 +1,11 @@
 package fasttrack.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +28,14 @@ public class SinhVienController {
 
 	}
 
-	@RequestMapping("/listsinhvien")
-	public ModelAndView viewUser() {
-		List<SinhVien> list = dao.getAllSinhVien();
+	@RequestMapping("/listsinhvien/{pageid}")
+	public ModelAndView viewUser(@PathVariable int pageid, Model model) throws SQLException {
+		double perPage = 5;
+		double pageTotal = (int) Math.ceil(dao.countSV() / perPage);
+		int start = (pageid - 1) * (int) perPage;
+		List<SinhVien> list = dao.getSinhVienByPage(start,(int) perPage);
+		model.addAttribute("pageid", pageid);
+		model.addAttribute("pagetotal", pageTotal);
 
 		return new ModelAndView("listsinhvien", "list", list);
 	}
@@ -36,7 +43,7 @@ public class SinhVienController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("sinhvien") SinhVien sv) {
 		dao.save(sv);
-		return new ModelAndView("redirect:/listsinhvien");// will redirect to viewemp request mapping
+		return new ModelAndView("redirect:/listsinhvien/1");// will redirect to viewemp request mapping
 
 	}
 
@@ -50,12 +57,12 @@ public class SinhVienController {
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public ModelAndView editsave(@ModelAttribute("sinhvien") SinhVien sv) {
 		dao.update(sv);
-		return new ModelAndView("redirect:/listsinhvien");
+		return new ModelAndView("redirect:/listsinhvien/1");
 	}
 
 	@RequestMapping(value = "/deletesinhvien/{id}", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable int id) {
 		dao.delete(id);
-		return new ModelAndView("redirect:/listsinhvien");
+		return new ModelAndView("redirect:/listsinhvien/1");
 	}
 }

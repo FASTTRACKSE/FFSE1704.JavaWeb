@@ -10,7 +10,7 @@
          </tr>    
          <tr>    
           <td>BirthDay :</td>    
-          <td><form:input path="birthday" /></td>  
+          <td><form:input path="birthday" placeholder="yyyy/MM/dd"/></td>  
          </tr>   
          <tr>    
           <td>Email :</td>    

@@ -24,7 +24,7 @@ public class SinhVienDAO {
 				SinhVien sv = new SinhVien();
 				sv.setId(rs.getInt(1));
 				sv.setName(rs.getString(2));
-				sv.setBirthday(rs.getString(3));
+				sv.setBirthday(rs.getDate(3));
 				sv.setEmail(rs.getString(4));
 				sv.setAddress(rs.getString(5));
 				sv.setClasssv(rs.getString(6));
@@ -54,6 +54,27 @@ public class SinhVienDAO {
 	public int delete(int id) {
 		String sql = "delete from sinhvien where id=" +id+ "";
 		return template.update(sql);
+	}
+	
+	public List<SinhVien> getSinhVienByPage(int start,int total){  
+		String sql="select * from sinhvien limit "+start+","+total+"";  
+	    return template.query(sql,new RowMapper<SinhVien>(){  
+	        public SinhVien mapRow(ResultSet rs, int row) throws SQLException {  
+	        	SinhVien sv=new SinhVien();  
+	        	sv.setId(rs.getInt(1));
+				sv.setName(rs.getString(2));
+				sv.setBirthday(rs.getDate(3));
+				sv.setEmail(rs.getString(4));
+				sv.setAddress(rs.getString(5));
+				sv.setClasssv(rs.getString(6)); 
+	            return sv;  
+	        }  
+	    });  
+	}  
+	
+	public int countSV() throws SQLException {
+		String sql="select count(*) from sinhvien";
+		return template.queryForObject(sql, Integer.class);
 	}
 
 }
