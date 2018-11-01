@@ -3,7 +3,6 @@ package quanlysinhvien.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -20,6 +19,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import quanlysinhvien.entity.SinhVien;
+import quanlysinhvien.entity.TinhThanh;
 import quanlysinhvien.model.SinhVienDAO;
 
 @Controller  
@@ -52,13 +52,9 @@ public class SinhVienController {
     
     
     @ModelAttribute("countryList")
-    public List<String> getWebFrameworkList() {
-       List<String> webFrameworkList = new ArrayList<String>();
-       webFrameworkList.add("Spring MVC");
-       webFrameworkList.add("Struts 1");
-       webFrameworkList.add("Struts 2");
-       webFrameworkList.add("Apache Wicket");
-       return webFrameworkList;
+    public List<TinhThanh> getCountryList() {
+       List<TinhThanh> countryList = dao.getListThanhPho() ;
+       return countryList;
     }
     
     
@@ -77,7 +73,7 @@ public class SinhVienController {
     @RequestMapping(value="/themsinhvien",method = RequestMethod.POST)  
     public ModelAndView save(@ModelAttribute("sinhvien") SinhVien sinhvien){  
     	
-    	sinhvien.setAvatar("filename");
+    
         dao.add(sinhvien);  
         return new ModelAndView("redirect:/sinhvien");//will redirect to viewemp request mapping  
     }

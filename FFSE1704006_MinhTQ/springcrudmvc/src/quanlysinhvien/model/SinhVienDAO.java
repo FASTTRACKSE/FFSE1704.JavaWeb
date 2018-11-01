@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import quanlysinhvien.entity.SinhVien;
+import quanlysinhvien.entity.TinhThanh;
 
 public class SinhVienDAO {
 	JdbcTemplate template;
@@ -34,7 +35,7 @@ public class SinhVienDAO {
 	}
 
 	public SinhVien getSVById(int id) {
-		String sql = "SELECT * FROM sinhvien WHERE id=?";
+		String sql = "SELECT sinhvien.id,sinhvien.tenSinhVien,sinhvien.tuoiSinhVien,tinhthanh.tenTinh AS diaChi,sinhvien.avatar,sinhvien.email FROM sinhvien INNER JOIN tinhthanh ON sinhvien.diachi=tinhthanh.maTinh WHERE sinhvien.id=?";
 		return template.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<SinhVien>(SinhVien.class));
 	}
 
@@ -44,7 +45,7 @@ public class SinhVienDAO {
 	}
 
 	public List<SinhVien> getSinhVien() {
-		return template.query("SELECT * FROM sinhvien", new RowMapper<SinhVien>() {
+		return template.query("SELECT sinhvien.id,sinhvien.tenSinhVien,sinhvien.tuoiSinhVien,tinhthanh.tenTinh AS diaChi,sinhvien.avatar,sinhvien.email FROM sinhvien INNER JOIN tinhthanh ON sinhvien.diachi=tinhthanh.maTinh", new RowMapper<SinhVien>() {
 			public SinhVien mapRow(ResultSet rs, int row) throws SQLException {
 				SinhVien list = new SinhVien();
 				list.setId(rs.getString(1));
@@ -57,6 +58,17 @@ public class SinhVienDAO {
 			}
 		});
 	}
-
+ 
+	public List<TinhThanh> getListThanhPho(){
+	return template.query("SELECT * FROM tinhthanh", new RowMapper<TinhThanh>() {
+		public TinhThanh mapRow(ResultSet rs, int row) throws SQLException {
+			TinhThanh list = new TinhThanh();
+			list.setMaTinhThanh(rs.getString(1));
+			list.setTenTinhThanh(rs.getString(3));
+			
+			return list;
+		}
+	});
+	}
 	
 }

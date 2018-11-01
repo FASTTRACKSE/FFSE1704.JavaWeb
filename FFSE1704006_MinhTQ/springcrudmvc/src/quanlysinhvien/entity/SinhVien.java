@@ -7,6 +7,7 @@ public class SinhVien {
 	String diaChi;
 	String email;
 	String avatar;
+	
 
 	public SinhVien() {
 		super();
