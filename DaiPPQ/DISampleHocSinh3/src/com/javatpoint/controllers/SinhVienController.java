@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.javatpoint.beans.Emp;
-import com.javatpoint.dao.EmpDao;
+import com.javatpoint.dao.SinhVienDAO;
+import com.javatpoint.entity.SinhVien;
 
 @Controller
-public class EmpController {
+public class SinhVienController {
 	@Autowired
-	EmpDao dao;// will inject dao from xml file
+	SinhVienDAO dao;// will inject dao from xml file
 
 	@RequestMapping(value = "/viewemp/{pageid}")
 	public ModelAndView edit(@PathVariable int pageid) {
@@ -25,7 +25,7 @@ public class EmpController {
 		} else {
 			pageid = (pageid - 1) * total + 1;
 		}
-		List<Emp> list = dao.getEmployeesByPage(pageid, total);
+		List<SinhVien> list = dao.getSinhVienloyeesByPage(pageid, total);
 
 		return new ModelAndView("viewemp", "list", list);
 	}
@@ -36,7 +36,7 @@ public class EmpController {
 	 */
 	@RequestMapping("/empform")
 	public ModelAndView showform() {
-		return new ModelAndView("empform", "command", new Emp());
+		return new ModelAndView("empform", "command", new SinhVien());
 	}
 
 	/*
@@ -45,15 +45,15 @@ public class EmpController {
 	 * request is GET
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/x-www-form-rulencoded;charset=UTF-8")
-	public ModelAndView save(@ModelAttribute("emp") Emp emp) {
+	public ModelAndView save(@ModelAttribute("emp") SinhVien emp) {
 		dao.save(emp);
 		return new ModelAndView("redirect:/viewemp/1");// will redirect to viewemp request mapping
 	}
 
-	/* It provides list of employees in model object */
+	/* It provides list of SinhVienloyees in model object */
 	@RequestMapping("/viewemp")
 	public ModelAndView viewemp() {
-		List<Emp> list = dao.getEmployees();
+		List<SinhVien> list = dao.getSinhVienloyees();
 		return new ModelAndView("viewemp", "list", list);
 	}
 
@@ -63,13 +63,13 @@ public class EmpController {
 	 */
 	@RequestMapping(value = "/editemp/{id}")
 	public ModelAndView editemp(@PathVariable int id) {
-		Emp emp = dao.getEmpById(id);
+		SinhVien emp = dao.getSinhVienById(id);
 		return new ModelAndView("empeditform", "command", emp);
 	}
 
 	/* It updates model object. */
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
-	public ModelAndView editsave(@ModelAttribute("emp") Emp emp) {
+	public ModelAndView editsave(@ModelAttribute("emp") SinhVien emp) {
 		dao.update(emp);
 		return new ModelAndView("redirect:/viewemp/1");
 	}
@@ -78,7 +78,7 @@ public class EmpController {
 	@RequestMapping(value = "/deleteemp/{id}", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable int id) {
 		dao.delete(id);
-		return new ModelAndView("redirect:/viewemp");
+		return new ModelAndView("redirect:/viewemp/1");
 	}
 
 }

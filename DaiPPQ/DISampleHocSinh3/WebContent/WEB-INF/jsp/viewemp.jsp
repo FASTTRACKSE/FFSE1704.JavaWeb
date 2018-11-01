@@ -14,18 +14,24 @@
 	<table border="2" width="70%" cellpadding="2">
 		<tr>
 			<th>Id</th>
-			<th>Name</th>
-			<th>Salary</th>
-			<th>Designation</th>
+			<th>MaSV</th>
+			<th>Tên SV</th>
+			<th>Năm Sinh</th>
+			<th>Email</th>
+			<th>Địa Chỉ</th>
+			<th>Lớp</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
 		<c:forEach var="emp" items="${list}">
 			<tr>
 				<td>${emp.id}</td>
-				<td>${emp.name}</td>
-				<td>${emp.salary}</td>
-				<td>${emp.designation}</td>
+				<td>${emp.masv}</td>
+				<td>${emp.tensv}</td>
+				<td>${emp.namsinh}</td>
+				<td>${emp.email}</td>
+				<td>${emp.diachi}</td>
+				<td>${emp.lop}</td>
 				<td><a href="/DISampleHocSinh3/editemp/${emp.id}">Edit</a></td>
 				<td><a href="/DISampleHocSinh3/deleteemp/${emp.id}">Delete</a></td>
 			</tr>

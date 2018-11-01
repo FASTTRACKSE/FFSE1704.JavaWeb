@@ -21,7 +21,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/emp99?characterEncoding=utf-8"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/quanlysinhvien?characterEncoding=utf-8"></property>
 		<property name="username" value="mido"></property>
 		<property name="password" value="0933237480"></property>
 	</bean>
@@ -30,7 +30,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="dataSource" ref="ds"></property>
 	</bean>
 
-	<bean id="dao" class="com.javatpoint.dao.EmpDao">
+	<bean id="dao" class="com.javatpoint.dao.SinhVienDAO">
 		<property name="template" ref="jt"></property>
 	</bean>
 </beans>
