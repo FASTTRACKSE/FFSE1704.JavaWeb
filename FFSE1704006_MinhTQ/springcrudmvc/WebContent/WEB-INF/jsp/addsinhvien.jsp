@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>avatar:</td>
-				<td><form:input path="avatar" id="fileToUpload" type="file" /></td>
+				<td><input type="file" name="file"  /></td>
 			</tr>
 
 			<tr>

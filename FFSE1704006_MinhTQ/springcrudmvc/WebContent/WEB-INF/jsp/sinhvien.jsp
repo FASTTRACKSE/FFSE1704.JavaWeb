@@ -26,7 +26,7 @@
 				<td>${sv.tenSinhVien}</td>
 				<td>${sv.tuoiSinhVien}</td>
 				<td>${sv.diaChi}</td>
-				<td><img src="${filename}"/>  </td>
+				<td><img src="images/${sv.avatar}" width="100px" height="100px"/>  </td>
 				<td>${sv.email}</td>
 				<td>  <button><a href="/springcrudmvc/editview/${sv.id}">Edit</a></button> <button><a href="/springcrudmvc/deletesinhvien/${sv.id }">Delete</a></button>	</td>
 				

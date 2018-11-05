@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Xuân Kỳ</title>
 </head>
 <body>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 	<h1>Edit SinhVien</h1>
-	<form:form method="POST" action="/springmvc/editsave">
+	<form:form method="POST" action="/springmvc/editsave" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td></td>
@@ -28,7 +28,8 @@
 			<tr>
 				<td>Address :</td>
 				<td><form:select path="address">
-						<form:options items="${countryList}" itemValue="matp" itemLabel="nametp" />
+						<form:options items="${countryList}" itemValue="matp"
+							itemLabel="nametp" />
 					</form:select></td>
 			</tr>
 			<tr>
@@ -39,7 +40,11 @@
 				<td>Class :</td>
 				<td><form:input path="nameClass" /></td>
 			</tr>
-			
+			<tr>
+				<td>File :</td>
+				<td><input type="file" name="file" /></td>
+			</tr>
+
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Edit Save" /></td>

@@ -28,11 +28,13 @@
 			<tr>
 				<td>địa chỉ:</td>
 				<td><form:select path="diaChi">
-						<form:options items="${countryList}" itemValue="maTinhThanh"
-							itemLabel="tenTinhThanh" />
+						<form:options items="${countryList}"  itemLabel="tenTinhThanh" itemValue="maTinhThanh"/>
 					</form:select></td>
 			</tr>
-
+			<tr>
+				<td>avatar:</td>
+				<td><input name="file" id="fileToUpload" type="file" />
+			</tr>
 			<tr>
 				<td>Email:</td>
 				<td><form:input path="email" /></td>

@@ -8,6 +8,39 @@ public class SinhVien {
 	private int address;
 	private String nameClass;
 	private String nameTinhThanh;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public SinhVien(int id, String name, String email, int birth, int address, String nameClass, String nameTinhThanh) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.birth = birth;
+		this.address = address;
+		this.nameClass = nameClass;
+		this.nameTinhThanh = nameTinhThanh;
+	}
+
+	public SinhVien(int id, String name, String email, int birth, int address, String nameClass, String nameTinhThanh,
+			String image) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.birth = birth;
+		this.address = address;
+		this.nameClass = nameClass;
+		this.nameTinhThanh = nameTinhThanh;
+		this.image = image;
+	}
 
 	public String getNameTinhThanh() {
 		return nameTinhThanh;
@@ -16,17 +49,6 @@ public class SinhVien {
 	public void setNameTinhThanh(String nameTinhThanh) {
 		this.nameTinhThanh = nameTinhThanh;
 	}
-
-	public SinhVien(int id, String name, String email, int birth, int address, String nameClass) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.birth = birth;
-		this.address = address;
-		this.nameClass = nameClass;
-	}
-
 	public SinhVien() {
 		super();
 		// TODO Auto-generated constructor stub
