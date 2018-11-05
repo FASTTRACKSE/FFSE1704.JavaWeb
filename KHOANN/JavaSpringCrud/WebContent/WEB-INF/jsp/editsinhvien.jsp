@@ -14,7 +14,7 @@
 		</tr>
 		<tr>
 			<td>BirthDay :</td>
-			<td><form:input path="birthday" placeholder="yyyy/MM/dd"/></td>
+			<td><form:input path="birthday" /></td>
 		</tr>
 		<tr>
 			<td>Email :</td>
@@ -22,7 +22,9 @@
 		</tr>
 		<tr>
 			<td>Address :</td>
-			<td><form:input path="address" /></td>
+			<td><form:select path="address">
+						<form:options items="${countryList}"  itemLabel="tenTinh" itemValue="maTinh"/>
+					</form:select></td>
 		</tr>
 		<tr>
 			<td>Class :</td>

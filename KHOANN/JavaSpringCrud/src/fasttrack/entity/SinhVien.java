@@ -1,21 +1,37 @@
 package fasttrack.entity;
 
-import java.util.Date;
+
+
+import com.sun.istack.internal.NotNull;
 
 public class SinhVien  {
 	private int id;
+	@NotNull
 	private String name;
-	private Date birthday;
+	@NotNull
+	private String birthday;
+	@NotNull
 	private String email;
+	@NotNull
 	private String address;
+	@NotNull
 	private String classsv;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public SinhVien() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(int id, String name, Date birthday, String email, String address, String classsv) {
+	public SinhVien(int id, String name, String birthday, String email, String address, String classsv, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,6 +39,7 @@ public class SinhVien  {
 		this.email = email;
 		this.address = address;
 		this.classsv = classsv;
+		this.image = image;
 	}
 
 	public int getId() {
@@ -41,11 +58,11 @@ public class SinhVien  {
 		this.name = name;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
