@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="addSV">Add Students</a>  
-	<!-- <a href="ViewSinhVien">View STUDENTS</a>  -->
-	<% response.sendRedirect("ViewSinhVien"); %> 
+<a href="uploadform">Upload Image</a>  
 </body>
 </html>

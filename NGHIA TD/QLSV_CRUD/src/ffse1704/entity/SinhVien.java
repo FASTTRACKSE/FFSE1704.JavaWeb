@@ -4,32 +4,37 @@ public class SinhVien {
 	private int id;
 	private String maSV;
 	private String tenSV;
+	private String images;
 	private int namSinh;
 	private String email;
 	private String diaChi;
 	private String lopHoc;
-	public SinhVien(int id, String maSV, String tenSV, int namSinh, String email, String diaChi, String lopHoc) {
+	public SinhVien() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SinhVien(int id, String maSV, String tenSV, String images, int namSinh, String email, String diaChi,
+			String lopHoc) {
 		super();
 		this.id = id;
 		this.maSV = maSV;
 		this.tenSV = tenSV;
+		this.images = images;
 		this.namSinh = namSinh;
 		this.email = email;
 		this.diaChi = diaChi;
 		this.lopHoc = lopHoc;
 	}
-	
-	public SinhVien( String maSV, String tenSV, int namSinh, String email, String diaChi, String lopHoc) {
+	public SinhVien( String maSV, String tenSV, String images, int namSinh, String email, String diaChi,
+			String lopHoc) {
+
 		this.maSV = maSV;
 		this.tenSV = tenSV;
+		this.images = images;
 		this.namSinh = namSinh;
 		this.email = email;
 		this.diaChi = diaChi;
 		this.lopHoc = lopHoc;
-	}
-	public SinhVien() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	public int getId() {
 		return id;
@@ -48,6 +53,12 @@ public class SinhVien {
 	}
 	public void setTenSV(String tenSV) {
 		this.tenSV = tenSV;
+	}
+	public String getImages() {
+		return images;
+	}
+	public void setImages(String images) {
+		this.images = images;
 	}
 	public int getNamSinh() {
 		return namSinh;
@@ -73,4 +84,5 @@ public class SinhVien {
 	public void setLopHoc(String lopHoc) {
 		this.lopHoc = lopHoc;
 	}
+	
 }
