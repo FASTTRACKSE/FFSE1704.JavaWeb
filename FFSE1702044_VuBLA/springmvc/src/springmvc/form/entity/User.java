@@ -2,21 +2,34 @@ package springmvc.form.entity;
 
 public class User {
 	int id;
-	String maSV, tenSV, namSinh, diaChi, lopHoc;
+	String diaChi, lopHoc, avatar;
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	int namSinh;
+
+	String maSV, tenSV;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String maSV, String tenSV, String namSinh, String diaChi, String lopHoc) {
+	public User(int id, String diaChi, String lopHoc, String avatar, int namSinh, String maSV, String tenSV) {
 		super();
 		this.id = id;
-		this.maSV = maSV;
-		this.tenSV = tenSV;
-		this.namSinh = namSinh;
 		this.diaChi = diaChi;
 		this.lopHoc = lopHoc;
+		this.avatar = avatar;
+		this.namSinh = namSinh;
+		this.maSV = maSV;
+		this.tenSV = tenSV;
 	}
 
 	public int getId() {
@@ -43,11 +56,11 @@ public class User {
 		this.tenSV = tenSV;
 	}
 
-	public String getNamSinh() {
+	public int getNamSinh() {
 		return namSinh;
 	}
 
-	public void setNamSinh(String namSinh) {
+	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
 	}
 
