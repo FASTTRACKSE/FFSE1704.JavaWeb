@@ -6,7 +6,13 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body><a href="empform">Add Employee</a>  
-<a href="viewemp">View Employees</a> <a href="hello.html">click</a> 
+<body>
+<h1 style="color: red">CRUD Spring MVC</h1>
+<h2>Fans List Manage</h2>
+<a href="empform">Add Fans</a> <br>
+<a href="viewemp">View Fans</a><br>
+ <a href="mailto:quanltofficial@gmail.com">Contact Me</a> 
+ <p> Email: quanltofficial@gmail.com<br>
+ Copyright (C) Quan Le Trong. All rights reserved.</p>
 </body>
 </html>

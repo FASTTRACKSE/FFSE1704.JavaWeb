@@ -1,12 +1,12 @@
 package springmvc.entity;
 
 public class SinhVien {
-	private int id;
+	private String id;
 	private String name;
-	private int year;
+	private String year;
 	private String gender;
 
-	public SinhVien(int id, String name, int year, String gender) {
+	public SinhVien(String id, String name, String year, String gender) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,11 +19,11 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -35,11 +35,11 @@ public class SinhVien {
 		this.name = name;
 	}
 
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 

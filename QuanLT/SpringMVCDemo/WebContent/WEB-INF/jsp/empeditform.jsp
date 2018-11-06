@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Edit Employee</h1>  
+<h1>Edit Information Fans</h1>  
        <form:form method="POST" action="/SpringMVCDemo/editsave">    
         <table >    
         <tr>  
@@ -21,7 +21,7 @@
           <td><form:input path="name"  /></td>  
          </tr>    
          <tr>    
-          <td>Tuổi :</td>    
+          <td>Old :</td>    
           <td><form:input path="old" /></td>  
          </tr>   
          <tr>    
