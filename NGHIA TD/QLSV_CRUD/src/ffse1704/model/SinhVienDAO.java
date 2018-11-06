@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import ffse1704.entity.SinhVien;
 
@@ -25,7 +26,7 @@ public class SinhVienDAO {
 	}
 
 	public int addSV(SinhVien p) {
-		String sql = "insert into sinhvien(MASV,TenSV,NamSinh,Email,DiaChi,LopHoc) values('" + p.getMaSV() + "','" + p.getTenSV()
+		String sql = "insert into sinhvien(MASV,TenSV,images,NamSinh,Email,DiaChi,LopHoc) values('" + p.getMaSV() + "','" + p.getTenSV()
 				+ "','" + p.getImages() + "','" + p.getNamSinh() + "','" + p.getEmail() +"','" + p.getDiaChi() + "','" + p.getLopHoc() +"')";
 		return template.update(sql);
 	}

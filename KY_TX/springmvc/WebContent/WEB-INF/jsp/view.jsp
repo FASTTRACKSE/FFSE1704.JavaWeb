@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Xuân Kỳ</title>
 </head>
 <body style="text-align: center;">
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -19,6 +19,7 @@
 			<th>Address</th>
 			<th>Birth</th>
 			<th>NameClass</th>
+			<th>Image</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -30,6 +31,7 @@
 				<td>${sv.nameTinhThanh}</td>
 				<td>${sv.birth}</td>
 				<td>${sv.nameClass}</td>
+				<td><img src="images/${sv.image}" width="50px"/></td>
 				<td><a href="editsv/${sv.id}">Edit</a></td>
 				<td><a href="deletesv/${sv.id}">Delete</a></td>
 			</tr>

@@ -2,7 +2,7 @@ package quanlysinhvien.entity;
 
 public class TinhThanh {
 
-	String maTinhThanh;
+	int maTinhThanh;
 	String tenTinhThanh;
 
 	public TinhThanh() {
@@ -10,17 +10,17 @@ public class TinhThanh {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TinhThanh(String maTinhThanh, String tenTinhThanh) {
+	public TinhThanh(int maTinhThanh, String tenTinhThanh) {
 		super();
 		this.maTinhThanh = maTinhThanh;
 		this.tenTinhThanh = tenTinhThanh;
 	}
 
-	public String getMaTinhThanh() {
+	public int getMaTinhThanh() {
 		return maTinhThanh;
 	}
 
-	public void setMaTinhThanh(String maTinhThanh) {
+	public void setMaTinhThanh(int maTinhThanh) {
 		this.maTinhThanh = maTinhThanh;
 	}
 
@@ -32,4 +32,5 @@ public class TinhThanh {
 		this.tenTinhThanh = tenTinhThanh;
 	}
 
+	
 }

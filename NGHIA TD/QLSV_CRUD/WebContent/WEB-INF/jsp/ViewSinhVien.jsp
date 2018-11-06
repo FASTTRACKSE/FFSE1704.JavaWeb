@@ -47,7 +47,7 @@
 						<td>${sv.id}</td>
 						<td>${sv.maSV}</td>
 						<td>${sv.tenSV}</td>
-						<td><img src="<c:url value="resources/images/${sv.images}" />"></td>
+						<td><img src="<c:url value="img/${sv.images}" />"></td>
 						<td>${sv.namSinh}</td>
 						<td>${sv.email}</td>
 						<td>${sv.diaChi}</td>

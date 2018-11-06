@@ -3,6 +3,7 @@ package fasttrack.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.istack.internal.logging.Logger;
+
 import fasttrack.dao.SinhVienDAO;
 import fasttrack.entity.SinhVien;
+import fasttrack.entity.TinhThanh;
 
 @Controller
 public class SinhVienController {
 	@Autowired
 	SinhVienDAO dao;
 	List<SinhVien> list;
-
+	
+	
 	@RequestMapping("/addsinhvien")
 	public ModelAndView showForm() {
 
@@ -30,7 +35,7 @@ public class SinhVienController {
 
 	@RequestMapping("/listsinhvien/{pageid}")
 	public ModelAndView viewUser(@PathVariable int pageid, Model model) throws SQLException {
-		double perPage = 5;
+		double perPage = 5;  
 		double pageTotal = (int) Math.ceil(dao.countSV() / perPage);
 		int start = (pageid - 1) * (int) perPage;
 		List<SinhVien> list = dao.getSinhVienByPage(start,(int) perPage);
@@ -65,4 +70,12 @@ public class SinhVienController {
 		dao.delete(id);
 		return new ModelAndView("redirect:/listsinhvien/1");
 	}
+	
+	@ModelAttribute("countryList")
+	public List<TinhThanh> getCountryList() {
+		List<TinhThanh> countryList = dao.getListThanhPho();
+		return countryList;
+	}
+	
+	
 }

@@ -35,7 +35,7 @@ public class SinhVienDAO {
 	}
 
 	public SinhVien getSVById(int id) {
-		String sql = "SELECT sinhvien.id,sinhvien.tenSinhVien,sinhvien.tuoiSinhVien,tinhthanh.tenTinh AS diaChi,sinhvien.avatar,sinhvien.email FROM sinhvien INNER JOIN tinhthanh ON sinhvien.diachi=tinhthanh.maTinh WHERE sinhvien.id=?";
+		String sql = "SELECT * FROM sinhvien where id=?";
 		return template.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<SinhVien>(SinhVien.class));
 	}
 
@@ -44,8 +44,15 @@ public class SinhVienDAO {
 		return template.update(sql);
 	}
 
-	public List<SinhVien> getSinhVien() {
-		return template.query("SELECT sinhvien.id,sinhvien.tenSinhVien,sinhvien.tuoiSinhVien,tinhthanh.tenTinh AS diaChi,sinhvien.avatar,sinhvien.email FROM sinhvien INNER JOIN tinhthanh ON sinhvien.diachi=tinhthanh.maTinh", new RowMapper<SinhVien>() {
+	public int count() throws SQLException {
+		String sql = "SELECT COUNT(*) FROM sinhvien";
+		return template.queryForObject(sql, Integer.class);
+	}
+
+	public List<SinhVien> getSinhVien(int start, int total) {
+		String sql = "SELECT sinhvien.id,sinhvien.tenSinhVien,sinhvien.tuoiSinhVien,tinhthanh.tenTinh AS diaChi,sinhvien.avatar,sinhvien.email FROM sinhvien INNER JOIN tinhthanh ON sinhvien.diachi=tinhthanh.id ORDER BY id ASC limit "
+				+ start + "," + total + "";
+		return template.query(sql, new RowMapper<SinhVien>() {
 			public SinhVien mapRow(ResultSet rs, int row) throws SQLException {
 				SinhVien list = new SinhVien();
 				list.setId(rs.getString(1));
@@ -58,17 +65,17 @@ public class SinhVienDAO {
 			}
 		});
 	}
- 
-	public List<TinhThanh> getListThanhPho(){
-	return template.query("SELECT * FROM tinhthanh", new RowMapper<TinhThanh>() {
-		public TinhThanh mapRow(ResultSet rs, int row) throws SQLException {
-			TinhThanh list = new TinhThanh();
-			list.setMaTinhThanh(rs.getString(1));
-			list.setTenTinhThanh(rs.getString(3));
-			
-			return list;
-		}
-	});
+
+	public List<TinhThanh> getListThanhPho() {
+		return template.query("SELECT * FROM tinhthanh", new RowMapper<TinhThanh>() {
+			public TinhThanh mapRow(ResultSet rs, int row) throws SQLException {
+				TinhThanh list = new TinhThanh();
+				list.setMaTinhThanh(rs.getInt(1));
+				list.setTenTinhThanh(rs.getString(2));
+
+				return list;
+			}
+		});
 	}
-	
+
 }

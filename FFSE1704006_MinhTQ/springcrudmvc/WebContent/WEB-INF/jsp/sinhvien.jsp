@@ -26,15 +26,31 @@
 				<td>${sv.tenSinhVien}</td>
 				<td>${sv.tuoiSinhVien}</td>
 				<td>${sv.diaChi}</td>
-				<td><img src="${filename}"/>  </td>
+				<td><img src="/springcrudmvc/images/${sv.avatar}" width="100px" height="100px"/>  </td>
 				<td>${sv.email}</td>
 				<td>  <button><a href="/springcrudmvc/editview/${sv.id}">Edit</a></button> <button><a href="/springcrudmvc/deletesinhvien/${sv.id }">Delete</a></button>	</td>
 				
  
 			</tr>
-		</c:forEach>
+		</c:forEach> 
 	</table>
 	<br>
+	<center>
+	<c:if test="${pageid > 1}">
+		<a href="/springcrudmvc/sinhvien/1">First</a>
+	</c:if>
+	<c:if test="${pageid > 1}">
+		<a href="/springcrudmvc/sinhvien/${pageid-1}">${pageid-1}</a>
+	</c:if>
+	<a href="/springcrudmvc/sinhvien/${pageid}">${pageid}</a>
+	<c:if test="${pageid < pagetotal}">
+		<a href="/springcrudmvc/sinhvien/${pageid+1}">${pageid+1}</a>
+	</c:if>
+	<c:if test="${pageid < pagetotal}">
+		<a href="/springcrudmvc/sinhvien/${pagetotal}">Last</a>
+	</c:if>
+
+</center>
 
 	<button ><a href="/springcrudmvc/addsinhvien"> thêm </a></button>
 </body>

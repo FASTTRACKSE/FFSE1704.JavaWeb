@@ -1,9 +1,9 @@
 package ffse1704.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ffse1704.entity.SinhVien;
@@ -26,8 +26,8 @@ import ffse1704.model.SinhVienDAO;
 public class Studentscontroller {
 	
 	@Autowired
-	
 	SinhVienDAO sinhVienDAO;
+	
 	@RequestMapping("/ViewSinhVien")
 	public String ShowList() {
 		return "redirect:/1";
@@ -59,11 +59,11 @@ public class Studentscontroller {
 	
 	
 	@RequestMapping(value="/saveSV",method = RequestMethod.POST)
-	public ModelAndView addSV(@ModelAttribute("sinhVien") SinhVien sinhVien,@RequestParam("file") MultipartFile file,HttpServletRequest request)
+	public ModelAndView addSV(@ModelAttribute("sinhVien") SinhVien sinhVien,@RequestParam("file") CommonsMultipartFile file,HttpServletRequest request)
 			throws IllegalStateException, IOException{
 		sinhVien.setImages(upload(file, request));
 		sinhVienDAO.addSV(sinhVien);
-		return new ModelAndView("redirect:/ViewSinhVien");
+		return new ModelAndView("redirect:/ViewSinhVien/");
 		
 	}
 	
@@ -97,22 +97,18 @@ public class Studentscontroller {
 	public String cancelUpdateUser(HttpServletRequest request) {
 	    return "redirect:/ViewSinhVien";
 	}
-	public String upload(MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
+	public String upload(@RequestParam CommonsMultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		Date date = new Date(0);
-		SimpleDateFormat fm = new SimpleDateFormat("hhmmssddMMyyyy");
-		String fileName = fm.format(date)+"_"+file.getOriginalFilename();
-		String path = request.getSession().getServletContext().getRealPath("/")+ "images";
-		if(fileName.isEmpty()) {
-			fileName = "anh1.png";
-		}
-		else {
-			File dir = new File(path);
-			if (!dir.exists())
-				dir.mkdirs();
-			File fileSave = new File(dir, fileName);
-			file.transferTo(fileSave);
-		}
+		
+		String fileName = file.getOriginalFilename();
+
+		String path = "E:\\HOCT\\images";
+		byte[] bytes = file.getBytes();  
+	    BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + fileName))); 
+	    
+	    stream.write(bytes);  
+	    stream.flush();  
+	    stream.close();  
 		return fileName;
 		
 		

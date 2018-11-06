@@ -1,21 +1,27 @@
 package controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.util.HashMap;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import dao.SinhVienDao;
 import sinhvien.entity.SinhVien;
@@ -45,23 +51,40 @@ public class SinhVienController {
 		return new ModelAndView("svform", "command", new SinhVien());
 	}
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("sv") SinhVien sv) {
-		dao.addSV(sv);
-		return new ModelAndView("redirect:/view");// will redirect to viewemp request mapping
-	}
-
 	// editSinhVien
 	@RequestMapping(value = "/editsv/{id}")
 	public ModelAndView edit(@PathVariable int id) {
 		SinhVien sv = dao.getSVById(id);
 		return new ModelAndView("sveditform", "command", sv);
 	}
-
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
-	public ModelAndView editsave(@ModelAttribute("sv") SinhVien sv) {
+	public ModelAndView editAndSave(@ModelAttribute("sv") SinhVien sv, @RequestParam CommonsMultipartFile file,
+			HttpSession session) {
+		File fileImage = new File("C:\\img");
+		
+        if (!fileImage.exists()) {
+            if (fileImage.mkdir()) {
+                System.out.println("Directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
+		String filename = file.getOriginalFilename();
+		try {
+			byte barr[] = file.getBytes();
+
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(fileImage + "/" + filename));
+			bout.write(barr);
+			bout.flush();
+			bout.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		sv.setImage(filename);
 		dao.update(sv);
-		return new ModelAndView("redirect:/view");
+		return new ModelAndView("redirect:/view");// will redirect to viewemp request mapping
 	}
 
 	// delete SinhVien
@@ -70,5 +93,35 @@ public class SinhVienController {
 		dao.delete(id);
 		return new ModelAndView("redirect:/view");
 	}
+
 	// upload file
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView uploadAndSave(@ModelAttribute("sv") SinhVien sv, @RequestParam CommonsMultipartFile file,
+			HttpSession session) {
+		File fileImage = new File("C:\\img");
+		
+        if (!fileImage.exists()) {
+            if (fileImage.mkdir()) {
+                System.out.println("Directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
+		String filename = file.getOriginalFilename();
+		try {
+			byte barr[] = file.getBytes();
+
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(fileImage + "/" + filename));
+			bout.write(barr);
+			bout.flush();
+			bout.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		sv.setImage(filename);
+		dao.addSV(sv);
+		return new ModelAndView("redirect:/view");// will redirect to viewemp request mapping
+	}
 }

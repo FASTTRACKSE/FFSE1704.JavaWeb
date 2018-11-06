@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import fasttrack.entity.SinhVien;
+import fasttrack.entity.TinhThanh;
 
 public class SinhVienDAO {
 	JdbcTemplate template;
@@ -24,7 +25,7 @@ public class SinhVienDAO {
 				SinhVien sv = new SinhVien();
 				sv.setId(rs.getInt(1));
 				sv.setName(rs.getString(2));
-				sv.setBirthday(rs.getDate(3));
+				sv.setBirthday(rs.getString(3));
 				sv.setEmail(rs.getString(4));
 				sv.setAddress(rs.getString(5));
 				sv.setClasssv(rs.getString(6));
@@ -57,13 +58,13 @@ public class SinhVienDAO {
 	}
 	
 	public List<SinhVien> getSinhVienByPage(int start,int total){  
-		String sql="select * from sinhvien limit "+start+","+total+"";  
+		String sql="SELECT id , name, birthday, email, tinhthanh.tenTinh, classsv  FROM sinhvien LEFT JOIN tinhthanh ON sinhvien.address = tinhthanh.maTinh limit "+start+","+total+"";  
 	    return template.query(sql,new RowMapper<SinhVien>(){  
 	        public SinhVien mapRow(ResultSet rs, int row) throws SQLException {  
 	        	SinhVien sv=new SinhVien();  
 	        	sv.setId(rs.getInt(1));
 				sv.setName(rs.getString(2));
-				sv.setBirthday(rs.getDate(3));
+				sv.setBirthday(rs.getString(3));
 				sv.setEmail(rs.getString(4));
 				sv.setAddress(rs.getString(5));
 				sv.setClasssv(rs.getString(6)); 
@@ -76,5 +77,17 @@ public class SinhVienDAO {
 		String sql="select count(*) from sinhvien";
 		return template.queryForObject(sql, Integer.class);
 	}
+	
+	public List<TinhThanh> getListThanhPho(){
+		return template.query("SELECT * FROM tinhthanh", new RowMapper<TinhThanh>() {
+			public TinhThanh mapRow(ResultSet rs, int row) throws SQLException {
+				TinhThanh list = new TinhThanh();
+				list.setMaTinh(rs.getInt(1));
+				list.setTenTinh(rs.getString(2));
+				
+				return list;
+			}
+		});
+		}
 
 }

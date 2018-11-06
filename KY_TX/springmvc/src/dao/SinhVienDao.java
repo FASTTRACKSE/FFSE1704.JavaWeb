@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -22,7 +21,7 @@ public class SinhVienDao {
 	// list SinhVien
 	public List<SinhVien> getSinhVien() {
 		return template.query(
-				"SELECT id,name,email,address,birth,nameClass,tinhthanh.nametp FROM `sinhvien`LEFT JOIN tinhthanh ON sinhvien.address = tinhthanh.matp",
+				"SELECT id,name,email,address,birth,nameClass,tinhthanh.nametp,image FROM `sinhvien`LEFT JOIN tinhthanh ON sinhvien.address = tinhthanh.matp",
 				new RowMapper<SinhVien>() {
 					public SinhVien mapRow(ResultSet rs, int row) throws SQLException {
 						SinhVien sv = new SinhVien();
@@ -33,6 +32,7 @@ public class SinhVienDao {
 						sv.setBirth(rs.getInt(5));
 						sv.setNameClass(rs.getString(6));
 						sv.setNameTinhThanh(rs.getString(7));
+						sv.setImage(rs.getString(8));
 						return sv;
 					}
 				});
@@ -40,8 +40,9 @@ public class SinhVienDao {
 
 	// add SinhVien
 	public int addSV(SinhVien sv) {
-		String sql = "insert into sinhvien(name,email,address,birth,nameClass) values('" + sv.getName() + "','"
-				+ sv.getEmail() + "'," + sv.getAddress() + "," + sv.getBirth() + ",'" + sv.getNameClass() + "')";
+		String sql = "insert into sinhvien(name,email,address,birth,nameClass,image) values('" + sv.getName() + "','"
+				+ sv.getEmail() + "'," + sv.getAddress() + "," + sv.getBirth() + ",'" + sv.getNameClass() + "','"
+				+ sv.getImage() + "')";
 		return template.update(sql);
 	}
 
@@ -49,7 +50,7 @@ public class SinhVienDao {
 	public int update(SinhVien sv) {
 		String sql = "update sinhvien set name='" + sv.getName() + "', email='" + sv.getEmail() + "', address="
 				+ sv.getAddress() + ", birth = '" + sv.getBirth() + "', nameClass= '" + sv.getNameClass()
-				+ "' where id=" + sv.getId() + "";
+				+ "', image = '" + sv.getImage() + "' where id=" + sv.getId() + "";
 		return template.update(sql);
 	}
 

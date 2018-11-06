@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Edit Sinh Viên</h1>
-	<form:form method="POST" action="/springcrudmvc/editsave">
+	<form:form method="POST" action="/springcrudmvc/editsave" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>id:</td>
@@ -28,11 +28,16 @@
 			<tr>
 				<td>địa chỉ:</td>
 				<td><form:select path="diaChi">
-						<form:options items="${countryList}" itemValue="maTinhThanh"
-							itemLabel="tenTinhThanh" />
+						<form:options items="${countryList}"  itemLabel="tenTinhThanh" itemValue="maTinhThanh"/>
 					</form:select></td>
 			</tr>
-
+			<tr>
+				<td>avatar:</td>
+				<td><input name="file" id="fileToUpload" type="file" />
+				<br/>
+				
+				<td><img  src="/springcrudmvc/images/${command.avatar}" width="100px" height="100px"></td>
+			</tr>
 			<tr>
 				<td>Email:</td>
 				<td><form:input path="email" /></td>
