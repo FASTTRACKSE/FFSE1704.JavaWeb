@@ -11,7 +11,7 @@
 <body>
 
 	<h1>Add New Employee</h1>
-	<form:form method="post" action="save">
+	<form:form method="post" action="save" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Name :</td>
@@ -24,6 +24,10 @@
 			<tr>
 				<td>Designation :</td>
 				<td><form:input path="designation" /></td>
+			</tr>
+			<tr>
+				<td>image :</td>
+				<td><input type="file" name="file"/></td>
 			</tr>
 			<tr>
 				<td></td>

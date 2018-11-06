@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/crud/editsave">
+	<form:form method="POST" action="/crud/editsave" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td></td>
@@ -27,6 +27,10 @@
 			<tr>
 				<td>Designation :</td>
 				<td><form:input path="designation" /></td>
+			</tr>
+			<tr>
+				<td>image :</td>
+				<td><input type="file" name="file"/></td>
 			</tr>
 
 			<tr>
