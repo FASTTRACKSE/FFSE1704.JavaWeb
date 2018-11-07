@@ -92,7 +92,7 @@ public class SinhVienController {
 	 * It displays object data into form for the given id. The @PathVariable puts
 	 * URL data into variable.
 	 */
-	@RequestMapping(value = "/editview/{id}")
+	@RequestMapping(value = "/ editview/{id}")
 	public ModelAndView edit(@PathVariable int id) {
 		SinhVien sinhvien = dao.getSVById(id);
 		return new ModelAndView("editsinhvien", "command", sinhvien);
