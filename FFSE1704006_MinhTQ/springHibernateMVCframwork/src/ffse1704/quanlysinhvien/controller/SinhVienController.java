@@ -1,25 +1,41 @@
-package fasttrackse.quanlysinhvien.controller;
+package ffse1704.quanlysinhvien.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import fasttrackse.quanlysinhvien.dao.SinhVienDAO;
+import ffse1704.quanlysinhvien.entity.SinhVien;
+import ffse1704.quanlysinhvien.service.SinhVienService;
+
 @Controller
-public class Controller {
+public class SinhVienController {
 	@Autowired
-	SinhVienDAO dao;// will inject dao from xml file
-	
+	SinhVienService sinhVienService;
 
 	public void setStudentService(SinhVienService sinhVienService) {
 		this.sinhVienService = sinhVienService;
 	}
 
-	@RequestMapping("/list")
+	@RequestMapping("/sinhvien")
 	public String index(Model model,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
-		int totalRecords = sinhVienService.listStudent().size();
+		int totalRecords = sinhVienService.listSinhVien().size();
 		int recordsPerPage = 2;
 		int totalPages = 0;
 		if ((totalRecords / recordsPerPage) % 2 == 0) {
@@ -38,19 +54,19 @@ public class Controller {
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String showForm(Model model) {
-		model.addAttribute("student", new Student());
-		model.addAttribute("listSinhVien", sinhVienService.listStudent());
+		model.addAttribute("student", new SinhVien());
+		model.addAttribute("listSinhVien", sinhVienService.listSinhVien());
 		return "create";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createStudent(Model model, @ModelAttribute("student") @Valid Student sv, HttpSession session,
+	public String createStudent(Model model, @ModelAttribute("student") @Valid SinhVien sv, HttpSession session,
 			MultipartFile file, BindingResult bindingResult) throws IllegalStateException, IOException {
 		sv.setAvatar(uploadFile(file, session));
 		if (bindingResult.hasErrors()) {
 			return "create";
 		}
-		sinhVienService.create(sv);
+		sinhVienService.add(sv);
 		return "redirect:/list";
 	}
 
@@ -60,14 +76,14 @@ public class Controller {
 		return "redirect:/list";
 	}
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/editview/{id}", method = RequestMethod.GET)
 	public String edit_view(@PathVariable("id") int id, Model model) {
 		model.addAttribute("student", sinhVienService.findById(id));
 		return "edit";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String edit(Model model, @ModelAttribute("student") @Valid Student student, BindingResult bindingResult,
+	public String edit(Model model, @ModelAttribute("student") @Valid SinhVien student, BindingResult bindingResult,
 			String fileName, HttpSession session, @RequestParam("file") MultipartFile file)
 			throws SQLException, IllegalStateException, IOException {
 		if (student.getAvatar() != null) {
@@ -79,7 +95,7 @@ public class Controller {
 		if (bindingResult.hasErrors()) {
 			return "edit";
 		}
-		sinhVienService.update(student);
+		sinhVienService.edit(student);
 		return "redirect:/list";
 	}
 

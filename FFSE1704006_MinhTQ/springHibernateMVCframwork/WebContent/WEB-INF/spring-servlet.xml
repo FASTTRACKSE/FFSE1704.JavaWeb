@@ -15,13 +15,15 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan
-		base-package="fasttrackse.quanlysinhvien" />
+		base-package="ffse1704.quanlysinhvien" />
 
 
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/images/**"
 		location="file:/D:/Image/" />
+
+
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -31,39 +33,31 @@
 
 
 
-
-	<!-- bộ kết nối database sever-->
-	<bean id="ds"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/quanlysinhvien?useEncoding=true&amp;characterEncoding=UTF-8" />
-		<property name="username" value="quanlysinhvien"></property>
-		<property name="password" value="quangminh123"></property>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 
-		<!--these are connection pool properties for C3P0 -->
-		<property name="minPoolSize" value="3" />
-		<property name="maxPoolSize" value="20" />
-		<property name="maxIdleTime" value="30000" />
-	</bean>
+	<!--Define Database DataSource / connection pool -->
+	<bean id="theDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/quanlysinhvien?useEncoding=true&amp;characterEncoding=UTF-8" />
+        <property name="username" value="quanlysinhvien" />
+        <property name="password" value="quangminh123" /> 
 
-	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="ds"></property>
-	</bean>
-
-	<bean id="dao" class="fasttrackse.quanlysinhvien.dao.SinhVienDAO">
-		<property name="template" ref="jt"></property>
-	</bean>
-
-
-
-	<!-- Hibernate session factory -->
+        <!-- these are connection pool properties for C3P0 -->
+        <property name="minPoolSize" value="3" />
+        <property name="maxPoolSize" value="20" />
+        <property name="maxIdleTime" value="30000" />
+	</bean> 
+	
+	
+	
+	<!--  Hibernate session factory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="theDataSource" />
-		<property name="packagesToScan" value="fasttrack.entity" />
+		<property name="packagesToScan" value="ffse1704.quanlysinhvien.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -71,12 +65,15 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> 
+ 
+<!-- 	 Hibernate transaction manager -->
+	<bean id="myTransactionManager"
+            class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-	<!-- multipartResolver upload file -->
-	<bean id="multipartResolver"
+	<!-- Enable configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="500000" />
-	</bean>
-</beans>
+</beans>  
