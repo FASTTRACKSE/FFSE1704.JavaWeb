@@ -20,21 +20,21 @@ public class UserDao {
 	}
 
 	public int add(User sv) {
-		String sql = "INSERT INTO `quanlisinhvien`(`ma_sv`, `ten_sv`, `nam_sinh`, `dia_chi`, `lop_hoc`, `avatar`)" + " VALUES ('"
+		String sql = "INSERT INTO `quanlisinhvien`(`ma_SV`, `ten_SV`, `nam_sinh`, `dia_chi`, `lop_hoc`, `avatar`)" + " VALUES ('"
 				+ sv.getMaSV() + "','" + sv.getTenSV() + "','" + sv.getNamSinh() + "','" + sv.getDiaChi() + "','"
 				+ sv.getLopHoc() + "','"+sv.getAvatar()+"')";
 		return template.update(sql);
 	}
 
 	public User getUserById(int id) {
-		String sql = "SELECT * FROM `quanlisinhvien` WHERE id =?";
+		String sql = "SELECT id,`ma_SV` as maSV, `ten_SV` as tenSV, `nam_sinh`, `dia_chi`, `lop_hoc`, `avatar` FROM `quanlisinhvien` WHERE id =?";
 		return template.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<User>(User.class));
 	}
 
 	public int update(User sv) {
-		String sql = "UPDATE `quanlisinhvien` SET `ma_sv`='" + sv.getMaSV() + "',`ten_sv`='" + sv.getTenSV() + "',"
+		String sql = "UPDATE `quanlisinhvien` SET `ma_SV`='" + sv.getMaSV() + "',`ten_SV`='" + sv.getTenSV() + "',"
 				+ "`nam_sinh`='" + sv.getNamSinh() + "',`dia_chi`='" + sv.getDiaChi() + "',`lop_hoc`='" + sv.getLopHoc()
-				+ "' WHERE `id`='" + sv.getId() + "','"+sv.getAvatar()+"' ";
+				+ "',`avatar`='"+sv.getAvatar()+"'  WHERE `id`=" + sv.getId() ;
 		return template.update(sql);
 	}
 

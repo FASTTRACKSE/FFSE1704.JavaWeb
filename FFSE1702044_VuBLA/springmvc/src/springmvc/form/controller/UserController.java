@@ -66,7 +66,6 @@ public class UserController {
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public String editsave(@ModelAttribute("user") User user, @RequestParam CommonsMultipartFile file,
 			HttpSession session) {
-
 		File fileImage = new File("D:\\Image");
 		if (!fileImage.exists()) {
 			fileImage.mkdirs();

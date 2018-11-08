@@ -1,7 +1,5 @@
 package ffse1704.jsfstaff.entity;
 
-import javax.faces.bean.ManagedBean;
-
 public class province {
 	private String id, tenTinh;
 

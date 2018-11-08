@@ -1,8 +1,50 @@
-package springmvc.form.entity;
+package springmvchibernate.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name = "quanlisinhvien")
 public class User {
-	int id;
-	String diaChi, lopHoc, avatar;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@SuppressWarnings("deprecation")
+	@Column(name = "dia_chi")
+	@NotEmpty
+	private String diaChi;
+
+	@Column(name = "avatar")
+	private String avatar;
+
+	@SuppressWarnings("deprecation")
+	@Column(name = "lop_hoc")
+	@NotEmpty
+	private String lopHoc;
+
+	@SuppressWarnings("deprecation")
+	@Column(name = "nam_sinh")
+	@NotEmpty
+	private int namSinh;
+
+	@SuppressWarnings("deprecation")
+	@Column(name = "ten_SV")
+	@NotEmpty
+	private String tenSV;
+
+	@SuppressWarnings("deprecation")
+	@Column(name = "ma_SV")
+	@NotEmpty
+	private String maSV;
 
 	public String getAvatar() {
 		return avatar;
@@ -11,10 +53,6 @@ public class User {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-
-	int namSinh;
-
-	String maSV, tenSV;
 
 	public User() {
 		super();
@@ -78,5 +116,4 @@ public class User {
 	public void setLopHoc(String lopHoc) {
 		this.lopHoc = lopHoc;
 	}
-
 }
