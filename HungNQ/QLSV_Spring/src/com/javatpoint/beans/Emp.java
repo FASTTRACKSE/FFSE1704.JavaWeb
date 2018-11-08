@@ -9,7 +9,22 @@ public class Emp {
 	private String diachi;
 	private String lophoc;
 
-	
+	public Emp(int id, String masv, String tensv, int namsinh, String email, String diachi, String lophoc) {
+		super();
+		this.id = id;
+		this.masv = masv;
+		this.tensv = tensv;
+		this.namsinh = namsinh;
+		this.email = email;
+		this.diachi = diachi;
+		this.lophoc = lophoc;
+	}
+
+	public Emp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
