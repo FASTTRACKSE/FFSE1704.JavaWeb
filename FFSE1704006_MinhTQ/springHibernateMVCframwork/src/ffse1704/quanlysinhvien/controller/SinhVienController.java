@@ -49,61 +49,61 @@ public class SinhVienController {
 		model.addAttribute("lastPage", totalPages);
 		model.addAttribute("currentPage", currentPage);
 
-		return "/list";
+		return "/ViewSinhVien";
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	@RequestMapping(value = "/addsinhvien", method = RequestMethod.GET)
 	public String showForm(Model model) {
-		model.addAttribute("student", new SinhVien());
+		model.addAttribute("sinhvien", new SinhVien());
 		model.addAttribute("listSinhVien", sinhVienService.listSinhVien());
-		return "create";
+		return "AddSinhVien";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createStudent(Model model, @ModelAttribute("student") @Valid SinhVien sv, HttpSession session,
+	public String createStudent(Model model, @ModelAttribute("sinhvien") @Valid SinhVien sinhvien, HttpSession session,
 			MultipartFile file, BindingResult bindingResult) throws IllegalStateException, IOException {
-		sv.setAvatar(uploadFile(file, session));
+		sinhvien.setAvatar(uploadFile(file, session));
 		if (bindingResult.hasErrors()) {
-			return "create";
+			return "AddSinhVien";
 		}
-		sinhVienService.add(sv);
-		return "redirect:/list";
+		sinhVienService.add(sinhvien);
+		return "redirect:/ViewSinhVien";
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id, HttpSession session, Model model) {
 		sinhVienService.delete(id);
-		return "redirect:/list";
+		return "redirect:/ViewSinhVien";
 	}
 
 	@RequestMapping(value = "/editview/{id}", method = RequestMethod.GET)
 	public String edit_view(@PathVariable("id") int id, Model model) {
 		model.addAttribute("student", sinhVienService.findById(id));
-		return "edit";
+		return "EditSinhVien";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String edit(Model model, @ModelAttribute("student") @Valid SinhVien student, BindingResult bindingResult,
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public String edit(Model model, @ModelAttribute("sinhvien") @Valid SinhVien sinhvien, BindingResult bindingResult,
 			String fileName, HttpSession session, @RequestParam("file") MultipartFile file)
 			throws SQLException, IllegalStateException, IOException {
-		if (student.getAvatar() != null) {
+		if (sinhvien.getAvatar() != null) {
 			if (!file.isEmpty()) {
-				deleteFile(student.getAvatar(), session);
-				student.setAvatar(uploadFile(file, session));
+				deleteFile(sinhvien.getAvatar(), session);
+				sinhvien.setAvatar(uploadFile(file, session));
 			}
 		}
 		if (bindingResult.hasErrors()) {
-			return "edit";
+			return "EditSinhVien";
 		}
-		sinhVienService.edit(student);
-		return "redirect:/list";
+		sinhVienService.edit(sinhvien);
+		return "redirect:/ViewSinhVien";
 	}
 
 	public String uploadFile(MultipartFile file, HttpSession session) throws IllegalStateException, IOException {
 		Date date = new Date();
 		SimpleDateFormat fm = new SimpleDateFormat("hhmmssddMMyyyy");
 		String fileName = fm.format(date) + "_" + file.getOriginalFilename();
-		String path = session.getServletContext().getRealPath("/") + "\\resources\\upload\\";
+		String path = session.getServletContext().getRealPath("/") + "\\Image\\";
 		if (fileName.isEmpty()) {
 			fileName = "default.png";
 		} else {
@@ -117,7 +117,7 @@ public class SinhVienController {
 	}
 
 	public boolean deleteFile(String fileName, HttpSession session) {
-		String path = session.getServletContext().getRealPath("/") + "\\resources\\upload\\";
+		String path = session.getServletContext().getRealPath("/") + "\\Image\\";
 		File file = new File(path, fileName);
 		boolean result = file.delete();
 		return result;
