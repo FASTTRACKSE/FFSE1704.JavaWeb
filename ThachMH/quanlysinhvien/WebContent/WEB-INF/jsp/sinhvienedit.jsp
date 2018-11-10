@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Xuân Kỳ</title>
+<title></title>
 </head>
 <body>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>

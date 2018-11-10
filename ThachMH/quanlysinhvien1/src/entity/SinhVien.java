@@ -3,7 +3,7 @@ package entity;
 public class SinhVien {
 	private int id;
 	private String name;
-	private int birth_year;
+	private String birth_year;
 	private String email;
 	private String address;
 	private String lop;
@@ -13,7 +13,7 @@ public class SinhVien {
 
 	}
 
-	public SinhVien(int id, String name, int birth_year, String email, String address, String lop, String gender) {
+	public SinhVien(int id, String name, String birth_year, String email, String address, String lop, String gender) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,6 +22,14 @@ public class SinhVien {
 		this.address = address;
 		this.lop = lop;
 		this.gender = gender;
+	}
+
+	public String getBirth_year() {
+		return birth_year;
+	}
+
+	public void setBirth_year(String birth_year) {
+		this.birth_year = birth_year;
 	}
 
 	public int getId() {
@@ -38,14 +46,6 @@ public class SinhVien {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getBirth_year() {
-		return birth_year;
-	}
-
-	public void setBirth_year(int birth_year) {
-		this.birth_year = birth_year;
 	}
 
 	public String getEmail() {
