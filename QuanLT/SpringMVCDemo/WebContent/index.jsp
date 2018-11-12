@@ -10,7 +10,7 @@
 <h1 style="color: red">CRUD Spring MVC</h1>
 <h2>Fans List Manage</h2>
 <a href="empform">Add Fans</a> <br>
-<a href="viewemp">View Fans</a><br>
+<a href="viewemp/1">View Fans</a><br>
  <a href="mailto:quanltofficial@gmail.com">Contact Me</a> 
  <p> Email: quanltofficial@gmail.com<br>
  Copyright (C) Quan Le Trong. All rights reserved.</p>

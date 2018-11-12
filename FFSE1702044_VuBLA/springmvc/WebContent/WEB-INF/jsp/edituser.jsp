@@ -1,7 +1,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,35 +13,41 @@
 
 
 	<h1>Edit Employee</h1>
-	<form:form method="POST" action="/springmvc/edit">
+	<form:form method="POST" action="/springmvc/editsave" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td></td>
 				<td><form:hidden path="id" /></td>
 			</tr>
 			<tr>
-				<td>MaSV :</td>
+				<td>Mã SV:</td>
 				<td><form:input path="maSV" /></td>
 			</tr>
 			<tr>
-				<td>ten SV :</td>
+				<td>Tên SV:</td>
 				<td><form:input path="tenSV" /></td>
 			</tr>
 			<tr>
-				<td>nam sinh :</td>
+				<td>Năm Sinh:</td>
 				<td><form:input path="namSinh" /></td>
 			</tr>
 			<tr>
-				<td>dia chi:</td>
+				<td>Địa Chỉ:</td>
 				<td><form:input path="diaChi" /></td>
 			</tr>
 			<tr>
-				<td>lop hoc :</td>
+				<td>Lớp Học:</td>
 				<td><form:input path="lopHoc" /></td>
 			</tr>
 			<tr>
+				<td>Avatar:</td>
+				<td><input type="file" name="file" /></td>
+
+				<td><img src="/springmvc/Image/${command.avatar}" width="150px" /></td>
+			</tr>
+			<tr>
 				<td></td>
-				<td><input type="submit" value="Edit Save" /></td>
+				<td><input type="submit" value="edit" /></td>
 			</tr>
 		</table>
 	</form:form>

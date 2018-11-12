@@ -2,9 +2,13 @@ package com.javatpoint.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import com.javatpoint.beans.Emp;
 
@@ -53,5 +57,36 @@ public class EmpDao {
 				return e;
 			}
 		});
+
+	}
+
+	public List<Emp> getEmployeesByPage(int pageid, int total) {
+		String sql = "select * from student limit " + pageid + "," + total;
+		return template.query(sql, new ResultSetExtractor<List<Emp>>() {
+			@Override
+			public List<Emp> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				// TODO Auto-generated method stub
+				List<Emp> list = new ArrayList<Emp>();
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String masv = rs.getString("masv");
+					String tensv = rs.getString("tensv");
+					Integer namsinh = rs.getInt("namsinh");
+					String email = rs.getString("email");
+					String diachi = rs.getString("diachi");
+					String lophoc = rs.getString("lophoc");
+					Emp sv = new Emp(id, masv, tensv, namsinh, email, diachi, lophoc);
+					list.add(sv);
+				}
+				return list;
+			}
+		});
+	}
+
+	public int countSV() {
+		String sql = "select count(*) from student ";
+		int records = template.queryForObject(sql, Integer.class);
+		return records;
+
 	}
 }

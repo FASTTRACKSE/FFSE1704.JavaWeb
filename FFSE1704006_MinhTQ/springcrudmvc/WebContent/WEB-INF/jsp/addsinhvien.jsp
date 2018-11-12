@@ -19,10 +19,12 @@
 			<tr>
 				<td>tên:</td>
 				<td><form:input path="tenSinhVien" /></td>
+				<td><form:errors path="tenSinhVien" cssStyle="color: red"/></td>
 			</tr>
 			<tr>
 				<td>tuổi:</td>
 				<td><form:input path="tuoiSinhVien" /></td>
+				<td><form:errors path="tuoiSinhVien" cssStyle="color: red"/></td>
 			</tr>
 
 			<tr>
@@ -30,15 +32,18 @@
 				<td><form:select path="diaChi">
 						<form:options items="${countryList}" itemValue="maTinhThanh" itemLabel="tenTinhThanh" />
 					</form:select></td>
+					<td><form:errors path="diaChi" cssStyle="color: red"/></td>
 			</tr>
 			<tr>
 				<td>avatar:</td>
 				<td><input type="file" name="file"  /></td>
+				<td><form:errors path="avatar" cssStyle="color: red"/></td>
 			</tr>
 
 			<tr>
 				<td>email:</td>
 				<td><form:input path="email" /></td>
+				<td><form:errors path="email" cssStyle="color: red"/></td>
 			</tr>
 
 			<tr>

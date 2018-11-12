@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Edit Sinh Viên</h1>
-	<form:form method="POST" action="/springcrudmvc/editsave">
+	<form:form method="POST" action="/springcrudmvc/editsave" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>id:</td>
@@ -34,6 +34,9 @@
 			<tr>
 				<td>avatar:</td>
 				<td><input name="file" id="fileToUpload" type="file" />
+				<br/>
+				
+				<td><img  src="/springcrudmvc/images/${command.avatar}" width="100px" height="100px"></td>
 			</tr>
 			<tr>
 				<td>Email:</td>

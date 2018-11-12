@@ -9,6 +9,6 @@
 <body>
 
 <a href="userform">Add User</a>  
-<a href="viewuser">View User</a> 
+<a href="viewuser/1">View User</a> 
 </body>
 </html>

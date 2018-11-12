@@ -3,12 +3,14 @@ package quanlysinhvien.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,14 +72,19 @@ public class SinhVienController {
 		sinhvien.setAvatar(filename);
 		dao.add(sinhvien);
 
-		return new ModelAndView("redirect:/sinhvien");// will redirect to viewemp request mapping;
+		return new ModelAndView("redirect:/sinhvien/1");// will redirect to viewemp request mapping;
 
 	}
 
 	/* It provides list of employees in model object */
-	@RequestMapping("/sinhvien")
-	public ModelAndView viewSinhVien() {
-		List<SinhVien> list = dao.getSinhVien();
+	@RequestMapping("/sinhvien/{pageid}")
+	public ModelAndView viewSinhVien(@PathVariable int pageid, Model model) throws SQLException {
+		double perPage = 1;
+		double pageTotal = (int) Math.ceil(dao.count() / perPage);
+		int start = (pageid - 1) * (int) perPage;
+		List<SinhVien> list = dao.getSinhVien(start, (int) perPage);
+		model.addAttribute("pageid", pageid);
+		model.addAttribute("pagetotal", pageTotal);
 		return new ModelAndView("sinhvien", "list", list);
 	}
 
@@ -85,11 +92,11 @@ public class SinhVienController {
 	 * It displays object data into form for the given id. The @PathVariable puts
 	 * URL data into variable.
 	 */
-	@RequestMapping(value = "/editview/{id}")
+	@RequestMapping(value = "/ editview/{id}")
 	public ModelAndView edit(@PathVariable int id) {
 		SinhVien sinhvien = dao.getSVById(id);
 		return new ModelAndView("editsinhvien", "command", sinhvien);
-	}
+	} 
 
 	/* It updates model object. */
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
@@ -113,15 +120,17 @@ public class SinhVienController {
 			System.out.println(e);
 		}
 		sinhvien.setAvatar(filename);
+		
+		
 		dao.update(sinhvien);
-		return new ModelAndView("redirect:/sinhvien");
+		return new ModelAndView("editsinhvien", "command", sinhvien);
 	}
 
 	// * It deletes record for the given id in URL and redirects to /viewemp */
 	@RequestMapping(value = "/deletesinhvien/{id}", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable int id) {
 		dao.delete(id);
-		return new ModelAndView("redirect:/sinhvien");
+		return new ModelAndView("redirect:/sinhvien/1");
 	}
 
 }

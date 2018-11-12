@@ -1,11 +1,26 @@
 package quanlysinhvien.entity;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class SinhVien {
+	@NotEmpty(message = "trường này bạn không được để trống")
 	String id;
+	
+	@NotEmpty(message = "trường này bạn không được để trống")
 	String tenSinhVien;
+	
+	@NotEmpty(message = "trường này bạn không được để trống")
+	 @Size(min = 1990, max = 2000)
 	String tuoiSinhVien;
+	
+	@NotEmpty(message = "trường này bạn không được để trống")
 	String diaChi;
+	
+	@NotEmpty(message = "trường này bạn không được để trống")
 	String email;
+	
+	@NotEmpty(message = "trường này bạn không được để trống")
 	String avatar;
 	
 
