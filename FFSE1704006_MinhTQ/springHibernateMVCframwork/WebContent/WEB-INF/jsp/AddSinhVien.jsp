@@ -12,8 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="addsinhvien" method="POST"
-		enctype="multipart/form-data" modelAttribute="sinhvien">
+	<form:form action="/springHibernateMVCframwork/addsinhvien" method="POST"
+		enctype="multipart/form-data" modelAttribute="command">
 		<table>
 			<tr>
 				<td>id</td>
@@ -44,7 +44,9 @@
 
 			</tr>
 
-
+			<tr>
+				<td colspan="2"><input type="submit" value="thêm" /></td>
+			</tr>
 
 		</table>
 	</form:form>

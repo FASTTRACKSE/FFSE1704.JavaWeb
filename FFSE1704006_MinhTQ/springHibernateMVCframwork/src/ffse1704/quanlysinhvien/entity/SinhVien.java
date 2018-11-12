@@ -14,7 +14,7 @@ public class SinhVien {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private int id;
 
 	@Column(name = "tenSinhVien")
 	private String tenSinhVien;
@@ -36,7 +36,7 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(String id, String tenSinhVien, int tuoiSinhVien, String diaChi, String avatar, String email) {
+	public SinhVien(int id, String tenSinhVien, int tuoiSinhVien, String diaChi, String avatar, String email) {
 		super();
 		this.id = id;
 		this.tenSinhVien = tenSinhVien;
@@ -46,11 +46,11 @@ public class SinhVien {
 		this.email = email;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
