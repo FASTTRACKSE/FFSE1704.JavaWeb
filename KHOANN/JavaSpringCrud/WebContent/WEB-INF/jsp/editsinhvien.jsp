@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1>Edit Employee</h1>
-<form:form method="POST" action="/JavaSpringCrud/editsave">
+<form:form method="POST" action="/JavaSpringCrud/editsave" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td></td>
@@ -31,7 +31,11 @@
 			<td><form:input path="classsv" /></td>
 		</tr>
 		<tr>
-			<td>
+			<td>Image:</td>
+			<td><input name="file" id="fileToUpload" type="file" />
+			<img src="/JavaSpringCrud/images/${command.image}" width="100px"
+				height="100px" />
+		</tr>	
 		<tr>
 			<td></td>
 			<td><input type="submit" value="Edit Save" /></td>

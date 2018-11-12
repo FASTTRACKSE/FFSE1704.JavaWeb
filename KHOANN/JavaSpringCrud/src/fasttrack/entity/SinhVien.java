@@ -2,6 +2,10 @@ package fasttrack.entity;
 
 
 
+import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sun.istack.internal.NotNull;
 
 public class SinhVien  {
@@ -9,7 +13,8 @@ public class SinhVien  {
 	@NotNull
 	private String name;
 	@NotNull
-	private String birthday;
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private Date birthday;
 	@NotNull
 	private String email;
 	@NotNull
@@ -31,7 +36,7 @@ public class SinhVien  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SinhVien(int id, String name, String birthday, String email, String address, String classsv, String image) {
+	public SinhVien(int id, String name, Date birthday, String email, String address, String classsv, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,11 +63,11 @@ public class SinhVien  {
 		this.name = name;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
