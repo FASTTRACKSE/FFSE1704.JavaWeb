@@ -32,12 +32,12 @@
 				<td>${sv.address}</td>
 				<td>${sv.lop}</td>
 				<td>${sv.gender}</td>
-				<td><a href="editsv/${sv.id}">Edit</a></td>
+				<td><a href="editSV/${sv.id}">Edit</a></td>
 				<td><a href="deletesv/${sv.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<br />
-	<a href="svform">Add New SinhVien</a>
+	<a href="addSV">Add New SinhVien</a>
 </body>
 </html>
