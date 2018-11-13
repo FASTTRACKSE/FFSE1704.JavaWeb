@@ -52,7 +52,7 @@ public class SinhVienController {
 		return totalPage;
 	}
 	
-	@RequestMapping("/sinhvien{pageid}")
+	@RequestMapping("/list/{page}")
 	public String index(Model model,@PathVariable("page") int page) {
 		int start = (page - 1) * perPage;
 		List<SinhVien> list = sinhVienService.findAll(start, perPage);
