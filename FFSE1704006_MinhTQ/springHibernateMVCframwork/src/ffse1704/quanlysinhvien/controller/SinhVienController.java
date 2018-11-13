@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -32,22 +33,15 @@ public class SinhVienController {
 		this.sinhVienService = sinhVienService;
 	}
 
-	@RequestMapping("/sinhvien")
+	@RequestMapping("/sinhvien{pageid}")
 	public String index(Model model,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
-		int totalRecords = sinhVienService.listSinhVien().size();
-		int recordsPerPage =10 ;
-		int totalPages = 0;
-		if ((totalRecords / recordsPerPage) % 2 == 0) {
-			totalPages = totalRecords / recordsPerPage;
-		} else {
-			totalPages = totalRecords / recordsPerPage + 1;
-		}
-		int startPosition = recordsPerPage * (currentPage - 1);
-
-		model.addAttribute("listSinhVien", sinhVienService.findAllForPaging(startPosition, recordsPerPage));
-		model.addAttribute("lastPage", totalPages);
-		model.addAttribute("currentPage", currentPage);
+		double perPage = 1;
+		double pageTotal = (int) Math.ceil(dao.count() / perPage);
+		int start = (pageid - 1) * (int) perPage;
+		List<SinhVien> list = dao.getSinhVien(start, (int) perPage);
+		model.addAttribute("pageid", pageid);
+		model.addAttribute("pagetotal", pageTotal);
 
 		return "/ViewSinhVien";
 	}
@@ -101,7 +95,7 @@ public class SinhVienController {
 		Date date = new Date();
 		SimpleDateFormat fm = new SimpleDateFormat("hhmmssddMMyyyy");
 		String fileName = fm.format(date) + "_" + file.getOriginalFilename();
-		String path = session.getServletContext().getRealPath("/") + "D:\\Image";
+		String path = session.getServletContext().getRealPath("/") + "\\resources\\upload\\";
 		if (fileName.isEmpty()) {
 			fileName = "default.png";
 		} else {
@@ -115,7 +109,7 @@ public class SinhVienController {
 	}
 
 	public boolean deleteFile(String fileName, HttpSession session) {
-		String path = session.getServletContext().getRealPath("/") + "\\D:\\Image\\";
+		String path = session.getServletContext().getRealPath("/") + "\\resources\\upload\\";
 		File file = new File(path, fileName);
 		boolean result = file.delete();
 		return result;

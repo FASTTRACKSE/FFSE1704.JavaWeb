@@ -37,13 +37,11 @@ public class SinhVienServiceITF implements SinhVienService {
 		return sinhVienDAO.findAllForPaging(startPosition, maxResult);
 	}
 
-	@Override
 	public List<SinhVien> listSinhVien() {
 		// TODO Auto-generated method stub
 		return sinhVienDAO.listSinhVien();
 	}
 
-	@Override
 	public void edit(SinhVien sinhvien) {
 		sinhVienDAO.edit(sinhvien);
 

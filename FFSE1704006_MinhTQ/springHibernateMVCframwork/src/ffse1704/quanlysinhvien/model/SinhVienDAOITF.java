@@ -1,5 +1,6 @@
 package ffse1704.quanlysinhvien.model;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -54,6 +55,7 @@ public class SinhVienDAOITF implements SinhVienDAO {
 		session.close();
 	}
 
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<SinhVien> findAllForPaging(int startPosition,int maxResult){
 		Session session = this.sessionFactory.getCurrentSession();

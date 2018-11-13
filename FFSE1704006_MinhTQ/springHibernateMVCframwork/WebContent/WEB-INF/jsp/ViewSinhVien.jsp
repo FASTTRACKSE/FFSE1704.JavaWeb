@@ -41,7 +41,7 @@
 				<td>${sv.tuoiSinhVien }</td>
 				<td>${sv.diaChi }</td>
 				<td><img style="width: 100px; height: 100px;"
-					src='<c:url value = "/images/${sv.avatar }" ></c:url>'
+					src='<c:url value = "/resources/upload/${sv.avatar }" ></c:url>'
 					alt="images"></td>
 				<td>${sv.email }</td>
 
