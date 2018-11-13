@@ -12,7 +12,7 @@
 
 	<h4>Add Student</h4>
 
-	<form:form method="post" action="save" enctype="multipart/form-data">
+	<form:form method="post" action="add" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Name :</td>
@@ -28,15 +28,11 @@
 			</tr>
 			<tr>
 				<td>Adress</td>
-				<td><form:select path="address">
-						<form:options items="${listTinhThanh}" itemValue="maTinh"
-							itemLabel="tenTinh"></form:options>
-					</form:select></td>
+				<td><form:input path="address" /></td>
 			</tr>
 			<tr>
 				<td>Avatar :</td>
-				<td><input type="file" name="file" /></td>
-
+				<td><input type="file" name="file" /></td> 
 			</tr>
 
 			<tr>

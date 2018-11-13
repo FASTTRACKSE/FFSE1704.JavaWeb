@@ -1,19 +1,41 @@
-package fasttrack.entity;
+package fasttrackse.quanlysinhvien.entity;
 
-public class HocSinh {
-	int id;
-	String nameStudent;
-	String classStudent;
-	String gender;
-	String address;
-	String avatar;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	public HocSinh() {
+@Entity
+@Table(name = "sinhvien")
+public class SinhVien {
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name = "nameStudent")
+	private String nameStudent;
+
+	@Column(name = "classStudent")
+	private String classStudent;
+
+	@Column(name = "gender")
+	private String gender;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "avatar")
+	private String avatar;
+
+	public SinhVien() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public HocSinh(int id, String nameStudent, String classStudent, String gender, String address, String avatar) {
+	public SinhVien(int id, String nameStudent, String classStudent, String gender, String address, String avatar) {
 		super();
 		this.id = id;
 		this.nameStudent = nameStudent;
@@ -70,7 +92,5 @@ public class HocSinh {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-
-	
 
 }

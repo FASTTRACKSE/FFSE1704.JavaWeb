@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Demo Spring MVC</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-  Message is: ${message}
-  
+<a href="list/1">View Student</a></br>
+<a href="add">Add Student</a>
 </body>
 </html>
