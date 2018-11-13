@@ -28,20 +28,37 @@ import ffse1704.quanlysinhvien.service.SinhVienService;
 public class SinhVienController {
 	@Autowired
 	SinhVienService sinhVienService;
-
-	public void setStudentService(SinhVienService sinhVienService) {
+	private int perPage = 2;
+	
+	
+	public void setSinhVientService(SinhVienService sinhVienService) {
 		this.sinhVienService = sinhVienService;
 	}
 
+	
+	@RequestMapping("/")
+	public String view(HttpSession session) {
+		int currentPage;
+		if (session.getAttribute("page") == null) {
+			currentPage = 1;
+		} else {
+			currentPage = (int) session.getAttribute("page");
+		}
+		return "redirect:/list/" + currentPage;
+	}
+	
+	public int totalPage(int perPage) {
+		int totalPage = (int) Math.ceil((double) sinhVienService.count() / (double) perPage);
+		return totalPage;
+	}
+	
 	@RequestMapping("/sinhvien{pageid}")
-	public String index(Model model,
-			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
-		double perPage = 1;
-		double pageTotal = (int) Math.ceil(dao.count() / perPage);
-		int start = (pageid - 1) * (int) perPage;
-		List<SinhVien> list = dao.getSinhVien(start, (int) perPage);
-		model.addAttribute("pageid", pageid);
-		model.addAttribute("pagetotal", pageTotal);
+	public String index(Model model,@PathVariable("page") int page) {
+		int start = (page - 1) * perPage;
+		List<SinhVien> list = sinhVienService.findAll(start, perPage);
+		model.addAttribute("list", list);
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 
 		return "/ViewSinhVien";
 	}
@@ -62,13 +79,13 @@ public class SinhVienController {
 			return "/AddSinhVien";
 		}
 		sinhVienService.add(sinhvien);
-		return "redirect:/sinhvien";
+		return "redirect:/list/1";
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id, HttpSession session, Model model) {
 		sinhVienService.delete(id);
-		return "redirect:/sinhvien";
+		return "redirect:/list/1";
 	}
 
 	@RequestMapping(value = "/editview/{id}", method = RequestMethod.GET)
@@ -88,7 +105,7 @@ public class SinhVienController {
 		}
 		sinhvien.setAvatar(uploadFile(file, session));
 		sinhVienService.edit(sinhvien);
-		return "redirect:/sinhvien";
+		return "redirect:/list/1";
 	}
 
 	public String uploadFile(MultipartFile file, HttpSession session) throws IllegalStateException, IOException {

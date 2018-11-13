@@ -1,11 +1,9 @@
 package ffse1704.quanlysinhvien.model;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,24 +54,36 @@ public class SinhVienDAOITF implements SinhVienDAO {
 	}
 
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<SinhVien> findAllForPaging(int startPosition,int maxResult){
-		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("from SinhVien");
-		q.setFirstResult(startPosition);
-		q.setMaxResults(maxResult);
-		
-		return q.list();		
-	}
+	
 
 	@SuppressWarnings("unchecked")
 	public List<SinhVien> listSinhVien() {
 		Session session = sessionFactory.getCurrentSession();
-		List<SinhVien> list = session.createQuery("from SinhVien ").getResultList();
+		List<SinhVien> list = session.createQuery("from SinhVien ").list();
 	
 		return list;
 	}
 
 	
+
+	@SuppressWarnings("unchecked")
+	public List<SinhVien> findAll(Integer offset, Integer maxResult) {
+		Session session = sessionFactory.getCurrentSession();
+		List<SinhVien> sinhvien = session.createQuery("from SinhVien").setFirstResult(offset).setMaxResults(maxResult).list();
+		return sinhvien;
+	}
+
+
+	public int count() {
+
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from SinhVien").list().size();
+		return rowCount;
+		
+	}
+
+	
+	
+
 
 }

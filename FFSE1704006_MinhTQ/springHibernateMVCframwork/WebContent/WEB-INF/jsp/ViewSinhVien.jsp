@@ -34,7 +34,7 @@
 		</tr>
 
 
-		<c:forEach var="sv" items="${listSinhVien}">
+		<c:forEach var="sv" items="${list}">
 			<tr>
 				<td>${sv.id}</td>
 				<td>${sv.tenSinhVien }</td>
@@ -51,31 +51,25 @@
 
 	</table>
 
-	 <ul class="pagination">
-		<li class="page-item"><a class="page-link" href="?page=1">trang
-				đầu</a></li>
-		<c:if test="${currentPage > 2}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage-2}">${currentPage-2}</a></li>
+	 <center>
+		<c:if test="${page >1}">
+			<a href="/springHibernateMVCframwork/list/1">FIRST</a>
 		</c:if>
-		<c:if test="${currentPage > 1}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage-1}">${currentPage-1}</a></li>
-		</c:if>
-		<li class="page-item active"><a class="page-link"
-			href="?page=${currentPage}">${currentPage}</a></li>
-		<c:if test="${currentPage < lastPage}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage+1}">${currentPage+1}</a></li>
-		</c:if>
-		<c:if test="${currentPage < lastPage - 1}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage+2}">${currentPage+2}</a></li>
-		</c:if>
-		<li class="page-item"><a class="page-link"
-			href="?page=${lastPage }">trang cuối</a></li>
-	</ul> 
 
+		<c:if test="${page > 1}">
+			<a href="/springHibernateMVCframwork/list/${page-1}">${page-1}</a>
+		</c:if>
+
+		<a href="/springHibernateMVCframwork/list/${page}">${page}</a>
+
+		<c:if test="${page < total}">
+			<a href="/springHibernateMVCframwork/list/${page+1}">${page+1}</a>
+		</c:if>
+
+		<c:if test="${page < total}">
+			<a href="/springHibernateMVCframwork/list/${total}">LAST</a>
+		</c:if>
+	</center>
 
 
 </body>

@@ -14,6 +14,8 @@ public interface SinhVienDAO {
 	public void edit(SinhVien sinhvien);
 
 	public void add(SinhVien sinhvien);
-	
-	public List<SinhVien> findAllForPaging(int startPosition,int maxResult);
+
+	List<SinhVien> findAll(Integer offset, Integer maxResult);
+
+	public int count();
 }
