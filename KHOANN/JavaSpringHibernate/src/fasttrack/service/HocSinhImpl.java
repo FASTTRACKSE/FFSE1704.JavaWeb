@@ -59,9 +59,16 @@ public class HocSinhImpl implements HocSinhService {
 	}
 
 	@Override
-	public List<HocSinh> findAllForPaging(int startPosition, int maxResult) {
+	public List<HocSinh> findAll(Integer offset, Integer maxResult) {
 		// TODO Auto-generated method stub
-		return hocsinhdao.findAllForPaging(startPosition, maxResult);
+		return hocsinhdao.findAll(offset, maxResult);
 	}
 
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return hocsinhdao.count();
+	}
+
+	
 }
