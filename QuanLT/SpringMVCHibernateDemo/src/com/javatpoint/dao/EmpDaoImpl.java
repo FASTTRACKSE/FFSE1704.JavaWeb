@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.javatpoint.entity.*;
-@Repository(value= "EmpDaoImpl")
+@Repository
 @Transactional(rollbackFor = Exception.class)
 public class EmpDaoImpl implements EmpDao {
 	@Autowired
@@ -22,22 +22,25 @@ public class EmpDaoImpl implements EmpDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	@Override
 	public void add(Emp sinhVien) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(sinhVien);
 	}
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Emp> listStudent() {
 		Session session = sessionFactory.getCurrentSession();
 		List<Emp> list = session.createQuery("from SinhVien").getResultList();
 		return list;
 	}
+	@Override
 	public Emp findById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Emp sv = (Emp) session.get(Emp.class, id);
 		return sv;
 	}
-
+	@Override
 	public void delete(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.delete(findById(id));

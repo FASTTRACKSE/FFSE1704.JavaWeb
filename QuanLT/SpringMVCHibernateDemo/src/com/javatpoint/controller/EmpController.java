@@ -38,7 +38,7 @@ public void setEmpService(EmpService empService) {
 @RequestMapping(value = "/view")
 public String index(ModelMap emp) {
 	 
-    List<Emp> employees = empService.listSV();
+    List<Emp> employees = empService.listStudent();
     emp.addAttribute("employees", employees);
 	return "redirect:/view";
 }
@@ -46,9 +46,9 @@ public String index(ModelMap emp) {
 @RequestMapping(value = "/addsv", method = RequestMethod.GET)
 public String showForm(Model model) {
 	model.addAttribute("sinhvien", new Emp());
-	List<City> listTT = empService.listTT();
+	List<City> listTT = empService.listTinhThanh();
 	model.addAttribute("countryList", listTT);
-	model.addAttribute("listSV", empService.listSV());
+	model.addAttribute("listSV", empService.listTinhThanh());
 	return "addsv";
 }
 @RequestMapping(value = "/addsv", method = RequestMethod.POST)
@@ -71,9 +71,9 @@ public String delete(@PathVariable int id, HttpSession session, Model model) {
 //edit
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit_view(@PathVariable("id") int id, Model model) {
-		List<City> listTT = empService.listTT();
+		List<City> listTT = empService.listTinhThanh();
 		model.addAttribute("countryList", listTT);
-		model.addAttribute("sinhvien", empService.fintByTd(id));
+		model.addAttribute("sinhvien", empService.findById(id));
 		return "editsv";
 	}
 	

@@ -6,16 +6,11 @@ import java.util.List;
 import com.javatpoint.entity.*;
 
 public interface EmpService {
-	public List<Emp> listSV();
-	public List<City> listTT();
-
-	public Emp fintByTd(int id);
-
-	public void delete(int id);
-
-	public void edit(Emp emp);
-
+	public List<Emp> listStudent();
+	public List<City> listTinhThanh();
+	public Emp findById(int id);
 	public void add(Emp sinhVien);
-
-	public List<Emp> findAllForPaging(int startPosition, int maxResult);
+	public void edit(Emp sinhVien);
+	public void delete(int id);
+	public List<Emp> findAllForPaging(int startPosition,int maxResult);
 }

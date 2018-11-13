@@ -10,7 +10,7 @@ import com.javatpoint.entity.City;
 import com.javatpoint.entity.Emp;
 @Service
 @Transactional
-public class  EmpServiceImpl {
+public class  EmpServiceImpl implements EmpService {
 	
 	@Autowired
 	EmpDao empDao;
@@ -23,10 +23,10 @@ public class  EmpServiceImpl {
 	public void add(Emp emp) {
 		empDao.add(emp);
 	}
-	public List<Emp> listSV() {
+	public List<Emp> listStudent() {
 		return empDao.listStudent();
 	}
-	public List<City> listTT() {
+	public List<City> listTinhThanh() {
 		return empDao.listTinhThanh();
 	}
 
@@ -41,7 +41,7 @@ public class  EmpServiceImpl {
 	public List<Emp> findAllForPaging(int startPosition, int maxResult) {
 		return empDao.findAllForPaging(startPosition, maxResult);
 	}
-	public Emp fintByTd(int id) {
+	public Emp findById(int id) {
 		return empDao.findById(id);
 	}
 
