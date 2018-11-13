@@ -34,24 +34,24 @@
 		</tr>
 
 
-		<c:forEach var="sv" items="${listStudent}">
+		<c:forEach var="sv" items="${listSinhVien}">
 			<tr>
 				<td>${sv.id}</td>
 				<td>${sv.tenSinhVien }</td>
 				<td>${sv.tuoiSinhVien }</td>
 				<td>${sv.diaChi }</td>
 				<td><img style="width: 100px; height: 100px;"
-					src='<c:url value = "/image/${sv.avatar }" ></c:url>'
-					alt="image"></td>
+					src='<c:url value = "/images/${sv.avatar }" ></c:url>'
+					alt="images"></td>
 				<td>${sv.email }</td>
 
-				<td><a href="/springHibernateMVCframwork/editview/${sv.id }"><button>edit</button></a>
-					<a href="delete/${sv.id }"><button>delete</button></a></td>
+				<td><a href="/springHibernateMVCframwork/editview/${sv.id}"><button>edit</button></a>
+					<a href="/springHibernateMVCframwork/delete/${sv.id}"><button>delete</button></a></td>
 		</c:forEach>
 
 	</table>
 
-	<ul class="pagination">
+	 <ul class="pagination">
 		<li class="page-item"><a class="page-link" href="?page=1">trang
 				đầu</a></li>
 		<c:if test="${currentPage > 2}">
@@ -74,7 +74,7 @@
 		</c:if>
 		<li class="page-item"><a class="page-link"
 			href="?page=${lastPage }">trang cuối</a></li>
-	</ul>
+	</ul> 
 
 
 

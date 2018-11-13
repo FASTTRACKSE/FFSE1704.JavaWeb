@@ -36,7 +36,7 @@ public class SinhVienController {
 	public String index(Model model,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
 		int totalRecords = sinhVienService.listSinhVien().size();
-		int recordsPerPage = 2;
+		int recordsPerPage =10 ;
 		int totalPages = 0;
 		if ((totalRecords / recordsPerPage) % 2 == 0) {
 			totalPages = totalRecords / recordsPerPage;
@@ -45,65 +45,63 @@ public class SinhVienController {
 		}
 		int startPosition = recordsPerPage * (currentPage - 1);
 
-		model.addAttribute("listStudent", sinhVienService.findAllForPaging(startPosition, recordsPerPage));
+		model.addAttribute("listSinhVien", sinhVienService.findAllForPaging(startPosition, recordsPerPage));
 		model.addAttribute("lastPage", totalPages);
 		model.addAttribute("currentPage", currentPage);
 
 		return "/ViewSinhVien";
 	}
 
+
 	@RequestMapping(value = "/addsinhvien", method = RequestMethod.GET)
 	public String showForm(Model model) {
-		model.addAttribute("sinhvien", new SinhVien());
+		model.addAttribute("command", new SinhVien());
 		model.addAttribute("listSinhVien", sinhVienService.listSinhVien());
-		return "AddSinhVien";
+		return "/AddSinhVien";
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createStudent(Model model, @ModelAttribute("sinhvien") @Valid SinhVien sinhvien, HttpSession session,
+	@RequestMapping(value = "/addsinhvien", method = RequestMethod.POST)
+	public String createStudent(Model model, @ModelAttribute("command") @Valid SinhVien sinhvien, HttpSession session,
 			MultipartFile file, BindingResult bindingResult) throws IllegalStateException, IOException {
 		sinhvien.setAvatar(uploadFile(file, session));
 		if (bindingResult.hasErrors()) {
-			return "AddSinhVien";
+			return "/AddSinhVien";
 		}
 		sinhVienService.add(sinhvien);
-		return "redirect:/ViewSinhVien";
+		return "redirect:/sinhvien";
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id, HttpSession session, Model model) {
 		sinhVienService.delete(id);
-		return "redirect:/ViewSinhVien";
+		return "redirect:/sinhvien";
 	}
 
 	@RequestMapping(value = "/editview/{id}", method = RequestMethod.GET)
 	public String edit_view(@PathVariable("id") int id, Model model) {
-		model.addAttribute("student", sinhVienService.findById(id));
+		model.addAttribute("command", sinhVienService.findById(id));
 		return "EditSinhVien";
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String edit(Model model, @ModelAttribute("sinhvien") @Valid SinhVien sinhvien, BindingResult bindingResult,
+	@RequestMapping(value = "/editSinhVien", method = RequestMethod.POST)
+	public String edit(Model model, @ModelAttribute("command") @Valid SinhVien sinhvien, BindingResult bindingResult,
 			String fileName, HttpSession session, @RequestParam("file") MultipartFile file)
 			throws SQLException, IllegalStateException, IOException {
-		if (sinhvien.getAvatar() != null) {
-			if (!file.isEmpty()) {
-				deleteFile(sinhvien.getAvatar(), session);
-				sinhvien.setAvatar(uploadFile(file, session));
-			}
-		}
+		
+		
 		if (bindingResult.hasErrors()) {
-			return "EditSinhVien";
+			return "/EditSinhVien";
 		}
+		sinhvien.setAvatar(uploadFile(file, session));
 		sinhVienService.edit(sinhvien);
-		return "redirect:/ViewSinhVien";
+		return "redirect:/sinhvien";
 	}
 
 	public String uploadFile(MultipartFile file, HttpSession session) throws IllegalStateException, IOException {
 		Date date = new Date();
 		SimpleDateFormat fm = new SimpleDateFormat("hhmmssddMMyyyy");
 		String fileName = fm.format(date) + "_" + file.getOriginalFilename();
-		String path = session.getServletContext().getRealPath("/") + "\\Image\\";
+		String path = session.getServletContext().getRealPath("/") + "D:\\Image";
 		if (fileName.isEmpty()) {
 			fileName = "default.png";
 		} else {
@@ -117,7 +115,7 @@ public class SinhVienController {
 	}
 
 	public boolean deleteFile(String fileName, HttpSession session) {
-		String path = session.getServletContext().getRealPath("/") + "\\Image\\";
+		String path = session.getServletContext().getRealPath("/") + "\\D:\\Image\\";
 		File file = new File(path, fileName);
 		boolean result = file.delete();
 		return result;
