@@ -16,7 +16,11 @@ public interface HocSinhDao {
 	
 	public List<HocSinh> getAll();
 
-	public List<HocSinh> findAllForPaging(int startPosition,int maxResult);
+	
+
+	public int count();
+
+	List<HocSinh> findAll(Integer offset, Integer maxResult);
 	
 	
 

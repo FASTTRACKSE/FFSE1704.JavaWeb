@@ -10,6 +10,6 @@
 
 	<a href="hocsinhform">Add Student</a>
 	</br>
-	<a href="viewhs">View Student</a>
+	<a href="viewhs/1">View Student</a>
 </body>
 </html>

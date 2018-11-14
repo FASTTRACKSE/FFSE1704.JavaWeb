@@ -15,5 +15,7 @@ public interface SinhVienService {
 
 	public void add(SinhVien sinhvien);
 	
-	public List<SinhVien> findAllForPaging(int startPosition,int maxResult);
+	public List<SinhVien> findAll(Integer offset, Integer maxResult);
+
+	public int count();
 }

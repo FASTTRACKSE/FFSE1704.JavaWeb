@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Demo Spring MVC</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-  Message is: ${message}
-  
+	<%
+		response.sendRedirect("sinhvien/list");
+	%>
 </body>
 </html>

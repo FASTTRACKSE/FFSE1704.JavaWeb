@@ -79,16 +79,23 @@ public  class HocSinhDaoImpl  implements HocSinhDao{
 
 
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<HocSinh> findAllForPaging(int startPosition, int maxResult) {
-		// TODO Auto-generated method stub
-		Session session = this.sessionFactory.getCurrentSession();
-		Query hs = session.createQuery("from HocSinh");
-		hs.setFirstResult(startPosition);
-		hs.setMaxResults(maxResult);
-		
-		return hs.list();	
+	@SuppressWarnings("unchecked")
+	public List<HocSinh> findAll(Integer offset, Integer maxResult) {
+		Session session = sessionFactory.getCurrentSession();
+		List<HocSinh> students = session.createQuery("from HocSinh").setFirstResult(offset).setMaxResults(maxResult).list();
+		return students;
 	}
+
+
+	@Override
+	public int count() {
+
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from HocSinh").list().size();
+		return rowCount;
+		
+	}
+
 
 
 	

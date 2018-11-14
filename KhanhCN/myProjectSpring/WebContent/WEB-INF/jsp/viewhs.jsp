@@ -6,18 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>List Student</title>
 </head>
 <body>
 	<h4>List Student</h4>
-	<a href="hocsinhform">Add Student</a>
+	<a href="/myProjectSpring/hocsinhform">Add Student</a>
 	<table border="2" width="70%" cellpadding="2">
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
 			<th>Class</th>
 			<th>Gender</th>
-			<th>Chức năng</th>
+			<th>Address</th>
+			<th>Avatar</th>
+			<th>Chức năng</th>	
 		</tr>
 		<c:forEach var="hs" items="${list}">
 			<tr>
@@ -25,11 +27,29 @@
 				<td>${hs.nameStudent}</td>
 				<td>${hs.classStudent}</td>
 				<td>${hs.gender}</td>
-				<td><span><a href="editStudent/${hs.id}">Edit</a></span> <span><a
-						href="deleteStudent/${hs.id}">Delete</a></span></td>
+				<td>${hs.address}</td>
+				<td><img src = "/myProjectSpring/images/${hs.avatar}" width="60px" height="60px"/></td>
+				<td><span><a href="/myProjectSpring/editStudent/${hs.id}">Edit</a></span> <span><a
+						href="/myProjectSpring/deleteStudent/${hs.id}">Delete</a></span></td>
 			</tr>
 		</c:forEach>
 	</table>
+
+	<div>
+		<c:if test="${pageid > 1}">
+			<a href="/myProjectSpring/viewhs/1">First</a>
+		</c:if>
+		<c:if test="${pageid > 1}">
+			<a href="/myProjectSpring/viewhs/${pageid-1}">${pageid-1}</a>
+		</c:if>
+		<a href="/myProjectSpring/viewhs/${pageid}">${pageid}</a>
+		<c:if test="${pageid < pagetotal}">
+			<a href="/myProjectSpring/viewhs/${pageid+1}">${pageid+1}</a>
+		</c:if>
+		<c:if test="${pageid < pagetotal}">
+			<a href="/myProjectSpring/viewhs/${pagetotal}">Last</a>
+		</c:if>
+	</div>
 
 
 </body>

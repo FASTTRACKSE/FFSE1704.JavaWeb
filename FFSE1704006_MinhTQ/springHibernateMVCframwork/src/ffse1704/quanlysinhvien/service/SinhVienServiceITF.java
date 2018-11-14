@@ -33,20 +33,27 @@ public class SinhVienServiceITF implements SinhVienService {
 		sinhVienDAO.delete(id);
 	}
 
-	public List<SinhVien> findAllForPaging(int startPosition, int maxResult) {
-		return sinhVienDAO.findAllForPaging(startPosition, maxResult);
-	}
+	
 
-	@Override
 	public List<SinhVien> listSinhVien() {
-		// TODO Auto-generated method stub
+		
 		return sinhVienDAO.listSinhVien();
 	}
 
-	@Override
 	public void edit(SinhVien sinhvien) {
 		sinhVienDAO.edit(sinhvien);
 
+	}
+	
+	@Override
+	public List<SinhVien> findAll(Integer offset, Integer maxResult) {
+		// TODO Auto-generated method stub
+		return sinhVienDAO.findAll(offset, maxResult);
+	}
+	
+	@Override
+	public int count() {
+		return sinhVienDAO.count();
 	}
 
 }
