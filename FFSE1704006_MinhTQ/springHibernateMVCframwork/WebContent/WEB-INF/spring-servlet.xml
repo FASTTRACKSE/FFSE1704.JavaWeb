@@ -81,4 +81,23 @@
 	<tx:annotation-driven
 		transaction-manager="myTransactionManager" />
 
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="myAppLocaleCookie"></property>
+		<property name="cookieMaxAge" value="3600"></property>
+		<property name="defaultLocale" value="vi"></property>
+	</bean>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="resources/i18n/messages"></property>
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	<mvc:interceptors>
+		<bean
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"></property>
+			<property name="ignoreInvalidLocale" value="true"></property>
+		</bean>
+	</mvc:interceptors>
 </beans>  

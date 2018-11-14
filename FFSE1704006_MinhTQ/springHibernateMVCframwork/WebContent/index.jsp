@@ -8,6 +8,6 @@
 </head>
 <body>
 <a href="addsinhvien">Add Employee</a>  
-<a href="list/1">View Employees</a>  
+<a href="list/1">View Employees </a>  
 </body>
 </html>
