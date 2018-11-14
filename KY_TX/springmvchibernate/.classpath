@@ -98,5 +98,9 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-validator-cdi-6.0.13.Final.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.el-3.0.1-b09.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-2.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-config-5.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-core-5.1.1.RELEASE (1).jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-taglibs-5.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-web-5.1.1.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
