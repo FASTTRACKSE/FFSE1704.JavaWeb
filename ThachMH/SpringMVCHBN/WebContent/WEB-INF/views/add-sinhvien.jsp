@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -10,14 +10,13 @@
 <title>Add Sinh Vien</title>
 </head>
 <body>
-	<h1>ADD Sinh Viên</h1>
+	<h1>ADD Sinh ViÃªn</h1>
 
 	<hr />
 
 	<form:form action="saveProcess.html" modelAttribute="sinhvien">
 		<table>
 			<form:hidden path="id" />
-			
 			<tr>
 				<td><b>Full Name:</b></td>
 				<td><form:input path="name" /></td>
@@ -30,9 +29,9 @@
 				<td><b>City:</b></td>
 				<td><form:input path="city" /></td>
 			</tr>
-			
-			
-			
+
+
+
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Save" /> <input type="reset"
@@ -44,6 +43,6 @@
 	<hr />
 
 	<a href="list">Back to List</a>
-	
+
 </body>
 </html>

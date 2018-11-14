@@ -31,7 +31,6 @@ public class SinhVienDaoImlp implements SinhVienDao {
 	@Override
 	public SinhVien getSinhVien(int theId) {
 		SinhVien v = (SinhVien) sessionFactory.getCurrentSession().get(SinhVien.class, theId);
-		
 		return v;
 	}
 	@Override

@@ -23,7 +23,7 @@ public class SinhVienController {
 	}
 
 	@RequestMapping("/showAdd")
-	public String showAddForm(Model model) {
+	public String showForm(Model model) {
 		model.addAttribute("sinhvien", new SinhVien());
 		return "add-sinhvien";
 	}

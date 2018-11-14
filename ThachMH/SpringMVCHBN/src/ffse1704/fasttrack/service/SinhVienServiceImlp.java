@@ -18,8 +18,6 @@ public class SinhVienServiceImlp implements SinhVienService {
 	@Override
 	@Transactional
 	public List<SinhVien> getAllSinhViens() {
-		// TODO Auto-generated method stub
-
 		return sinhVienDao.getAllSinhViens();
 	}
 
