@@ -15,8 +15,7 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Add support for component scanning -->
-	<context:component-scan
-		base-package="fasttrack" />
+	<context:component-scan base-package="fasttrack" />
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven />
 	<!-- Define Spring MVC view resolver -->
@@ -45,8 +44,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="theDataSource" />
-		<property name="packagesToScan"
-			value="fasttrack.entity" />
+		<property name="packagesToScan" value="fasttrack.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -66,6 +64,7 @@
 	<!-- Resources theme location -->
 	<mvc:resources mapping="/resources/**"
 		location="/resources/" />
+	<mvc:resources mapping="/upload/**" location="/upload/" />
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="500000" />
