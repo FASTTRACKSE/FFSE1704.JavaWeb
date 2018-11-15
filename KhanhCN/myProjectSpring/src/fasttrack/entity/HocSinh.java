@@ -5,18 +5,22 @@ public class HocSinh {
 	String nameStudent;
 	String classStudent;
 	String gender;
+	String address;
+	String avatar;
 
 	public HocSinh() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public HocSinh(int id, String nameStudent, String classStudent, String gender) {
+	public HocSinh(int id, String nameStudent, String classStudent, String gender, String address, String avatar) {
 		super();
 		this.id = id;
 		this.nameStudent = nameStudent;
 		this.classStudent = classStudent;
 		this.gender = gender;
+		this.address = address;
+		this.avatar = avatar;
 	}
 
 	public int getId() {
@@ -50,5 +54,23 @@ public class HocSinh {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	
 
 }

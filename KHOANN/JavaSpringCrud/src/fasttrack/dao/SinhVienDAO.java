@@ -25,18 +25,19 @@ public class SinhVienDAO {
 				SinhVien sv = new SinhVien();
 				sv.setId(rs.getInt(1));
 				sv.setName(rs.getString(2));
-				sv.setBirthday(rs.getString(3));
+				sv.setBirthday(rs.getDate(3));
 				sv.setEmail(rs.getString(4));
 				sv.setAddress(rs.getString(5));
 				sv.setClasssv(rs.getString(6));
+				sv.setImage(rs.getString(7));
 				return sv;
 			}
 		});
 	}
 
 	public int save(SinhVien sv) {
-		String sql = "insert into sinhvien(name,birthday,email,address,classsv) values('" + sv.getName() + "','"
-				+ sv.getBirthday() + "','" + sv.getEmail() + "','" + sv.getAddress() + "','" + sv.getClasssv() + "')";
+		String sql = "insert into sinhvien(name,birthday,email,address,classsv,image) values('" + sv.getName() + "','"
+				+ sv.getBirthday() + "','" + sv.getEmail() + "','" + sv.getAddress() + "','" + sv.getClasssv() + "','"+sv.getImage()+"')";
 		return template.update(sql);
 	}
 
@@ -46,9 +47,7 @@ public class SinhVienDAO {
 	}
 
 	public int update(SinhVien sv) {
-		String sql = "UPDATE `sinhvien` SET `name`='" + sv.getName() + "',`birthday`='" + sv.getBirthday()
-				+ "',`email`='" + sv.getEmail() + "',`address`='" + sv.getAddress() + "',`classsv`='" + sv.getClasssv()
-				+ "' WHERE id='" + sv.getId() + "'";
+		String sql = "UPDATE `sinhvien` SET `name`='" + sv.getName() + "',`birthday`='" + sv.getBirthday() + "',`email`='" + sv.getEmail() + "',`address`='" + sv.getAddress() + "',`classsv`='" + sv.getClasssv() + "',`image`='" + sv.getImage() + "' WHERE id='" + sv.getId() + "'";
 		return template.update(sql);
 	}
 
@@ -58,16 +57,17 @@ public class SinhVienDAO {
 	}
 	
 	public List<SinhVien> getSinhVienByPage(int start,int total){  
-		String sql="SELECT id , name, birthday, email, tinhthanh.tenTinh, classsv  FROM sinhvien LEFT JOIN tinhthanh ON sinhvien.address = tinhthanh.maTinh limit "+start+","+total+"";  
+		String sql="SELECT id , name, birthday, email, tinhthanh.tenTinh, classsv ,image FROM sinhvien LEFT JOIN tinhthanh ON sinhvien.address = tinhthanh.maTinh ORDER BY id ASC limit "+start+","+total+"";  
 	    return template.query(sql,new RowMapper<SinhVien>(){  
 	        public SinhVien mapRow(ResultSet rs, int row) throws SQLException {  
 	        	SinhVien sv=new SinhVien();  
 	        	sv.setId(rs.getInt(1));
 				sv.setName(rs.getString(2));
-				sv.setBirthday(rs.getString(3));
+				sv.setBirthday(rs.getDate(3));
 				sv.setEmail(rs.getString(4));
 				sv.setAddress(rs.getString(5));
 				sv.setClasssv(rs.getString(6)); 
+				sv.setImage(rs.getString(7)); 
 	            return sv;  
 	        }  
 	    });  
