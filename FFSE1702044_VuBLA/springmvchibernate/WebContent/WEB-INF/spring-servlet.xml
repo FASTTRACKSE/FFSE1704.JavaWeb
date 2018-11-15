@@ -15,11 +15,12 @@ http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<mvc:annotation-driven />
-	<context:component-scan base-package="springmvchibernate" />
+	<context:component-scan
+		base-package="springmvchibernate" />
 
 	<!-- Resources theme location -->
-	<mvc:resources mapping="/resources/**"
-		location="/resources/" />
+	<mvc:resources mapping="/Image/**"
+		location="file:/D:/Image/" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -43,11 +44,13 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		<property name="maxIdleTime" value="30000" />
 	</bean>
 
+
+
 	<!-- Hibernate session factory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="theDataSource" />
-		<property name="packagesToScan" value="springmvchibernate.entity" />
+		<property name="packagesToScan" value="springmvchibernate" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -70,10 +73,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- Resources theme location -->
 	<mvc:resources mapping="/images/**" location="/images/" />
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10485760" />
-	</bean>
+
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
@@ -93,4 +93,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 			<property name="ignoreInvalidLocale" value="true"></property>
 		</bean>
 	</mvc:interceptors>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 </beans>

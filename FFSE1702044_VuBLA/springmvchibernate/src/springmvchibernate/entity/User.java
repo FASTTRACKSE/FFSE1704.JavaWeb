@@ -1,51 +1,63 @@
 package springmvchibernate.entity;
 
+import java.io.Serializable;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "quanlisinhvien")
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@SuppressWarnings("deprecation")
 	@Column(name = "dia_chi")
 	@NotEmpty
 	private String diaChi;
-
+	
 	@Column(name = "avatar")
 	private String avatar;
 
-	@SuppressWarnings("deprecation")
+
+
 	@Column(name = "lop_hoc")
 	@NotEmpty
 	private String lopHoc;
 
-	@SuppressWarnings("deprecation")
 	@Column(name = "nam_sinh")
-	@NotEmpty
 	private int namSinh;
 
-	@SuppressWarnings("deprecation")
 	@Column(name = "ten_SV")
 	@NotEmpty
 	private String tenSV;
 
-	@SuppressWarnings("deprecation")
-	@Column(name = "ma_SV")
+	@Column(name = "maSV")
 	@NotEmpty
 	private String maSV;
 
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "maSV", referencedColumnName = "maSV", insertable=false, updatable=false)
+	private DiemSV DiemSV1;
+	
+	
+	
 	public String getAvatar() {
 		return avatar;
 	}
@@ -55,19 +67,9 @@ public class User {
 	}
 
 	public User() {
-		super();
 	}
 
-	public User(int id, String diaChi, String lopHoc, String avatar, int namSinh, String maSV, String tenSV) {
-		super();
-		this.id = id;
-		this.diaChi = diaChi;
-		this.lopHoc = lopHoc;
-		this.avatar = avatar;
-		this.namSinh = namSinh;
-		this.maSV = maSV;
-		this.tenSV = tenSV;
-	}
+
 
 	public int getId() {
 		return id;
@@ -116,4 +118,17 @@ public class User {
 	public void setLopHoc(String lopHoc) {
 		this.lopHoc = lopHoc;
 	}
+
+	public DiemSV getDiemSV1() {
+		return DiemSV1;
+	}
+
+	public void setDiemSV1(DiemSV diemSV1) {
+		DiemSV1 = diemSV1;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }
