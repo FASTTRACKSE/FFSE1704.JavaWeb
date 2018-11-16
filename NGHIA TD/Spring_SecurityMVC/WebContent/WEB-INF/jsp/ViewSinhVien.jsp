@@ -18,6 +18,8 @@
 
 </head>
 <body>
+<%-- <jsp:include page="/WEB-INF/jsp/template/header.jsp" /> --%>
+
 	<div class="container">
 		<div class="dropdown" style="width: 20%">
 			<button class="btn btn-success dropdown-toggle" type="button"
@@ -96,5 +98,6 @@
 		</nav>
 		</div>
 		</div>
+		<%-- <jsp:include page="/WEB-INF/jsp/template/footer.jsp" /> --%>
 </body>
 </html>

@@ -21,41 +21,48 @@
 <body>
 	<div class="container">
 		<h1 style="text-align: center;">ADD SINH VIÊN</h1>
-		<form:form method="post" action="saveSV" enctype="multipart/form-data">
+		<form:form method="post" action="saveSV" enctype="multipart/form-data" modelAttribute="sinhVien">
 			<div class="form-group">
 				
 				<spring:message code="MASV" />
 				<form:input class="form-control" type="text" path="maSV" />
+				 <form:errors path="maSV" cssClass="error" style="color:pink" />
 				<br>
 
 			</div>
 			<div class="form-group">
 				<spring:message code="TenSV" />
 				<form:input class="form-control" type="text" path="tenSV" />
+				<form:errors path="tenSV" cssClass="error" style="color:pink" />
 				<br>
 			</div>
 			<div class="form-group">
 				<spring:message code="images" /> <input id="upload" type="file"
 					class="form-control-file" name="file">
+					
 			</div>
 			<div class="form-group">
 				<spring:message code="NamSinh" />
 				<form:input class="form-control" type="text" path="namSinh" />
+				<form:errors path="namSinh" cssClass="error" style="color:pink" />
 				<br>
 			</div>
 			<div class="form-group">
 				<spring:message code="Email" />
 				<form:input class="form-control" type="text" path="email" />
+				<form:errors path="email" cssClass="error" style="color:pink" />
 				<br>
 			</div>
 			<div class="form-group">
 				<spring:message code="DiaChi" />
 				<form:input class="form-control" type="text" path="diaChi" />
+				<form:errors path="diaChi" cssClass="error" style="color:pink" />
 				<br>
 			</div>
 			<div class="form-group">
 				<spring:message code="LopHoc" />
 				<form:input class="form-control" type="text" path="lopHoc" />
+				<form:errors path="lopHoc" cssClass="error" style="color:pink" />
 				<br>
 			</div>
 			<tr>

@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<h1 style="text-align: center;">ADD SINH VIÊN</h1>
-		<form:form modelAttribute="students" method="post" action="/SpringMVCImages/editsave" enctype="multipart/form-data">
+		<form:form modelAttribute="students" method="post" action="/Spring_SecurityMVC/editsave" enctype="multipart/form-data">
 		<div class="form-group">
 				
 				<form:hidden path="id" />

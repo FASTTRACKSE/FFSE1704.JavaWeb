@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class StudentsController {
 
 	@RequestMapping("/addSV")
 	public ModelAndView hihi() {
-		return new ModelAndView("addSV", "command", new SinhVien());
+		return new ModelAndView("addSV", "sinhVien", new SinhVien());
 	}
 
 	// danh sách sinh viên có phân trang
@@ -63,12 +64,15 @@ public class StudentsController {
 
 	// Hàm thêm sinh viên
 	@RequestMapping(value = "/saveSV", method = RequestMethod.POST)
-	public ModelAndView addSV(@ModelAttribute("sinhVien") SinhVien sinhVien,
+	public ModelAndView addSV(@ModelAttribute("sinhVien") @Valid SinhVien sinhVien,BindingResult bindingResult,
 			@RequestParam("file") CommonsMultipartFile file) throws IllegalStateException, IOException {
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			sinhVien.setImages(fileName);
 		}
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("addSV");        
+			}
 		sinhVienService.addSV(sinhVien);
 		return new ModelAndView("redirect:/ViewSinhVien");
 
