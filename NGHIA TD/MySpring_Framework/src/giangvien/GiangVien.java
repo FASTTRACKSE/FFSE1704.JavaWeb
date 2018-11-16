@@ -1,11 +1,12 @@
 package giangvien;
 
+import quanlihocsinh.monhoc.MonHoc;
+
 public class GiangVien {
 	private String tenGiangVien;
 	private String email;
 	public GiangVien() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public GiangVien(String tenGiangVien, String email) {
 		super();

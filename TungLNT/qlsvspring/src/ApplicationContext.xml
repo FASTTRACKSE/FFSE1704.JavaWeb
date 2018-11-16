@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- bean giang vien -->
+
+<bean id="giangVienThanhCL" class="ffse.qlsv.entity.giangvien.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Cao Lê thành"></property>
+<property name="emailGiangVien" value="ThanhCL@fasttrack.edu.vn"></property>
+</bean>
+
+<bean id="giangVienLamNT" class="ffse.qlsv.entity.giangvien.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Nguyễn Thành Lâm"></property>
+<property name="emailGiangVien" value="LamNT@fasttrack.edu.vn"></property>
+</bean>
+
+<bean id="giangVienThangTM" class="ffse.qlsv.entity.giangvien.GiangVien"  scope="prototype">
+<property name="tenGiangVien" value="Trần Minh Thắng"></property>
+<property name="emailGiangVien" value="ThangTM@fasttrack.edu.vn"></property>
+</bean>
+
+<!-- bean mon hoc -->
+
+<bean id="tinHocVanPhong" class="ffse.qlsv.entity.monhoc.TinHocVanPhong">
+<property name="tenMonHoc" value="Tin Học Văn Phòng"></property>
+<property name="giangVien" ref="giangVienThanhCL"></property>
+</bean>
+
+<bean id="lapTrinhCoBan" class="ffse.qlsv.entity.monhoc.LapTrinhCoBan">
+<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+<property name="giangVien" ref="giangVienThanhCL"></property>
+</bean>
+
+<bean id="lapTrinhWebFrontend" class="ffse.qlsv.entity.monhoc.LapTrinhWebFrontend">
+<property name="tenMonHoc" value="Lập Trình Web Frontend"></property>
+<property name="giangVien" ref="giangVienLamNT"></property>
+</bean>
+
+<bean id="lapTrinhPHPMySQL" class="ffse.qlsv.entity.monhoc.LapTrinhPHPMySQL">
+<property name="tenMonHoc" value="Lập trình Web PHP và MySQL"></property>
+<property name="giangVien" ref="giangVienLamNT"></property>
+</bean>
+
+<bean id="lapTrinhJavaCoBan" class="ffse.qlsv.entity.monhoc.LapTrinhJavaCoBan">
+<property name="tenMonHoc" value="Lập Trình Java Cơ Bản"></property>
+<property name="giangVien" ref="giangVienThangTM"></property>
+</bean>
+
+<bean id="lapTrinhJavaWeb" class="ffse.qlsv.entity.monhoc.LapTrinhJavaWeb">
+<property name="tenMonHoc" value="Lập Trình Java Web"></property>
+<property name="giangVien" ref="giangVienThangTM"></property>
+</bean>
+
+<bean id="quiTrinhDuAn" class="ffse.qlsv.entity.monhoc.QuiTrinhDuAn">
+<property name="tenMonHoc" value="Quy trình dự án"></property>
+<property name="giangVien" ref="giangVienThanhCL"></property>
+</bean>
+
+<!-- bean he dao tao -->
+
+<bean id="heDaoTaoDaiHan" class="ffse.qlsv.entity.hedaotao.HeDaoTaoDaiHan">
+<property name="maHeDaoTao" value="FFSEDH"></property>
+<property name="thongTinHeDaoTao" value="Đào tạo dài hạn 16 tháng, full các môn lập trình"></property>
+ <property name="dsMonHoc">
+<list>
+<ref bean="tinHocVanPhong" />
+<ref bean="lapTrinhCoBan" />
+<ref bean="lapTrinhWebFrontend" />
+<ref bean="lapTrinhPHPMySQL" />
+<ref bean="lapTrinhJavaCoBan" />
+<ref bean="lapTrinhJavaWeb" />
+<ref bean="quiTrinhDuAn" />
+</list>
+</property> 
+</bean>
+
+<bean id="heDaoTaoNganHanJava" class="ffse.qlsv.entity.hedaotao.HeDaoTaoNganHanJava" >
+<property name="maHeDaoTao" value="FFSENHJ"></property>
+<property name="thongTinHeDaoTao" value="Đào tạo dài hạn ngắn hạn Java 6 tháng"></property>
+<property name="dsMonHoc">
+<list>
+<ref bean="lapTrinhJavaCoBan" />
+<ref bean="lapTrinhJavaWeb" />
+</list>
+</property>
+</bean>
+
+<bean id="heDaoTaoNganHanPHP" class="ffse.qlsv.entity.hedaotao.HeDaoTaoNganHanPHP" >
+<property name="maHeDaoTao" value="FFSENHP"></property>
+<property name="thongTinHeDaoTao" value="Chương trình đào tạo lập trình PHP 6 tháng"></property>
+<property name="dsMonHoc">
+<list>
+<ref bean="lapTrinhWebFrontend" />
+<ref bean="lapTrinhPHPMySQL" />
+</list>
+</property>
+</bean>
+
+<!-- bean loai hinh dao tao -->
+
+<bean id="hocOnline" class="ffse.qlsv.entity.loaihinhdaotao.HocOnline"></bean>
+<bean id="hocOffline" class="ffse.qlsv.entity.loaihinhdaotao.HocOffline"></bean>
+
+<!-- bean sinhvien -->
+
+<bean id="sv1" class="ffse.qlsv.entity.sinhvien.HocSinh" scope="prototype">
+<property name="hoTen" value="Lê Nguyễn Thanh Tùng"></property>
+<property name="namSinh" value="1999"></property>
+<property name="email" value="thanhtungle167@gmail.com"></property>
+<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+<property name="cheDoHoc" ref="hocOffline"></property>
+</bean>
+
+<bean id="sv2" class="ffse.qlsv.entity.sinhvien.HocSinh" scope="prototype">
+<property name="hoTen" value="Bùi Lê Anh Vũ"></property>
+<property name="namSinh" value="1997"></property>
+<property name="email" value="blav97@gmail.com"></property>
+<property name="heDaoTao" ref="heDaoTaoNganHanJava"></property>
+<property name="cheDoHoc" ref="hocOnline"></property>
+</bean>
+
+<bean id="sv3" class="ffse.qlsv.entity.sinhvien.HocSinh" scope="prototype">
+<property name="hoTen" value="Lê Khả Hồng Nhật"></property>
+<property name="namSinh" value="1998"></property>
+<property name="email" value="lkhn98@gmail.com"></property>
+<property name="heDaoTao" ref="heDaoTaoNganHanPHP"></property>
+<property name="cheDoHoc" ref="hocOnline"></property>
+</bean>
+</beans>
+
+
+
+

@@ -4,20 +4,21 @@ import giangvien.GiangVien;
 
 public class LapTrinhWebFrontEnd implements MonHoc {
 	GiangVien giangVien;
-	public LapTrinhWebFrontEnd(GiangVien giangVien) {
+	public LapTrinhWebFrontEnd() {
 		super();
-		this.giangVien = giangVien;
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập trình front-end";
+		return null;
 	}
+
 	@Override
-	public String getGiangVien() {
+	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return giangVien.getTenGiangVien();
+		return null;
 	}
 
 	@Override
@@ -25,6 +26,15 @@ public class LapTrinhWebFrontEnd implements MonHoc {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
 
 	
 }

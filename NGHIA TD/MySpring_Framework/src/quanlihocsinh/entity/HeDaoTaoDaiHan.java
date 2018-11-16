@@ -12,16 +12,21 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 		// TODO Auto-generated constructor stub
 	}
 
+	public HeDaoTaoDaiHan(List<MonHoc> dsMonHoc) {
+		super();
+		this.dsMonHoc = dsMonHoc;
+	}
+
 	@Override
 	public String getMaHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "ê3";
+		return "Mã 0010101";
 	}
 
 	@Override
 	public String getThongTinHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "Dai hạn";
+		return "Hệ đào tạo Dài Hạn";
 	}
 
 

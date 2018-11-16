@@ -3,6 +3,11 @@ package monhoc;
 import giangvien.GiangVien;
 
 public class MonLapTrinhWebPHPMySQL implements MonHoc {
+	public MonLapTrinhWebPHPMySQL() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	GiangVien giangVien;
 
 	public MonLapTrinhWebPHPMySQL(GiangVien giangVien) {

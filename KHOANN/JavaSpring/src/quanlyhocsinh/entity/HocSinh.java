@@ -1,9 +1,9 @@
 package quanlyhocsinh.entity;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
-import quanlyhocsinh.entity.HeDaoTao.HeDaoTao;
-import quanlyhocsinh.entity.LoaiHinhDaoTao.LoaiHinhDaoTao;
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.giangvien.GiangVien;
+import quanlyhocsinh.entity.hedaotao.HeDaoTao;
+import quanlyhocsinh.entity.loaihinhdaotao.LoaiHinhDaoTao;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HocSinh {
 	String hoTen;
@@ -27,6 +27,22 @@ public class HocSinh {
 
 	public String getphuongThucDaoTao() {
 		return loaiHinhDaoTao.getDiaChiDaoTao() + " - " + loaiHinhDaoTao.getThoiGianDaoTao();
+	}
+	
+	public String getMonHoc() {
+		return monHoc.getTenMonHoc();
+	}
+
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
+	public void setMonHoc(MonHoc monHoc) {
+		this.monHoc = monHoc;
 	}
 
 	public HocSinh() {

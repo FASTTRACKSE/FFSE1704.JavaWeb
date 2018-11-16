@@ -2,7 +2,7 @@ package model.form;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -68,7 +68,7 @@ public class SinhVienForm {
 		this.address = address;
 	}
 
-	@PostConstruct
+	
 	public void init() {
 		listSinhVien = sinhVienDao.getSinhVien();
 	}

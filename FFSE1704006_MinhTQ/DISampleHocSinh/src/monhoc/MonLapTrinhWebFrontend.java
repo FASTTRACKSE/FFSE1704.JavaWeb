@@ -3,6 +3,11 @@ package monhoc;
 import giangvien.GiangVien;
 
 public class MonLapTrinhWebFrontend implements MonHoc {
+	public MonLapTrinhWebFrontend() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	GiangVien giangVien;
 
 	public MonLapTrinhWebFrontend(GiangVien giangVien) {

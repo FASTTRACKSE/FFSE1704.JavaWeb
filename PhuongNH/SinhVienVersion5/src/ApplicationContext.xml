@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--bean loại hình đào tạo -->
+	<bean id="online" class="loaihinhdaotao.entity.Online"></bean>
+	<bean id="offline" class="loaihinhdaotao.entity.Offline"></bean>
+	<!-- Bean giảng viên -->
+	
+	
+	
+	<bean id="GVThanh" class="giangvien.entity.GiangVien"
+		scope="prototype">
+		<property name="hoTenGiangVien" value="Cao Lê Thành"></property>
+		<property name="email" value="thanhlt@gmail.com"></property>
+	</bean>
+	<bean id="GVLam" class="giangvien.entity.GiangVien"
+		scope="prototype">
+		<property name="hoTenGiangVien" value="Nguyễn Văn Lâm"></property>
+		<property name="email" value="lamnv@gmail.com"></property>
+	</bean>
+	<bean id="GVThang" class="giangvien.entity.GiangVien"
+		scope="prototype">
+		<property name="hoTenGiangVien" value="Trần Minh Thắng"></property>
+		<property name="email" value="thanglt@gmail.com"></property>
+	</bean>
+	
+	
+	
+	
+	<!-- Bean môn học -->
+	<bean id="lapTrinhCoBan" class="monhoc.entity.LapTrinhCoBan">
+		<property name="tenMonHoc" value="Lập trình cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+	<bean id="lapTrinhJavaCoBan"
+		class="monhoc.entity.LapTrinhJavaCoBan">
+		<property name="tenMonHoc" value="Lập trình Java cơ bản"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+	<bean id="lapTrinhJavaWeb" class="monhoc.entity.LapTrinhJavaWeb">
+		<property name="tenMonHoc" value="Lập trình Java Web"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+	<bean id="lapTrinhWebFontend"
+		class="monhoc.entity.LapTrinhWebFontend">
+		<property name="tenMonHoc" value="Lập trình WebFontend"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+	<bean id="lapTrinhWebPHPAndMySQL"
+		class="monhoc.entity.LapTrinhWebPHPAndMySQL">
+		<property name="tenMonHoc"
+			value="Lập trình Web PHP And MySQL"></property>
+		<property name="giangVien" ref="GVLam"></property>
+	</bean>
+	<bean id="quyTrinhDuAn" class="monhoc.entity.QuyTrinhDuAn">
+		<property name="tenMonHoc" value="Quy trình dự án"></property>
+		<property name="giangVien" ref="GVThanh"></property>
+	</bean>
+	<bean id="tinHocVanPhong" class="monhoc.entity.TinHocVanPhong">
+		<property name="tenMonHoc" value="Tin học văn phòng"></property>
+		<property name="giangVien" ref="GVThang"></property>
+	</bean>
+
+	<!-- bean hệ đào tạo -->
+	<bean id="heDaoTaoDaiHan" class="hedaotao.entity.HeDaoTaoDaiHan">
+		<property name="maHeDaoTao" value="FFSE1704"></property>
+		<property name="thongTinHeDaoTao" value="lập trình 16 tháng "></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhJavaCoBan" />
+				<ref bean="lapTrinhWebPHPAndMySQL" />
+				<ref bean="lapTrinhJavaWeb" />
+				<ref bean="quyTrinhDuAn" />
+				<ref bean="tinHocVanPhong" />
+				<ref bean="lapTrinhWebFontend" />
+			</list>
+		</property>
+	</bean>
+	<bean id="heDaoTaoNganHan" class="hedaotao.entity.HeDaoTaoNganHan">
+		<property name="maHeDaoTao" value="FFSE1704"></property>
+		<property name="thongTinHeDaoTao" value="lập trình 6 tháng "></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhCoBan" />
+				<ref bean="lapTrinhWebPHPAndMySQL" />
+				<ref bean="lapTrinhJavaWeb" />
+				<ref bean="lapTrinhWebFontend" />
+			</list>
+		</property>
+	</bean>
+	<bean id="heDaoTaoNganHanPHP"
+		class="hedaotao.entity.HeDaoTaoNganHanPHP">
+		<property name="maHeDaoTao" value="FFSE1704"></property>
+		<property name="thongTinHeDaoTao"
+			value="lập trình 6 tháng PHP "></property>
+		<property name="danhSachMonHoc">
+			<list>
+				<ref bean="lapTrinhWebPHPAndMySQL" />
+				<ref bean="lapTrinhWebFontend" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="sinhvien1" class="hocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Nguyên hoàng Phương"></property>
+		<property name="namSinh" value="1999"></property>
+		<property name="email" value="phuongnguyenhoang@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoDaiHan"></property>
+		<property name="theLoai" ref="online"></property>
+	</bean>
+	
+	<bean id="sinhvien2" class="hocsinh.entity.HocSinh"
+		scope="prototype">
+		<property name="hoTen" value="Kỳ Óc Chó"></property>
+		<property name="namSinh" value="1998"></property>
+		<property name="email" value="kynhingiongnhucho@gmail.com"></property>
+		<property name="heDaoTao" ref="heDaoTaoNganHan"></property>
+		<property name="theLoai" ref="offline"></property>
+	</bean>
+</beans>

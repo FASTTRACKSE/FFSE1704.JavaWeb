@@ -16,6 +16,11 @@ public class MonTinHocVanHoc implements MonHoc {
 		return "Môn đào tạo tin học văn phòng ";
 	}
 
+	public MonTinHocVanHoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getTenGiangVien() {
 		// TODO Auto-generated method stub

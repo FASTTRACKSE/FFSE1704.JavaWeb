@@ -4,27 +4,35 @@ import giangvien.GiangVien;
 
 public class TinHocVanPhong implements MonHoc {
 	GiangVien giangVien;
-	public TinHocVanPhong(GiangVien giangVien) {
+	public TinHocVanPhong() {
 		super();
-		this.giangVien = giangVien;
+		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String gettenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Tin học Văn Phong";
+		return this.getClass().getSimpleName();
 	}
 	@Override
-	public String getGiangVien() {
+	public String getTenGiangVien() {
 		// TODO Auto-generated method stub
-		return giangVien.getTenGiangVien();
+		return null;
 	}
-
 	@Override
 	public String getEmail() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public GiangVien getGiangVien() {
+		return giangVien;
+	}
+	
+	public void setGiangVien(GiangVien giangVien) {
+		this.giangVien = giangVien;
+	}
+
 
 	
 }

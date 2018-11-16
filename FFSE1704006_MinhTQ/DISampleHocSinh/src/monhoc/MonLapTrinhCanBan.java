@@ -11,6 +11,11 @@ public class MonLapTrinhCanBan implements MonHoc {
 		this.giangVien = giangVien;
 	}
 
+	public MonLapTrinhCanBan() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getThongTinMonHoc() {
 		// TODO Auto-generated method stub

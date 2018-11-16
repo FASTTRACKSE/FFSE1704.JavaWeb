@@ -1,9 +1,12 @@
 package quanlyhocsinh.entity;
 
+import java.util.List;
+
 public class HeDaoTaoNganHanPHP implements HeDaoTao {
 	String maHeDaoTao = "FFSENHP";
 	String thongTinHeDaoTao = "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
-	
+	List<MonHoc> danhSachMonHoc;
+
 	public HeDaoTaoNganHanPHP() {
 		super();
 	}
@@ -30,4 +33,11 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 		this.thongTinHeDaoTao = thongTinHeDaoTao;
 	}
 
+	public List<MonHoc> getDanhSachMonHoc() {
+		return danhSachMonHoc;
+	}
+
+	public void setDanhSachMonHoc(List<MonHoc> danhSachMonHoc) {
+		this.danhSachMonHoc = danhSachMonHoc;
+	}
 }
