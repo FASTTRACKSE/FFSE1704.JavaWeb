@@ -44,6 +44,7 @@
 			<th><spring:message code="th_NameSV" /></th>
 			<th><spring:message code="th_Arg" /></th>
 			<th><spring:message code="th_Address" /></th>
+			<th><spring:message code="th_Diem" /></th>
 			<th><spring:message code="th_Avatar" /></th>
 			<th><spring:message code="th_Email" /></th>
 			<th><spring:message code="th_Function" /></th>
