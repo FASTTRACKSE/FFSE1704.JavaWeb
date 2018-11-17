@@ -26,8 +26,8 @@ public class Main {
 		System.out.println("-----" + sinhVien1.getThongTinHeDaoTao());
 		System.out.println("Môn Học:");
 		for (MonHoc monHoc : sinhVien1.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getMaMonHoc() + " \n 	" + monHoc.getTenMonHoc() + " \n 	"
-					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+			System.out.println("     * " + monHoc.getMaMonHoc() + ": " + monHoc.getTenMonHoc() + " \n 	"
+					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien()+ " \n 	");
 		}
 		
 		System.out.println("********************************************************");
@@ -38,8 +38,8 @@ public class Main {
 		System.out.println("-----" + sinhVien2.getThongTinHeDaoTao());
 		System.out.println("Môn Học:");
 		for (MonHoc monHoc : sinhVien2.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getMaMonHoc() + " \n 	" + monHoc.getTenMonHoc() + " \n 	"
-					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+			System.out.println("     * " + monHoc.getMaMonHoc() + ": " + monHoc.getTenMonHoc() + " \n 	"
+					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien()+ " \n 	");
 		}
 		System.out.println("********************************************************");
 		
@@ -49,8 +49,8 @@ public class Main {
 		System.out.println("-----" + sinhVien3.getThongTinHeDaoTao());
 		System.out.println("Môn Học:");
 		for (MonHoc monHoc : sinhVien3.getHeDaoTao().getDanhSachMonHoc()) {
-			System.out.println("     * " + monHoc.getMaMonHoc() + " \n 	" + monHoc.getTenMonHoc() + " \n 	"
-					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien());
+			System.out.println("     * " + monHoc.getMaMonHoc() + ": " + monHoc.getTenMonHoc() + " \n 	"
+					+ "Giảng Viên: " + monHoc.getTenGiangVien() + " \n 	" + monHoc.getEmailGiangVien()+ " \n 	");
 		}
 		System.out.println("********************************************************");
 		context.close();

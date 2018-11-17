@@ -30,30 +30,38 @@ import fasttrack.service.HocSinhService;
 public class HocSinhController {
 	@Autowired
 	HocSinhService hocsinhservice;
+	private int perPage = 2;
 
 	@Autowired
 	public void setHocSinhService(HocSinhService hocsinhservice) {
 		this.hocsinhservice = hocsinhservice;
 	}
 	
-	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-	public String index(Model model,
-			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
-		int totalRecords = hocsinhservice.getAll().size();
-		int recordsPerPage = 3;
-		int totalPages = 0;
-		if ((totalRecords / recordsPerPage) % 2 == 0) {
-			totalPages = totalRecords / recordsPerPage;
+	@RequestMapping("/")
+	public String view(HttpSession session) {
+		int currentPage;
+		if (session.getAttribute("page") == null) {
+			currentPage = 1;
 		} else {
-			totalPages = totalRecords / recordsPerPage + 1;
+			currentPage = (int) session.getAttribute("page");
 		}
-		int startPosition = recordsPerPage * (currentPage - 1);
+		return "redirect:/list/" + currentPage;
+	}
+	
+	@RequestMapping(value ="/list/{page}" )
+	public String index(Model model,@PathVariable("page") int page) {
+		int start = (page - 1) * perPage;
+		List<HocSinh> list = hocsinhservice.findAll(start, perPage);
+		model.addAttribute("list", list);
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 
-		model.addAttribute("list", hocsinhservice.findAllForPaging(startPosition, recordsPerPage));
-		model.addAttribute("lastPage", totalPages);
-		model.addAttribute("currentPage", currentPage);
-
-		return "/listhocsinh";
+		return "listhocsinh";
+	}
+	
+	public int totalPage(int perPage) {
+		int totalPage = (int) Math.ceil((double) hocsinhservice.count() / (double) perPage);
+		return totalPage;
 	}
 
 	/* @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
@@ -76,14 +84,14 @@ public class HocSinhController {
 			HttpSession session, MultipartFile file) throws IllegalStateException, IOException {
 		hs.setImage(uploadFile(file, session));
 		hocsinhservice.addhs(hs);
-		return "redirect:/list";
+		return "redirect:/list/1";
 
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable("id") int id) {
 		hocsinhservice.delhs(id);
-		return "redirect:/list";
+		return "redirect:/list/1";
 	}
 
 	@RequestMapping("/getID/{id}")
@@ -100,7 +108,7 @@ public class HocSinhController {
 		}
 		hs.setImage(uploadFile(file, session));
 		hocsinhservice.updatehs(hs);
-		return "redirect:/list";
+		return "redirect:/list/1";
 	}
 
 	public String uploadFile(MultipartFile file, HttpSession session) throws IllegalStateException, IOException {

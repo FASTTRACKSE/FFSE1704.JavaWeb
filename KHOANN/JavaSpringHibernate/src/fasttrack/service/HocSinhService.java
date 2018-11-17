@@ -16,6 +16,7 @@ public interface  HocSinhService {
 	
 	public List<HocSinh> getAll();
 	
-	public List<HocSinh> findAllForPaging(int startPosition,int maxResult);
+	public List<HocSinh> findAll(Integer offset, Integer maxResult);
 
+	public int count();
 }

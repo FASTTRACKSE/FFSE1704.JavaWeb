@@ -41,30 +41,24 @@
 		</c:forEach>
 
 	</table>
-	<nav aria-label="Page navigation example">
-	<ul class="pagination">
-		<li class="page-item"><a class="page-link" href="?page=1">Trang Dau</a></li>
-		<c:if test="${currentPage > 2}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage-2}">${currentPage-2}</a></li>
+	<center>
+		<c:if test="${page >1}">
+			<a href="/JavaSpringHibernate/list/1">FIRST</a>
 		</c:if>
-		<c:if test="${currentPage > 1}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage-1}">${currentPage-1}</a></li>
+
+		<c:if test="${page > 1}">
+			<a href="/JavaSpringHibernate/list/${page-1}">${page-1}</a>
 		</c:if>
-		<li class="page-item active"><a class="page-link"
-			href="?page=${currentPage}">${currentPage}</a></li>
-		<c:if test="${currentPage < lastPage}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage+1}">${currentPage+1}</a></li>
+
+		<a href="/JavaSpringHibernate/list/${page}">${page}</a>
+
+		<c:if test="${page < total}">
+			<a href="/JavaSpringHibernate/list/${page+1}">${page+1}</a>
 		</c:if>
-		<c:if test="${currentPage < lastPage - 1}">
-			<li class="page-item"><a class="page-link"
-				href="?page=${currentPage+2}">${currentPage+2}</a></li>
+
+		<c:if test="${page < total}">
+			<a href="/JavaSpringHibernate/list/${total}">LAST</a>
 		</c:if>
-		<li class="page-item"><a class="page-link"
-			href="?page=${lastPage }">Trang Cuoi</a></li>
-	</ul>
-	</nav>
+	</center>
 </body>
 </html>
