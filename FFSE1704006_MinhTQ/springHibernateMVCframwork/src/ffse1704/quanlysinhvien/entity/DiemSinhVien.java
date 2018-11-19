@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,9 +30,21 @@ public class DiemSinhVien {
 	@Column(name = "isDelete")
 	private int isDelete;
 
+	@ManyToOne
+	@JoinColumn(name = "idSinhVien", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
+	private SinhVien sinhVien;
+
+	public SinhVien getSinhVien() {
+		return sinhVien;
+	}
+
+	public void setSinhVien(SinhVien sinhVien) {
+		this.sinhVien = sinhVien;
+	}
+
 	public DiemSinhVien() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public DiemSinhVien(int id, String idSinhVien, String maMonHoc, int diem, int isDelete) {

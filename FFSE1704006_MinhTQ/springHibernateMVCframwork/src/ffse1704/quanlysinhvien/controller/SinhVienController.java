@@ -60,7 +60,7 @@ public class SinhVienController {
 		model.addAttribute("total", totalPage(perPage));
 		model.addAttribute("page", page);
 
-		return "/ViewSinhVien";
+		return "ViewSinhVien";
 	}
 
 

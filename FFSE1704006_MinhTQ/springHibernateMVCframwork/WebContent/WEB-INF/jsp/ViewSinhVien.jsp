@@ -22,75 +22,83 @@
 		<div class="dropdown" style="width: 20%">
 			<button class="btn btn-success dropdown-toggle" type="button"
 				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"><spring:message code="nn" /></button>
-				
+				aria-expanded="false">
+				<spring:message code="nn" />
+			</button>
+
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="?lang=vi">tiếng việt </a> 
-				<a class="dropdown-item" href="?lang=en"> tiếng anh </a> 
-				<a class="dropdown-item" href="?lang=fr"> Tiếng pháp </a>
-			</div>	
+				<a class="dropdown-item" href="?lang=vi">tiếng việt </a> <a
+					class="dropdown-item" href="?lang=en"> tiếng anh </a> <a
+					class="dropdown-item" href="?lang=fr"> Tiếng pháp </a>
+			</div>
 		</div>
 
-	<div>
-		<h3>
-			<a href="addsinhvien"><spring:message code="btn_add" /></a>
-		</h3>
-	</div>
-	<table border="2" width="100%" height="150" cellpadding="0"
-		cellspacing="0" style="text-align: center;">
+		<div>
+			<h3>
+				<a href="addsinhvien"><spring:message code="btn_add" /></a>
+			</h3>
+		</div>
+		<table border="2" width="100%" height="150" cellpadding="0"
+			cellspacing="0" style="text-align: center;">
 
-		<tr>
-			<th><spring:message code="th_CodeSV" /></th>
-			<th><spring:message code="th_NameSV" /></th>
-			<th><spring:message code="th_Arg" /></th>
-			<th><spring:message code="th_Address" /></th>
-			<th><spring:message code="th_Diem" /></th>
-			<th><spring:message code="th_Avatar" /></th>
-			<th><spring:message code="th_Email" /></th>
-			<th><spring:message code="th_Function" /></th>
-
-		</tr>
-
-
-		<c:forEach var="sv" items="${list}">
 			<tr>
-				<td>${sv.id}</td>
-				<td>${sv.tenSinhVien }</td>
-				<td>${sv.tuoiSinhVien }</td>
-				<td>${sv.diaChi }</td>
-				<td><img style="width: 100px; height: 100px;"
-					src='<c:url value = "/resources/upload/${sv.avatar }" ></c:url>'
-					alt="images"></td>
-				<td>${sv.email }</td>
+				<th><spring:message code="th_CodeSV" /></th>
+				<th><spring:message code="th_NameSV" /></th>
+				<th><spring:message code="th_Arg" /></th>
+				<th><spring:message code="th_Address" /></th>
+				<th><spring:message code="th_Avatar" /></th>
+				<th><spring:message code="th_Email" /></th>
+				<th><spring:message code="th_Diem" /></th>
+				<th><spring:message code="th_Function" /></th>
 
-				<td><a href="/springHibernateMVCframwork/editview/${sv.id}"><button>
-							<spring:message code="Function_update" />
-						</button></a> <a href="/springHibernateMVCframwork/delete/${sv.id}"><button>
-							<spring:message code="Function_delete" />
-						</button></a></td>
-		</c:forEach>
+			</tr>
 
-	</table>
 
-	<center>
-		<c:if test="${page >1}">
-			<a href="/springHibernateMVCframwork/list/1">FIRST</a>
-		</c:if>
+			<c:forEach var="sv" items="${list}">
+				<tr>
+					<td>${sv.id}</td>
+					<td>${sv.tenSinhVien }</td>
+					<td>${sv.tuoiSinhVien }</td>
+					<td>${sv.diaChi }</td>
+					<td><img style="width: 100px; height: 100px;"
+						src='<c:url value = "/resources/upload/${sv.avatar }" ></c:url>'
+						alt="images"></td>
+					<td>${sv.email }</td>
+					<td>
+						<c:forEach var="diem" items="#{sv.listDiemSinhVien}">
+							${diem.diem} -
+						</c:forEach>
+					</td>
+					<td><a href="/springHibernateMVCframwork/editview/${sv.id}"><button>
+								<spring:message code="Function_update" />
+							</button></a> <a href="/springHibernateMVCframwork/delete/${sv.id}"><button>
+								<spring:message code="Function_delete" />
+							</button></a></td>
+			</c:forEach>
 
-		<c:if test="${page > 1}">
-			<a href="/springHibernateMVCframwork/list/${page-1}">${page-1}</a>
-		</c:if>
+		</table>
 
-		<a href="/springHibernateMVCframwork/list/${page}">${page}</a>
+		
 
-		<c:if test="${page < total}">
-			<a href="/springHibernateMVCframwork/list/${page+1}">${page+1}</a>
-		</c:if>
+		<center>
+			<c:if test="${page >1}">
+				<a href="/springHibernateMVCframwork/list/1">FIRST</a>
+			</c:if>
 
-		<c:if test="${page < total}">
-			<a href="/springHibernateMVCframwork/list/${total}">LAST</a>
-		</c:if>
-	</center>
+			<c:if test="${page > 1}">
+				<a href="/springHibernateMVCframwork/list/${page-1}">${page-1}</a>
+			</c:if>
+
+			<a href="/springHibernateMVCframwork/list/${page}">${page}</a>
+
+			<c:if test="${page < total}">
+				<a href="/springHibernateMVCframwork/list/${page+1}">${page+1}</a>
+			</c:if>
+
+			<c:if test="${page < total}">
+				<a href="/springHibernateMVCframwork/list/${total}">LAST</a>
+			</c:if>
+		</center>
 
 
 

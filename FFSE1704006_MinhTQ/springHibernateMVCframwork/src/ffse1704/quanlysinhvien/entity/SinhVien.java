@@ -1,12 +1,14 @@
 package ffse1704.quanlysinhvien.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,22 +30,25 @@ public class SinhVien {
 	@Column(name = "diaChi")
 	private String diaChi;
 
+	@Column(name = "monHoc")
+	private String monHoc;
+
 	@Column(name = "avatar")
 	private String avatar;
 
 	@Column(name = "email")
 	private String email;
-
-	@OneToMany
-	@JoinColumn(name = "id")
-	private DiemSinhVien diemSinhVien;
 	
-	public DiemSinhVien getDiemSinhVien() {
-		return diemSinhVien;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="sinhVien",cascade = CascadeType.MERGE)
+	private List<DiemSinhVien> listDiemSinhVien;
+
+	
+	public List<DiemSinhVien> getListDiemSinhVien() {
+		return listDiemSinhVien;
 	}
 
-	public void setDiemSinhVien(DiemSinhVien diemSinhVien) {
-		this.diemSinhVien = diemSinhVien;
+	public void setListDiemSinhVien(List<DiemSinhVien> listDiemSinhVien) {
+		this.listDiemSinhVien = listDiemSinhVien;
 	}
 
 	public SinhVien() {
@@ -93,6 +98,14 @@ public class SinhVien {
 		this.diaChi = diaChi;
 	}
 
+	public String getMonHoc() {
+		return monHoc;
+	}
+
+	public void setMonHoc(String monHoc) {
+		this.monHoc = monHoc;
+	}
+
 	public String getAvatar() {
 		return avatar;
 	}
@@ -108,7 +121,5 @@ public class SinhVien {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 
 }

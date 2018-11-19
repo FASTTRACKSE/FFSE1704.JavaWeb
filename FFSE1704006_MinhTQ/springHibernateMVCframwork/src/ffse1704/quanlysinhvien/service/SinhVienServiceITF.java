@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ffse1704.quanlysinhvien.entity.DiemSinhVien;
 import ffse1704.quanlysinhvien.entity.SinhVien;
 import ffse1704.quanlysinhvien.model.SinhVienDAO;
 
@@ -56,4 +57,7 @@ public class SinhVienServiceITF implements SinhVienService {
 		return sinhVienDAO.count();
 	}
 
+	
+
+	
 }

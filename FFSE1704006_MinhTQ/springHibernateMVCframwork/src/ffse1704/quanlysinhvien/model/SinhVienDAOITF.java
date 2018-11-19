@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import ffse1704.quanlysinhvien.entity.DiemSinhVien;
 import ffse1704.quanlysinhvien.entity.SinhVien;
 
 @Repository(value = "sinhVienDAOITF")
@@ -83,7 +84,8 @@ public class SinhVienDAOITF implements SinhVienDAO {
 	}
 
 	
-	
+
+
 
 
 }
