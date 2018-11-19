@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ffse1704.entity.BangDiem;
 import ffse1704.entity.SinhVien;
 import ffse1704.service.SinhVienService;
 
@@ -137,6 +138,13 @@ public class StudentsController {
 		}
 		return fileName;
 
+	}
+	@RequestMapping(value = "/list_Score/{maSV}")
+	public String BangDiem(@PathVariable String maSV,Model model) {
+	List<BangDiem> listScore = sinhVienService.getDiemSV(maSV);
+		model.addAttribute("listScore",listScore);
+		return "ListScore";
+		
 	}
 
 }

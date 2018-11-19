@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<%-- <jsp:include page="/WEB-INF/jsp/template/header.jsp" /> --%>
+	<%-- <jsp:include page="/WEB-INF/jsp/template/header.jsp" /> --%>
 
 	<div class="container">
 		<div class="dropdown" style="width: 20%">
@@ -37,7 +37,9 @@
 		</div>
 
 		<div style="text-align: center;">
-			<h1><spring:message code="list" /></h1>
+			<h1>
+				<spring:message code="list" />
+			</h1>
 		</div>
 		<div>
 			<h3>
@@ -66,7 +68,7 @@
 						<td>${sv.id}</td>
 						<td>${sv.maSV}</td>
 						<td>${sv.tenSV}</td>
-						<td><img style="width: 70px; height:70px;"
+						<td><img style="width: 70px; height: 70px;"
 							src="<c:url value="img/${sv.images}" />"></td>
 						<%-- <td><img style="width: 50px;" src="<c:url value="img/${sv.images}" />"></td>  --%>
 
@@ -76,28 +78,31 @@
 						<td>${sv.lopHoc}</td>
 						<td><a href="editSV/${sv.id}" class="btn btn-success">Edit</a>
 							<a href="deleteSV/${sv.id}" class="btn btn-danger">Delete</a></td>
+						<td><a href="/Spring_SecurityMVC/list_Score/${sv.id}"
+							class="btn btn-danger">BẢNG ĐIỂM</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-<div class="container" style="float: right">
-		<nav aria-label="Page navigation example">
-		<ul class="pagination">
-			<c:if test="${page > 1 }">
-				<li class="page-item"><a class="page-link" href="1">First</a></li>
-				<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
-			</c:if>
+		<div class="container" style="float: right">
+			<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${page > 1 }">
+					<li class="page-item"><a class="page-link" href="1">First</a></li>
+					<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
+				</c:if>
 
-			<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
+				<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
 
-			<c:if test="${page < totalPage}">
-				<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
-				<li class="page-item"><a class="page-link" href="${totalPage }">Last</a></li>
-			</c:if>
-		</ul>
-		</nav>
+				<c:if test="${page < totalPage}">
+					<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
+					<li class="page-item"><a class="page-link"
+						href="${totalPage }">Last</a></li>
+				</c:if>
+			</ul>
+			</nav>
 		</div>
-		</div>
-		<%-- <jsp:include page="/WEB-INF/jsp/template/footer.jsp" /> --%>
+	</div>
+	<%-- <jsp:include page="/WEB-INF/jsp/template/footer.jsp" /> --%>
 </body>
 </html>
