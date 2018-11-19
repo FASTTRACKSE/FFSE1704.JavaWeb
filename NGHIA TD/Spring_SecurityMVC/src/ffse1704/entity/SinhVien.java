@@ -1,8 +1,9 @@
 package ffse1704.entity;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,12 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "sinhvien")
-public class SinhVien {
+public class SinhVien implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,17 +53,9 @@ public class SinhVien {
 	@NotEmpty(message = "Lớp học không được để trống")
 	private String lopHoc;
 
-	@OneToMany(mappedBy="SinhVien", cascade=  CascadeType.ALL)
-	private Set subject;
+	@OneToMany(mappedBy="sinhVien")
+	private List<BangDiem> 	listScore = new ArrayList<BangDiem>();
 	
-	public Set getSubject() {
-		return subject;
-	}
-
-	public void setSubject(Set subject) {
-		this.subject = subject;
-	}
-
 	public SinhVien() {
 		super();
 		// TODO Auto-generated constructor stub
