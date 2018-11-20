@@ -41,7 +41,7 @@ public class StrudentsController {
 
 	// add
 	@RequestMapping(value = "/add")
-	public ModelAndView hihi() {
+	public ModelAndView addView() {
 		return new ModelAndView("add", "sinhVien", new SinhVien());
 	}
 
@@ -51,12 +51,13 @@ public class StrudentsController {
 			@RequestParam("file") CommonsMultipartFile file, Model model) throws IllegalStateException, IOException {
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
-			sinhVien.setImages(fileName);
 			sinhVienService.addSV(sinhVien);
+			return "View";
 		}else {
 			System.out.println("chua co anh");
+			return "add";
 		}
-		return "View";
+		
 
 	}
 

@@ -8,33 +8,51 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="dssinhvien")
+@Table(name = "dssinhvien")
 public class SinhVien {
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="masv")
+
+	@Column(name = "masv")
 	private String masv;
-	
-	@Column(name="tensv")
+
+	@Column(name = "tensv")
 	private String tensv;
-	
-	@Column(name="images")
-	private String images;
-	
-	@Column(name="namsinh")
-	private int namsinh;
-	
-	@Column(name="email")
-	private String email;
-	
-	@Column(name="diaChi")
-	private String diaChi;
-	
-	@Column(name="lopHoc")
+
+	@Column(name = "lopHoc")
 	private String lopHoc;
+
+	@Column(name = "namsinh")
+	private int namsinh;
+
+	@Column(name = "diaChi")
+	private String diaChi;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "images")
+	private String images;
+
+	public SinhVien(int id, String masv, String tensv, String lopHoc, int namsinh, String diaChi, String email,
+			String images) {
+		super();
+		this.id = id;
+		this.masv = masv;
+		this.tensv = tensv;
+		this.lopHoc = lopHoc;
+		this.namsinh = namsinh;
+		this.diaChi = diaChi;
+		this.email = email;
+		this.images = images;
+	}
+
+	public SinhVien() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getId() {
 		return id;
@@ -99,25 +117,5 @@ public class SinhVien {
 	public void setLopHoc(String lopHoc) {
 		this.lopHoc = lopHoc;
 	}
-
-	public SinhVien(int id, String masv, String tensv, String images, int namsinh, String email, String diaChi,
-			String lopHoc) {
-		super();
-		this.id = id;
-		this.masv = masv;
-		this.tensv = tensv;
-		this.images = images;
-		this.namsinh = namsinh;
-		this.email = email;
-		this.diaChi = diaChi;
-		this.lopHoc = lopHoc;
-	}
-
-	public SinhVien() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 
 }
