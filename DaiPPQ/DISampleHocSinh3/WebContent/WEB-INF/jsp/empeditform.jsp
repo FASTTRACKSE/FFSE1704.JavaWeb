@@ -18,11 +18,14 @@
 			</tr>
 			<tr>
 				<td>Mã SV :</td>
-				<td><form:input path="masv" /></td>
+				<td><form:input path="masv"  /></td>
 			</tr>
 			<tr>
 				<td>Tên SV :</td>
-				<td><form:input path="tensv" /></td>
+				<td>
+					<form:input path="tensv"/>
+					<font color="red"><form:errors path="tensv" /></font>
+				</td>
 			</tr>
 			<tr>
 				<td>Năm Sinh :</td>

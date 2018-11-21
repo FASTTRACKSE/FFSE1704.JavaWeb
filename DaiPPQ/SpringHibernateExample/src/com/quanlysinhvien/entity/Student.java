@@ -1,50 +1,58 @@
-package com.javatpoint.entity;
+package com.quanlysinhvien.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import javax.validation.constraints.NotEmpty;
-
 import org.hibernate.validator.constraints.Range;
 
-public class SinhVien {
+@Entity
+@Table(name="sinhvien")
+public class Student {
+
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotEmpty
+	@Column(name="masv")
+	@NotEmpty(message = "Mã Sinh Viên không được để trống")
 	private String masv;
 	
-	@NotEmpty(message = " Ten SV not null")
+	@Column(name="tensv")
+	@NotEmpty(message = "Tên Sinh Viên không được để trống")
 	private String tensv;
 	
-	@Range
+	@Column(name="namsinh")
+	@Range(min = 1970, max = 2000, message = "Tuổi Sinh Viên không được để trống và chỉ từ 1970 đến 2000")
 	private int namsinh;
 	
-	@NotEmpty
+	@Column(name="email")
+	@NotEmpty(message = "Email không được để trống")
 	private String email;
 	
-	@NotEmpty
+	@Column(name="diachi")
+	@NotEmpty(message = "Địa chỉ không được để trống")
 	private String diachi;
 	
-	@NotEmpty
+	@Column(name="lop")
+	@NotEmpty(message = "Lớp học không được để trống")
 	private String lop;
 	
-	@NotEmpty(message = " image not null")
+	@Column(name="image")
 	private String image;
-/*
-	public SinhVien() {
+
+	public Student() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	
-	public SinhVien(String masv, String tensv, int namsinh, String email, String diachi, String lop, String image) {
-		super();
-		this.masv = masv;
-		this.tensv = tensv;
-		this.namsinh = namsinh;
-		this.email = email;
-		this.diachi = diachi;
-		this.lop = lop;
-		this.image = image;
-	}
-	
-	public SinhVien(int id, String masv, String tensv, int namsinh, String email, String diachi, String lop, String image) {
+	public Student(int id, String masv, String tensv, int namsinh, String email, String diachi,
+			String lop, String image) {
 		super();
 		this.id = id;
 		this.masv = masv;
@@ -55,7 +63,19 @@ public class SinhVien {
 		this.lop = lop;
 		this.image = image;
 	}
-*/
+
+	public Student(String masv, String tensv, int namsinh, String email, String diachi,
+			String lop, String image) {
+		super();
+		this.masv = masv;
+		this.tensv = tensv;
+		this.namsinh = namsinh;
+		this.email = email;
+		this.diachi = diachi;
+		this.lop = lop;
+		this.image = image;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -119,5 +139,4 @@ public class SinhVien {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 }

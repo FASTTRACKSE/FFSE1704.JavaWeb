@@ -17,7 +17,7 @@
 	<div align="center">
 		<h1>Add New Employee</h1>
 		
-		<form:form method="post" action="save">
+		<form:form method="post" action="save" enctype="multipart/form-data" modelAttribute="command">
 			<table border="0">
 				<tr>
 					<td>Mã SV :</td>
@@ -51,7 +51,11 @@
 				</tr>
 				<tr>
 					<td>Avatar :</td>
-					<td><input type="file" name="file" /></td>
+					<td>
+						<input type="file" name="file" />
+						<!-- <input id="upload" type="file" class="form-control" name="file">
+						<input id="imgUrl" class="form-control" type="file" name="file" /> -->
+					</td>
 					<td><form:errors path="image" cssClass="error" /></td>
 				</tr>
 				<tr>

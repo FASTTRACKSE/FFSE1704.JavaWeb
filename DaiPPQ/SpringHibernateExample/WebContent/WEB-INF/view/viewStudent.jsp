@@ -15,7 +15,7 @@
 <body>
 	<div class=container>
 		<h1>Employees List</h1>
-		<a href="/DISampleHocSinh3/empform">Add New Employee</a>
+		<a href="addStudent">Add New Employee</a>
 		<table border="2" width="100%" cellpadding="2">
 			<tr>
 				<th>Id</th>
@@ -26,8 +26,7 @@
 				<th>Địa Chỉ</th>
 				<th>Lớp</th>
 				<th>Avatar</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<th>Action</th>
 			</tr>
 			<c:forEach var="sv" items="${list}">
 				<tr>
@@ -39,19 +38,16 @@
 					<td>${sv.diachi}</td>
 					<td>${sv.lop}</td>
 					<td>
-						<img src="<c:url value="/images/${sv.image}" />" width="80px" height="80px" />
+						<img src="<c:url value="/images/${sv.image}" />" width="50px" height="50px" />
 					</td>
-					<td><a href="/DISampleHocSinh3/editemp/${sv.id}">Edit</a></td>
-					<td><a href="/DISampleHocSinh3/deleteemp/${sv.id}">Delete</a></td>
+					<td>
+						<a href="editStudent/${sv.id}">Edit</a>
+						<a href="deleteStudent/${sv.id}">Delete</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<br />
-		<!-- 
-	<a href="/DISampleHocSinh3/viewemp/1">1</a>
-	<a href="/DISampleHocSinh3/viewemp/2">2</a>
-	<a href="/DISampleHocSinh3/viewemp/3">3</a>
-	 -->
 
 		<nav aria-label="Page navigation example">
 		<ul class="pagination">
