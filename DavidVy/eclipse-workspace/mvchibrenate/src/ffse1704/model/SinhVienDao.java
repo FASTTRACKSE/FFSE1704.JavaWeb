@@ -8,11 +8,11 @@ public interface SinhVienDao {
 	
 	public void addSV(SinhVien p);
 
-	/*public void update(SinhVien p);
+	public void update(SinhVien p);
 
 	public void delete(int id);
 
-	public SinhVien getSinhVienById(int id);*/
+	public SinhVien getSinhVienById(int id);
 
 	public List<SinhVien> getAllSinhVien();
 

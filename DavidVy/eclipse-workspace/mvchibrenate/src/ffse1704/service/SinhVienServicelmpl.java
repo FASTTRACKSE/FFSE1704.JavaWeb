@@ -31,7 +31,7 @@ public class SinhVienServicelmpl implements SinhVienService {
 		this.sinhVienDAO.addSV(p);
 	}
 
-/*	@Override
+	@Override
 	@Transactional
 	public void update(SinhVien p) {
 		// TODO Auto-generated method stub
@@ -52,14 +52,14 @@ public class SinhVienServicelmpl implements SinhVienService {
 		return this.sinhVienDAO.getSinhVienById(id);
 	}
 
-	@Override
+/*	@Override
 	@Transactional
 	public List<SinhVien> getEmployeesByPage(int pageid, int total) {
 		// TODO Auto-generated method stub
 		return this.sinhVienDAO.getEmployeesByPage(pageid, total);
-	}
+	}*/
 
-	@Override
+/*	@Override
 	@Transactional
 	public int countSV() {
 		// TODO Auto-generated method stub
@@ -70,5 +70,6 @@ public class SinhVienServicelmpl implements SinhVienService {
 		return sinhVienDAO.getAllSinhVien();
 		
 	}
+
 
 }

@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,19 +48,15 @@ public class StrudentsController {
 		return new ModelAndView("add", "sinhVien", new SinhVien());
 	}
 
-	// th�m sinh vi�n
+	// th�m sinh vi�n
 	@RequestMapping(value = "/saveSV", method = RequestMethod.POST)
-	public String  saveEmployee(@ModelAttribute("sinhVien")  SinhVien sinhVien, BindingResult result,
-			@RequestParam("file") CommonsMultipartFile file, Model model) throws IllegalStateException, IOException {
+	public String saveEmployee(@ModelAttribute("sinhVien") SinhVien sinhVien, BindingResult result,
+			@RequestParam("file") CommonsMultipartFile file) throws IllegalStateException, IOException {
 		String fileName = upload(file);
-		if (!fileName.equals("")) {
-			sinhVienService.addSV(sinhVien);
-			return "View";
-		}else {
-			System.out.println("chua co anh");
-			return "add";
-		}
-		
+
+		sinhVien.setImages(fileName);
+		sinhVienService.addSV(sinhVien);
+		return "redirect:/view";
 
 	}
 
@@ -78,5 +77,32 @@ public class StrudentsController {
 		return fileName;
 
 	}
+	
+	@RequestMapping(value = "/edit/{id}")
+		public String edit (@PathVariable int id,Model model) {
+		SinhVien sinhVien = sinhVienService.getSinhVienById(id);
+		model.addAttribute("students",sinhVien);
+		return "edit";
+	}
+	
+	// thực hiện update sinh viên
+		@RequestMapping(value = "/editsave", method = RequestMethod.POST)
+		public ModelAndView  editsave(@ModelAttribute("students") SinhVien sinhVien,BindingResult bindingResult,
+				@RequestParam("file") CommonsMultipartFile file) throws IllegalStateException, IOException {
+			String fileName = upload(file);
+			if (!fileName.equals("")) {
+				sinhVien.setImages(fileName);
+			}
+			
+			sinhVienService.update(sinhVien);
+			return new ModelAndView("redirect:/view");
+
+		}
+		// thực hiện lệnh xóa
+		@RequestMapping("/del/{id}")
+		public String delete(@PathVariable int id, HttpSession session, Model model) {
+			sinhVienService.delete(id);
+			return "redirect:/view";
+		}
 
 }

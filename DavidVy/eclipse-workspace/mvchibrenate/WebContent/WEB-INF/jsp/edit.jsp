@@ -21,8 +21,8 @@
 	
 	
 	<div class="container">
-		<h1 style="text-align: center;">ADD SINH VIÊN</h1>
-		<form:form modelAttribute="students" method="post" action="/SpringMVCImages/editsave" enctype="multipart/form-data">
+		<h1 style="text-align: center;">update sv</h1>
+		<form:form modelAttribute="students" method="post" action="/mvchibrenate/editsave" enctype="multipart/form-data" >
 		<div class="form-group">
 				
 				<form:hidden path="id" />
@@ -30,27 +30,37 @@
 
 			</div>
 			<div class="form-group">
-				<label>Mã sinh viên:</label>
-				<form:input class="form-control" type="text" path="maSV" />
+				<label>ma sv</label>
+				<form:input class="form-control" type="text" path="masv" />
 				<br>
 
 			</div>
 
 			<div class="form-group">
-				<label>Tên Sinh Viên:</label>
-				<form:input class="form-control" type="text" path="tenSV" />
+				<label>ten sv:</label>
+				<form:input class="form-control" type="text" path="tensv" />
 				<br>
 
 			</div>
 			
 			<div class="form-group">
-				<label>Images</label> <input id="upload" type="file"
-					class="form-control-file" name="file">
-			</div>
+				<label>lop:</label>
+				<form:input class="form-control" type="text" path="lopHoc" />
+				<br>
 
+			</div>
+			
 			<div class="form-group">
 				<label>Năm Sinh:</label>
-				<form:input class="form-control" type="text" path="namSinh" />
+				<form:input class="form-control" type="text" path="namsinh" />
+				<br>
+
+			</div>
+			
+			
+			<div class="form-group">
+				<label>dia chi�:</label>
+				<form:input class="form-control" type="text" path="diaChi" />
 				<br>
 
 			</div>
@@ -63,17 +73,8 @@
 			</div>
 
 			<div class="form-group">
-				<label>Địa Chỉ:</label>
-				<form:input class="form-control" type="text" path="diaChi" />
-				<br>
-
-			</div>
-
-			<div class="form-group">
-				<label>Lớp học:</label>
-				<form:input class="form-control" type="text" path="lopHoc" />
-				<br>
-
+				<label>Images</label> <input id="upload" type="file"
+					class="form-control-file" name="file">
 			</div>
 
 			<tr>

@@ -25,7 +25,7 @@ public class SinhVienDaolmpl implements SinhVienDao {
 	public void addSV(SinhVien p) {
 		// TODO Auto-generated method stub
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		 session.persist(p);
+		session.persist(p);
 		
 	}
 /*	@SuppressWarnings("unchecked")
@@ -44,22 +44,14 @@ public class SinhVienDaolmpl implements SinhVienDao {
 		return listSinhVien;
 	}
 
-	/*@Override
+	@Override
 	public void update(SinhVien p) {
 		// TODO Auto-generated method stub
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		session.update(p);
 	}
 
-	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		Session session = (Session) this.sessionFactory.getCurrentSession();
-		SinhVien p = session.load(SinhVien.class, id);
-		if(null !=p) {
-			session.delete(p);
-		}*/
-	/*}
+
 
 	@Override
 	public SinhVien getSinhVienById(int id) {
@@ -68,24 +60,34 @@ public class SinhVienDaolmpl implements SinhVienDao {
 		SinhVien p = (SinhVien) session.get(SinhVien.class, id);
 		return p;
 	}
+	@Override
+	public void delete(int id) {
+		
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		SinhVien p = session.load(SinhVien.class, id);
+		if(null !=p) {
+			session.delete(p);
+		}
+		
+	}
 
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	@Override
 	public List<SinhVien> getEmployeesByPage(int pageid, int total) {
 		// TODO Auto-generated method stub
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		List<SinhVien> listSinhVien = session.createQuery("FROM SinhVien").setFirstResult(pageid).setMaxResults(total).list();
 		return listSinhVien;
-	}
+	}*/
 	
-	public int countSV() {
+	/*public int countSV() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		int rowcount = session.createQuery("from SinhVien").list().size();
 		return rowcount;
 		
 
-	}
-	*/
+	}*/
+	
 
 }

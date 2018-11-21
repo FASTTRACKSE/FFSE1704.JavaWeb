@@ -26,7 +26,7 @@
 		</div>
 		<div>
 			<h3>
-				<a href="add">add new sv</a>
+				<button type="button" class="btn btn-default"><a href="add">add new sv</a></button>
 			</h3>
 		</div>
 
@@ -37,11 +37,11 @@
 
 					<th scope="col">MA</th>
 					<th scope="col">Ten</th>
-					<th scope="col">images</th>
-					<th scope="col">namsinh</th>
-					<th scope="col">email</th>
-					<th scope="col">diachi</th>
 					<th scope="col">lophoc</th>
+					<th scope="col">namsinh</th>
+					<th scope="col">diachi</th>
+					<th scope="col">email</th>
+					<th scope="col">images</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,16 +50,15 @@
 						<td>${sv.id}</td>
 						<td>${sv.masv}</td>
 						<td>${sv.tensv}</td>
+						<td>${sv.lopHoc}</td>
+						<td>${sv.namsinh}</td>
+						<td>${sv.diaChi}</td>
+						<td>${sv.email}</td>
 						<td><img style="width: 70px; height: 70px;"
 							src="<c:url value="img/${sv.images}" />"></td>
 						<%-- <td><img style="width: 50px;" src="<c:url value="img/${sv.images}" />"></td>  --%>
-
-						<td>${sv.namsinh}</td>
-						<td>${sv.email}</td>
-						<td>${sv.diaChi}</td>
-						<td>${sv.lopHoc}</td>
-						<td><a href="editSV/${sv.id}" class="btn btn-success">Edit</a>
-							<a href="deleteSV/${sv.id}" class="btn btn-danger">Delete</a></td>
+						<td><a href="edit/${sv.id}" class="btn btn-success">Edit</a>
+							<a href="del/${sv.id}" class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
