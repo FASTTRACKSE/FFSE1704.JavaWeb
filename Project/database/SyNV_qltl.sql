@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 02, 2018 at 09:53 AM
+-- Generation Time: Nov 27, 2018 at 20:00 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -126,10 +126,6 @@ INSERT INTO `trang_thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
 --
 ALTER TABLE `danh_muc`
   ADD PRIMARY KEY (`id`);
-
-
-
-
 
 --
 -- Indexes for table `tai_lieu`
