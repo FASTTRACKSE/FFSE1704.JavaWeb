@@ -20,27 +20,7 @@ SET time_zone = "+00:00";
 -- Database: `ffse1704`
 --
 
--- --------------------------------------------------------
 
---
--- Table structure for table `chuc_danh`
---
-
-CREATE TABLE IF NOT EXISTS `chuc_danh` (
-  `ma_chuc_danh` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_chuc_danh` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `chuc_danh`
---
-
-INSERT INTO `chuc_danh` (`ma_chuc_danh`, `ten_chuc_danh`) VALUES
-('GD', 'Giám đốc'),
-('NV', 'Nhân viên'),
-('PGD', 'Phó Giám đốc'),
-('PP', 'Phó phòng'),
-('TP', 'Trưởng phòng');
 
 -- --------------------------------------------------------
 
@@ -66,29 +46,7 @@ INSERT INTO `danh_muc` (`id`, `ma_danh_muc`, `ten_danh_muc`, `image`) VALUES
 
 
 
--- --------------------------------------------------------
 
---
--- Table structure for table `quyen_truy_cap`
---
-
-CREATE TABLE IF NOT EXISTS `quyen_truy_cap` (
-  `id` int(11) NOT NULL,
-  `ma_phong_ban` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_phong_ban` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `quyen_truy_cap`
---
-
-INSERT INTO `quyen_truy_cap` (`id`, `ma_phong_ban`, `ten_phong_ban`) VALUES
-(1, 'PDA', 'Phòng Dự Án'),
-(2, 'PDT', 'Phòng Đào Tạo'),
-(3, 'PGD', 'Phòng Dám Đốc'),
-(4, 'PIT', 'Phòng IT'),
-(5, 'PKT', 'Phòng Kế Toán'),
-(6, 'PNS', 'Phòng Nhân Sự');
 
 
 -- --------------------------------------------------------
