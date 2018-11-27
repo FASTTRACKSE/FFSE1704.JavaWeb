@@ -1,6 +1,9 @@
 # CDT- autotools
 .autotools
 
+# Compiled class file	
+*.class
+
 Project/FBMS/Servers**
 
 # Log file
@@ -26,11 +29,11 @@ hs_err_pid*
 *.war
 
 ### Eclipse ###
-*.ear	
-*.class	
- 	 
+*.ear
+*.class
+
 # eclipse specific git ignore	
-*.pydevproject	
+*.pydevproject
 .metadata
 bin/**
 tmp/**
