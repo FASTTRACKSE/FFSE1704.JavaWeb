@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ffse1704.entity.BangDiem;
 import ffse1704.entity.SinhVien;
 import ffse1704.service.SinhVienService;
 
@@ -39,7 +41,7 @@ public class StudentsController {
 
 	@RequestMapping("/addSV")
 	public ModelAndView hihi() {
-		return new ModelAndView("addSV", "command", new SinhVien());
+		return new ModelAndView("addSV", "sinhVien", new SinhVien());
 	}
 
 	// danh sách sinh viên có phân trang
@@ -63,12 +65,15 @@ public class StudentsController {
 
 	// Hàm thêm sinh viên
 	@RequestMapping(value = "/saveSV", method = RequestMethod.POST)
-	public ModelAndView addSV(@ModelAttribute("sinhVien") SinhVien sinhVien,
+	public ModelAndView addSV(@ModelAttribute("sinhVien") @Valid SinhVien sinhVien,BindingResult bindingResult,
 			@RequestParam("file") CommonsMultipartFile file) throws IllegalStateException, IOException {
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			sinhVien.setImages(fileName);
 		}
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("addSV");        
+			}
 		sinhVienService.addSV(sinhVien);
 		return new ModelAndView("redirect:/ViewSinhVien");
 
@@ -133,6 +138,13 @@ public class StudentsController {
 		}
 		return fileName;
 
+	}
+	@RequestMapping(value = "/list_Score/{maSV}")
+	public String BangDiem(@PathVariable String maSV,Model model) {
+	List<BangDiem> listScore = sinhVienService.getDiemSV(maSV);
+		model.addAttribute("listScore",listScore);
+		return "ListScore";
+		
 	}
 
 }

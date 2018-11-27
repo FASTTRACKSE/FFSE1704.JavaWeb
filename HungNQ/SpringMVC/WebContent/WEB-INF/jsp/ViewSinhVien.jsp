@@ -56,7 +56,7 @@
 						<td>${sv.diaChi}</td>
 						<td>${sv.lopHoc}</td>
 						<td><a href="editSV/${sv.id}" class="btn btn-success">Edit</a> <a
-							href="deleteSV/${sv.id}" class="btn btn-danger">Delete</a></td>
+							href="deleteSV/${sv.id}" class="btn btn-danger">Delete</a> </td>
 					</tr>
 				</c:forEach>
 			</tbody>

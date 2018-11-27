@@ -1,5 +1,6 @@
 package ffse1702016.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,25 +8,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "student")
-public class SinhVien {
+public class SinhVien{
+	/**
+	 * 
+	 */
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String maSV;
-
 	private String tenSV;
-
 	private String images;
-
 	private int namSinh;
 	private String email;
 	private String diaChi;
 	private String lopHoc;
-
+	
 	public SinhVien() {
 		super();
 		// TODO Auto-generated constructor stub

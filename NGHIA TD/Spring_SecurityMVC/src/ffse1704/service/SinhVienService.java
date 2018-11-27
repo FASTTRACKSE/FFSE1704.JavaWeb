@@ -2,6 +2,7 @@ package ffse1704.service;
 
 import java.util.List;
 
+import ffse1704.entity.BangDiem;
 import ffse1704.entity.SinhVien;
 
 public interface SinhVienService {
@@ -13,7 +14,7 @@ public interface SinhVienService {
 
 	public SinhVien getSinhVienById(int id);
 
-//	public List<SinhVien> getAllSinhVien();
+	public List<BangDiem> getDiemSV(String maSV);
 
 	public List<SinhVien> getEmployeesByPage(int pageid, int total);
 

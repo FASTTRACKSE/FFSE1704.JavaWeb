@@ -5,6 +5,7 @@ import java.util.List;
 import ffse1702016.entity.SinhVien;
 
 public interface SinhVienService {
+	
 	public void addSV(SinhVien p);
 
 	public void update(SinhVien p);
@@ -13,7 +14,6 @@ public interface SinhVienService {
 
 	public SinhVien getSinhVienById(int id);
 
-//	public List<SinhVien> getAllSinhVien();
 
 	public List<SinhVien> getEmployeesByPage(int pageid, int total);
 

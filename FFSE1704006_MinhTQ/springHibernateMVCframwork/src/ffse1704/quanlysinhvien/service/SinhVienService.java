@@ -2,6 +2,7 @@ package ffse1704.quanlysinhvien.service;
 
 import java.util.List;
 
+import ffse1704.quanlysinhvien.entity.DiemSinhVien;
 import ffse1704.quanlysinhvien.entity.SinhVien;
 
 public interface SinhVienService {

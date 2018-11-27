@@ -8,6 +8,7 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ffse1704.entity.BangDiem;
 import ffse1704.entity.SinhVien;
 
 @Repository
@@ -77,6 +78,14 @@ public class SinhVienDAOImpl implements SinhVienDAO {
 				.setProjection(Projections.rowCount()).uniqueResult();
 		
 
+	}
+
+	@Override
+	public List<BangDiem> getDiemSV(String maSV) {
+		Session session = sessionFactory.getCurrentSession();
+		List<BangDiem> listDiem = session.createQuery("from BangDiem where maSV='"+ maSV +"'", BangDiem.class).list();
+		// TODO Auto-generated method stub
+		return listDiem;
 	}
 
 	
