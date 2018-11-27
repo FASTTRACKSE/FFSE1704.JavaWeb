@@ -15,9 +15,8 @@ public class HeDaoTaoNganHanJaVa implements HeDaoTao{
 	@Override
 	public String getThongTinHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "Đào tạo ngắn hạn java";
+		return "Đào tạo ngắn hạn JAVA";
 	}
-
 
 	public List<MonHoc> getDsMonHoc() {
 		return dsMonHoc;
@@ -26,5 +25,8 @@ public class HeDaoTaoNganHanJaVa implements HeDaoTao{
 	public void setDsMonHoc(List<MonHoc> dsMonHoc) {
 		this.dsMonHoc = dsMonHoc;
 	}
+
+
+
 
 }

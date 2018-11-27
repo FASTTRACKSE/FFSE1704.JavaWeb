@@ -3,9 +3,9 @@ package quanlihocsinh.entity;
 public class DaoTaoOffLine implements LoaiDaoTao{
 
 	 String MaLoaiDaoTao="MuHH-hahaha";
-	 String thongTinLoaiDaoTao="Đào tạo offline:\r\n" + 
-	 		"o	Thời gian: sáng từ 8h00, chiều từ 13h30, tối từ 18h30\r\n" + 
-	 		"o	Địa chỉ: Toà nhà FPT, KCN An Đồn";
+	 String thongTinLoaiDaoTao="Đào Tạo offline:\r\n" + 
+	 		"o	Thá»�i gian: sÃ¡ng tá»« 8h00, chiá»�u tá»« 13h30, tá»‘i tá»« 18h30\r\n" + 
+	 		"o	Ä�á»‹a chá»‰: ToÃ  nhÃ  FPT, KCN An Ä�á»“n";
 	public DaoTaoOffLine() {
 		super();
 		// TODO Auto-generated constructor stub

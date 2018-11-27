@@ -10,6 +10,13 @@ public class LoaiHinhHocOnline implements TheLoaiHinhHoc {
 		// TODO Auto-generated constructor stub
 	}
 
+	public LoaiHinhHocOnline(String theLoai, String thoiGian, String diaChi) {
+		super();
+		this.theLoai = theLoai;
+		this.thoiGian = thoiGian;
+		this.diaChi = diaChi;
+	}
+
 	public String getTheLoai() {
 		return theLoai;
 	}
@@ -33,7 +40,5 @@ public class LoaiHinhHocOnline implements TheLoaiHinhHoc {
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-
-	
 
 }

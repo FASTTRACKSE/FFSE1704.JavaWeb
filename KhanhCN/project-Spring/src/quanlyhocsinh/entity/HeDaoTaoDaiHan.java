@@ -5,8 +5,8 @@ import java.util.List;
 import quanlyhocsinh.monhoc.*;
 
 public class HeDaoTaoDaiHan implements HeDaoTao {
-	String maHeDaoTao = "FFSE1704";
-	String thongTinDaoTao = "Đào tạo 16 tháng full các môn lập trình";
+	String maHeDaoTao ;
+	String thongTinDaoTao ;
 	List<MonHoc> danhSachMonHoc;
 
 	public HeDaoTaoDaiHan(String maHeDaoTao, String thongTinDaoTao, List<MonHoc> danhSachMonHoc) {

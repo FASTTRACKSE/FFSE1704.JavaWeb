@@ -20,13 +20,13 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 	@Override
 	public String getMaHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "HIHI";
+		return "Mã 0010101";
 	}
 
 	@Override
 	public String getThongTinHeDaoTao() {
 		// TODO Auto-generated method stub
-		return "Dài Hạn";
+		return "Hệ đào tạo Dài Hạn";
 	}
 
 

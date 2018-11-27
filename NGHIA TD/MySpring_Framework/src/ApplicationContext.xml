@@ -13,89 +13,96 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<bean id="giangvien1" class="giangvien.GiangVien"
 		scope="prototype">
+		<property name="tenGiangVien" value="Trương Hòa Bình"></property>
+		<property name="email" value="toananndSonTra@gmail.com"></property>
+	
+	</bean>
+	
+	<bean id="giangvien2" class="giangvien.GiangVien"
+		scope="prototype">
 		<property name="tenGiangVien" value="Cao Lê Thành"></property>
 		<property name="email" value="ghghgh@gmail.com"></property>
 
 	</bean>
-
-	<bean id="giangvien2" class="giangvien.GiangVien"
-		scope="prototype">
-		<property name="tenGiangVien" value="Nguyễn thanh Lâm"></property>
-		<property name="email" value="Lamnt@gmail.com"></property>
-	</bean>
-
 	<bean id="giangvien3" class="giangvien.GiangVien"
 		scope="prototype">
-		<property name="tenGiangVien" value="Trần Minh Thắng"></property>
-		<property name="email" value="thangntntnt@gmail.com"></property>
+		<property name="tenGiangVien" value="Nguyễn Sào Nam"></property>
+		<property name="email" value="SaoNam@gmail.com"></property>
+	
 	</bean>
-
-	<bean id="lapTrinhCoBan"
-		class="quanlihocsinh.monhoc.LapTrinhCoBan">
-
+	<bean id="giangvien4" class="giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Nguyễn Hữu Thọ"></property>
+		<property name="email" value="hothfuf@gmail.com"></property>
+	
 	</bean>
-	<bean id="lapTrinhJaVaCoBan"
-		class="quanlihocsinh.monhoc.LapTrinhJaVaCoBan">
-
+	<bean id="giangvien5" class="giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="Trần nnnnnd Hữu Thọ"></property>
+		<property name="email" value="hothfuf@gmail.com"></property>
+	
 	</bean>
-	<bean id="lapTrinhJaVaWeb"
-		class="quanlihocsinh.monhoc.LapTrinhJaVaWeb">
-
+	<bean id="giangvien6" class="giangvien.GiangVien"
+		scope="prototype">
+		<property name="tenGiangVien" value="trần thị bé"></property>
+		<property name="email" value="hothfuf@gmail.com"></property>
+	
 	</bean>
-	<bean id="lapTrinhPHPMySQL"
-		class="quanlihocsinh.monhoc.LapTrinhPHPMySQL">
+	<bean id="lapTrinhCoBan" class="quanlihocsinh.monhoc.LapTrinhCoBan">
+		 <property name="giangVien" ref="giangvien2"></property> 
+		</bean>
+	
+	<bean id="lapTrinhJaVaCoBan" class="quanlihocsinh.monhoc.LapTrinhJaVaCoBan">
+		 <property name="giangVien" ref="giangvien1"></property>
+		</bean>
+		
+		<bean id="lapTrinhJaVaWeb" class="quanlihocsinh.monhoc.LapTrinhJaVaWeb">
+		<property name="giangVien" ref="giangvien3"></property>
+		</bean>
+		
+		<bean id="lapTrinhWebFrontEnd" class="quanlihocsinh.monhoc.LapTrinhWebFrontEnd">
+		 <property name="giangVien" ref="giangvien4"></property>
+		</bean>
 
-	</bean>
-	<bean id="lapTrinhWebFrontEnd"
-		class="quanlihocsinh.monhoc.LapTrinhWebFrontEnd">
-
-	</bean>
-	<bean id="quyTrinhDuAn" class="quanlihocsinh.monhoc.QuyTrinhDuAn">
-
-	</bean>
-	<bean id="tinHocVanPhong"
-		class="quanlihocsinh.monhoc.TinHocVanPhong">
-		<property name="giangVien" ref="giangvien1"></property>
-	</bean>
-
-	<bean id="heDaoTaoDaiHan"
-		class="quanlihocsinh.entity.HeDaoTaoDaiHan">
+		<bean id="quyTrinhDuAn" class="quanlihocsinh.monhoc.QuyTrinhDuAn">
+		 <property name="giangVien" ref="giangvien5"></property> 
+		</bean>
+		
+		<bean id="tinHocVanPhong" class="quanlihocsinh.monhoc.TinHocVanPhong">
+		<property name="giangVien" ref="giangvien6"></property>
+		</bean>
+		
+		<bean id="heDaoTaoDaiHan" class="quanlihocsinh.entity.HeDaoTaoDaiHan">
 		<property name="dsMonHoc">
 			<list>
 				<ref bean="tinHocVanPhong"/>
+			
 			</list>
 		</property>
-	</bean>
+		</bean>
 	
-	
-	
-	<bean id="heDaoTaoNganHanJaVa"
-		class="quanlihocsinh.entity.HeDaoTaoNganHanJaVa">
+		
+		<bean id="heDaoTaoNganHanJaVa" class="quanlihocsinh.entity.HeDaoTaoNganHanJaVa">
 		<property name="dsMonHoc">
 			<list>
-				<ref bean="lapTrinhCoBan" />
-				<ref bean="lapTrinhJaVaCoBan" />
-				<ref bean="lapTrinhJaVaWeb" />
+				<ref bean="tinHocVanPhong"/>
+				<ref bean="lapTrinhJaVaCoBan"/>
+				<ref bean="lapTrinhJaVaWeb"/>
 			</list>
 		</property>
-	</bean>
-
-
-	<bean id="heDaoTaoNganHanPHP"
-		class="quanlihocsinh.entity.HeDaoTaoNganHanPHP">
+		</bean>
+		
+		<bean id="heDaoTaoNganHanPHP" class="quanlihocsinh.entity.HeDaoTaoNganHanPHP">
 		<property name="dsMonHoc">
 			<list>
-				<ref bean="lapTrinhPHPMySQL" />
-				<ref bean="lapTrinhJaVaCoBan" />
-				<ref bean="lapTrinhWebFrontEnd" />
+			
+				<ref bean="lapTrinhJaVaCoBan"/>
+				<ref bean="lapTrinhJaVaWeb"/>
 			</list>
 		</property>
-	</bean>
-
-
-
-
-
+		</bean>
+		
+		
 
 	<bean id="sinhvien1" class="quanlihocsinh.entity.HocSinh"
 		scope="prototype">
