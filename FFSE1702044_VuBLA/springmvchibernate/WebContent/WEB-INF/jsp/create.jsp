@@ -22,7 +22,7 @@
 		<h1 style="text-align: center;">Thêm sinh viên</h1>
 		<form:form action="create" method="post" enctype="multipart/form-data"
 			modelAttribute="user">
-			
+
 			<div class="form-group">
 				<label>Mã sinh viên</label>
 				<form:input path="maSV"></form:input>
@@ -49,6 +49,7 @@
 				<form:input path="lopHoc" cssClass="form-control"></form:input>
 				<form:errors style="color:red" path="lopHoc" />
 			</div>
+			
 			<div class="form-group">
 				<label>Avatar</label> <input id="upload" type="file"
 					class="form-control-file" name="file" />

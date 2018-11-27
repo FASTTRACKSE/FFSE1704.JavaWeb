@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<title>~ JunBjn ~</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"></link>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	
+</h:head>
+
+<h:body>
+	<div style="margin-top: 5px;" class="container">
+		<h3 style="float: left">User List</h3>
+		<h:form style="float: right" class="form-inline" action="" method="GET">
+		    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" ></input>
+		    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</h:form>
+		<div class="dropdown" style="width: 20%; float: right; text-align: center">
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Language
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="user?lang=vi_VN">Vietnam</a>
+		    <a class="dropdown-item" href="user?lang=en_US">English</a>
+		  </div>
+		</div>
+		<p style="float: right; text-align: right">
+			<a href="user/add"><button type="button" class="btn btn-success">Add_new_user</button></a>
+		</p>
+		<script type="text/javascript" class="init">
+			/* $(document).ready(function() {
+				$('#table').DataTable();
+			} ); */
+		</script>
+		
+		<h:form id="studentForm">
+			<h:dataTable id="table" binding="#{table}" value="#{user.studentsList()}" var="user" class="table table-striped">
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{table.rowIndex + 1}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Username</f:facet>
+					<h:outputText value="#{user.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					<h:outputText value="#{user.email}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Sex</f:facet>
+					<h:outputText value="#{user.sex}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Country</f:facet>
+					<h:outputText value="#{user.country}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:commandButton action="#{user.updateUser(user.id)}" value="Update" class="btn btn-primary" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
+</h:body>
+</html>

@@ -34,13 +34,21 @@
 			</thead>
 			<tbody>
 				<c:forEach var="sv" items="${list}">
+
 					<tr>
 						<th scope="row">${sv.maSV}</th>
 						<td>${sv.tenSV }</td>
-						<td>${sv.namSinh }</td>
+						<td>${2018-sv.namSinh }</td>
 						<td>${sv.diaChi }</td>
 						<td>${sv.lopHoc }</td>
-						<td>${sv.DiemSV.diem}</td>
+						<td><c:forEach var="diem" items="${sv.listDiem}">
+								Môn Học: ${diem.maMH } ---
+								Điểm : ${diem.diem} 
+								
+								</br>
+								</br>
+
+							</c:forEach></td>
 
 						<td><img style="width: 100px; height: 100px;"
 							src="/springmvchibernate/Image/${sv.avatar}" alt="image"></td>
@@ -78,5 +86,14 @@
 		</ul>
 		</nav>
 	</div>
+	<style>
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+</style>
 </body>
 </html>

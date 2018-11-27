@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>JSF Hello World</title>
+</h:head>
+<h:body>
+	<h2>Pagination JSF</h2>
+	<h:form>
+		<h:commandButton value="|&#60;" action="#{helloBean.getFirstPage()}"></h:commandButton>
+		<h:commandButton value="&#60;&#60;" action="#{helloBean.getPrev10Page()}"></h:commandButton>
+		<h:commandButton value="&#60;" action="#{helloBean.getPrevPage()}"></h:commandButton>
+		<h:outputText value="#{helloBean.pageNo}" />
+		<h:commandButton value=">" action="#{helloBean.getNextPage()}"></h:commandButton>
+		<h:commandButton value=">>" action="#{helloBean.getNext10Page()}"></h:commandButton>
+		<h:commandButton value=">|" action="#{helloBean.getLastPage()}"></h:commandButton>
+	</h:form>
+</h:body>
+</html>
