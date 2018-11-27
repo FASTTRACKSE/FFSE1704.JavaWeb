@@ -1,7 +1,7 @@
 package springmvchibernate.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -52,12 +51,17 @@ public class User implements Serializable {
 	@NotEmpty
 	private String maSV;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "maSV", referencedColumnName = "maSV", insertable=false, updatable=false)
-	private DiemSV DiemSV1;
-	
-	
-	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.MERGE)
+	private List<DiemSV> listDiem;
+		
+	public List<DiemSV> getListDiem() {
+		return listDiem;
+	}
+
+	public void setListDiem(List<DiemSV> listDiem) {
+		this.listDiem = listDiem;
+	}
+
 	public String getAvatar() {
 		return avatar;
 	}
@@ -117,14 +121,6 @@ public class User implements Serializable {
 
 	public void setLopHoc(String lopHoc) {
 		this.lopHoc = lopHoc;
-	}
-
-	public DiemSV getDiemSV1() {
-		return DiemSV1;
-	}
-
-	public void setDiemSV1(DiemSV diemSV1) {
-		DiemSV1 = diemSV1;
 	}
 
 	public static long getSerialversionuid() {
