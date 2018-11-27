@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2018 at 20:00 AM
+-- Generation Time: Nov 27, 2018 at 20:00 PM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
