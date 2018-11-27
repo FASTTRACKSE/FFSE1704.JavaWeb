@@ -14,8 +14,6 @@ public interface SinhVienDAO  {
 
 	public SinhVien getSinhVienById(int id);
 
-//	public List<SinhVien> getAllSinhVien();
-
 	public List<SinhVien> getEmployeesByPage(int pageid, int total);
 
 	public long countSV();

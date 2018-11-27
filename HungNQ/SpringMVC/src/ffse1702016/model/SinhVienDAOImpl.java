@@ -27,7 +27,7 @@ public class SinhVienDAOImpl implements SinhVienDAO {
 	public void addSV(SinhVien p) {
 		// TODO Auto-generated method stub
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		 session.persist(p);
+		session.persist(p);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class SinhVienDAOImpl implements SinhVienDAO {
 		// TODO Auto-generated method stub
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		SinhVien p = session.load(SinhVien.class, id);
-		if(null !=p) {
+		if (null != p) {
 			session.delete(p);
 		}
 	}
@@ -55,18 +55,19 @@ public class SinhVienDAOImpl implements SinhVienDAO {
 		return p;
 	}
 
-//	@Override
-//	public List<SinhVien> getAllSinhVien() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	// @Override
+	// public List<SinhVien> getAllSinhVien() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SinhVien> getEmployeesByPage(int pageid, int total) {
-		
+
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		List<SinhVien> listSinhVien = session.createQuery("FROM SinhVien").setFirstResult(pageid).setMaxResults(total).list();
+		List<SinhVien> listSinhVien = session.createQuery("FROM SinhVien").setFirstResult(pageid).setMaxResults(total)
+				.list();
 		return listSinhVien;
 	}
 
@@ -75,9 +76,8 @@ public class SinhVienDAOImpl implements SinhVienDAO {
 		// TODO Auto-generated method stub
 		return (Long) sessionFactory.getCurrentSession().createCriteria(SinhVien.class)
 				.setProjection(Projections.rowCount()).uniqueResult();
-		
 
 	}
 
-	
+
 }
