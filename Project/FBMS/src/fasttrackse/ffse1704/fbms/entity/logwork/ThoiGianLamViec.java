@@ -50,6 +50,125 @@ public class ThoiGianLamViec {
 	
 	@Column(name="nhan_xet_tpp", nullable = true)
 	private String nhanXetTPP;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMaDuAn() {
+		return maDuAn;
+	}
+
+	public void setMaDuAn(String maDuAn) {
+		this.maDuAn = maDuAn;
+	}
+
+	public String getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
+	public int getMaVaiTro() {
+		return maVaiTro;
+	}
+
+	public void setMaVaiTro(int maVaiTro) {
+		this.maVaiTro = maVaiTro;
+	}
+
+	public int getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(int maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public String getTenCongViec() {
+		return tenCongViec;
+	}
+
+	public void setTenCongViec(String tenCongViec) {
+		this.tenCongViec = tenCongViec;
+	}
+
+	public String getMoTa() {
+		return moTa;
+	}
+
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
+	}
+
+	public int getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(int trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public Date getThoiGianBatDau() {
+		return thoiGianBatDau;
+	}
+
+	public void setThoiGianBatDau(Date thoiGianBatDau) {
+		this.thoiGianBatDau = thoiGianBatDau;
+	}
+
+	public Date getThoiGianKetThuc() {
+		return thoiGianKetThuc;
+	}
+
+	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
+		this.thoiGianKetThuc = thoiGianKetThuc;
+	}
+
+	public String getNhanXetPM() {
+		return nhanXetPM;
+	}
+
+	public void setNhanXetPM(String nhanXetPM) {
+		this.nhanXetPM = nhanXetPM;
+	}
+
+	public String getNhanXetTPP() {
+		return nhanXetTPP;
+	}
+
+	public void setNhanXetTPP(String nhanXetTPP) {
+		this.nhanXetTPP = nhanXetTPP;
+	}
+
+	public ThoiGianLamViec() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ThoiGianLamViec(int id, String maDuAn, String maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec,
+			String moTa, int trangThai, Date thoiGianBatDau, Date thoiGianKetThuc, String nhanXetPM,
+			String nhanXetTPP) {
+		super();
+		this.id = id;
+		this.maDuAn = maDuAn;
+		this.maNhanVien = maNhanVien;
+		this.maVaiTro = maVaiTro;
+		this.maPhongBan = maPhongBan;
+		this.tenCongViec = tenCongViec;
+		this.moTa = moTa;
+		this.trangThai = trangThai;
+		this.thoiGianBatDau = thoiGianBatDau;
+		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.nhanXetPM = nhanXetPM;
+		this.nhanXetTPP = nhanXetTPP;
+	}
 	
 	
 	
