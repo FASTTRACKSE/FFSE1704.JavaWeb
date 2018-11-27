@@ -107,7 +107,7 @@
 				
 
 				
-			<Context docBase="QLSV_CRUD_Spring" path="/QLSV_CRUD_Spring" reloadable="true" source="org.eclipse.jst.jee.server:QLSV_CRUD_Spring"/></Host>
+			<Context docBase="QLSV_CRUD_Spring" path="/QLSV_CRUD_Spring" reloadable="true" source="org.eclipse.jst.jee.server:QLSV_CRUD_Spring"/><Context docBase="mvchibrenate" path="/mvchibrenate" reloadable="true" source="org.eclipse.jst.jee.server:mvchibrenate"/></Host>
 		</Engine>
 	</Service>
 </Server>
