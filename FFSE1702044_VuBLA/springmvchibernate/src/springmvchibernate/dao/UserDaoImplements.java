@@ -58,7 +58,8 @@ public class UserDaoImplements implements UserDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(user);
 	}
-
+	
+	
 /*	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllForPaging() {

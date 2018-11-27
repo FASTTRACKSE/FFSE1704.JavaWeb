@@ -32,8 +32,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	
-
 	@Autowired
 	@Qualifier(value = "userServiceImplements")
 	public void setUserService(UserService userService) {
@@ -41,9 +39,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/list")
-	public String listDuAn(Model model, HttpServletRequest request) {
+	public String listDuAn(@PathVariable int pageid, Model model, HttpServletRequest request) {
+		int perPage = 3;
+		
 		model.addAttribute("list", userService.listUser());
-		return "redirect:/list";
+		return "list";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -88,9 +88,6 @@ public class UserController {
 		userService.update(user);
 		return "redirect:/list";
 	}
-	public void getData(ModelMap mm) {
-		mm.put("list", userService.listUser());
-	}
 
 	public String uploadFile(MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException {
 		File fileImage = new File("D:\\Image");
@@ -111,6 +108,7 @@ public class UserController {
 		}
 		return fileName;
 	}
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 
