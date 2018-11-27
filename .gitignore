@@ -1,9 +1,6 @@
 # CDT- autotools
 .autotools
 
-# Compiled class file	
-*.class
-
 Project/FBMS/Servers**
 
 # Log file
