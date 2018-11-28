@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HeDaoTaoLienKetCD implements HeDaoTao {
 	
@@ -13,7 +13,7 @@ public class HeDaoTaoLienKetCD implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "Đào tạo dài hạn + cao đẳng 2 năm trời thương nhớ";
+		return "Đào tạo nhận bằng Cao đẳng sau 2 năm";
 	}
 
 	@Override

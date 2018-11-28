@@ -1,6 +1,6 @@
-package quanlyhocsinh.entity.MonHoc;
+package quanlyhocsinh.entity.monhoc;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
+import quanlyhocsinh.entity.giangvien.GiangVien;
 
 public class TinHocVanPhong implements MonHoc {
 
@@ -9,7 +9,7 @@ public class TinHocVanPhong implements MonHoc {
 		// TODO Auto-generated constructor stub
 	}
 
-	String tenMonHoc = "Tin Há»�c VÄƒn PhÃ²ng";
+	String tenMonHoc = "Tin Học Văn Phòng";
 	GiangVien giangVien;
 
 	public TinHocVanPhong(GiangVien giangVien) {
@@ -50,7 +50,7 @@ public class TinHocVanPhong implements MonHoc {
 	@Override
 	public String getTenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Tin Há»�c VÄƒn PhÃ²ng";
+		return "Tin Học Văn Phòng";
 	}
 
 }

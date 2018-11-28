@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HeDaoTaoDaiHan implements HeDaoTao {
 	List<MonHoc> danhSachMonHoc;
@@ -28,7 +28,7 @@ public class HeDaoTaoDaiHan implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "16 tháng, sáng 8h30, chiều 13h30";
+		return "16 th�ng FULL A-Z";
 	}
 
 	

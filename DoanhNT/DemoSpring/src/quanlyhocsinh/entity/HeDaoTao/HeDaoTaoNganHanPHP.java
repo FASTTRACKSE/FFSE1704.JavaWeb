@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HeDaoTaoNganHanPHP implements HeDaoTao {
 
@@ -13,7 +13,7 @@ public class HeDaoTaoNganHanPHP implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "Đào tạo dài hạn ngắn hạn PHP & MySQL 6 tháng";
+		return "Đào tạo cấp tốc PHP";
 	}
 
 	List<MonHoc> danhSachMonHoc;

@@ -1,8 +1,8 @@
-package quanlyhocsinh.entity.HeDaoTao;
+package quanlyhocsinh.entity.hedaotao;
 
 import java.util.List;
 
-import quanlyhocsinh.entity.MonHoc.MonHoc;
+import quanlyhocsinh.entity.monhoc.MonHoc;
 
 public class HeDaoTaoNganHanJava implements HeDaoTao {
 
@@ -13,7 +13,7 @@ public class HeDaoTaoNganHanJava implements HeDaoTao {
 
 	@Override
 	public String getThongTinHeDaoTao() {
-		return "Đào tạo dài hạn ngắn hạn Java 6 tháng";
+		return "Đào tạo cấp tốc Java";
 	}
 
 	List<MonHoc> danhSachMonHoc;

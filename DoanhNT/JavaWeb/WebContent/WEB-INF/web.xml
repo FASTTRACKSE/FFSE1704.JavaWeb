@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JavaWeb</display-name>
+  
+  <context-param>
+  	<param-name>account</param-name>
+  	<param-value>tiger</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>song</param-name>
+  	<param-value>123</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>test.servlets.HelloWorld</servlet-class>
+    <init-param>
+    	<param-name>song</param-name>
+    	<param-value>Im am yours</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/HelloWorld</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Login</servlet-name>
+    <servlet-class>test.servlets.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Validate</servlet-name>
+    <servlet-class>test.models.Validate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Validate</servlet-name>
+    <url-pattern>/Validate</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Test</servlet-name>
+    <servlet-class>test.servlets.Test</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Test</servlet-name>
+    <url-pattern>/Test</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>sample</servlet-name>
+    <jsp-file>/sample.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sample</servlet-name>
+    <url-pattern>/sample</url-pattern>
+  </servlet-mapping>
+</web-app>

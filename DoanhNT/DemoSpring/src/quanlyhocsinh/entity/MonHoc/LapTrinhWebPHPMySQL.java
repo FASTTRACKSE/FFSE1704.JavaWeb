@@ -1,6 +1,6 @@
-package quanlyhocsinh.entity.MonHoc;
+package quanlyhocsinh.entity.monhoc;
 
-import quanlyhocsinh.entity.GiangVien.GiangVien;
+import quanlyhocsinh.entity.giangvien.GiangVien;
 
 public class LapTrinhWebPHPMySQL implements MonHoc {
 
@@ -9,7 +9,7 @@ public class LapTrinhWebPHPMySQL implements MonHoc {
 		// TODO Auto-generated constructor stub
 	}
 
-	String tenMonHoc = "Lập Trình Web PHP&MySQL";
+	String tenMonHoc = "Lập trình Web PHP&MySQL";
 	GiangVien giangVien;
 
 	public LapTrinhWebPHPMySQL(GiangVien giangVien) {
@@ -50,7 +50,7 @@ public class LapTrinhWebPHPMySQL implements MonHoc {
 	@Override
 	public String getTenMonHoc() {
 		// TODO Auto-generated method stub
-		return "Lập Trình Web PHP&MySQL";
+		return "Lập trình Web PHP&MySQL";
 	}
 
 }
