@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.security;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.security;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
