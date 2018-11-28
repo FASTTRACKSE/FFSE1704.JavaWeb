@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2018 lúc 02:07 PM
+-- Thời gian đã tạo: Th10 28, 2018 lúc 09:53 AM
 -- Phiên bản máy phục vụ: 10.1.32-MariaDB
 -- Phiên bản PHP: 7.2.5
 
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `che_do_huong` (
   `id` int(11) NOT NULL,
-  `id_che_do` int(11) NOT NULL,
   `luong` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -38,10 +37,10 @@ CREATE TABLE `che_do_huong` (
 -- Đang đổ dữ liệu cho bảng `che_do_huong`
 --
 
-INSERT INTO `che_do_huong` (`id`, `id_che_do`, `luong`) VALUES
-(1, 1, 'không có'),
-(2, 2, 'một nữa'),
-(3, 3, 'đầy đủ');
+INSERT INTO `che_do_huong` (`id`, `luong`) VALUES
+(1, 'không có'),
+(2, 'một nữa'),
+(3, 'đầy đủ');
 
 -- --------------------------------------------------------
 
@@ -72,7 +71,6 @@ INSERT INTO `chung_chi` (`id`, `ma_nhan_vien`, `ten_chung_chi`, `ngay_cap`, `don
 
 CREATE TABLE `danh_sach_ngay_nghi` (
   `id` int(11) NOT NULL,
-  `id_ngay_nghi` int(11) NOT NULL,
   `ten_ngay_nghi` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -80,11 +78,11 @@ CREATE TABLE `danh_sach_ngay_nghi` (
 -- Đang đổ dữ liệu cho bảng `danh_sach_ngay_nghi`
 --
 
-INSERT INTO `danh_sach_ngay_nghi` (`id`, `id_ngay_nghi`, `ten_ngay_nghi`) VALUES
-(1, 1, 'Nghỉ đau ốm'),
-(2, 2, 'Nghỉ tang gia'),
-(3, 3, 'Nghỉ ngày thường'),
-(4, 4, 'Nghỉ sinh đẻ');
+INSERT INTO `danh_sach_ngay_nghi` (`id`, `ten_ngay_nghi`) VALUES
+(1, 'Nghỉ đau ốm'),
+(2, 'Nghỉ tang gia'),
+(3, 'Nghỉ ngày thường'),
+(4, 'Nghỉ sinh đẻ');
 
 -- --------------------------------------------------------
 
@@ -236,7 +234,6 @@ INSERT INTO `thong_tin_hop_dong` (`id`, `ma_nhan_vien`, `ma_hop_dong`, `ngay_bat
 
 CREATE TABLE `trinh_do` (
   `id` int(11) NOT NULL,
-  `id_trinh_do` int(11) NOT NULL,
   `ten_trinh_do` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -244,9 +241,9 @@ CREATE TABLE `trinh_do` (
 -- Đang đổ dữ liệu cho bảng `trinh_do`
 --
 
-INSERT INTO `trinh_do` (`id`, `id_trinh_do`, `ten_trinh_do`) VALUES
-(1, 1, 'tiểu học'),
-(2, 2, 'trung học');
+INSERT INTO `trinh_do` (`id`, `ten_trinh_do`) VALUES
+(1, 'tiểu học'),
+(2, 'trung học');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -385,7 +382,7 @@ COMMIT;
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2018 lúc 02:07 PM
+-- Thời gian đã tạo: Th10 28, 2018 lúc 09:53 AM
 -- Phiên bản máy phục vụ: 10.1.32-MariaDB
 -- Phiên bản PHP: 7.2.5
 
@@ -412,7 +409,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `che_do_huong` (
   `id` int(11) NOT NULL,
-  `id_che_do` int(11) NOT NULL,
   `luong` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -420,10 +416,10 @@ CREATE TABLE `che_do_huong` (
 -- Đang đổ dữ liệu cho bảng `che_do_huong`
 --
 
-INSERT INTO `che_do_huong` (`id`, `id_che_do`, `luong`) VALUES
-(1, 1, 'không có'),
-(2, 2, 'một nữa'),
-(3, 3, 'đầy đủ');
+INSERT INTO `che_do_huong` (`id`, `luong`) VALUES
+(1, 'không có'),
+(2, 'một nữa'),
+(3, 'đầy đủ');
 
 -- --------------------------------------------------------
 
@@ -454,7 +450,6 @@ INSERT INTO `chung_chi` (`id`, `ma_nhan_vien`, `ten_chung_chi`, `ngay_cap`, `don
 
 CREATE TABLE `danh_sach_ngay_nghi` (
   `id` int(11) NOT NULL,
-  `id_ngay_nghi` int(11) NOT NULL,
   `ten_ngay_nghi` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -462,11 +457,11 @@ CREATE TABLE `danh_sach_ngay_nghi` (
 -- Đang đổ dữ liệu cho bảng `danh_sach_ngay_nghi`
 --
 
-INSERT INTO `danh_sach_ngay_nghi` (`id`, `id_ngay_nghi`, `ten_ngay_nghi`) VALUES
-(1, 1, 'Nghỉ đau ốm'),
-(2, 2, 'Nghỉ tang gia'),
-(3, 3, 'Nghỉ ngày thường'),
-(4, 4, 'Nghỉ sinh đẻ');
+INSERT INTO `danh_sach_ngay_nghi` (`id`, `ten_ngay_nghi`) VALUES
+(1, 'Nghỉ đau ốm'),
+(2, 'Nghỉ tang gia'),
+(3, 'Nghỉ ngày thường'),
+(4, 'Nghỉ sinh đẻ');
 
 -- --------------------------------------------------------
 
@@ -618,7 +613,6 @@ INSERT INTO `thong_tin_hop_dong` (`id`, `ma_nhan_vien`, `ma_hop_dong`, `ngay_bat
 
 CREATE TABLE `trinh_do` (
   `id` int(11) NOT NULL,
-  `id_trinh_do` int(11) NOT NULL,
   `ten_trinh_do` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -626,9 +620,9 @@ CREATE TABLE `trinh_do` (
 -- Đang đổ dữ liệu cho bảng `trinh_do`
 --
 
-INSERT INTO `trinh_do` (`id`, `id_trinh_do`, `ten_trinh_do`) VALUES
-(1, 1, 'tiểu học'),
-(2, 2, 'trung học');
+INSERT INTO `trinh_do` (`id`, `ten_trinh_do`) VALUES
+(1, 'tiểu học'),
+(2, 'trung học');
 
 --
 -- Chỉ mục cho các bảng đã đổ
