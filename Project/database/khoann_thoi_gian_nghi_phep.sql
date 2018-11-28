@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 03:15 PM
+-- Generation Time: Nov 28, 2018 at 08:20 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlyvangnghi`
+-- Database: `ffse1704`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `thoi_gian_nghi_phep`
+-- Table structure for table `khoann_thoi_gian_nghi_phep`
 --
 
-CREATE TABLE `thoi_gian_nghi_phep` (
+CREATE TABLE `khoann_thoi_gian_nghi_phep` (
   `id` int(11) NOT NULL,
   `ma_nhanvien` int(11) NOT NULL,
   `so_ngay_da_nghi` int(11) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `thoi_gian_nghi_phep` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `thoi_gian_nghi_phep`
+-- Dumping data for table `khoann_thoi_gian_nghi_phep`
 --
 
-INSERT INTO `thoi_gian_nghi_phep` (`id`, `ma_nhanvien`, `so_ngay_da_nghi`, `so_ngay_con_lai`) VALUES
+INSERT INTO `khoann_thoi_gian_nghi_phep` (`id`, `ma_nhanvien`, `so_ngay_da_nghi`, `so_ngay_con_lai`) VALUES
 (1, 123, 3, 9);
 
 --
@@ -47,9 +47,9 @@ INSERT INTO `thoi_gian_nghi_phep` (`id`, `ma_nhanvien`, `so_ngay_da_nghi`, `so_n
 --
 
 --
--- Indexes for table `thoi_gian_nghi_phep`
+-- Indexes for table `khoann_thoi_gian_nghi_phep`
 --
-ALTER TABLE `thoi_gian_nghi_phep`
+ALTER TABLE `khoann_thoi_gian_nghi_phep`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -57,9 +57,9 @@ ALTER TABLE `thoi_gian_nghi_phep`
 --
 
 --
--- AUTO_INCREMENT for table `thoi_gian_nghi_phep`
+-- AUTO_INCREMENT for table `khoann_thoi_gian_nghi_phep`
 --
-ALTER TABLE `thoi_gian_nghi_phep`
+ALTER TABLE `khoann_thoi_gian_nghi_phep`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
