@@ -22,14 +22,13 @@
    <td>${emp.salary}</td>  
    <td>${emp.designation}</td>
    <td><img  src="/crud/images/${emp.image}" width="50px"></td>
-   <td><button type="button" class="btn btn-default"><a href="/crud/editemp/${emp.id}">Edit</a></button></td>  
-   <td><button type="button" class="btn btn-default"><a href="/crud/deleteemp/${emp.id}">Delete</a></button></td>  
+   <td><a href="/crud/editemp/${emp.id}"><button type="button" class="btn btn-default">Edit</button></a></td>  
+   <td><a href="/crud/deleteemp/${emp.id}"><button type="button" class="btn btn-default">Delete</button></a></td>  
    </tr>  
    </c:forEach>  
    </table>  
    <br/>  
-   <a href="/crud/empform">Add New Employee</a>
- <!--   <a href="/crud/uploadform">Upload Image</a> -->
+   <a href="/crud/empform"><button type="button" class="btn btn-default">Add New Employee</button></a>
    <br/>
    <a href="/crud/viewemp/1">1</a>
    <a href="/crud/viewemp/2">2</a>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<h:outputStylesheet name="/css/bootstrap.min.css"/>  
+</h:head>
+<h:body>
+	<h:form id="form" class="form-horizontal">  
+		<div class="form-group">  
+			<div class="col-sm-2"></div>  
+			<h2 style="text-align: center" class="col-sm-4">Edit Your Record</h2>  
+		</div>  
+	<hr/>
+	<div class="form-group">
+		<h:outputLabel for="usermasinhvien" class="control-label col-sm-2">mã sinh viên</h:outputLabel>
+		<div class="col-sm-4">  
+			<h:inputText id="name-id" value="#{editUser.masinhvien}" class="form-control"/>  
+	</div>
+	<div class="form-group">
+		<h:outputLabel for="username" class="control-label col-sm-2">name</h:outputLabel>
+		<div class="col-sm-4">  
+			<h:inputText id="name-id" value="#{editUser.name}" class="form-control"/>  
+		</div>  
+	</div>
+	<div class="form-group">
+			<h:outputLabel for="usertuoi" class="control-label col-sm-2">tuổi</h:outputLabel>
+		<div class="col-sm-4">  
+			<h:inputText id="name-id" value="#{editUser.tuoi}" class="form-control"/>  
+		</div>  
+	</div>
+	<div class="form-group">  
+		<h:outputLabel for="gioitinh" class="control-label col-sm-2">giới tính</h:outputLabel>  
+	<div class="col-sm-4">  
+		<h:selectOneRadio value="#{editUser.gioitinh}">  
+			<f:selectItem itemValue="M" itemLabel="nữ" />  
+			<f:selectItem itemValue="F" itemLabel="nam" />  
+		</h:selectOneRadio>  
+	</div>  
+	</div>
+	<div class="form-group">  
+		<h:outputLabel for="diachi" class="control-label col-sm-2">địa chỉ</h:outputLabel>  
+		<div class="col-sm-4">  
+		<h:inputTextarea value="#{editUser.diachi}" cols="50" rows="5" class="form-control"/>  
+	</div>  
+	</div>  
+		<div class="form-group">  
+		<div class="col-sm-2"></div>  
+		<div class="col-sm-4">  
+		<center><h:commandButton value="Update" action="#{user.update(editUser)}"   
+		class="btn btn-primary" style="width: 80px;"></h:commandButton></center>  
+	</div>  
+	</div>   
+</h:body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+		<table border="1">
+			<tr>
+				<td>mã sinh viên</td>
+				<td><h:inputText id = "maSinhVien" value="#{sinhVienFrom.maSinhVien}"/></td>
+			</tr>
+			<tr>
+				<td>tên sinh viên</td>
+				<td><h:inputText id = "tenSinhVien" value="#{sinhVienFrom.tenSinhVien}"/></td>
+			</tr>
+			<tr>
+				<td>lopHoc</td>
+				<td><h:inputText id = "lopHoc" value="#{sinhVienFrom.lopHoc}"/></td>
+			</tr>
+			<tr>
+				<td>tuôi sinh viên</td>
+				<td><h:inputText id = "tuoiSinhVien" value="#{sinhVienFrom.tuoiSinhVien}"/></td>
+			</tr>
+			<tr>
+				<td>giới tính</td>
+				<td><h:inputText id = "gioiTinh" value="#{sinhVienFrom.gioiTinh}"/></td>
+			</tr>
+			<tr>
+				<td>địa chỉ</td>
+				<td><h:inputText id = "diaChi" value="#{sinhVienFrom.diaChi}"/></td>
+			</tr>
+			<tr>
+				<td>số điên thoại</td>
+				<td><h:inputText id = "soDT" value="#{sinhVienFrom.soDT}"/></td>
+			</tr>
+			<tr>
+				<td>email</td>
+				<td><h:inputText id = "email" value="#{sinhVienFrom.email}"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton action="#{sinhVienFrom.addSinhVien()}" value="submit"/></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

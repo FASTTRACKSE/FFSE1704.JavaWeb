@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+	<!-- 	<h2>
+			<h:outputText value="#{msg['hello']}" />
+		</h2>
+		
+		<h:panelGrid columns="2">
+			Language : 
+			<h:selectOneMenu value="#{languageBean.locale}" onchange="submit()"
+			valueChangeListener="#{languageBean.localeChanged}">
+				<f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid> -->
+		
+		<h:commandButton value="add new sv"
+			action="addnewsinhvien.xhtml?faces-redirect" />
+			
+		<p:dataTable value="#{sinhVienFrom.viewAllSinhVien()}" var="sv"
+			paginator="true" rows="3" rowsPerPageTemplate="3 6 9">
+			<p:column headerText="maSinhVien">
+				#{sv.maSinhVien}
+			</p:column>
+			<p:column headerText="tenSinhVien">	
+				#{sv.tenSinhVien}
+			</p:column>
+			<p:column headerText="lopHoc">
+				#{sv.lopHoc}
+			</p:column>
+			<p:column headerText="tuoiSinhVien">
+				#{sv.tuoiSinhVien}
+			</p:column>
+			<p:column  headerText="gioiTinh">
+				#{sv.gioiTinh}
+			</p:column>
+			<p:column headerText="diaChi">	
+				#{sv.diaChi}
+			</p:column>
+			<p:column headerText="soDT">
+				#{sv.soDT}
+			</p:column>
+			<p:column headerText="email">
+				#{sv.email}
+			</p:column>
+			<p:column headerText="action">
+				<h:commandButton action="#{sinhVienFrom.vieweditSinhVien(sv.maSinhVien)}" value="edit" />
+				<h:commandButton action="#{sinhVienFrom.deleteSinhVien(sv.maSinhVien)}" value="delete" />
+				<h:inputFile  id="file-id"  value="#{user.fileName}" required="true"   
+					requiredMessage="Please upload a file" alt="upload file"></h:inputFile> 
+			</p:column> 
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

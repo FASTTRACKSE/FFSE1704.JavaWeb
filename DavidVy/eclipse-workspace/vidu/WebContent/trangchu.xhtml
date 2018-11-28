@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form id="from">
+		<table>
+			<tr>
+				<td><h:outputLabel for="username">User name</h:outputLabel></td>
+				<td><h:inputText id="nam-id" value="#{user.name}"/></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="email">your email</h:outputLabel></td>
+				<td><h:inputText id="email-id" value="#{user.email}"/></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="password">Password</h:outputLabel></td>  
+				<td><h:inputSecret id="password-id" value="#{user.password}"/></td>
+			</tr>
+			
+			<tr>
+				<td><h:outputLabel for="gander">Gander</h:outputLabel></td>
+				<td><h:selectOneRadio value="#{user.gander}">
+					<f:selectItem itemValue="nữ" itemLabel="nữ"/>
+					<f:selectItem itemValue="nam" itemLabel="nam"/>
+				</h:selectOneRadio>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><h:outputLabel for="address">Address</h:outputLabel></td>
+				<td><h:inputTextarea value="#{user.address}" cols="50" rows="5" /></td>
+			</tr>
+		</table>
+		<h:commandButton value="Submit" action="response.xhtml"></h:commandButton>  
+	</h:form>
+</h:body>
+</html>

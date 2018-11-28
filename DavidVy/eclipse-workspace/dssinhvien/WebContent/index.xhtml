@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>  
+<title>User Details</title>  
+<h:outputStylesheet name="/css/bootstrap.min.css"/>  
+<style type="text/css">  
+table {  
+border-collapse: collapse;  
+width: 100%;  
+}  
+th, td {  
+text-align: left;  
+padding: 8px;  
+}  
+  
+tr:nth-child(even){background-color: #f2f2f2}  
+th {  
+background-color: #4CAF50;  
+color: white;  
+}  
+</style>  
+</h:head>  
+<h:body>
+	<h:form>
+		<h3>
+			<h:outputText value="#{msg['hello']}"/>
+		</h3>
+		
+	<!-- 	<h:panelGrid columns="2">
+			Language :
+			<h:selectOneMenu value="#{languageBean.locale}" onchange="submit()"
+				valueChangeListener="#{languageBean.localeChanged}">
+				  <f:selectItems value="#{languageBean.countries}" />
+			</h:selectOneMenu>
+		</h:panelGrid> -->
+<center>  
+<!-- <h2><h:outputText value="danh sách sv"/></h2> -->  
+</center>  
+<h:dataTable binding="#{table}" value="#{user.usersList()}" var="u"   
+class="table table-striped table-hover table-bordered"> 
+	<h:column>  
+		<f:facet name="header">mã sinh viên</f:facet>  
+		<h:outputText value="#{u.masinhvien}"/>  
+	</h:column>  
+	<h:column>  
+		<f:facet name="header">Name</f:facet>  
+		<h:outputText value="#{u.name}"/>  
+	</h:column>  
+	<h:column>  
+		<f:facet name="header">tuổi</f:facet>  
+		<h:outputText value="#{u.tuoi}"/>  
+	</h:column>   
+	<h:column>  
+		<f:facet name="header">giới tính</f:facet>  
+		<h:outputText value="#{u.gioitinh}"/>  
+	</h:column>  
+	<h:column>  
+		<f:facet name="header">Address</f:facet>  
+		<h:outputText value="#{u.address}"/>  
+	</h:column>  
+	<h:column>  
+		<f:facet name="header">Update</f:facet>  
+		<h:commandButton action = "#{user.edit(u.masinhvien)}" value="Update" class="btn btn-primary">  
+	</h:commandButton>  
+	</h:column>  
+	<h:column>  
+		<f:facet name="header">Delete</f:facet>  
+		<h:commandButton action = "#{user.delete(u.masinhvien)}" value="Delete" class="btn btn-danger">  
+	</h:commandButton>  
+	</h:column>  
+</h:dataTable>  
+<center><h:commandButton action = "create.xhtml?faces-redirect=true"   
+value="New User" class="btn btn-success"></h:commandButton></center>  
+</h:form>  
+</h:body>
+</html>

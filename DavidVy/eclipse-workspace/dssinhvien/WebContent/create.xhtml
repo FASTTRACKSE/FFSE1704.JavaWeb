@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"> 
+<h:head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<h:outputStylesheet name="/css/bootstrap.min.css"/>  
+</h:head>
+<h:body>
+	<h:form id="form" class="form-horizontal">  
+		<div class="form-group">  
+		<div class="col-sm-4"></div>  
+		<div  class="col-sm-4">  
+		<h2 style="text-align: center">Provide Following Details</h2>  
+	</div>  
+</div>  
+<hr/> 
+<div class="form-group">  
+<h:outputLabel for="usermasinhvien" class="control-label col-sm-4">mã sinh viên</h:outputLabel>  
+<div class="col-sm-4">  
+<h:inputText id="masinhvien-id" value="#{user.masinhvien}" class="form-control"   
+validatorMessage="ma sinh vien is required">  
+<f:validateRequired />  
+</h:inputText>  
+</div>  
+</div>  
+<div class="form-group">  
+<h:outputLabel for="username" class="control-label col-sm-4">Name</h:outputLabel>  
+<div class="col-sm-4">  
+<h:inputText id="name-id" value="#{user.name}" class="form-control"   
+validatorMessage="User name is required">  
+<f:validateRequired />  
+</h:inputText>  
+</div>  
+</div>  
+<div class="form-group">  
+<h:outputLabel for="tuoi" class="control-label col-sm-4">tuổi</h:outputLabel>  
+<div class="col-sm-4">  
+<h:inputText id="tuoi-id" value="#{user.tuoi}" class="form-control"   
+validatorMessage="Email Id is required">  
+<f:validateRequired/>  
+</h:inputText>  
+</div>  
+</div>    
+<div class="form-group">  
+<h:outputLabel for="gioitinh" class="control-label col-sm-4">giới tính</h:outputLabel>  
+<div class="col-sm-4">  
+<h:selectOneRadio value="#{user.gioitinh}" validatorMessage="Gender is required">  
+<f:selectItem itemValue="M" itemLabel="nữ" />  
+<f:selectItem itemValue="F" itemLabel="nam" />  
+<f:validateRequired/>  
+</h:selectOneRadio>  
+</div>  
+</div>  
+<div class="form-group">  
+<h:outputLabel for="diachi" class="control-label col-sm-4">địa chỉ</h:outputLabel>  
+<div class="col-sm-4">  
+<h:inputTextarea value="#{user.diachi}" cols="50" rows="5" class="form-control"   
+validatorMessage="Address is required">  
+<f:validateRequired/>  
+</h:inputTextarea>  
+</div>  
+</div>  
+<div class="form-group">  
+	<div class="col-sm-4"></div>  
+		<div class="col-sm-4">  
+			<div class="col-sm-2">  
+				<h:commandButton value="Save" action="#{user.save}" class="btn btn-success"   
+				style="width: 80px;"></h:commandButton>  
+			</div>  
+			<div class="col-sm-1">  
+			</div>  
+			<div class="col-sm-2">  
+				<h:link outcome="index" value="View Users Record List" class="btn btn-primary" />  
+			</div>  
+			</div>  
+		</div>  
+	</h:form>   
+</h:body>
+</html>
