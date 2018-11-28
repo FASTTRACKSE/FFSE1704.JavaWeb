@@ -35,7 +35,7 @@ th {
 
 	<hr />
 
-	<form:form method="POST" action="add" enctype="multipart/form-data">
+	<form:form method="POST" action="/SpringMVCHBN/saveProcess" modelAttribute="command">
 		<table>
 			<form:hidden path="id" />
 			<tr>

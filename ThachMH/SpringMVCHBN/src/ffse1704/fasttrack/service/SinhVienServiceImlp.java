@@ -15,11 +15,11 @@ public class SinhVienServiceImlp implements SinhVienService {
 	@Autowired
 	SinhVienDao sinhVienDao;
 
-	@Override
-	@Transactional
-	public List<SinhVien> getAllSinhViens() {
-		return sinhVienDao.getAllSinhViens();
-	}
+	// @Override
+	// @Transactional
+	// public List<SinhVien> getAllSinhViens() {
+	// return sinhVienDao.getAllSinhViens();
+	// }
 
 	@Override
 	@Transactional
@@ -37,7 +37,25 @@ public class SinhVienServiceImlp implements SinhVienService {
 	@Transactional
 	public void deleteSV(int theId) {
 		sinhVienDao.deleteSV(theId);
-		
+
+	}
+
+	@Override
+	@Transactional
+	public List<SinhVien> findAll(Integer offset, Integer maxResult) {
+		return sinhVienDao.findAll(offset, maxResult);
+	}
+
+	@Override
+	@Transactional
+	public int count() {
+		return sinhVienDao.count();
+	}
+
+	@Override
+	@Transactional
+	public void addSV(SinhVien v) {
+		sinhVienDao.addSV(v);
 	}
 
 }

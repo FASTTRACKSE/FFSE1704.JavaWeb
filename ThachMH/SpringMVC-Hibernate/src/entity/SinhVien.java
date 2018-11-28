@@ -1,4 +1,4 @@
-package ffse1704.fasttrack.entity;
+package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,9 +23,6 @@ public class SinhVien {
 
 	@Column(name = "city")
 	private String city;
-	
-	@Column(name = "nameFile")
-	private String nameFile;
 
 	public int getId() {
 		return id;
@@ -59,11 +56,17 @@ public class SinhVien {
 		this.city = city;
 	}
 
-	public String getNameFile() {
-		return nameFile;
+	public SinhVien() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setNameFile(String nameFile) {
-		this.nameFile = nameFile;
+	public SinhVien(int id, String name, int birth, String city) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birth = birth;
+		this.city = city;
 	}
+
 }
