@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<title>~ JunBjn ~</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"></link>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	
+</h:head>
+
+<h:body>
+	<div style="margin-top: 5px;" class="container">
+		<h3 style="float: left">User List</h3>
+		<h:form style="float: right" class="form-inline" action="" method="GET">
+		    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" ></input>
+		    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</h:form>
+		<div class="dropdown" style="width: 20%; float: right; text-align: center">
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Language
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="user?lang=vi_VN">Vietnam</a>
+		    <a class="dropdown-item" href="user?lang=en_US">English</a>
+		  </div>
+		</div>
+		<p style="float: right; text-align: right">
+			<a href="addUserForm.xhtml"><button type="button" class="btn btn-success">Add_new_user</button></a>
+		</p>
+		<h:form>
+	        <h:dataTable id="table" binding="#{table}" value="#{user.usersList}" var="u" class="table table-striped">
+		        <h:column>
+		        	<f:facet name="header">#</f:facet>
+		        	<h:outputText value="#{(user.paginator.pageIndex - 1) * 10 + table.rowIndex + 1}" />
+		        </h:column>
+		        <h:column>
+		        	<f:facet name="header">Username</f:facet>
+		        	<h:outputText value="#{u.name}" />
+		        </h:column>
+		        <h:column>
+		        	<f:facet name="header">Email</f:facet>
+		        	<h:outputText value="#{u.email}" />
+		        </h:column>
+		        <h:column>
+		        	<f:facet name="header">Sex</f:facet>
+		        	<h:outputText value="#{u.sex}" />
+		        </h:column>
+		        <h:column>
+		        	<f:facet name="header">Country</f:facet>
+		        	<h:outputText value="#{u.country}" />
+		        </h:column>
+		        <h:column>
+		        	<f:facet name="header">Action</f:facet>
+		        	<h:commandLink action="#{user.showUpdateUser(u.id)}" class="fa fa-pencil" style="margin-right: 15px;"/>
+		        	<h:commandLink action="#{user.deleteUser(u.id)}" class="fa fa-trash" />
+		        </h:column>
+			</h:dataTable>
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination justify-content-center">
+			  	<li class="page-item">
+					<h:commandLink value="&lt;&lt; Frist Page" action="#{user.firstPage}" class="page-link"/>
+			    </li>
+			    <li class="page-item">
+					<h:commandLink value="#{user.paginator.pageIndex - 1}" action="#{user.prev}" 
+						class="page-link #{user.paginator.pageIndex == 1 ? 'd-none' : ''}"/>
+			    </li>
+			    <li class="page-item active"><a class="page-link">#{user.paginator.pageIndex}</a></li>
+			    <li class="page-item">
+			    	<h:commandLink value="#{user.paginator.pageIndex + 1}" action="#{user.next}" 
+			    		class="page-link #{user.paginator.pageIndex == user.paginator.pages ? 'd-none' : ''}"/>
+			    </li>
+			    <li class="page-item">
+			    	<h:commandLink value="Last Page &gt;&gt;" action="#{user.lastPage}" class="page-link"/>
+			    </li>
+			  </ul>
+			</nav>
+	        <h:outputText value="#{user.paginator.pageIndex} / #{user.paginator.pages}"/>
+	        <h:inputHidden value="#{user.paginator.pageIndex}"/>
+	    </h:form>
+	</div>
+</h:body>
+</html>

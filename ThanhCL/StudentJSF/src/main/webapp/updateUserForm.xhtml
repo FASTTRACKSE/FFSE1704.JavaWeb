@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<title>~ JunBjn ~</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"></link>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	
+</h:head>
+
+<h:body>
+	<div class="container">
+		<h:form id="form" class="form-horizontal">
+		  <div class="form-group">
+		    <h5>Username</h5>
+		    <h:inputText id="name-id" value="#{editRecordObj.name}" class="form-control" label="Username" required="true" />
+		    <h:message for="name-id" style="color:red" />
+		  </div>
+		  <div class="form-group">
+		    <h5>Password</h5>
+		    <h:inputSecret id="password-id" value="#{editRecordObj.password}" class="form-control" label="Password"/>
+		  </div>
+		  <div class="form-group">
+		  	<h5>Email</h5>
+		    <h:inputText id="email-id" value="#{editRecordObj.email}" class="form-control" label="Email" required="true" />
+		    <h:message for="email-id" style="color:red" />
+		  </div>
+		  <div class="form-group">
+		  	<h5>Sex</h5>
+			<div><h:selectOneRadio id="sex-id" class="custom-control custom-radio custom-control-inline" value="#{editRecordObj.sex}" label="Sex" required="true">
+				<f:selectItem itemValue="Male" itemLabel="Male" />
+			   	<f:selectItem itemValue="Female" itemLabel="Female" />
+			</h:selectOneRadio></div>
+		    <h:message for="sex-id" style="color:red" />
+		  </div>
+		  <div class="form-group">
+		    <h5>Country</h5>
+		    <h:selectOneMenu id="country-id" class="custom-select mr-sm-2" value = "#{editRecordObj.country}" label="Country" required="true"> 
+		    	<f:selectItem itemValue = "" itemLabel = "Choose" /> 
+	            <f:selectItem itemValue = "Vietnam" itemLabel = "Vietnam" /> 
+	            <f:selectItem itemValue = "USA" itemLabel = "USA" /> 
+	            <f:selectItem itemValue = "China" itemLabel = "China" />  
+	        </h:selectOneMenu>
+		    <h:message for="country-id" style="color:red" />
+		  </div>
+		  <h:commandButton value="Update" action="#{user.doUpdateUser(editRecordObj)}" class="btn btn-primary updateBtnStyle" style="margin-right: 15px;"/>
+		  <h:commandButton value="Cancel" action="#{user.returnIndex()}" class="btn btn-outline-secondary" immediate="true"/>
+		</h:form>
+	</div>
+</h:body>
+</html>
