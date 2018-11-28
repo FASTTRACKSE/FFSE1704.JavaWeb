@@ -12,15 +12,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="add"><spring:message code="Add" /></a>
+	<a href="add"><spring:message code="Add" /></a>
 	<table border="2" width="70%" cellpadding="2">
 
 		<tr>
 			<th><spring:message code="Id" /></th>
+			<th><spring:message code="maSV" /></th>
 			<th><spring:message code="Name" /></th>
 			<th><spring:message code="Address" /></th>
 			<th><spring:message code="Gender" /></th>
 			<th><spring:message code="Image" /></th>
+			<th>Diem</th>
+
 			<th><spring:message code="Function" /></th>
 
 		</tr>
@@ -28,14 +31,20 @@
 
 			<tr>
 				<td>${hs.id}</td>
+				<td>${hs.maSV}</td>
 				<td>${hs.name}</td>
 				<td>${hs.address}</td>
 				<td>${hs.gender}</td>
 				<td><img style="width: 100px; height: 100px;"
 					src='<c:url value = "/resources/upload/${hs.image }" ></c:url>'
 					alt="image"></td>
-				<td><a href="/JavaSpringHibernate/getID/${hs.id}"><spring:message code="Edit" /></a>-+-<a
-					href="/JavaSpringHibernate/delete/${hs.id}"><spring:message code="Del" /></a></td>
+				<td><c:forEach var="diem" items="${hs.listDiem}">
+					${diem.diem }
+					</c:forEach></td>
+
+				<td><a href="/JavaSpringHibernate/getID/${hs.id}"><spring:message
+							code="Edit" /></a>-+- <a href="/JavaSpringHibernate/delete/${hs.id}"><spring:message
+							code="Del" /></a>-+-</td>
 
 			</tr>
 		</c:forEach>
@@ -43,7 +52,8 @@
 	</table>
 	<center>
 		<c:if test="${page >1}">
-			<a href="/JavaSpringHibernate/list/1"><spring:message code="FIRST" /></a>
+			<a href="/JavaSpringHibernate/list/1"><spring:message
+					code="FIRST" /></a>
 		</c:if>
 
 		<c:if test="${page > 1}">
@@ -57,15 +67,16 @@
 		</c:if>
 
 		<c:if test="${page < total}">
-			<a href="/JavaSpringHibernate/list/${total}"><spring:message code="LAST" /></a>
+			<a href="/JavaSpringHibernate/list/${total}"><spring:message
+					code="LAST" /></a>
 		</c:if>
 	</center>
 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="?lang=vi"> <spring:message
-						code="tiengviet" />
-				</a> <a class="dropdown-item" href="?lang=en"> <spring:message
-						code="tienganh" />
-				</a>
-			</div>
+		<a class="dropdown-item" href="?lang=vi"> <spring:message
+				code="tiengviet" />
+		</a> <a class="dropdown-item" href="?lang=en"> <spring:message
+				code="tienganh" />
+		</a>
+	</div>
 </body>
 </html>

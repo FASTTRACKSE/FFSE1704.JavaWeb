@@ -15,7 +15,11 @@
         <tr>
 			<td></td>
 			<td><form:hidden path="id" /></td>
-		</tr>    
+		</tr>
+		<tr>    
+          <td>MaSV : </td>   
+          <td><form:hidden path="maSV"  /></td>  
+         </tr>    
          <tr>    
           <td>Name : </td>   
           <td><form:input path="name"  /></td>  
