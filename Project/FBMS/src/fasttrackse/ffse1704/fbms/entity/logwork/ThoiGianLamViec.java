@@ -18,10 +18,10 @@ public class ThoiGianLamViec {
 	private int id;
 	
 	@Column(name="ma_du_an" ,nullable = true,length = 11)
-	private String maDuAn;
+	private int maDuAn;
 	
 	@Column(name="ma_nhan_vien", nullable = true,length = 11)
-	private String maNhanVien;
+	private int maNhanVien;
 	
 	@Column(name="ma_vai_tro", nullable = true,length = 11)
 	private int maVaiTro;
@@ -59,19 +59,21 @@ public class ThoiGianLamViec {
 		this.id = id;
 	}
 
-	public String getMaDuAn() {
+	
+
+	public int getMaDuAn() {
 		return maDuAn;
 	}
 
-	public void setMaDuAn(String maDuAn) {
+	public void setMaDuAn(int maDuAn) {
 		this.maDuAn = maDuAn;
 	}
 
-	public String getMaNhanVien() {
+	public int getMaNhanVien() {
 		return maNhanVien;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
+	public void setMaNhanVien(int maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
 
@@ -152,7 +154,7 @@ public class ThoiGianLamViec {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ThoiGianLamViec(int id, String maDuAn, String maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec,
+	public ThoiGianLamViec(int id, int maDuAn, int maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec,
 			String moTa, int trangThai, Date thoiGianBatDau, Date thoiGianKetThuc, String nhanXetPM,
 			String nhanXetTPP) {
 		super();
@@ -169,6 +171,8 @@ public class ThoiGianLamViec {
 		this.nhanXetPM = nhanXetPM;
 		this.nhanXetTPP = nhanXetTPP;
 	}
+
+	
 	
 	
 	
