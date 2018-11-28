@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 03:15 PM
+-- Generation Time: Nov 28, 2018 at 08:20 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlyvangnghi`
+-- Database: `ffse1704`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `don_nghi_phep`
+-- Table structure for table `khoann_don_nghi_phep`
 --
 
-CREATE TABLE `don_nghi_phep` (
+CREATE TABLE `khoann_don_nghi_phep` (
   `id` int(11) NOT NULL,
   `ma_nhanvien` int(20) NOT NULL,
   `ten_nhanvien` varchar(200) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
@@ -40,20 +40,20 @@ CREATE TABLE `don_nghi_phep` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `don_nghi_phep`
+-- Dumping data for table `khoann_don_nghi_phep`
 --
 
-INSERT INTO `don_nghi_phep` (`id`, `ma_nhanvien`, `ten_nhanvien`, `tg_batdau`, `tg_ketthuc`, `so_ngay_nghi`, `loai_nghi_phep`, `trang_thai`) VALUES
-(1, 123, 'Nguyễn Ngọc Khoa', '2018-11-26', '2018-11-28', 3, 1, 1);
+INSERT INTO `khoann_don_nghi_phep` (`id`, `ma_nhanvien`, `ten_nhanvien`, `tg_batdau`, `tg_ketthuc`, `so_ngay_nghi`, `loai_nghi_phep`, `trang_thai`) VALUES
+(1, 1, 'Nguyễn Ngọc Khoa', '2018-11-26', '2018-11-28', 3, 1, 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `don_nghi_phep`
+-- Indexes for table `khoann_don_nghi_phep`
 --
-ALTER TABLE `don_nghi_phep`
+ALTER TABLE `khoann_don_nghi_phep`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -61,9 +61,9 @@ ALTER TABLE `don_nghi_phep`
 --
 
 --
--- AUTO_INCREMENT for table `don_nghi_phep`
+-- AUTO_INCREMENT for table `khoann_don_nghi_phep`
 --
-ALTER TABLE `don_nghi_phep`
+ALTER TABLE `khoann_don_nghi_phep`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
