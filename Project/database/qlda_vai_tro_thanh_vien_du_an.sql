@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2018 at 05:27 PM
+-- Generation Time: Nov 28, 2018 at 10:19 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `vai_tro_thanh_vien_du_an` (
   `id` int(11) NOT NULL,
-  `ma_vai_tro` int(2) NOT NULL,
+  `ma_vai_tro` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ten_vai_tro` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ghi_chu` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -40,13 +40,13 @@ CREATE TABLE `vai_tro_thanh_vien_du_an` (
 --
 
 INSERT INTO `vai_tro_thanh_vien_du_an` (`id`, `ma_vai_tro`, `ten_vai_tro`, `ghi_chu`) VALUES
-(1, 1, 'PM', 'PM'),
-(2, 2, 'Technical Lead', 'Technical Lead'),
-(3, 3, 'Team Lead', 'Team Lead'),
-(4, 4, 'Dev', 'Dev'),
-(5, 5, 'Tester', 'Tester'),
-(6, 6, 'QA', 'QA'),
-(7, 7, 'Reviewer', 'Reviewer');
+(1, '1', 'PM', 'PM'),
+(2, '2', 'Technical Lead', 'Technical Lead'),
+(3, '3', 'Team Lead', 'Team Lead'),
+(4, '4', 'Dev', 'Dev'),
+(5, '5', 'Tester', 'Tester'),
+(6, '6', 'QA', 'QA'),
+(7, '7', 'Reviewer', 'Reviewer');
 
 --
 -- Indexes for dumped tables

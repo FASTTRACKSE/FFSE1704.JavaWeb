@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2018 lúc 10:05 AM
+-- Thời gian đã tạo: Th10 28, 2018 lúc 10:54 AM
 -- Phiên bản máy phục vụ: 10.1.32-MariaDB
 -- Phiên bản PHP: 7.2.5
 
@@ -270,15 +270,17 @@ CREATE TABLE `thong_tin_bang_cap` (
   `ma_nhan_vien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `id_trinh_do` int(11) NOT NULL,
   `ten_nganh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `thoi_gian` datetime NOT NULL
+  `thoi_gian` datetime NOT NULL,
+  `xep_loai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `noi_cap` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `thong_tin_bang_cap`
 --
 
-INSERT INTO `thong_tin_bang_cap` (`id`, `ma_nhan_vien`, `id_trinh_do`, `ten_nganh`, `thoi_gian`) VALUES
-(1, 'NV01', 1, 'công nghệ', '2018-11-22 00:00:00');
+INSERT INTO `thong_tin_bang_cap` (`id`, `ma_nhan_vien`, `id_trinh_do`, `ten_nganh`, `thoi_gian`, `xep_loai`, `noi_cap`) VALUES
+(1, 'NV01', 1, 'công nghệ', '2018-11-22 00:00:00', 'Khá', 'Đại Học Đà Nẵng');
 
 -- --------------------------------------------------------
 
