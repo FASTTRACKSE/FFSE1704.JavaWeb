@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2018 at 04:44 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Nov 29, 2018 at 11:14 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,13 +30,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ffse1704_tunglnt_congviec` (
   `id` int(11) NOT NULL,
-  `maduan` varchar(50) NOT NULL,
-  `tencongviec` varchar(50) NOT NULL,
-  `motacongviec` varchar(50) NOT NULL,
+  `maduan` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tencongviec` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `motacongviec` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `tgianbdau` date NOT NULL,
   `tgiankthuc` date NOT NULL,
   `phancongcho` int(11) NOT NULL,
-  `dukienhoanthanh` int(11) NOT NULL,
+  `dukienhoanthanh` varchar(3) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `trangthai` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
