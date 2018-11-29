@@ -25,23 +25,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `danh_muc`
+-- Table structure for table `danh_muc_`
 --
 
-CREATE TABLE IF NOT EXISTS `danh_muc` (
+CREATE TABLE IF NOT EXISTS `danh_muc_` (
   `id` int(10) NOT NULL,
   `ma_danh_muc` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_danh_muc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `ten_danh_muc` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `danh_muc`
+-- Dumping data for table `danh_muc_`
 --
 
-INSERT INTO `danh_muc` (`id`, `ma_danh_muc`, `ten_danh_muc`, `image`) VALUES
-(1, 'IT', 'Tài liệu IT', ''),
-(2, 'EL', 'Tài liệu English', '');
+INSERT INTO `danh_muc_` (`id`, `ma_danh_muc`, `ten_danh_muc`) VALUES
+(1, 'IT', 'Tài liệu IT'),
+(2, 'EL', 'Tài liệu English');
+
 
 
 
@@ -52,10 +52,10 @@ INSERT INTO `danh_muc` (`id`, `ma_danh_muc`, `ten_danh_muc`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tai_lieu`
+-- Table structure for table `tai_lieu_`
 --
 
-CREATE TABLE IF NOT EXISTS `tai_lieu` (
+CREATE TABLE IF NOT EXISTS `tai_lieu_` (
   `id` int(11) NOT NULL,
   `ten_tai_lieu` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ma_danh_muc` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `tai_lieu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tai_lieu`
+-- Dumping data for table `tai_lieu_`
 --
 
 INSERT INTO `tai_lieu` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `file`, `ma_trang_thai`, `mo_ta`, `ghi_chu`, `ma_phong_ban`) VALUES
@@ -93,7 +93,7 @@ INSERT INTO `tai_lieu` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `file`, `ma_trang_t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trang_thai`
+-- Table structure for table `trang_thai_`
 --
 
 CREATE TABLE IF NOT EXISTS `trang_thai` (
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `trang_thai` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `trang_thai`
+-- Dumping data for table `trang_thai_`
 --
 
 INSERT INTO `trang_thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
@@ -124,19 +124,19 @@ INSERT INTO `trang_thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
 --
 -- Indexes for table `danh_muc`
 --
-ALTER TABLE `danh_muc`
+ALTER TABLE `danh_muc_`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tai_lieu`
 --
-ALTER TABLE `tai_lieu`
+ALTER TABLE `tai_lieu_`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `trang_thai`
 --
-ALTER TABLE `trang_thai`
+ALTER TABLE `trang_thai_`
   ADD PRIMARY KEY (`id`);
 
 
@@ -148,18 +148,18 @@ ALTER TABLE `trang_thai`
 --
 -- AUTO_INCREMENT for table `danh_muc`
 --
-ALTER TABLE `danh_muc`
+ALTER TABLE `danh_muc_`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tai_lieu`
 --
-ALTER TABLE `tai_lieu`
+ALTER TABLE `tai_lieu_`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `trang_thai`
 --
-ALTER TABLE `trang_thai`
+ALTER TABLE `trang_thai_`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
