@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.security;
+package fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv;
 
 import java.io.Serializable;
 import java.sql.Date;
