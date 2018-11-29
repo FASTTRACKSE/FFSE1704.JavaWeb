@@ -8,9 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 
+@Repository
+@Transactional(rollbackFor = Exception.class)
 public class LogworkDaolmpl implements LogworkDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -18,9 +22,8 @@ public class LogworkDaolmpl implements LogworkDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Logwork> findAll() {
-		Session session = this.sessionFactory.openSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		List<Logwork> list = session.createQuery("from Logwork").list();
-		session.close();
 		return list;
 	}
 

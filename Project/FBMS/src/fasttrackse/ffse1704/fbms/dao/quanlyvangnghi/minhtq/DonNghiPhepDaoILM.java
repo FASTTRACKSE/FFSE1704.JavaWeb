@@ -24,6 +24,7 @@ public class DonNghiPhepDaoILM implements DonNghiPhepDao {
 		this.sessionFactory = sessionFactory;
 	}
 
+	// list toàn bộ đơn nghỉ phép của nhân viên
 	@SuppressWarnings("unchecked")
 	public List<DonNghiPhep> listDonNghiPhep() {
 		Session session = sessionFactory.getCurrentSession();
@@ -31,4 +32,33 @@ public class DonNghiPhepDaoILM implements DonNghiPhepDao {
 
 		return list;
 	}
+
+	// crud cho đơn nghỉ phép của nhân viên
+	public void addDonNghiPhep(DonNghiPhep donnghiphep) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(donnghiphep);
+	}
+
+	public DonNghiPhep getByIdDonNghiPhep(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		DonNghiPhep donnghiphep = (DonNghiPhep) session.get(DonNghiPhep.class, id);
+
+		return donnghiphep;
+	}
+
+	public void deleteDonNghiPhep(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.delete(getByIdDonNghiPhep(id));
+	}
+
+	public void editDonNghiPhep(DonNghiPhep donnghiphep) {
+		Session session = this.sessionFactory.getCurrentSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
+		session.update(donnghiphep);
+		tx.commit();
+		session.close();
+	}
+
+	
+	
 }

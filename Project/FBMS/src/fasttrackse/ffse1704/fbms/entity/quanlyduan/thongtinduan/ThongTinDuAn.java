@@ -11,8 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
 
 /**
  * @author The persistent class for the quan_ly_thong_tin_du_an database table.
@@ -36,6 +41,10 @@ public class ThongTinDuAn implements Serializable {
 	@Column(name = "ten_du_an", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDuAn;
+	
+	@ManyToOne
+	@JoinColumn(name = "maKhachHang", referencedColumnName = "maKhachHang", nullable = false)
+	private KhachHang khachHang;
 	
 	@Column(name = "ma_khach_hang", nullable = false, length = 30)
 	@NotEmpty
@@ -72,6 +81,8 @@ public class ThongTinDuAn implements Serializable {
 	@Column(name = "database", nullable = false, length = 30)
 	@NotEmpty
 	private String database;
+	
+	
 	
 	@Column(name = "programming_language", nullable = false, length = 30)
 	@NotEmpty
