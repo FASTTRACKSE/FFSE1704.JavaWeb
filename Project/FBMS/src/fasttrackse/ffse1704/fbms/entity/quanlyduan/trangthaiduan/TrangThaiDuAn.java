@@ -36,7 +36,7 @@ public class TrangThaiDuAn implements Serializable {
 	@NotEmpty
 	private String tenTrangThai;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 

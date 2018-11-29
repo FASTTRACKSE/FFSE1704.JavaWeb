@@ -28,21 +28,20 @@ public class VaiTroThanhVien implements Serializable {
 	@NotEmpty
 	private String maVaiTro;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", nullable = false)
-	private PhanCongNhiemVu phanCongNhiemVu;
+	private PhanCongNhiemVu phanCongNhiemVu;*/
 
 	@Column(name = "ten_vai_tro", nullable = false, length = 255)
 	@NotEmpty
 	private String tenVaiTro;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 
 	public VaiTroThanhVien() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public VaiTroThanhVien(int id, @NotEmpty String maVaiTro, @NotEmpty String tenVaiTro, @NotEmpty String ghiChu) {

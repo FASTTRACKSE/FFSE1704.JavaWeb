@@ -39,9 +39,9 @@ public class DuAn implements Serializable {
 	@NotEmpty
 	private String tenDuAn;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "maKhachHang", referencedColumnName = "maKhachHang", nullable = false)
-	private KhachHang khachHang;
+	private KhachHang khachHang;*/
 	
 	@Column(name = "ma_khach_hang", nullable = false, length = 30)
 	@NotEmpty

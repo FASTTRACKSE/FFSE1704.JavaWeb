@@ -28,21 +28,20 @@ public class Domain implements Serializable {
 	@NotEmpty
 	private String maDomain;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", nullable = false)
-	private ThongTinDuAn thongTinDuAn;
+	private ThongTinDuAn thongTinDuAn;*/
 
 	@Column(name = "ten_domain", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDomain;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 
 	public Domain() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Domain(int id, @NotEmpty String maDomain, @NotEmpty String tenDomain, @NotEmpty String ghiChu) {

@@ -33,15 +33,15 @@ public class PhanCongNhiemVu implements Serializable {
 	@NotEmpty
 	private String maNhanVien;
 	
-	@OneToMany(mappedBy = "vaiTroThanhVien")
+	/*@OneToMany(mappedBy = "vaiTroThanhVien")
 	private List<VaiTroThanhVien> listVaiTroThanhVien = new ArrayList<VaiTroThanhVien>();
-
-	@Column(name = "ma_vai_tro", nullable = false, length = 255)
+*/
+	@Column(name = "ma_vai_tro", nullable = false, length = 30)
 	@NotEmpty
 	private String maVaiTro;
 
 	
-	@Column(name = "nhiem_vu", nullable = true, length = 255)
+	@Column(name = "nhiem_vu", nullable = true, length = 500)
 	@NotEmpty
 	private String nhiemVu;
 

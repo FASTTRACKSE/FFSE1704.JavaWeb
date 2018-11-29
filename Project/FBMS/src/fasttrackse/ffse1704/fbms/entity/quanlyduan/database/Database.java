@@ -38,14 +38,14 @@ public class Database implements Serializable {
 	@NotEmpty
 	private String maDatabase;
 	
-	@ManyToMany(mappedBy = "database")
-	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
+	/*@ManyToMany(mappedBy = "database")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();*/
 
 	@Column(name = "ten_database", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDatabase;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 

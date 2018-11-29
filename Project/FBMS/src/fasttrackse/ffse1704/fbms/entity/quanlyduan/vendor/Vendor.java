@@ -40,7 +40,7 @@ public class Vendor implements Serializable {
 	@NotEmpty
 	private String diaChi;
 
-	@Column(name = "email", nullable = false, length = 255)
+	@Column(name = "email", nullable = false, length = 500)
 	@NotEmpty
 	private String email;
 

@@ -1,14 +1,19 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.technical;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;
 
 @Entity
 @Table(name = "technical")
@@ -28,13 +33,15 @@ public class Technical implements Serializable {
 	@NotEmpty
 	private String tenTechnical;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 
+	/*@ManyToMany(mappedBy = "technicals")
+	private Set<ThongTinDuAn> thongTinDuAn = new HashSet<>();*/
+
 	public Technical() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Technical(int id, @NotEmpty String maTechnical, @NotEmpty String tenTechnical, @NotEmpty String ghiChu) {

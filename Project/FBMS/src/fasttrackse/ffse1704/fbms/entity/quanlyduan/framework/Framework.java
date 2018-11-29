@@ -36,7 +36,7 @@ public class Framework implements Serializable {
 	@NotEmpty
 	private String tenFramework;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 

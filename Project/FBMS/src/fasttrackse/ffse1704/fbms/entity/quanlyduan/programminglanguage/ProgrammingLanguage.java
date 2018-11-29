@@ -28,15 +28,15 @@ public class ProgrammingLanguage implements Serializable {
 	@NotEmpty
 	private String maLanguage;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", nullable = false)
-	private ThongTinDuAn thongTinDuAn;
+	private ThongTinDuAn thongTinDuAn;*/
 
 	@Column(name = "ten_language", nullable = false, length = 255)
 	@NotEmpty
 	private String tenLanguage;
 
-	@Column(name = "ghi_chu", nullable = true, length = 255)
+	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
 	private String ghiChu;
 
