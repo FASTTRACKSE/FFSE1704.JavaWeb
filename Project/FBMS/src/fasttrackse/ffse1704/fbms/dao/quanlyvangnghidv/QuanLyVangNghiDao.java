@@ -1,12 +1,12 @@
-package fasttrackse.ffse1704.fbms.dao.security;
+package fasttrackse.ffse1704.fbms.dao.quanlyvangnghidv;
 
 
 
 import java.util.List;
 
-import fasttrackse.ffse1704.fbms.entity.security.DonNghi;
-import fasttrackse.ffse1704.fbms.entity.security.LoaiNghi;
-import fasttrackse.ffse1704.fbms.entity.security.TinhTrangNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv.DonNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv.LoaiNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv.TinhTrangNghi;
 import fasttrackse.ffse1704.fbms.entity.security.UserAccount;
 
 public interface QuanLyVangNghiDao {
