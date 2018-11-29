@@ -22,6 +22,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class BangCap implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	public BangCap() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -31,12 +35,15 @@ public class BangCap implements Serializable{
 	@JoinColumn(name = "ma_nhan_vien", nullable = false)
 	private NhanSu nhanSu;
 	
-	@Column(name = "id_trinh_do", nullable = false)
-	private Integer idTrinhDo;
+	@ManyToOne
+	@JoinColumn(name = "id_trinh_do", referencedColumnName="id_trinh_do", nullable = false)
+	private TrinhDo trinhDo;
 	
 	@Column(name = "ten_nganh", nullable = false)
 	private String tenNganh;
 	
+	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "thoi_gian", nullable = false)
@@ -48,4 +55,60 @@ public class BangCap implements Serializable{
 	
 	@Column(name = "noi_cap", nullable = false)
 	private String noiCap;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public NhanSu getNhanSu() {
+		return nhanSu;
+	}
+
+	public void setNhanSu(NhanSu nhanSu) {
+		this.nhanSu = nhanSu;
+	}
+
+	public TrinhDo getTrinhDo() {
+		return trinhDo;
+	}
+
+	public void setTrinhDo(TrinhDo trinhDo) {
+		this.trinhDo = trinhDo;
+	}
+
+	public String getTenNganh() {
+		return tenNganh;
+	}
+
+	public void setTenNganh(String tenNganh) {
+		this.tenNganh = tenNganh;
+	}
+
+	public Date getThoiGian() {
+		return thoiGian;
+	}
+
+	public void setThoiGian(Date thoiGian) {
+		this.thoiGian = thoiGian;
+	}
+
+	public String getXepLoai() {
+		return xepLoai;
+	}
+
+	public void setXepLoai(String xepLoai) {
+		this.xepLoai = xepLoai;
+	}
+
+	public String getNoiCap() {
+		return noiCap;
+	}
+
+	public void setNoiCap(String noiCap) {
+		this.noiCap = noiCap;
+	}
 }
