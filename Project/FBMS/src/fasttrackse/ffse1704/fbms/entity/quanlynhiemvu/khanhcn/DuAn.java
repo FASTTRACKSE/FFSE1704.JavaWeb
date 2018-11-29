@@ -1,7 +1,4 @@
-/**
- * 
- */
-package fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan;
+package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -26,7 +23,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
 
 @Entity
 @Table(name = "quan_ly_thong_tin_du_an")
-public class ThongTinDuAn implements Serializable {
+public class DuAn implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -92,11 +89,11 @@ public class ThongTinDuAn implements Serializable {
 	@NotEmpty
 	private String trang_thai;
 	
-	public ThongTinDuAn() {
+	public DuAn() {
 		super();
 	}
 
-	public ThongTinDuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn, String pM, Date startDate, Date endDate, String domain, String framework, String database, String programmingLanguage, String trang_thai) {
+	public DuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn, String pM, Date startDate, Date endDate, String domain, String framework, String database, String programmingLanguage, String trang_thai) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
@@ -114,3 +111,4 @@ public class ThongTinDuAn implements Serializable {
 		this.trang_thai = trang_thai;
 	}
 }
+

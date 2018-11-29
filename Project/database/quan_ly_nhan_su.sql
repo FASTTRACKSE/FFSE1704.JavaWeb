@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2018 lúc 10:54 AM
+-- Thời gian đã tạo: Th10 29, 2018 lúc 11:15 AM
 -- Phiên bản máy phục vụ: 10.1.32-MariaDB
 -- Phiên bản PHP: 7.2.5
 
@@ -334,7 +334,7 @@ INSERT INTO `thong_tin_hop_dong` (`id`, `ma_nhan_vien`, `ma_hop_dong`, `ngay_bat
 --
 
 CREATE TABLE `trinh_do` (
-  `id` int(11) NOT NULL,
+  `id_trinh_do` int(11) NOT NULL,
   `ten_trinh_do` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -342,7 +342,7 @@ CREATE TABLE `trinh_do` (
 -- Đang đổ dữ liệu cho bảng `trinh_do`
 --
 
-INSERT INTO `trinh_do` (`id`, `ten_trinh_do`) VALUES
+INSERT INTO `trinh_do` (`id_trinh_do`, `ten_trinh_do`) VALUES
 (1, 'tiểu học'),
 (2, 'trung học');
 
@@ -420,7 +420,7 @@ ALTER TABLE `thong_tin_hop_dong`
 -- Chỉ mục cho bảng `trinh_do`
 --
 ALTER TABLE `trinh_do`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_trinh_do`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -490,7 +490,7 @@ ALTER TABLE `thong_tin_hop_dong`
 -- AUTO_INCREMENT cho bảng `trinh_do`
 --
 ALTER TABLE `trinh_do`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_trinh_do` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2018 at 10:18 AM
+-- Generation Time: Nov 29, 2018 at 11:16 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -38,18 +38,18 @@ CREATE TABLE `quan_ly_thong_tin_du_an` (
   `PM` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `domain` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `framework` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `database` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `programming_language` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `trang_thai` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `ma_domain` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_framework` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_database` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_programming_language` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_trang_thai` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `quan_ly_thong_tin_du_an`
 --
 
-INSERT INTO `quan_ly_thong_tin_du_an` (`id`, `ma_du_an`, `ten_du_an`, `ma_khach_hang`, `mo_ta`, `phong_du_an`, `PM`, `start_date`, `end_date`, `domain`, `framework`, `database`, `programming_language`, `trang_thai`) VALUES
+INSERT INTO `quan_ly_thong_tin_du_an` (`id`, `ma_du_an`, `ten_du_an`, `ma_khach_hang`, `mo_ta`, `phong_du_an`, `PM`, `start_date`, `end_date`, `ma_domain`, `ma_framework`, `ma_database`, `ma_programming_language`, `ma_trang_thai`) VALUES
 (1, '1', 'website bán hàng', 'KH001', '', '', '', '0000-00-00', '0000-00-00', '', '', '', '', '0');
 
 --
