@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+
 @Entity
 @Table(name = "tai_lieu")
 public class Document {
@@ -31,7 +33,7 @@ public class Document {
 	private String ghi_chu;
 	
 	@ManyToOne
-	@JoinColumn(name = "ma_truy_cap", referencedColumnName = "ma_truy_cap")
+	@JoinColumn(name = "ma_truy_cap", referencedColumnName = "ma_phong_ban")
 	private PhongBan ma_phong_ban;
 
 	public PhongBan getMaphongban() {
@@ -66,6 +68,7 @@ public class Document {
 		this.ma_trang_thai = ma_trang_thai;
 	}
 
+	/*
 	@ManyToOne
 	@JoinColumn(name = "ma_icon", referencedColumnName = "ma_icon")
 	private Icon ma_icon;
@@ -77,6 +80,7 @@ public class Document {
 	public void setMa_icon(Icon ma_icon) {
 		this.ma_icon = ma_icon;
 	}
+	*/
 
 	// getter and setter
 	 
