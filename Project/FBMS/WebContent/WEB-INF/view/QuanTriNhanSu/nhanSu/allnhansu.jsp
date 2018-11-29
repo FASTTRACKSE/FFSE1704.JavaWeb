@@ -52,8 +52,8 @@
 					<tr>
 						<td>${ns.id}</td>
 						<td>${ns.maNhanVien}</td>
-						<td>${ns.maPhongBan}</td>
-						<td>${ns.maChucDanh}</td>
+						<td>${ns.maPhongBan.tenPhongBan}</td>
+						<td>${ns.maChucDanh.tenChucDanh}</td>
 						<td>${ns.hoLot}</td>
 						<td>${ns.ten}</td>
 						<td>${ns.anhDaiDien}</td>
@@ -61,7 +61,7 @@
 						<td>${ns.gioiTinh}</td>
 						<td>${ns.queQuan}</td>
 						<td>${ns.danToc}</td>
-						<td>${ns.maQuocTich}</td>
+						<td>${ns.maQuocTich.tenQuocTich}</td>
 						<td>${ns.noiTamTru}</td>
 						<td>${ns.soDienThoai}</td>
 						<td>${ns.email}</td>

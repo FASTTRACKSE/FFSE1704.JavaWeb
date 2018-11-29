@@ -15,9 +15,16 @@ public class NhanSuServiceImpl implements NhanSuService {
 	@Autowired
 	NhanSuDao nhanSuDao;
 
+
+	public NhanSuDao getNhanSuDao() {
+		return nhanSuDao;
+	}
+
+
 	public void setNhanSuDao(NhanSuDao nhanSuDao) {
 		this.nhanSuDao = nhanSuDao;
 	}
+
 
 	@Override
 	public List<NhanSu> allNS() {

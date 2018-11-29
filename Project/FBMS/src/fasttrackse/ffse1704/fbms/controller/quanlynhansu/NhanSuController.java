@@ -15,6 +15,12 @@ public class NhanSuController {
 	@Autowired
 	NhanSuService nhanSuService;
 	
+	
+
+	public void setNhanSuService(NhanSuService nhanSuService) {
+		this.nhanSuService = nhanSuService;
+	}
+
 	@RequestMapping("/allNhanSu")
 	public String ShowList(Model model) {
 		
