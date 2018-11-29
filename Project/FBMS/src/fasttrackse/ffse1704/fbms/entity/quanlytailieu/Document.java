@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
+
 @Entity
 @Table(name = "tai_lieu")
 public class Document {
