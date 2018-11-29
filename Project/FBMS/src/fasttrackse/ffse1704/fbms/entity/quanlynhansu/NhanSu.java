@@ -1,5 +1,6 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,94 +23,87 @@ import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
-@Table(name="ho_so_nhan_su")
-public class NhanSu {
+@Table(name = "ho_so_nhan_su")
+public class NhanSu implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
-	
-	@NotEmpty(message= "Vui Lòng Nhập Mã nhân viên")
-	@Column(name="ma_nhan_vien",nullable = false)
-	private String maNhanVien;
-	
-	@ManyToOne
-	@JoinColumn(name = "ma_phong_ban", nullable = false)
-	@NotNull
-	private PhongBan maPhongBan;
-	
-	@ManyToOne
-	@JoinColumn(name = "ma_chuc_danh", nullable = false)
-	private ChucDanh maChucDanh;
-	
-	public NhanSu() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	@NotEmpty(message= "Vui Lòng Nhập họ hót của nhân viên")
-	@Column(name="ho_dem",nullable = false)
+	@NotEmpty(message = "Vui Lòng Nhập Mã nhân viên")
+	@Column(name = "ma_nhan_vien", nullable = false)
+	private String maNhanVien;
+
+	@Column(name = "ma_phong_ban", nullable = false)
+	@NotNull
+	private String maPhongBan;
+
+	@Column(name = "ma_chuc_danh", nullable = false)
+	private String maChucDanh;
+
+	@NotEmpty(message = "Vui Lòng Nhập họ hót của nhân viên")
+	@Column(name = "ho_dem", nullable = false)
 	private String hoLot;
-	
-	@NotEmpty(message= "Vui Lòng Nhập tên nhân viên")
-	@Column(name="ten",nullable = false)
+
+	@NotEmpty(message = "Vui Lòng Nhập tên nhân viên")
+	@Column(name = "ten", nullable = false)
 	private String ten;
-	
-	
-	@Column(name="anh_dai_dien",nullable = false,length = 100)
+
+	@Column(name = "anh_dai_dien", nullable = false, length = 100)
 	private String anhDaiDien;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "nam_sinh", nullable = false)
 	@NotNull
 	private Date namSinh;
-	
-	@Column(name="gioi_tinh")
+
+	@Column(name = "gioi_tinh")
 	@NotNull
-	private Integer gioiTinh;
-	
-	@NotEmpty(message= "Vui Lòng Nhập quê quán nhân viên")
-	@Column(name="que_quan")
+	private int gioiTinh;
+
+	@NotEmpty(message = "Vui Lòng Nhập quê quán nhân viên")
+	@Column(name = "que_quan")
 	private String queQuan;
-	
-	@NotEmpty(message= "Vui Lòng Nhập dân tộc nhân viên")
-	@Column(name="dan_toc")
+
+	@NotEmpty(message = "Vui Lòng Nhập dân tộc nhân viên")
+	@Column(name = "dan_toc")
 	private String danToc;
-	
-	@Column(name="ma_quoc_tich")
+
+	@Column(name = "ma_quoc_tich")
 	@NotNull
 	private String maQuocTich;
+
 	
-	
-	@NotEmpty(message= "Vui Lòng Nhập nơi tạm trú")
-	@Column(name="noi_tam_tru")
+	@NotEmpty(message = "Vui Lòng Nhập nơi tạm trú")
+	@Column(name = "noi_tam_tru")
 	private String noiTamTru;
-	
-	@Column(name="so_dien_thoai")
-	@Pattern(regexp="(^$|[0-9]{11})", message="Số diện thoại không đúng")
+
+	@Column(name = "so_dien_thoai")
+	@Pattern(regexp = "(^$|[0-9]{11})", message = "Số diện thoại không đúng")
 	private String soDienThoai;
-	
-	@Column(name="email")
-	@Pattern(regexp=".+@.+\\..+", message="Định dạng email không đúng")
+
+	@Column(name = "email")
+	@Pattern(regexp = ".+@.+\\..+", message = "Định dạng email không đúng")
 	private String email;
-	
-	@NotEmpty(message= "Vui Lòng Nhập số chứng minh thư")
-	@Column(name="so_cmnd")
+
+	@NotEmpty(message = "Vui Lòng Nhập số chứng minh thư")
+	@Column(name = "so_cmnd")
 	private String soCMND;
-	
-	@Column(name="noi_cap_cmnd")
-	@NotEmpty(message= "Vui Lòng Nhập nơi cấp")
+
+	@Column(name = "noi_cap_cmnd")
+	@NotEmpty(message = "Vui Lòng Nhập nơi cấp")
 	private String noiCap;
-	
-	@Column(name="ngay_cap_cmnd")
+
+	@Column(name = "ngay_cap_cmnd")
 	@NotNull
-	private String ngayCap;
-	
-	@Column(name="trang_thai")
+	private Date ngayCap;
+
+	@Column(name = "trang_thai")
 	@NotNull
-	private Integer trangThai;
+	private int trangThai;
 
 	public int getId() {
 		return id;
@@ -127,19 +121,19 @@ public class NhanSu {
 		this.maNhanVien = maNhanVien;
 	}
 
-	public PhongBan getMaPhongBan() {
+	public String getMaPhongBan() {
 		return maPhongBan;
 	}
 
-	public void setMaPhongBan(PhongBan maPhongBan) {
+	public void setMaPhongBan(String maPhongBan) {
 		this.maPhongBan = maPhongBan;
 	}
 
-	public ChucDanh getMaChucDanh() {
+	public String getMaChucDanh() {
 		return maChucDanh;
 	}
 
-	public void setMaChucDanh(ChucDanh maChucDanh) {
+	public void setMaChucDanh(String maChucDanh) {
 		this.maChucDanh = maChucDanh;
 	}
 
@@ -175,11 +169,11 @@ public class NhanSu {
 		this.namSinh = namSinh;
 	}
 
-	public Integer getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(Integer gioiTinh) {
+	public void setGioiTinh(int gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -247,19 +241,59 @@ public class NhanSu {
 		this.noiCap = noiCap;
 	}
 
-	public String getNgayCap() {
+	public Date getNgayCap() {
 		return ngayCap;
 	}
 
-	public void setNgayCap(String ngayCap) {
+	public void setNgayCap(Date ngayCap) {
 		this.ngayCap = ngayCap;
 	}
 
-	public Integer getTrangThai() {
+	public int getTrangThai() {
 		return trangThai;
 	}
 
-	public void setTrangThai(Integer trangThai) {
+	public void setTrangThai(int trangThai) {
 		this.trangThai = trangThai;
 	}
+
+	public NhanSu(int id, @NotEmpty(message = "Vui Lòng Nhập Mã nhân viên") String maNhanVien,
+			@NotNull String maPhongBan, String maChucDanh,
+			@NotEmpty(message = "Vui Lòng Nhập họ hót của nhân viên") String hoLot,
+			@NotEmpty(message = "Vui Lòng Nhập tên nhân viên") String ten, String anhDaiDien, @NotNull Date namSinh,
+			@NotNull int gioiTinh, @NotEmpty(message = "Vui Lòng Nhập quê quán nhân viên") String queQuan,
+			@NotEmpty(message = "Vui Lòng Nhập dân tộc nhân viên") String danToc, @NotNull String maQuocTich,
+			@NotEmpty(message = "Vui Lòng Nhập nơi tạm trú") String noiTamTru,
+			@Pattern(regexp = "(^$|[0-9]{11})", message = "Số diện thoại không đúng") String soDienThoai,
+			@Pattern(regexp = ".+@.+\\..+", message = "Định dạng email không đúng") String email,
+			@NotEmpty(message = "Vui Lòng Nhập số chứng minh thư") String soCMND,
+			@NotEmpty(message = "Vui Lòng Nhập nơi cấp") String noiCap, @NotNull Date ngayCap, @NotNull int trangThai) {
+		super();
+		this.id = id;
+		this.maNhanVien = maNhanVien;
+		this.maPhongBan = maPhongBan;
+		this.maChucDanh = maChucDanh;
+		this.hoLot = hoLot;
+		this.ten = ten;
+		this.anhDaiDien = anhDaiDien;
+		this.namSinh = namSinh;
+		this.gioiTinh = gioiTinh;
+		this.queQuan = queQuan;
+		this.danToc = danToc;
+		this.maQuocTich = maQuocTich;
+		this.noiTamTru = noiTamTru;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.soCMND = soCMND;
+		this.noiCap = noiCap;
+		this.ngayCap = ngayCap;
+		this.trangThai = trangThai;
+	}
+
+	public NhanSu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 }
