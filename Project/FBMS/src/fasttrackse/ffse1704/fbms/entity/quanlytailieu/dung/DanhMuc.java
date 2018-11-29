@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.quanlytailieu;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +14,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "danh_muc_tai_lieu")
 public class DanhMuc implements Serializable {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8800040796985248779L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

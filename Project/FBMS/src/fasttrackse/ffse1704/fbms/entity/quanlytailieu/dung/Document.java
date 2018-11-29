@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.quanlytailieu;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 
 @Entity
-@Table(name = "tai_lieu")
+@Table(name = "tai_lieu_dung")
 public class Document {
 	@Id
 	@Column(name = "id")
