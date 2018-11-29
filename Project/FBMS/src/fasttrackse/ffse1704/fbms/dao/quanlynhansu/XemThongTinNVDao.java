@@ -1,9 +1,5 @@
 package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
-import java.util.List;
+public class XemThongTinNVDao {
 
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
-
-public interface XemThongTinNVDao {
-	public List<NhanSu> listHoSo();
 }
