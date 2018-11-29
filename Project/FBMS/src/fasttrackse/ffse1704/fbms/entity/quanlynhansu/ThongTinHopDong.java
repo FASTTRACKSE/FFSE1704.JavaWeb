@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +19,9 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@Column(name = "ma_nhan_vien", nullable = false, length = 50)
-	private String maNhanVien;
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", nullable = false)
+	private NhanSu nhanSu;
 
 	@Column(name = "ma_hop_dong", nullable = false, length = 50)
 	private String maHopDong;
@@ -32,11 +35,11 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "luong_thang_13", nullable = false, length = 20)
 	private int luongThang13;
 
-	public ThongTinHopDong(int id, String maNhanVien, String maHopDong, Date ngayBatDau, Date ngayKetThuc,
+	public ThongTinHopDong(int id, NhanSu nhanSu, String maHopDong, Date ngayBatDau, Date ngayKetThuc,
 			int luongThang13) {
 		super();
 		this.id = id;
-		this.maNhanVien = maNhanVien;
+		this.nhanSu = nhanSu;
 		this.maHopDong = maHopDong;
 		this.ngayBatDau = ngayBatDau;
 		this.ngayKetThuc = ngayKetThuc;
@@ -54,12 +57,12 @@ public class ThongTinHopDong implements Serializable {
 		this.id = id;
 	}
 
-	public String getMaNhanVien() {
-		return maNhanVien;
+	public NhanSu getNhanSu() {
+		return nhanSu;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
-		this.maNhanVien = maNhanVien;
+	public void setNhanSu(NhanSu nhanSu) {
+		this.nhanSu = nhanSu;
 	}
 
 	public String getMaHopDong() {
