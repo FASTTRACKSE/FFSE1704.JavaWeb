@@ -6,4 +6,5 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.thachmh.DonXinNghiPhep;
 
 public interface DonXinNghiPhepService {
 	public List<DonXinNghiPhep> getAllDonXinNghiPhep();
+	public void addNew(DonXinNghiPhep dx);
 }
