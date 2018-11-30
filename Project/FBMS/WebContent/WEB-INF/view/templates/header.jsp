@@ -253,6 +253,18 @@
 					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"><i
 						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
+								
 			</ul>
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lý Tài
+						Liệu</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="Bét Daxua" class=" ft-minus"></i></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/quanlytailieu/index"/>"><i
+						class="ft-bookmark"></i>
+							My Document</a></li>
+			</ul>
+			
 		</div>
 	</div>

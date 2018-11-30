@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.quanlytailieu;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +14,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "trang_thai_tai_lieu")
 public class TrangThai implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6931934795016309418L;
 
 	@OneToMany(mappedBy="ma_trang_thai")
 	private List<Document> Document;
