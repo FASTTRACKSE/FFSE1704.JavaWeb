@@ -7,7 +7,7 @@ import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.LyDo;
 import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.TinhTrang;
 import fasttrackse.ffse1704.fbms.entity.security.UserAccount;
 
-public interface QuanLyVangNghiDao {
+public interface QuanLyVangNghiDaoTuanPT {
 	public void addDon(DonNghi donnghi);
 	public List<DonNghi> listDonNghiNhap(int id_nhan_vien);
 	public UserAccount getThongTinUser(String username);

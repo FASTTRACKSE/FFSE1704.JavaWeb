@@ -13,7 +13,7 @@ import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.TinhTrang;
 import fasttrackse.ffse1704.fbms.entity.security.UserAccount;
 
 @Repository
-public class QuanLyVangNghiDaoImpl implements QuanLyVangNghiDao{
+public class QuanLyVangNghiDaoTuanPTImpl implements QuanLyVangNghiDaoTuanPT{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
