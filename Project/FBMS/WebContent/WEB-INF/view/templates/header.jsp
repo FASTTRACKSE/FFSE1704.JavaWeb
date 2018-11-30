@@ -253,6 +253,7 @@
 					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"><i
 						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
+								
 			</ul>
 		</div>
 	</div>
