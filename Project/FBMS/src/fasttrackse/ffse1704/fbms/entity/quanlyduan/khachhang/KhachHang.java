@@ -37,9 +37,6 @@ public class KhachHang implements Serializable {
 	@NotEmpty
 	private String maKhachHang;
 
-	@OneToMany(mappedBy = "khachHang")
-	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
-
 	@Column(name = "ten_khach_hang", nullable = false, length = 255)
 	@NotEmpty
 	private String tenKhachHang;
@@ -57,15 +54,18 @@ public class KhachHang implements Serializable {
 	private int soDienThoai;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
+
+	// bi-directional many-to-one association to ThongTinDuAn
+	@OneToMany(mappedBy = "khachHang")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
 
 	public KhachHang() {
 		super();
 	}
 
 	public KhachHang(int id, @NotEmpty String maKhachHang, List<ThongTinDuAn> listDuAn, @NotEmpty String tenKhachHang,
-			@NotEmpty String diaChi, @NotEmpty String email, @NotEmpty int soDienThoai, @NotEmpty String ghiChu) {
+			@NotEmpty String diaChi, @NotEmpty String email, @NotEmpty int soDienThoai, String ghiChu) {
 		super();
 		this.id = id;
 		this.maKhachHang = maKhachHang;

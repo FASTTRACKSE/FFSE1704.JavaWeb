@@ -4,14 +4,19 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.trangthaiduan;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;
 
 /**
  * @author The persistent class for the trang_thai_du_an database table.
@@ -37,17 +42,22 @@ public class TrangThaiDuAn implements Serializable {
 	private String tenTrangThai;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
+	
+	// bi-directional many-to-one association to ThongTinDuAn
+	@OneToMany(mappedBy = "trangThaiDuAn")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
+
 
 	public TrangThaiDuAn() {
 		super();
 	}
 
-	public TrangThaiDuAn(int id, String maTrangThai, String tenTrangThai, String ghiChu) {
+	public TrangThaiDuAn(int id, @NotEmpty String maTrangThai, List<ThongTinDuAn> listDuAn, @NotEmpty String tenTrangThai, String ghiChu) {
 		super();
 		this.id = id;
 		this.maTrangThai = maTrangThai;
+		this.listDuAn = listDuAn;
 		this.tenTrangThai = tenTrangThai;
 		this.ghiChu = ghiChu;
 	}
@@ -84,4 +94,11 @@ public class TrangThaiDuAn implements Serializable {
 		this.ghiChu = ghiChu;
 	}
 
+	public List<ThongTinDuAn> getListDuAn() {
+		return listDuAn;
+	}
+
+	public void setListDuAn(List<ThongTinDuAn> listDuAn) {
+		this.listDuAn = listDuAn;
+	}
 }
