@@ -46,12 +46,28 @@
 						<td>${cc.tenChungChi}</td>
 						<td>${cc.ngayCap}</td>
 						<td>${cc.donViCap}</td>
-						<td><a href="#" class="btn btn-success">Edit</a> <a href="#"
+						<td><a href="updateCC/${cc.ID}" class="btn btn-success">Edit</a> <a href="deleteCC/${cc.ID}"
 							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${page > 1 }">
+					<li class="page-item"><a class="page-link" href="1">First</a></li>
+					<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
+				</c:if>
+
+				<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
+
+				<c:if test="${page < totalPage}">
+					<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
+					<li class="page-item"><a class="page-link"
+						href="${totalPage }">Last</a></li>
+				</c:if>
+			</ul>
+		</nav>
 	</div>
 </body>
 </html>
