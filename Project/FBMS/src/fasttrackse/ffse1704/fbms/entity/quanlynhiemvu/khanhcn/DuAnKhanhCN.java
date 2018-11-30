@@ -23,7 +23,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
 
 @Entity
 @Table(name = "quan_ly_thong_tin_du_an")
-public class DuAn implements Serializable {
+public class DuAnKhanhCN implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -67,33 +67,33 @@ public class DuAn implements Serializable {
 	@NotEmpty
 	private Date endDate;
 	
-	@Column(name = "domain", nullable = false, length = 30)
+	@Column(name = "ma_domain", nullable = false, length = 30)
 	@NotEmpty
 	private String domain;
 	
-	@Column(name = "framework", nullable = false, length = 30)
+	@Column(name = "ma_framework", nullable = false, length = 30)
 	@NotEmpty
 	private String framework;
 	
-	@Column(name = "database", nullable = false, length = 30)
+	@Column(name = "ma_database", nullable = false, length = 30)
 	@NotEmpty
 	private String database;
 	
 	
 	
-	@Column(name = "programming_language", nullable = false, length = 30)
+	@Column(name = "ma_programming_language", nullable = false, length = 30)
 	@NotEmpty
 	private String programmingLanguage;
 	
-	@Column(name = "trang_thai", nullable = false, length = 30)
+	@Column(name = "ma_trang_thai", nullable = false, length = 30)
 	@NotEmpty
 	private String trang_thai;
 	
-	public DuAn() {
+	public DuAnKhanhCN() {
 		super();
 	}
 
-	public DuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn, String pM, Date startDate, Date endDate, String domain, String framework, String database, String programmingLanguage, String trang_thai) {
+	public DuAnKhanhCN(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn, String pM, Date startDate, Date endDate, String domain, String framework, String database, String programmingLanguage, String trang_thai) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;

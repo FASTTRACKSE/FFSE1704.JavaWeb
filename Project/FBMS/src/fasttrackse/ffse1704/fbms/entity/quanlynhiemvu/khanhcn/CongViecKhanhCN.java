@@ -1,5 +1,7 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,14 +12,14 @@ import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "tencongviec")
-public class CongViec {
+public class CongViecKhanhCN {
 
 	@Id
 	@Column(name = "id")
 	@NotNull
 	private int id;
 
-	@Column(name = "ma_duan")
+	@Column(name = "ma_du_an")
 	@NotEmpty
 	private String maDuAn;
 
@@ -25,7 +27,7 @@ public class CongViec {
 	@NotEmpty
 	private String maLoaiCongViec;
 
-	@Column(name = "ten_congviec")
+	@Column(name = "ten_cong_viec")
 	@NotEmpty
 	private String tenCongViec;
 
@@ -33,13 +35,13 @@ public class CongViec {
 	@NotEmpty
 	private String moTa;
 
-	@Column(name = "thoi_gian_bat_dau")
+	@Column(name = "thoigian_batdau")
 	@NotEmpty
-	private String thoiGianBatDau;
+	private Date thoiGianBatDau;
 
-	@Column(name = "thoi_gian_ket_thuc")
+	@Column(name = "thoigian_ketthuc")
 	@NotEmpty
-	private String thoiGianketThuc;
+	private Date thoiGianKetThuc;
 
 	@Column(name = "nguoi_duoc_phan_cong")
 	@NotEmpty
@@ -48,17 +50,16 @@ public class CongViec {
 	@Column(name = "thoigian_dukien_hoanthanh")
 	@NotEmpty
 	private String thoiGianDuKienHoanThanh;
-	
-	
 
-	public CongViec() {
+	public CongViecKhanhCN() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CongViec(int id, @NotEmpty String maDuAn, @NotEmpty String maLoaiCongViec, @NotEmpty String tenCongViec,
-			@NotEmpty String moTa, @NotEmpty String thoiGianBatDau, @NotEmpty String thoiGianketThuc,
-			@NotEmpty String nguoiDuocPhanCong, @NotEmpty String thoiGianDuKienHoanThanh) {
+	public CongViecKhanhCN(int id, @NotEmpty String maDuAn, @NotEmpty String maLoaiCongViec,
+			@NotEmpty String tenCongViec, @NotEmpty String moTa, @NotEmpty Date thoiGianBatDau,
+			@NotEmpty Date thoiGianKetThuc, @NotEmpty String nguoiDuocPhanCong,
+			@NotEmpty String thoiGianDuKienHoanThanh) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
@@ -66,7 +67,7 @@ public class CongViec {
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
 		this.thoiGianBatDau = thoiGianBatDau;
-		this.thoiGianketThuc = thoiGianketThuc;
+		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.nguoiDuocPhanCong = nguoiDuocPhanCong;
 		this.thoiGianDuKienHoanThanh = thoiGianDuKienHoanThanh;
 	}
@@ -111,20 +112,20 @@ public class CongViec {
 		this.moTa = moTa;
 	}
 
-	public String getThoiGianBatDau() {
+	public Date getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(String thoiGianBatDau) {
+	public void setThoiGianBatDau(Date thoiGianBatDau) {
 		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
-	public String getThoiGianketThuc() {
-		return thoiGianketThuc;
+	public Date getThoiGianKetThuc() {
+		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianketThuc(String thoiGianketThuc) {
-		this.thoiGianketThuc = thoiGianketThuc;
+	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
+		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
 	public String getNguoiDuocPhanCong() {
