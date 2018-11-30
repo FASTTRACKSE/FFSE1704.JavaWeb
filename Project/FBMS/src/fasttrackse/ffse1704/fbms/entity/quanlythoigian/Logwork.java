@@ -64,6 +64,9 @@ public class Logwork {
 		this.nhanXetPM = nhanXetPM;
 		this.nhanXetTPP = nhanXetTPP;
 	}
+	public Logwork() {
+		super();
+	}
 
 	public int getId() {
 		return id;

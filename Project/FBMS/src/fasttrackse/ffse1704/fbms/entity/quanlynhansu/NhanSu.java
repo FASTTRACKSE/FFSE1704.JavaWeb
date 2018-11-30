@@ -1,5 +1,6 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,8 +24,9 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name="ho_so_nhan_su")
-public class NhanSu {
-
+public class NhanSu implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -78,11 +80,19 @@ public class NhanSu {
 	@Column(name="dan_toc")
 	private String danToc;
 	
-	@Column(name="ma_quoc_tich")
+	@ManyToOne
+	@JoinColumn(name = "ma_quoc_tich", referencedColumnName="ma_quoc_tich",nullable = false)
 	@NotNull
-	private String maQuocTich;
-	
-	
+	private QuocTich maQuocTich;
+
+	public QuocTich getMaQuocTich() {
+		return maQuocTich;
+	}
+
+	public void setMaQuocTich(QuocTich maQuocTich) {
+		this.maQuocTich = maQuocTich;
+	}
+
 	@NotEmpty(message= "Vui Lòng Nhập nơi tạm trú")
 	@Column(name="noi_tam_tru")
 	private String noiTamTru;
@@ -105,7 +115,7 @@ public class NhanSu {
 	
 	@Column(name="ngay_cap_cmnd")
 	@NotNull
-	private String ngayCap;
+	private Date ngayCap;
 	
 	@Column(name="trang_thai")
 	@NotNull
@@ -199,13 +209,7 @@ public class NhanSu {
 		this.danToc = danToc;
 	}
 
-	public String getMaQuocTich() {
-		return maQuocTich;
-	}
 
-	public void setMaQuocTich(String maQuocTich) {
-		this.maQuocTich = maQuocTich;
-	}
 
 	public String getNoiTamTru() {
 		return noiTamTru;
@@ -247,11 +251,13 @@ public class NhanSu {
 		this.noiCap = noiCap;
 	}
 
-	public String getNgayCap() {
+
+
+	public Date getNgayCap() {
 		return ngayCap;
 	}
 
-	public void setNgayCap(String ngayCap) {
+	public void setNgayCap(Date ngayCap) {
 		this.ngayCap = ngayCap;
 	}
 

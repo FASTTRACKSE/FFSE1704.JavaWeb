@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2018 at 10:19 AM
+-- Generation Time: Nov 29, 2018 at 11:16 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -36,6 +36,15 @@ CREATE TABLE `technical` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `technical`
+--
+
+INSERT INTO `technical` (`id`, `ma_technical`, `ten_technical`, `ghi_chu`) VALUES
+(1, 'J1', 'Java', ''),
+(2, 'R11', 'Ruby', ''),
+(3, 'P1', 'PHP', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -53,7 +62,7 @@ ALTER TABLE `technical`
 -- AUTO_INCREMENT for table `technical`
 --
 ALTER TABLE `technical`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

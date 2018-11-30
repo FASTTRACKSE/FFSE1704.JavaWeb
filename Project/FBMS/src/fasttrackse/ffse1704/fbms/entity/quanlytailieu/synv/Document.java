@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tai_lieu")
+@Table(name = "tai_lieu_")
 public class Document {
 	@Id
 	@NotNull

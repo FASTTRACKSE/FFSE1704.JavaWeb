@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2018 at 10:18 AM
+-- Generation Time: Nov 29, 2018 at 11:16 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `programming_language` (
   `id` int(11) NOT NULL,
-  `ma_language` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ten_language` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_programming_language` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ten_programming_language` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ghi_chu` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -39,7 +39,7 @@ CREATE TABLE `programming_language` (
 -- Dumping data for table `programming_language`
 --
 
-INSERT INTO `programming_language` (`id`, `ma_language`, `ten_language`, `ghi_chu`) VALUES
+INSERT INTO `programming_language` (`id`, `ma_programming_language`, `ten_programming_language`, `ghi_chu`) VALUES
 (1, '1', 'Ruby', 'Riby là ngôn ngữ lập trình năng động, mã nguồn mở tập trung vào sự đơn giản. Nó được dùng để xây dựng một số ứng dụng mà chúng ta dùng mỗi ngày. Khung ứng dụng web phổ biến Ruby on Rails được triển khai bằng Ruby. Các ứng dụng như Twitch, SoundCloud, Hulu, Zendesk, Square và GitHub được xây dựng với Ruby on Rails.'),
 (2, '2', 'C', 'C là ngôn ngữ cũ, nhưng tốt. Đây là một trong nhựng lựa chọn lâu đời nhất, được phát minh vào thập niên 1970. Thậm chí ngày nay, C vẫn là một trong các ngôn ngữ lập trình được dùng rộng rãi nhất mọi thời đại.'),
 (3, '3', 'Shell', 'Hệ thống Shell là chương trình máy tính được thiết kế để hướng dẫn hệ điều hành chạy các lệnh nhất định. Nó có thể thao tác các tập tin, thực thi chương trình và nhiều hơn nữa. Ngôn ngữ này đặc biệt phổ biến với các quản trị viên hệ thống.'),

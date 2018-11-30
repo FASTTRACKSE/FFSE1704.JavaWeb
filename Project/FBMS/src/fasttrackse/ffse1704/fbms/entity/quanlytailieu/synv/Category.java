@@ -1,5 +1,8 @@
 package fasttrackse.ffse1704.fbms.entity.quanlytailieu.synv;
 
+//import java.io.Serializable;
+//import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +14,8 @@ import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "danh_muc")
-public class Category implements java.io.Serializable {
+@Table(name = "danh_muc_")
+public class Category  implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,11 +24,10 @@ public class Category implements java.io.Serializable {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -51,17 +53,17 @@ public class Category implements java.io.Serializable {
 	public void setMa_danh_muc(String ma_danh_muc) {
 		this.ma_danh_muc = ma_danh_muc;
 	}
-
+	
 	public Category(int id, String ma_danh_muc, String ten_danh_muc) {
 		super();
 		this.id = id;
 		this.ma_danh_muc = ma_danh_muc;
 		this.ten_danh_muc = ten_danh_muc;
 	}
-
+	
 	public Category() {
-
+		
 		super();
 	}
-
+	
 }

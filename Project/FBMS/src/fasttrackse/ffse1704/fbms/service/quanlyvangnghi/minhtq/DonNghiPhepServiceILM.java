@@ -25,10 +25,36 @@ public class DonNghiPhepServiceILM implements DonNghiPhepService {
 		this.donNghiPhepDao = donNghiPhepDao;
 	}
 
+	
+	
+	
 	@Override
 	public List<DonNghiPhep> listDonNghiPhep() {
-
 		return donNghiPhepDao.listDonNghiPhep();
+	}
+
+	@Override
+	public DonNghiPhep getByIdDonNghiPhep(int id) {
+		// TODO Auto-generated method stub
+		return donNghiPhepDao.getByIdDonNghiPhep(id);
+	}
+	
+	@Override
+	public void deleteDonNghiPhep(int id) {
+		donNghiPhepDao.deleteDonNghiPhep(id);
+	}
+
+
+	@Override
+	public void editDonNghiPhep(DonNghiPhep donnghiphep) {
+		donNghiPhepDao.editDonNghiPhep(donnghiphep);
+		
+	}
+
+	@Override
+	public void addDonNghiPhep(DonNghiPhep donnghiphep) {
+		donNghiPhepDao.addDonNghiPhep(donnghiphep);
+		
 	}
 
 }
