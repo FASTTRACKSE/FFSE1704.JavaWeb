@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "don_nghi")
-public class DonNghi {
+public class DonXinNghiPhep {
 
 	@Id
 	@Column(name = "id_don")
