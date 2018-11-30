@@ -4,8 +4,8 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.*;
 
-public interface DonNghiPhepDao {
+public interface DonNghiPhepDaoKhoann {
 
-	public List<DonNghiPhep> listDonNghiPhep();
+	public List<DonNghiPhepKhoann> listDonNghiPhep();
 
 }

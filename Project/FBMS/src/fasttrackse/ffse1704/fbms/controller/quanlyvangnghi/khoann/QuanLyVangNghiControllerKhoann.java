@@ -8,23 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.DonNghiPhep;
-import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.khoann.DonNghiPhepService;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.DonNghiPhepKhoann;
+import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.khoann.DonNghiPhepServiceKhoann;
 
 @Controller
-
-public class QuanLyVangNghi {
+@RequestMapping("quanlyvangnghi/khoann")
+public class QuanLyVangNghiControllerKhoann {
 
 	@Autowired
-	private DonNghiPhepService donNghiPhepService;
+	private DonNghiPhepServiceKhoann donNghiPhepService;
 
-	public void setDonNghiPhepService(DonNghiPhepService donNghiPhepService) {
+	public void setDonNghiPhepService(DonNghiPhepServiceKhoann donNghiPhepService) {
 		this.donNghiPhepService = donNghiPhepService;
 	}
 
 	@RequestMapping(value =  "/list" , method = RequestMethod.GET)
 	public String DanhSachNghiPhep(Model model) {
-		List<DonNghiPhep> list = donNghiPhepService.listDonNghiPhep();
+		List<DonNghiPhepKhoann> list = donNghiPhepService.listDonNghiPhep();
 		model.addAttribute("list", list);
 		return "QuanLyVangNghi/khoann/donnghiphep/list";
 	}

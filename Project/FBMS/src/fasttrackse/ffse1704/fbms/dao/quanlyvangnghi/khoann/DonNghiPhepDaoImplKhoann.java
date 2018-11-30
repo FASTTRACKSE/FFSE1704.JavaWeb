@@ -6,11 +6,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.DonNghiPhep;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.DonNghiPhepKhoann;
 @Repository
-
-public class DonNghiPhepDaoImpl implements DonNghiPhepDao {
+@Transactional
+public class DonNghiPhepDaoImplKhoann implements DonNghiPhepDaoKhoann {
 
 	
 	
@@ -26,9 +27,9 @@ public class DonNghiPhepDaoImpl implements DonNghiPhepDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhep> listDonNghiPhep() {
+	public List<DonNghiPhepKhoann> listDonNghiPhep() {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhep> list = session.createQuery("from DonNghiPhep ").list();
+		List<DonNghiPhepKhoann> list = session.createQuery("from DonNghiPhepKhoann ").list();
 
 		return list;
 	}
