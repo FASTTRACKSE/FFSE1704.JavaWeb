@@ -32,4 +32,13 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		return listNhanSu;
 	}
 
+	
+	@Override
+	public void addNS(NhanSu ns) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(ns);
+	}
+
+	
+
 }

@@ -26,7 +26,11 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 @Table(name="ho_so_nhan_su")
 public class NhanSu implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+	public NhanSu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -36,20 +40,18 @@ public class NhanSu implements Serializable{
 	@Column(name="ma_nhan_vien",nullable = false)
 	private String maNhanVien;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "ma_phong_ban", nullable = false)
 	@NotNull
-	private PhongBan maPhongBan;
+	private PhongBan phongBan;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)
-	private ChucDanh maChucDanh;
+	private ChucDanh chucDanh;
 	
-	public NhanSu() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	@NotEmpty(message= "Vui Lòng Nhập họ hót của nhân viên")
 	@Column(name="ho_dem",nullable = false)
 	private String hoLot;
@@ -63,7 +65,7 @@ public class NhanSu implements Serializable{
 	private String anhDaiDien;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nam_sinh", nullable = false)
 	@NotNull
 	private Date namSinh;
@@ -80,18 +82,11 @@ public class NhanSu implements Serializable{
 	@Column(name="dan_toc")
 	private String danToc;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "ma_quoc_tich", referencedColumnName="ma_quoc_tich",nullable = false)
 	@NotNull
-	private QuocTich maQuocTich;
-
-	public QuocTich getMaQuocTich() {
-		return maQuocTich;
-	}
-
-	public void setMaQuocTich(QuocTich maQuocTich) {
-		this.maQuocTich = maQuocTich;
-	}
+	private QuocTich quocTich;
 
 	@NotEmpty(message= "Vui Lòng Nhập nơi tạm trú")
 	@Column(name="noi_tam_tru")
@@ -113,6 +108,8 @@ public class NhanSu implements Serializable{
 	@NotEmpty(message= "Vui Lòng Nhập nơi cấp")
 	private String noiCap;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="ngay_cap_cmnd")
 	@NotNull
 	private Date ngayCap;
@@ -137,21 +134,6 @@ public class NhanSu implements Serializable{
 		this.maNhanVien = maNhanVien;
 	}
 
-	public PhongBan getMaPhongBan() {
-		return maPhongBan;
-	}
-
-	public void setMaPhongBan(PhongBan maPhongBan) {
-		this.maPhongBan = maPhongBan;
-	}
-
-	public ChucDanh getMaChucDanh() {
-		return maChucDanh;
-	}
-
-	public void setMaChucDanh(ChucDanh maChucDanh) {
-		this.maChucDanh = maChucDanh;
-	}
 
 	public String getHoLot() {
 		return hoLot;
@@ -268,4 +250,29 @@ public class NhanSu implements Serializable{
 	public void setTrangThai(Integer trangThai) {
 		this.trangThai = trangThai;
 	}
+
+	public PhongBan getPhongBan() {
+		return phongBan;
+	}
+
+	public void setPhongBan(PhongBan phongBan) {
+		this.phongBan = phongBan;
+	}
+
+	public ChucDanh getChucDanh() {
+		return chucDanh;
+	}
+
+	public void setChucDanh(ChucDanh chucDanh) {
+		this.chucDanh = chucDanh;
+	}
+
+	public QuocTich getQuocTich() {
+		return quocTich;
+	}
+
+	public void setQuocTich(QuocTich quocTich) {
+		this.quocTich = quocTich;
+	}
+	
 }

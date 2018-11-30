@@ -31,4 +31,11 @@ public class NhanSuServiceImpl implements NhanSuService {
 		return nhanSuDao.allNS();
 	}
 
+
+	@Override
+	public void addNS(NhanSu ns) {
+		this.nhanSuDao.addNS(ns);
+		
+	}
+
 }

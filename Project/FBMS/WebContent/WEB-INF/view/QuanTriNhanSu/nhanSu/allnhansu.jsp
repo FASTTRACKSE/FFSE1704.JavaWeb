@@ -17,10 +17,16 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div >
 		<div style="text-align: center;">
-			<h1>Danh sách nhân sự</h1>
+			<h1>HỆ THỐNG QUẢN LÝ NHÂN SỰ</h1>
 		</div>
+		<div>
+			<h3>
+				<a href="addNS">THÊM NHÂN SỰ</a>
+			</h3>
+		</div>
+
 
 
 		<table class="table table-striped">
@@ -45,6 +51,7 @@
 					<th scope="col">Nơi cấp</th>
 					<th scope="col">Ngày cấp</th>
 					<th scope="col">Trạng thái</th>
+					<th scope="col">Chức năng</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,8 +59,8 @@
 					<tr>
 						<td>${ns.id}</td>
 						<td>${ns.maNhanVien}</td>
-						<td>${ns.maPhongBan.tenPhongBan}</td>
-						<td>${ns.maChucDanh.tenChucDanh}</td>
+						<td>${ns.phongBan.tenPhongBan}</td>
+						<td>${ns.chucDanh.tenChucDanh}</td>
 						<td>${ns.hoLot}</td>
 						<td>${ns.ten}</td>
 						<td>${ns.anhDaiDien}</td>
@@ -61,7 +68,7 @@
 						<td>${ns.gioiTinh}</td>
 						<td>${ns.queQuan}</td>
 						<td>${ns.danToc}</td>
-						<td>${ns.maQuocTich.tenQuocTich}</td>
+						<td>${ns.quocTich.tenQuocTich}</td>
 						<td>${ns.noiTamTru}</td>
 						<td>${ns.soDienThoai}</td>
 						<td>${ns.email}</td>
@@ -69,8 +76,13 @@
 						<td>${ns.noiCap}</td>
 						<td>${ns.ngayCap}</td>
 						<td>${ns.trangThai}</td>
+						<td>
+						<a href="editNS/${ns.id}" class="btn btn-success">edit</a>
+						<a href="DeleteNS/${ns.id}" class=	"btn btn-danger">Delete</a>
+						</td>
 					</tr>
 				</c:forEach>
+				
 			</tbody>
 		</table>
 	</div>

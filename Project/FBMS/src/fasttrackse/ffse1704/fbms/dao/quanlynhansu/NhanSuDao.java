@@ -6,4 +6,6 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 public interface NhanSuDao {
 	public List<NhanSu> allNS();
+	public void addNS(NhanSu ns);
+	
 }
