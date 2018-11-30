@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage.ProgrammingLanguage;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.technical.Technical;
 
 /**
@@ -48,13 +52,6 @@ public class ThongTinDuAn implements Serializable {
 	@Column(name = "ten_du_an", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDuAn;
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "maKhachHang", referencedColumnName = "maKhachHang",
-	 * nullable = false) private KhachHang khachHang;
-	 */
 
 	@Column(name = "ma_khach_hang", nullable = false, length = 30)
 	@NotEmpty
@@ -104,10 +101,34 @@ public class ThongTinDuAn implements Serializable {
 	@NotEmpty
 	private String maTrangThai;
 
-	/*@ManyToMany(cascade = { CascadeType.ALL })
+	/*
+	 * 
+	 * Many to one
+	 * 
+	 */
+	@ManyToOne
+	@JoinColumn(name = "ma_khach_hang", referencedColumnName = "ma_khach_hang", insertable = false, updatable = false, nullable = false)
+	private KhachHang khachHang;
+
+	@ManyToOne
+	@JoinColumn(name = "ma_domain", referencedColumnName = "ma_domain", insertable = false, updatable = false, nullable = false)
+	private Domain domain;
+
+	@ManyToOne
+	@JoinColumn(name = "ma_programming_language", referencedColumnName = "ma_programming_language", insertable = false, updatable = false, nullable = false)
+	private ProgrammingLanguage programmingLanguage;
+
+	/*
+	 * 
+	 * 
+	 * Many to Many
+	 * 
+	 * 
+	 */
+	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "technical_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_technical") })
-	Set<Technical> technical = new HashSet<>();*/
+	Set<Technical> technical = new HashSet<>();
 
 	public ThongTinDuAn() {
 		super();
@@ -243,5 +264,13 @@ public class ThongTinDuAn implements Serializable {
 
 	public void setMaTrangThai(String maTrangThai) {
 		this.maTrangThai = maTrangThai;
+	}
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
 	}
 }

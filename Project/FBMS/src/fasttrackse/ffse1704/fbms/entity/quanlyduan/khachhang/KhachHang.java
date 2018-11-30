@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-//import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;
 
 /**
  * @author The persistent class for the khach_hang database table.
@@ -36,9 +36,9 @@ public class KhachHang implements Serializable {
 	@Column(name = "ma_khach_hang", nullable = false, length = 30)
 	@NotEmpty
 	private String maKhachHang;
-	
-	/*@OneToMany(mappedBy = "khachHang")
-	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();*/
+
+	@OneToMany(mappedBy = "khachHang")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
 
 	@Column(name = "ten_khach_hang", nullable = false, length = 255)
 	@NotEmpty
@@ -63,16 +63,17 @@ public class KhachHang implements Serializable {
 	public KhachHang() {
 		super();
 	}
-	
-	public KhachHang(int id, String maKhachHang, String tenKhachHang, String diaChi, String email, int soDienThoai, String ghiChu) {
+
+	public KhachHang(int id, @NotEmpty String maKhachHang, List<ThongTinDuAn> listDuAn, @NotEmpty String tenKhachHang,
+			@NotEmpty String diaChi, @NotEmpty String email, @NotEmpty int soDienThoai, @NotEmpty String ghiChu) {
 		super();
 		this.id = id;
 		this.maKhachHang = maKhachHang;
+		this.listDuAn = listDuAn;
 		this.tenKhachHang = tenKhachHang;
 		this.diaChi = diaChi;
 		this.email = email;
 		this.soDienThoai = soDienThoai;
-		this.diaChi = diaChi;
 		this.ghiChu = ghiChu;
 	}
 
@@ -130,5 +131,13 @@ public class KhachHang implements Serializable {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	public List<ThongTinDuAn> getListDuAn() {
+		return listDuAn;
+	}
+
+	public void setListDuAn(List<ThongTinDuAn> listDuAn) {
+		this.listDuAn = listDuAn;
 	}
 }
