@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "danh_muc_")
-public class Category  implements java.io.Serializable{
+public class CategorySy  implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -54,14 +54,14 @@ public class Category  implements java.io.Serializable{
 		this.ma_danh_muc = ma_danh_muc;
 	}
 	
-	public Category(int id, String ma_danh_muc, String ten_danh_muc) {
+	public CategorySy(int id, String ma_danh_muc, String ten_danh_muc) {
 		super();
 		this.id = id;
 		this.ma_danh_muc = ma_danh_muc;
 		this.ten_danh_muc = ten_danh_muc;
 	}
 	
-	public Category() {
+	public CategorySy() {
 		
 		super();
 	}

@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tai_lieu_")
-public class Document {
+public class DocumentSy {
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -112,7 +112,7 @@ public class Document {
 	public void setMa_phong_ban(String ma_phong_ban) {
 		this.ma_phong_ban = ma_phong_ban;
 	}
-	public Document() {
+	public DocumentSy() {
 		super();
 	}
 	

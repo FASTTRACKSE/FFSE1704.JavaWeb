@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "trang_thai_")
-public class Status {
+public class StatusSy {
 	
 	@Id
 	@Column(name = "id")
@@ -47,11 +47,11 @@ public class Status {
 		this.id = id;
 	}
 	
-	public Status() {
+	public StatusSy() {
 		super();
 	}
 	
-	public Status (int id, String ma_trang_thai, String ten_trang_thai) {
+	public StatusSy (int id, String ma_trang_thai, String ten_trang_thai) {
 		super();
 		this.id = id;
 		this.ma_trang_thai = ma_trang_thai;
