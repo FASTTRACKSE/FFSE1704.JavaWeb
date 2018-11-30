@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhep;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 
-@Repository(value = "donNghiPhepDaoILM")
+@Repository(value = "donNghiPhepDaoILMMinhtq")
 @Transactional(rollbackFor = Exception.class)
-public class DonNghiPhepDaoILM implements DonNghiPhepDao {
+public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -26,22 +27,22 @@ public class DonNghiPhepDaoILM implements DonNghiPhepDao {
 
 	// list toàn bộ đơn nghỉ phép của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhep> listDonNghiPhep() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhep() {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhep> list = session.createQuery("from DonNghiPhep ").list();
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq ").list();
 
 		return list;
 	}
 
 	// crud cho đơn nghỉ phép của nhân viên
-	public void addDonNghiPhep(DonNghiPhep donnghiphep) {
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphep);
 	}
 
-	public DonNghiPhep getByIdDonNghiPhep(int id) {
+	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		DonNghiPhep donnghiphep = (DonNghiPhep) session.get(DonNghiPhep.class, id);
+		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) session.get(DonNghiPhepMinhtq.class, id);
 
 		return donnghiphep;
 	}
@@ -51,7 +52,7 @@ public class DonNghiPhepDaoILM implements DonNghiPhepDao {
 		session.delete(getByIdDonNghiPhep(id));
 	}
 
-	public void editDonNghiPhep(DonNghiPhep donnghiphep) {
+	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
 		session.update(donnghiphep);
@@ -59,6 +60,12 @@ public class DonNghiPhepDaoILM implements DonNghiPhepDao {
 		session.close();
 	}
 
-	
+	@SuppressWarnings("unchecked")
+	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
+		Session session = sessionFactory.getCurrentSession();
+		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").list();
+
+		return list;
+	}
 	
 }

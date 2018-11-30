@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "minhtq_don_nghi_phep")
-public class DonNghiPhep {
+public class DonNghiPhepMinhtq {
 	
 	
 	@Id
@@ -37,12 +37,12 @@ public class DonNghiPhep {
 	@Column(name ="trang_thai")
 	private int trangThai;
 
-	public DonNghiPhep() {
+	public DonNghiPhepMinhtq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DonNghiPhep(int id, String maNhanVien, int loaiNgayNghi, int soLuong, Date thoiGianBatDau,
+	public DonNghiPhepMinhtq(int id, String maNhanVien, int loaiNgayNghi, int soLuong, Date thoiGianBatDau,
 			Date thoiGianKetThuc, int trangThai) {
 		super();
 		this.id = id;
