@@ -14,8 +14,8 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a href='<c:url value="/QuanTriHeThong/phong_ban/" />'>Danh sách phòng ban</a></li>
-							<li class="breadcrumb-item active">Logwork</li>
+							<li class="breadcrumb-item"><a href='<c:url value="/PhuongQuanLyThoiGian/Logwork/list" />'>Danh sách Logwork</a></li>
+							<li class="breadcrumb-item active">ThongTinLogwork</li>
 						</ol>
 					</div>
 				</div>
@@ -33,17 +33,32 @@
 						</div>
 						<div class="form-group col-sm-6">
 						  	<label>Mã Nhân viên</label>
-						  	<form:input class="form-control" path="maNhanVien" placeholder="Tên phòng ban" />
+						  	<form:input class="form-control" path="maNhanVien" placeholder="Mã nhân viên" />
 						</div>
 						<div class="form-group col-sm-6">
 						  	<label>Chon dự án</label>
-						  	<form:input class="form-control" path="maDuAn" placeholder="Mã phòng ban" />
+						  	<form:input class="form-control" path="maDuAn" placeholder="Chọn dự án" />
 						</div>
 						<div class="form-group col-sm-6">
 						  	<label>Vai trò</label>
-						  	<form:input class="form-control" path="maVaiTro" placeholder="Tên phòng ban" />
+						  	<form:input class="form-control" path="maVaiTro" placeholder="Vai trò" />
 						</div>
 						<div class="form-group col-sm-6">
+						  	<label>Tên công việc</label>
+						  	<form:input class="form-control" path="tenCongViec" placeholder="Tên công việc" />
+						</div>
+						<div class="form-group col-sm-6">
+						  	<label>Mô tả công việc</label>
+						  	<form:input class="form-control" path="moTa" placeholder="Mô tả công việc" />
+						</div>
+						<div class="form-group col-sm-6">
+						  	<label>Thời gian bắt đầu</label>
+						  	<form:input class="form-control" path="thoiGianBatDau" type="Date" placeholder="" />
+						</div>
+						<div class="form-group col-sm-6">
+						  	<label>Thời gian kết thúc</label>
+						  	<form:input class="form-control" path="thoiGianKetThuc" type="Date" placeholder="" />
+						</div>
 						
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Submit</button>
