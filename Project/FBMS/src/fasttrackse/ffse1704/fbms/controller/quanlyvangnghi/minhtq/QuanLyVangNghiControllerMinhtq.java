@@ -19,7 +19,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.DonNghiPhepServiceMinhtq;
 
 @Controller
-@RequestMapping("quanlyvangnghi/minhtq/donnghiphepnhap")
+@RequestMapping("quanlyvangnghi/minhtq")
 public class QuanLyVangNghiControllerMinhtq {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		this.donNghiPhepService = donNghiPhepService;
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/listDonNghiPhepNhap", method = RequestMethod.GET)
 	public String index(Model model) {
 		List<DonNghiPhepMinhtq> list = donNghiPhepService.listDonNghiPhep();
 		model.addAttribute("list", list);
@@ -46,25 +46,28 @@ public class QuanLyVangNghiControllerMinhtq {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 		return countryList;
 	}
-	
-	@RequestMapping(value = "/addDonNghiPhep", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/taodonnghiphep", method = RequestMethod.GET)
 	public String showForm(Model model) {
 		model.addAttribute("command", new DonNghiPhepMinhtq());
-		model.addAttribute("listDonNghiPhep", donNghiPhepService.listDonNghiPhep());
 		return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
 	}
 
-	@RequestMapping(value = "/addDonNghiPhep", method = RequestMethod.POST)
-	public String createStudent(Model model, @ModelAttribute("command") @Valid DonNghiPhepMinhtq donnghiphep,
-			BindingResult bindingResult,final RedirectAttributes redirectAttributes) throws IllegalStateException, IOException {
+	@RequestMapping(value = "/taodonnghiphep/addDonNghiPhepNhap", method = RequestMethod.POST)
+	public String createDonNhap(Model model, @ModelAttribute("command") @Valid DonNghiPhepMinhtq donnghiphep,
+			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
+			throws IllegalStateException, IOException {
 
 		if (bindingResult.hasErrors()) {
-			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
-			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
+			redirectAttributes.addFlashAttribute("messageError", "mời nhập lại!");
+			return "quanlyvangnghi/minhtq/taodonnghiphep";
 		}
-		
+
 		donNghiPhepService.addDonNghiPhep(donnghiphep);
-		redirectAttributes.addFlashAttribute("messageSuccess", "Sửa thành công!");
-		return "redirect:/list";
+		redirectAttributes.addFlashAttribute("messageSuccess", "thêm thành công !");
+		return "redirect:/listDonNghiPhepNhap";
 	}
+	
+	
+	
 }

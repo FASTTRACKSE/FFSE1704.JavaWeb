@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="minhtq_loai_ngay_nghi")
@@ -17,9 +19,11 @@ public class LoaiNgayNghiMinhtq {
 	private int id;
 
 	@Column(name = "ma_loai_ngay_nghi")
+	@NotNull
 	private int maLoaiNgayNghi;
 	
 	@Column(name = "ten_loai_ngay_nghi")
+	@NotEmpty
 	private String  tenLoaiNgayNghi;
 
 	public LoaiNgayNghiMinhtq() {

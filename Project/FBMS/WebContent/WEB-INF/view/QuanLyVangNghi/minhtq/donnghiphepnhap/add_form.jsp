@@ -29,35 +29,35 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="POST" modelAttribute="command" action="">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien"
 								placeholder="nhập mã nhân viên" />
-							<form:errors path="maNhanVien" cssClass="error" />
+						<form:errors path="maNhanVien" cssStyle="color: red" ></form:errors>
 						</div>
 
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<label>Số lượng </label>
 							<form:input class="form-control" path="soLuong"
 								placeholder="số lượng" />
-							<form:errors path="soLuong" cssClass="error" />
+						<form:errors path="soLuong" cssStyle="color: red" ></form:errors>
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<label>Thời gian bắt đầu </label>
 							<form:input class="form-control" type="date"
 								path="thoiGianBatDau" placeholder="" />
-							<form:errors path="thoiGianBatDau" cssClass="error" />
+							<form:errors path="thoiGianBatDau" cssStyle="color: red" ></form:errors>
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<label>Thời gian kết thúc </label>
 							<form:input class="form-control" type="date"
 								path="thoiGianKetThuc" placeholder="" />
-							<form:errors path="thoiGianKetThuc" cssClass="error" />
+							<form:errors path="thoiGianKetThuc" cssStyle="color: red" ></form:errors>
 
 						</div>
 
 
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
@@ -65,6 +65,7 @@
 								itemValue="maLoaiNgayNghi" itemLabel="tenLoaiNgayNghi">
 								
 							</form:select>
+							<form:errors path="loaiNgayNghi" cssStyle="color: red" ></form:errors>
 						</div>
 
 						<div class="row">
@@ -72,10 +73,10 @@
 							<div class="col-md-12">
 								<button type="submit"
 									class="btn btn-outline-danger round  mr-1 mb-1"
-									formaction="<%=request.getContextPath()%>/">lưu nháp</button>
+									formaction="<%=request.getContextPath()%>/QuanLyVangNghi/minhtq/taodonnghiphep/addDonNghiPhepNhap">lưu nháp</button>
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1"
-									formaction="<%=request.getContextPath()%>/">gửi</button>
+									formaction="<%=request.getContextPath()%>/QuanLyVangNghi/minhtq/taodonnghiphep/addDonNghiPhepNhap">gửi</button>
 
 							</div>
 						</div>
