@@ -4,7 +4,7 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.DonNghi;
 
-public interface QuanLyVangNghiDao {
+public interface QuanLyVangNghiTuanPTDao {
 
 	public List<DonNghi> listDonNghi();
 }

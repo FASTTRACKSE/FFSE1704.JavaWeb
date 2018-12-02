@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.DonNghi;
 
 @Repository
-public class QuanLyVangNghiDaoImpl implements QuanLyVangNghiDao{
+public class QuanLyVangNghiDaoTuanPTImpl implements QuanLyVangNghiTuanPTDao{
 	@Autowired
 	SessionFactory sessionFactory;
 	public SessionFactory getSessionFactory() {
