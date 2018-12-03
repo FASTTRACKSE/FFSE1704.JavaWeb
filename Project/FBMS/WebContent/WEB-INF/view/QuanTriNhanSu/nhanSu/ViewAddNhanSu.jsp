@@ -21,8 +21,8 @@
 <body>
 
 	<div class="container">
-		<h1 style="text-align: center;">THÊM NHÂN SỰq</h1>
-		<form:form method="post" action="saveNhanSu" modelAttribute="nhanSu">
+		<h1 style="text-align: center;">THÊM NHÂN SỰ</h1>
+		<form:form method="post" enctype="multipart/form-data" action="saveNhanSu" modelAttribute="nhanSu">
 			<div class="form-group">
 				<label>Mã Nhân Viên:</label>
 				<form:input class="form-control" type="text" path="maNhanVien" />
@@ -50,7 +50,8 @@
 			</div>
 			<div class="form-group">
 				<label>Ảnh</label>
-				<form:input class="form-control" type="text" path="anhDaiDien" />
+				<input id="upload" type="file"
+					class="form-control-file" name="file">
 				<br>
 			</div>
 			<div class="form-group">
@@ -59,8 +60,12 @@
 				<br>
 			</div>
 			<div class="form-group">
-				<label>Giới tính</label>
-				<form:input class="form-control" type="text" path="gioiTinh" />
+				<label>Giới tính:</label>
+				<%-- <form:input class="form-control" type="text" path="gioiTinh" /> --%>
+				
+				Male <form:radiobutton path="gioiTinh" value="1"/>  
+       			Female <form:radiobutton path="gioiTinh" value="2"/>  
+				
 				<br>
 			</div>
 			<div class="form-group">

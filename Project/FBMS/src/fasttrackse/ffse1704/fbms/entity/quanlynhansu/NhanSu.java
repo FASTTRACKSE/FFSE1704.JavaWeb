@@ -2,14 +2,18 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,6 +51,8 @@ public class NhanSu implements Serializable{
 	private PhongBan phongBan;
 	
 	
+	 
+	
 	@ManyToOne
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)
 	private ChucDanh chucDanh;
@@ -61,7 +67,7 @@ public class NhanSu implements Serializable{
 	private String ten;
 	
 	
-	@Column(name="anh_dai_dien",nullable = false,length = 100)
+	@Column(name="anh_dai_dien",length = 100)
 	private String anhDaiDien;
 	
 	@Temporal(TemporalType.DATE)
@@ -117,6 +123,19 @@ public class NhanSu implements Serializable{
 	@Column(name="trang_thai")
 	@NotNull
 	private Integer trangThai;
+	
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	private List<BangCap> listBangCap;
+	
+	
+
+	public List<BangCap> getListBangCap() {
+		return listBangCap;
+	}
+
+	public void setListBangCap(List<BangCap> listBangCap) {
+		this.listBangCap = listBangCap;
+	}
 
 	public int getId() {
 		return id;

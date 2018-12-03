@@ -32,7 +32,7 @@ public class BangCap implements Serializable{
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien", nullable = false)
+	@JoinColumn(name = "ma_nhan_vien",referencedColumnName="ma_nhan_vien", nullable = false)
 	private NhanSu nhanSu;
 	
 	@ManyToOne

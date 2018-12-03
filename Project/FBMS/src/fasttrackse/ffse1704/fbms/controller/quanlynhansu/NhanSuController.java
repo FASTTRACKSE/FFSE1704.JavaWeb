@@ -6,17 +6,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
@@ -41,6 +45,11 @@ public class NhanSuController {
 		return "QuanTriNhanSu/nhanSu/allnhansu";
 
 	}
+	@RequestMapping("/QuanTriNhanSu/nhanSu/allnhansu")
+	public String ShowList() {
+		return "redirect:QuanTriNhanSu/nhanSu/allnhansu/1";
+
+	}
 	
 	@RequestMapping("/addNS")
 	public ModelAndView ShowViewADD() {
@@ -50,9 +59,18 @@ public class NhanSuController {
 	}
 	
 	@RequestMapping(value="/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") NhanSu nhanSu) 
-			throws IllegalStateException, IOException{
+	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") @Valid  NhanSu nhanSu,
+			BindingResult bindingResult,
+			@RequestParam("file") MultipartFile  file) 
+								throws IllegalStateException, IOException{
 
+		String fileName = upload(file);
+		if (!fileName.equals("")) {
+			nhanSu.setAnhDaiDien(fileName);
+		}
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("addSV");        
+			}
 		nhanSuService.addNS(nhanSu);
 		
 		return new ModelAndView("redirect:/allNhanSu");
@@ -64,8 +82,29 @@ public class NhanSuController {
 		binder.registerCustomEditor(Date.class, 
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
+	// danh sach sinh vien phan trang
+	@RequestMapping(value="QuanTriNhanSu/nhanSu/allnhansu/{page}")
+	public ModelAndView ViewNhanSuPage(@PathVariable int page,Model model) {
+		
+		long record = nhanSuService.CountNhanSu();
+		int perpage =2;
+		int totalPage = (int) Math.ceil(record* 1.0/perpage);
+		
+		if(page== 0) {
+			page = 1;
+		}
+		int start = (page -1)*perpage;
+		List<NhanSu> ListNhanSunbyPage = nhanSuService.GetListNhanSuByPage(start, totalPage);
+		model.addAttribute("page",page);
+		model.addAttribute("totalPage",totalPage);
+		
+		
+		 
+		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu","ListNhanSunbyPage",ListNhanSunbyPage);
+		
+	}
 	
-	public String upload(@RequestParam CommonsMultipartFile file) throws IllegalStateException, IOException {
+	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = file.getOriginalFilename();
 
