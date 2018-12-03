@@ -18,7 +18,14 @@ public class DanhMuc implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8800040796985248779L;
-
+	@OneToMany(mappedBy="maDanhMuc")
+	private List<Document> Document;
+	public List<Document> getDocument() {
+		return Document;
+	}
+	public void setDocument(List<Document> document) {
+		Document = document;
+	}
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,35 +38,28 @@ public class DanhMuc implements Serializable {
 		this.id = id;
 	}
 
-	@OneToMany(mappedBy="ma_danh_muc")
-	private List<Document> Document;
-	public List<Document> getDocument() {
-		return Document;
-	}
-	public void setDocument(List<Document> document) {
-		Document = document;
-	}
+
 
 	@Column(name = "ten_danh_muc")
-	private String ten_danh_muc;
+	private String tenDanhMuc;
 
 	@Column(name = "ma_danh_muc")
-	private String ma_danh_muc;
+	private String maDanhMuc;
 
-	public String getTen_danh_muc() {
-		return ten_danh_muc;
+	public String getTenDanhMuc() {
+		return tenDanhMuc;
 	}
 
-	public void setTen_danh_muc(String ten_danh_muc) {
-		this.ten_danh_muc = ten_danh_muc;
+	public void setTenDanhMuc(String tenDanhMuc) {
+		this.tenDanhMuc = tenDanhMuc;
 	}
 
-	public String getMa_danh_muc() {
-		return ma_danh_muc;
+	public String getMaDanhMuc() {
+		return maDanhMuc;
 	}
 
-	public void setMa_danh_muc(String ma_danh_muc) {
-		this.ma_danh_muc = ma_danh_muc;
+	public void setMaDanhMuc(String maDanhMuc) {
+		this.maDanhMuc = maDanhMuc;
 	}
 	
 }

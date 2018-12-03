@@ -268,17 +268,21 @@
 						class="ft-bookmark"></i>
 							Quản Lý Thông Tin Dự Án</a></li>
 			</ul>
+			<!-- Quản lí tài liệu - Dũng -->
+			
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lý Tài
-						Liệu</span><i data-toggle="tooltip" data-placement="right"
-					data-original-title="Bét Daxua" class=" ft-minus"></i></li>
+				<li class=" navigation-header"><span>Quản Lý Tài Liệu</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="" class=" ft-minus"></i></li>
 				<li class=" nav-item"><a
 					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							My Document</a></li>
-			</ul>
-
+						class="ft-bookmark"></i>Dũng</a></li>
+				<ul class="menu-content" style="">
+	              		<li class="is-shown">
+	             <ul class="menu-content" style="">
+	              	    <li class="is-shown"><a class="menu-item" href="<c:url value = "/quanlytailieu/index"/>">● Danh mục tài liệu</a></li>	
+	              	    </ul>		
+			<!-- End Quản lí tài liệu - Dũng -->
 			
 			<!-- Quản lí tài liệu - DoanhNT -->
 			<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
@@ -292,7 +296,7 @@
          		</li>
 			</ul>
 			<!-- End Quản lí tài liệu - DoanhNT -->
-			
+			</ul>
 
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">

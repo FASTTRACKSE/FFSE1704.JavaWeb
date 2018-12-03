@@ -65,7 +65,7 @@
 										<th>Mô Tả</th>
 										<th>Danh Mục</th>
 										<th>Trạng Thái</th>
-										<th>Quyền Truy Cập</th>
+										<th>Phòng Ban</th>
 										<th>Phương Thức</th>
 									</tr>
 								</thead>
@@ -74,12 +74,14 @@
 										<c:forEach var="document" items="${listDocument}" varStatus="stt">
 											<tr class="border-bottom-success border-custom-color">
 												<td>${stt.count}</td>
-												<td><img src="<c:url value="${document.ma_icon.hinh_anh}"/>" width="20" height="20"> ${document.ten_tai_lieu}</td>
-												<td>${document.mo_ta}</td>
-												<td>${document.ma_danh_muc.ten_danh_muc}</td>
-												<td>${document.ma_trang_thai.ten_trang_thai}</td>
-												<td>${document.ma_truy_cap.quyen_truy_cap}</td>
-												<td><a href="documentDelete/${document.id}" class="btn-warning btn">Xóa</a><a href="documentEdit/${document.id}" class="btn-warning btn" > Sửa </a></td>
+												<td><img src="<c:url value="${document.maIcon.hinhAnh}"/>" width="20" height="20"> ${document.tenTaiLieu}</td>
+												<td>${document.moTa}</td>
+												<td>${document.maDanhMuc.tenDanhMuc}</td>
+												<td>${document.maTrangThai.tenTrangThai}</td>
+												<td>${document.maPhongBan.tenPhongBan}</td>
+												<td>
+												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
+												<a href="documentEdit/${document.id}" class="btn-warning btn" role="button" > Sửa </a></td>
 											</tr>
 										</c:forEach>
 									</c:if>
