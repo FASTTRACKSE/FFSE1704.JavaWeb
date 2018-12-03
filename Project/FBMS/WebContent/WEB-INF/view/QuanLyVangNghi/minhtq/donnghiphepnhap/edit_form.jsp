@@ -28,7 +28,7 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="command" action="">
+					<form:form method="POST" modelAttribute="suadonnghiphepnhap" action="">
 						<div class="form-group col-sm-6">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien"
@@ -60,7 +60,7 @@
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
-								name="location" items="${countryList}"
+								name="location" items="${listLoaiNgayNghi}"
 								itemValue="tenLoaiNgayNghi" itemLabel="maLoaiNgayNghi">
 								
 							</form:select>

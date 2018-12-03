@@ -61,19 +61,13 @@
 							<li class="breadcrumb-item"><a href='<c:url value="/" />'>Danh
 									sách đơn nghỉ phép nháp</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/quanlyvangnghi/minhtq/listDonNghiPhepNhap" />'>Danh
+								href='<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepNhap" />'>Danh
 									sách đơn nghỉ phép đã được phê duyệt</a></li>
 						</ol>
 					</div>
 				</div>
 			</div>
-			<div class="content-header-right col-md-3 col-xs-12">
-				<div role="group" aria-label="Button group with nested dropdown"
-					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "taodonnghiphep"/>" class="btn btn-primary"><span
-						class="fa fa-plus"></span> Thêm mới</a>
-				</div>
-			</div>
+
 		</div>
 		<!-- End Path -->
 
@@ -133,18 +127,20 @@
 
 											</tr>
 										</thead>
-										<c:forEach var="sv" items="${list}">
+										<c:forEach var="dnpn" items="${list}">
 											<tr>
-												<td>${sv.id}</td>
-												<td>${sv.maNhanVien}</td>
-												<td>${sv.loaiNgayNghi}</td>
-												<td>${sv.soLuong}</td>
-												<td>${sv.thoiGianBatDau}</td>
-												<td>${sv.thoiGianKetThuc}</td>
-												<td>${sv.trangThai}</td>
+												<td>${dnpn.id}</td>
+												<td>${dnpn.maNhanVien}</td>
+												<td>${dnpn.loaiNgayNghi}</td>
+												<td>${dnpn.soLuong}</td>
+												<td>${dnpn.thoiGianBatDau}</td>
+												<td>${dnpn.thoiGianKetThuc}</td>
+												<td>${dnpn.trangThai}</td>
 												<td><a
-													href="/springHibernateMVCframwork/editview/${sv.id}"><button>
-															sửa</button></a> <a href="/springHibernateMVCframwork/delete/${sv.id}"><button>
+													href="/QuanLyVangNghi/minhtq/suaDonNghiPhepNhapView/${dnpn.id}">
+														<button>sửa</button>
+												</a> <a
+													href="/QuanLyVangNghi/minhtq/suaDonNghiPhepNhapView/${dnpn.id}"><button>
 															xóa</button></a></td>
 										</c:forEach>
 										<tbody>

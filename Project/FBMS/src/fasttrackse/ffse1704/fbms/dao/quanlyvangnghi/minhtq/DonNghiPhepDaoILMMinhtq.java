@@ -14,6 +14,8 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 @Repository(value = "donNghiPhepDaoILMMinhtq")
 @Transactional(rollbackFor = Exception.class)
 public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
+	
+	//tự động quét toàn bộ SessionFactory
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -25,9 +27,10 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		this.sessionFactory = sessionFactory;
 	}
 
+	
 	// list toàn bộ đơn nghỉ phép của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhep() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
 		Session session = sessionFactory.getCurrentSession();
 		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq ").list();
 
@@ -35,31 +38,33 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// crud cho đơn nghỉ phép của nhân viên
-	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
+	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.save(donnghiphep);
+		session.save(donnghiphepnhap);
 	}
 
-	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
+	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) session.get(DonNghiPhepMinhtq.class, id);
+		DonNghiPhepMinhtq donnghiphepnhap = (DonNghiPhepMinhtq) session.get(DonNghiPhepMinhtq.class, id);
 
-		return donnghiphep;
+		return donnghiphepnhap;
 	}
 
-	public void deleteDonNghiPhep(int id) {
+	public void deleteDonNghiPhepNhap(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdDonNghiPhep(id));
+		session.delete(getByIdDonNghiPhepNhap(id));
 	}
 
-	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
+	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
 		Session session = this.sessionFactory.getCurrentSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		session.update(donnghiphep);
+		session.update(donnghiphepnhap);
 		tx.commit();
 		session.close();
 	}
 
+	
+	//list loại ngày  nghỉ
 	@SuppressWarnings("unchecked")
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
 		Session session = sessionFactory.getCurrentSession();
@@ -67,5 +72,10 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 		return list;
 	}
+
+	
+
+	
+	
 	
 }
