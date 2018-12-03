@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping({"/demo/*","/demo"})
+@RequestMapping("/demo/buttons")
 public class MultiButtonsController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
