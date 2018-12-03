@@ -257,6 +257,15 @@
 			</ul>
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Thời Gian(Kỳ)</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="Xuân Kỳ" class=" ft-minus"></i></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/QuanLyThoiGian/Logwork/list"/>"><i
+						class="ft-book"></i>
+							Danh Sách Logwork</a></li>
+			</ul>
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
 				<li class=" navigation-header"><span>Quản Lý Dự Án</span><i data-toggle="tooltip" data-placement="right"
 					data-original-title="Joker" class=" ft-minus"></i></li>
 				<li class=" nav-item"><a
