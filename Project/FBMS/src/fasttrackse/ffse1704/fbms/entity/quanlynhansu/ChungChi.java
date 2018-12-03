@@ -1,6 +1,5 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,28 +7,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name = "chung_chi")
-public class ChungChi implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class ChungChi {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 
-	@Column(name = "ma_nhan_vien", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	@NotNull
-	private String maNhanVien;
+	private NhanSu nhanSu;
 
 	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	@NotNull
@@ -51,15 +51,6 @@ public class ChungChi implements Serializable {
 
 	public void setID(int iD) {
 		ID = iD;
-	}
-
-
-	public String getMaNhanVien() {
-		return maNhanVien;
-	}
-
-	public void setMaNhanVien(String maNhanVien) {
-		this.maNhanVien = maNhanVien;
 	}
 
 	public String getTenChungChi() {
@@ -86,13 +77,14 @@ public class ChungChi implements Serializable {
 		this.donViCap = donViCap;
 	}
 
-	public ChungChi(int iD, String maNhanVien, String tenChungChi, Date ngayCap, String donViCap) {
-		super();
-		ID = iD;
-		this.maNhanVien = maNhanVien;
-		this.tenChungChi = tenChungChi;
-		this.ngayCap = ngayCap;
-		this.donViCap = donViCap;
+
+
+	public NhanSu getNhanSu() {
+		return nhanSu;
+	}
+
+	public void setNhanSu(NhanSu nhanSu) {
+		this.nhanSu = nhanSu;
 	}
 
 	public ChungChi() {

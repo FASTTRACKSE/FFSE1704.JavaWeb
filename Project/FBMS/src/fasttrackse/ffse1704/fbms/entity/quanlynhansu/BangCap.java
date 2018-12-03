@@ -1,6 +1,5 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,41 +17,39 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="thong_tin_bang_cap")
-public class BangCap implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Table(name = "thong_tin_bang_cap")
+public class BangCap {
 
 	public BangCap() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien",referencedColumnName="ma_nhan_vien", nullable = false)
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id_trinh_do", referencedColumnName="id_trinh_do", nullable = false)
+	@JoinColumn(name = "id_trinh_do", referencedColumnName = "id_trinh_do", nullable = false)
 	private TrinhDo trinhDo;
-	
+
 	@Column(name = "ten_nganh", nullable = false)
 	private String tenNganh;
-	
-	
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "thoi_gian", nullable = false)
 	@NotNull
 	private Date thoiGian;
-	
+
 	@Column(name = "xep_loai", nullable = false)
 	private String xepLoai;
-	
+
 	@Column(name = "noi_cap", nullable = false)
 	private String noiCap;
 

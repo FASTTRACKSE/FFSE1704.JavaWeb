@@ -1,8 +1,13 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,8 +56,6 @@ public class NhanSu implements Serializable{
 	private PhongBan phongBan;
 	
 	
-	 
-	
 	@ManyToOne
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)
 	private ChucDanh chucDanh;
@@ -67,7 +70,7 @@ public class NhanSu implements Serializable{
 	private String ten;
 	
 	
-	@Column(name="anh_dai_dien",length = 100)
+	@Column(name="anh_dai_dien",nullable = false,length = 100)
 	private String anhDaiDien;
 	
 	@Temporal(TemporalType.DATE)
@@ -127,8 +130,6 @@ public class NhanSu implements Serializable{
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	private List<BangCap> listBangCap;
 	
-	
-
 	public List<BangCap> getListBangCap() {
 		return listBangCap;
 	}
@@ -136,7 +137,8 @@ public class NhanSu implements Serializable{
 	public void setListBangCap(List<BangCap> listBangCap) {
 		this.listBangCap = listBangCap;
 	}
-
+	
+	
 	public int getId() {
 		return id;
 	}
