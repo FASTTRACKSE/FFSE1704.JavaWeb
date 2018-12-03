@@ -20,7 +20,7 @@ public class ThongTinGiaDinh implements Serializable {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien", nullable = false)
+	@JoinColumn(name = "ma_nhan_vien",referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
 	@Column(name = "ho_va_ten", nullable = false, length = 255)

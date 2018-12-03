@@ -77,8 +77,6 @@ public class ChungChi {
 		this.donViCap = donViCap;
 	}
 
-
-
 	public NhanSu getNhanSu() {
 		return nhanSu;
 	}
