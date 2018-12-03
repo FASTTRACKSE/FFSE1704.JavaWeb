@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:05 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,31 +25,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `framework`
+-- Table structure for table `vendor_du_an`
 --
 
-CREATE TABLE `framework` (
+CREATE TABLE `vendor_du_an` (
   `id` int(11) NOT NULL,
-  `ma_framework` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_framework` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ghi_chu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `framework`
---
-
-INSERT INTO `framework` (`id`, `ma_framework`, `ten_framework`, `ghi_chu`) VALUES
-(1, 'FR01', 'Spring', '');
+  `ma_du_an` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_vendor` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `framework`
+-- Indexes for table `vendor_du_an`
 --
-ALTER TABLE `framework`
+ALTER TABLE `vendor_du_an`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -57,10 +49,10 @@ ALTER TABLE `framework`
 --
 
 --
--- AUTO_INCREMENT for table `framework`
+-- AUTO_INCREMENT for table `vendor_du_an`
 --
-ALTER TABLE `framework`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `vendor_du_an`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

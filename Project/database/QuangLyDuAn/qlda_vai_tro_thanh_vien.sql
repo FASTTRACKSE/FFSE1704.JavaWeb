@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:05 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,33 +25,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `database`
+-- Table structure for table `vai_tro_thanh_vien`
 --
 
-CREATE TABLE `database` (
+CREATE TABLE `vai_tro_thanh_vien` (
   `id` int(11) NOT NULL,
-  `ma_database` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ten_database` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ma_vai_tro` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ten_vai_tro` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ghi_chu` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `database`
+-- Dumping data for table `vai_tro_thanh_vien`
 --
 
-INSERT INTO `database` (`id`, `ma_database`, `ten_database`, `ghi_chu`) VALUES
-(1, '1', 'Oracle', 'Oracle'),
-(2, '2', 'Mysql', 'Mysql'),
-(3, '3', 'SQL ', 'SQL ');
+INSERT INTO `vai_tro_thanh_vien` (`id`, `ma_vai_tro`, `ten_vai_tro`, `ghi_chu`) VALUES
+(1, '1', 'PM', 'PM'),
+(2, '2', 'Technical Lead', 'Technical Lead'),
+(3, '3', 'Team Lead', 'Team Lead'),
+(4, '4', 'Dev', 'Dev'),
+(5, '5', 'Tester', 'Tester'),
+(6, '6', 'QA', 'QA'),
+(7, '7', 'Reviewer', 'Reviewer');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `database`
+-- Indexes for table `vai_tro_thanh_vien`
 --
-ALTER TABLE `database`
+ALTER TABLE `vai_tro_thanh_vien`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +63,10 @@ ALTER TABLE `database`
 --
 
 --
--- AUTO_INCREMENT for table `database`
+-- AUTO_INCREMENT for table `vai_tro_thanh_vien`
 --
-ALTER TABLE `database`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `vai_tro_thanh_vien`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -50,7 +50,8 @@ CREATE TABLE `quan_ly_thong_tin_du_an` (
 --
 
 INSERT INTO `quan_ly_thong_tin_du_an` (`id`, `ma_du_an`, `ten_du_an`, `ma_khach_hang`, `mo_ta`, `phong_du_an`, `PM`, `start_date`, `end_date`, `ma_domain`, `ma_framework`, `ma_database`, `ma_programming_language`, `ma_trang_thai`) VALUES
-(1, '1', 'website bán hàng', 'KH001', '', '', '', '0000-00-00', '0000-00-00', '', '', '', '', '0');
+(1, 'DA1', 'website bán hàng', 'KH001', '', 'PDA1', '', '2016-03-08', '2016-10-04', '1', 'FR01', '2', '7', '4'),
+(2, 'DA2', 'website nhà hàng', 'KH001', '', 'PDA1', '', '2018-09-03', '2019-05-08', '1', 'FR01', '2', '9', '1');
 
 --
 -- Indexes for dumped tables
@@ -70,7 +71,7 @@ ALTER TABLE `quan_ly_thong_tin_du_an`
 -- AUTO_INCREMENT for table `quan_ly_thong_tin_du_an`
 --
 ALTER TABLE `quan_ly_thong_tin_du_an`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

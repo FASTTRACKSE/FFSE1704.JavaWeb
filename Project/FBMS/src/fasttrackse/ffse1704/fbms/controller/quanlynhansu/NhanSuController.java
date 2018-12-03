@@ -37,7 +37,7 @@ public class NhanSuController {
 		this.nhanSuService = nhanSuService;
 	}
 
-	@RequestMapping("/allNhanSu")
+	@RequestMapping("QuanTriNhanSu/nhanSu/allNhanSu")
 	public String ShowList(Model model) {
 		
 		List<NhanSu> allNS = nhanSuService.allNS();

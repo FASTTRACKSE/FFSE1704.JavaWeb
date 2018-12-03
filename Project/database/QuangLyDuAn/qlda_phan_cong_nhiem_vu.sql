@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,36 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trang_thai_du_an`
+-- Table structure for table `phan_cong_nhiem_vu`
 --
 
-CREATE TABLE `trang_thai_du_an` (
+CREATE TABLE `phan_cong_nhiem_vu` (
   `id` int(11) NOT NULL,
-  `ma_trang_thai` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ten_trang_thai` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ghi_chu` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `ma_du_an` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ma_nhan_vien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ma_vai_tro` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `trang_thai_du_an`
+-- Dumping data for table `phan_cong_nhiem_vu`
 --
 
-INSERT INTO `trang_thai_du_an` (`id`, `ma_trang_thai`, `ten_trang_thai`, `ghi_chu`) VALUES
-(1, '1', 'New', 'Dự án mới'),
-(2, '2', 'In Progress', ''),
-(3, '3', 'On Hold', ''),
-(4, '4', 'Completed', ''),
-(5, '5', 'Cancelled', ''),
-(6, '6', 'Archived', '');
+INSERT INTO `phan_cong_nhiem_vu` (`id`, `ma_du_an`, `ma_nhan_vien`, `ma_vai_tro`) VALUES
+(1, 'DA1', 'NV01', '1'),
+(2, 'DA1', 'NV02', '3'),
+(3, 'DA1', 'NV03', '4'),
+(4, 'DA2', 'NV01', '1'),
+(5, 'DA2', 'NV01', '4'),
+(6, 'DA2', 'NV01', '3');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `trang_thai_du_an`
+-- Indexes for table `phan_cong_nhiem_vu`
 --
-ALTER TABLE `trang_thai_du_an`
+ALTER TABLE `phan_cong_nhiem_vu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -62,9 +62,9 @@ ALTER TABLE `trang_thai_du_an`
 --
 
 --
--- AUTO_INCREMENT for table `trang_thai_du_an`
+-- AUTO_INCREMENT for table `phan_cong_nhiem_vu`
 --
-ALTER TABLE `trang_thai_du_an`
+ALTER TABLE `phan_cong_nhiem_vu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 

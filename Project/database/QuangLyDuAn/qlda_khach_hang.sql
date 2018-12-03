@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,33 +25,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `domain`
+-- Table structure for table `khach_hang`
 --
 
-CREATE TABLE `domain` (
+CREATE TABLE `khach_hang` (
   `id` int(11) NOT NULL,
-  `ma_domain` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_domain` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ma_khach_hang` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_khach_hang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dia_chi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `so_dien_thoai` int(11) NOT NULL,
   `ghi_chu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `domain`
+-- Dumping data for table `khach_hang`
 --
 
-INSERT INTO `domain` (`id`, `ma_domain`, `ten_domain`, `ghi_chu`) VALUES
-(1, '1', 'Website', 'Mảng website'),
-(2, '2', 'Giáo dục', 'Mảng giáo dục'),
-(3, '3', 'Y tế', 'Mảng y tế');
+INSERT INTO `khach_hang` (`id`, `ma_khach_hang`, `ten_khach_hang`, `dia_chi`, `email`, `so_dien_thoai`, `ghi_chu`) VALUES
+(1, 'KH001', 'Công ty CP Việt Hằng', '15 - Phạm Như Xương - Đà Nẵng', '', 0, '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `domain`
+-- Indexes for table `khach_hang`
 --
-ALTER TABLE `domain`
+ALTER TABLE `khach_hang`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +60,10 @@ ALTER TABLE `domain`
 --
 
 --
--- AUTO_INCREMENT for table `domain`
+-- AUTO_INCREMENT for table `khach_hang`
 --
-ALTER TABLE `domain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `khach_hang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

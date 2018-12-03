@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:05 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,25 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phan_cong_nhiem_vu`
+-- Table structure for table `vendor`
 --
 
-CREATE TABLE `phan_cong_nhiem_vu` (
+CREATE TABLE `vendor` (
   `id` int(11) NOT NULL,
-  `ma_du_an` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ma_nhan_vien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ma_vai_tro` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `nhiem_vu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+  `ma_vendor` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_vendor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dia_chi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `so_dien_thoai` int(11) NOT NULL,
+  `ghi_chu` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `vendor`
+--
+
+INSERT INTO `vendor` (`id`, `ma_vendor`, `ten_vendor`, `dia_chi`, `email`, `so_dien_thoai`, `ghi_chu`) VALUES
+(1, '1', 'Amazon Web Services (AWS)', '', '', 0, ''),
+(2, '2', 'TeamViewer', '', '', 0, ''),
+(3, '3', 'FPT', '20-Phan tứ', 'doanhnghieptunhanft@gmail.com', 12388882, '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `phan_cong_nhiem_vu`
+-- Indexes for table `vendor`
 --
-ALTER TABLE `phan_cong_nhiem_vu`
+ALTER TABLE `vendor`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -51,10 +62,10 @@ ALTER TABLE `phan_cong_nhiem_vu`
 --
 
 --
--- AUTO_INCREMENT for table `phan_cong_nhiem_vu`
+-- AUTO_INCREMENT for table `vendor`
 --
-ALTER TABLE `phan_cong_nhiem_vu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `vendor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
