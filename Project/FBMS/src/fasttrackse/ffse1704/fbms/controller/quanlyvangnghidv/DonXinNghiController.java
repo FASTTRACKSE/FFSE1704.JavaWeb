@@ -1,6 +1,5 @@
 package fasttrackse.ffse1704.fbms.controller.quanlyvangnghidv;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,6 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv.LoaiNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghidv.TinhTrangNghi;
 import fasttrackse.ffse1704.fbms.entity.security.HoSoNhanVien;
 import fasttrackse.ffse1704.fbms.entity.security.UserAccount;
-import fasttrackse.ffse1704.fbms.entity.tuanpt.qlvn.TinhTrang;
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghidv.QuanLyVangNghiService;
 
 @Controller

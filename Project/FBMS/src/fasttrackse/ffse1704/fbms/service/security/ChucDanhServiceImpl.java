@@ -71,11 +71,11 @@ public class ChucDanhServiceImpl implements ChucDanhService {
 	public String toJson(ChucDanh cd) {
 		String maChucDanh = cd.getMaChucDanh();
 		String tenChucDanh = cd.getTenChucDanh();
-		String action = "<a href='/ffse-fbms/QuanTriHeThong/chuc_danh/view/" 
+		String action = "<a href='/FBMS/QuanTriHeThong/chuc_danh/view/" 
 				+ maChucDanh + "'><i class='fa fa-eye'></i></a>"
-				+ "<a href='/ffse-fbms/QuanTriHeThong/chuc_danh/edit/"
+				+ "<a href='/FBMS/QuanTriHeThong/chuc_danh/edit/"
 				+ maChucDanh + "'><i class='fa fa-pencil'></i></a>"
-				+ "<a href='javascript:void(0);' data-toggle='modal' data-target='#confirm-delete' data-href='/ffse-fbms/QuanTriHeThong/chuc_danh/delete/"
+				+ "<a href='javascript:void(0);' data-toggle='modal' data-target='#confirm-delete' data-href='/FBMS/QuanTriHeThong/chuc_danh/delete/"
 				+maChucDanh + "'><i class='fa fa-trash'></i></a>";
 
 		return "[\"" + maChucDanh + "\",\"" + tenChucDanh + "\",\"" + action + "\"]";

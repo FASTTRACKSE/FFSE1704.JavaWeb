@@ -37,11 +37,11 @@ public class CongViecKhanhCN {
 
 	@Column(name = "thoigian_batdau")
 	@NotEmpty
-	private Date thoiGianBatDau;
+	private String thoiGianBatDau;
 
 	@Column(name = "thoigian_ketthuc")
 	@NotEmpty
-	private Date thoiGianKetThuc;
+	private String thoiGianKetThuc;
 
 	@Column(name = "nguoi_duoc_phan_cong")
 	@NotEmpty
@@ -56,21 +56,7 @@ public class CongViecKhanhCN {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CongViecKhanhCN(int id, @NotEmpty String maDuAn, @NotEmpty String maLoaiCongViec,
-			@NotEmpty String tenCongViec, @NotEmpty String moTa, @NotEmpty Date thoiGianBatDau,
-			@NotEmpty Date thoiGianKetThuc, @NotEmpty String nguoiDuocPhanCong,
-			@NotEmpty String thoiGianDuKienHoanThanh) {
-		super();
-		this.id = id;
-		this.maDuAn = maDuAn;
-		this.maLoaiCongViec = maLoaiCongViec;
-		this.tenCongViec = tenCongViec;
-		this.moTa = moTa;
-		this.thoiGianBatDau = thoiGianBatDau;
-		this.thoiGianKetThuc = thoiGianKetThuc;
-		this.nguoiDuocPhanCong = nguoiDuocPhanCong;
-		this.thoiGianDuKienHoanThanh = thoiGianDuKienHoanThanh;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -112,21 +98,50 @@ public class CongViecKhanhCN {
 		this.moTa = moTa;
 	}
 
-	public Date getThoiGianBatDau() {
+	
+
+
+	public CongViecKhanhCN(int id, @NotEmpty String maDuAn, @NotEmpty String maLoaiCongViec,
+			@NotEmpty String tenCongViec, @NotEmpty String moTa, @NotEmpty String thoiGianBatDau,
+			@NotEmpty String thoiGianKetThuc, @NotEmpty String nguoiDuocPhanCong,
+			@NotEmpty String thoiGianDuKienHoanThanh) {
+		super();
+		this.id = id;
+		this.maDuAn = maDuAn;
+		this.maLoaiCongViec = maLoaiCongViec;
+		this.tenCongViec = tenCongViec;
+		this.moTa = moTa;
+		this.thoiGianBatDau = thoiGianBatDau;
+		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.nguoiDuocPhanCong = nguoiDuocPhanCong;
+		this.thoiGianDuKienHoanThanh = thoiGianDuKienHoanThanh;
+	}
+
+
+
+	public String getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(Date thoiGianBatDau) {
+
+
+	public void setThoiGianBatDau(String thoiGianBatDau) {
 		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
-	public Date getThoiGianKetThuc() {
+
+
+	public String getThoiGianKetThuc() {
 		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
+
+
+	public void setThoiGianKetThuc(String thoiGianKetThuc) {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
+
+
 
 	public String getNguoiDuocPhanCong() {
 		return nguoiDuocPhanCong;

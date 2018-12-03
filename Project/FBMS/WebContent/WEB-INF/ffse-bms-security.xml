@@ -11,6 +11,10 @@
 		<intercept-url pattern="/login**" access="permitAll" />
 		<intercept-url pattern="/logout**" access="permitAll" />
 		<intercept-url pattern="/home**" access="permitAll" />
+		<intercept-url pattern="/QuanTriHeThong/phong_ban/**" access="hasRole('ROLE_PITTPP') or hasRole('ROLE_PGD')" />
+		<intercept-url pattern="/QuanTriHeThong/chuc_danh/**" access="hasAnyRole('ROLE_PNSTPP','ROLE_PGD')" />
+		<intercept-url pattern="/QuanTriHeThong/tai-khoan/**" access="hasAnyRole('ROLE_SADM')" />
+		<intercept-url pattern="/QuanTriHeThong/phan-quyen/**" access="hasAnyRole('ROLE_SADM')" />
 
 		<access-denied-handler error-page="/403" />
 

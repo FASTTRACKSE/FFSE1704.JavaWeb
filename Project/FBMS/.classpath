@@ -116,6 +116,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/apache-tomcat-9.0.8/lib/catalina.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

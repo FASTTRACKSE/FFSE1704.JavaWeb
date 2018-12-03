@@ -52,4 +52,18 @@ public class NhanSuServiceImpl implements NhanSuService {
 		return this.nhanSuDao.CountNhanSu();
 	}
 
+
+	@Override
+	public NhanSu getNhanSuByID(int id) {
+		// TODO Auto-generated method stub
+		return this.nhanSuDao.getNhanSuByID(id);
+	}
+
+
+	@Override
+	public void update(NhanSu ns) {
+		this.nhanSuDao.update(ns);
+		
+	}
+
 }

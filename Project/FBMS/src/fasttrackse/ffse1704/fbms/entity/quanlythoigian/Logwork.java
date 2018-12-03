@@ -27,7 +27,7 @@ public class Logwork {
 	@Column(name = "ma_phong_ban", nullable = true, length = 11)
 	private int maPhongBan;
 
-	@Column(name = "ten_cong_viec", nullable = true, length = 11)
+	@Column(name = "ten_cong_viec", nullable = true, length = 255)
 	private String tenCongViec;
 
 	@Column(name = "mo_ta", nullable = true, length = 11)
@@ -36,16 +36,16 @@ public class Logwork {
 	@Column(name = "trang_thai", nullable = true, length = 11)
 	private String trangThai;
 
-	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 11)
+	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 25)
 	private String thoiGianBatDau;
 
-	@Column(name = "thoi_gian_ket_thuc", nullable = true, length = 11)
+	@Column(name = "thoi_gian_ket_thuc", nullable = true, length = 25)
 	private String thoiGianKetThuc;
 
-	@Column(name = "nhan_xet_PM", nullable = true, length = 11)
+	@Column(name = "nhan_xet_PM", nullable = true)
 	private String nhanXetPM;
 
-	@Column(name = "nhan_xet_tpp", nullable = true, length = 11)
+	@Column(name = "nhan_xet_tpp", nullable = true)
 	private String nhanXetTPP;
 
 	public Logwork(int id, int maDuAn, int maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec, String moTa,

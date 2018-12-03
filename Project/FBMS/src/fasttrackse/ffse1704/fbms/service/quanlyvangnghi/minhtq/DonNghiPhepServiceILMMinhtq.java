@@ -30,31 +30,31 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	
 	
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhep() {
-		return donNghiPhepDao.listDonNghiPhep();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
+		return donNghiPhepDao.listDonNghiPhepNhap();
 	}
 
 	@Override
-	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
+	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id) {
 		// TODO Auto-generated method stub
-		return donNghiPhepDao.getByIdDonNghiPhep(id);
+		return donNghiPhepDao.getByIdDonNghiPhepNhap(id);
 	}
 	
 	@Override
-	public void deleteDonNghiPhep(int id) {
-		donNghiPhepDao.deleteDonNghiPhep(id);
+	public void deleteDonNghiPhepNhap(int id) {
+		donNghiPhepDao.deleteDonNghiPhepNhap(id);
 	}
 
 
 	@Override
-	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
-		donNghiPhepDao.editDonNghiPhep(donnghiphep);
+	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
+		donNghiPhepDao.editDonNghiPhepNhap(donnghiphepnhap);
 		
 	}
 
 	@Override
-	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
-		donNghiPhepDao.addDonNghiPhep(donnghiphep);
+	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
+		donNghiPhepDao.addDonNghiPhepNhap(donnghiphepnhap);
 		
 	}
 
@@ -63,5 +63,7 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	
 		return donNghiPhepDao.listLoaiNgayNghi();
 	}
+
+	
 
 }

@@ -13,7 +13,7 @@
    <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
    <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
    <meta name="author" content="JunBjn">
-   <title>FastTrackSE - The Business Management System - 403</title>
+   <title>FastTrackSE - The Business Management System - ERROR</title>
    <link rel="apple-touch-icon" href="<c:url value="/resources/images/ico/apple-icon-120.png"/>"> <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/images/ico/favicon.ico"/>"> <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
    <!-- BEGIN VENDOR CSS-->
    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.css"/>"> <link rel="stylesheet" type="text/css" href="<c:url value="/resources/fonts/feather/style.min.css"/>"> <link rel="stylesheet" type="text/css" href="<c:url value="/resources/fonts/font-awesome/css/font-awesome.min.css"/>"> <link rel="stylesheet" type="text/css" href="<c:url value="/resources/fonts/flag-icon-css/css/flag-icon.min.css"/>"> <link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendors/css/extensions/pace.css"/>"> <link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendors/css/tables/datatable/dataTables.bootstrap4.min.css"/>"> <!-- END VENDOR CSS-->
@@ -34,8 +34,8 @@
             <section class="flexbox-container">
                <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1">
                   <div class="card-header bg-transparent no-border pb-0">
-                     <h2 class="error-code text-xs-center mb-2">403</h2>
-        			 <h3 class="text-uppercase text-xs-center">Access Denied/Forbidden !</h3>
+                     <h2 class="error-code text-xs-center mb-2">Error</h2>
+        			 <h3 class="text-uppercase text-xs-center">Something goes wrong !</h3>
                   </div>
                   <div class="card-body collapse in">
                      <fieldset class="row py-2">

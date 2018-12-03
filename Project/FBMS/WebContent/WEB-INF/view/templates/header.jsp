@@ -164,8 +164,7 @@
 					<li class="nav-item mobile-menu hidden-md-up float-xs-left"><a
 						href="#" class="nav-link nav-menu-main menu-toggle hidden-xs"><i
 							class="ft-menu font-large-1"></i></a></li>
-					<li class="nav-item"><a href="/FBMS/home"
-						class="navbar-brand"><img
+					<li class="nav-item"><a href="/FBMS/home" class="navbar-brand"><img
 							src="<c:url value="https://www.fasttrack.edu.vn/wp-content/uploads/2018/03/favicon.png"/>"
 							alt="FastTrackSE logo" class="brand-logo" />
 							<h2 class="brand-text">FBMS</h2></a></li>
@@ -204,10 +203,11 @@
 									alt="avatar"><i></i></span><span class="user-name">${pageContext.request.userPrincipal.name}</span></a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a href="#" class="dropdown-item"><i class="ft-user"></i> <spring:message
-										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#" class="dropdown-item"><i
-									class="ft-mail"></i> <spring:message code="label.QuanTriHeThong.hopThu" /></a> <a
-									href="#" class="dropdown-item"><i class="ft-check-square"></i>
-									<spring:message code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
+										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-mail"></i> <spring:message
+										code="label.QuanTriHeThong.hopThu" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-check-square"></i> <spring:message
+										code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
 									class="dropdown-item"><i class="ft-message-square"></i> <spring:message
 										code="label.QuanTriHeThong.tinNhan" /></a>
 								<div class="dropdown-divider"></div>
@@ -217,7 +217,8 @@
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <a href="#"
 										onclick="$(this).closest('form').submit()"><i
-										class="ft-power"></i> <spring:message code="label.QuanTriHeThong.dangXuat" /></a>
+										class="ft-power"></i> <spring:message
+											code="label.QuanTriHeThong.dangXuat" /></a>
 								</form>
 							</div></li>
 					</ul>
@@ -303,28 +304,26 @@
 			<!-- Quản Lý Dự Án -->
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lý Dự Án</span><i data-toggle="tooltip" data-placement="right"
+				<li class=" navigation-header"><span>Quản Lý Dự Án</span><i
+					data-toggle="tooltip" data-placement="right"
 					data-original-title="Joker" class=" ft-minus"></i></li>
 				<li class=" nav-item"><a
 					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							Quản Lý Danh Mục</a></li>
-							<li class=" nav-item"><a
+						class="ft-bookmark"></i> Quản Lý Danh Mục</a></li>
+				<li class=" nav-item"><a
 					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							Quản Lý Thông Tin Dự Án</a></li>
+						class="ft-bookmark"></i> Quản Lý Thông Tin Dự Án</a></li>
 			</ul>
 			<!-- End Quản Lý Dự Án -->
 
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i data-toggle="tooltip" data-placement="right"
+				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i
+					data-toggle="tooltip" data-placement="right"
 					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
 				<li class=" nav-item"><a
-					href="<c:url value = "/logwork/list"/>"><i
-						class="ft-book"></i>
-							Danh Sách Logwork</a></li>
+					href="<c:url value = "/logwork/list"/>"><i class="ft-book"></i>
+						Danh Sách Logwork</a></li>
 			</ul>
-
 		</div>
 	</div>
