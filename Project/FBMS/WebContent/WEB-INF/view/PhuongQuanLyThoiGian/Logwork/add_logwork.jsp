@@ -60,6 +60,7 @@
 						  	<form:input class="form-control" path="thoiGianKetThuc" type="Date" placeholder="" />
 						</div>
 						
+				
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Submit</button>
 						</div>
