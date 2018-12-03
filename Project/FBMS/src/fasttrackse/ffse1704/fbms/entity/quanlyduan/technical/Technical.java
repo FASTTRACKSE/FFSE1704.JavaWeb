@@ -83,4 +83,12 @@ public class Technical implements Serializable {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
+
+	public Set<ThongTinDuAn> getThongTinDuAn() {
+		return thongTinDuAn;
+	}
+
+	public void setThongTinDuAn(Set<ThongTinDuAn> thongTinDuAn) {
+		this.thongTinDuAn = thongTinDuAn;
+	}
 }

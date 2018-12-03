@@ -55,7 +55,7 @@ public class Vendor implements Serializable {
 
 	@Column(name = "ghi_chu", nullable = true, length = 255)
 	private String ghiChu;
-	
+
 	// bi-directional many-to-many association to ThongTinDuAn
 	@ManyToMany(mappedBy = "vendor")
 	private Set<ThongTinDuAn> thongTinDuAn = new HashSet<>();
@@ -64,15 +64,25 @@ public class Vendor implements Serializable {
 		super();
 	}
 
-	public Vendor(int id, @NotEmpty String maVendor, @NotEmpty String tenVendor, @NotEmpty String diaChi, @NotEmpty String email, @NotEmpty int soDienThoai,
-			String ghiChu) {
+	public Vendor(int id, @NotEmpty String maVendor, @NotEmpty String tenVendor, @NotEmpty String diaChi,
+			@NotEmpty String email, @NotEmpty int soDienThoai, String ghiChu, Set<ThongTinDuAn> thongTinDuAn) {
 		super();
 		this.id = id;
 		this.maVendor = maVendor;
 		this.tenVendor = tenVendor;
 		this.diaChi = diaChi;
 		this.email = email;
+		this.soDienThoai = soDienThoai;
 		this.ghiChu = ghiChu;
+		this.thongTinDuAn = thongTinDuAn;
+	}
+
+	public Set<ThongTinDuAn> getThongTinDuAn() {
+		return thongTinDuAn;
+	}
+
+	public void setThongTinDuAn(Set<ThongTinDuAn> thongTinDuAn) {
+		this.thongTinDuAn = thongTinDuAn;
 	}
 
 	public int getId() {

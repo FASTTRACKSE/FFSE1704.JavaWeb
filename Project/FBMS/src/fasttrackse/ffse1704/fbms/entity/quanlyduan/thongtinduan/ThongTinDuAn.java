@@ -4,8 +4,10 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +32,8 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.database.Database;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.nhanvien.NhanVien;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.nhanvienduan.NhanVienDuAn;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage.ProgrammingLanguage;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.technical.Technical;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.trangthaiduan.TrangThaiDuAn;
@@ -107,6 +112,15 @@ public class ThongTinDuAn implements Serializable {
 
 	/*
 	 * 
+	 * One to Many
+	 * 
+	 */
+
+	@OneToMany(mappedBy = "thongTinDuAn")
+	private List<NhanVienDuAn> nhanVienDuAn = new ArrayList<NhanVienDuAn>();
+
+	/*
+	 * 
 	 * Many to one
 	 * 
 	 */
@@ -150,7 +164,7 @@ public class ThongTinDuAn implements Serializable {
 	 * 
 	 * 
 	 */
-	// bi-directional many-to-one association to Vendor
+	// bi-directional many-to-one association to vendor
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "vendor_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_vendor") })
@@ -162,13 +176,30 @@ public class ThongTinDuAn implements Serializable {
 			@JoinColumn(name = "ma_technical") })
 	Set<Technical> technical = new HashSet<>();
 
+	// bi-directional many-to-one association to nhanVien
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "nhan_vien_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
+			@JoinColumn(name = "ma_nhan_vien") })
+	Set<NhanVien> nhanVien = new HashSet<>();
+
+	/*
+	 * 
+	 * 
+	 * 
+	 */
+
 	public ThongTinDuAn() {
 		super();
 	}
 
-	public ThongTinDuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn,
-			String pM, Date startDate, Date endDate, String maDomain, String maFramework, String maDatabase,
-			String maProgrammingLanguage, String maTrangThai) {
+	public ThongTinDuAn(int id, @NotEmpty String maDuAn, @NotEmpty String tenDuAn, @NotEmpty String maKhachHang,
+			@NotEmpty String moTa, @NotEmpty String phongDuAn, @NotEmpty String pM, @NotEmpty Date startDate,
+			@NotEmpty Date endDate, @NotEmpty String maDomain, @NotEmpty String maFramework,
+			@NotEmpty String maDatabase, @NotEmpty String maProgrammingLanguage, @NotEmpty String maTrangThai,
+			List<NhanVienDuAn> nhanVienDuAn, KhachHang khachHang, @NotEmpty Framework framework,
+			@NotEmpty Database database, @NotEmpty TrangThaiDuAn trangThaiDuAn, Domain domain,
+			ProgrammingLanguage programmingLanguage, Set<Vendor> vendor, Set<Technical> technical,
+			Set<NhanVien> nhanVien) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
@@ -184,6 +215,16 @@ public class ThongTinDuAn implements Serializable {
 		this.maDatabase = maDatabase;
 		this.maProgrammingLanguage = maProgrammingLanguage;
 		this.maTrangThai = maTrangThai;
+		this.nhanVienDuAn = nhanVienDuAn;
+		this.khachHang = khachHang;
+		this.framework = framework;
+		this.database = database;
+		this.trangThaiDuAn = trangThaiDuAn;
+		this.domain = domain;
+		this.programmingLanguage = programmingLanguage;
+		this.vendor = vendor;
+		this.technical = technical;
+		this.nhanVien = nhanVien;
 	}
 
 	public int getId() {
@@ -304,5 +345,77 @@ public class ThongTinDuAn implements Serializable {
 
 	public void setKhachHang(KhachHang khachHang) {
 		this.khachHang = khachHang;
+	}
+
+	public Framework getFramework() {
+		return framework;
+	}
+
+	public void setFramework(Framework framework) {
+		this.framework = framework;
+	}
+
+	public Database getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(Database database) {
+		this.database = database;
+	}
+
+	public TrangThaiDuAn getTrangThaiDuAn() {
+		return trangThaiDuAn;
+	}
+
+	public void setTrangThaiDuAn(TrangThaiDuAn trangThaiDuAn) {
+		this.trangThaiDuAn = trangThaiDuAn;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
+	}
+
+	public ProgrammingLanguage getProgrammingLanguage() {
+		return programmingLanguage;
+	}
+
+	public void setProgrammingLanguage(ProgrammingLanguage programmingLanguage) {
+		this.programmingLanguage = programmingLanguage;
+	}
+
+	public Set<Vendor> getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(Set<Vendor> vendor) {
+		this.vendor = vendor;
+	}
+
+	public Set<Technical> getTechnical() {
+		return technical;
+	}
+
+	public void setTechnical(Set<Technical> technical) {
+		this.technical = technical;
+	}
+
+	public List<NhanVienDuAn> getNhanVienDuAn() {
+		return nhanVienDuAn;
+	}
+
+	public void setNhanVienDuAn(List<NhanVienDuAn> nhanVienDuAn) {
+		this.nhanVienDuAn = nhanVienDuAn;
+	}
+
+	public Set<NhanVien> getNhanVien() {
+		return nhanVien;
+	}
+
+	public void setNhanVien(Set<NhanVien> nhanVien) {
+		this.nhanVien = nhanVien;
 	}
 }
