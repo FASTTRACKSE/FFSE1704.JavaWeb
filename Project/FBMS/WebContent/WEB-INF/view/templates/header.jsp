@@ -279,5 +279,18 @@
 							My Document</a></li>
 			</ul>
 			
+			<!-- Quản lí tài liệu - DoanhNT -->
+			<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+				<li class="nav-item has-sub open">
+					<a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">DoanhNT</span></a>
+	            	<ul class="menu-content" style="">
+	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
+	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
+	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
+	            	</ul> 
+         		</li>
+			</ul>
+			<!-- End Quản lí tài liệu - DoanhNT -->
+			
 		</div>
 	</div>
