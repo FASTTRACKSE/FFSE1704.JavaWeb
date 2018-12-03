@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,34 +25,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khach_hang`
+-- Table structure for table `framework`
 --
 
-CREATE TABLE `khach_hang` (
+CREATE TABLE `framework` (
   `id` int(11) NOT NULL,
-  `ma_khach_hang` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_khach_hang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `dia_chi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `so_dien_thoai` int(11) NOT NULL,
+  `ma_framework` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_framework` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ghi_chu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `khach_hang`
+-- Dumping data for table `framework`
 --
 
-INSERT INTO `khach_hang` (`id`, `ma_khach_hang`, `ten_khach_hang`, `dia_chi`, `email`, `so_dien_thoai`, `ghi_chu`) VALUES
-(1, 'KH001', 'Công ty CP Việt Hằng', '15 - Phạm Như Xương - Đà Nẵng', '', 0, '');
+INSERT INTO `framework` (`id`, `ma_framework`, `ten_framework`, `ghi_chu`) VALUES
+(1, 'FR01', 'Spring', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `khach_hang`
+-- Indexes for table `framework`
 --
-ALTER TABLE `khach_hang`
+ALTER TABLE `framework`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -60,9 +57,9 @@ ALTER TABLE `khach_hang`
 --
 
 --
--- AUTO_INCREMENT for table `khach_hang`
+-- AUTO_INCREMENT for table `framework`
 --
-ALTER TABLE `khach_hang`
+ALTER TABLE `framework`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 

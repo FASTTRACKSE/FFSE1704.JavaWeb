@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:17 AM
+-- Generation Time: Dec 03, 2018 at 09:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,23 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendor_du_an`
+-- Table structure for table `technical`
 --
 
-CREATE TABLE `vendor_du_an` (
+CREATE TABLE `technical` (
   `id` int(11) NOT NULL,
-  `ma_du_an` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ma_vendor` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ma_technical` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_technical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ghi_chu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `technical`
+--
+
+INSERT INTO `technical` (`id`, `ma_technical`, `ten_technical`, `ghi_chu`) VALUES
+(1, 'J1', 'Java', ''),
+(2, 'R11', 'Ruby', ''),
+(3, 'P1', 'PHP', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `vendor_du_an`
+-- Indexes for table `technical`
 --
-ALTER TABLE `vendor_du_an`
+ALTER TABLE `technical`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -49,10 +59,10 @@ ALTER TABLE `vendor_du_an`
 --
 
 --
--- AUTO_INCREMENT for table `vendor_du_an`
+-- AUTO_INCREMENT for table `technical`
 --
-ALTER TABLE `vendor_du_an`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `technical`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

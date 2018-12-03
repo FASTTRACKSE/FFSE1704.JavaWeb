@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:16 AM
+-- Generation Time: Dec 03, 2018 at 09:03 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -25,33 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `technical`
+-- Table structure for table `database`
 --
 
-CREATE TABLE `technical` (
+CREATE TABLE `database` (
   `id` int(11) NOT NULL,
-  `ma_technical` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_technical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ghi_chu` varchar(500) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ma_database` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ten_database` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ghi_chu` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `technical`
+-- Dumping data for table `database`
 --
 
-INSERT INTO `technical` (`id`, `ma_technical`, `ten_technical`, `ghi_chu`) VALUES
-(1, 'J1', 'Java', ''),
-(2, 'R11', 'Ruby', ''),
-(3, 'P1', 'PHP', '');
+INSERT INTO `database` (`id`, `ma_database`, `ten_database`, `ghi_chu`) VALUES
+(1, '1', 'Oracle', 'Oracle'),
+(2, '2', 'Mysql', 'Mysql'),
+(3, '3', 'SQL ', 'SQL ');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `technical`
+-- Indexes for table `database`
 --
-ALTER TABLE `technical`
+ALTER TABLE `database`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,9 +59,9 @@ ALTER TABLE `technical`
 --
 
 --
--- AUTO_INCREMENT for table `technical`
+-- AUTO_INCREMENT for table `database`
 --
-ALTER TABLE `technical`
+ALTER TABLE `database`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
