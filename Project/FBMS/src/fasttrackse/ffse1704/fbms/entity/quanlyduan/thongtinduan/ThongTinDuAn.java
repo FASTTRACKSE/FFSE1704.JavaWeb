@@ -150,7 +150,7 @@ public class ThongTinDuAn implements Serializable {
 	 * 
 	 * 
 	 */
-	// bi-directional many-to-one association to Technical
+	// bi-directional many-to-one association to Vendor
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "vendor_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_vendor") })
@@ -166,7 +166,7 @@ public class ThongTinDuAn implements Serializable {
 		super();
 	}
 
-	/*public ThongTinDuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn,
+	public ThongTinDuAn(int id, String maDuAn, String tenDuAn, String maKhachHang, String moTa, String phongDuAn,
 			String pM, Date startDate, Date endDate, String maDomain, String maFramework, String maDatabase,
 			String maProgrammingLanguage, String maTrangThai) {
 		super();
@@ -184,7 +184,7 @@ public class ThongTinDuAn implements Serializable {
 		this.maDatabase = maDatabase;
 		this.maProgrammingLanguage = maProgrammingLanguage;
 		this.maTrangThai = maTrangThai;
-	}*/
+	}
 
 	public int getId() {
 		return id;
