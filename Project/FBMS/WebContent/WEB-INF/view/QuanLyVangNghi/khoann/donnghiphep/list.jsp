@@ -131,10 +131,11 @@
 												<td>${sv.id}</td>
 												<td>${sv.maNhanVien}</td>
 												<td>${sv.tenNhanVien}</td>
-												<td>${sv.loaiNgayNghi}</td>
-												<td>${sv.soLuong}</td>
-												<td>${sv.thoiGianBatDau}</td>
-												<td>${sv.thoiGianKetThuc}</td>
+												<td>${sv.tgBatDau}</td>
+												<td>${sv.tgKetThuc}</td>
+												<td>${sv.loaiNghiPhep}</td>
+												<td>${sv.soNgayNghi}</td>
+												
 												<td>${sv.trangThai}</td>
 										</c:forEach>
 										<tbody>

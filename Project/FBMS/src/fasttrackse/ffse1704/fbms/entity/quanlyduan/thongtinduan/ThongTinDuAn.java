@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +25,14 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.database.Database;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.khachhang.KhachHang;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage.ProgrammingLanguage;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.technical.Technical;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.trangthaiduan.TrangThaiDuAn;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.vendor.Vendor;
 
 /**
  * @author The persistent class for the quan_ly_thong_tin_du_an database table.
@@ -48,13 +56,6 @@ public class ThongTinDuAn implements Serializable {
 	@Column(name = "ten_du_an", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDuAn;
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "maKhachHang", referencedColumnName = "maKhachHang",
-	 * nullable = false) private KhachHang khachHang;
-	 */
 
 	@Column(name = "ma_khach_hang", nullable = false, length = 30)
 	@NotEmpty
@@ -104,10 +105,62 @@ public class ThongTinDuAn implements Serializable {
 	@NotEmpty
 	private String maTrangThai;
 
-	/*@ManyToMany(cascade = { CascadeType.ALL })
+	/*
+	 * 
+	 * Many to one
+	 * 
+	 */
+	// bi-directional many-to-one association to KhachHang
+	@ManyToOne
+	@JoinColumn(name = "ma_khach_hang", referencedColumnName = "ma_khach_hang", insertable = false, updatable = false, nullable = false)
+	private KhachHang khachHang;
+
+	// bi-directional many-to-one association to Framework
+	@ManyToOne
+	@JoinColumn(name = "ma_framework", referencedColumnName = "ma_framework", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private Framework framework;
+
+	// bi-directional many-to-one association to Database
+	@ManyToOne
+	@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private Database database;
+
+	// bi-directional many-to-one association to TrangThaiDuAn
+	@ManyToOne
+	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private TrangThaiDuAn trangThaiDuAn;
+
+	// bi-directional many-to-one association to Domain
+	@ManyToOne
+	@JoinColumn(name = "ma_domain", referencedColumnName = "ma_domain", insertable = false, updatable = false, nullable = false)
+	private Domain domain;
+
+	// bi-directional many-to-one association to ProgrammingLanguage
+	@ManyToOne
+	@JoinColumn(name = "ma_programming_language", referencedColumnName = "ma_programming_language", insertable = false, updatable = false, nullable = false)
+	private ProgrammingLanguage programmingLanguage;
+
+	/*
+	 * 
+	 * 
+	 * Many to Many
+	 * 
+	 * 
+	 */
+	// bi-directional many-to-one association to Vendor
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "vendor_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
+			@JoinColumn(name = "ma_vendor") })
+	Set<Vendor> vendor = new HashSet<>();
+
+	// bi-directional many-to-one association to Technical
+	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "technical_du_an", joinColumns = { @JoinColumn(name = "ma_du_an") }, inverseJoinColumns = {
 			@JoinColumn(name = "ma_technical") })
-	Set<Technical> technical = new HashSet<>();*/
+	Set<Technical> technical = new HashSet<>();
 
 	public ThongTinDuAn() {
 		super();
@@ -243,5 +296,13 @@ public class ThongTinDuAn implements Serializable {
 
 	public void setMaTrangThai(String maTrangThai) {
 		this.maTrangThai = maTrangThai;
+	}
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
 	}
 }

@@ -31,4 +31,25 @@ public class NhanSuServiceImpl implements NhanSuService {
 		return nhanSuDao.allNS();
 	}
 
+
+	@Override
+	public void addNS(NhanSu ns) {
+		this.nhanSuDao.addNS(ns);
+		
+	}
+
+
+	@Override
+	public List<NhanSu> GetListNhanSuByPage(int start, int total) {
+		// TODO Auto-generated method stub
+		return this.nhanSuDao.GetListNhanSuByPage(start, total);
+	}
+
+
+	@Override
+	public long CountNhanSu() {
+		// TODO Auto-generated method stub
+		return this.nhanSuDao.CountNhanSu();
+	}
+
 }

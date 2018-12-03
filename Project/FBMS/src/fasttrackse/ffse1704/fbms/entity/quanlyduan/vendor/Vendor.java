@@ -4,14 +4,19 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.vendor;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;
 
 /**
  * @author The persistent class for the vendor database table.
@@ -49,14 +54,17 @@ public class Vendor implements Serializable {
 	private int soDienThoai;
 
 	@Column(name = "ghi_chu", nullable = true, length = 255)
-	@NotEmpty
 	private String ghiChu;
+	
+	// bi-directional many-to-many association to ThongTinDuAn
+	@ManyToMany(mappedBy = "vendor")
+	private Set<ThongTinDuAn> thongTinDuAn = new HashSet<>();
 
 	public Vendor() {
 		super();
 	}
 
-	public Vendor(int id, String maVendor, String tenVendor, String diaChi, String email, int soDienThoai,
+	public Vendor(int id, @NotEmpty String maVendor, @NotEmpty String tenVendor, @NotEmpty String diaChi, @NotEmpty String email, @NotEmpty int soDienThoai,
 			String ghiChu) {
 		super();
 		this.id = id;

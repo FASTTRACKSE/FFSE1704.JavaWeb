@@ -8,4 +8,14 @@ public interface ChungChiDao {
 	public List<ChungChi> allCC();
 	
 	public void addCC(ChungChi cc);
+	
+	public void updateCC(ChungChi cc);
+	
+	public ChungChi getChungChiById(int id);
+	
+	public void deleteCC(ChungChi cc);
+	
+	public List<ChungChi> getEmployeesByPage(int pageid, int total);
+	
+	public long countSV();
 }

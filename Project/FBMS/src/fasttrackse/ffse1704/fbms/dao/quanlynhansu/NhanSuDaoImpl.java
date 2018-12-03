@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +32,27 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		List<NhanSu> listNhanSu = session.createQuery("FROM NhanSu").getResultList();
 		return listNhanSu;
 	}
+
+	
+	@Override
+	public void addNS(NhanSu ns) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(ns);
+	}
+
+	@Override
+	public List<NhanSu> GetListNhanSuByPage(int start, int total) {
+		Session session = sessionFactory.getCurrentSession();
+		List<NhanSu> listNhanSu = session.createQuery("FROM NhanSu").setFirstResult(start).setMaxResults(total).list();
+		return listNhanSu;
+	}
+
+	@Override
+	public long CountNhanSu() {
+		return (Long) sessionFactory.getCurrentSession().createCriteria(NhanSu.class)
+				.setProjection(Projections.rowCount()).uniqueResult();
+	}
+
+	
 
 }

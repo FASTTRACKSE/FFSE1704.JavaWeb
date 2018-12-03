@@ -2,20 +2,20 @@ package fasttrackse.ffse1704.fbms.dao.thongtinlogwork.quanlythoigian;
 
 	import java.util.List;
 
-	import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
 
 	public interface ThongTinLogworkDAO {
-		public List<Logwork> findAll();
+		public List<ThongTinLogwork> findAll();
 
-		public void addNew(Logwork logwork);
+		public void addNew(ThongTinLogwork logwork);
 
-		public void update(Logwork logwork);
+		public void update(ThongTinLogwork logwork);
 
 		public void delete(String id);
 
-		public Logwork findByIdLogwork(String id);
+		public ThongTinLogwork findByIdLogwork(String id);
 
-		public List<Logwork> findAll(int iDisplayStart, int iDisplayLength, String sql);
+		public List<ThongTinLogwork> findAll(int iDisplayStart, int iDisplayLength, String sql);
 
 		public String getRecordsTotal();
 

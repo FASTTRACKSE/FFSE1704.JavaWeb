@@ -30,8 +30,8 @@ public class PhongBan implements Serializable {
 	private String tenPhongBan;
 
 	// bi-directional many-to-one association to HoSoNhanVien
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phongBan")
-	private List<HoSoNhanVien> hoSoNhanViens;
+//	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phongBan")
+//	private List<HoSoNhanVien> hoSoNhanViens;
 	
 	
 
@@ -54,13 +54,13 @@ public class PhongBan implements Serializable {
 		this.tenPhongBan = tenPhongBan;
 	}
 
-	public List<HoSoNhanVien> getHoSoNhanViens() {
-		return this.hoSoNhanViens;
-	}
-
-	public void setHoSoNhanViens(List<HoSoNhanVien> hoSoNhanViens) {
-		this.hoSoNhanViens = hoSoNhanViens;
-	}
+//	public List<HoSoNhanVien> getHoSoNhanViens() {
+//		return this.hoSoNhanViens;
+//	}
+//
+//	public void setHoSoNhanViens(List<HoSoNhanVien> hoSoNhanViens) {
+//		this.hoSoNhanViens = hoSoNhanViens;
+//	}
 	
 
 }

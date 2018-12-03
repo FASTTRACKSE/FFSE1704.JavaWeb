@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -37,26 +36,27 @@ public class Database implements Serializable {
 	@Column(name = "ma_database", nullable = false, length = 30)
 	@NotEmpty
 	private String maDatabase;
-	
-	/*@ManyToMany(mappedBy = "database")
-	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();*/
 
 	@Column(name = "ten_database", nullable = false, length = 255)
 	@NotEmpty
 	private String tenDatabase;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
+
+	// bi-directional many-to-one association to ThongTinDuAn
+	@OneToMany(mappedBy = "database")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
 
 	public Database() {
 		super();
 	}
 
-	public Database(int id, String maDatabase, String tenDatabase, String ghiChu) {
+	public Database(int id, @NotEmpty String maDatabase, List<ThongTinDuAn> listDuAn, @NotEmpty String tenDatabase, String ghiChu) {
 		super();
 		this.id = id;
 		this.maDatabase = maDatabase;
+		this.listDuAn = listDuAn;
 		this.tenDatabase = tenDatabase;
 		this.ghiChu = ghiChu;
 	}
@@ -93,4 +93,11 @@ public class Database implements Serializable {
 		this.ghiChu = ghiChu;
 	}
 
+	public List<ThongTinDuAn> getListDuAn() {
+		return listDuAn;
+	}
+
+	public void setListDuAn(List<ThongTinDuAn> listDuAn) {
+		this.listDuAn = listDuAn;
+	}
 }

@@ -10,7 +10,7 @@ package fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian;
 	import javax.persistence.Table;
 
 	@Entity
-	@Table(name = "qltg_trang_thai")
+	@Table(name = "trang_thai_logwork")
 	public class TrangThaiThongTinLogwork {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,12 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 
 @Entity
-@Table(name = "qltg_logwork")
+@Table(name = "thong_tin_logwork")
 public class ThongTinLogwork {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
+
+	public ThongTinLogwork() {
+		super();
+	}
 
 	@Column(name = "ma_du_an", nullable = true, length = 11)
 	private int maDuAn;

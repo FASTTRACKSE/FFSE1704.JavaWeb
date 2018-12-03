@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,7 +21,7 @@ public class TrinhDo {
 	private int id;
 	
 	@Column(name = "ten_trinh_do", nullable = false)
-	private int ten;
+	private String tenTrinhDo;
 	
 	public TrinhDo() {
 		super();
@@ -41,12 +39,14 @@ public class TrinhDo {
 		this.id = id;
 	}
 
-	public int getTen() {
-		return ten;
+
+
+	public String getTenTrinhDo() {
+		return tenTrinhDo;
 	}
 
-	public void setTen(int ten) {
-		this.ten = ten;
+	public void setTenTrinhDo(String tenTrinhDo) {
+		this.tenTrinhDo = tenTrinhDo;
 	}
 
 	public List<BangCap> getBangCap() {
@@ -56,4 +56,6 @@ public class TrinhDo {
 	public void setBangCap(List<BangCap> bangCap) {
 		this.bangCap = bangCap;
 	}
+
+	
 }
