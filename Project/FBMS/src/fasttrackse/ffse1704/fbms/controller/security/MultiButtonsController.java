@@ -16,7 +16,7 @@ public class MultiButtonsController {
 		return "QuanTriHeThong/buttonAction";
 	}	
 
-	@RequestMapping(value = "/buttons", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String viewMainDashBoard(Model model, @RequestParam String action){
 		String msg = "";
 	    if( action.equals("draft") ){
