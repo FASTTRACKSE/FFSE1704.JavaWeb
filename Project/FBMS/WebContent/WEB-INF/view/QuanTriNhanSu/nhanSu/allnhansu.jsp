@@ -63,7 +63,7 @@
 						<td>${ns.chucDanh.tenChucDanh}</td>
 						<td>${ns.hoLot}</td>
 						<td>${ns.ten}</td>
-						<td><img style="width:70px;hight=70px;" src="<c:url value="uploads/${ns.anhDaiDien}"/>">
+						<td><img style="width:70px;hight=70px;" src="<c:url value="/uploads/${ns.anhDaiDien}"/>">
 						
 						</td>
 						
