@@ -20,7 +20,7 @@ public class DanhMucController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String viewDanhMuc(Model model) {
-		model.addAttribute("DanhMucList", serviceDM.listAllDanhMuc());
+		model.addAttribute("ListDanhMuc", serviceDM.listAllDanhMuc());
 		return "DoanhntQLTL/DanhMuc/DanhMucList";
 	}
 

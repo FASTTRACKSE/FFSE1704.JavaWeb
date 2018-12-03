@@ -26,6 +26,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
@@ -130,6 +132,43 @@ public class NhanSu implements Serializable{
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	private List<BangCap> listBangCap;
 	
+	
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ChungChi> listChungChi;
+	
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ThongTinGiaDinh> listGiaDinh;
+	
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ThongTinHopDong> listHopDong;
+	
+	public List<ThongTinHopDong> getListHopDong() {
+		return listHopDong;
+	}
+
+	public void setListHopDong(List<ThongTinHopDong> listHopDong) {
+		this.listHopDong = listHopDong;
+	}
+
+	public List<ThongTinGiaDinh> getListGiaDinh() {
+		return listGiaDinh;
+	}
+
+	public void setListGiaDinh(List<ThongTinGiaDinh> listGiaDinh) {
+		this.listGiaDinh = listGiaDinh;
+	}
+
+	public List<ChungChi> getListChungChi() {
+		return listChungChi;
+	}
+
+	public void setListChungChi(List<ChungChi> listChungChi) {
+		this.listChungChi = listChungChi;
+	}
+
 	public List<BangCap> getListBangCap() {
 		return listBangCap;
 	}

@@ -26,8 +26,8 @@ body, html {
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    font-size: 17px;
-    width: 20%;
+    font-size: 16px;
+    width: 14%;
 }
 
 .tablink:hover {
@@ -59,10 +59,12 @@ body, html {
 <h2 style="text-align: center;">${thongTinNhanVien.hoLot}<a>   ${thongTinNhanVien.ten}</a></h2>
 <p style="text-align: center;">Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> - Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a></p>  
 <button class="tablink" onclick="openPage('Home', this, 'red')">Thông tin hồ sơ</button>
-<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">Thông tin liên hệ</button>
-<button class="tablink" onclick="openPage('Contact', this, 'blue')">Thông tin bằng cấp</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">Thông tin CC chuyên môn</button>
-<button class="tablink" onclick="openPage('Project', this, 'black')">Thông tin dự án</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">TT liên hệ</button>
+<button class="tablink" onclick="openPage('Family', this, 'green')">TT gia đình</button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">TT bằng cấp</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">TT CC CH môn</button>
+<button class="tablink" onclick="openPage('Project', this, 'black')">TT dự án</button>
+<button class="tablink" onclick="openPage('Contract', this, 'green')">TT hợp đồng</button>
 
 <div id="Home" class="tabcontent">
   <table class="table table-hover">
@@ -120,6 +122,31 @@ body, html {
 </table>
 </div>
 
+<div id="Family" class="tabcontent">
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Quan hệ</th>
+      <th scope="col">Năm sinh</th>
+      <th scope="col">Nghề nghiệp</th>
+      <th scope="col">Địa chỉ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <c:forEach var="ttGiaDinh" items="${thongTinNhanVien.listGiaDinh}">
+       <td>${ttGiaDinh.hoVaTen}</td>
+       <td>${ttGiaDinh.quanHe}</td>
+       <td>${ttGiaDinh.namSinh}</td>
+       <td>${ttGiaDinh.ngheNghiep}</td>
+       <td>${ttGiaDinh.diaChi}</td>
+       </c:forEach>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 <div id="Contact" class="tabcontent">
  <table class="table table-hover">
   <thead>
@@ -144,6 +171,29 @@ body, html {
   </tbody>
 </table>
 </div>
+<div id="Contract" class="tabcontent">
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Mã hợp đồng</th>
+      <th scope="col">Ngày bắt đầu</th>
+      <th scope="col">Ngày kết thúc</th>
+      <th scope="col">Lương tháng 13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <c:forEach var="hopDong" items="${thongTinNhanVien.listHopDong}">
+       <td>${hopDong.maHopDong}</td>
+      <td>${hopDong.ngayBatDau}</td>
+      <td>${hopDong.ngayKetThuc}</td>
+      <td>${hopDong.luongThang13}</td>
+       </c:forEach>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 <div id="About" class="tabcontent">
   <table class="table table-hover">
@@ -156,9 +206,11 @@ body, html {
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
+       <c:forEach var="chungChi" items="${thongTinNhanVien.listChungChi}">
+       <td>${chungChi.tenChungChi}</td>
+      <td>${chungChi.ngayCap}</td>
+      <td>${chungChi.donViCap}</td>
+       </c:forEach>
     </tr>
   </tbody>
 </table>

@@ -278,6 +278,7 @@
 						class="ft-bookmark"></i>
 							My Document</a></li>
 			</ul>
+
 			
 			<!-- Quản lí tài liệu - DoanhNT -->
 			<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
@@ -292,5 +293,16 @@
 			</ul>
 			<!-- End Quản lí tài liệu - DoanhNT -->
 			
+
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/logwork/list"/>"><i
+						class="ft-book"></i>
+							Danh Sách Logwork</a></li>
+			</ul>
+
 		</div>
 	</div>
