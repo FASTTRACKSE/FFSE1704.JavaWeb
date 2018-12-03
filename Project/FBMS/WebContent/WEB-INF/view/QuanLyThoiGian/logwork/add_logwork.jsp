@@ -83,7 +83,7 @@
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
 							<div class='input-group date' id='datetimepicker11'>
-							<form:input class="form-control" path="thoiGianBatDau"
+							<form:input class="form-control" type="text" path="thoiGianBatDau"
 								placeholder="Thời gian bắt đầu" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
@@ -94,7 +94,7 @@
 							<label>Thời gian kết thúc</label>
 							<div class='input-group date' id='datetimepicker5'>
 								<form:input path="thoiGianKetThuc"
-									class="form-control" />
+									class="form-control" type="text" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>
