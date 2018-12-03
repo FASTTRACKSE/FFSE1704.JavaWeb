@@ -166,7 +166,7 @@
 							responsive : true,
 							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
 							"bServerSide" : true,
-							"sAjaxSource" : "/ffse-fbms/QuanTriHeThong/phong_ban/view/getListPhongBan",
+							"sAjaxSource" : "/FBMS/QuanTriHeThong/phong_ban/view/getListPhongBan",
 						});
 	};
 

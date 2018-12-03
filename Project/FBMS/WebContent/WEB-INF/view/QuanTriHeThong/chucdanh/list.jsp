@@ -172,7 +172,7 @@
 			responsive : true,
 			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
 			"bServerSide" : true,
-			"sAjaxSource" : "/ffse-fbms/QuanTriHeThong/chuc_danh/view/getListChucDanh",
+			"sAjaxSource" : "/FBMS/QuanTriHeThong/chuc_danh/view/getListChucDanh",
 		});
 	};
 
