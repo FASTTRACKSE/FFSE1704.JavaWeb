@@ -351,11 +351,25 @@
 					</ul>
 				</li>
 			<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
-
-
+			
 			</ul>
 
-
+			<!-- Quản Lí Nhiệm Vụ -->
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Nhiệm Vụ</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Tunglnt" class=" ft-minus"></i></li>
+					
+				<!-- TùngLNT -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">TùngLNT</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="/FBMS/TunglntQuanLyNhiemVu/CongViec/ListCongViec">● List Công Việc</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!--END Quản Lí Nhiệm Vụ -->
 
 
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
