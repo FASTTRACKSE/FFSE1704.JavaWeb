@@ -234,7 +234,7 @@
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
 
-				<!-- Quản trị hệ thống -->
+				<!-- --------------------------Quản trị hệ thống-------------------------- -->
 				<li class=" navigation-header"><span><spring:message
 							code="label.QuanTriHeThong" /></span> <i data-toggle="tooltip"
 					data-placement="right" data-original-title="Apps" class=" ft-minus"></i>
@@ -259,7 +259,7 @@
 						class="fa fa-id-card-o"></i> <span data-i18n="" class="menu-title"><spring:message
 								code="label.QuanTriHeThong.PhanQuyen" /></span>
 				</a></li>
-				<!-- End Quản trị hệ thống -->
+				<!-- --------------------------End Quản trị hệ thống-------------------------- -->
 
 
 
@@ -322,37 +322,35 @@
 
 
 
-				<!-- Quản lí tài liệu -->
-				<li class="navigation-header"><span class="menu-title"
-					data-i18n="">QUẢN LÍ TÀI LIỆU</span> <!--  DoanhNT -->
+				<!--  ----------------------------Quản lí tài liệu-------------------------------  -->
+				<li class="navigation-header">
+					<span class="menu-title" data-i18n="">QUẢN LÍ TÀI LIỆU</span> 
+				</li>
+				<!--  DoanhNT -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">DoanhNT</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item"
-							href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
-						<li class=""><a class="menu-item"
-							href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
-						<li class=""><a class="menu-item"
-							href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
-					</ul></li>
+						<li class=""><a class="menu-item" href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item" href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
+						<li class=""><a class="menu-item" href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
+					</ul>
+				</li>
 				<!-- Dũng -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/quanlytailieu/index">●
-								Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item" href="/quanlytailieu/index">● Danh mục tài liệu</a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
-					</ul></li>
+					</ul>
+				</li>
 				<!-- Sỹ -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="#">● Danh mục tài
-								liệu</a></li>
+						<li class=""><a class="menu-item" href="#">● Danh mục tài liệu</a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
-					</ul></li>
-			</ul>
-			</li>
-			<!-- End Quản lí tài liệu  -->
+					</ul>
+				</li>
+			<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
 
 
 			</ul>
