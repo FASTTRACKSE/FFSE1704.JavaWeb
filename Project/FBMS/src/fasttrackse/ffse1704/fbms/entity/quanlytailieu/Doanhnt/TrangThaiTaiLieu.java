@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

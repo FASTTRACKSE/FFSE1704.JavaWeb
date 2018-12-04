@@ -329,9 +329,9 @@
 				<!--  DoanhNT -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">DoanhNT</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
 					</ul>
 				</li>
 				<!-- Dũng -->
@@ -367,5 +367,14 @@
 					href="<c:url value = "/logwork/list"/>"><i class="ft-book"></i>
 						Danh Sách Logwork</a></li>
 			</ul>
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lý Vắng Nghỉ</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="Bét Daxua" class=" ft-minus"></i></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/quanlyvangnghi/khoann/list"/>"><i
+						class="ft-bookmark"></i>
+							Danh Sách</a></li>
+			</ul>			
 		</div>
 	</div>
