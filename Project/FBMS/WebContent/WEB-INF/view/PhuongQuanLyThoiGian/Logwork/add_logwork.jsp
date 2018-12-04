@@ -84,7 +84,7 @@
 						</div>
 						
 						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-success">Submit</button>
+							<input type="submit" name="action" class="button" value="submit" />
 						</div>
 						
 					</form:form>

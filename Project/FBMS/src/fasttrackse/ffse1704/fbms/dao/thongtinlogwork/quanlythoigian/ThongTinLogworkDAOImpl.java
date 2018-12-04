@@ -25,6 +25,13 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 		session.close();
 		return list;
 	}
+	/*@Override
+	public List<ListPhongBan> listDSPhongBan() {
+		Session session = this.sessionFactory.openSession();
+		List<ListPhongBan> list = session.createQuery("from ListPhongBan").list();
+		session.close();
+		return list;
+	}*/
 
 	@Override
 	public void addNew(ThongTinLogwork logwork) {
