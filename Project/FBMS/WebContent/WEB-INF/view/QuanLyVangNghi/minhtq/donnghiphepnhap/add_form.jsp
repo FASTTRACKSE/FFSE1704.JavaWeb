@@ -26,9 +26,28 @@
 		<!-- End Path -->
 
 		<div class="content-body">
+		
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="themdonnhap">
+				<!-- Show message -->
+			<c:if test="${messageSuccess ne null}">
+				<div class="alert alert-success alert-dismissable" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					${messageSuccess}
+				</div>
+			</c:if>
+			<c:if test="${messageError ne null}">
+				<div class="alert alert-danger alert-dismissable" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					${messageError}
+				</div>
+			</c:if>
+			<!-- End Show message -->
+					<form:form method="POST" modelAttribute="taodonmoi" action="addDonNghiPhepNhap">
 						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien"
@@ -40,15 +59,15 @@
 							<label>Số ngày nghỉ</label>
 							<form:input type="text" class="form-control round" id="total"
 								readonly="true" path="soLuong" />
-							
+
 						</div>
-						
+
 						<div class="form-group col-sm-12">
 							<label>Thời gian bắt đầu </label>
 							<fieldset class="form-group position-relative">
 								<form:input type="date" class="form-control round" id="from"
 									onchange="myFunction()" path="thoiGianBatDau" />
-								
+
 
 							</fieldset>
 							<script>
@@ -123,7 +142,7 @@
 							<fieldset class="form-group position-relative">
 								<form:input type="date" class="form-control round" id="to"
 									onchange="count()" path="thoiGianKetThuc" />
-								
+
 							</fieldset>
 							<script>
 								var today = new Date();
@@ -189,19 +208,13 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
-									class="btn btn-outline-danger round  mr-1 mb-1"
-									formaction="<%=request.getContextPath()%>/QuanLyVangNghi/minhtq/taodonnghiphep/addDonNghiPhepNhap">
-									nháp</button>
-
-
-
-
+									class="btn btn-outline-success round  mr-1 mb-1" value="nhap"
+									name="action">nháp</button>
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1"
-									formaction="<%=request.getContextPath()%>/QuanLyVangNghi/minhtq/">
-									gửi</button>
+									class="btn btn-outline-success round  mr-1 mb-1" value="them"
+									name="action">thêm</button>
 
 							</div>
 						</div>

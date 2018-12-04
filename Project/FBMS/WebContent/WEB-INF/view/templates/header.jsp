@@ -320,7 +320,49 @@
 				</ul>
 				<!-- **********************End Quản Lý Dự Án************************************* -->
 
+					 
+					 <!--  Quản lí Vắng nghỉ minhtq -->
 
+					<li class="navigation-header"><span>quản lý vắng nghỉ</span><i class=" ft-minus"
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Components"></i></li>
+					<li><a
+						href="<c:url value="/QuanLyVangNghi/minhtq/addDonNghiPhepMoi"/>"
+						class="menu-item"><i class='fa fa-pencil'></i>
+						soạn đơn mới</a></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê danh sách</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/nhap"/>"
+								class="menu-item">danh sách nháp</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/choduyet"/>"
+								class="menu-item">danh sách chờ duyệt</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/duyet"/>"
+								class="menu-item">danh sách  duyệt</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/tuchoi"/>"
+								class="menu-item">danh sách từ chối</a></li>
+						</ul></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê ngày nghỉ</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq"/>"
+								class="menu-item">danh sách ngày nghỉ</a></li>
+						</ul></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê trạng thái</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq"/>"
+								class="menu-item">danh sách trạng thái</a></li>
+						</ul></li>
+					
+					
+                            <!-- hết Quản lí Vắng nghỉ minhtq -->
 
 				<!--  ----------------------------Quản lí tài liệu-------------------------------  -->
 				<li class="navigation-header">
@@ -350,6 +392,8 @@
 						<li class=""><a class="menu-item" href="#"></a></li>
 					</ul>
 				</li>
+	
+			
 			<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
 			
 			</ul>

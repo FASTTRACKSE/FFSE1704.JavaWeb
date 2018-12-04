@@ -30,14 +30,14 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	
 	
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
-		return donNghiPhepDao.listDonNghiPhepNhap();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(String trangthai) {
+		return donNghiPhepDao.listDonNghiPhepNhap(trangthai);
 	}
 
 	@Override
-	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id) {
+	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
 		// TODO Auto-generated method stub
-		return donNghiPhepDao.getByIdDonNghiPhepNhap(id);
+		return donNghiPhepDao.getByIdDonNghiPhep(id);
 	}
 	
 	@Override
