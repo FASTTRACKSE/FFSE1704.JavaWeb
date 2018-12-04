@@ -30,80 +30,97 @@ import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
 public class NhanSuController {
 	@Autowired
 	NhanSuService nhanSuService;
-	
-	
 
 	public void setNhanSuService(NhanSuService nhanSuService) {
 		this.nhanSuService = nhanSuService;
 	}
 
-	@RequestMapping("QuanTriNhanSu/nhanSu/allNhanSu")
-	public String ShowList(Model model) {
-		
-		List<NhanSu> allNS = nhanSuService.allNS();
-		model.addAttribute("nhansu", allNS);
-		return "QuanTriNhanSu/nhanSu/allnhansu";
-
-	}
-	@RequestMapping("/QuanTriNhanSu/nhanSu/allnhansu")
+	// @RequestMapping("/QuanTriNhanSu/nhanSu/allNhanSu")
+	// public String ShowList(Model model) {
+	//
+	// List<NhanSu> allNS = nhanSuService.allNS();
+	// model.addAttribute("nhansu", allNS);
+	// return "QuanTriNhanSu/nhanSu/allnhansu";
+	//
+	// }
+	// mac dinh
+	@RequestMapping("/QuanTriNhanSu/danhsach_nhansu")
 	public String ShowList() {
-		return "redirect:QuanTriNhanSu/nhanSu/allnhansu/1";
+		return "redirect:/QuanTriNhanSu/danhsach_nhansu/1";
 
 	}
-	
-	@RequestMapping("/addNS")
+
+	// danh sach nhan su phan trang
+	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/{page}")
+	public ModelAndView ViewNhanSuPage(@PathVariable int page, Model model) {
+
+		long record = nhanSuService.CountNhanSu();
+		int perpage = 2;
+		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
+
+		if (page == 0) {
+			page = 1;
+		}
+		int start = (page - 1) * perpage;
+		List<NhanSu> nhansu = nhanSuService.GetListNhanSuByPage(start, perpage);
+		model.addAttribute("page", page);
+		model.addAttribute("totalPage", totalPage);
+
+		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu", "nhansu", nhansu);
+
+	}
+
+	@RequestMapping("/QuanTriNhanSu/danhsach_nhansu/addNS")
 	public ModelAndView ShowViewADD() {
-		
-		return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu","nhanSu", new NhanSu());
+
+		return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu", "nhanSu", new NhanSu());
 
 	}
-	
-	@RequestMapping(value="/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") @Valid  NhanSu nhanSu,
-			BindingResult bindingResult,
-			@RequestParam("file") MultipartFile  file) 
-								throws IllegalStateException, IOException{
+
+	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
+	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") @Valid NhanSu nhanSu, BindingResult bindingResult,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			nhanSu.setAnhDaiDien(fileName);
 		}
 		if (bindingResult.hasErrors()) {
-			return new ModelAndView("addSV");        
-			}
+			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
+		}
 		nhanSuService.addNS(nhanSu);
-		
-		return new ModelAndView("redirect:/allNhanSu");
 
+		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
+
+	}
+
+	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/editNS/{id}")
+	public String editNhanSuByID(@PathVariable int id,Model model) {
+		
+		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
+		model.addAttribute("nhanSu",nhanSu);
+		return "QuanTriNhanSu/nhanSu/edit_nhansu";
+		
+	}
+	
+	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/update",method = RequestMethod.POST)
+	public String editNhanSuSave(@ModelAttribute("nhanSu") NhanSu nhanSu,Model model,BindingResult bindingResult,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		String fileName = upload(file);
+		if (!fileName.equals("")) {
+			nhanSu.setAnhDaiDien(fileName);
+		}
+		nhanSuService.update(nhanSu);
+		
+		return "redirect:/QuanTriNhanSu/danhsach_nhansu";
+		
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, 
-				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
-	// danh sach sinh vien phan trang
-	@RequestMapping(value="QuanTriNhanSu/nhanSu/allnhansu/{page}")
-	public ModelAndView ViewNhanSuPage(@PathVariable int page,Model model) {
-		
-		long record = nhanSuService.CountNhanSu();
-		int perpage =2;
-		int totalPage = (int) Math.ceil(record* 1.0/perpage);
-		
-		if(page== 0) {
-			page = 1;
-		}
-		int start = (page -1)*perpage;
-		List<NhanSu> ListNhanSunbyPage = nhanSuService.GetListNhanSuByPage(start, totalPage);
-		model.addAttribute("page",page);
-		model.addAttribute("totalPage",totalPage);
-		
-		
-		 
-		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu","ListNhanSunbyPage",ListNhanSunbyPage);
-		
-	}
-	
+
 	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = file.getOriginalFilename();
@@ -121,5 +138,5 @@ public class NhanSuController {
 		return fileName;
 
 	}
-	
+
 }

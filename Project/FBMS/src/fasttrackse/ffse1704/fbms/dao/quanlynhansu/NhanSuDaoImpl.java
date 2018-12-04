@@ -39,7 +39,8 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(ns);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<NhanSu> GetListNhanSuByPage(int start, int total) {
 		Session session = sessionFactory.getCurrentSession();
@@ -51,6 +52,20 @@ public class NhanSuDaoImpl implements NhanSuDao {
 	public long CountNhanSu() {
 		return (Long) sessionFactory.getCurrentSession().createCriteria(NhanSu.class)
 				.setProjection(Projections.rowCount()).uniqueResult();
+	}
+
+	@Override
+	public NhanSu getNhanSuByID(int id) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		NhanSu ns = (NhanSu) session.get(NhanSu.class, id);
+		return ns;
+	}
+
+	@Override
+	public void update(NhanSu ns) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		session.update(ns);
+		
 	}
 
 	

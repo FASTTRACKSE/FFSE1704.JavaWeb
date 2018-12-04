@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="minhtq_loai_ngay_nghi")
+@Table(name = "minhtq_loai_ngay_nghi")
 public class LoaiNgayNghiMinhtq {
 
 	@Id
@@ -21,11 +21,16 @@ public class LoaiNgayNghiMinhtq {
 	@Column(name = "ma_loai_ngay_nghi")
 	@NotNull
 	private int maLoaiNgayNghi;
-	
+
 	@Column(name = "ten_loai_ngay_nghi")
 	@NotEmpty
-	private String  tenLoaiNgayNghi;
+	private String tenLoaiNgayNghi;
+	
+	
 
+	
+	
+	
 	public LoaiNgayNghiMinhtq() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -61,7 +66,5 @@ public class LoaiNgayNghiMinhtq {
 	public void setTenLoaiNgayNghi(String tenLoaiNgayNghi) {
 		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
 	}
-	
-	
-	
+
 }

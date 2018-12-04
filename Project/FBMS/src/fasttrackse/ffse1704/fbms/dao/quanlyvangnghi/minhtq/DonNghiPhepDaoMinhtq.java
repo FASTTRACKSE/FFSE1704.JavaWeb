@@ -7,14 +7,15 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 
 public interface DonNghiPhepDaoMinhtq {
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhep();
-	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id);
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
+	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id);
 
-	public void deleteDonNghiPhep(int id);
+	public void deleteDonNghiPhepNhap(int id);
 
-	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
+	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
 
-	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
+	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
+
 
 	
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi();

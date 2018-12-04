@@ -19,8 +19,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "minhtq_don_nghi_phep")
-public class DonNghiPhepMinhtq {
+public class DonNghiPhepMinhtq  {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -36,19 +37,16 @@ public class DonNghiPhepMinhtq {
 	@Max(12)
 	private int loaiNgayNghi;
 
-	
 	@Column(name = "so_luong")
 	@NotNull
 	private int soLuong;
 
-	
 	@NotNull
 	@Column(name = "thoi_gian_bat_dau")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date thoiGianBatDau;
 
-	
 	@NotNull
 	@Column(name = "thoi_gian_ket_thuc")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -57,6 +55,9 @@ public class DonNghiPhepMinhtq {
 
 	@Column(name = "trang_thai")
 	private int trangThai;
+	
+	
+
 
 	public DonNghiPhepMinhtq() {
 		super();

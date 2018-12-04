@@ -20,7 +20,7 @@ public class TrangThai implements Serializable{
 	 */
 	private static final long serialVersionUID = -6931934795016309418L;
 
-	@OneToMany(mappedBy="ma_trang_thai")
+	@OneToMany(mappedBy="maTrangThai")
 	private List<Document> Document;
 	public List<Document> getDocument() {
 		return Document;
@@ -35,33 +35,30 @@ public class TrangThai implements Serializable{
 	private int id;
 	
 	@Column(name = "ma_trang_thai")
-	private String ma_trang_thai;
+	private String maTrangThai;
 	
 	@Column(name = "ten_trang_thai")
-	private String ten_trang_thai;
+	private String tenTrangThai;
 
 	//
-	public String getMa_trang_thai() {
-		return ma_trang_thai;
-	}
-
-	public void setMa_trang_thai(String ma_trang_thai) {
-		this.ma_trang_thai = ma_trang_thai;
-	}
-
-	//
-	public String getTen_trang_thai() {
-		return ten_trang_thai;
-	}
-
-	public void setTen_trang_thai(String ten_trang_thai) {
-		this.ten_trang_thai = ten_trang_thai;
-	}
+	
 	//
 	public int getId() {
 		return id;
 	}
 
+	public String getMaTrangThai() {
+		return maTrangThai;
+	}
+	public void setMaTrangThai(String maTrangThai) {
+		this.maTrangThai = maTrangThai;
+	}
+	public String getTenTrangThai() {
+		return tenTrangThai;
+	}
+	public void setTenTrangThai(String tenTrangThai) {
+		this.tenTrangThai = tenTrangThai;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}

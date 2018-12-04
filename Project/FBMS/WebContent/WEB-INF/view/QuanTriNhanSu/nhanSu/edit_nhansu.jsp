@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>THÊM NHÂN SỰ</title>
+<title>SỬA NHÂN SỰ</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -21,12 +21,19 @@
 <body>
 
 	<div class="container">
-		<h1 style="text-align: center;">THÊM NHÂN SỰ</h1>
-		<form:form method="post" enctype="multipart/form-data" action="saveNhanSu" modelAttribute="nhanSu">
+		<h1 style="text-align: center;">EDIT NHAN SU</h1>
+		<form:form method="post" enctype="multipart/form-data" action="/FBMS/QuanTriNhanSu/danhsach_nhansu/update" modelAttribute="nhanSu">
+			
+			<div class="form-group">
+				
+				<form:hidden path="id" />
+				<br>
+
+			</div>
 			<div class="form-group">
 				<label>Mã Nhân Viên:</label>
 				<form:input class="form-control" type="text" path="maNhanVien" />
-				<form:errors path="maNhanVien" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
@@ -43,13 +50,13 @@
 			<div class="form-group">
 				<label>Họ đệm</label>
 				<form:input class="form-control" type="text" path="hoLot" />
-				<form:errors path="hoLot" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Tên</label>
 				<form:input class="form-control" type="text" path="ten" />
-				<form:errors path="ten" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
@@ -75,13 +82,13 @@
 			<div class="form-group">
 				<label>Quê quán</label>
 				<form:input class="form-control" type="text" path="queQuan" />
-				<form:errors path="queQuan" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Dân tộc</label>
 				<form:input class="form-control" type="text" path="danToc" />
-				<form:errors path="danToc" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
@@ -93,31 +100,31 @@
 			<div class="form-group">
 				<label>Tạm trú</label>
 				<form:input class="form-control" type="text" path="noiTamTru" />
-				<form:errors path="noiTamTru" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Điện thoại</label>
 				<form:input class="form-control" type="text" path="soDienThoai" />
-				<form:errors path="soDienThoai" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Email</label>
 				<form:input class="form-control" type="text" path="email" />
-				<form:errors path="email" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Chứng minh</label>
 				<form:input class="form-control" type="text" path="soCMND" />
-				<form:errors path="soCMND" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">
 				<label>Nơi cấp</label>
 				<form:input class="form-control" type="text" path="noiCap" />
-				<form:errors path="noiCap" cssClass="error" style="color:pink" />
+				
 				<br>
 			</div>
 			<div class="form-group">

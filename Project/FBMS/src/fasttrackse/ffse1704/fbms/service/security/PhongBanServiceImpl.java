@@ -71,11 +71,11 @@ public class PhongBanServiceImpl implements PhongBanService {
 	public String toJson(PhongBan pb) {
 		String maPhongBan = pb.getMaPhongBan();
 		String tenPhongBan = pb.getTenPhongBan();
-		String action = "<a href='/ffse-fbms/QuanTriHeThong/phong_ban/view/" 
+		String action = "<a href='/FBMS/QuanTriHeThong/phong_ban/view/" 
 				+ maPhongBan + "'><i class='fa fa-eye'></i></a>"
-				+ "<a href='/ffse-fbms/QuanTriHeThong/phong_ban/edit/"
+				+ "<a href='/FBMS/QuanTriHeThong/phong_ban/edit/"
 				+ maPhongBan + "'><i class='fa fa-pencil'></i></a>"
-				+ "<a href='javascript:void(0);' data-toggle='modal' data-target='#confirm-delete' data-href='/ffse-fbms/QuanTriHeThong/phong_ban/delete/"
+				+ "<a href='javascript:void(0);' data-toggle='modal' data-target='#confirm-delete' data-href='/FBMS/QuanTriHeThong/phong_ban/delete/"
 				+maPhongBan + "'><i class='fa fa-trash'></i></a>";
 
 		return "[\"" + maPhongBan + "\",\"" + tenPhongBan + "\",\"" + action + "\"]";

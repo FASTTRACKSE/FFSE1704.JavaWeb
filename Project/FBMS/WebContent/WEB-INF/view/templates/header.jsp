@@ -164,8 +164,7 @@
 					<li class="nav-item mobile-menu hidden-md-up float-xs-left"><a
 						href="#" class="nav-link nav-menu-main menu-toggle hidden-xs"><i
 							class="ft-menu font-large-1"></i></a></li>
-					<li class="nav-item"><a href="/FBMS/home"
-						class="navbar-brand"><img
+					<li class="nav-item"><a href="/FBMS/home" class="navbar-brand"><img
 							src="<c:url value="https://www.fasttrack.edu.vn/wp-content/uploads/2018/03/favicon.png"/>"
 							alt="FastTrackSE logo" class="brand-logo" />
 							<h2 class="brand-text">FBMS</h2></a></li>
@@ -204,10 +203,11 @@
 									alt="avatar"><i></i></span><span class="user-name">${pageContext.request.userPrincipal.name}</span></a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a href="#" class="dropdown-item"><i class="ft-user"></i> <spring:message
-										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#" class="dropdown-item"><i
-									class="ft-mail"></i> <spring:message code="label.QuanTriHeThong.hopThu" /></a> <a
-									href="#" class="dropdown-item"><i class="ft-check-square"></i>
-									<spring:message code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
+										code="label.QuanTriHeThong.suaHoSo" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-mail"></i> <spring:message
+										code="label.QuanTriHeThong.hopThu" /></a> <a href="#"
+									class="dropdown-item"><i class="ft-check-square"></i> <spring:message
+										code="label.QuanTriHeThong.nhiemVu" /></a> <a href="#"
 									class="dropdown-item"><i class="ft-message-square"></i> <spring:message
 										code="label.QuanTriHeThong.tinNhan" /></a>
 								<div class="dropdown-divider"></div>
@@ -217,7 +217,8 @@
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <a href="#"
 										onclick="$(this).closest('form').submit()"><i
-										class="ft-power"></i> <spring:message code="label.QuanTriHeThong.dangXuat" /></a>
+										class="ft-power"></i> <spring:message
+											code="label.QuanTriHeThong.dangXuat" /></a>
 								</form>
 							</div></li>
 					</ul>
@@ -232,77 +233,141 @@
 		<div class="main-menu-content">
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
+
 				<!-- Quản trị hệ thống -->
 				<li class=" navigation-header"><span><spring:message
-							code="label.QuanTriHeThong" /></span><i data-toggle="tooltip"
+							code="label.QuanTriHeThong" /></span> <i data-toggle="tooltip"
 					data-placement="right" data-original-title="Apps" class=" ft-minus"></i>
 				</li>
 				<li class=" nav-item QuanTriHeThongphong_ban"><a
-					href="<c:url value = "/QuanTriHeThong/phong_ban/"/>"><i
-						class="fa fa-building"></i><span data-i18n="" class="menu-title"><spring:message
-								code="label.QuanTriHeThong.PhongBan" /></span></a></li>
+					href="<c:url value = "/QuanTriHeThong/phong_ban/"/>"> <i
+						class="fa fa-building"></i> <span data-i18n="" class="menu-title"><spring:message
+								code="label.QuanTriHeThong.PhongBan" /></span>
+				</a></li>
 				<li class=" nav-item QuanTriHeThongchuc_danh"><a
-					href="<c:url value = "/QuanTriHeThong/chuc_danh/"/>"><i
-						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
-								code="label.QuanTriHeThong.ChucDanh" /></span></a></li>
+					href="<c:url value = "/QuanTriHeThong/chuc_danh/"/>"> <i
+						class="fa fa-id-card-o"></i> <span data-i18n="" class="menu-title"><spring:message
+								code="label.QuanTriHeThong.ChucDanh" /></span>
+				</a></li>
 				<li class=" nav-item QuanTriHeThongtai-khoan"><a
-					href="<c:url value = "/QuanTriHeThong/tai-khoan/"/>"><i
-						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
-								code="label.QuanTriHeThong.TaiKhoan" /></span></a></li>
+					href="<c:url value = "/QuanTriHeThong/tai-khoan/"/>"> <i
+						class="fa fa-id-card-o"></i> <span data-i18n="" class="menu-title"><spring:message
+								code="label.QuanTriHeThong.TaiKhoan" /></span>
+				</a></li>
 				<li class=" nav-item QuanTriHeThongphan-quyen"><a
-					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"><i
-						class="fa fa-id-card-o"></i><span data-i18n="" class="menu-title"><spring:message
-								code="label.QuanTriHeThong.PhanQuyen" /></span></a></li>
-								
+					href="<c:url value = "/QuanTriHeThong/phan-quyen/"/>"> <i
+						class="fa fa-id-card-o"></i> <span data-i18n="" class="menu-title"><spring:message
+								code="label.QuanTriHeThong.PhanQuyen" /></span>
+				</a></li>
+				<!-- End Quản trị hệ thống -->
+
+
+
+				<!-- ************************* Quản Lý Dự Án********************************** -->
+				<ul id="main-menu-navigation" data-menu="menu-navigation"
+					class="navigation navigation-main">
+					<li class=" navigation-header"><span>Quản Lý Dự Án</span><i
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Joker" class=" ft-minus"></i></li>
+					<li class=" nav-item"><a href="/FBMS/quanlytailieu/index"><i
+							class="ft-bookmark"></i> Quản Lý Danh Mục</a>
+
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-user"></i>Khách
+									Hàng</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-puzzle"></i>Vai
+									Trò Thành Viên</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-globe"></i>Domain</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="ft-layers"></i>Database</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-wrench"></i>Framework</a></li>
+
+							<li class=" nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-link"></i>Vendor</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-book-open"></i>Programming
+									Language</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-magic-wand"></i>Technical</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-refresh"></i>Trạng
+									Thái Dự Án</a></li>
+						</ul></li>
+					<li class=" nav-item"><a href="/FBMS/quanlytailieu/index"><i
+							class="ft-bookmark"></i> Quản Lý Thông Tin Dự Án</a>
+
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-compass"></i>Thông
+									Tin Dự Án</a></li>
+
+							<li class="nav-item"><a class="nav-link"
+								href="/FBMS/quanlytailieu/index"><i class="icon-users"></i>Nhân
+									Viên Dự Án</a></li>
+
+						</ul></li>
+				</ul>
+				<!-- **********************End Quản Lý Dự Án************************************* -->
+
+
+
+				<!-- Quản lí tài liệu -->
+				<li class="navigation-header"><span class="menu-title"
+					data-i18n="">QUẢN LÍ TÀI LIỆU</span> <!--  DoanhNT -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">DoanhNT</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item"
+							href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
+						<li class=""><a class="menu-item"
+							href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
+					</ul></li>
+				<!-- Dũng -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item" href="/quanlytailieu/index">●
+								Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item" href="#"></a></li>
+						<li class=""><a class="menu-item" href="#"></a></li>
+					</ul></li>
+				<!-- Sỹ -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item" href="#">● Danh mục tài
+								liệu</a></li>
+						<li class=""><a class="menu-item" href="#"></a></li>
+						<li class=""><a class="menu-item" href="#"></a></li>
+					</ul></li>
 			</ul>
-			<ul id="main-menu-navigation" data-menu="menu-navigation"
-				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lý Dự Án</span><i data-toggle="tooltip" data-placement="right"
-					data-original-title="Joker" class=" ft-minus"></i></li>
-				<li class=" nav-item"><a
-					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							Quản Lý Danh Mục</a></li>
-							<li class=" nav-item"><a
-					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							Quản Lý Thông Tin Dự Án</a></li>
-			</ul>
-			<ul id="main-menu-navigation" data-menu="menu-navigation"
-				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lý Tài
-						Liệu</span><i data-toggle="tooltip" data-placement="right"
-					data-original-title="Bét Daxua" class=" ft-minus"></i></li>
-				<li class=" nav-item"><a
-					href="<c:url value = "/quanlytailieu/index"/>"><i
-						class="ft-bookmark"></i>
-							My Document</a></li>
+			</li>
+			<!-- End Quản lí tài liệu  -->
+
+
 			</ul>
 
-			
-			<!-- Quản lí tài liệu - DoanhNT -->
-			<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-				<li class="nav-item has-sub open">
-					<a href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">DoanhNT</span></a>
-	            	<ul class="menu-content" style="">
-	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
-	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
-	              		<li class="is-shown"><a class="menu-item" href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
-	            	</ul> 
-         		</li>
-			</ul>
-			<!-- End Quản lí tài liệu - DoanhNT -->
-			
+
+
 
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i data-toggle="tooltip" data-placement="right"
+				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i
+					data-toggle="tooltip" data-placement="right"
 					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
 				<li class=" nav-item"><a
-					href="<c:url value = "/logwork/list"/>"><i
-						class="ft-book"></i>
-							Danh Sách Logwork</a></li>
+					href="<c:url value = "/logwork/list"/>"><i class="ft-book"></i>
+						Danh Sách Logwork</a></li>
 			</ul>
-
 		</div>
 	</div>

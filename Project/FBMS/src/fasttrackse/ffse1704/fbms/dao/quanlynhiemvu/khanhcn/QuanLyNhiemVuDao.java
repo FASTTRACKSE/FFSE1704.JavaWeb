@@ -7,9 +7,10 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
 
 public interface QuanLyNhiemVuDao {
 
-	public List<DuAnKhanhCN> duAn();
-
 	public List<CongViecKhanhCN> congViec();
-	
+
 	public void addCongViec(CongViecKhanhCN cv);
+
+	public void updateCongViec(CongViecKhanhCN cv);
+
 }

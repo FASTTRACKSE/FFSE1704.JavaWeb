@@ -25,12 +25,6 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 		this.congViecDao = nhiemVuDao;
 	}
 
-	// List danh sách dự án
-	@Override
-	public List<DuAnKhanhCN> duAn() {
-		return congViecDao.duAn();
-	}
-
 	// List danh sách công việc
 	@Override
 	public List<CongViecKhanhCN> congViec() {
@@ -41,6 +35,13 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	@Override
 	public void addCongViec(CongViecKhanhCN cv) {
 		congViecDao.addCongViec(cv);
+
+	}
+
+	@Override
+	public void updateCongViec(CongViecKhanhCN cv) {
+		// TODO Auto-generated method stub
+		congViecDao.updateCongViec(cv);
 
 	}
 
