@@ -10,13 +10,19 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.thachmh.DonXinNghiPhep;
 
 @Service
 public class DonXinNghiPhepServiceImpl implements DonXinNghiPhepService {
-	
+
 	@Autowired
 	private DonXinNghiPhepDao donXinNghiPhepDao;
-	
+
 	@Override
 	public List<DonXinNghiPhep> getAllDonXinNghiPhep() {
 		return donXinNghiPhepDao.getAllDonXinNghiPhep();
 	}
-	
+
+	@Override
+	public void addNew(DonXinNghiPhep dx) {
+		donXinNghiPhepDao.addNew(dx);
+
+	}
+
 }

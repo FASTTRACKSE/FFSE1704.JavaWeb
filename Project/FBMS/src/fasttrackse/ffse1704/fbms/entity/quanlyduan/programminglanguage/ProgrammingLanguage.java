@@ -1,14 +1,15 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -24,17 +25,16 @@ public class ProgrammingLanguage implements Serializable {
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
 
-	@Column(name = "ma_language", nullable = false, length = 30)
+	@Column(name = "ma_programming_language", nullable = false, length = 30)
 	@NotEmpty
-	private String maLanguage;
-	
-	/*@ManyToOne
-	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", nullable = false)
-	private ThongTinDuAn thongTinDuAn;*/
+	private String maProgrammingLanguage;
 
-	@Column(name = "ten_language", nullable = false, length = 255)
+	@OneToMany(mappedBy = "programmingLanguage")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
+
+	@Column(name = "ten_programming_language", nullable = false, length = 255)
 	@NotEmpty
-	private String tenLanguage;
+	private String tenProgrammingLanguage;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
 	@NotEmpty
@@ -45,12 +45,13 @@ public class ProgrammingLanguage implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProgrammingLanguage(int id, @NotEmpty String maLanguage, @NotEmpty String tenLanguage,
-			@NotEmpty String ghiChu) {
+	public ProgrammingLanguage(int id, @NotEmpty String maProgrammingLanguage, List<ThongTinDuAn> listDuAn,
+			@NotEmpty String tenProgrammingLanguage, @NotEmpty String ghiChu) {
 		super();
 		this.id = id;
-		this.maLanguage = maLanguage;
-		this.tenLanguage = tenLanguage;
+		this.maProgrammingLanguage = maProgrammingLanguage;
+		this.listDuAn = listDuAn;
+		this.tenProgrammingLanguage = tenProgrammingLanguage;
 		this.ghiChu = ghiChu;
 	}
 
@@ -62,20 +63,28 @@ public class ProgrammingLanguage implements Serializable {
 		this.id = id;
 	}
 
-	public String getMaLanguage() {
-		return maLanguage;
+	public String getMaProgrammingLanguage() {
+		return maProgrammingLanguage;
 	}
 
-	public void setMaLanguage(String maLanguage) {
-		this.maLanguage = maLanguage;
+	public void setMaProgrammingLanguage(String maProgrammingLanguage) {
+		this.maProgrammingLanguage = maProgrammingLanguage;
 	}
 
-	public String getTenLanguage() {
-		return tenLanguage;
+	public List<ThongTinDuAn> getListDuAn() {
+		return listDuAn;
 	}
 
-	public void setTenLanguage(String tenLanguage) {
-		this.tenLanguage = tenLanguage;
+	public void setListDuAn(List<ThongTinDuAn> listDuAn) {
+		this.listDuAn = listDuAn;
+	}
+
+	public String getTenProgrammingLanguage() {
+		return tenProgrammingLanguage;
+	}
+
+	public void setTenProgrammingLanguage(String tenProgrammingLanguage) {
+		this.tenProgrammingLanguage = tenProgrammingLanguage;
 	}
 
 	public String getGhiChu() {

@@ -1,18 +1,19 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.vaitrothanhvien;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.phancongnhiemvu.PhanCongNhiemVu;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.nhanvienduan.NhanVienDuAn;
 
 @Entity
 @Table(name = "vai_tro_thanh_vien")
@@ -27,10 +28,6 @@ public class VaiTroThanhVien implements Serializable {
 	@Column(name = "ma_vai_tro", nullable = false, length = 30)
 	@NotEmpty
 	private String maVaiTro;
-	
-	/*@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", nullable = false)
-	private PhanCongNhiemVu phanCongNhiemVu;*/
 
 	@Column(name = "ten_vai_tro", nullable = false, length = 255)
 	@NotEmpty
@@ -40,17 +37,25 @@ public class VaiTroThanhVien implements Serializable {
 	@NotEmpty
 	private String ghiChu;
 
+	// bi-directional many-to-one association to ThongTinDuAn
+	@OneToMany(mappedBy = "vaiTroThanhVien")
+	private List<NhanVienDuAn> nhanVienDuAn = new ArrayList<NhanVienDuAn>();
+
 	public VaiTroThanhVien() {
 		super();
 	}
 
-	public VaiTroThanhVien(int id, @NotEmpty String maVaiTro, @NotEmpty String tenVaiTro, @NotEmpty String ghiChu) {
+	
+	public VaiTroThanhVien(int id, @NotEmpty String maVaiTro, @NotEmpty String tenVaiTro, @NotEmpty String ghiChu,
+			List<NhanVienDuAn> nhanVienDuAn) {
 		super();
 		this.id = id;
 		this.maVaiTro = maVaiTro;
 		this.tenVaiTro = tenVaiTro;
 		this.ghiChu = ghiChu;
+		this.nhanVienDuAn = nhanVienDuAn;
 	}
+
 
 	public int getId() {
 		return id;
@@ -83,4 +88,15 @@ public class VaiTroThanhVien implements Serializable {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
+
+
+	public List<NhanVienDuAn> getNhanVienDuAn() {
+		return nhanVienDuAn;
+	}
+
+
+	public void setNhanVienDuAn(List<NhanVienDuAn> nhanVienDuAn) {
+		this.nhanVienDuAn = nhanVienDuAn;
+	}
+
 }

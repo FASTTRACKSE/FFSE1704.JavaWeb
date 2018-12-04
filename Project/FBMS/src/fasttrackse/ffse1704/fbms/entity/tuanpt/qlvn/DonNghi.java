@@ -50,6 +50,27 @@ public class DonNghi {
 
 	@Column(name = "tinh_trang")
 	private int tinhTrang;
+	
+	
+
+	public DonNghi() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public DonNghi(int idDon, int idNhanVien, String tenNhanVien, String phongBan, String lyDo, Date thoiGianBatDau,
+			Date thoiGianKetThuc, String ghiChu, int tinhTrang) {
+		super();
+		this.idDon = idDon;
+		this.idNhanVien = idNhanVien;
+		this.tenNhanVien = tenNhanVien;
+		this.phongBan = phongBan;
+		this.lyDo = lyDo;
+		this.thoiGianBatDau = thoiGianBatDau;
+		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.ghiChu = ghiChu;
+		this.tinhTrang = tinhTrang;
+	}
 
 	public int getIdDon() {
 		return idDon;

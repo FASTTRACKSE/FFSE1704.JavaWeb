@@ -37,8 +37,8 @@ public class Technical implements Serializable {
 	@NotEmpty
 	private String ghiChu;
 
-	/*@ManyToMany(mappedBy = "technicals")
-	private Set<ThongTinDuAn> thongTinDuAn = new HashSet<>();*/
+	@ManyToMany(mappedBy = "technical")
+	private Set<ThongTinDuAn> thongTinDuAn = new HashSet<>();
 
 	public Technical() {
 		super();
@@ -82,5 +82,13 @@ public class Technical implements Serializable {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	public Set<ThongTinDuAn> getThongTinDuAn() {
+		return thongTinDuAn;
+	}
+
+	public void setThongTinDuAn(Set<ThongTinDuAn> thongTinDuAn) {
+		this.thongTinDuAn = thongTinDuAn;
 	}
 }

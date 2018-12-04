@@ -25,9 +25,9 @@ public class DocumentController {
 	public String index(Model model ,Integer offset, Integer maxResults) {
 		
 		List<Document> list =  documentService.getAll();
-        model.addAttribute("offset", offset);
+   
         model.addAttribute("listDocument", list);
-		return "quanlytailieu/index";		
+		return "quanlytailieu/dung/index";		
 	}
 	// ----------- document public -------//
 	@RequestMapping(value = "/documentPublic", method = RequestMethod.GET)

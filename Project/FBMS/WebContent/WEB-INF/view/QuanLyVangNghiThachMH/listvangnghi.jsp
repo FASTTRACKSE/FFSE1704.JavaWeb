@@ -49,13 +49,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách chức danh</h3>
+				<h3 class="content-header-title mb-0">Danh sách vắng nghỉ</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách chức danh</li>
+							<li class="breadcrumb-item active">Danh sách vắng nghỉ</li>
 						</ol>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanTriHeThong/chuc_danh/add"/>"
+					<a href="<c:url value = "/QuanLyVangNghi512/add"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách chức danh</h4>
+							<h4 class="card-title">Danh sách vắng nghỉ</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -116,14 +116,14 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-												
+
 												<th>Họ Tên</th>
 												<th>Phòng Ban</th>
 												<th>Thời Gian Bắt Đầu Nghỉ</th>
 												<th>Thời Gian Kết Thúc</th>
 												<th>Lý Do</th>
 												<th>Ghi Chú</th>
-												<th>Số Ngày Đã Nghỉ</th>									
+												<th>Số Ngày Đã Nghỉ</th>
 												<th>Trạng Thái</th>
 
 											</tr>

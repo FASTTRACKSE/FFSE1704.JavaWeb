@@ -1,14 +1,15 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyduan.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -27,10 +28,9 @@ public class Domain implements Serializable {
 	@Column(name = "ma_domain", nullable = false, length = 30)
 	@NotEmpty
 	private String maDomain;
-	
-	/*@ManyToOne
-	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", nullable = false)
-	private ThongTinDuAn thongTinDuAn;*/
+
+	@OneToMany(mappedBy = "domain")
+	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
 
 	@Column(name = "ten_domain", nullable = false, length = 255)
 	@NotEmpty
@@ -44,10 +44,12 @@ public class Domain implements Serializable {
 		super();
 	}
 
-	public Domain(int id, @NotEmpty String maDomain, @NotEmpty String tenDomain, @NotEmpty String ghiChu) {
+	public Domain(int id, @NotEmpty String maDomain, List<ThongTinDuAn> listDuAn, @NotEmpty String tenDomain,
+			@NotEmpty String ghiChu) {
 		super();
 		this.id = id;
 		this.maDomain = maDomain;
+		this.listDuAn = listDuAn;
 		this.tenDomain = tenDomain;
 		this.ghiChu = ghiChu;
 	}
@@ -82,5 +84,13 @@ public class Domain implements Serializable {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	public List<ThongTinDuAn> getListDuAn() {
+		return listDuAn;
+	}
+
+	public void setListDuAn(List<ThongTinDuAn> listDuAn) {
+		this.listDuAn = listDuAn;
 	}
 }

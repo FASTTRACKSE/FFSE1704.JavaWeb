@@ -42,13 +42,13 @@
                      </fieldset>
                      <div class="row py-2">
                         <div class="col-md-12">
-                           <a href="/ffse-fbms" class="btn btn-primary btn-block font-small-3"><i class="ft-home"></i> Back to Home</a>
+                           <a href="/FBMS" class="btn btn-primary btn-block font-small-3"><i class="ft-home"></i> Back to Home</a>
                         </div>
                      </div>
                   </div>
                   <div class="card-footer bg-transparent pb-0">
                      <div class="row">
-                        <p class="text-muted text-xs-center col-xs-12 py-1">© 2018 <a href="#">FFSE1703 </a> with <i class="ft-heart pink"> </i></p>
+                        <p class="text-muted text-xs-center col-xs-12 py-1">© 2018 <a href="#">FFSE1704 </a> with <i class="ft-heart pink"> </i></p>
                         <div class="text-xs-center">
                            <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span class="fa fa-facebook"></span></a>
                            <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span class="fa fa-twitter"></span></a>
