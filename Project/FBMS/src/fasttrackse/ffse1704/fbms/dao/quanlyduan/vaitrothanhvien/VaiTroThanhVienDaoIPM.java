@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.dao.quanlyduan.domain;
+package fasttrackse.ffse1704.fbms.dao.quanlyduan.vaitrothanhvien;
 
 import java.util.List;
 
@@ -8,14 +8,14 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.vaitrothanhvien.VaiTroThanhVien;
 
 /**
  * @author Joker
  *
  */
 @Repository
-public class DomainIPM implements DomainDao {
+public class VaiTroThanhVienDaoIPM implements VaiTroThanhVienDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -27,53 +27,52 @@ public class DomainIPM implements DomainDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-
 	@Override
-	public void addNew(Domain domain) {
+	public void addNew(VaiTroThanhVien vaiTroThanhVien) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(domain);
+		session.persist(vaiTroThanhVien);
 
 	}
 
 	@Override
-	public void update(Domain domain) {
+	public void update(VaiTroThanhVien vaiTroThanhVien) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(domain);
+		session.update(vaiTroThanhVien);
+
 	}
 
 	@Override
-	public void delete(String maDomain) {
+	public void delete(String VaiTroThanhVienDao) {
 		Session session = this.sessionFactory.openSession();
 		Transaction pd = session.beginTransaction();
-		session.update(session.get(Domain.class, maDomain));
+		session.update(session.get(VaiTroThanhVien.class, VaiTroThanhVienDao));
 		pd.commit();
 		session.close();
 
 	}
 
 	@Override
-	public Domain getDomainByIdDomain(String maDomain) {
+	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVienDao) {
 		Session session = this.sessionFactory.openSession();
-		Domain domain = session.get(Domain.class, maDomain);
+		VaiTroThanhVien vaiTroThanhVienDao = session.get(VaiTroThanhVien.class, maVaiTroThanhVienDao);
 		session.close();
-		return domain;
+		return vaiTroThanhVienDao;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Domain> listDomain(int iDisPlayStart, int iDinPlayLength) {
+	public List<VaiTroThanhVien> listVaiTroThanhVien(int iDisPlayStart, int iDinPlayLength) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Domain> domainList = session.createQuery("from Domain").setFirstResult(iDisPlayStart).setMaxResults(iDinPlayLength)
-				.list();
-		return domainList;
+		List<VaiTroThanhVien> vaiTroThanhVienList = session.createQuery("from VaiTroThanhVien")
+				.setFirstResult(iDisPlayStart).setMaxResults(iDinPlayLength).list();
+		return vaiTroThanhVienList;
 	}
 
 	@Override
 	public int getRecordsTotal() {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from Domain").list().size();
+		int rowCount = session.createQuery("from VaiTroThanhVien").list().size();
 		return rowCount;
 	}
-
 
 }

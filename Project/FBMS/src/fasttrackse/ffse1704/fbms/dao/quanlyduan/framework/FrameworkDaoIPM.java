@@ -20,7 +20,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
  *
  */
 @Repository
-public class FrameworkDaoImpl implements FrameworkDao {
+public class FrameworkDaoIPM implements FrameworkDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
