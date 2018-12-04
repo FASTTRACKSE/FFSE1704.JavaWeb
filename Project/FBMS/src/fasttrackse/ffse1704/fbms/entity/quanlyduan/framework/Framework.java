@@ -52,7 +52,8 @@ public class Framework implements Serializable {
 		super();
 	}
 
-	public Framework(int id, @NotEmpty String maFramework, List<ThongTinDuAn> listDuAn, @NotEmpty String tenFramework, String ghiChu) {
+	public Framework(int id, @NotEmpty String maFramework, List<ThongTinDuAn> listDuAn, @NotEmpty String tenFramework,
+			String ghiChu) {
 		super();
 		this.id = id;
 		this.maFramework = maFramework;

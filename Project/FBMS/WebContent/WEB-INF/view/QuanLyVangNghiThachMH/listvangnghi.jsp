@@ -116,7 +116,6 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-
 												<th>Họ Tên</th>
 												<th>Phòng Ban</th>
 												<th>Thời Gian Bắt Đầu Nghỉ</th>
@@ -125,12 +124,13 @@
 												<th>Ghi Chú</th>
 												<th>Số Ngày Đã Nghỉ</th>
 												<th>Trạng Thái</th>
+												<th></th>
 
 											</tr>
 										</thead>
 										<c:forEach var="sv" items="${list}">
 											<tr>
-												<td>${sv.idNhanVien}</td>
+												<td>${sv.idDon}</td>
 												<td>${sv.tenNhanVien}</td>
 												<td>${sv.phongBan}</td>
 												<td>${sv.thoiGianBatDau}</td>
@@ -139,6 +139,9 @@
 												<td>${sv.ghiChu}</td>
 												<td>${sv.tinhTrang}</td>
 												<td>${sv.maTrangThai}</td>
+												<td><a href="/FBMS/QuanLyVangNghi512/editdxnp/${sv.idDon}">
+														<button>sửa</button>
+												</a> <a href=""><button>xóa</button></a></td>
 										</c:forEach>
 										<tbody>
 											<div class="modal fade" id="confirm-delete" tabindex="-1"

@@ -43,17 +43,17 @@ public class TrangThaiDuAn implements Serializable {
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
 	private String ghiChu;
-	
+
 	// bi-directional many-to-one association to ThongTinDuAn
 	@OneToMany(mappedBy = "trangThaiDuAn")
 	private List<ThongTinDuAn> listDuAn = new ArrayList<ThongTinDuAn>();
-
 
 	public TrangThaiDuAn() {
 		super();
 	}
 
-	public TrangThaiDuAn(int id, @NotEmpty String maTrangThai, List<ThongTinDuAn> listDuAn, @NotEmpty String tenTrangThai, String ghiChu) {
+	public TrangThaiDuAn(int id, @NotEmpty String maTrangThai, List<ThongTinDuAn> listDuAn,
+			@NotEmpty String tenTrangThai, String ghiChu) {
 		super();
 		this.id = id;
 		this.maTrangThai = maTrangThai;
