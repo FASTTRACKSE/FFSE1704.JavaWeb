@@ -5,9 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 
 public interface LogworkService {
 	public List<Logwork> findAll();
+	public List<PhongBanLogwork> listPhongBan();
 
 	public void addNew(Logwork logwork);
 

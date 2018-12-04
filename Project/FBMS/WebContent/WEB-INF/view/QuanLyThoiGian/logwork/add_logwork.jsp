@@ -58,10 +58,11 @@
 							<form:errors path="maVaiTro" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maPhongBan"
-								placeholder="Mã nhân viên" />
-							<form:errors path="maPhongBan" cssClass="error" />
+							<label>Phòng ban</label>
+							<form:select path="maPhongBan" class="form-control">
+								<form:options items="${dsPhongBan}"  itemValue="maPBan"
+									itemLabel="tenPhongBan" />
+							</form:select>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên công việc</label>
@@ -83,8 +84,8 @@
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
 							<div class='input-group date' id='datetimepicker11'>
-							<form:input class="form-control" type="text" path="thoiGianBatDau"
-								placeholder="Thời gian bắt đầu" />
+								<form:input class="form-control" type="text"
+									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>
@@ -93,8 +94,8 @@
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc</label>
 							<div class='input-group date' id='datetimepicker5'>
-								<form:input path="thoiGianKetThuc"
-									class="form-control" type="text" />
+								<form:input path="thoiGianKetThuc" class="form-control"
+									type="text" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>

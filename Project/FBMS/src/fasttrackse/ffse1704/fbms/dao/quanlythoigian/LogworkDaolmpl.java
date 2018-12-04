@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -94,5 +95,13 @@ public class LogworkDaolmpl implements LogworkDao {
 		String recordsFilterd = query.getSingleResult().toString();
 		session.close();
  		return recordsFilterd;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PhongBanLogwork> listPhongBan() {
+		Session session = sessionFactory.getCurrentSession();
+		List<PhongBanLogwork> listPhongBan = session.createQuery("from PhongBanLogwork").getResultList();
+		return listPhongBan;
 	}
 }
