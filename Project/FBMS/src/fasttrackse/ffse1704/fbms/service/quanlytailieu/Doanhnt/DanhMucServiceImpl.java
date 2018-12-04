@@ -1,12 +1,12 @@
-package fasttrackse.ffse1704.fbms.service.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fasttrackse.ffse1704.fbms.dao.DoanhntQLTL.DanhMucDao;
-import fasttrackse.ffse1704.fbms.entity.DoanhntQLTL.DanhMuc;
+import fasttrackse.ffse1704.fbms.dao.quanlytailieu.Doanhnt.DanhMucDao;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.DanhMuc;
 
 @Service
 public class DanhMucServiceImpl implements DanhMucService {

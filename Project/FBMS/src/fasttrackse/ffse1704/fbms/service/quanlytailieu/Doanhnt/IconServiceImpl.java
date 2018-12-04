@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.service.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TrangThaiService
+ * Servlet implementation class IconServiceImpl
  */
-@WebServlet("/TrangThaiService")
-public class TrangThaiService extends HttpServlet {
+@WebServlet("/IconServiceImpl")
+public class IconServiceImpl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TrangThaiService() {
+    public IconServiceImpl() {
         super();
         // TODO Auto-generated constructor stub
     }

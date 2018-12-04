@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.controller.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.controller.quanlytailieu.Doanhnt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fasttrackse.ffse1704.fbms.entity.DoanhntQLTL.DanhMuc;
-import fasttrackse.ffse1704.fbms.service.DoanhntQLTL.DanhMucService;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.DanhMuc;
+import fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt.DanhMucService;
 
 @Controller
-@RequestMapping("/DoanhntQLTL/DanhMuc")
+@RequestMapping("quanlytailieu/Doanhnt/DanhMuc")
 public class DanhMucController {
 	@Autowired
 	private DanhMucService serviceDM;
@@ -39,7 +39,7 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có lỗi, xin thử lại !");
 		}
-		return "redirect:/DoanhntQLTL/DanhMuc/";
+		return "redirect:DoanhntQLTL/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/sua/{maDM}", method = RequestMethod.GET)
@@ -57,7 +57,7 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có Lỗi, Xin Thử Lại!");
 		}
-		return "redirect:/DoanhntQLTL/DanhMuc/";
+		return "redirect:DoanhntQLTL/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/xoa/{maDM}", method = RequestMethod.GET)
@@ -70,7 +70,7 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có lỗi, xin thử lại !");
 		}
-		return "redirect:/DoanhntQLTL/DanhMuc/";
+		return "redirect:DoanhntQLTL/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/view/{maDM}", method = RequestMethod.GET)

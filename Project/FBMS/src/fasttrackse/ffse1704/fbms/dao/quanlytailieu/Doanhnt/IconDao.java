@@ -1,8 +1,8 @@
-package fasttrackse.ffse1704.fbms.dao.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.dao.quanlytailieu.Doanhnt;
 
 import java.util.List;
 
-import fasttrackse.ffse1704.fbms.entity.DoanhntQLTL.Icon;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.Icon;
 
 public interface IconDao {
 	public List<Icon> listAllIconTaiLieu();

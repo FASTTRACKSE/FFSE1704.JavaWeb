@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import fasttrackse.ffse1704.fbms.entity.DoanhntQLTL.Icon;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.Icon;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
