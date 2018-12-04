@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2018 at 04:45 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Dec 04, 2018 at 11:09 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,15 +29,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ffse1704_tunglnt_loaicongviec` (
-  `id` int(11) NOT NULL,
-  `loaicongviec` varchar(50) NOT NULL
+  `id_congviec` int(11) NOT NULL,
+  `loaicongviec` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ffse1704_tunglnt_loaicongviec`
 --
 
-INSERT INTO `ffse1704_tunglnt_loaicongviec` (`id`, `loaicongviec`) VALUES
+INSERT INTO `ffse1704_tunglnt_loaicongviec` (`id_congviec`, `loaicongviec`) VALUES
 (1, 'Code'),
 (2, 'UT'),
 (3, 'Fix Bug'),
@@ -51,7 +51,7 @@ INSERT INTO `ffse1704_tunglnt_loaicongviec` (`id`, `loaicongviec`) VALUES
 -- Indexes for table `ffse1704_tunglnt_loaicongviec`
 --
 ALTER TABLE `ffse1704_tunglnt_loaicongviec`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_congviec`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -61,7 +61,7 @@ ALTER TABLE `ffse1704_tunglnt_loaicongviec`
 -- AUTO_INCREMENT for table `ffse1704_tunglnt_loaicongviec`
 --
 ALTER TABLE `ffse1704_tunglnt_loaicongviec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_congviec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
