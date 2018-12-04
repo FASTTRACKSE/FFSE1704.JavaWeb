@@ -329,9 +329,9 @@
 				<!--  DoanhNT -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">DoanhNT</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
-						<li class=""><a class="menu-item" href="/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/DanhMuc/">● Danh mục tài liệu</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/TaiLieu/">● Quản lý tài liệu</a></li>
+						<li class=""><a class="menu-item" href="FBMS/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
 					</ul>
 				</li>
 				<!-- Dũng -->

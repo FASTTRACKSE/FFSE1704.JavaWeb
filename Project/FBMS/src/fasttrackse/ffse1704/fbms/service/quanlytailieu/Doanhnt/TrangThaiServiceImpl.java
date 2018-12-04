@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.service.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

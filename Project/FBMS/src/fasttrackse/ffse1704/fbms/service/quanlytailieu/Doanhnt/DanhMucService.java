@@ -1,8 +1,8 @@
-package fasttrackse.ffse1704.fbms.service.DoanhntQLTL;
+package fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt;
 
 import java.util.List;
 
-import fasttrackse.ffse1704.fbms.entity.DoanhntQLTL.DanhMuc;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.DanhMuc;
 
 public interface DanhMucService {
 	public List<DanhMuc> listAllDanhMuc();
