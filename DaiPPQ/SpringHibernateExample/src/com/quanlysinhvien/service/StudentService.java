@@ -5,7 +5,6 @@ import java.util.List;
 import com.quanlysinhvien.entity.Student;
 
 public interface StudentService {
-	/*public List<Student> listStudent();*/
 
 	public List<Student> getStudentloyeesByPage(int pageid, int total);
 

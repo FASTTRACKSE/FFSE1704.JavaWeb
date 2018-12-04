@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fasttrackse.ffse1704.fbms.dao.quanlyduan.framework;
+package fasttrackse.ffse1704.fbms.service.quanlyduan.framework;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
  * @author QuangDai
  *
  */
-public interface FrameworkDao {
+public interface FrameworkService {
 
 	public List<Framework> listFramework(int iDisPlayStart, int iDinPlayLength);
 

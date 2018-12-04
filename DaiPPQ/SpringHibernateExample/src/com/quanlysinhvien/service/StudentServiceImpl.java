@@ -11,7 +11,7 @@ import com.quanlysinhvien.dao.StudentDao;
 import com.quanlysinhvien.entity.Student;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private StudentDao studentDao;
 
@@ -23,26 +23,18 @@ public class StudentServiceImpl implements StudentService{
 		this.studentDao = studentDao;
 	}
 
-	/*
-	@Override
-	@Transactional
-	public List<Student> listStudent(){
-		return studentDao.listStudent();
-	}
-	*/
-	
 	@Override
 	@Transactional
 	public List<Student> getStudentloyeesByPage(int pageid, int total) {
 		return this.studentDao.getStudentloyeesByPage(pageid, total);
 	}
-	
+
 	@Override
 	@Transactional
 	public long countStudent() {
 		return this.studentDao.countStudent();
 	}
-	
+
 	@Override
 	@Transactional
 	public void addStudent(Student sv) {
