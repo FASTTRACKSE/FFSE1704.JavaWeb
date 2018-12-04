@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.dao.quanlyduan.domain;
+package fasttrackse.ffse1704.fbms.dao.quanlyduan.technical;
 
 import java.util.List;
 
@@ -8,14 +8,14 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.technical.Technical;
 
 /**
  * @author Joker
  *
  */
 @Repository
-public class DomainIPM implements DomainDao {
+public class TechnicalDaoIPM implements TechnicalDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -27,53 +27,51 @@ public class DomainIPM implements DomainDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-
 	@Override
-	public void addNew(Domain domain) {
+	public void addNew(Technical technical) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(domain);
+		session.persist(technical);
 
 	}
 
 	@Override
-	public void update(Domain domain) {
+	public void update(Technical technical) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(domain);
+		session.update(technical);
 	}
 
 	@Override
-	public void delete(String maDomain) {
+	public void delete(String matechnical) {
 		Session session = this.sessionFactory.openSession();
 		Transaction pd = session.beginTransaction();
-		session.update(session.get(Domain.class, maDomain));
+		session.update(session.get(Technical.class, matechnical));
 		pd.commit();
 		session.close();
 
 	}
 
 	@Override
-	public Domain getDomainByIdDomain(String maDomain) {
+	public Technical getTechnicalByIdTechnical(String matechnical) {
 		Session session = this.sessionFactory.openSession();
-		Domain domain = session.get(Domain.class, maDomain);
+		Technical technical = session.get(Technical.class, matechnical);
 		session.close();
-		return domain;
+		return technical;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Domain> listDomain(int iDisPlayStart, int iDinPlayLength) {
+	public List<Technical> listTechnical(int iDisPlayStart, int iDinPlayLength) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Domain> domainList = session.createQuery("from Domain").setFirstResult(iDisPlayStart).setMaxResults(iDinPlayLength)
-				.list();
-		return domainList;
+		List<Technical> technicalList = session.createQuery("from Technical").setFirstResult(iDisPlayStart)
+				.setMaxResults(iDinPlayLength).list();
+		return technicalList;
 	}
 
 	@Override
 	public int getRecordsTotal() {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from Domain").list().size();
+		int rowCount = session.createQuery("from Technical").list().size();
 		return rowCount;
 	}
-
 
 }
