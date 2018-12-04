@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -23,14 +24,6 @@ public class ChungChiDaoImpl implements ChungChiDao {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<ChungChi> allCC() {
-		Session session = sessionFactory.getCurrentSession();
-		List<ChungChi> listChungChi = session.createQuery("FROM ChungChi").getResultList();
-		return listChungChi;
 	}
 
 	@Override
@@ -60,9 +53,10 @@ public class ChungChiDaoImpl implements ChungChiDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ChungChi> getEmployeesByPage(int pageid, int total) {
+	public List<ChungChi> getChungChiByPage(int pageid, int total) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		List<ChungChi> listChungChi = session.createQuery("FROM ChungChi").setFirstResult(pageid).setMaxResults(total).list();
+		List<ChungChi> listChungChi = session.createQuery("FROM ChungChi").setFirstResult(pageid).setMaxResults(total)
+				.list();
 		return listChungChi;
 	}
 

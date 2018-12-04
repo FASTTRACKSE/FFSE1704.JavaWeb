@@ -20,12 +20,13 @@
 <body>
 	<div class="container">
 		<h1 style="text-align: center;">ADD CHỨNG CHỈ</h1>
-		<form:form method="post" action="addCC"  modelAttribute="chungChi">
+		<form:form method="post"
+			action="addCC"
+			modelAttribute="chungChi">
 			<div class="form-group">
 				<label>Mã nhân viên:</label>
 				<form:input class="form-control" type="text" path="maNhanVien" />
 				<br>
-
 			</div>
 			<div class="form-group">
 				<label>Tên Chứng Chỉ:</label>

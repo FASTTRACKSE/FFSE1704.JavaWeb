@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<h1 style="text-align: center;">Delete CHỨNG CHỈ</h1>
-		<form:form method="post" action="/FBMS/deleteCC"
+		<form:form method="post" action="/FBMS/QuanTriNhanSu/danhsach_chungchi/deleteCC"
 			modelAttribute="chungchi">
 			<div class="form-group">
 				<form:hidden path="ID" />
