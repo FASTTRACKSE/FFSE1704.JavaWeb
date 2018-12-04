@@ -9,32 +9,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ffse1704_tunglnt_trangthai")
-public class TrangThai {
+public class TunglntTrangThai {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "matrangthai")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int matrangthai;
 
 	@Column(name = "tentrangthai")
 	private String tentrangthai;
 
-	public TrangThai() {
+	public TunglntTrangThai() {
 		super();
 	}
 
-	public TrangThai(int id, String tentrangthai) {
+	public TunglntTrangThai(int matrangthai, String tentrangthai) {
 		super();
-		this.id = id;
+		this.matrangthai = matrangthai;
 		this.tentrangthai = tentrangthai;
 	}
 
-	public int getId() {
-		return id;
+	public int getMatrangthai() {
+		return matrangthai;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMatrangthai(int matrangthai) {
+		this.matrangthai = matrangthai;
 	}
 
 	public String getTentrangthai() {
