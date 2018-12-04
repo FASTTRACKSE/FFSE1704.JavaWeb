@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="khoann_don_nghi_phep")
+@Table(name = "khoann_don_nghi_phep")
 public class DonNghiPhepKhoann {
 
 	@Id
@@ -18,43 +20,64 @@ public class DonNghiPhepKhoann {
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
 	
+	
 	@Column(name = "ma_nhanvien")
 	private int maNhanVien;
-	
-	@Column(name = "ten_nhanvien")
-	private String tenNhanVien;
-	
+
 	@Column(name = "tg_batdau")
 	private Date tgBatDau;
-	
+
 	@Column(name = "tg_ketthuc")
 	private Date tgKetThuc;
-	
+
+	public int getLoaiNghiPhep() {
+		return loaiNghiPhep;
+	}
+
+	public void setLoaiNghiPhep(int loaiNghiPhep) {
+		this.loaiNghiPhep = loaiNghiPhep;
+	}
+
 	@Column(name = "so_ngay_nghi")
 	private int soNgayNghi;
 	
-	@Column(name = "loai_nghi_phep")
-	private int loaiNghiPhep;
-	
+	@ManyToOne
+	@JoinColumn(name = "loai_nghi_phep")
+	private LoaiHinhNghiPhepKhoann loaihinhentity;
+
+	public LoaiHinhNghiPhepKhoann getLoaihinhentity() {
+		return loaihinhentity;
+	}
+
+	public void setLoaihinhentity(LoaiHinhNghiPhepKhoann loaihinhentity) {
+		this.loaihinhentity = loaihinhentity;
+	}
+
 	@Column(name = "trang_thai")
 	private int trangThai;
+	
+	@Column(name = "loai_nghi_phep")
+	private int loaiNghiPhep;
+
+	
+
+
+
+	public DonNghiPhepKhoann(int id, int maNhanVien, Date tgBatDau, Date tgKetThuc, int soNgayNghi, int trangThai,
+			int loaiNghiPhep) {
+		super();
+		this.id = id;
+		this.maNhanVien = maNhanVien;
+		this.tgBatDau = tgBatDau;
+		this.tgKetThuc = tgKetThuc;
+		this.soNgayNghi = soNgayNghi;
+		this.trangThai = trangThai;
+		this.loaiNghiPhep = loaiNghiPhep;
+	}
 
 	public DonNghiPhepKhoann() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public DonNghiPhepKhoann(int id, int maNhanVien, String tenNhanVien, Date tgBatDau, Date tgKetThuc, int soNgayNghi,
-			int loaiNghiPhep, int trangThai) {
-		super();
-		this.id = id;
-		this.maNhanVien = maNhanVien;
-		this.tenNhanVien = tenNhanVien;
-		this.tgBatDau = tgBatDau;
-		this.tgKetThuc = tgKetThuc;
-		this.soNgayNghi = soNgayNghi;
-		this.loaiNghiPhep = loaiNghiPhep;
-		this.trangThai = trangThai;
 	}
 
 	public int getId() {
@@ -71,14 +94,6 @@ public class DonNghiPhepKhoann {
 
 	public void setMaNhanVien(int maNhanVien) {
 		this.maNhanVien = maNhanVien;
-	}
-
-	public String getTenNhanVien() {
-		return tenNhanVien;
-	}
-
-	public void setTenNhanVien(String tenNhanVien) {
-		this.tenNhanVien = tenNhanVien;
 	}
 
 	public Date getTgBatDau() {
@@ -105,13 +120,7 @@ public class DonNghiPhepKhoann {
 		this.soNgayNghi = soNgayNghi;
 	}
 
-	public int getLoaiNghiPhep() {
-		return loaiNghiPhep;
-	}
-
-	public void setLoaiNghiPhep(int loaiNghiPhep) {
-		this.loaiNghiPhep = loaiNghiPhep;
-	}
+	
 
 	public int getTrangThai() {
 		return trangThai;
@@ -120,5 +129,5 @@ public class DonNghiPhepKhoann {
 	public void setTrangThai(int trangThai) {
 		this.trangThai = trangThai;
 	}
-	
+
 }
