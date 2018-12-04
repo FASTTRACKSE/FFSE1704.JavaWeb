@@ -15,17 +15,17 @@ public class Logwork {
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
 
-	@Column(name = "ma_du_an", nullable = true, length = 11)
+	@Column(name = "ma_du_an", nullable = true, length = 25)
 	private int maDuAn;
 
-	@Column(name = "ma_nhan_vien", nullable = true, length = 11)
+	@Column(name = "ma_nhan_vien", nullable = true, length = 25)
 	private int maNhanVien;
 
-	@Column(name = "ma_vai_tro", nullable = true, length = 11)
+	@Column(name = "ma_vai_tro", nullable = true, length = 25)
 	private int maVaiTro;
 
-	@Column(name = "ma_phong_ban", nullable = true, length = 11)
-	private int maPhongBan;
+	@Column(name = "ma_phong_ban", nullable = true, length = 25)
+	private String maPhongBan;
 
 	@Column(name = "ten_cong_viec", nullable = true, length = 255)
 	private String tenCongViec;
@@ -48,22 +48,7 @@ public class Logwork {
 	@Column(name = "nhan_xet_tpp", nullable = true)
 	private String nhanXetTPP;
 
-	public Logwork(int id, int maDuAn, int maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec, String moTa,
-			String trangThai, String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
-		super();
-		this.id = id;
-		this.maDuAn = maDuAn;
-		this.maNhanVien = maNhanVien;
-		this.maVaiTro = maVaiTro;
-		this.maPhongBan = maPhongBan;
-		this.tenCongViec = tenCongViec;
-		this.moTa = moTa;
-		this.trangThai = trangThai;
-		this.thoiGianBatDau = thoiGianBatDau;
-		this.thoiGianKetThuc = thoiGianKetThuc;
-		this.nhanXetPM = nhanXetPM;
-		this.nhanXetTPP = nhanXetTPP;
-	}
+	
 	public Logwork() {
 		super();
 	}
@@ -100,11 +85,28 @@ public class Logwork {
 		this.maVaiTro = maVaiTro;
 	}
 
-	public int getMaPhongBan() {
+	public Logwork(int id, int maDuAn, int maNhanVien, int maVaiTro, String maPhongBan, String tenCongViec, String moTa,
+			String trangThai, String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
+		super();
+		this.id = id;
+		this.maDuAn = maDuAn;
+		this.maNhanVien = maNhanVien;
+		this.maVaiTro = maVaiTro;
+		this.maPhongBan = maPhongBan;
+		this.tenCongViec = tenCongViec;
+		this.moTa = moTa;
+		this.trangThai = trangThai;
+		this.thoiGianBatDau = thoiGianBatDau;
+		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.nhanXetPM = nhanXetPM;
+		this.nhanXetTPP = nhanXetTPP;
+	}
+
+	public String getMaPhongBan() {
 		return maPhongBan;
 	}
 
-	public void setMaPhongBan(int maPhongBan) {
+	public void setMaPhongBan(String maPhongBan) {
 		this.maPhongBan = maPhongBan;
 	}
 

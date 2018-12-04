@@ -9,33 +9,41 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ffse1704_tunglnt_loaicongviec")
-public class LoaiCongViec {
+public class TunglntLoaiCongViec {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id_congviec")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int macongviec;
 
 	@Column(name = "loaicongviec")
 	private String loaicongviec;
 
-	public LoaiCongViec() {
+	public TunglntLoaiCongViec() {
 		super();
 	}
 
-	public LoaiCongViec(int id, String loaicongviec) {
+	
+
+	public TunglntLoaiCongViec(int macongviec, String loaicongviec) {
 		super();
-		this.id = id;
+		this.macongviec = macongviec;
 		this.loaicongviec = loaicongviec;
 	}
 
-	public int getId() {
-		return id;
+
+
+	public int getMacongviec() {
+		return macongviec;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setMacongviec(int macongviec) {
+		this.macongviec = macongviec;
 	}
+
+
 
 	public String getLoaicongviec() {
 		return loaicongviec;

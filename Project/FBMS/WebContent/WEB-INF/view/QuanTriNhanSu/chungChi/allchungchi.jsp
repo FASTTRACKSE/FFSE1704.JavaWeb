@@ -23,7 +23,8 @@
 		</div>
 		<div>
 			<h3>
-				<a href="addCC">Thêm sinh viên</a>
+				<a href="/FBMS/QuanTriNhanSu/danhsach_chungchi/addCC">Thêm sinh
+					viên</a>
 			</h3>
 		</div>
 
@@ -46,27 +47,29 @@
 						<td>${cc.tenChungChi}</td>
 						<td>${cc.ngayCap}</td>
 						<td>${cc.donViCap}</td>
-						<td><a href="updateCC/${cc.ID}" class="btn btn-success">Edit</a> <a href="deleteCC/${cc.ID}"
+						<td><a
+							href="/FBMS/QuanTriNhanSu/danhsach_chungchi/updateCC/${cc.ID}"
+							class="btn btn-success">Edit</a> <a
+							href="/FBMS/QuanTriNhanSu/danhsach_chungchi/deleteCC/${cc.ID}"
 							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:if test="${page > 1 }">
-					<li class="page-item"><a class="page-link" href="1">First</a></li>
-					<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
-				</c:if>
+		<ul class="pagination">
+			<c:if test="${page > 1 }">
+				<li class="page-item"><a class="page-link" href="1">First</a></li>
+				<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
+			</c:if>
 
-				<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
+			<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
 
-				<c:if test="${page < totalPage}">
-					<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
-					<li class="page-item"><a class="page-link"
-						href="${totalPage }">Last</a></li>
-				</c:if>
-			</ul>
+			<c:if test="${page < totalPage}">
+				<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
+				<li class="page-item"><a class="page-link" href="${totalPage }">Last</a></li>
+			</c:if>
+		</ul>
 		</nav>
 	</div>
 </body>
