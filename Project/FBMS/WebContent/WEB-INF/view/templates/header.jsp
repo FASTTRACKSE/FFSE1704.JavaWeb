@@ -353,6 +353,30 @@
 			<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
 			
 			</ul>
+			
+			<!--  ----------------------------Quản lí vắng nghỉ-------------------------------  -->
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Vắng Nghỉ</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
+				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item" href="#">● đơn xin nghỉ</a></li>
+						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn chờ duyệt</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn duyệt lần 1</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn duyệt lần 2</a></li>
+						<li class=""><a class="menu-item" href="#">● ghi chú</a></li>
+						<li class=""><a class="menu-item" href="#">● ghi chú tp</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn lưu nháp</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn được sửa</a></li>
+						<li class=""><a class="menu-item" href="#">● xem danh sách phê duyệt</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!--  ----------------------------End Quản lí vắng nghỉ-------------------------------  -->
 
 			<!-- Quản Lí Nhiệm Vụ -->
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
