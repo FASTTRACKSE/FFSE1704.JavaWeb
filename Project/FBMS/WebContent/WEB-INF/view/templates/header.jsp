@@ -266,5 +266,15 @@
 							My Document</a></li>
 			</ul>
 			
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lý Vắng Nghỉ</span><i data-toggle="tooltip" data-placement="right"
+					data-original-title="Bét Daxua" class=" ft-minus"></i></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/quanlyvangnghi/khoann/list"/>"><i
+						class="ft-bookmark"></i>
+							Danh Sách</a></li>
+			</ul>
+			
 		</div>
 	</div>
