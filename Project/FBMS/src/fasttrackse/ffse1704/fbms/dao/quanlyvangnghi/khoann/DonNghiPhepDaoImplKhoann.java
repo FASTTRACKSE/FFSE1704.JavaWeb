@@ -16,12 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.DonNghiPhepKhoann;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann.LoaiHinhNghiPhepKhoann;
+
 @Repository
 @Transactional
 public class DonNghiPhepDaoImplKhoann implements DonNghiPhepDaoKhoann {
 
-	
-	
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -32,28 +31,27 @@ public class DonNghiPhepDaoImplKhoann implements DonNghiPhepDaoKhoann {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<DonNghiPhepKhoann> listDonNghiPhep() {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepKhoann> list = session.createQuery("from DonNghiPhepKhoann ").list();
+		List<DonNghiPhepKhoann> list = session.createQuery("from DonNghiPhepKhoann").list();
 
 		return list;
 	}
 
 	@Override
 	public void themDon(DonNghiPhepKhoann hs) {
-		
+
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(hs);
-		
-		
+
 	}
 
 	@Override
 	public DonNghiPhepKhoann getNhanVienByID(int maNhanVien) {
 		// TODO Auto-generated method stub
-		
+
 		Session session = this.sessionFactory.openSession();
 		DonNghiPhepKhoann pb = session.get(DonNghiPhepKhoann.class, maNhanVien);
 		session.close();
@@ -69,7 +67,7 @@ public class DonNghiPhepDaoImplKhoann implements DonNghiPhepDaoKhoann {
 		tx.commit();
 		session.close();
 	}
-	
+
 	@Override
 	public List<LoaiHinhNghiPhepKhoann> danhSachLyDo() {
 		Session session = sessionFactory.getCurrentSession();
@@ -80,6 +78,5 @@ public class DonNghiPhepDaoImplKhoann implements DonNghiPhepDaoKhoann {
 		Query<LoaiHinhNghiPhepKhoann> query = session.createQuery(cq);
 		return query.getResultList();
 	}
-
 
 }

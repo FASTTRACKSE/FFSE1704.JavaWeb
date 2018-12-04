@@ -52,7 +52,7 @@ public class QuanLyVangNghiControllerKhoann {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
-		return "redirect:quanlyvangnghi/khoann/list";
+		return "redirect:/quanlyvangnghi/khoann/list";
 	}
 	
 	@RequestMapping(value = "/sua/{maNhanVien}", method = RequestMethod.GET)

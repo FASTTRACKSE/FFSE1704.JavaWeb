@@ -1,6 +1,6 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.khoann;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "khoann_don_nghi_phep")
@@ -25,19 +29,16 @@ public class DonNghiPhepKhoann {
 	private int maNhanVien;
 
 	@Column(name = "tg_batdau")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date tgBatDau;
 
 	@Column(name = "tg_ketthuc")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date tgKetThuc;
 
-	public int getLoaiNghiPhep() {
-		return loaiNghiPhep;
-	}
-
-	public void setLoaiNghiPhep(int loaiNghiPhep) {
-		this.loaiNghiPhep = loaiNghiPhep;
-	}
-
+	
 	@Column(name = "so_ngay_nghi")
 	private int soNgayNghi;
 	
@@ -56,23 +57,25 @@ public class DonNghiPhepKhoann {
 	@Column(name = "trang_thai")
 	private int trangThai;
 	
-	@Column(name = "loai_nghi_phep")
-	private int loaiNghiPhep;
+	
+	
 
 	
 
 
 
-	public DonNghiPhepKhoann(int id, int maNhanVien, Date tgBatDau, Date tgKetThuc, int soNgayNghi, int trangThai,
-			int loaiNghiPhep) {
+	
+
+	public DonNghiPhepKhoann(int id, int maNhanVien, Date tgBatDau, Date tgKetThuc, int soNgayNghi,
+			LoaiHinhNghiPhepKhoann loaihinhentity, int trangThai) {
 		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
 		this.tgBatDau = tgBatDau;
 		this.tgKetThuc = tgKetThuc;
 		this.soNgayNghi = soNgayNghi;
+		this.loaihinhentity = loaihinhentity;
 		this.trangThai = trangThai;
-		this.loaiNghiPhep = loaiNghiPhep;
 	}
 
 	public DonNghiPhepKhoann() {

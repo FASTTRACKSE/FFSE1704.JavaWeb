@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Lý Do</label>
-							<form:select path="loaihinhentity" class="custom-select block round"
+							<form:select path="loaihinhentity.maNghiPhep" class="custom-select block round"
 								id="customSelect" >
 								<c:forEach items="${lydo}" var="ld">
 									<form:option value="${ld.maNghiPhep}" label="${ld.tenNghiPhep}" />
