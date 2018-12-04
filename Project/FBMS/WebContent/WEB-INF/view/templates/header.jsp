@@ -343,7 +343,7 @@
 						<li class=""><a class="menu-item" href="#"></a></li>
 					</ul></li>
 				<!-- Sỹ -->
-				<li class="has-sub is-shown"><a class="menu-item" href="#">Sỹ</a>
+				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item" href="#">● Danh mục tài
 								liệu</a></li>
