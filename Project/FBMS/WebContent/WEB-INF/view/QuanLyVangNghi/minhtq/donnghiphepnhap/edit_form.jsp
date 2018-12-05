@@ -28,7 +28,7 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="suadonnghiphepnhap" action="">
+					<form:form method="POST" modelAttribute="suadonnhap" action="">
 						<div class="form-group col-sm-6">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien"
@@ -61,15 +61,15 @@
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
 								name="location" items="${listLoaiNgayNghi}"
-								itemValue="tenLoaiNgayNghi" itemLabel="maLoaiNgayNghi">
+								itemValue="maLoaiNgayNghi" itemLabel="tenLoaiNgayNghi">
 								
 							</form:select>
 						</div>
 
 
 						<div class="row">
-							<div class="col-md-7"></div>
-							<div class="col-md-3">
+							
+							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
 									class="btn btn-outline-danger round  mr-1 mb-1"
 									formaction="<%=request.getContextPath()%>/">lưu nháp</button>

@@ -14,8 +14,8 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 @Repository(value = "donNghiPhepDaoILMMinhtq")
 @Transactional(rollbackFor = Exception.class)
 public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
-	
-	//tự động quét toàn bộ SessionFactory
+
+	// tự động quét toàn bộ SessionFactory
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -27,23 +27,32 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		this.sessionFactory = sessionFactory;
 	}
 
-	
 	// list toàn bộ đơn nghỉ phép của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap( String trangthai) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq ").list();
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='" + trangthai + "'").list();
 
 		return list;
 	}
+	
+	
+	// list loại ngày nghỉ
+		@SuppressWarnings("unchecked")
+		public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
+			Session session = sessionFactory.getCurrentSession();
+			List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").list();
 
-	// crud cho đơn nghỉ phép của nhân viên
+			return list;
+		}
+		
+	// crud cho đơn nghỉ phép nháp của nhân viên
 	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphepnhap);
 	}
 
-	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id) {
+	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		DonNghiPhepMinhtq donnghiphepnhap = (DonNghiPhepMinhtq) session.get(DonNghiPhepMinhtq.class, id);
 
@@ -52,7 +61,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	public void deleteDonNghiPhepNhap(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdDonNghiPhepNhap(id));
+		session.delete(getByIdDonNghiPhep(id));
 	}
 
 	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
@@ -64,18 +73,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	
-	//list loại ngày  nghỉ
-	@SuppressWarnings("unchecked")
-	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
-		Session session = sessionFactory.getCurrentSession();
-		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").list();
-
-		return list;
-	}
 
 	
 
 	
-	
-	
+
 }

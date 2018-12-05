@@ -13,7 +13,7 @@ public interface ChucDanhService {
 	public void addNew(ChucDanh cd);
 
 	public void update(ChucDanh cd);
-
+ 
 	public void delete(String maChucDanh);
 
 	public ChucDanh findByMaChucDanh(String maChucDanh);

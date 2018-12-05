@@ -3,9 +3,11 @@ package fasttrackse.ffse1704.fbms.dao.quanlythoigian;
 import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 
 public interface LogworkDao {
 	public List<Logwork> findAll();
+	public List<PhongBanLogwork> listPhongBan();
 
 	public void addNew(Logwork logwork);
 

@@ -9,45 +9,38 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ffse1704_tunglnt_duan")
-public class DuAn {
+public class TunglntDuAn {
 
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
 	@Column(name = "maduan")
-	private String maduan;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int maduan;
+
 
 	@Column(name = "tenduan")
 	private String tenduan;
 
-	public DuAn() {
+	public TunglntDuAn() {
 		super();
 	}
 
-	public DuAn(int id, String maduan, String tenduan) {
+
+	public int getMaduan() {
+		return maduan;
+	}
+
+
+	public void setMaduan(int maduan) {
+		this.maduan = maduan;
+	}
+
+
+	public TunglntDuAn(int maduan, String tenduan) {
 		super();
-		this.id = id;
 		this.maduan = maduan;
 		this.tenduan = tenduan;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMaduan() {
-		return maduan;
-	}
-
-	public void setMaduan(String maduan) {
-		this.maduan = maduan;
-	}
 
 	public String getTenduan() {
 		return tenduan;

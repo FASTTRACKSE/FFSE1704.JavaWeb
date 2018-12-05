@@ -45,4 +45,17 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 
 	}
 
+	@Override
+	public CongViecKhanhCN findByID(int id) {
+		// TODO Auto-generated method stub
+		return congViecDao.findByID(id);
+	}
+
+	@Override
+	public void deleteCongViec(int id) {
+		// TODO Auto-generated method stub
+		congViecDao.deleteCongViec(id);
+		
+	}
+
 }

@@ -320,7 +320,49 @@
 				</ul>
 				<!-- **********************End Quản Lý Dự Án************************************* -->
 
+					 
+					 <!--  Quản lí Vắng nghỉ minhtq -->
 
+					<li class="navigation-header"><span>quản lý vắng nghỉ</span><i class=" ft-minus"
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Components"></i></li>
+					<li><a
+						href="<c:url value="/QuanLyVangNghi/minhtq/addDonNghiPhepMoi"/>"
+						class="menu-item"><i class='fa fa-pencil'></i>
+						soạn đơn mới</a></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê danh sách</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/nhap"/>"
+								class="menu-item">danh sách nháp</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/choduyet"/>"
+								class="menu-item">danh sách chờ duyệt</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/duyet"/>"
+								class="menu-item">danh sách  duyệt</a></li>
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/tuchoi"/>"
+								class="menu-item">danh sách từ chối</a></li>
+						</ul></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê ngày nghỉ</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq"/>"
+								class="menu-item">danh sách ngày nghỉ</a></li>
+						</ul></li>
+					<li class=" nav-item pbho_so"><a href="#"><i
+							class="ft-users"></i><span data-i18n="" class="menu-title">thống kê trạng thái</span></a>
+						<ul class="menu-content">
+							<li><a
+								href="<c:url value="/QuanLyVangNghi/minhtq"/>"
+								class="menu-item">danh sách trạng thái</a></li>
+						</ul></li>
+					
+					
+                            <!-- hết Quản lí Vắng nghỉ minhtq -->
 
 				<!--  ----------------------------Quản lí tài liệu-------------------------------  -->
 				<li class="navigation-header">
@@ -350,12 +392,52 @@
 						<li class=""><a class="menu-item" href="#"></a></li>
 					</ul>
 				</li>
+	
+			
 			<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
-
-
+			
 			</ul>
+			
+			<!--  ----------------------------Quản lí vắng nghỉ-------------------------------  -->
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Vắng Nghỉ</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
+				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item" href="#">● đơn xin nghỉ</a></li>
+						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn chờ duyệt</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn duyệt lần 1</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn duyệt lần 2</a></li>
+						<li class=""><a class="menu-item" href="#">● ghi chú</a></li>
+						<li class=""><a class="menu-item" href="#">● ghi chú tp</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn lưu nháp</a></li>
+						<li class=""><a class="menu-item" href="#">● đơn được sửa</a></li>
+						<li class=""><a class="menu-item" href="#">● xem danh sách phê duyệt</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!--  ----------------------------End Quản lí vắng nghỉ-------------------------------  -->
 
-
+			<!-- Quản Lí Nhiệm Vụ -->
+			<ul id="main-menu-navigation" data-menu="menu-navigation"
+				class="navigation navigation-main">
+				<li class=" navigation-header"><span>Quản Lí Nhiệm Vụ</span><i
+					data-toggle="tooltip" data-placement="right"
+					data-original-title="Tunglnt" class=" ft-minus"></i></li>
+					
+				<!-- TùngLNT -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">TùngLNT</a>
+					<ul class="menu-content" style="">
+						<li class=""><a class="menu-item"
+							href="/FBMS/TunglntQuanLyNhiemVu/CongViec/ListCongViec">● List Công Việc</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!--END Quản Lí Nhiệm Vụ -->
 
 
 			<ul id="main-menu-navigation" data-menu="menu-navigation"

@@ -43,4 +43,16 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 		return listPublicDocument;
 	}
 
+	public void saveDraft(final Document document) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(document);
+	}
+	
+	
+	public List<PhongBan> listQuyen() {
+		Session session = sessionFactory.getCurrentSession();
+		Query<PhongBan> query = session.createQuery("from PhongBan", PhongBan.class);
+		List<PhongBan> list = (List<PhongBan>) query.list();
+		return list;
+	}
 }

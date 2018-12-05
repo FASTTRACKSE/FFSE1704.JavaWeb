@@ -91,6 +91,10 @@
 				</div>
 			</c:if>
 			<!-- End Show message -->
+			<c:if test="${not empty button}">
+				<h3 style="color: red">${button}</h3>
+			</c:if>
+			<c:if test="${empty button}"></c:if>
 
 			<div class="row">
 				<div class="col-xs-12">
@@ -137,10 +141,10 @@
 												<td>${dnpn.thoiGianKetThuc}</td>
 												<td>${dnpn.trangThai}</td>
 												<td><a
-													href="/QuanLyVangNghi/minhtq/suaDonNghiPhepNhapView/${dnpn.id}">
+													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
 														<button>sửa</button>
 												</a> <a
-													href="/QuanLyVangNghi/minhtq/suaDonNghiPhepNhapView/${dnpn.id}"><button>
+													href="/deleteDonNghiPhepNhap/${dnpn.id}"><button>
 															xóa</button></a></td>
 										</c:forEach>
 										<tbody>

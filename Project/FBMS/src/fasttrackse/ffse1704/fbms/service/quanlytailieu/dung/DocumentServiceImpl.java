@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import fasttrackse.ffse1704.fbms.dao.quanlytailieu.dung.DocumentDAODung;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.Document;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {
@@ -23,5 +24,15 @@ public class DocumentServiceImpl implements DocumentService {
 	}
 	public List<Document> getAllPublicDocument(){
 		return documentDAO.getAllPublicDocument();
+	}
+	
+	public void saveDraft(Document document) {
+		documentDAO.saveDraft(document);
+	}
+	
+	@Override
+	@Transactional
+	public List<PhongBan> listQuyen(){
+		return documentDAO.listQuyen();
 	}
 }

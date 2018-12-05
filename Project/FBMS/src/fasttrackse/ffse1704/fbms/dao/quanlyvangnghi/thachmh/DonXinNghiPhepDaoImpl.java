@@ -9,12 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.thachmh.DonXinNghiPhep;
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 
 @Repository
 public class DonXinNghiPhepDaoImpl implements DonXinNghiPhepDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public List<DonXinNghiPhep> getAllDonXinNghiPhep() {
@@ -32,5 +37,22 @@ public class DonXinNghiPhepDaoImpl implements DonXinNghiPhepDao {
 		session.persist(dx);
 		tx.commit();
 		session.close();
+	}
+
+	@Override
+	public void update(DonXinNghiPhep dx) {
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.update(dx);
+		tx.commit();
+		session.close();
+	}
+
+	@Override
+	public DonXinNghiPhep findByidDon(int idDon) {
+		Session session = this.sessionFactory.openSession();
+		DonXinNghiPhep pb = session.get(DonXinNghiPhep.class, idDon);
+		session.close();
+		return pb;		
 	}
 }

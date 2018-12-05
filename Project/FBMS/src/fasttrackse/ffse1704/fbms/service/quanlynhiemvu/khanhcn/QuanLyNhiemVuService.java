@@ -9,10 +9,12 @@ public interface QuanLyNhiemVuService {
 
 	public List<CongViecKhanhCN> congViec();
 
+	public CongViecKhanhCN findByID(int id);
+
 	public void addCongViec(CongViecKhanhCN cv);
 
 	public void updateCongViec(CongViecKhanhCN cv);
 
-	
+	public void deleteCongViec(int id);
 
 }

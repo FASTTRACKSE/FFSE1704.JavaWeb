@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.CongViecKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;;
 
 @Repository
@@ -51,9 +52,28 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 	@Override
 	public void updateCongViec(CongViecKhanhCN cv) {
 		// TODO Auto-generated method stub
-		Session session = this.sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
 		session.update(cv);
+		tx.commit();
+		session.close();
+	}
 
+	@Override
+	public void deleteCongViec(int id) {
+		Session session = this.sessionFactory.openSession();
+		Transaction pb = session.beginTransaction();
+		session.delete(session.get(CongViecKhanhCN.class, id));
+		pb.commit();
+		session.close();
+	}
+
+	@Override
+	public CongViecKhanhCN findByID(int id) {
+		Session session = this.sessionFactory.openSession();
+		CongViecKhanhCN pb = session.get(CongViecKhanhCN.class, id);
+		session.close();
+		return pb;
 	}
 
 }

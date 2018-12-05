@@ -25,6 +25,13 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 		session.close();
 		return list;
 	}
+	/*@Override
+	public List<ListPhongBan> listDSPhongBan() {
+		Session session = this.sessionFactory.openSession();
+		List<ListPhongBan> list = session.createQuery("from ListPhongBan").list();
+		session.close();
+		return list;
+	}*/
 
 	@Override
 	public void addNew(ThongTinLogwork logwork) {
@@ -79,7 +86,7 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	@Override
 	public String getRecordsTotal() {
 		Session session = this.sessionFactory.openSession();
-		String sql = "SELECT COUNT(*) FROM 'qltg_logwork'";
+		String sql = "SELECT COUNT(*) FROM 'thong_tin_logwork'";
 		Query query = session.createSQLQuery(sql);
 		String recordsTotal = query.getSingleResult().toString();
 		session.close();
@@ -89,7 +96,7 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	@Override
 	public String getRecordsFiltered(String sql) {
 		Session session = this.sessionFactory.openSession();
-		Query query = session.createQuery(sql.replace("select logwork", "select count(*)"));
+		Query query = session.createQuery(sql.replace("select thong_tin_logwork", "select count(*)"));
 		String recordsFilterd = query.getSingleResult().toString();
 		session.close();
 		return recordsFilterd;

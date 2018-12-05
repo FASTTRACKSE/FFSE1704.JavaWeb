@@ -124,6 +124,7 @@
 												<th>TG kết thúc</th>
 												<th>Người được PC</th>
 												<th>TG dự kiến HT</th>
+												<th>Chức năng</th>
 											</tr>
 										</thead>
 										<c:forEach var="nv" items="${list}">
@@ -137,7 +138,9 @@
 												<td>${nv.thoiGianKetThuc}</td>
 												<td>${nv.nguoiDuocPhanCong}</td>
 												<td>${nv.thoiGianDuKienHoanThanh}</td>
-											
+												<td><a href="edit/${nv.id}"><button>sửa</button></a> <a
+													href="delete/${nv.id}"><button>xóa</button></a></td>
+
 											</tr>
 										</c:forEach>
 										<tbody>
