@@ -1,58 +1,66 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import com.sun.istack.internal.NotNull;
-
 @Entity
 @Table(name = "loaicongviec")
-public class LoaiCongViec {
+public class LoaiCongViec implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
-	@NotNull
-	private int id;
-
 	@Column(name = "ma_loai_congviec")
 	@NotEmpty
-	private String maLoaiCongViec;
+	int maLoaiCongViec;
 
 	@Column(name = "loai_congviec")
 	@NotEmpty
 	private String loaiCongViec;
+
+	@OneToMany(mappedBy = "maLoaiCongViec")
+	private Collection<CongViecKhanhCN> khanhCNs;
+
 	
-	
+	public Collection<CongViecKhanhCN> getKhanhCNs() {
+		return khanhCNs;
+	}
+
+
+
+	public void setKhanhCNs(Collection<CongViecKhanhCN> khanhCNs) {
+		this.khanhCNs = khanhCNs;
+	}
+
+
 
 	public LoaiCongViec() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoaiCongViec(int id, @NotEmpty String maLoaiCongViec, @NotEmpty String loaiCongViec) {
-		super();
-		this.id = id;
-		this.maLoaiCongViec = maLoaiCongViec;
-		this.loaiCongViec = loaiCongViec;
-	}
+	
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMaLoaiCongViec() {
+	public int getMaLoaiCongViec() {
 		return maLoaiCongViec;
 	}
 
-	public void setMaLoaiCongViec(String maLoaiCongViec) {
+	public void setMaLoaiCongViec(int maLoaiCongViec) {
 		this.maLoaiCongViec = maLoaiCongViec;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getLoaiCongViec() {
@@ -62,5 +70,4 @@ public class LoaiCongViec {
 	public void setLoaiCongViec(String loaiCongViec) {
 		this.loaiCongViec = loaiCongViec;
 	}
-
 }

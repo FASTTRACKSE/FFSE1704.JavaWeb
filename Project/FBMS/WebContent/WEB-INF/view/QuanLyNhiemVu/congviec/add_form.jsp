@@ -40,16 +40,18 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="POST" modelAttribute="congViec" action="add">
+
+
 						<div class="form-group col-sm-6">
 							<label>Mã dự án</label>
-							<form:input class="form-control" path="maDuAn"
-								placeholder="Mã dự án" />
+							<form:select path="maDuAn.maDAn" items="${DuAn}"
+								itemValue="maDAn" itemLabel="tenDuAn" class="form-control" />
 						</div>
+
 						<div class="form-group col-sm-6">
 							<label>Mã loại CV</label>
-							<form:input class="form-control" path="maLoaiCongViec"
-								placeholder="Mã loại CV" />
-							<form:errors path="maLoaiCongViec" cssClass="error" />
+							<form:select path="maLoaiCongViec.maLoaiCongViec" items="${LoaiCongViec}"
+								itemValue="maLoaiCongViec" itemLabel="loaiCongViec" class="form-control" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên CV</label>
@@ -92,9 +94,8 @@
 
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<form:input class="form-control" path="nguoiDuocPhanCong"
-								placeholder="Người được PC" />
-							<form:errors path="nguoiDuocPhanCong" cssClass="error" />
+							<form:select path="nguoiDuocPhanCong.maNhanVien" items="${NhanVien}"
+								itemValue="maNhanVien" itemLabel="hoDem" class="form-control" />
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -108,6 +109,12 @@
 							</div>
 						</div>
 						
+						<div class="form-group col-sm-6">
+							<label>Trạng thái</label>
+							<form:select path="maTrangThai.maTrangThai" items="${TrangThai}"
+								itemValue="maTrangThai" itemLabel="tenTrangThai" class="form-control" />
+						</div>
+
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Lưu thông
 								tin</button>

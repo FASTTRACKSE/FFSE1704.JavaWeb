@@ -35,8 +35,6 @@ public class NhanVien implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public NhanVien(int id, String maNhanVien, PhongBan phongBan, ChucDanh chucDanh, String hoLot, String ten,
 			String anhDaiDien, @NotNull Date namSinh, @NotNull Integer gioiTinh, String queQuan, String danToc,
 			QuocTich quocTich, String noiTamTru, String soDienThoai, String email, String soCMND, String noiCap,
@@ -63,8 +61,6 @@ public class NhanVien implements Serializable {
 		this.trangThai = trangThai;
 		this.nhanVienDuAn = nhanVienDuAn;
 	}
-
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -137,8 +133,6 @@ public class NhanVien implements Serializable {
 
 	@OneToMany(mappedBy = "nhanVien")
 	private List<NhanVienDuAn> nhanVienDuAn = new ArrayList<NhanVienDuAn>();
-	
-	
 
 	public int getId() {
 		return id;
@@ -292,13 +286,9 @@ public class NhanVien implements Serializable {
 		return nhanVienDuAn;
 	}
 
-
-
 	public void setNhanVienDuAn(List<NhanVienDuAn> nhanVienDuAn) {
 		this.nhanVienDuAn = nhanVienDuAn;
 	}
-
-
 
 	public void setQuocTich(QuocTich quocTich) {
 		this.quocTich = quocTich;

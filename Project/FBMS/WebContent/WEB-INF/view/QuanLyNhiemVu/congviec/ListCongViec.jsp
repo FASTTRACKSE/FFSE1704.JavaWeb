@@ -116,7 +116,7 @@
 										<thead>
 											<tr>
 												<th>Id</th>
-												<th>Mã dự án</th>
+												<th>Dự án</th>
 												<th>Mã loại cv</th>
 												<th>Tên công việc</th>
 												<th>Mô tả</th>
@@ -124,20 +124,22 @@
 												<th>TG kết thúc</th>
 												<th>Người được PC</th>
 												<th>TG dự kiến HT</th>
+												<th>Trạng thái</th>
 												<th>Chức năng</th>
 											</tr>
 										</thead>
 										<c:forEach var="nv" items="${list}">
 											<tr>
 												<td>${nv.id}</td>
-												<td>${nv.maDuAn}</td>
-												<td>${nv.maLoaiCongViec}</td>
+												<td>${nv.maDuAn.tenDuAn}</td>
+												<td>${nv.maLoaiCongViec.loaiCongViec}</td>
 												<td>${nv.tenCongViec}</td>
 												<td>${nv.moTa}</td>
 												<td>${nv.thoiGianBatDau}</td>
 												<td>${nv.thoiGianKetThuc}</td>
-												<td>${nv.nguoiDuocPhanCong}</td>
+												<td>${nv.nguoiDuocPhanCong.ten}</td>
 												<td>${nv.thoiGianDuKienHoanThanh}</td>
+												<td>${nv.maTrangThai.tenTrangThai}</td>
 												<td><a href="edit/${nv.id}"><button>sửa</button></a> <a
 													href="delete/${nv.id}"><button>xóa</button></a></td>
 

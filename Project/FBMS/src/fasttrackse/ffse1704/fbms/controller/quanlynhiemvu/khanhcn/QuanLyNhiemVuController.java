@@ -40,6 +40,12 @@ public class QuanLyNhiemVuController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {
 		model.addAttribute("congViec", new CongViecKhanhCN());
+
+		model.addAttribute("DuAn", quanLyNhiemVuService.duAn());
+		model.addAttribute("LoaiCongViec", quanLyNhiemVuService.loaiCongViec());
+		model.addAttribute("NhanVien", quanLyNhiemVuService.nhanVien());
+		model.addAttribute("TrangThai", quanLyNhiemVuService.trangThai());
+
 		return "QuanLyNhiemVu/congviec/add_form";
 	}
 
@@ -72,11 +78,12 @@ public class QuanLyNhiemVuController {
 		}
 		return "redirect:/QuanLyNhiemVu/cong_viec/danhsachcongviec";
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
 		try {
-			quanLyNhiemVuService.deleteCongViec(id);;
+			quanLyNhiemVuService.deleteCongViec(id);
+			;
 			redirectAttributes.addFlashAttribute("messageSuccess", "Xóa thành công..");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại");

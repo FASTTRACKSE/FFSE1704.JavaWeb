@@ -11,8 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.CongViecKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
-import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.thongtinduan.ThongTinDuAn;;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.LoaiCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienKhanhCN;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.TrangThaiKhanhCN;;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -74,6 +75,38 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 		CongViecKhanhCN pb = session.get(CongViecKhanhCN.class, id);
 		session.close();
 		return pb;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TrangThaiKhanhCN> trangThai() {
+		Session session = sessionFactory.getCurrentSession();
+		List<TrangThaiKhanhCN> tt = session.createQuery("from TrangThaiKhanhCN").list();
+		return tt;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LoaiCongViec> loaiCongViec() {
+		Session session = sessionFactory.getCurrentSession();
+		List<LoaiCongViec> cv = session.createQuery("from LoaiCongViec").list();
+		return cv;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DuAnKhanhCN> duAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<DuAnKhanhCN> da = session.createQuery("from DuAnKhanhCN").list();
+		return da;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NhanVienKhanhCN> nhanVien() {
+		Session session = sessionFactory.getCurrentSession();
+		List<NhanVienKhanhCN> cv = session.createQuery("from NhanVienKhanhCN").list();
+		return cv;
 	}
 
 }
