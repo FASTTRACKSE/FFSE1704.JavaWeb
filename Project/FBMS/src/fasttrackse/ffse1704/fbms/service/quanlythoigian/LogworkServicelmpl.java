@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fasttrackse.ffse1704.fbms.dao.quanlythoigian.LogworkDao;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 import fasttrackse.ffse1704.fbms.service.security.DatatableService;
 
 @Service
@@ -40,7 +42,7 @@ public class LogworkServicelmpl implements LogworkService {
 	}
 
 	@Override
-	public Logwork findByIdLogwork(String id) {
+	public Logwork findByIdLogwork(int id) {
 		return logworkDao.findByIdLogwork(id);
 	}
 
@@ -74,6 +76,16 @@ public class LogworkServicelmpl implements LogworkService {
 	@Override
 	public List<PhongBanLogwork> listPhongBan() {
 		return logworkDao.listPhongBan();
+	}
+
+	@Override
+	public List<DuAnLogwork> listDuAn() {
+		return logworkDao.listDuAn();
+	}
+
+	@Override
+	public List<VaiTroDuAnLogwork> listVaiTroDuAn() {
+		return logworkDao.listVaiTroDuAn();
 	}
 
 	/*@Override

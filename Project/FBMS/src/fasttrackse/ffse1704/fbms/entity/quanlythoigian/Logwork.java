@@ -5,6 +5,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Column;
 
 @Entity
@@ -15,26 +17,55 @@ public class Logwork {
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
 
-	@Column(name = "ma_du_an", nullable = true, length = 25)
-	private int maDuAn;
+	@ManyToOne()
+	@JoinColumn(name = "ma_du_an")
+	private DuAnLogwork maDuAn;
 
-	@Column(name = "ma_nhan_vien", nullable = true, length = 25)
-	private int maNhanVien;
+	public DuAnLogwork getMaDuAn() {
+		return maDuAn;
+	}
 
-	@Column(name = "ma_vai_tro", nullable = true, length = 25)
-	private int maVaiTro;
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", nullable = false, referencedColumnName = "ma_nhan_vien")
+	private NhanVienLogwork maNhanVien;
 
-	@Column(name = "ma_phong_ban", nullable = true, length = 25)
-	private String maPhongBan;
+	public VaiTroDuAnLogwork getMaVaiTroDuAn() {
+		return maVaiTroDuAn;
+	}
+
+	public void setMaVaiTroDuAn(VaiTroDuAnLogwork maVaiTroDuAn) {
+		this.maVaiTroDuAn = maVaiTroDuAn;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "ma_vai_tro", nullable = false, referencedColumnName = "ma_vai_tro")
+	private VaiTroDuAnLogwork maVaiTroDuAn;
+	
+	public void setMaVaiTro(VaiTroDuAnLogwork maVaiTro) {
+		this.maVaiTroDuAn = maVaiTro;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "ma_phong_ban", nullable = false, referencedColumnName = "ma_phong_ban")
+	private PhongBanLogwork maPhongBan;
+	
+	@ManyToOne
+	@JoinColumn(name = "trang_thai", nullable = false, referencedColumnName = "id_trang_thai")
+	private TrangThaiLogwork trangThaiLogwork;
+	
+	public NhanVienLogwork getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(NhanVienLogwork maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
 
 	@Column(name = "ten_cong_viec", nullable = true, length = 255)
 	private String tenCongViec;
 
 	@Column(name = "mo_ta", nullable = true, length = 11)
 	private String moTa;
-
-	@Column(name = "trang_thai", nullable = true, length = 11)
-	private String trangThai;
 
 	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 25)
 	private String thoiGianBatDau;
@@ -48,7 +79,14 @@ public class Logwork {
 	@Column(name = "nhan_xet_tpp", nullable = true)
 	private String nhanXetTPP;
 
-	
+	public TrangThaiLogwork getTrangThaiLogwork() {
+		return trangThaiLogwork;
+	}
+
+	public void setTrangThaiLogwork(TrangThaiLogwork trangThaiLogwork) {
+		this.trangThaiLogwork = trangThaiLogwork;
+	}
+
 	public Logwork() {
 		super();
 	}
@@ -61,52 +99,31 @@ public class Logwork {
 		this.id = id;
 	}
 
-	public int getMaDuAn() {
-		return maDuAn;
-	}
-
-	public void setMaDuAn(int maDuAn) {
-		this.maDuAn = maDuAn;
-	}
-
-	public int getMaNhanVien() {
-		return maNhanVien;
-	}
-
-	public void setMaNhanVien(int maNhanVien) {
-		this.maNhanVien = maNhanVien;
-	}
-
-	public int getMaVaiTro() {
-		return maVaiTro;
-	}
-
-	public void setMaVaiTro(int maVaiTro) {
-		this.maVaiTro = maVaiTro;
-	}
-
-	public Logwork(int id, int maDuAn, int maNhanVien, int maVaiTro, String maPhongBan, String tenCongViec, String moTa,
-			String trangThai, String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
+	
+	
+	public Logwork(int id, DuAnLogwork maDuAn, NhanVienLogwork maNhanVien, VaiTroDuAnLogwork maVaiTroDuAn,
+			PhongBanLogwork maPhongBan, String tenCongViec, String moTa, TrangThaiLogwork trangThai,
+			String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
 		this.maNhanVien = maNhanVien;
-		this.maVaiTro = maVaiTro;
+		this.maVaiTroDuAn = maVaiTroDuAn;
 		this.maPhongBan = maPhongBan;
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
-		this.trangThai = trangThai;
+		this.trangThaiLogwork = trangThai;
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.nhanXetPM = nhanXetPM;
 		this.nhanXetTPP = nhanXetTPP;
 	}
 
-	public String getMaPhongBan() {
+	public PhongBanLogwork getMaPhongBan() {
 		return maPhongBan;
 	}
 
-	public void setMaPhongBan(String maPhongBan) {
+	public void setMaPhongBan(PhongBanLogwork maPhongBan) {
 		this.maPhongBan = maPhongBan;
 	}
 
@@ -126,13 +143,6 @@ public class Logwork {
 		this.moTa = moTa;
 	}
 
-	public String getTrangThai() {
-		return trangThai;
-	}
-
-	public void setTrangThai(String trangThai) {
-		this.trangThai = trangThai;
-	}
 
 	public String getThoiGianBatDau() {
 		return thoiGianBatDau;
@@ -164,5 +174,9 @@ public class Logwork {
 
 	public void setNhanXetTPP(String nhanXetTPP) {
 		this.nhanXetTPP = nhanXetTPP;
+	}
+
+	public void setMaDuAn(DuAnLogwork maDuAn) {
+		this.maDuAn = maDuAn;
 	}
 }

@@ -1,35 +1,32 @@
 package fasttrackse.ffse1704.fbms.entity.quanlythoigian;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "qltg_trang_thai")
 public class TrangThaiLogwork {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_trang_thai", unique = true, length = 11)
-	private int idTrangThai;
+	@Column(name = "id_trang_thai")
+	int maTrangThai;
 	
-	public TrangThaiLogwork(int idTrangThai, String tenTrangThai) {
-		super();
-		this.idTrangThai = idTrangThai;
-		this.tenTrangThai = tenTrangThai;
+	@Column(name = "ten_trang_thai")
+	String tenTrangThai;
+	
+	@OneToMany(mappedBy = "trangThaiLogwork")
+	private Collection<Logwork> logworks;
+
+	public int getMaTrangThai() {
+		return maTrangThai;
 	}
 
-	@Column(name = "ten_trang_thai", nullable = true, length = 11)
-	private String tenTrangThai;
-
-	public int getIdTrangThai() {
-		return idTrangThai;
-	}
-
-	public void setIdTrangThai(int idTrangThai) {
-		this.idTrangThai = idTrangThai;
+	public void setMaTrangThai(int maTrangThai) {
+		this.maTrangThai = maTrangThai;
 	}
 
 	public String getTenTrangThai() {
@@ -39,5 +36,12 @@ public class TrangThaiLogwork {
 	public void setTenTrangThai(String tenTrangThai) {
 		this.tenTrangThai = tenTrangThai;
 	}
-	
+
+	public Collection<Logwork> getLogworks() {
+		return logworks;
+	}
+
+	public void setLogworks(Collection<Logwork> logworks) {
+		this.logworks = logworks;
+	}
 }

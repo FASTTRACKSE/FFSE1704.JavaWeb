@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -60,7 +62,7 @@ public class LogworkDaolmpl implements LogworkDao {
 	}
 
 	@Override
-	public Logwork findByIdLogwork(String id) {
+	public Logwork findByIdLogwork(int id) {
 		Session session = this.sessionFactory.openSession();
 		Logwork logwork = session.get(Logwork.class, id);
 		session.close();
@@ -103,5 +105,19 @@ public class LogworkDaolmpl implements LogworkDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<PhongBanLogwork> listPhongBan = session.createQuery("from PhongBanLogwork").getResultList();
 		return listPhongBan;
+	}
+
+	@Override
+	public List<DuAnLogwork> listDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<DuAnLogwork> listDuAn = session.createQuery("from DuAnLogwork").getResultList();
+		return listDuAn;
+	}
+
+	@Override
+	public List<VaiTroDuAnLogwork> listVaiTroDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<VaiTroDuAnLogwork> listVaiTroDuAn = session.createQuery("from VaiTroDuAnLogwork").getResultList();
+		return listVaiTroDuAn;
 	}
 }

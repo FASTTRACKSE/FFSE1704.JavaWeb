@@ -4,12 +4,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
 public interface LogworkService {
 	public List<Logwork> findAll();
+	
 	public List<PhongBanLogwork> listPhongBan();
+	
+	public List<DuAnLogwork> listDuAn();
+	
+	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
 
 	public void addNew(Logwork logwork);
 
@@ -17,7 +24,7 @@ public interface LogworkService {
 
 	public void delete(String id);
 
-	public Logwork findByIdLogwork(String id);
+	public Logwork findByIdLogwork(int id);
 
 	public List<Logwork> findAll(int iDisplayStart, int iDisplayLength, String sql);
 
