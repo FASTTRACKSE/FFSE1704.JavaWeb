@@ -44,7 +44,7 @@
 				<c:forEach var="tt" items="${thongtin}">
 					<tr>
 						<td>${tt.id}</td>
-						<td>${tt.nhanSu.maNhanVien}</td>
+						<td>${tt.maNhanVien}</td>
 						<td>${tt.hoVaTen}</td>
 						<td>${tt.quanHe}</td>
 						<td>${tt.namSinh}</td>
@@ -56,6 +56,21 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<c:if test="${page > 1 }">
+				<li class="page-item"><a class="page-link" href="1">First</a></li>
+				<li class="page-item"><a class="page-link" href="${page -1 }">${page -1 }</a></li>
+			</c:if>
+
+			<li class="page-item"><a class="page-link" href="${page }">${page }</a></li>
+
+			<c:if test="${page < totalPage}">
+				<li class="page-item"><a class="page-link" href="${page +1 }">${page +1 }</a></li>
+				<li class="page-item"><a class="page-link" href="${totalPage }">Last</a></li>
+			</c:if>
+		</ul>
+		</nav>
 	</div>
 </body>
 </html>

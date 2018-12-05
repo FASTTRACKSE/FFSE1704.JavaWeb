@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)

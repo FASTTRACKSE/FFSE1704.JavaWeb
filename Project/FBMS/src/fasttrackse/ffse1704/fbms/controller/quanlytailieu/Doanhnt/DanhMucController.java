@@ -13,7 +13,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlytailieu.Doanhnt.DanhMuc;
 import fasttrackse.ffse1704.fbms.service.quanlytailieu.Doanhnt.DanhMucService;
 
 @Controller
-@RequestMapping("quanlytailieu/Doanhnt/DanhMuc")
+@RequestMapping("/quanlytailieu/Doanhnt/DanhMuc")
 public class DanhMucController {
 	@Autowired
 	private DanhMucService serviceDM;
@@ -21,13 +21,13 @@ public class DanhMucController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String viewDanhMuc(Model model) {
 		model.addAttribute("ListDanhMuc", serviceDM.listAllDanhMuc());
-		return "DoanhntQLTL/DanhMuc/DanhMucList";
+		return "/quanlytailieu/Doanhnt/DanhMuc/DanhMucList";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET) 
 	public String addFormDM(Model model) {
 		model.addAttribute("DanhMuc", new DanhMuc());
-		return "DoanhntQLTL/DanhMuc/add_formDM";
+		return "quanlytailieu/Doanhnt/DanhMuc/add_formDM";
 	}
 
 	@RequestMapping(value = "/doAddDM", method = RequestMethod.POST)
@@ -39,13 +39,13 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có lỗi, xin thử lại !");
 		}
-		return "redirect:DoanhntQLTL/DanhMuc/";
+		return "redirect:quanlytailieu/Doanhnt/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/sua/{maDM}", method = RequestMethod.GET)
 	public String editFormDM(@PathVariable("maDM") String maDM, Model model) {
 		model.addAttribute("DanhMuc", serviceDM.getDMbyID(maDM));
-		return "DoanhntQLTL/DanhMuc/edit_formDM";
+		return "quanlytailieu/Doanhnt/DanhMuc/edit_formDM";
 	}
 
 	@RequestMapping(value = "/sua/{maDM}", method = RequestMethod.POST)
@@ -57,7 +57,7 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có Lỗi, Xin Thử Lại!");
 		}
-		return "redirect:DoanhntQLTL/DanhMuc/";
+		return "redirect:quanlytailieu/Doanhnt/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/xoa/{maDM}", method = RequestMethod.GET)
@@ -70,12 +70,12 @@ public class DanhMucController {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Có lỗi, xin thử lại !");
 		}
-		return "redirect:DoanhntQLTL/DanhMuc/";
+		return "redirect:quanlytailieu/Doanhnt/DanhMuc/";
 	}
 
 	@RequestMapping(value = "/view/{maDM}", method = RequestMethod.GET)
 	public String viewOneDM(@PathVariable("maDM") String maDM, Model model) {
 		model.addAttribute("DanhMuc", serviceDM.getDMbyID(maDM));
-		return "DoanhntQLTL/DanhMuc/view_oneDM";
+		return "quanlytailieu/Doanhnt/DanhMuc/view_oneDM";
 	}
 }
