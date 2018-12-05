@@ -10,7 +10,9 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 
 @Repository
 public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
@@ -25,13 +27,22 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 		session.close();
 		return list;
 	}
-	/*@Override
-	public List<ListPhongBan> listDSPhongBan() {
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PhongBan> listDSPhongBan() {
 		Session session = this.sessionFactory.openSession();
-		List<ListPhongBan> list = session.createQuery("from ListPhongBan").list();
+		List<PhongBan> list = session.createQuery("from PhongBan").getResultList();
 		session.close();
 		return list;
-	}*/
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VaiTroDuAn> listVaiTro() {
+		Session session = this.sessionFactory.openSession();
+		List<VaiTroDuAn> list = session.createQuery("from VaiTroDuAn").getResultList();
+		session.close();
+		return list;
+	}
 
 	@Override
 	public void addNew(ThongTinLogwork logwork) {

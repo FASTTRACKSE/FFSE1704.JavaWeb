@@ -2,12 +2,16 @@ package fasttrackse.ffse1704.fbms.dao.thongtinlogwork.quanlythoigian;
 
 import java.util.List;
 
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 
 public interface ThongTinLogworkDAO {
 	public List<ThongTinLogwork> findAll();
 
-	/*public  List<ListPhongBan> listDSPhongBan();*/
+	public List<PhongBan> listDSPhongBan();
+
+	public List<VaiTroDuAn> listVaiTro();
 
 	public void addNew(ThongTinLogwork logwork);
 

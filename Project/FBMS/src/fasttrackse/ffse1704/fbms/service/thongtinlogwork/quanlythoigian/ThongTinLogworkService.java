@@ -4,11 +4,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
-
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 
 public interface ThongTinLogworkService {
 	public List<ThongTinLogwork> findAll();
+
+	public List<PhongBan> listDSPhongBan();
+
+	public List<VaiTroDuAn> listVaiTro();
 
 	public void addNew(ThongTinLogwork lw);
 
@@ -26,5 +31,5 @@ public interface ThongTinLogworkService {
 
 	public String getSQL(HttpServletRequest request);
 
-//	public String toJson(ThongTinLogwork pb);
+	// public String toJson(ThongTinLogwork pb);
 }

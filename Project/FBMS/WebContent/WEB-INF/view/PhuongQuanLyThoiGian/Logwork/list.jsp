@@ -135,8 +135,8 @@
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn}</td>
 													<td>${lg.maNhanVien}</td>
-													<td>${lg.maVaiTro}</td>
-													<td>${lg.maPhongBan}</td>
+													<td>${lg.vaiTro.tenVaiTro}</td>
+													<td>${lg.phongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
 													<td>${lg.moTa}</td>
 													<td>${lg.thoiGianBatDau}</td>

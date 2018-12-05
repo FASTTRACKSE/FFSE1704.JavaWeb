@@ -25,8 +25,11 @@
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a href='<c:url value="/PhuongQuanLyThoiGian/Logwork/list" />'>Danh sách Logwork</a></li>
+							<li class="breadcrumb-item"><a
+								href='<c:url value="/home" />'>Home</a></li>
+							<li class="breadcrumb-item"><a
+								href='<c:url value="/PhuongQuanLyThoiGian/Logwork/list" />'>Danh
+									sách Logwork</a></li>
 							<li class="breadcrumb-item active">ThongTinLogwork</li>
 						</ol>
 					</div>
@@ -38,55 +41,71 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="thongTinLogwork" action="add">
+					<form:form method="POST" modelAttribute="thongTinLogwork"
+						action="add">
+
 						<div class="form-group col-sm-6">
-						  	<label>Mã phòng ban</label>
-						  	<form:input class="form-control" path="maPhongBan" placeholder="Mã phòng ban" />
-						</div>
-						<div class="form-group col-sm-6">
-						  	<label>Mã Nhân viên</label>
-						  	<form:input class="form-control" path="maNhanVien" placeholder="Mã nhân viên" />
-						</div>
-						<div class="form-group col-sm-6">
-						  	<label>Chon dự án</label>
-						  	<form:input class="form-control" path="maDuAn" placeholder="Chọn dự án" />
+							<label>Phòng ban</label>
+							<form:select path="phongBan.maPBan" class="form-control">
+								<form:options items="${dsPhongBan}" itemValue="maPBan"
+									itemLabel="tenPhongBan" />
+							</form:select>
 						</div>
 						<div class="form-group col-sm-6">
-						  	<label>Vai trò</label>
-						  	<form:input class="form-control" path="maVaiTro" placeholder="Vai trò" />
+							<label>Mã Nhân viên</label>
+							<form:input class="form-control" path="maNhanVien"
+								placeholder="Mã nhân viên" />
 						</div>
 						<div class="form-group col-sm-6">
-						  	<label>Tên công việc</label>
-						  	<form:input class="form-control" path="tenCongViec" placeholder="Tên công việc" />
+							<label>Chon dự án</label>
+							<form:input class="form-control" path="maDuAn"
+								placeholder="Chọn dự án" />
 						</div>
 						<div class="form-group col-sm-6">
-						  	<label>Mô tả công việc</label>
-						  	<form:input class="form-control" path="moTa" placeholder="Mô tả công việc" />
+							<label>Vai trò dự án</label>
+							<form:select path="vaiTro.maVaiTro" class="form-control">
+								<form:options items="${dsVaiTro}" itemValue="maVaiTro"
+									itemLabel="tenVaiTro" />
+							</form:select>
 						</div>
-						
-						
 						<div class="form-group col-sm-6">
-						<label>Thời gian bắt đầu</label>
-						<div class='input-group date' id='datetimepicker5'>
-							<form:input type='text' class="form-control" path="thoiGianBatDau" /> <span
-								class="input-group-addon"> <span class="fa fa-calendar"></span>
-							</span>
+							<label>Tên công việc</label>
+							<form:input class="form-control" path="tenCongViec"
+								placeholder="Tên công việc" />
 						</div>
-						</div>
-						
 						<div class="form-group col-sm-6">
-						<label>Thời gian Kết thúc</label>
-						<div class='input-group date' id='datetimepicker11'>
-							<form:input type='text' class="form-control" path="thoiGianKetThuc" /> <span
-								class="input-group-addon"> <span class="fa fa-calendar"></span>
-							</span>
+							<label>Mô tả công việc</label>
+							<form:input class="form-control" path="moTa"
+								placeholder="Mô tả công việc" />
 						</div>
+
+
+						<div class="form-group col-sm-6">
+							<label>Thời gian bắt đầu</label>
+							<div class='input-group date' id='datetimepicker5'>
+								<form:input type='text' class="form-control"
+									path="thoiGianBatDau" />
+								<span class="input-group-addon"> <span
+									class="fa fa-calendar"></span>
+								</span>
+							</div>
 						</div>
-						
+
+						<div class="form-group col-sm-6">
+							<label>Thời gian Kết thúc</label>
+							<div class='input-group date' id='datetimepicker11'>
+								<form:input type='text' class="form-control"
+									path="thoiGianKetThuc" />
+								<span class="input-group-addon"> <span
+									class="fa fa-calendar"></span>
+								</span>
+							</div>
+						</div>
+
 						<div class="col-sm-12 text-center">
 							<input type="submit" name="action" class="button" value="submit" />
 						</div>
-						
+
 					</form:form>
 				</div>
 			</div>

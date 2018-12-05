@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 import fasttrackse.ffse1704.fbms.service.security.DatatableService;
 import fasttrackse.ffse1704.fbms.service.thongtinlogwork.quanlythoigian.ThongTinLogworkService;
 
@@ -27,7 +29,11 @@ public class PhuongLogworkController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {
+		List<PhongBan> listPhongBan = logworkService.listDSPhongBan();
+		List<VaiTroDuAn> listVaiTro = logworkService.listVaiTro();
 		model.addAttribute("thongTinLogwork", new ThongTinLogwork());
+		model.addAttribute("dsPhongBan", listPhongBan);
+		model.addAttribute("dsVaiTro", listVaiTro);
 		return "PhuongQuanLyThoiGian/Logwork/add_logwork";
 	}
 
