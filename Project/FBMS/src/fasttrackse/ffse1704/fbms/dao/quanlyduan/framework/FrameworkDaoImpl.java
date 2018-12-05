@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
 
 /**
@@ -17,7 +19,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
  *
  */
 @Repository
-public class FrameworkDaoIPM implements FrameworkDao {
+public class FrameworkDaoImpl implements FrameworkDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -39,10 +41,10 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Framework> listFramework(int iDisPlayStart, int iDinPlayLength) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
-		List<Framework> listFramework = session.createQuery("FROM framework").setFirstResult(iDisPlayStart)
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Framework> frameworkList = session.createQuery("from Framework").setFirstResult(iDisPlayStart)
 				.setMaxResults(iDinPlayLength).list();
-		return listFramework;
+		return frameworkList;
 	}
 
 	/*
@@ -54,7 +56,7 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	@Override
 	public int countFramework() {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from framework").list().size();
+		int rowCount = session.createQuery("from Framework").list().size();
 		return rowCount;
 	}
 
@@ -66,7 +68,7 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	 */
 	@Override
 	public void addNew(Framework fw) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(fw);
 	}
 
@@ -78,7 +80,7 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	 */
 	@Override
 	public void update(Framework fw) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.update(fw);
 	}
 
@@ -91,7 +93,7 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	 */
 	@Override
 	public void delete(String maFramework) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.openSession();
 		Framework fw = session.load(Framework.class, maFramework);
 		if (null != fw) {
 			session.delete(fw);
@@ -106,8 +108,9 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	 */
 	@Override
 	public Framework getFrameworkByMaFramework(String maFramework) {
-		Session session = this.sessionFactory.getCurrentSession();
-		Framework fw = (Framework) session.get(Framework.class, maFramework);
+		Session session = this.sessionFactory.openSession();
+		Framework fw = session.get(Framework.class, maFramework);
+		session.close();
 		return fw;
 	}
 
