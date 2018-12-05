@@ -39,8 +39,12 @@
 									class="btn btn-success">Xem</button></a></td>
 					</tr>
 				</c:forEach>
+
 			</tbody>
+
 		</table>
 	</div>
+	<spring:url value="/dsphongban/?type=xls" var="xlsURL" />
+	<a href="${xlsURL}">Download Excel</a>
 </body>
 </html>
