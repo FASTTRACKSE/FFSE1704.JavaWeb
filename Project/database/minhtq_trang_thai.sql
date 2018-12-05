@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2018 lúc 05:25 PM
+-- Thời gian đã tạo: Th12 05, 2018 lúc 09:58 AM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 7.2.2
 
@@ -25,20 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `minhtq_trang-thai`
+-- Cấu trúc bảng cho bảng `minhtq_trang_thai`
 --
 
-CREATE TABLE `minhtq_trang-thai` (
+CREATE TABLE `minhtq_trang_thai` (
   `id` int(15) NOT NULL,
   `ma_trang_thai` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `ten_trang_thai` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `minhtq_trang-thai`
+-- Đang đổ dữ liệu cho bảng `minhtq_trang_thai`
 --
 
-INSERT INTO `minhtq_trang-thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
+INSERT INTO `minhtq_trang_thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
 (1, '1', 'nháp'),
 (2, '2', 'chờ phê duyệt'),
 (3, '3', 'đã phê duyệt'),
@@ -49,9 +49,9 @@ INSERT INTO `minhtq_trang-thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
 --
 
 --
--- Chỉ mục cho bảng `minhtq_trang-thai`
+-- Chỉ mục cho bảng `minhtq_trang_thai`
 --
-ALTER TABLE `minhtq_trang-thai`
+ALTER TABLE `minhtq_trang_thai`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,9 +59,9 @@ ALTER TABLE `minhtq_trang-thai`
 --
 
 --
--- AUTO_INCREMENT cho bảng `minhtq_trang-thai`
+-- AUTO_INCREMENT cho bảng `minhtq_trang_thai`
 --
-ALTER TABLE `minhtq_trang-thai`
+ALTER TABLE `minhtq_trang_thai`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 

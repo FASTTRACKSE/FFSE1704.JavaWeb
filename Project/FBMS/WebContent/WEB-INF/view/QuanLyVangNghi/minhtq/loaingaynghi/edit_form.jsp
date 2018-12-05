@@ -1,12 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="/WEB-INF/view/templates/header.jsp" />
 
-</body>
-</html>
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+
+		<!-- Path -->
+		<div class="content-header row">
+			<div class="content-header-left col-md-6 col-xs-12 mb-2">
+				<h3 class="content-header-title mb-0">Sửa chức danh</h3>
+				<div class="row breadcrumbs-top">
+					<div class="breadcrumb-wrapper col-xs-12">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href='<c:url value="/home" />'>Home</a></li>
+							<li class="breadcrumb-item"><a href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh sách chức danh</a></li>
+							<li class="breadcrumb-item active">Sửa chức danh</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Path -->
+
+		<div class="content-body">
+			<div class="main-content">
+				<div class="row">
+					<form:form method="POST" modelAttribute="loạingaynghi" action="">
+						<label>Mã loại ngày nghỉ</label>
+						<form:input type="hidden" path="maLoaiNgayNghi" style="display:none" value=""/>
+						<div class="form-group col-sm-6">
+						  	<label>Tên loại ngày nghỉ</label>
+						  	<form:input class="form-control" path="tenLoaiNgayNghi" value="" placeholder="nhập tên loại ngày nghỉ" />
+						</div>
+						<div class="col-sm-12 text-center">
+							<button type="submit" class="btn btn-success">Lưu thông tin</button>
+						</div>
+					</form:form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<jsp:include page="/WEB-INF/view/templates/footer.jsp" />

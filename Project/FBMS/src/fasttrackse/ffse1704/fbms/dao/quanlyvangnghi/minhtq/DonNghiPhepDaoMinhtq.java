@@ -4,21 +4,47 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 public interface DonNghiPhepDaoMinhtq {
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(String trangthai);
+	/////////// ĐƠN NGHỈ PHÉP//////////////////
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
+
+	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet();
+
+	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet();
+
+	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi();
+
 	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id);
 
-	public void deleteDonNghiPhepNhap(int id);
+	public void deleteDonNghiPhep(int id);
 
 	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
 
 	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
 
+	///////////// TRANGTHAI//////////////
+	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 
-	
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id);
+
+	public void deleteTrangThai(int id);
+
+	public void editTrangThai(TrangThaiVangNghiMinhtq trangthai);
+
+	public void addTrangThai(TrangThaiVangNghiMinhtq trangthai);
+
+	/////////////// LOẠI NGÀY NGHỈ//////////////////
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi();
-	
-	
+
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id);
+
+	public void deleteLoaiNgayNghi(int id);
+
+	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
+
+	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
+
 }

@@ -131,7 +131,7 @@
 
 											</tr>
 										</thead>
-										<c:forEach var="dnpn" items="${list}">
+										<c:forEach var="dnpn" items="${listtuchoi}">
 											<tr>
 												<td>${dnpn.id}</td>
 												<td>${dnpn.maNhanVien}</td>
@@ -144,37 +144,10 @@
 													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
 														<button>sửa</button>
 												</a> <a
-													href="/deleteDonNghiPhepNhap/${dnpn.id}"><button>
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.id}"><button>
 															xóa</button></a></td>
 										</c:forEach>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</tbody>
+										
 									</table>
 								</div>
 							</div>
@@ -185,32 +158,5 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
-
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable")
-				.dataTable(
-						{
-							responsive : true,
-							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-							"bServerSide" : true,
-							"sAjaxSource" : "/ffse-fbms/QuanTriHeThong/chuc_danh/view/getListChucDanh",
-						});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

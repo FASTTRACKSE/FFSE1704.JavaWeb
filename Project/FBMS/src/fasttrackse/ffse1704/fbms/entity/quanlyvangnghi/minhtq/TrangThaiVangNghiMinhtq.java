@@ -20,7 +20,7 @@ public class TrangThaiVangNghiMinhtq {
 
 	@Column(name = "ma_trang_thai")
 	@NotNull
-	private int maTrangThai;
+	private String maTrangThai;
 
 	@Column(name = "ten_trang_thai")
 	@NotEmpty
@@ -31,7 +31,7 @@ public class TrangThaiVangNghiMinhtq {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TrangThaiVangNghiMinhtq(int id, int maTrangThai, String tenTrangThai) {
+	public TrangThaiVangNghiMinhtq(int id, String maTrangThai, String tenTrangThai) {
 		super();
 		this.id = id;
 		this.maTrangThai = maTrangThai;
@@ -46,11 +46,11 @@ public class TrangThaiVangNghiMinhtq {
 		this.id = id;
 	}
 
-	public int getMaTrangThai() {
+	public String getMaTrangThai() {
 		return maTrangThai;
 	}
 
-	public void setMaTrangThai(int maTrangThai) {
+	public void setMaTrangThai(String maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
 

@@ -25,12 +25,7 @@ public class LoaiNgayNghiMinhtq {
 	@Column(name = "ten_loai_ngay_nghi")
 	@NotEmpty
 	private String tenLoaiNgayNghi;
-	
-	
 
-	
-	
-	
 	public LoaiNgayNghiMinhtq() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -39,6 +34,13 @@ public class LoaiNgayNghiMinhtq {
 	public LoaiNgayNghiMinhtq(int id, int maLoaiNgayNghi, String tenLoaiNgayNghi) {
 		super();
 		this.id = id;
+		this.maLoaiNgayNghi = maLoaiNgayNghi;
+		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+	}
+
+	public LoaiNgayNghiMinhtq(int maLoaiNgayNghi, String tenLoaiNgayNghi) {
+		super();
+
 		this.maLoaiNgayNghi = maLoaiNgayNghi;
 		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
 	}
