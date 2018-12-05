@@ -7,15 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 
 @Entity
 @Table(name = "chung_chi")
@@ -26,10 +23,9 @@ public class ChungChi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 
-	@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
+	@Column(name = "ma_nhan_vien", nullable = false)
 	@NotNull
-	private NhanSu nhanSu;
+	private String maNhanVien;
 
 	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	@NotNull
@@ -77,12 +73,12 @@ public class ChungChi {
 		this.donViCap = donViCap;
 	}
 
-	public NhanSu getNhanSu() {
-		return nhanSu;
+	public String getMaNhanVien() {
+		return maNhanVien;
 	}
 
-	public void setNhanSu(NhanSu nhanSu) {
-		this.nhanSu = nhanSu;
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
 	public ChungChi() {

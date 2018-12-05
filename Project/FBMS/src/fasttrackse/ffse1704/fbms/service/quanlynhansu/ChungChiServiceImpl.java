@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ChungChiDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Service
 @Transactional
@@ -20,11 +21,6 @@ public class ChungChiServiceImpl implements ChungChiService {
 	}
 
 	@Override
-	public List<ChungChi> allCC() {
-		return chungChiDao.allCC();
-	}
-
-	@Override
 	@Transactional
 	public void addCC(ChungChi cc) {
 		this.chungChiDao.addCC(cc);
@@ -34,7 +30,7 @@ public class ChungChiServiceImpl implements ChungChiService {
 	public void updateCC(ChungChi cc) {
 		this.chungChiDao.updateCC(cc);
 	}
-	
+
 	@Override
 	public void deleteCC(ChungChi cc) {
 		this.chungChiDao.deleteCC(cc);
@@ -46,8 +42,8 @@ public class ChungChiServiceImpl implements ChungChiService {
 	}
 
 	@Override
-	public List<ChungChi> getEmployeesByPage(int pageid, int total) {
-		return this.chungChiDao.getEmployeesByPage(pageid, total);
+	public List<ChungChi> getChungChiByPage(int pageid, int total) {
+		return this.chungChiDao.getChungChiByPage(pageid, total);
 	}
 
 	@Override

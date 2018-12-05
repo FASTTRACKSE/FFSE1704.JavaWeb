@@ -27,61 +27,49 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="donXinNghiPhep" action="">
+					<form:form method="POST" modelAttribute="donXinNghiPhep"
+						action="doadd">
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Họ Và Tên: </b></td>
-								<td><form:input path="tenNhanVien" /></td>
-							</tr>
+							<label>Tên nhân viên</label>
+							<form:input class="form-control" path="tenNhanVien"
+								placeholder="Tên nhân viên " />
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Phòng Ban: </b></td>
-								<td><form:input path="phongBan" /></td>
-							</tr>
-
+							<label>Phòng ban</label>
+							<form:input class="form-control" path="phongBan"
+								placeholder="Phòng ban " />
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Lý do: </b></td>
-								<td><form:input path="maNghiPhep" /></td>
-							</tr>
-
+							<label>Lý do</label>
+							<form:input class="form-control" path="maNghiPhep"
+								placeholder="Lý do " />
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Thời Gian Bắt Đầu: </b></td>
-								<td><form:input path="thoiGianBatDau" /></td>
-							</tr>
-
+							<label>Ngày bắt đầu</label>
+							<form:input path="thoiGianBatDau" cssClass="form-control"
+								type="date" />
+							<div class="help-block"></div>
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Thời Gian Kết Thúc: </b></td>
-								<td><form:input path="thoiGianKetThuc" /></td>
-							</tr>
-
+							<label>Ngày kết thúc</label>
+							<form:input path="thoiGianKetThuc" cssClass="form-control"
+								type="date" />
+							<div class="help-block"></div>
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Ghi Chú: </b></td>
-								<td><form:input path="ghiChu" /></td>
-							</tr>
-
+							<label>Ghi chú</label>
+							<form:input class="form-control" path="ghiChu"
+								placeholder="Ghi chú " />
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Tình Trạng: </b></td>
-								<td><form:input path="tinhTrang" /></td>
-							</tr>
-
+							<label>Tình trạng</label>
+							<form:input class="form-control" path="tinhTrang"
+								placeholder="Tình trạng " />
 						</div>
 						<div class="form-group col-sm-6">
-							<tr>
-								<td><b>Trạng Thái: </b></td>
-								<td><form:input path="maTrangThai" /></td>
-							</tr>
-
+							<label>Trạng thái</label>
+							<form:input class="form-control" path="maTrangThai"
+								placeholder="Trạng thái " />
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Lưu thông

@@ -2,14 +2,13 @@ package fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq;
 
 import java.util.List;
 
-import fasttrackse.ffse1704.fbms.dao.quanlyvangnghi.minhtq.DonNghiPhepDaoMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 
 public interface DonNghiPhepServiceMinhtq {
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(String trangthai);
 
-	public DonNghiPhepMinhtq getByIdDonNghiPhepNhap(int id);
+	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id);
 
 	public void deleteDonNghiPhepNhap(int id);
 

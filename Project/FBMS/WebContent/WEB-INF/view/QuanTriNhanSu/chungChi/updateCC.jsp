@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<h1 style="text-align: center;">Update CHỨNG CHỈ</h1>
-		<form:form method="post" action="/FBMS/updateCC"
+		<form:form method="post" action="/FBMS/QuanTriNhanSu/danhsach_chungchi/updateCC"
 			modelAttribute="chungchi">
 			<div class="form-group">
 				<form:hidden path="ID" />

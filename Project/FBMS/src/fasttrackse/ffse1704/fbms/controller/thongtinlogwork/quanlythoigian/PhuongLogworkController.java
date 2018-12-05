@@ -21,9 +21,9 @@ public class PhuongLogworkController {
 	@Autowired
 	private ThongTinLogworkService logworkService;
 
-	/*
-	 * @Autowired private DatatableService datatableService;
-	 */
+	
+	  @Autowired private DatatableService datatableService;
+	 
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {

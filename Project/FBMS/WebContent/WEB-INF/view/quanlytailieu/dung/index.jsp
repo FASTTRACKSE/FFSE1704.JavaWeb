@@ -36,7 +36,7 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>Tài Liệu</h1>
-			<a href="<%=request.getContextPath()%>/documentInsert">Thêm</a>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/documentInsert">Thêm</a>
 		</div>
 
 		<!-- Border color end-->

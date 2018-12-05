@@ -1,13 +1,8 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,7 +34,6 @@ public class NhanSu implements Serializable{
 	private static final long serialVersionUID = 1L;
 	public NhanSu() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
@@ -94,8 +88,8 @@ public class NhanSu implements Serializable{
 	private String danToc;
 	
 
-	@ManyToOne
-	@JoinColumn(name = "ma_quoc_tich", referencedColumnName="ma_quoc_tich",nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ma_quoc_tich", referencedColumnName="ma_quoc_tich",nullable = false, updatable = false)
 	@NotNull
 	private QuocTich quocTich;
 
@@ -133,9 +127,7 @@ public class NhanSu implements Serializable{
 	private List<BangCap> listBangCap;
 	
 	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<ChungChi> listChungChi;
+	
 	
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -161,13 +153,7 @@ public class NhanSu implements Serializable{
 		this.listGiaDinh = listGiaDinh;
 	}
 
-	public List<ChungChi> getListChungChi() {
-		return listChungChi;
-	}
-
-	public void setListChungChi(List<ChungChi> listChungChi) {
-		this.listChungChi = listChungChi;
-	}
+	
 
 	public List<BangCap> getListBangCap() {
 		return listBangCap;
