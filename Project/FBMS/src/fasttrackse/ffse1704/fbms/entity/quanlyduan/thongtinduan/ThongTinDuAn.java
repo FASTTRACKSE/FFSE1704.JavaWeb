@@ -118,6 +118,11 @@ public class ThongTinDuAn implements Serializable {
 
 	@OneToMany(mappedBy = "thongTinDuAn")
 	private List<NhanVienDuAn> nhanVienDuAn = new ArrayList<NhanVienDuAn>();
+	/*
+	 * 
+	 * end One to Many
+	 * 
+	 */
 
 	/*
 	 * 
@@ -156,7 +161,12 @@ public class ThongTinDuAn implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ma_programming_language", referencedColumnName = "ma_programming_language", insertable = false, updatable = false, nullable = false)
 	private ProgrammingLanguage programmingLanguage;
-
+	/*
+	 * 
+	 * end many to one
+	 * 
+	 */
+	
 	/*
 	 * 
 	 * 
@@ -184,7 +194,7 @@ public class ThongTinDuAn implements Serializable {
 
 	/*
 	 * 
-	 * 
+	 * end many to many
 	 * 
 	 */
 

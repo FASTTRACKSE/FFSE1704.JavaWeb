@@ -33,7 +33,11 @@ public class NhanVienDuAn {
 	@Column(name = "ma_vai_tro", nullable = false, length = 30)
 	@NotEmpty
 	private String maVaiTro;
-
+	/*
+	 * 
+	 * Many To one
+	 * 
+	 */
 	@ManyToOne
 	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", insertable = false, updatable = false, nullable = false)
 	@NotEmpty
@@ -49,6 +53,11 @@ public class NhanVienDuAn {
 	@NotEmpty
 	private VaiTroThanhVien vaiTroThanhVien;
 
+	/*
+	 * 
+	 * end many to one
+	 * 
+	 */
 	public NhanVienDuAn() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -37,7 +37,6 @@ public class Domain implements Serializable {
 	private String tenDomain;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
 
 	public Domain() {

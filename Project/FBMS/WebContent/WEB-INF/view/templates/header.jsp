@@ -282,7 +282,7 @@
 									Trò Thành Viên</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-globe"></i>Domain</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_Domain/1"/>"><i class="icon-globe"></i>Domain</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="ft-layers"></i>Database</a></li>

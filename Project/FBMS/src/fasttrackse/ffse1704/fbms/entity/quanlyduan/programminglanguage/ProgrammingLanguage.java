@@ -37,7 +37,6 @@ public class ProgrammingLanguage implements Serializable {
 	private String tenProgrammingLanguage;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
 
 	public ProgrammingLanguage() {

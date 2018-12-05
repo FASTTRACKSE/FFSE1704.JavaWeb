@@ -34,7 +34,6 @@ public class VaiTroThanhVien implements Serializable {
 	private String tenVaiTro;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
 
 	// bi-directional many-to-one association to ThongTinDuAn

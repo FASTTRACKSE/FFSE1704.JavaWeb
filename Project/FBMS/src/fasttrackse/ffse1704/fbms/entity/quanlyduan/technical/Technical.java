@@ -34,7 +34,6 @@ public class Technical implements Serializable {
 	private String tenTechnical;
 
 	@Column(name = "ghi_chu", nullable = true, length = 500)
-	@NotEmpty
 	private String ghiChu;
 
 	@ManyToMany(mappedBy = "technical")
