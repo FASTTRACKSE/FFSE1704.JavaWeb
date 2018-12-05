@@ -40,7 +40,7 @@ public class VendorDaoImpl implements VendorDao {
 	@Override
 	public List<Vendor> listVendor(int iDisPlayStart, int iDinPlayLength) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		List<Vendor> listVendor = session.createQuery("FROM khach_hang").setFirstResult(iDisPlayStart)
+		List<Vendor> listVendor = session.createQuery("FROM vendor").setFirstResult(iDisPlayStart)
 				.setMaxResults(iDinPlayLength).list();
 		return listVendor;
 	}
@@ -53,7 +53,7 @@ public class VendorDaoImpl implements VendorDao {
 	@Override
 	public int countVendor() {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from khach_hang").list().size();
+		int rowCount = session.createQuery("from vendor").list().size();
 		return rowCount;
 	}
 

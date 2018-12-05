@@ -54,7 +54,7 @@ public class FrameworkDaoIPM implements FrameworkDao {
 	@Override
 	public int countFramework() {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from sinhvien").list().size();
+		int rowCount = session.createQuery("from framework").list().size();
 		return rowCount;
 	}
 
