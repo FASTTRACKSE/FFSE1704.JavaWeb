@@ -43,8 +43,7 @@ public class Domain implements Serializable {
 		super();
 	}
 
-	public Domain(int id, @NotEmpty String maDomain, List<ThongTinDuAn> listDuAn, @NotEmpty String tenDomain,
-			@NotEmpty String ghiChu) {
+	public Domain(int id, @NotEmpty String maDomain, List<ThongTinDuAn> listDuAn, @NotEmpty String tenDomain, String ghiChu) {
 		super();
 		this.id = id;
 		this.maDomain = maDomain;

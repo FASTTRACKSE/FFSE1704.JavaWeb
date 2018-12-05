@@ -42,7 +42,7 @@
 		<div class="content-header-right ">
 			<div role="group" aria-label="Button group with nested dropdown"
 				class="btn-group float-md-right" id="add-new">
-				<a href="<c:url value = "/QuanTriHeThong/chuc_danh/add"/>"
+				<a href="<c:url value = "/Quan_Ly_Du_An/Add_Domain"/>"
 					class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 					mới</a>
 			</div>
@@ -60,7 +60,7 @@
 					<td>${emp.tenDomain}</td>
 					<td>${emp.maDomain}</td>
 					<td>${emp.ghiChu}</td>
-					<td><a href="/QLSV_CRUD_Spring/edit/${emp.maDomain}"
+					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_Domain/${emp.maDomain}"
 						class="btn btn-primary">edit</a> <a
 						href="/QLSV_CRUD_Spring/delete/${emp.maDomain}"
 						class="btn btn-danger">delete</a></td>

@@ -27,7 +27,6 @@ public class DomainIPM implements DomainDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-
 	@Override
 	public void addNew(Domain domain) {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -53,9 +52,10 @@ public class DomainIPM implements DomainDao {
 
 	@Override
 	public Domain getDomainByIdDomain(String maDomain) {
-		Session session = this.sessionFactory.openSession();
-		Domain domain = session.get(Domain.class, maDomain);
-		session.close();
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Domain> listDomain = session.createQuery("from Domain where maDomain = '" + maDomain + "'", Domain.class)
+				.list();
+		Domain domain = listDomain.get(0);
 		return domain;
 	}
 
@@ -63,8 +63,8 @@ public class DomainIPM implements DomainDao {
 	@Override
 	public List<Domain> listDomain(int iDisPlayStart, int iDinPlayLength) {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Domain> domainList = session.createQuery("from Domain").setFirstResult(iDisPlayStart).setMaxResults(iDinPlayLength)
-				.list();
+		List<Domain> domainList = session.createQuery("from Domain").setFirstResult(iDisPlayStart)
+				.setMaxResults(iDinPlayLength).list();
 		return domainList;
 	}
 
@@ -74,6 +74,5 @@ public class DomainIPM implements DomainDao {
 		int rowCount = session.createQuery("from Domain").list().size();
 		return rowCount;
 	}
-
 
 }
