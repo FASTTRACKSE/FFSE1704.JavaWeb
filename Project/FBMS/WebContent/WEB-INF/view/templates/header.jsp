@@ -262,18 +262,6 @@
 				<!-- --------------------------End Quản trị hệ thống-------------------------- -->
 
 
-				<!-- --------------------------Quản lý thời gian-------------------------- -->
-
-				<ul id="main-menu-navigation" data-menu="menu-navigation"
-					class="navigation navigation-main">
-					<li class=" navigation-header"><span>Quản Lí Thời
-							Gian(Kỳ)</span><i data-toggle="tooltip" data-placement="right"
-						data-original-title="Xuân Kỳ" class=" ft-minus"></i></li>
-					<li class=" nav-item"><a
-						href="<c:url value = "/QuanLyThoiGian/Logwork/list"/>"><i
-							class="ft-book"></i> Danh Sách Logwork</a></li>
-				</ul>
-				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 				<!-- ************************* Quản Lý Dự Án********************************** -->
 				<ul id="main-menu-navigation" data-menu="menu-navigation"
 					class="navigation navigation-main">
@@ -293,13 +281,15 @@
 									Trò Thành Viên</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-globe"></i>Domain</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_Domain/1"/>"><i
+									class="icon-globe"></i>Domain</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="ft-layers"></i>Database</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-wrench"></i>Framework</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_Framework/1"/>"><i
+									class="icon-wrench"></i>Framework</a></li>
 
 							<li class=" nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="icon-link"></i>Vendor</a></li>
@@ -330,6 +320,23 @@
 						</ul></li>
 				</ul>
 				<!-- **********************End Quản Lý Dự Án************************************* -->
+
+
+
+
+
+				<!-- --------------------------Quản lý thời gian-------------------------- -->
+
+				<ul id="main-menu-navigation" data-menu="menu-navigation"
+					class="navigation navigation-main">
+					<li class=" navigation-header"><span>Quản Lí Thời
+							Gian(Kỳ)</span><i data-toggle="tooltip" data-placement="right"
+						data-original-title="Xuân Kỳ" class=" ft-minus"></i></li>
+					<li class=" nav-item"><a
+						href="<c:url value = "/QuanLyThoiGian/Logwork/list"/>"><i
+							class="ft-book"></i> Danh Sách Logwork</a></li>
+				</ul>
+				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 
 
 				<!--  Quản lí Vắng nghỉ minhtq -->
