@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +25,9 @@ public class ChungChi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 
-	@Column(name = "ma_nhan_vien", nullable = false)
-	@NotNull
-	private String maNhanVien;
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
+	private NhanSu nhanSu;
 
 	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	@NotNull
@@ -73,12 +75,12 @@ public class ChungChi {
 		this.donViCap = donViCap;
 	}
 
-	public String getMaNhanVien() {
-		return maNhanVien;
+	public NhanSu getNhanSu() {
+		return nhanSu;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
-		this.maNhanVien = maNhanVien;
+	public void setNhanSu(NhanSu nhanSu) {
+		this.nhanSu = nhanSu;
 	}
 
 	public ChungChi() {

@@ -25,6 +25,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -129,6 +130,30 @@ public class NhanSu implements Serializable {
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ThongTinHopDong> listHopDong;
+
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ChungChi> listChungChi;
+	
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<PhanCongNhiemVuNS> listPhanCongNhiemVuNS ;
+	
+	public List<PhanCongNhiemVuNS> getListPhanCongNhiemVuNS() {
+		return listPhanCongNhiemVuNS;
+	}
+
+	public void setListPhanCongNhiemVuNS(List<PhanCongNhiemVuNS> listPhanCongNhiemVuNS) {
+		this.listPhanCongNhiemVuNS = listPhanCongNhiemVuNS;
+	}
+
+	public List<ChungChi> getListChungChi() {
+		return listChungChi;
+	}
+
+	public void setListChungChi(List<ChungChi> listChungChi) {
+		this.listChungChi = listChungChi;
+	}
 
 	public List<ThongTinHopDong> getListHopDong() {
 		return listHopDong;

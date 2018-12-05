@@ -69,11 +69,11 @@ public class ExcelBuilder extends AbstractXlsxView {
 		cellHeaderHoSoChiTiet.setCellValue("Phong Ban");
 		cellHeaderHoSoChiTiet.setCellStyle(style);
 
-		Row row = sheet.createRow(3);
+		Row row = sheet.createRow(2);
 		row.createCell(0).setCellValue("ID");
 		row.createCell(1).setCellValue("MA PHONG BAN");
 
-		int rowNum = 1;
+		int rowNum = 2;
 
 		for (PhongBan phongBan : list) {
 			Row rown = sheet.createRow(rowNum++);
