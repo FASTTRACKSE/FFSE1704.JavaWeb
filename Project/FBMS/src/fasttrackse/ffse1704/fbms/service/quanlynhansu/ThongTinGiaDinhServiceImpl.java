@@ -24,8 +24,33 @@ public class ThongTinGiaDinhServiceImpl implements ThongTinGiaDinhService {
 	}
 
 	@Override
-	public List<ThongTinGiaDinh> dsThongTin() {
-		return this.thongTinGiaDinhDao.dsThongTin();
+	public void addTT(ThongTinGiaDinh tt) {
+		this.thongTinGiaDinhDao.addTT(tt);
+	}
+
+	@Override
+	public void updateTT(ThongTinGiaDinh tt) {
+		this.thongTinGiaDinhDao.updateTT(tt);
+	}
+
+	@Override
+	public ThongTinGiaDinh getThongTinById(int id) {
+		return this.thongTinGiaDinhDao.getThongTinById(id);
+	}
+
+	@Override
+	public void deleteTT(ThongTinGiaDinh tt) {
+		this.thongTinGiaDinhDao.deleteTT(tt);
+	}
+
+	@Override
+	public List<ThongTinGiaDinh> getThongTinByPage(int pageid, int total) {
+		return this.thongTinGiaDinhDao.getThongTinByPage(pageid, total);
+	}
+
+	@Override
+	public long countTT() {
+		return this.thongTinGiaDinhDao.countTT();
 	}
 
 }
