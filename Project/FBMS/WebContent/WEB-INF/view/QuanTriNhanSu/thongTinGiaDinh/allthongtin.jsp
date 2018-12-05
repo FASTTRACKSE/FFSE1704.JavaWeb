@@ -44,7 +44,7 @@
 				<c:forEach var="tt" items="${thongtin}">
 					<tr>
 						<td>${tt.id}</td>
-						<td>${tt.maNhanVien}</td>
+						<td>${tt.nhanSu.maNhanVien}</td>
 						<td>${tt.hoVaTen}</td>
 						<td>${tt.quanHe}</td>
 						<td>${tt.namSinh}</td>

@@ -29,9 +29,10 @@ import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
-@Table(name="ho_so_nhan_su")
-public class NhanSu implements Serializable{
+@Table(name = "ho_so_nhan_su")
+public class NhanSu implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	public NhanSu() {
 		super();
 	}
@@ -40,103 +41,95 @@ public class NhanSu implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
-	
-	@NotEmpty(message= "Vui Lòng Nhập Mã nhân viên")
-	@Column(name="ma_nhan_vien",nullable = false)
+
+	@NotEmpty(message = "Vui Lòng Nhập Mã nhân viên")
+	@Column(name = "ma_nhan_vien", nullable = false)
 	private String maNhanVien;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ma_phong_ban", nullable = false)
 	@NotNull
 	private PhongBan phongBan;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)
 	private ChucDanh chucDanh;
-	
-	
-	@NotEmpty(message= "Vui Lòng Nhập họ hót của nhân viên")
-	@Column(name="ho_dem",nullable = false)
+
+	@NotEmpty(message = "Vui Lòng Nhập họ hót của nhân viên")
+	@Column(name = "ho_dem", nullable = false)
 	private String hoLot;
-	
-	@NotEmpty(message= "Vui Lòng Nhập tên nhân viên")
-	@Column(name="ten",nullable = false)
+
+	@NotEmpty(message = "Vui Lòng Nhập tên nhân viên")
+	@Column(name = "ten", nullable = false)
 	private String ten;
-	
-	
-	@Column(name="anh_dai_dien",nullable = false,length = 100)
+
+	@Column(name = "anh_dai_dien", nullable = false, length = 100)
 	private String anhDaiDien;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nam_sinh", nullable = false)
 	@NotNull
 	private Date namSinh;
-	
-	@Column(name="gioi_tinh")
+
+	@Column(name = "gioi_tinh")
 	@NotNull
 	private Integer gioiTinh;
-	
-	@NotEmpty(message= "Vui Lòng Nhập quê quán nhân viên")
-	@Column(name="que_quan")
+
+	@NotEmpty(message = "Vui Lòng Nhập quê quán nhân viên")
+	@Column(name = "que_quan")
 	private String queQuan;
-	
-	@NotEmpty(message= "Vui Lòng Nhập dân tộc nhân viên")
-	@Column(name="dan_toc")
+
+	@NotEmpty(message = "Vui Lòng Nhập dân tộc nhân viên")
+	@Column(name = "dan_toc")
 	private String danToc;
-	
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_quoc_tich", referencedColumnName="ma_quoc_tich",nullable = false, updatable = false)
+	@JoinColumn(name = "ma_quoc_tich", referencedColumnName = "ma_quoc_tich", nullable = false, updatable = false)
 	@NotNull
 	private QuocTich quocTich;
 
-	@NotEmpty(message= "Vui Lòng Nhập nơi tạm trú")
-	@Column(name="noi_tam_tru")
+	@NotEmpty(message = "Vui Lòng Nhập nơi tạm trú")
+	@Column(name = "noi_tam_tru")
 	private String noiTamTru;
-	
-	@Column(name="so_dien_thoai")
-	@Pattern(regexp="(^$|[0-9]{11})", message="Số diện thoại không đúng")
+
+	@Column(name = "so_dien_thoai")
+	@Pattern(regexp = "(^$|[0-9]{11})", message = "Số diện thoại không đúng")
 	private String soDienThoai;
-	
-	@Column(name="email")
-	@Pattern(regexp=".+@.+\\..+", message="Định dạng email không đúng")
+
+	@Column(name = "email")
+	@Pattern(regexp = ".+@.+\\..+", message = "Định dạng email không đúng")
 	private String email;
-	
-	@NotEmpty(message= "Vui Lòng Nhập số chứng minh thư")
-	@Column(name="so_cmnd")
+
+	@NotEmpty(message = "Vui Lòng Nhập số chứng minh thư")
+	@Column(name = "so_cmnd")
 	private String soCMND;
-	
-	@Column(name="noi_cap_cmnd")
-	@NotEmpty(message= "Vui Lòng Nhập nơi cấp")
+
+	@Column(name = "noi_cap_cmnd")
+	@NotEmpty(message = "Vui Lòng Nhập nơi cấp")
 	private String noiCap;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="ngay_cap_cmnd")
+	@Column(name = "ngay_cap_cmnd")
 	@NotNull
 	private Date ngayCap;
-	
-	@Column(name="trang_thai")
+
+	@Column(name = "trang_thai")
 	@NotNull
 	private Integer trangThai;
-	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<BangCap> listBangCap;
-	
-	
-	
-	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ThongTinGiaDinh> listGiaDinh;
-	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ThongTinHopDong> listHopDong;
-	
+
 	public List<ThongTinHopDong> getListHopDong() {
 		return listHopDong;
 	}
@@ -153,8 +146,6 @@ public class NhanSu implements Serializable{
 		this.listGiaDinh = listGiaDinh;
 	}
 
-	
-
 	public List<BangCap> getListBangCap() {
 		return listBangCap;
 	}
@@ -162,8 +153,7 @@ public class NhanSu implements Serializable{
 	public void setListBangCap(List<BangCap> listBangCap) {
 		this.listBangCap = listBangCap;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -179,7 +169,6 @@ public class NhanSu implements Serializable{
 	public void setMaNhanVien(String maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
-
 
 	public String getHoLot() {
 		return hoLot;
@@ -237,8 +226,6 @@ public class NhanSu implements Serializable{
 		this.danToc = danToc;
 	}
 
-
-
 	public String getNoiTamTru() {
 		return noiTamTru;
 	}
@@ -279,8 +266,6 @@ public class NhanSu implements Serializable{
 		this.noiCap = noiCap;
 	}
 
-
-
 	public Date getNgayCap() {
 		return ngayCap;
 	}
@@ -320,5 +305,5 @@ public class NhanSu implements Serializable{
 	public void setQuocTich(QuocTich quocTich) {
 		this.quocTich = quocTich;
 	}
-	
+
 }
