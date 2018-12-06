@@ -3,7 +3,6 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -248,7 +247,7 @@ public class ExcelBuilder extends AbstractXlsxView {
 			rowThongTinHopDongCT.createCell(0).setCellValue(nhanSu.getListHopDong().get(i).getLoaihopDong().getTenHopDong());
 			rowThongTinHopDongCT.createCell(1).setCellValue(strDatetthd_ngaybatdau);
 			rowThongTinHopDongCT.createCell(2).setCellValue(strDatetthd_ngayketthuc);
-			rowThongTinHopDongCT.createCell(3).setCellValue(nhanSu.getListHopDong().get(i).getLuongThang13());
+			rowThongTinHopDongCT.createCell(3).setCellValue(nhanSu.getListHopDong().get(i).getCheDoHuong().getLuong());
 		}
 		
 		Sheet sheet7 = workbook.createSheet("Thông Tin Dự Án");
@@ -266,7 +265,7 @@ public class ExcelBuilder extends AbstractXlsxView {
 		rowThongTinDuAn.createCell(2).setCellValue("Lê");
 		rowThongTinDuAn.createCell(3).setCellValue("Trọng");
 
-		Row rowThongTinDuAnCT = sheet7.createRow(5);
-		int rowTTDACT = 5;
+//		Row rowThongTinDuAnCT = sheet7.createRow(5);
+//		int rowTTDACT = 5;
 	}
 }
