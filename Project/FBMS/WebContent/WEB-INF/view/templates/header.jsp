@@ -424,10 +424,10 @@
 				class="navigation navigation-main">
 				<li class=" navigation-header"><span>Quản Lí Vắng Nghỉ</span><i
 					data-toggle="tooltip" data-placement="right"
-					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
+					data-original-title="davidvy" class=" ft-minus"></i></li>
 				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="#">● đơn xin nghỉ</a></li>
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
 						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn chờ
 								duyệt</a></li>
