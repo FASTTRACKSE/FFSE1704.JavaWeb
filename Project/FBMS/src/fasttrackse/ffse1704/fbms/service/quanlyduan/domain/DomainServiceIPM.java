@@ -66,4 +66,10 @@ public class DomainServiceIPM implements DomainService {
 		return this.domainDao.getRecordsTotal();
 	}
 
+	@Override
+	@Transactional
+	public int getRecordsByIdDomain(String maDomain) {
+		return this.domainDao.getRecordsByIdDomain(maDomain);
+	}
+
 }

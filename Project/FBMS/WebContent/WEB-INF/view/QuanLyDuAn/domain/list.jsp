@@ -62,7 +62,7 @@
 					<td>${emp.ghiChu}</td>
 					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_Domain/${emp.maDomain}"
 						class="btn btn-primary">edit</a> <a
-						href="/QLSV_CRUD_Spring/delete/${emp.maDomain}"
+						href="/FBMS/Quan_Ly_Du_An/Delete_Domain/${emp.maDomain}"
 						class="btn btn-danger">delete</a></td>
 				</tr>
 			</c:forEach>

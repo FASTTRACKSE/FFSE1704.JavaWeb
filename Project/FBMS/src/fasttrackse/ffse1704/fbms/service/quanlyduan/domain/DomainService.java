@@ -16,4 +16,6 @@ public interface DomainService {
 	public List<Domain> listDomain(int iDisPlayStart, int iDinPlayLength);
 	
 	public int getRecordsTotal();
+	
+	public int getRecordsByIdDomain(String maDomain);
 }

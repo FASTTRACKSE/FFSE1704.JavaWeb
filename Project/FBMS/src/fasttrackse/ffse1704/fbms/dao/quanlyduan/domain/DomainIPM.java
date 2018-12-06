@@ -75,4 +75,11 @@ public class DomainIPM implements DomainDao {
 		return rowCount;
 	}
 
+	@Override
+	public int getRecordsByIdDomain(String maDomain) {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from Domain where maDomain='" + maDomain + "'").list().size();
+		return rowCount;
+	}
+
 }

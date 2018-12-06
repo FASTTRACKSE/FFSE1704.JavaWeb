@@ -18,4 +18,6 @@ public interface DomainDao {
 	
 	public int getRecordsTotal();
 	
+	public int getRecordsByIdDomain(String maDomain);
+	
 }
