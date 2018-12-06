@@ -17,5 +17,7 @@ public interface TechnicalDao {
 	public List<Technical> listTechnical(int iDisPlayStart, int iDinPlayLength);
 
 	public int getRecordsTotal();
+	
+	public int getRecordsByIdTechnical(String matechnical);
 
 }

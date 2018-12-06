@@ -74,4 +74,11 @@ public class ProgrammingLanguageDaoIPM implements ProgrammingLanguageDao {
 		return rowCount;
 	}
 
+	@Override
+	public int getRecordsByIdProgrammingLanguage(String maProgrammingLanguage) {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from ProgrammingLanguage where maProgrammingLanguage='" + maProgrammingLanguage + "'").list().size();
+		return rowCount;
+	}
+
 }

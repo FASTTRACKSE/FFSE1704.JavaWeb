@@ -16,4 +16,6 @@ public interface ProgrammingLanguageDao {
 	public List<ProgrammingLanguage> listProgrammingLanguage(int iDisPlayStart, int iDinPlayLength);
 
 	public int getRecordsTotal();
+	
+	public int getRecordsByIdProgrammingLanguage(String maProgrammingLanguage);
 }

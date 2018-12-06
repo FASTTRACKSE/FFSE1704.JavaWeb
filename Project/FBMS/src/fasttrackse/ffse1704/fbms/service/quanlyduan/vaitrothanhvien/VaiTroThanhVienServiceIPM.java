@@ -65,4 +65,9 @@ public class VaiTroThanhVienServiceIPM implements VaiTroThanhVienService {
 		return this.vaiTroThanhVienDao.getRecordsTotal();
 	}
 
+	@Override
+	public int getRecordsByIdVaiTroThanhVien(String maVaiTroThanhVien) {
+		return this.vaiTroThanhVienDao.getRecordsByIdVaiTroThanhVien(maVaiTroThanhVien);
+	}
+
 }

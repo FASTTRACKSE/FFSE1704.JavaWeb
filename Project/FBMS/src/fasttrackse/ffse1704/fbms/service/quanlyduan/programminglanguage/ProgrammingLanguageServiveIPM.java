@@ -66,4 +66,10 @@ public class ProgrammingLanguageServiveIPM implements ProgrammingLanguageServive
 		return this.programmingLanguageDao.getRecordsTotal();
 	}
 
+	@Override
+	@Transactional
+	public int getRecordsByIdProgrammingLanguage(String maProgrammingLanguage) {
+		return this.programmingLanguageDao.getRecordsByIdProgrammingLanguage(maProgrammingLanguage);
+	}
+
 }

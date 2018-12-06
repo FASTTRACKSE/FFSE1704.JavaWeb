@@ -66,4 +66,10 @@ public class TechnicalServiceIPM implements TechnicalService {
 		return this.technicalDao.getRecordsTotal();
 	}
 
+	@Override
+	@Transactional
+	public int getRecordsByIdTechnical(String matechnical) {
+		return this.technicalDao.getRecordsByIdTechnical(matechnical);
+	}
+
 }

@@ -75,4 +75,11 @@ public class VaiTroThanhVienDaoIPM implements VaiTroThanhVienDao {
 		return rowCount;
 	}
 
+	@Override
+	public int getRecordsByIdVaiTroThanhVien(String maVaiTroThanhVien) {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from VaiTroThanhVien where maVaiTroThanhVien='" + maVaiTroThanhVien + "'").list().size();
+		return rowCount;
+	}
+
 }

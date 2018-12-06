@@ -17,4 +17,6 @@ public interface VaiTroThanhVienService {
 	public List<VaiTroThanhVien> listVaiTroThanhVien(int iDisPlayStart, int iDinPlayLength);
 
 	public int getRecordsTotal();
+	
+	public int getRecordsByIdVaiTroThanhVien(String maVaiTroThanhVien);
 }

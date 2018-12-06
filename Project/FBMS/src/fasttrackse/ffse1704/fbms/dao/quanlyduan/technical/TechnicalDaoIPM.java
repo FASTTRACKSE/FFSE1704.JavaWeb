@@ -74,4 +74,11 @@ public class TechnicalDaoIPM implements TechnicalDao {
 		return rowCount;
 	}
 
+	@Override
+	public int getRecordsByIdTechnical(String matechnical) {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from Technical where maTechnical='" + matechnical + "'").list().size();
+		return rowCount;
+	}
+
 }

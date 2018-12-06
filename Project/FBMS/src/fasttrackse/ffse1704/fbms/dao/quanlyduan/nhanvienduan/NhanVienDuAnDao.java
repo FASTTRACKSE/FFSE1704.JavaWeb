@@ -17,4 +17,5 @@ public interface NhanVienDuAnDao {
 	public List<NhanVienDuAn> listNhanVienDuAn(int iDisPlayStart, int iDinPlayLength);
 
 	public int getRecordsTotal();
+	
 }
