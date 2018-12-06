@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "phong_ban")
-public class PhongBan {
+public class ThongTinPhongBan {
 	@Id
 	@Column(name = "ma_phong_ban")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class PhongBan {
 	String tenPhongBan;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "phongBan")
-	private Collection<ThongTinLogwork> listPhongBan ;
+	private Collection<ThongTinLogwork> thongTinLogworks;
 
 	public String getMaPBan() {
 		return maPBan;
@@ -43,13 +43,16 @@ public class PhongBan {
 		this.tenPhongBan = tenPhongBan;
 	}
 
-	public Collection<ThongTinLogwork> getListPhongBan() {
-		return listPhongBan;
+	public Collection<ThongTinLogwork> getThongTinLogworks() {
+		return thongTinLogworks;
 	}
 
-	public void setListPhongBan(Collection<ThongTinLogwork> listPhongBan) {
-		this.listPhongBan = listPhongBan;
+	public void setThongTinLogworks(Collection<ThongTinLogwork> thongTinLogworks) {
+		this.thongTinLogworks = thongTinLogworks;
 	}
+
+	
+
 
 
 

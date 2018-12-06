@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fasttrackse.ffse1704.fbms.dao.thongtinlogwork.quanlythoigian.ThongTinLogworkDAO;
-import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinPhongBan;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.TrangThaiThongTinLogwork;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinNhanVienPhuongNH;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 import fasttrackse.ffse1704.fbms.service.security.DatatableService;
 
@@ -26,10 +28,12 @@ public class ThongtinLogworkServiceImpl implements ThongTinLogworkService {
 		return logworkDao.findAll();
 	}
 
-	public List<PhongBan> listDSPhongBan() {
+	@Override
+	public List<ThongTinPhongBan> listDSPhongBan() {
 		return logworkDao.listDSPhongBan();
 	}
 
+	@Override
 	public List<VaiTroDuAn> listVaiTro() {
 		return logworkDao.listVaiTro();
 	}

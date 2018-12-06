@@ -134,14 +134,14 @@
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn}</td>
-													<td>${lg.maNhanVien}</td>
+													<td>${lg.nhanVien.hoDem} ${lg.nhanVien.ten}</td>
 													<td>${lg.vaiTro.tenVaiTro}</td>
 													<td>${lg.phongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
 													<td>${lg.moTa}</td>
 													<td>${lg.thoiGianBatDau}</td>
 													<td>${lg.thoiGianKetThuc}</td>
-													<td>${lg.trangThai}</td>
+													<td>${lg.trangThai.tenTrangThai}</td>
 													<td>${lg.nhanXetPM}</td>
 													<td>${lg.nhanXetTPP}</td>
 												</tr>

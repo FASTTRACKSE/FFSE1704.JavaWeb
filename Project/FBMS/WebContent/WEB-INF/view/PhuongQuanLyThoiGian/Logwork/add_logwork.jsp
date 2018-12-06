@@ -53,7 +53,7 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân viên</label>
-							<form:input class="form-control" path="maNhanVien"
+							<form:input class="form-control" path="nhanVien.maNhanVien"
 								placeholder="Mã nhân viên" />
 						</div>
 						<div class="form-group col-sm-6">

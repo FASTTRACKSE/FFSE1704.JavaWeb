@@ -10,8 +10,10 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinNhanVienPhuongNH;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinPhongBan;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.TrangThaiThongTinLogwork;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 
 @Repository
@@ -29,9 +31,9 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PhongBan> listDSPhongBan() {
+	public List<ThongTinPhongBan> listDSPhongBan() {
 		Session session = this.sessionFactory.openSession();
-		List<PhongBan> list = session.createQuery("from PhongBan").getResultList();
+		List<ThongTinPhongBan> list = session.createQuery("from ThongTinPhongBan").getResultList();
 		session.close();
 		return list;
 	}

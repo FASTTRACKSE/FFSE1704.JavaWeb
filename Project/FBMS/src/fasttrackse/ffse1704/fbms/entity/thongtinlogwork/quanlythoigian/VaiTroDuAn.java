@@ -23,7 +23,7 @@ public class VaiTroDuAn {
 	String tenVaiTro;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vaiTro")
-	private Collection<ThongTinLogwork> listVaiTro ;
+	private Collection<ThongTinLogwork> logwork ;
 
 	public int getMaVaiTro() {
 		return maVaiTro;
@@ -41,14 +41,13 @@ public class VaiTroDuAn {
 		this.tenVaiTro = tenVaiTro;
 	}
 
-	public Collection<ThongTinLogwork> getListVaiTro() {
-		return listVaiTro;
+	public Collection<ThongTinLogwork> getLogwork() {
+		return logwork;
 	}
 
-	public void setListVaiTro(Collection<ThongTinLogwork> listVaiTro) {
-		this.listVaiTro = listVaiTro;
+	public void setLogwork(Collection<ThongTinLogwork> logwork) {
+		this.logwork = logwork;
 	}
-
 
 
 }

@@ -22,14 +22,8 @@ public class TrangThaiThongTinLogwork {
 	@Column(name = "ten_trang_thai", nullable = true, length = 11)
 	private String tenTrangThai;
 	
-	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "vaiTro")
-	private Collection<ThongTinLogwork> listVaiTro;*/
-
-	public TrangThaiThongTinLogwork(int idTrangThai, String tenTrangThai) {
-		super();
-		this.idTrangThai = idTrangThai;
-		this.tenTrangThai = tenTrangThai;
-	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trangThai")
+	private Collection<ThongTinLogwork> logwork;
 
 	public int getIdTrangThai() {
 		return idTrangThai;
@@ -47,4 +41,13 @@ public class TrangThaiThongTinLogwork {
 		this.tenTrangThai = tenTrangThai;
 	}
 
+	public Collection<ThongTinLogwork> getLogwork() {
+		return logwork;
+	}
+
+	public void setLogwork(Collection<ThongTinLogwork> logwork) {
+		this.logwork = logwork;
+	}
+
+	
 }

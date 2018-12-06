@@ -24,17 +24,11 @@ public class ThongTinLogwork {
 	@Column(name = "ma_du_an", nullable = true, length = 11)
 	private int maDuAn;
 
-	@Column(name = "ma_nhan_vien", nullable = true, length = 11)
-	private int maNhanVien;
-
 	@Column(name = "ten_cong_viec", nullable = true, length = 11)
 	private String tenCongViec;
 
 	@Column(name = "mo_ta", nullable = true, length = 11)
 	private String moTa;
-
-	@Column(name = "trang_thai", nullable = true, length = 11)
-	private String trangThai;
 
 	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 11)
 	private String thoiGianBatDau;
@@ -47,32 +41,22 @@ public class ThongTinLogwork {
 
 	@Column(name = "nhan_xet_tpp", nullable = true, length = 11)
 	private String nhanXetTPP;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ma_phong_ban", nullable = false, referencedColumnName = "ma_phong_ban")
-	private PhongBan phongBan;
-	
+	private ThongTinPhongBan phongBan;
+
 	@ManyToOne
 	@JoinColumn(name = "ma_vai_tro", nullable = false, referencedColumnName = "ma_vai_tro")
 	private VaiTroDuAn vaiTro;
-
-	public ThongTinLogwork(int id, int maDuAn, int maNhanVien, String tenCongViec, String moTa, String trangThai,
-			String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP, PhongBan phongBan,
-			VaiTroDuAn vaiTro) {
-		super();
-		this.id = id;
-		this.maDuAn = maDuAn;
-		this.maNhanVien = maNhanVien;
-		this.tenCongViec = tenCongViec;
-		this.moTa = moTa;
-		this.trangThai = trangThai;
-		this.thoiGianBatDau = thoiGianBatDau;
-		this.thoiGianKetThuc = thoiGianKetThuc;
-		this.nhanXetPM = nhanXetPM;
-		this.nhanXetTPP = nhanXetTPP;
-		this.phongBan = phongBan;
-		this.vaiTro = vaiTro;
-	}
+	
+	@ManyToOne
+	@JoinColumn(name = "trang_thai", nullable = false, referencedColumnName = "id_trang_thai")
+	private TrangThaiThongTinLogwork trangThai;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", nullable = false, referencedColumnName = "ma_nhan_vien")
+	private ThongTinNhanVienPhuongNH nhanVien;
 
 	public int getId() {
 		return id;
@@ -90,14 +74,6 @@ public class ThongTinLogwork {
 		this.maDuAn = maDuAn;
 	}
 
-	public int getMaNhanVien() {
-		return maNhanVien;
-	}
-
-	public void setMaNhanVien(int maNhanVien) {
-		this.maNhanVien = maNhanVien;
-	}
-
 	public String getTenCongViec() {
 		return tenCongViec;
 	}
@@ -112,14 +88,6 @@ public class ThongTinLogwork {
 
 	public void setMoTa(String moTa) {
 		this.moTa = moTa;
-	}
-
-	public String getTrangThai() {
-		return trangThai;
-	}
-
-	public void setTrangThai(String trangThai) {
-		this.trangThai = trangThai;
 	}
 
 	public String getThoiGianBatDau() {
@@ -154,11 +122,11 @@ public class ThongTinLogwork {
 		this.nhanXetTPP = nhanXetTPP;
 	}
 
-	public PhongBan getPhongBan() {
+	public ThongTinPhongBan getPhongBan() {
 		return phongBan;
 	}
 
-	public void setPhongBan(PhongBan phongBan) {
+	public void setPhongBan(ThongTinPhongBan phongBan) {
 		this.phongBan = phongBan;
 	}
 
@@ -169,5 +137,42 @@ public class ThongTinLogwork {
 	public void setVaiTro(VaiTroDuAn vaiTro) {
 		this.vaiTro = vaiTro;
 	}
+
+	public TrangThaiThongTinLogwork getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(TrangThaiThongTinLogwork trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public ThongTinNhanVienPhuongNH getNhanVien() {
+		return nhanVien;
+	}
+
+	public void setNhanVien(ThongTinNhanVienPhuongNH nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+
+	public ThongTinLogwork(int id, int maDuAn, String tenCongViec, String moTa, String thoiGianBatDau,
+			String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP, ThongTinPhongBan phongBan, VaiTroDuAn vaiTro,
+			TrangThaiThongTinLogwork trangThai, ThongTinNhanVienPhuongNH nhanVien) {
+		super();
+		this.id = id;
+		this.maDuAn = maDuAn;
+		this.tenCongViec = tenCongViec;
+		this.moTa = moTa;
+		this.thoiGianBatDau = thoiGianBatDau;
+		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.nhanXetPM = nhanXetPM;
+		this.nhanXetTPP = nhanXetTPP;
+		this.phongBan = phongBan;
+		this.vaiTro = vaiTro;
+		this.trangThai = trangThai;
+		this.nhanVien = nhanVien;
+	}
+
+
+
 
 }
