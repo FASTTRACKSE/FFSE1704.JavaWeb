@@ -37,8 +37,10 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "ngay_ket_thuc", nullable = false)
 	private Date ngayKetThuc;
 
-	@Column(name = "luong_thang_13", nullable = false, length = 20)
-	private int luongThang13;
+	
+	@ManyToOne
+	@JoinColumn(name = "luong_thang_13",referencedColumnName = "id", nullable = false)
+	private CheDoHuong cheDoHuong;
 
 	public ThongTinHopDong() {
 	}
@@ -83,12 +85,13 @@ public class ThongTinHopDong implements Serializable {
 		this.ngayKetThuc = ngayKetThuc;
 	}
 
-	public int getLuongThang13() {
-		return luongThang13;
+	public CheDoHuong getCheDoHuong() {
+		return cheDoHuong;
 	}
 
-	public void setLuongThang13(int luongThang13) {
-		this.luongThang13 = luongThang13;
+	public void setCheDoHuong(CheDoHuong cheDoHuong) {
+		this.cheDoHuong = cheDoHuong;
 	}
+
 
 }
