@@ -66,8 +66,15 @@ public class TunglntCongViecDaoImpl implements TunglntCongViecDao{
 	@Override
 	public List<HoSoNhanVien> nhanVien() {
 		Session session = sessionFactory.getCurrentSession();
-		List<HoSoNhanVien> cv = session.createQuery("from HoSoNhanVien").list();
-		return cv;
+		List<HoSoNhanVien> nv = session.createQuery("from HoSoNhanVien").list();
+		return nv;
+	}
+
+	@Override
+	public void addCongViec(TunglntCongViec cv) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(cv);
+		
 	}
 	
 	

@@ -47,6 +47,11 @@ public class TunglntCongViecServiceImpl implements TunglntCongViecService{
 		// TODO Auto-generated method stub
 		return tunglntCongViecDao.nhanVien();
 	}
+	@Override
+	public void addCongViec(TunglntCongViec cv) {
+		tunglntCongViecDao.addCongViec(cv);
+		
+	}
 
 	
 }

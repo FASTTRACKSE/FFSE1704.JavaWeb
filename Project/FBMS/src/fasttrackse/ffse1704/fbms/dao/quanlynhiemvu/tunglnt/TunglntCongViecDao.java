@@ -19,4 +19,6 @@ public interface TunglntCongViecDao {
  	public List<TunglntDuAn> duAn();
  	
  	public List<HoSoNhanVien> nhanVien();
+ 	
+ 	public void addCongViec(TunglntCongViec cv);
 }
