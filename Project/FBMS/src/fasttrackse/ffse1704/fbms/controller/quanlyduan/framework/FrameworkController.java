@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
 import fasttrackse.ffse1704.fbms.service.quanlyduan.framework.FrameworkService;
@@ -35,13 +36,7 @@ public class FrameworkController {
 		this.frameworkService = frameworkService;
 	}
 	
-	/*@RequestMapping(value = "/framework", method = RequestMethod.GET)
-	public String ShowList() {
-		return "QuanLyDuAn/framework/1";
-	}*/
-	
 	/*list framework*/
-	//@RequestMapping(value = "/framework/{page}")
 	@RequestMapping("/List_Framework/{page}")
 	public String list(@PathVariable int page, Model model) throws SQLException {
 		int record = frameworkService.countFramework();
