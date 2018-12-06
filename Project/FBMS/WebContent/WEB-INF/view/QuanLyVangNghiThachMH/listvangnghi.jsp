@@ -141,7 +141,7 @@
 												<td>${sv.maTrangThai}</td>
 												<td><a href="/FBMS/QuanLyVangNghi512/editdxnp/${sv.idDon}">
 														<button>sửa</button>
-												</a> <a href=""><button>xóa</button></a></td>
+												</a> <a href="/FBMS/QuanLyVangNghi512/delete/${sv.idDon}"><button>xóa</button></a></td>
 										</c:forEach>
 										<tbody>
 											<div class="modal fade" id="confirm-delete" tabindex="-1"

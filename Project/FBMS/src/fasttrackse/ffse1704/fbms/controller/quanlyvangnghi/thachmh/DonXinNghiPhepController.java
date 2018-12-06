@@ -62,5 +62,16 @@ public class DonXinNghiPhepController {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Thành công..");
 		return "redirect:/QuanLyVangNghi512/list";
 	}
+	
+	@RequestMapping(value = "/delete/{idDon}", method = RequestMethod.GET)
+	public String delete(@PathVariable("idDon") int idDon, final RedirectAttributes redirectAttributes) {
+		try {
+			donXinNghiPhepService.delete(idDon);
+			redirectAttributes.addFlashAttribute("messageSuccess", "Xóa thành công..");
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại");
+		}
+		return "redirect:/QuanLyVangNghi512/list";
+	}
 
 }

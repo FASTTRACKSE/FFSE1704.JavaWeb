@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.thachmh.DonXinNghiPhep;
-import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 
 @Repository
 public class DonXinNghiPhepDaoImpl implements DonXinNghiPhepDao {
@@ -54,5 +53,14 @@ public class DonXinNghiPhepDaoImpl implements DonXinNghiPhepDao {
 		DonXinNghiPhep pb = session.get(DonXinNghiPhep.class, idDon);
 		session.close();
 		return pb;		
+	}
+
+	@Override
+	public void delete(int idDon) {
+		Session session = this.sessionFactory.openSession();
+		Transaction pb = session.beginTransaction();
+		session.delete(session.get(DonXinNghiPhep.class, idDon));
+		pb.commit();
+		session.close();		
 	}
 }

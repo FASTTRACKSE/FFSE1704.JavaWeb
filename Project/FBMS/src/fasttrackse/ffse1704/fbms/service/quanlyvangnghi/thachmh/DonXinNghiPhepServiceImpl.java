@@ -40,4 +40,10 @@ public class DonXinNghiPhepServiceImpl implements DonXinNghiPhepService {
 		return donXinNghiPhepDao.findByidDon(idDon);
 	}
 
+	@Override
+	@Transactional
+	public void delete(int idDon) {
+		donXinNghiPhepDao.delete(idDon);		
+	}
+
 }

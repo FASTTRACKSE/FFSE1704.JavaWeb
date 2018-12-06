@@ -9,5 +9,6 @@ public interface DonXinNghiPhepDao {
 	public void addNew(DonXinNghiPhep dx);
 	public void update(DonXinNghiPhep dx);
 	public DonXinNghiPhep findByidDon(int idDon);
+	public void delete(int idDon);
 
 }
