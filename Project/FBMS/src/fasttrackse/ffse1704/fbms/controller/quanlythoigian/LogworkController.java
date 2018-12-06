@@ -66,6 +66,8 @@ public class LogworkController {
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
 				trangThaiLogwork.setMaTrangThai(1);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
+			} else if (action.equals("exit")) {
+				return "redirect:/QuanLyThoiGian/Logwork/list";
 			}
 			logworkService.addNew(logwork);
 			model.addAttribute("button", msg);
@@ -91,15 +93,10 @@ public class LogworkController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public String doEdit(Model model, @ModelAttribute("editlogwork") Logwork logwork,
-			final RedirectAttributes redirectAttributes,@RequestParam String action) {
+			final RedirectAttributes redirectAttributes, @RequestParam String action) {
 		try {
 			String msg = "";
-			if (action.equals("luuNhap")) {
-				msg = "Đã lưu nháp";
-				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
-				trangThaiLogwork.setMaTrangThai(4);
-				logwork.setTrangThaiLogwork(trangThaiLogwork);
-			} else if (action.equals("submit")) {
+			if (action.equals("submit")) {
 				msg = "Đã gửi phê duyệt";
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
 				trangThaiLogwork.setMaTrangThai(1);
@@ -109,11 +106,25 @@ public class LogworkController {
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
 				trangThaiLogwork.setMaTrangThai(1);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
+			} else if (action.equals("exit")) {
+				return "redirect:/QuanLyThoiGian/Logwork/list";
 			}
 			logworkService.update(logwork);
 			redirectAttributes.addFlashAttribute("button", msg);
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
+		}
+		return "redirect:/QuanLyThoiGian/Logwork/list";
+	}
+
+	// delete
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
+		try {
+			logworkService.delete(id);
+			redirectAttributes.addFlashAttribute("button", "Xóa thành công..");
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại");
 		}
 		return "redirect:/QuanLyThoiGian/Logwork/list";
 	}

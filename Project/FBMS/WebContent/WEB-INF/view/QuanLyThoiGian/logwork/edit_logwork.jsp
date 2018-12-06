@@ -96,15 +96,13 @@
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" name="action" value="edit"
-									class="btn btn-success">Sửa</button>
-							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 1 }">
-								<button type="submit" name="action" value="luuNhap"
-									class="btn btn-success">Lưu nháp</button>
-							</c:if>
+								class="btn btn-success">Sửa</button>
 							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 4 }">
 								<button type="submit" name="action" value="submit"
-									class="btn btn-success">Submit</button>
+									class="btn btn-info">Submit</button>
 							</c:if>
+							<button type="submit" name="action" value="exit"
+								class="btn btn-warning">Exit</button>
 						</div>
 					</form:form>
 				</div>

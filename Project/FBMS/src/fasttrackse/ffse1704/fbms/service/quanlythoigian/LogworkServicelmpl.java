@@ -37,7 +37,7 @@ public class LogworkServicelmpl implements LogworkService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		logworkDao.delete(id);
 	}
 

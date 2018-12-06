@@ -26,7 +26,7 @@ public class LogworkDaolmpl implements LogworkDao {
 	@Override
 	public List<Logwork> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Logwork> list = session.createQuery("from Logwork").list();
+		List<Logwork> list = session.createQuery("from Logwork ORDER BY id DESC ").list();
 		return list;
 	}
 
@@ -52,7 +52,7 @@ public class LogworkDaolmpl implements LogworkDao {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		Session session = this.sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.delete(session.get(Logwork.class, id));

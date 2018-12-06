@@ -99,7 +99,8 @@
 
 						<div class="col-sm-12 text-center">
 							<button type="submit" name = "action" value="luuNhap" class="btn btn-success">Lưu nháp</button>
-							<button type="submit" name = "action" value="submit" class="btn btn-success">Submit</button>
+							<button type="submit" name = "action" value="submit" class="btn btn-info">Submit</button>
+							<button type="submit" name = "action" value="exit" class="btn btn-warning">Exit</button>
 						</div>
 					</form:form>
 				</div>

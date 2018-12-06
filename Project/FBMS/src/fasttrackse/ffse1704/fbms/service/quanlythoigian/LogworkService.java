@@ -22,7 +22,7 @@ public interface LogworkService {
 
 	public void update(Logwork logwork);
 
-	public void delete(String id);
+	public void delete(int id);
 
 	public Logwork findByIdLogwork(int id);
 

@@ -145,11 +145,16 @@
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 													<td>${lg.nhanXetPM}</td>
 													<td>${lg.nhanXetTPP}</td>
-													<td><a href="edit/${lg.id }"><button
-																class="btn btn-success">sửa</button></a> <a
-														href="delete/${lg.id }"><button class="btn btn-danger"
-																onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
-																xóa</button></a></td>
+													<td><c:if
+															test="${lg.trangThaiLogwork.maTrangThai != 2 }">
+															<a href="edit/${lg.id }"><button
+																	class="btn btn-success">sửa</button></a>
+														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
+															<a href="delete/${lg.id }"><button
+																	class="btn btn-danger"
+																	onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
+																	xóa</button></a>
+														</c:if></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -202,14 +207,12 @@
 
 		$('#datatable').dataTable().fnDestroy();
 
-		$("#datatable")
-				.dataTable(
-						{
-							responsive : true,
-							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-							"bServerSide" : true,
-							"sAjaxSource" : "/FBMS/QuanTriHeThong/chuc_nang/view/getListChucNang",
-						});
+		$("#datatable").dataTable({
+			responsive : true,
+			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
+			"bServerSide" : true,
+			"sAjaxSource" : "/FBMS/QuanLyThoiGian/Logwork/list",
+		});
 	};
 
 	window.setTimeout(function() {
