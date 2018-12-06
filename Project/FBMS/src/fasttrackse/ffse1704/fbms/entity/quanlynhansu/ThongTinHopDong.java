@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "thong_tin_hop_dong")
@@ -23,8 +26,10 @@ public class ThongTinHopDong implements Serializable {
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
-	@Column(name = "ma_hop_dong", nullable = false, length = 50)
-	private String maHopDong;
+	@ManyToOne
+	@JoinColumn(name = "ma_hop_dong",referencedColumnName = "ma_hop_dong", nullable = false)
+	@NotNull
+	private HopDong loaihopDong;
 
 	@Column(name = "ngay_bat_dau", nullable = false)
 	private Date ngayBatDau;
@@ -34,17 +39,6 @@ public class ThongTinHopDong implements Serializable {
 
 	@Column(name = "luong_thang_13", nullable = false, length = 20)
 	private int luongThang13;
-
-	public ThongTinHopDong(int id, NhanSu nhanSu, String maHopDong, Date ngayBatDau, Date ngayKetThuc,
-			int luongThang13) {
-		super();
-		this.id = id;
-		this.nhanSu = nhanSu;
-		this.maHopDong = maHopDong;
-		this.ngayBatDau = ngayBatDau;
-		this.ngayKetThuc = ngayKetThuc;
-		this.luongThang13 = luongThang13;
-	}
 
 	public ThongTinHopDong() {
 	}
@@ -65,12 +59,12 @@ public class ThongTinHopDong implements Serializable {
 		this.nhanSu = nhanSu;
 	}
 
-	public String getMaHopDong() {
-		return maHopDong;
+	public HopDong getLoaihopDong() {
+		return loaihopDong;
 	}
 
-	public void setMaHopDong(String maHopDong) {
-		this.maHopDong = maHopDong;
+	public void setLoaihopDong(HopDong loaihopDong) {
+		this.loaihopDong = loaihopDong;
 	}
 
 	public Date getNgayBatDau() {

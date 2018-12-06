@@ -61,4 +61,11 @@ public class XemThongTinNVController {
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtin";
 	}
 	
+	@RequestMapping(value = "/excelfile/{maNhanVien}", method = RequestMethod.GET)
+	public ModelAndView exportExcelFile(@PathVariable("maNhanVien") String maNhanVien) {
+		ModelAndView model = new ModelAndView("ExcelBuilder");
+		model.addObject("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		return model;
+	}
+	
 }

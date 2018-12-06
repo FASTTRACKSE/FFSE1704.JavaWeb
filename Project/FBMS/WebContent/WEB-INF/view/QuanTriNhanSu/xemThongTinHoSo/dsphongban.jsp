@@ -35,7 +35,7 @@
 					<tr>
 						<td>${ns.maPhongBan}</td>
 						<td>${ns.tenPhongBan}</td>
-						<td><a href="listThongTin/${ns.maPhongBan }"><button
+						<td><a href="/FBMS/listThongTin/${ns.maPhongBan }"><button
 									class="btn btn-success">Xem</button></a></td>
 					</tr>
 				</c:forEach>
