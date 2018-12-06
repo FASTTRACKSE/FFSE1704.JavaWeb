@@ -104,15 +104,20 @@ public class QuanLyVangNghiControllerMinhtq {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
 		}
+
 		String msg = "";
 		if (action.equals("nhap")) {
-			msg = "Lưu nháp";
+			msg = "trạng thái lưu nháp";
+			donnghiphepnhap.setTrangThai(1);
+
 		} else if (action.equals("them")) {
-			msg = "Gửi phê duyệt";
+			msg = "đang chờ phê duyệt ";
+			donnghiphepnhap.setTrangThai(2);
 		}
-		model.addAttribute("button", msg);
+
 		donNghiPhepService.addDonNghiPhepNhap(donnghiphepnhap);
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
+		redirectAttributes.addFlashAttribute("button", msg);
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
 	}
 
@@ -193,28 +198,27 @@ public class QuanLyVangNghiControllerMinhtq {
 
 		return "QuanLyVangNghi/minhtq/trangthai/list";
 	}
-	
-	//thêm một trạng thái
-		@RequestMapping(value = "/addTrangThaiMoi", method = RequestMethod.GET)
-		public String showADDTrangThai(Model model) {
-			model.addAttribute("taomoitrangthai", new TrangThaiVangNghiMinhtq());
+
+	// thêm một trạng thái
+	@RequestMapping(value = "/addTrangThaiMoi", method = RequestMethod.GET)
+	public String showADDTrangThai(Model model) {
+		model.addAttribute("taomoitrangthai", new TrangThaiVangNghiMinhtq());
+		return "/QuanLyVangNghi/minhtq/trangthai/add_form";
+	}
+
+	@RequestMapping(value = "/addTrangThai", method = RequestMethod.POST)
+	public String createTrangThai(Model model,
+			@ModelAttribute("taomoitrangthai") @Valid TrangThaiVangNghiMinhtq trangthai, BindingResult bindingResult,
+			final RedirectAttributes redirectAttributes) throws IllegalStateException, IOException {
+
+		if (bindingResult.hasErrors()) {
 			return "/QuanLyVangNghi/minhtq/trangthai/add_form";
 		}
 
-		@RequestMapping(value = "/addTrangThai", method = RequestMethod.POST)
-		public String createTrangThai(Model model, @ModelAttribute("taomoitrangthai") @Valid TrangThaiVangNghiMinhtq trangthai,
-				BindingResult bindingResult, final RedirectAttributes redirectAttributes)
-				throws IllegalStateException, IOException {
-
-			if (bindingResult.hasErrors()) {
-				return "/QuanLyVangNghi/minhtq/trangthai/add_form";
-			}
-			
-			
-			donNghiPhepService.addTrangThai(trangthai);
-			redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
-			return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
-		}
+		donNghiPhepService.addTrangThai(trangthai);
+		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
+		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
+	}
 	/////////////////// hết CRUD List trạng thái///////////////
 
 	/////////////////// CRUD List loại ngày nghỉ///////////////
@@ -227,8 +231,8 @@ public class QuanLyVangNghiControllerMinhtq {
 
 		return "QuanLyVangNghi/minhtq/loaingaynghi/list";
 	}
-	
-	//thêm một loại ngày nghỉ
+
+	// thêm một loại ngày nghỉ
 	@RequestMapping(value = "/addLoaiNgayNghiMoi", method = RequestMethod.GET)
 	public String showADDLoaiNgayNghi(Model model) {
 		model.addAttribute("taomoilydo", new LoaiNgayNghiMinhtq());
@@ -243,9 +247,9 @@ public class QuanLyVangNghiControllerMinhtq {
 		if (bindingResult.hasErrors()) {
 			return "/QuanLyVangNghi/minhtq/loaingaynghi/add_form";
 		}
-		
-		
-		donNghiPhepService.addLoaiNgayNghi(loaingaynghi);;
+
+		donNghiPhepService.addLoaiNgayNghi(loaingaynghi);
+		;
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}

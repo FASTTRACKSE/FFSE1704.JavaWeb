@@ -1,56 +1,41 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq;
 
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "minhtq_trang_thai")
-public class TrangThaiVangNghiMinhtq {
+public class TrangThaiVangNghiMinhtq implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
-
 	@Column(name = "ma_trang_thai")
-	@NotNull
-	private String maTrangThai;
+	int maTrangThai;
 
 	@Column(name = "ten_trang_thai")
-	@NotEmpty
-	private String tenTrangThai;
+	String tenTrangThai;
 
-	public TrangThaiVangNghiMinhtq() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@OneToMany(mappedBy = "trangThai")
+	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs;
 
-	public TrangThaiVangNghiMinhtq(int id, String maTrangThai, String tenTrangThai) {
-		super();
-		this.id = id;
-		this.maTrangThai = maTrangThai;
-		this.tenTrangThai = tenTrangThai;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMaTrangThai() {
+	public int getMaTrangThai() {
 		return maTrangThai;
 	}
 
-	public void setMaTrangThai(String maTrangThai) {
+	public void setMaTrangThai(int maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
 
@@ -60,6 +45,30 @@ public class TrangThaiVangNghiMinhtq {
 
 	public void setTenTrangThai(String tenTrangThai) {
 		this.tenTrangThai = tenTrangThai;
+	}
+
+	public Collection<DonNghiPhepMinhtq> getDonNghiPhepMinhtqs() {
+		return donNghiPhepMinhtqs;
+	}
+
+	public void setDonNghiPhepMinhtqs(Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
+		this.donNghiPhepMinhtqs = donNghiPhepMinhtqs;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public TrangThaiVangNghiMinhtq(int maTrangThai, String tenTrangThai,
+			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
+		super();
+		this.maTrangThai = maTrangThai;
+		this.tenTrangThai = tenTrangThai;
+		this.donNghiPhepMinhtqs = donNghiPhepMinhtqs;
+	}
+
+	public TrangThaiVangNghiMinhtq() {
+		super();
 	}
 
 }

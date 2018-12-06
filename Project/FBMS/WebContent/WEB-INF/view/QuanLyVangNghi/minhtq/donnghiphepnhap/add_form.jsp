@@ -15,7 +15,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh
+								href='<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepNhap" />'>Danh
 									sách </a></li>
 							<li class="breadcrumb-item active">Thêm mới chức danh</li>
 						</ol>
@@ -201,7 +201,7 @@
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
 								name="location" items="${listLoaiNgayNghi}"
-								itemValue="maLoaiNgayNghi" itemLabel="tenLoaiNgayNghi">
+								itemValue="maNgayNghi" itemLabel="tenNgayNghi">
 
 							</form:select>
 
@@ -211,10 +211,10 @@
 							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1" value="nhap"
-									name="action">nháp</button>
+									name="action">lưu nháp</button>
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1" value="them"
-									name="action">thêm</button>
+									name="action">gửi thông tin</button>
 
 							</div>
 						</div>

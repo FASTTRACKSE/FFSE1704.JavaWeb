@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
@@ -62,7 +63,8 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyVangNghi/minhtq/addLoaiNgayNghiMoi"/>"
+					<a
+						href="<c:url value = "/QuanLyVangNghi/minhtq/addLoaiNgayNghiMoi"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -121,17 +123,15 @@
 										</thead>
 										<c:forEach var="dnpn" items="${listloaingaynghi}">
 											<tr>
-												<td>${dnpn.maLoaiNgayNghi}</td>
-												<td>${dnpn.tenLoaiNgayNghi}</td>
-												
+												<td>${dnpn.maNgayNghi}</td>
+												<td>${dnpn.tenNgayNghi}</td>
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.maLoaiNgayNghi}">
-														<button>sửa</button>
-												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.maLoaiNgayNghi}"><button>
-															xóa</button></a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/addLoaiNgayNghiMoi/${dnpn.maNgayNghi}"
+													class="btn btn-primary">edit</a> <a
+													href="/QLSV_CRUD_Spring/delete/${dnpn.maNgayNghi}"
+													class="btn btn-danger">delete</a></td>
 										</c:forEach>
-										
+
 									</table>
 								</div>
 							</div>

@@ -31,12 +31,12 @@
 					<form:form method="POST" modelAttribute="taomoilydo" action="addLoaiNgayNghi">
 						<div class="form-group col-sm-6">
 							<label>mã loại ngày nghỉ</label>
-							<form:input class="form-control" path="maLoaiNgayNghi"
+							<form:input class="form-control" path="maNgayNghi"
 								placeholder="nhập mã loại ngày nghỉ" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>tên loại ngày nghỉ </label>
-							<form:input class="form-control" path="tenLoaiNgayNghi"
+							<form:input class="form-control" path="tenNgayNghi"
 								placeholder="nhập tên loại ngày nghỉ" />
 
 						</div>

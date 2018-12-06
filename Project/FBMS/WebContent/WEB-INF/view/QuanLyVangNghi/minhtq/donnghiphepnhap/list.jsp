@@ -82,6 +82,14 @@
 					${messageSuccess}
 				</div>
 			</c:if>
+			<c:if test="${button ne null}">
+				<div class="alert alert-success alert-dismissable" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					${button}
+				</div>
+			</c:if>
 			<c:if test="${messageError ne null}">
 				<div class="alert alert-danger alert-dismissable" role="alert">
 					<button type="button" class="close" data-dismiss="alert">
@@ -139,7 +147,7 @@
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
-												<td>${dnpn.trangThai}</td>
+												<td>${dnpn.trangThai.tenTrangThai}</td>
 												<td><a
 													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
 														<button>sửa</button>

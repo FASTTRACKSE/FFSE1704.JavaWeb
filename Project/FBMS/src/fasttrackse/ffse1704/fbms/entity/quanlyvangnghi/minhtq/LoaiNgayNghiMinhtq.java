@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "minhtq_loai_ngay_nghi")
@@ -19,30 +17,20 @@ public class LoaiNgayNghiMinhtq {
 	private int id;
 
 	@Column(name = "ma_loai_ngay_nghi")
-	@NotNull
-	private int maLoaiNgayNghi;
+	private int maNgayNghi;
 
 	@Column(name = "ten_loai_ngay_nghi")
-	@NotEmpty
-	private String tenLoaiNgayNghi;
+	private String tenNgayNghi;
 
 	public LoaiNgayNghiMinhtq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoaiNgayNghiMinhtq(int id, int maLoaiNgayNghi, String tenLoaiNgayNghi) {
+	public LoaiNgayNghiMinhtq(int id, int maNgayNghi, String tenNgayNghi) {
 		super();
-		this.id = id;
-		this.maLoaiNgayNghi = maLoaiNgayNghi;
-		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
-	}
-
-	public LoaiNgayNghiMinhtq(int maLoaiNgayNghi, String tenLoaiNgayNghi) {
-		super();
-
-		this.maLoaiNgayNghi = maLoaiNgayNghi;
-		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+		this.maNgayNghi = maNgayNghi;
+		this.tenNgayNghi = tenNgayNghi;
 	}
 
 	public int getId() {
@@ -53,20 +41,20 @@ public class LoaiNgayNghiMinhtq {
 		this.id = id;
 	}
 
-	public int getMaLoaiNgayNghi() {
-		return maLoaiNgayNghi;
+	public int getMaNgayNghi() {
+		return maNgayNghi;
 	}
 
-	public void setMaLoaiNgayNghi(int maLoaiNgayNghi) {
-		this.maLoaiNgayNghi = maLoaiNgayNghi;
+	public void setMaNgayNghi(int maNgayNghi) {
+		this.maNgayNghi = maNgayNghi;
 	}
 
-	public String getTenLoaiNgayNghi() {
-		return tenLoaiNgayNghi;
+	public String getTenNgayNghi() {
+		return tenNgayNghi;
 	}
 
-	public void setTenLoaiNgayNghi(String tenLoaiNgayNghi) {
-		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+	public void setTenNgayNghi(String tenNgayNghi) {
+		this.tenNgayNghi = tenNgayNghi;
 	}
 
 }
