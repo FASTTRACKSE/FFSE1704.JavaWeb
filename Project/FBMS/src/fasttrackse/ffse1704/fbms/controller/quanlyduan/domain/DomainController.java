@@ -54,7 +54,7 @@ public class DomainController {
 		return new ModelAndView("QuanLyDuAn/domain/add", "command", new Domain());
 	}
 
-	@RequestMapping(value = "/Save", method = RequestMethod.POST)
+	@RequestMapping(value = "/Save_Domain", method = RequestMethod.POST)
 	public String addDomain(@ModelAttribute("command") @Valid Domain domain, BindingResult result,
 			HttpSession session) {
 		if (result.hasErrors()) {
@@ -68,7 +68,7 @@ public class DomainController {
 			}
 		}
 
-		return "redirect:/QuanLyDuAn/List_Domain/1";// will redirect to viewemp request mapping
+		return "redirect:/Quan_Ly_Du_An/List_Domain/1";// will redirect to viewemp request mapping
 	}
 	
 	@RequestMapping(value = "/Edit_Domain/{idDomain}")
@@ -76,5 +76,22 @@ public class DomainController {
 		Domain domain = domainService.getDomainByIdDomain(idDomain);
 		model.addAttribute("command", domain);
 		return "QuanLyDuAn/domain/edit";
+	}
+	
+	@RequestMapping(value = "/Edit_Save_Domain", method = RequestMethod.POST)
+	public String editSave(@ModelAttribute("command") @Valid Domain domain, BindingResult result,
+			HttpSession session) {
+		if (result.hasErrors()) {
+			return "QuanLyDuAn/domain/edit";
+		} else {
+			if (domain.getGhiChu().isEmpty()) {
+				domain.setGhiChu("");
+				domainService.update(domain);;
+			} else {
+				domainService.update(domain);
+			}
+		}
+
+		return "redirect:/Quan_Ly_Du_An/List_Domain/1";// will redirect to viewemp request mapping
 	}
 }

@@ -29,7 +29,7 @@
 			</div>
 			<!-- End Path -->
 		</div>
-		<form:form method="post" action="/Quan_Ly_Du_An/EditSave">
+		<form:form method="post" action="/FBMS/Quan_Ly_Du_An/Edit_Save_Domain">
 			<div class="form-body">
 
 				<div class="form-group">

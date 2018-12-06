@@ -27,7 +27,7 @@
 			</div>
 			<!-- End Path -->
 		</div>
-		<form:form method="post" action="Save">
+		<form:form method="post" action="Save_Domain">
 			<div class="form-body">
 
 				<div class="form-group">
