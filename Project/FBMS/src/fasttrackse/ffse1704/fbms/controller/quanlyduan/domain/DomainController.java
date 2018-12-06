@@ -56,16 +56,24 @@ public class DomainController {
 
 	@RequestMapping(value = "/Save_Domain", method = RequestMethod.POST)
 	public String addDomain(@ModelAttribute("command") @Valid Domain domain, BindingResult result,
-			HttpSession session) {
+			HttpSession session,Model model) {
 		if (result.hasErrors()) {
 			return "QuanLyDuAn/domain/add";
 		} else {
-			if (domain.getGhiChu().isEmpty()) {
-				domain.setGhiChu("");
-				domainService.addNew(domain);
-			} else {
-				domainService.addNew(domain);
+			int searchDomain = domainService.getRecordsByIdDomain(domain.getMaDomain());
+			if(searchDomain==0) {
+				if (domain.getGhiChu().isEmpty()) {
+					domain.setGhiChu("");
+					domainService.addNew(domain);
+				} else {
+					domainService.addNew(domain);
+				}
+			}else {
+				String mess = "Mã Domain đã tồn tại";
+				model.addAttribute("mess", mess);
+				return "QuanLyDuAn/domain/add";
 			}
+			
 		}
 
 		return "redirect:/Quan_Ly_Du_An/List_Domain/1";// will redirect to viewemp request mapping
@@ -93,5 +101,19 @@ public class DomainController {
 		}
 
 		return "redirect:/Quan_Ly_Du_An/List_Domain/1";// will redirect to viewemp request mapping
+	}
+	
+	
+	@RequestMapping(value = "/Delete_Domain/{idDomain}")
+	public String viewDeleteDomain(@PathVariable String idDomain, Model model) {
+		Domain domain = domainService.getDomainByIdDomain(idDomain);
+		model.addAttribute("command", domain);
+		return "QuanLyDuAn/domain/delete";
+	}
+	
+	@RequestMapping(value = "/Submit_Delete_Domain", method = RequestMethod.POST)
+	public String deleteSinhVien(@ModelAttribute("command") Domain domain) {
+		domainService.delete(domain.getMaDomain());;
+		return "redirect:/Quan_Ly_Du_An/List_Domain/1";
 	}
 }
