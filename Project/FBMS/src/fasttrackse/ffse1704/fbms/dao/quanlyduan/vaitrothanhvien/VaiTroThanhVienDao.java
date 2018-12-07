@@ -10,9 +10,9 @@ public interface VaiTroThanhVienDao {
 
 	public void update(VaiTroThanhVien vaiTroThanhVien);
 
-	public void delete(String VaiTroThanhVienDao);
+	public void delete(String VaiTroThanhVien);
 
-	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVienDao);
+	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVien);
 
 	public List<VaiTroThanhVien> listVaiTroThanhVien(int iDisPlayStart, int iDinPlayLength);
 

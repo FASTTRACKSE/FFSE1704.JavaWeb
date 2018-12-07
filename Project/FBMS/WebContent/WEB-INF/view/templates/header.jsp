@@ -262,28 +262,6 @@
 				<!-- --------------------------End Quản trị hệ thống-------------------------- -->
 
 
-				<!-- ************************* Quản Lý Nhân Sự********************************** -->
-
-				<ul id="main-menu-navigation" data-menu="menu-navigation"
-					class="navigation navigation-main">
-					<li class=" navigation-header"><span>Quản Lý Nhân Sự</span><i
-						data-toggle="tooltip" data-placement="right"
-						data-original-title="Joker" class=" ft-minus"></i></li>
-					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
-							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
-				</ul>
-
-
-
-
-
-
-
-
-
-
 
 
 				<!-- ************************* Quản Lý Dự Án********************************** -->
@@ -301,8 +279,8 @@
 									Hàng</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-puzzle"></i>Vai
-									Trò Thành Viên</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_VaiTroThanhVien/1"/>"><i
+									class="icon-puzzle"></i>Vai Trò Thành Viên</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="<c:url value="/Quan_Ly_Du_An/List_Domain/1"/>"><i
@@ -319,8 +297,8 @@
 								href="/FBMS/quanlytailieu/index"><i class="icon-link"></i>Vendor</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-book-open"></i>Programming
-									Language</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_ProgrammingLanguage/1"/>"><i
+									class="icon-book-open"></i>Programming Language</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="icon-magic-wand"></i>Technical</a></li>
@@ -344,6 +322,40 @@
 						</ul></li>
 				</ul>
 				<!-- **********************End Quản Lý Dự Án************************************* -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- ************************* Quản Lý Nhân Sự********************************** -->
+
+				<ul id="main-menu-navigation" data-menu="menu-navigation"
+					class="navigation navigation-main">
+					<li class=" navigation-header"><span>Quản Lý Nhân Sự</span><i
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Joker" class=" ft-minus"></i></li>
+					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
+							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
+				</ul>
+
+
+
+
+
+
+
 
 
 

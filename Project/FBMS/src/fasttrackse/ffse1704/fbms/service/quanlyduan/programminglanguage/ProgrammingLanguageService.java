@@ -4,7 +4,7 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage.ProgrammingLanguage;
 
-public interface ProgrammingLanguageServive {
+public interface ProgrammingLanguageService {
 	
 	public void addNew(ProgrammingLanguage programmingLanguage);
 

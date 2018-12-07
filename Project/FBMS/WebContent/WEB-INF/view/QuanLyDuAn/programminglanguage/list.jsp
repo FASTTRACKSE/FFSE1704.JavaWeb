@@ -4,22 +4,22 @@
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <div class="app-content content container-fluid">
 	<div class="container">
-
-		<div class="content-wrapper">
+	
+	<div class="content-wrapper">
 			<!-- Path -->
 			<div class="content-header row">
 				<div class="content-header-left col-md-6 col-xs-12 mb-2">
-					<h3 class="content-header-title mb-0">Danh sách Domain</h3>
+					<h3 class="content-header-title mb-0">Danh sách Programming Language</h3>
 					<div class="row breadcrumbs-top">
 						<div class="breadcrumb-wrapper col-xs-12">
-							<ol class="breadcrumb">
+							<ol class="breadcrumb" >
 								<li class="breadcrumb-item"><a
 									href='<c:url value="/home" />'>Home</a></li>
-								<li class="breadcrumb-item active">Quản lý dự án</li>
-								<li class="breadcrumb-item active">Quản lý danh mục</li>
-								<li class="breadcrumb-item"><a
-									href='<c:url value="/Quan_Ly_Du_An/List_Domain/1" />'>Domain</a></li>
-								<li class="breadcrumb-item active">Danh sách Domain</li>
+									<li class="breadcrumb-item active">Quản lý dự án</li>
+									<li class="breadcrumb-item active">Quản lý danh mục</li>
+									<li class="breadcrumb-item"><a
+									href='<c:url value="/Quan_Ly_Du_An/List_ProgrammingLanguage/1" />'>Programming Language</a></li>
+								<li class="breadcrumb-item active">Danh sách Programming Language</li>
 							</ol>
 						</div>
 					</div>
@@ -27,36 +27,37 @@
 			</div>
 			<!-- End Path -->
 		</div>
+	
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/1" class="page-link">First</a></li>
+						href="/FBMS/Quan_Ly_Du_An/List_ProgrammingLanguage/1" class="page-link">First</a></li>
 				</c:if>
 
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage-1}"
+						href="/FBMS/Quan_Ly_Du_An/List_ProgrammingLanguage/${indexPage-1}"
 						class="page-link">${indexPage-1}</a></li>
 				</c:if>
 
 
 				<li class="page-item"><a
-					href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage}"
+					href="/FBMS/Quan_Ly_Du_An/List_ProgrammingLanguage/${indexPage}"
 					class="page-link">${indexPage}</a></li>
 
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage+1}"
+						href="/FBMS/Quan_Ly_Du_An/List_ProgrammingLanguage/${indexPage+1}"
 						class="page-link">${indexPage+1}</a></li>
 				</c:if>
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${allPage}"
+						href="/FBMS/Quan_Ly_Du_An/List_ProgrammingLanguage/${allPage}"
 						class="page-link">Last</a></li>
 				</c:if>
 
@@ -65,7 +66,7 @@
 		<div class="content-header-right ">
 			<div role="group" aria-label="Button group with nested dropdown"
 				class="btn-group float-md-right" id="add-new">
-				<a href="<c:url value = "/Quan_Ly_Du_An/Add_Domain"/>"
+				<a href="<c:url value = "/Quan_Ly_Du_An/Add_ProgrammingLanguage"/>"
 					class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 					mới</a>
 			</div>
@@ -73,19 +74,19 @@
 
 		<table class="table table-striped">
 			<tr>
-				<th>Tên Domain</th>
-				<th>Mã Domain</th>
+				<th>Tên Programming Language</th>
+				<th>Mã Programming Language</th>
 				<th>Ghi chú</th>
 				<th>Action</th>
 			</tr>
 			<c:forEach var="emp" items="${list}">
 				<tr>
-					<td>${emp.tenDomain}</td>
-					<td>${emp.maDomain}</td>
+					<td>${emp.tenProgrammingLanguage}</td>
+					<td>${emp.maProgrammingLanguage}</td>
 					<td>${emp.ghiChu}</td>
-					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_Domain/${emp.maDomain}"
+					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_ProgrammingLanguage/${emp.maProgrammingLanguage}"
 						class="btn btn-primary">edit</a> <a
-						href="/FBMS/Quan_Ly_Du_An/Delete_Domain/${emp.maDomain}"
+						href="/FBMS/Quan_Ly_Du_An/Delete_ProgrammingLanguage/${emp.maProgrammingLanguage}"
 						class="btn btn-danger">delete</a></td>
 				</tr>
 			</c:forEach>

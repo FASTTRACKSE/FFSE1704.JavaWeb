@@ -15,7 +15,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyduan.programminglanguage.Programmi
  *
  */
 @Service
-public class ProgrammingLanguageServiveIPM implements ProgrammingLanguageServive {
+public class ProgrammingLanguageServiceIPM implements ProgrammingLanguageService {
 	@Autowired
 	private ProgrammingLanguageDao programmingLanguageDao;
 

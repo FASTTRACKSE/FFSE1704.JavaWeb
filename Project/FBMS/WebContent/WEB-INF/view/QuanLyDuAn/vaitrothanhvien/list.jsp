@@ -9,7 +9,7 @@
 			<!-- Path -->
 			<div class="content-header row">
 				<div class="content-header-left col-md-6 col-xs-12 mb-2">
-					<h3 class="content-header-title mb-0">Danh sách Domain</h3>
+					<h3 class="content-header-title mb-0">Danh sách vai trò thành viên trong dự án</h3>
 					<div class="row breadcrumbs-top">
 						<div class="breadcrumb-wrapper col-xs-12">
 							<ol class="breadcrumb">
@@ -18,8 +18,8 @@
 								<li class="breadcrumb-item active">Quản lý dự án</li>
 								<li class="breadcrumb-item active">Quản lý danh mục</li>
 								<li class="breadcrumb-item"><a
-									href='<c:url value="/Quan_Ly_Du_An/List_Domain/1" />'>Domain</a></li>
-								<li class="breadcrumb-item active">Danh sách Domain</li>
+									href='<c:url value="/Quan_Ly_Du_An/List_VaiTroThanhVien/1" />'>vai trò thành viên</a></li>
+								<li class="breadcrumb-item active">Danh sách vai trò thành viên trong dự án</li>
 							</ol>
 						</div>
 					</div>
@@ -32,31 +32,31 @@
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/1" class="page-link">First</a></li>
+						href="/FBMS/Quan_Ly_Du_An/List_VaiTroThanhVien/1" class="page-link">First</a></li>
 				</c:if>
 
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage-1}"
+						href="/FBMS/Quan_Ly_Du_An/List_VaiTroThanhVien/${indexPage-1}"
 						class="page-link">${indexPage-1}</a></li>
 				</c:if>
 
 
 				<li class="page-item"><a
-					href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage}"
+					href="/FBMS/Quan_Ly_Du_An/List_VaiTroThanhVien/${indexPage}"
 					class="page-link">${indexPage}</a></li>
 
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${indexPage+1}"
+						href="/FBMS/Quan_Ly_Du_An/List_VaiTroThanhVien/${indexPage+1}"
 						class="page-link">${indexPage+1}</a></li>
 				</c:if>
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/List_Domain/${allPage}"
+						href="/FBMS/Quan_Ly_Du_An/List_VaiTroThanhVien/${allPage}"
 						class="page-link">Last</a></li>
 				</c:if>
 
@@ -65,7 +65,7 @@
 		<div class="content-header-right ">
 			<div role="group" aria-label="Button group with nested dropdown"
 				class="btn-group float-md-right" id="add-new">
-				<a href="<c:url value = "/Quan_Ly_Du_An/Add_Domain"/>"
+				<a href="<c:url value = "/Quan_Ly_Du_An/Add_VaiTroThanhVien"/>"
 					class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 					mới</a>
 			</div>
@@ -73,19 +73,19 @@
 
 		<table class="table table-striped">
 			<tr>
-				<th>Tên Domain</th>
-				<th>Mã Domain</th>
+				<th>Tên Vai Trò</th>
+				<th>Mã Vai Trò</th>
 				<th>Ghi chú</th>
 				<th>Action</th>
 			</tr>
 			<c:forEach var="emp" items="${list}">
 				<tr>
-					<td>${emp.tenDomain}</td>
-					<td>${emp.maDomain}</td>
+					<td>${emp.tenVaiTro}</td>
+					<td>${emp.maVaiTro}</td>
 					<td>${emp.ghiChu}</td>
-					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_Domain/${emp.maDomain}"
+					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_VaiTroThanhVien/${emp.maVaiTro}"
 						class="btn btn-primary">edit</a> <a
-						href="/FBMS/Quan_Ly_Du_An/Delete_Domain/${emp.maDomain}"
+						href="/FBMS/Quan_Ly_Du_An/Delete_VaiTroThanhVien/${emp.maVaiTro}"
 						class="btn btn-danger">delete</a></td>
 				</tr>
 			</c:forEach>
