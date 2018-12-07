@@ -120,4 +120,13 @@ public class LogworkDaolmpl implements LogworkDao {
 		List<VaiTroDuAnLogwork> listVaiTroDuAn = session.createQuery("from VaiTroDuAnLogwork").getResultList();
 		return listVaiTroDuAn;
 	}
+
+	@Override
+	public List<Logwork> findAllForPaging(int start, int total) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork ORDER BY id DESC ");
+		query.setFirstResult(start);
+		query.setMaxResults(total);
+		return query.getResultList();
+	}
 }

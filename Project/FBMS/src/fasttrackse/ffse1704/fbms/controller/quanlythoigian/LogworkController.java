@@ -31,10 +31,28 @@ public class LogworkController {
 	@Autowired
 	private LogworkService logworkService;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String viewLogwork(Model model) {
-		List<Logwork> allLogwork = logworkService.findAll();
-		model.addAttribute("logwork", allLogwork);
+	/*
+	 * @RequestMapping(value = "/list", method = RequestMethod.GET) public String
+	 * viewLogwork(Model model) { List<Logwork> allLogwork =
+	 * logworkService.findAll(); model.addAttribute("logwork", allLogwork); return
+	 * "QuanLyThoiGian/logwork/list"; }
+	 */
+	@RequestMapping("/list")
+	public String viewLogworkPage(Model model,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
+		int totalRecords = logworkService.findAll().size();
+		System.out.println(totalRecords);
+		int total = 2;
+		int totalPages = 0;
+		if ((totalRecords / total) % 2 != 0) {
+			totalPages = totalRecords / total;
+		} else {
+			totalPages = totalRecords / total + 1;
+		}
+		int star = total * (currentPage - 1);
+		model.addAttribute("logwork", logworkService.findAllForPaging(star, total));
+		model.addAttribute("lastPage", totalPages);
+		model.addAttribute("currentPage", currentPage);
 		return "QuanLyThoiGian/logwork/list";
 	}
 
