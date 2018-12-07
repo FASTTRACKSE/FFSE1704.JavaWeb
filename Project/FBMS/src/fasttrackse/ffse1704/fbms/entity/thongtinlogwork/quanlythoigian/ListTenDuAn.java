@@ -10,37 +10,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "phong_ban")
-public class ThongTinPhongBan {
+@Table(name = "quan_ly_thong_tin_du_an")
+public class ListTenDuAn {
 	@Id
-	@Column(name = "ma_phong_ban")
+	@Column(name = "ma_du_an")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	String maPBan;
+	String maDuAn;
 
-	@Column(name = "ten_phong_ban", nullable = false)
-	@NotEmpty
-	String tenPhongBan;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "phongBan")
+	@Column(name = "ten_du_an")
+	String tenDuAn;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "duAn")
 	private Collection<ThongTinLogwork> thongTinLogworks;
 
-	public String getMaPBan() {
-		return maPBan;
+	public String getMaDuAn() {
+		return maDuAn;
 	}
 
-	public void setMaPBan(String maPBan) {
-		this.maPBan = maPBan;
+	public void setMaDuAn(String maDuAn) {
+		this.maDuAn = maDuAn;
 	}
 
-	public String getTenPhongBan() {
-		return tenPhongBan;
+	public String getTenDuAn() {
+		return tenDuAn;
 	}
 
-	public void setTenPhongBan(String tenPhongBan) {
-		this.tenPhongBan = tenPhongBan;
+	public void setTenDuAn(String tenDuAn) {
+		this.tenDuAn = tenDuAn;
 	}
 
 	public Collection<ThongTinLogwork> getThongTinLogworks() {

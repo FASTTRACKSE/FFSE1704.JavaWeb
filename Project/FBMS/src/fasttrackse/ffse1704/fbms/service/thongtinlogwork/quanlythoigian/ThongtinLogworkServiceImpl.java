@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import fasttrackse.ffse1704.fbms.dao.thongtinlogwork.quanlythoigian.ThongTinLogworkDAO;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinPhongBan;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.TrangThaiThongTinLogwork;
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ListTenDuAn;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinNhanVienPhuongNH;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
@@ -36,6 +37,10 @@ public class ThongtinLogworkServiceImpl implements ThongTinLogworkService {
 	@Override
 	public List<VaiTroDuAn> listVaiTro() {
 		return logworkDao.listVaiTro();
+	}
+	@Override
+	public List<ListTenDuAn> listTenDuAn() {
+		return logworkDao.listTenDuAn();
 	}
 
 	@Override

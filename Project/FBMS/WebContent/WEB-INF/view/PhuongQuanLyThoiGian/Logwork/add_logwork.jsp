@@ -53,13 +53,15 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân viên</label>
-							<form:input class="form-control" path="nhanVien.maNhanVien"
+							<form:input class="form-control" path="nhanVien.maNVien"
 								placeholder="Mã nhân viên" />
 						</div>
 						<div class="form-group col-sm-6">
-							<label>Chon dự án</label>
-							<form:input class="form-control" path="maDuAn"
-								placeholder="Chọn dự án" />
+							<label>Dự án</label>
+							<form:select path="duAn.maDuAn" class="form-control">
+								<form:options items="${dsDuAn}" itemValue="maDuAn"
+									itemLabel="tenDuAn" />
+							</form:select>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Vai trò dự án</label>

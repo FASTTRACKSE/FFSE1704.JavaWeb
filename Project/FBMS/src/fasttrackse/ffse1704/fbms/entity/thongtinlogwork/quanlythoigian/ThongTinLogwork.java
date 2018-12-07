@@ -21,9 +21,6 @@ public class ThongTinLogwork {
 		super();
 	}
 
-	@Column(name = "ma_du_an", nullable = true, length = 11)
-	private int maDuAn;
-
 	@Column(name = "ten_cong_viec", nullable = true, length = 11)
 	private String tenCongViec;
 
@@ -57,6 +54,18 @@ public class ThongTinLogwork {
 	@ManyToOne
 	@JoinColumn(name = "ma_nhan_vien", nullable = false, referencedColumnName = "ma_nhan_vien")
 	private ThongTinNhanVienPhuongNH nhanVien;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_du_an", nullable = false, referencedColumnName = "ma_du_an" , insertable=false, updatable=false)
+	private ListTenDuAn duAn;
+
+	public ListTenDuAn getDuAn() {
+		return duAn;
+	}
+
+	public void setDuAn(ListTenDuAn duAn) {
+		this.duAn = duAn;
+	}
 
 	public int getId() {
 		return id;
@@ -64,14 +73,6 @@ public class ThongTinLogwork {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getMaDuAn() {
-		return maDuAn;
-	}
-
-	public void setMaDuAn(int maDuAn) {
-		this.maDuAn = maDuAn;
 	}
 
 	public String getTenCongViec() {
@@ -154,12 +155,11 @@ public class ThongTinLogwork {
 		this.nhanVien = nhanVien;
 	}
 
-	public ThongTinLogwork(int id, int maDuAn, String tenCongViec, String moTa, String thoiGianBatDau,
-			String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP, ThongTinPhongBan phongBan, VaiTroDuAn vaiTro,
-			TrangThaiThongTinLogwork trangThai, ThongTinNhanVienPhuongNH nhanVien) {
+	public ThongTinLogwork(int id, String tenCongViec, String moTa, String thoiGianBatDau, String thoiGianKetThuc,
+			String nhanXetPM, String nhanXetTPP, ThongTinPhongBan phongBan, VaiTroDuAn vaiTro,
+			TrangThaiThongTinLogwork trangThai, ThongTinNhanVienPhuongNH nhanVien, ListTenDuAn duAn) {
 		super();
 		this.id = id;
-		this.maDuAn = maDuAn;
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
 		this.thoiGianBatDau = thoiGianBatDau;
@@ -170,9 +170,8 @@ public class ThongTinLogwork {
 		this.vaiTro = vaiTro;
 		this.trangThai = trangThai;
 		this.nhanVien = nhanVien;
+		this.duAn = duAn;
 	}
 
-
-
-
+	
 }
