@@ -9,31 +9,31 @@
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/framework/1" class="page-link">First</a></li>
+						href="/FBMS/Quan_Ly_Du_An/List_Framework/1" class="page-link">First</a></li>
 				</c:if>
 
 
 				<c:if test="${indexPage > 1}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/framework/${indexPage-1}"
+						href="/FBMS/Quan_Ly_Du_An/List_Framework/${indexPage-1}"
 						class="page-link">${indexPage-1}</a></li>
 				</c:if>
 
 
 				<li class="page-item"><a
-					href="/FBMS/Quan_Ly_Du_An/framework/${indexPage}"
+					href="/FBMS/Quan_Ly_Du_An/List_Framework/${indexPage}"
 					class="page-link">${indexPage}</a></li>
 
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/framework/${indexPage+1}"
+						href="/FBMS/Quan_Ly_Du_An/List_Framework/${indexPage+1}"
 						class="page-link">${indexPage+1}</a></li>
 				</c:if>
 
 				<c:if test="${indexPage < allPage}">
 					<li class="page-item"><a
-						href="/FBMS/Quan_Ly_Du_An/framework/${allPage}"
+						href="/FBMS/Quan_Ly_Du_An/List_Framework/${allPage}"
 						class="page-link">Last</a></li>
 				</c:if>
 
@@ -42,7 +42,7 @@
 		<div class="content-header-right ">
 			<div role="group" aria-label="Button group with nested dropdown"
 				class="btn-group float-md-right" id="add-new">
-				<a href="<c:url value = "/QuanTriHeThong/chuc_danh/add"/>"
+				<a href="<c:url value = "/Quan_Ly_Du_An/Add_Framework"/>"
 					class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 					mới</a>
 			</div>
@@ -60,9 +60,9 @@
 					<td>${emp.maFramework}</td>
 					<td>${emp.tenFramework}</td>
 					<td>${emp.ghiChu}</td>
-					<td><a href="/Quan_Ly_Du_An/framework/edit/${emp.maFramework}"
+					<td><a href="/FBMS/Quan_Ly_Du_An/Edit_Framework/${emp.maFramework}"
 						class="btn btn-primary">edit</a> <a
-						href="/Quan_Ly_Du_An/framework/delete/${emp.maFramework}"
+						href="/FBMS/Quan_Ly_Du_An/Delete_Framework/${emp.maFramework}"
 						class="btn btn-danger">delete</a></td>
 				</tr>
 			</c:forEach>

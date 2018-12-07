@@ -11,7 +11,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
 
 /**
@@ -93,11 +92,16 @@ public class FrameworkDaoImpl implements FrameworkDao {
 	 */
 	@Override
 	public void delete(String maFramework) {
-		Session session = this.sessionFactory.openSession();
+		/*Session session = this.sessionFactory.openSession();
 		Framework fw = session.load(Framework.class, maFramework);
 		if (null != fw) {
 			session.delete(fw);
-		}
+		}*/
+		Session session = this.sessionFactory.openSession();
+		Transaction pd = session.beginTransaction();
+		session.update(session.get(Framework.class, maFramework));
+		pd.commit();
+		session.close();
 	}
 
 	/*
@@ -108,10 +112,24 @@ public class FrameworkDaoImpl implements FrameworkDao {
 	 */
 	@Override
 	public Framework getFrameworkByMaFramework(String maFramework) {
-		Session session = this.sessionFactory.openSession();
-		Framework fw = session.get(Framework.class, maFramework);
-		session.close();
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Framework> listFramework = session.createQuery("from Framework where maFramework = '" + maFramework + "'", Framework.class)
+				.list();
+		Framework fw = listFramework.get(0);
 		return fw;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fasttrackse.ffse1704.fbms.dao.quanlyduan.framework.FrameworkDao#
+	 * getRecordsByMaFramework(java.lang.String)
+	 */
+	@Override
+	public int getRecordsByMaFramework(String maFramework) {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from Framework where maFramework='" + maFramework + "'").list().size();
+		return rowCount;
 	}
 
 }

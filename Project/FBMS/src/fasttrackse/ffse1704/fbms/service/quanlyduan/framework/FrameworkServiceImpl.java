@@ -102,4 +102,15 @@ public class FrameworkServiceImpl implements FrameworkService {
 		return this.frameworkDao.getFrameworkByMaFramework(maFramework);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fasttrackse.ffse1704.fbms.service.quanlyduan.framework.FrameworkService#
+	 * getRecordsByMaFramework(java.lang.String)
+	 */
+	@Override
+	@Transactional
+	public int getRecordsByMaFramework(String maFramework) {
+		return this.frameworkDao.getRecordsByMaFramework(maFramework);
+	}
 }
