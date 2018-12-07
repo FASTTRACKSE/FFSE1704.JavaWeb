@@ -262,6 +262,30 @@
 				<!-- --------------------------End Quản trị hệ thống-------------------------- -->
 
 
+				<!-- ************************* Quản Lý Nhân Sự********************************** -->
+
+				<ul id="main-menu-navigation" data-menu="menu-navigation"
+					class="navigation navigation-main">
+					<li class=" navigation-header"><span>Quản Lý Nhân Sự</span><i
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Joker" class=" ft-minus"></i></li>
+					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
+							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
+				</ul>
+
+
+
+
+
+
+
+
+
+
+
+
 				<!-- ************************* Quản Lý Dự Án********************************** -->
 				<ul id="main-menu-navigation" data-menu="menu-navigation"
 					class="navigation navigation-main">
@@ -427,7 +451,8 @@
 					data-original-title="davidvy" class=" ft-minus"></i></li>
 				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
 						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn chờ
 								duyệt</a></li>
