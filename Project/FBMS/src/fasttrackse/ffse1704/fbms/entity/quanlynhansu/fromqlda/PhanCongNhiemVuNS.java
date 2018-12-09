@@ -31,18 +31,28 @@ public class PhanCongNhiemVuNS implements Serializable {
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
 
-	@Column(name = "ma_du_an", nullable = false, length = 30)
-	@NotEmpty
-	private String maDuAn;
-
 	@ManyToOne
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 	
-//	@OneToMany(mappedBy = "phanCongNhiemVuNS", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-//	@Fetch(value = FetchMode.SUBSELECT)
-//	private List<QuanLyThongTinDuAnNS> listThongTinDuAn;
+	@ManyToOne
+	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private QuanLyThongTinDuAnNS thongTinDuAn;
 	
+	@ManyToOne
+	@JoinColumn(name = "ma_vai_tro", referencedColumnName = "ma_vai_tro", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private VaiTroThanhVienNS vaiTro;
+	
+	public VaiTroThanhVienNS getVaiTro() {
+		return vaiTro;
+	}
+
+	public void setVaiTro(VaiTroThanhVienNS vaiTro) {
+		this.vaiTro = vaiTro;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -51,12 +61,13 @@ public class PhanCongNhiemVuNS implements Serializable {
 		this.id = id;
 	}
 
-	public String getMaDuAn() {
-		return maDuAn;
+
+	public QuanLyThongTinDuAnNS getThongTinDuAn() {
+		return thongTinDuAn;
 	}
 
-	public void setMaDuAn(String maDuAn) {
-		this.maDuAn = maDuAn;
+	public void setThongTinDuAn(QuanLyThongTinDuAnNS thongTinDuAn) {
+		this.thongTinDuAn = thongTinDuAn;
 	}
 
 	public NhanSu getNhanSu() {

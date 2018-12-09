@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.XemThongTinNVDao;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -16,7 +15,7 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 @Autowired
 XemThongTinNVDao xemThongTinNVDao;
-
+ 
 public void setXemThongTinNVDao(XemThongTinNVDao xemThongTinNVDao) {
 	this.xemThongTinNVDao = xemThongTinNVDao;
 }

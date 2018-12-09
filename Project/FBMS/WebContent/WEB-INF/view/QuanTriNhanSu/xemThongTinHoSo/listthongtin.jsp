@@ -138,7 +138,6 @@ body, html {
 #About {
 	background-color: white;
 }
-
 </style>
 <div class="app-content content container-fluid">
 	<div class="content-wrapper">
@@ -192,8 +191,8 @@ body, html {
 						<div class="card-header">
 							<h4 class="card-title">Thông tin nhân viên</h4>
 							<a href="/FBMS/excelfile/${thongTinNhanVien.maNhanVien}"><button
-			class="btn btn-success">Xuất thông tin ra file Excel</button></a>
-							<a class="heading-elements-toggle"><i
+									class="btn btn-success">Xuất thông tin ra file Excel</button></a> <a
+								class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
 								<ul class="list-inline mb-0">
@@ -223,9 +222,11 @@ body, html {
 										Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
 										Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 									</p>
-									<button class="tablink" onclick="openPage('Home', this, 'red')">Hồ sơ</button>
+									<button class="tablink" onclick="openPage('Home', this, 'red')">Hồ
+										sơ</button>
 									<button class="tablink"
-										onclick="openPage('News', this, 'green')" id="defaultOpen">Liên hệ</button>
+										onclick="openPage('News', this, 'green')" id="defaultOpen">Liên
+										hệ</button>
 									<button class="tablink"
 										onclick="openPage('Family', this, 'green')">Gia đình</button>
 									<button class="tablink"
@@ -402,10 +403,24 @@ body, html {
 
 									<div id="Project" class="tabcontent">
 										<table class="table table-hover">
-											<c:forEach var="hopDong"
-												items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
-												<td>${hopDong.maDuAn}</td>
-											</c:forEach>
+											<thead>
+												<tr>
+													<th scope="col">Mã dự án</th>
+													<th scope="col">Tên dự án</th>
+													<th scope="col">Vai trò</th>
+													<th scope="col">Trạng thái</th>
+												</tr>
+											</thead>
+											<tbody>
+
+												<c:forEach var="hopDong"
+													items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
+													<tr>
+														<td>${hopDong.thongTinDuAn.maDuAn}</td>
+														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
+														<td>${hopDong.vaiTro.tenVaiTro}</td>
+													</tr>
+												</c:forEach>
 
 											</tbody>
 										</table>
@@ -449,23 +464,23 @@ body, html {
 	}, 2500);
 </script>
 <script>
-		function openPage(pageName, elmnt, color) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablink");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].style.backgroundColor = "";
-			}
-			document.getElementById(pageName).style.display = "block";
-			elmnt.style.backgroundColor = color;
-
+	function openPage(pageName, elmnt, color) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
 		}
-		// Get the element with id="defaultOpen" and click on it
-		document.getElementById("defaultOpen").click();
-	</script>
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].style.backgroundColor = "";
+		}
+		document.getElementById(pageName).style.display = "block";
+		elmnt.style.backgroundColor = color;
+
+	}
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 
 
