@@ -78,8 +78,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphepnhap);
-		session.createQuery("insert DonNghiPhepMinhtq set trangThai = '2'  where id =" + donnghiphepnhap.getId())
-				.executeUpdate();
+		
 	}
 
 	public void deleteDonNghiPhep(int id) {
@@ -109,7 +108,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(loaingaynghi);
-		session.createQuery("form LoaiNgayNghiMinhtq").executeUpdate();
+		session.createQuery("from LoaiNgayNghiMinhtq").executeUpdate();
 	}
 
 	public void deleteLoaiNgayNghi(int id) {
@@ -148,7 +147,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addTrangThai(TrangThaiVangNghiMinhtq trangthai) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(trangthai);
-		session.createQuery("form TrangThaiVangNghiMinhtq").executeUpdate();
+		session.createQuery("from TrangThaiVangNghiMinhtq").executeUpdate();
 	}
 
 	public void deleteTrangThai(int id) {

@@ -108,11 +108,14 @@ public class QuanLyVangNghiControllerMinhtq {
 		String msg = "";
 		if (action.equals("nhap")) {
 			msg = "trạng thái lưu nháp";
-			donnghiphepnhap.setTrangThai(1);
-
+			TrangThaiVangNghiMinhtq trangThaiNghiphep = new TrangThaiVangNghiMinhtq();
+			trangThaiNghiphep.setMaTrangThai(1);
+			donnghiphepnhap.setTrangThaiDNP(trangThaiNghiphep);
 		} else if (action.equals("them")) {
-			msg = "đang chờ phê duyệt ";
-			donnghiphepnhap.setTrangThai(2);
+			msg = "đang chờ phê duyệt";
+			TrangThaiVangNghiMinhtq trangThaiNghiphep = new TrangThaiVangNghiMinhtq();
+			trangThaiNghiphep.setMaTrangThai(2);
+			donnghiphepnhap.setTrangThaiDNP(trangThaiNghiphep);
 		}
 
 		donNghiPhepService.addDonNghiPhepNhap(donnghiphepnhap);
@@ -249,7 +252,6 @@ public class QuanLyVangNghiControllerMinhtq {
 		}
 
 		donNghiPhepService.addLoaiNgayNghi(loaingaynghi);
-		;
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}

@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,7 +38,6 @@ public class DonNghiPhepMinhtq {
 	@Temporal(TemporalType.DATE)
 	private Date thoiGianBatDau;
 
-	@NotNull
 	@Column(name = "thoi_gian_ket_thuc")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
@@ -50,14 +48,14 @@ public class DonNghiPhepMinhtq {
 
 	@ManyToOne
 	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trang_thai", insertable = false, updatable = false, nullable = false)
-	private TrangThaiVangNghiMinhtq setTrangThai;
+	private TrangThaiVangNghiMinhtq trangThaiDNP;
 
-	public TrangThaiVangNghiMinhtq getSetTrangThai() {
-		return setTrangThai;
+	public TrangThaiVangNghiMinhtq getTrangThaiDNP() {
+		return trangThaiDNP;
 	}
 
-	public void setSetTrangThai(TrangThaiVangNghiMinhtq setTrangThai) {
-		this.setTrangThai = setTrangThai;
+	public void setTrangThaiDNP(TrangThaiVangNghiMinhtq trangThaiDNP) {
+		this.trangThaiDNP = trangThaiDNP;
 	}
 
 	public int getId() {
@@ -117,7 +115,7 @@ public class DonNghiPhepMinhtq {
 	}
 
 	public DonNghiPhepMinhtq(int id, String maNhanVien, int loaiNgayNghi, int soLuong, Date thoiGianBatDau,
-			Date thoiGianKetThuc, int trangThai) {
+			Date thoiGianKetThuc, int trangThai, TrangThaiVangNghiMinhtq trangThaiDNP) {
 		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
@@ -126,6 +124,7 @@ public class DonNghiPhepMinhtq {
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.trangThai = trangThai;
+		this.trangThaiDNP = trangThaiDNP;
 	}
 
 	public DonNghiPhepMinhtq() {
