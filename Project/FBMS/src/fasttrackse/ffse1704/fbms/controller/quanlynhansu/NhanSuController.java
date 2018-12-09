@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class NhanSuController {
 	public ModelAndView ViewNhanSuPage(@PathVariable int page, Model model) {
 
 		long record = nhanSuService.CountNhanSu();
-		int perpage = 2;
+		int perpage = 4;
 		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
 
 		if (page == 0) {
@@ -78,7 +79,7 @@ public class NhanSuController {
 	}
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") @Valid NhanSu nhanSu, BindingResult bindingResult,
+	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu, BindingResult bindingResult,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = upload(file);
@@ -88,8 +89,15 @@ public class NhanSuController {
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		}
-		nhanSuService.addNS(nhanSu);
-
+		boolean checkMaNhanSu = nhanSuService.checkExistMa(nhanSu.getMaNhanVien());
+		if(checkMaNhanSu==true) {
+			nhanSuService.addNS(nhanSu);
+			
+		}else {
+			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
+			
+		}
+		
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
 
 	}
@@ -116,11 +124,33 @@ public class NhanSuController {
 		
 	}
 	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
 
+	@RequestMapping(value="/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}",method = RequestMethod.GET)
+	public ModelAndView getdeleteNhanSuByID(@PathVariable int id,Model model) {
+		
+		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
+		model.addAttribute("nhanSu",nhanSu);
+
+		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
+	}
+	
+	// thực hiện lệnh xóa
+		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "delete")
+		public ModelAndView doDel(@PathVariable int id) {
+			nhanSuService.delete(id);
+			return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
+		}
+		// hủy xóa
+		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "cancel", method = RequestMethod.POST)
+		public String cancelUpdateUser(HttpServletRequest request) {
+			return "redirect:/QuanTriNhanSu/danhsach_nhansu";
+		}
+	
 	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = file.getOriginalFilename();

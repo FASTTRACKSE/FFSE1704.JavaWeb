@@ -2,20 +2,21 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
-public class NhanSuDaoImpl implements NhanSuDao {
+public class BangCapDaoImpl implements BangCapDao {
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -27,70 +28,67 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<NhanSu> allNS() {
+	public List<BangCap> viewAll() {
 		Session session = sessionFactory.getCurrentSession();
-		List<NhanSu> listNhanSu = session.createQuery("FROM NhanSu").getResultList();
-		return listNhanSu;
-	}
-
-	
-	@Override
-	public void addNS(NhanSu ns) {
-		Session session = sessionFactory.getCurrentSession();
-		session.persist(ns);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<NhanSu> GetListNhanSuByPage(int start, int total) {
-		Session session = sessionFactory.getCurrentSession();
-		List<NhanSu> listNhanSu = session.createQuery("FROM NhanSu").setFirstResult(start).setMaxResults(total).list();
-		return listNhanSu;
+		List<BangCap> listBangCap = session.createQuery("FROM BangCap").getResultList();
+		return listBangCap;
 	}
 
 	@Override
-	public long CountNhanSu() {
-		return (Long) sessionFactory.getCurrentSession().createCriteria(NhanSu.class)
+	public void addBangCap(BangCap bc) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(bc);
+
+	}
+
+	@Override
+	public List<BangCap> GetListBangCapByPage(int start, int total) {
+		Session session = sessionFactory.getCurrentSession();
+		List<BangCap> listBC = session.createQuery("FROM BangCap").setFirstResult(start).setMaxResults(total).list();
+		return listBC;
+	}
+
+	@Override
+	public long CountBangCap() {
+		return (Long) sessionFactory.getCurrentSession().createCriteria(BangCap.class)
 				.setProjection(Projections.rowCount()).uniqueResult();
 	}
 
 	@Override
-	public NhanSu getNhanSuByID(int id) {
+	public BangCap getNhanSuByID(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		NhanSu ns = (NhanSu) session.get(NhanSu.class, id);
+		BangCap ns = (BangCap) session.get(BangCap.class, id);
 		return ns;
 	}
 
 	@Override
-	public void update(NhanSu ns) {
+	public void update(BangCap bc) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		session.update(ns);
-		
+		session.update(bc);
+
 	}
 
 	@Override
 	public void delete(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		NhanSu ns = session.load(NhanSu.class, id);
-		if(null !=ns) {
+		BangCap ns = session.load(BangCap.class, id);
+		if (null != ns) {
 			session.delete(ns);
 		}
+
 	}
 
 	@Override
-	public boolean checkExistMa(String maNhanVien) {
+	public boolean checkExistMa(String maNS) {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		Query query = (Query) session.createCriteria("select count(*) from NhanSu Where maNhanVien = :maNhanVien");
 		Long check = (Long) query.uniqueResult();
-		if(check > 0) {
+		if (check > 0) {
 			return true;
 		}
 		return false;
 	}
-
-	
 
 }

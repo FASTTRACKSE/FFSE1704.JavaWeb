@@ -11,4 +11,6 @@ public interface NhanSuService {
 	public long CountNhanSu();
 	public NhanSu getNhanSuByID(int id);
 	public void update(NhanSu ns);
+	public void delete(int id);
+	public boolean checkExistMa(String maNS);
 }

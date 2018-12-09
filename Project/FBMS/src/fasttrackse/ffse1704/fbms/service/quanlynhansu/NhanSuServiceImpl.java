@@ -66,4 +66,18 @@ public class NhanSuServiceImpl implements NhanSuService {
 		
 	}
 
+
+	@Override
+	public void delete(int id) {
+		this.nhanSuDao.delete(id);
+		
+	}
+
+
+	@Override
+	public boolean checkExistMa(String maNS) {
+		// TODO Auto-generated method stub
+		return nhanSuDao.checkExistMa(maNS);
+	}
+
 }
