@@ -28,9 +28,9 @@ public interface DonNghiPhepDaoMinhtq {
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 
-	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id);
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai);
 
-	public void deleteTrangThai(int id);
+	public void deleteTrangThai(int maTrangThai);
 
 	public void editTrangThai(TrangThaiVangNghiMinhtq trangthai);
 
@@ -39,9 +39,9 @@ public interface DonNghiPhepDaoMinhtq {
 	/////////////// LOẠI NGÀY NGHỈ//////////////////
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi();
 
-	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id);
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int maNgayNghi);
 
-	public void deleteLoaiNgayNghi(int id);
+	public void deleteLoaiNgayNghi(int maNgayNghi);
 
 	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
 

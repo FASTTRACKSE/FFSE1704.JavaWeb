@@ -82,14 +82,14 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id) {
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai) {
 
-		return donNghiPhepDao.getByIdTrangThai(id);
+		return donNghiPhepDao.getByIdTrangThai(maTrangThai);
 	}
 
 	@Override
-	public void deleteTrangThai(int id) {
-		donNghiPhepDao.deleteTrangThai(id);
+	public void deleteTrangThai(int maTrangThai) {
+		donNghiPhepDao.deleteTrangThai(maTrangThai);
 
 	}
 
@@ -112,14 +112,14 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id) {
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int maNgayNghi) {
 
-		return donNghiPhepDao.getByIdLoaiNgayNghi(id);
+		return donNghiPhepDao.getByIdLoaiNgayNghi(maNgayNghi);
 	}
 
 	@Override
-	public void deleteLoaiNgayNghi(int id) {
-		donNghiPhepDao.deleteLoaiNgayNghi(id);
+	public void deleteLoaiNgayNghi(int maNgayNghi) {
+		donNghiPhepDao.deleteLoaiNgayNghi(maNgayNghi);
 
 	}
 

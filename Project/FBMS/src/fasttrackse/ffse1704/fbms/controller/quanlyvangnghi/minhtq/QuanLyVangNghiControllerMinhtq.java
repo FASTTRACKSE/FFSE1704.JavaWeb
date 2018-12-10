@@ -222,6 +222,13 @@ public class QuanLyVangNghiControllerMinhtq {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
+	
+	@RequestMapping("/deleteTrangThai/{maTrangThai}")
+	public String deletetrangthai(@PathVariable int maTrangThai, Model model) {
+		donNghiPhepService.deleteTrangThai(maTrangThai);
+		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
+	}
+	
 	/////////////////// hết CRUD List trạng thái///////////////
 
 	/////////////////// CRUD List loại ngày nghỉ///////////////
@@ -255,5 +262,13 @@ public class QuanLyVangNghiControllerMinhtq {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
+	
+	@RequestMapping("/deleteLoaiNgayNghi/{maNgayNghi}")
+	public String deleteloaingaynghi(@PathVariable int maNgayNghi, Model model) {
+		donNghiPhepService.deleteLoaiNgayNghi(maNgayNghi);
+		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
+	}
+	
+	
 	/////////////////// hết CRUD List loại ngày nghỉ///////////////
 }

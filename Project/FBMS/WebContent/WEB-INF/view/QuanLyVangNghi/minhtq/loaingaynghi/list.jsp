@@ -126,9 +126,9 @@
 												<td>${dnpn.maNgayNghi}</td>
 												<td>${dnpn.tenNgayNghi}</td>
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/addLoaiNgayNghiMoi/${dnpn.maNgayNghi}"
+													href="/FBMS/QuanLyVangNghi/minhtq/editViewLoaiNgayNghi/${dnpn.maNgayNghi}"
 													class="btn btn-primary">edit</a> <a
-													href="/QLSV_CRUD_Spring/delete/${dnpn.maNgayNghi}"
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteLoaiNgayNghi/${dnpn.maNgayNghi}"
 													class="btn btn-danger">delete</a></td>
 										</c:forEach>
 

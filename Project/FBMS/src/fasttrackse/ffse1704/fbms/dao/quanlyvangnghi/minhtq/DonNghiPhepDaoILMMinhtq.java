@@ -108,12 +108,12 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(loaingaynghi);
-		session.createQuery("from LoaiNgayNghiMinhtq").executeUpdate();
+		
 	}
 
-	public void deleteLoaiNgayNghi(int id) {
+	public void deleteLoaiNgayNghi(int maNgayNghi) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdLoaiNgayNghi(id));
+		session.delete(getByIdLoaiNgayNghi(maNgayNghi));
 	}
 
 	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
@@ -123,9 +123,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// tìm kiếm đơn nghỉ phép theo id loại ngày nghỉ
-	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id) {
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int maNgayNghi) {
 		Session session = this.sessionFactory.getCurrentSession();
-		LoaiNgayNghiMinhtq loaingaynghi = (LoaiNgayNghiMinhtq) session.get(LoaiNgayNghiMinhtq.class, id);
+		LoaiNgayNghiMinhtq loaingaynghi = (LoaiNgayNghiMinhtq) session.get(LoaiNgayNghiMinhtq.class, maNgayNghi);
 
 		return loaingaynghi;
 	}
@@ -147,12 +147,12 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addTrangThai(TrangThaiVangNghiMinhtq trangthai) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(trangthai);
-		session.createQuery("from TrangThaiVangNghiMinhtq").executeUpdate();
+		
 	}
 
-	public void deleteTrangThai(int id) {
+	public void deleteTrangThai(int maNgayNghi) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdTrangThai(id));
+		session.delete(getByIdTrangThai(maNgayNghi));
 	}
 
 	public void editTrangThai(TrangThaiVangNghiMinhtq trangthai) {
@@ -161,10 +161,10 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	}
 
-	// tìm kiếm đơn nghỉ phép theo id trạng thái
-	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id) {
+	// tìm kiếm Trang thái theo id trạng thái
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai) {
 		Session session = this.sessionFactory.getCurrentSession();
-		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class, id);
+		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class, maTrangThai);
 
 		return trangthai;
 	}

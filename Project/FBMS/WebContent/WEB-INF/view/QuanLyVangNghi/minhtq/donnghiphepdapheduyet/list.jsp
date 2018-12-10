@@ -139,7 +139,7 @@
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
-												<td>${dnpn.trangThai}</td>
+												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
 												<td><a
 													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
 														<button>sửa</button>
