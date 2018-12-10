@@ -1,6 +1,11 @@
 package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -42,6 +47,18 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		Criteria criteria = session.createCriteria(NhanSu.class);
 		@SuppressWarnings("unchecked")
 		List<NhanSu> yourObject = (List<NhanSu>) criteria.add(Restrictions.eq("phongBan.maPhongBan", maPhongBan)).list();
+		return yourObject;
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public List<NhanSu> findAllForPaging(String maPhongBan, int startPosition,int maxResult) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(NhanSu.class);
+		@SuppressWarnings("unchecked")
+		List<NhanSu> yourObject = (List<NhanSu>) criteria.add(Restrictions.eq("phongBan.maPhongBan", maPhongBan)).list();
+		startPosition = 1;
+		maxResult = yourObject.size();
 		return yourObject;
 	}
 	

@@ -418,7 +418,11 @@ body, html {
 													<tr>
 														<td>${hopDong.thongTinDuAn.maDuAn}</td>
 														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
+														
 														<td>${hopDong.vaiTro.tenVaiTro}</td>
+														<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
+														
+														
 													</tr>
 												</c:forEach>
 

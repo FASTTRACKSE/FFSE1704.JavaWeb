@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
@@ -50,8 +51,20 @@ public class XemThongTinNVController {
 	
 
 	@RequestMapping(value = "/listThongTin/{maPhongBan}", method = RequestMethod.GET)
-	public String listThongTin(@PathVariable("maPhongBan") String maPhongBan, Model model) {
-		model.addAttribute("listThongTin", xemThongTinNVService.findByPhongBan(maPhongBan));
+	public String listNhanVienofPhongBan(@PathVariable("maPhongBan") String maPhongBan, Model model, @RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
+		int totalRecords = xemThongTinNVService.findByPhongBan(maPhongBan).size();
+		int recordsPerPage = 2;
+		int totalPages = 0;
+		if ((totalRecords / recordsPerPage) % 2 == 0) {
+			totalPages = totalRecords / recordsPerPage;
+		} else {
+			totalPages = totalRecords / recordsPerPage + 1;
+		}
+		int startPosition = recordsPerPage * (currentPage - 1);
+		
+		model.addAttribute("listThongTin", xemThongTinNVService.findAllForPaging(maPhongBan, startPosition, recordsPerPage));
+		model.addAttribute("lastPage", totalPages);
+		model.addAttribute("currentPage", currentPage);
 		return "QuanTriNhanSu/xemThongTinHoSo/dsnhanvien";
 	}
 

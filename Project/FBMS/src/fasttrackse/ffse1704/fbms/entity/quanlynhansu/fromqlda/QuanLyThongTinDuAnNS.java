@@ -46,6 +46,14 @@ public class QuanLyThongTinDuAnNS implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<PhanCongNhiemVuNS> listPhanCongNhiemVu;
 
+	public TrangThaiDuAnNS getTrangThaiDuAnNS() {
+		return trangThaiDuAnNS;
+	}
+
+	public void setTrangThaiDuAnNS(TrangThaiDuAnNS trangThaiDuAnNS) {
+		this.trangThaiDuAnNS = trangThaiDuAnNS;
+	}
+
 	public List<PhanCongNhiemVuNS> getListPhanCongNhiemVu() {
 		return listPhanCongNhiemVu;
 	}

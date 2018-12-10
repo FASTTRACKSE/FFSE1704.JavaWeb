@@ -76,6 +76,45 @@ public class NhanSu implements Serializable {
 	@Column(name = "gioi_tinh")
 	@NotNull
 	private Integer gioiTinh;
+	
+	@ManyToOne
+	@JoinColumn(name="ThanhPho_TinhThanh",referencedColumnName="matp",nullable = false)
+	@NotNull
+	private ThanhPho thanhPho;
+	
+	@ManyToOne
+	@JoinColumn(name="Quan_Huyen",referencedColumnName="maqh",nullable = false)
+	@NotNull
+	private QuanHuyen quanHuyen;
+	
+	@ManyToOne
+	@JoinColumn(name="Phuong_xa_thitran",referencedColumnName="xaid",nullable = false)
+	@NotNull
+	private XaPhuong xaPhuong;
+
+	public ThanhPho getThanhPho() {
+		return thanhPho;
+	}
+
+	public void setThanhPho(ThanhPho thanhPho) {
+		this.thanhPho = thanhPho;
+	}
+
+	public QuanHuyen getQuanHuyen() {
+		return quanHuyen;
+	}
+
+	public void setQuanHuyen(QuanHuyen quanHuyen) {
+		this.quanHuyen = quanHuyen;
+	}
+
+	public XaPhuong getXaPhuong() {
+		return xaPhuong;
+	}
+
+	public void setXaPhuong(XaPhuong xaPhuong) {
+		this.xaPhuong = xaPhuong;
+	}
 
 	@NotEmpty(message = "Vui Lòng Nhập quê quán nhân viên")
 	@Column(name = "que_quan")

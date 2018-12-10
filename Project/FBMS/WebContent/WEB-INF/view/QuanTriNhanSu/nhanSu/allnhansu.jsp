@@ -124,8 +124,9 @@
 												<th>Ảnnh đại diện</th>
 
 												<th>Trạng thái</th>
-												<th>INFO</th>
-												<th>KHAC</th>
+												<th>Gia đình</th>
+												<th>Khác</th>
+												<th>Hợp đồng/Chế độ TH</th>
 												<th>Chức năng</th>
 											</tr>
 										</thead>
@@ -175,6 +176,8 @@
 												<td><a href="DeleteNS/${ns.id}" class="btn btn-warning">Bằng
 														Cấp</a> <a href="DeleteNS/${ns.id}" class="btn btn-primary">Chứng
 														chỉ</a></td>
+														
+														<td><a href="DeleteNS/${ns.id}" class="btn btn-warning">Hợp đồng</a> <a href="DeleteNS/${ns.id}" class="btn btn-primary">Chế độ</a></td>
 
 												<td><a href="editNS/${ns.id}"><button>sửa</button></a>
 

@@ -28,4 +28,8 @@ public List<NhanSu> findByPhongBan(String maPhongBan) {
 public NhanSu findByMaNhanVien(String maNhanVien) {
 	return xemThongTinNVDao.findByMaNhanVien(maNhanVien);
 }
+@Override
+public List<NhanSu> findAllForPaging(String maPhongBan, int startPosition, int maxResult) {
+	return xemThongTinNVDao.findAllForPaging(maPhongBan, startPosition, maxResult);
+}
 }
