@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.BangCapDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 @Service
 @Transactional
 public class BangCapServiceImpl implements BangCapService{
@@ -44,9 +45,9 @@ public class BangCapServiceImpl implements BangCapService{
 	}
 
 	@Override
-	public BangCap getNhanSuByID(int id) {
+	public NhanSu getBangCapByID(String id) {
 		// TODO Auto-generated method stub
-		return this.bangCapDao.getNhanSuByID(id);
+		return this.bangCapDao.getBangCapByID(id);
 	}
 
 	@Override
@@ -65,6 +66,13 @@ public class BangCapServiceImpl implements BangCapService{
 	public boolean checkExistMa(String maNS) {
 		// TODO Auto-generated method stub
 		return bangCapDao.checkExistMa(maNS);
+	}
+
+
+	@Override
+	public BangCap getBangCapUpdate(int id) {
+		// TODO Auto-generated method stub
+		return bangCapDao.getBangCapUpdate(id);
 	}
 
 }

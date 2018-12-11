@@ -2,9 +2,12 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.RestrictionDocument.Restriction;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -56,10 +59,11 @@ public class BangCapDaoImpl implements BangCapDao {
 	}
 
 	@Override
-	public BangCap getNhanSuByID(int id) {
+	public NhanSu getBangCapByID(String id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		BangCap ns = (BangCap) session.get(BangCap.class, id);
-		return ns;
+		Criteria criteria = session.createCriteria(NhanSu.class);
+		NhanSu result = (NhanSu) criteria.add(Restrictions.eqOrIsNull("maNhanVien", id)).uniqueResult();
+		return result;
 	}
 
 	@Override
@@ -89,6 +93,13 @@ public class BangCapDaoImpl implements BangCapDao {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public BangCap getBangCapUpdate(int id) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		BangCap ns = (BangCap) session.get(BangCap.class, id);
+		return ns;
 	}
 
 }
