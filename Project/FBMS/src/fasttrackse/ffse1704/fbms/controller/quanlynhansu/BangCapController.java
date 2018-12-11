@@ -25,50 +25,48 @@ public class BangCapController {
 	@Autowired
 	BangCapService bangCapService;
 
-
-
 	public void setBangCapService(BangCapService bangCapService) {
 		this.bangCapService = bangCapService;
 	}
-	
+
 	// mac dinh
-//	@RequestMapping("/ViewBC/")
-//	public String ShowList() {
-//		return "redirect:/ViewBC/1";
-//
-//	}
+	// @RequestMapping("/ViewBC/")
+	// public String ShowList() {
+	// return "redirect:/ViewBC/1";
+	//
+	// }
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
-	// danh sach bằng cấp 
-		@RequestMapping(value = "/ViewBC/{maNhanVien}",method = RequestMethod.GET)
-		public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
-			
+
+	// danh sach bằng cấp
+	@RequestMapping(value = "/ViewBC/{maNhanVien}", method = RequestMethod.GET)
+	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
-			
 
-			return "QuanTriNhanSu/BangCap/ListBangCap";
+		return "QuanTriNhanSu/BangCap/ListBangCap";
 
-		}
-		// danh sach edit 
-				@RequestMapping(value = "/ViewBC/editBC/{id}",method = RequestMethod.GET)
-				public String edit(@PathVariable("id") int id, Model model) {
-					
-				model.addAttribute("bangCap", bangCapService.getBangCapUpdate(id));
-					
+	}
 
-					return "QuanTriNhanSu/BangCap/editBangCap";
+	// danh sach edit
+	@RequestMapping(value = "/ViewBC/editBC/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") int id, Model model) {
 
-				}
-			// UPDATE	
-				@RequestMapping(value = "/ViewBC/update",method = RequestMethod.POST)
-				public String editSave(@ModelAttribute("bangCap") BangCap bangCap, Model model) {
-					
-				bangCapService.update(bangCap);
-				
+		model.addAttribute("bangCap", bangCapService.getBangCapUpdate(id));
 
-					return "QuanTriNhanSu/BangCap/ListBangCap";
+		return "QuanTriNhanSu/BangCap/editBangCap";
 
-				}
+	}
+
+	// UPDATE
+	@RequestMapping(value = "/ViewBC/update", method = RequestMethod.POST)
+	public String editSave(@ModelAttribute("bangCap") BangCap bangCap, Model model) {
+
+		bangCapService.update(bangCap);
+
+		return "QuanTriNhanSu/BangCap/ListBangCap";
+
+	}
 }

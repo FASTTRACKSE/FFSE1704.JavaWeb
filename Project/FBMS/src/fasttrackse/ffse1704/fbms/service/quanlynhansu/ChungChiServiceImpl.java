@@ -20,4 +20,49 @@ public class ChungChiServiceImpl implements ChungChiService {
 		this.chungChiDao = chungChiDao;
 	}
 
+	@Override
+	public List<ChungChi> viewAll() {
+		return this.chungChiDao.viewAll();
+	}
+
+	@Override
+	public void addChungChi(ChungChi cc) {
+		this.chungChiDao.addChungChi(cc);
+	}
+
+	@Override
+	public List<ChungChi> GetListChungChiByPage(int start, int total) {
+		return this.chungChiDao.GetListChungChiByPage(start, total);
+	}
+
+	@Override
+	public long CountChungChi() {
+		return this.chungChiDao.CountChungChi();
+	}
+
+	@Override
+	public NhanSu getChungChiByID(String id) {
+		return this.chungChiDao.getChungChiByID(id);
+	}
+
+	@Override
+	public void update(ChungChi cc) {
+		this.chungChiDao.update(cc);
+	}
+
+	@Override
+	public void delete(int id) {
+		this.chungChiDao.delete(id);
+	}
+
+	@Override
+	public boolean checkExistMa(String maNS) {
+		return this.chungChiDao.checkExistMa(maNS);
+	}
+
+	@Override
+	public ChungChi getChungChiUpdate(int id) {
+		return this.chungChiDao.getChungChiUpdate(id);
+	}
+
 }

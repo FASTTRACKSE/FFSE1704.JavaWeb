@@ -1,9 +1,7 @@
 package fasttrackse.ffse1704.fbms.controller.quanlynhansu;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.ChungChiService;
@@ -25,10 +22,42 @@ public class ChungChiController {
 	@Autowired
 	ChungChiService chungChiService;
 
-	@RequestMapping("/QuanTriNhanSu/danhsach_chungchi")
-	public String ShowList() {
-		return "redirect:/QuanTriNhanSu/danhsach_chungchi/1";
+	public void setChungChiService(ChungChiService chungChiService) {
+		this.chungChiService = chungChiService;
+	}
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
+	}
+
+	// danh sach bằng cấp
+	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
+	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
+		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
+
+		return "QuanTriNhanSu/chungChi/allchungchi";
 
 	}
 
+	// danh sach edit
+	@RequestMapping(value = "/ViewCC/editCC/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") int id, Model model) {
+
+		model.addAttribute("chungChi", chungChiService.getChungChiUpdate(id));
+
+		return "QuanTriNhanSu/chungChi/updateCC";
+
+	}
+
+	// UPDATE
+	@RequestMapping(value = "/ViewCC/update", method = RequestMethod.POST)
+	public String editSave(@ModelAttribute("chungChi") ChungChi chungChi, Model model) {
+
+		chungChiService.update(chungChi);
+
+		return "QuanTriNhanSu/chungChi/allchungchi";
+
+	}
 }

@@ -175,7 +175,7 @@
 
 												<td><a href="http://localhost:8080/FBMS/ViewBC/${ns.maNhanVien}"
 													class="btn btn-warning">Bằng Cấp</a> <a
-													href="DeleteNS/${ns.id}" class="btn btn-primary">Chứng
+													href="http://localhost:8080/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
 														chỉ</a></td>
 
 												<td><a href="DeleteNS/${ns.id}" class="btn btn-warning">Hợp
