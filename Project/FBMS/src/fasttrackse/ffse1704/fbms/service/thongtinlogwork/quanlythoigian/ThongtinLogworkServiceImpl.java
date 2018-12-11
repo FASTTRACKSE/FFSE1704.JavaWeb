@@ -59,7 +59,7 @@ public class ThongtinLogworkServiceImpl implements ThongTinLogworkService {
 	}
 
 	@Override
-	public ThongTinLogwork findByIdLogwork(String id) {
+	public ThongTinLogwork findByIdLogwork(int id) {
 		return logworkDao.findByIdLogwork(id);
 	}
 

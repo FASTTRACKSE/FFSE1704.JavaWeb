@@ -301,7 +301,7 @@
 									class="icon-book-open"></i>Programming Language</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-magic-wand"></i>Technical</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_Technical/1"/>"><i class="icon-magic-wand"></i>Technical</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="icon-refresh"></i>Trạng
@@ -321,18 +321,7 @@
 
 						</ul></li>
 				</ul>
-				<!-- **********************End Quản Lý Dự Án************************************* -->
-
-
-
-
-
-
-
-
-
-
-
+				<!-- **********************End Quản Lý Dự Án************************************* -->F
 
 
 
@@ -465,7 +454,7 @@
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item"
 							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
-						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/luunhap">● danh sánh</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn chờ
 								duyệt</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>

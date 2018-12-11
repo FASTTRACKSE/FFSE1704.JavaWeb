@@ -28,7 +28,7 @@
 			</div>
 			<div class="form-group">
 				<label>Mã nhân viên:</label>
-				<form:input class="form-control" type="text" path="maNhanVien" />
+				<form:input class="form-control" type="text" path="nhanSu.maNhanVien" />
 				<br>
 			</div>
 			<div class="form-group">

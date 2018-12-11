@@ -50,13 +50,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách Nhan Su</h3>
+				<h3 class="content-header-title mb-0">Bằng Cấp</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách Nhan su</li>
+							<li class="breadcrumb-item active">Quản lý bằng cấp</li>
 						</ol>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach nhan su</h4>
+							<h4 class="card-title">Danh sach bằng cấp</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -115,72 +115,29 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
-												<th scope="col">ID</th>
+
+												<th>Thứ tự</th>
 												<th>Mã nhân viên</th>
-												<th>Phòng ban</th>
-												<th>Chức danh</th>
-												<th>Họ ten</th>
-
-												<th>Ảnnh đại diện</th>
-
-												<th>Trạng thái</th>
-												<th>Gia đình</th>
-												<th>Khác</th>
-												<th>Hợp đồng/Chế độ TH</th>
-												<th>Chức năng</th>
+												<th>Trình độ</th>
+												<th>Tên Ngành</th>
+												<th>Thời gian</th>
+												<th>Xếp loại</th>
+												<th>Nơi cấp</th>
+												<th>Chức Năng</th>
 											</tr>
 										</thead>
-										<c:forEach var="ns" items="${nhansu}">
+										
+										<c:forEach var="bc" items="${bangCap.listBangCap}">
 											<tr>
-												<td>${ns.id}</td>
-												<td>${ns.maNhanVien}</td>
-												<td>${ns.phongBan.tenPhongBan}</td>
-												<td>${ns.chucDanh.tenChucDanh}</td>
-												<td>${ns.hoLot}${ns.ten}</td>
-
-												<td><img style="width: 70px;hight=70px;"
-													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>
-
-												<%-- <td>${ns.namSinh}</td> --%>
-												<%-- <td><c:choose>
-														<c:when test="${ns.gioiTinh == 1}">
-						    Nam
-						  </c:when>
-														<c:when test="${ns.gioiTinh == 2}">
-						   Nữ
-						  </c:when>
-														<c:otherwise>
-						   ...
-						  </c:otherwise>
-													</c:choose></td> --%>
-												<%-- <td>${ns.gioiTinh}</td> --%>
-												<%-- <td>${ns.queQuan}</td> --%>
-												<%-- <td>${ns.danToc}</td> --%>
-												<%-- <td>${ns.quocTich.tenQuocTich}</td> --%>
-												<%-- <td>${ns.thanhPho.name}</td> --%>
-												<td><c:choose>
-														<c:when test="${ns.trangThai == 1}">
-						    Còn Làm
-						  </c:when>
-														<c:when test="${ns.trangThai == 2}">
-						   Nghỉ
-						  </c:when>
-														<c:otherwise>
-						  ...
-						  </c:otherwise>
-													</c:choose></td>
-												<%-- <td>${ns.trangThai}</td> --%>
-												<td><a href="http://localhost:8080/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
-														Đình</a></td>
-
-												<td><a href="http://localhost:8080/FBMS/ViewBC/${ns.maNhanVien}"
-													class="btn btn-warning">Bằng Cấp</a> <a
-													href="http://localhost:8080/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
-														chỉ</a></td>
-
-												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}" class="btn btn-warning">Hợp đồng</a> <a href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}" class="btn btn-primary">DS Kinh nghiệm DA</a></td>
-
-												<td><a href="editNS/${ns.id}"><button>sửa</button></a>
+												<td>${bc.id}</td>
+												<td>${bangCap.maNhanVien}</td>
+											 <td>${bc.trinhDo.tenTrinhDo}</td> 
+												<td>${bc.tenNganh}</td>
+												<td>${bc.thoiGian}</td>
+												<td>${bc.xepLoai}</td>
+												<td>${bc.noiCap}</td>
+	
+												<td><a href="editBC/${bc.id}"><button>sửa</button></a>
 
 													<a href="DeleteNS/${ns.id}"><button>Xoa</button></a></td>
 

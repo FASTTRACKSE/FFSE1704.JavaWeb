@@ -227,8 +227,8 @@
 												
 													<select id="customSelect" name="loainghi"
 														class="custom-select block round">
-														<c:forEach items="${arrLyDo}" var="loainghi" >
-															<option value="${lyDo.getTenloainghi()}">${lyDo.getTenloainghi()}</option>
+														<c:forEach items="${loaingaynghiphep}" var="loainghi" >
+															<option value="${loaingaynghiphep.getTenloainghi()}">${lyDo.getTenloainghi()}</option>
 														</c:forEach>
 													</select>
 												</div>

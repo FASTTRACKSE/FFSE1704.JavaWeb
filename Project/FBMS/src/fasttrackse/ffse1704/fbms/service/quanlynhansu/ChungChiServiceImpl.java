@@ -21,33 +21,48 @@ public class ChungChiServiceImpl implements ChungChiService {
 	}
 
 	@Override
-	@Transactional
-	public void addCC(ChungChi cc) {
-		this.chungChiDao.addCC(cc);
+	public List<ChungChi> viewAll() {
+		return this.chungChiDao.viewAll();
 	}
 
 	@Override
-	public void updateCC(ChungChi cc) {
-		this.chungChiDao.updateCC(cc);
+	public void addChungChi(ChungChi cc) {
+		this.chungChiDao.addChungChi(cc);
 	}
 
 	@Override
-	public void deleteCC(ChungChi cc) {
-		this.chungChiDao.deleteCC(cc);
+	public List<ChungChi> GetListChungChiByPage(int start, int total) {
+		return this.chungChiDao.GetListChungChiByPage(start, total);
 	}
 
 	@Override
-	public ChungChi getChungChiById(int id) {
-		return this.chungChiDao.getChungChiById(id);
+	public long CountChungChi() {
+		return this.chungChiDao.CountChungChi();
 	}
 
 	@Override
-	public List<ChungChi> getChungChiByPage(int pageid, int total) {
-		return this.chungChiDao.getChungChiByPage(pageid, total);
+	public NhanSu getChungChiByID(String id) {
+		return this.chungChiDao.getChungChiByID(id);
 	}
 
 	@Override
-	public long countSV() {
-		return this.chungChiDao.countSV();
+	public void update(ChungChi cc) {
+		this.chungChiDao.update(cc);
 	}
+
+	@Override
+	public void delete(int id) {
+		this.chungChiDao.delete(id);
+	}
+
+	@Override
+	public boolean checkExistMa(String maNS) {
+		return this.chungChiDao.checkExistMa(maNS);
+	}
+
+	@Override
+	public ChungChi getChungChiUpdate(int id) {
+		return this.chungChiDao.getChungChiUpdate(id);
+	}
+
 }

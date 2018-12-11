@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fasttrackse.ffse1704.fbms.entity.quanlyduan.domain.Domain;
 import fasttrackse.ffse1704.fbms.entity.quanlyduan.framework.Framework;
 import fasttrackse.ffse1704.fbms.service.quanlyduan.framework.FrameworkService;
 

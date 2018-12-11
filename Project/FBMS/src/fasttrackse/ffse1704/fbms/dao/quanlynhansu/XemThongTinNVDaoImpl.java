@@ -58,7 +58,7 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		@SuppressWarnings("unchecked")
 		List<NhanSu> yourObject = (List<NhanSu>) criteria.add(Restrictions.eq("phongBan.maPhongBan", maPhongBan)).list();
 		startPosition = 1;
-		maxResult = yourObject.size();
+		maxResult = yourObject.size();	
 		return yourObject;
 	}
 	

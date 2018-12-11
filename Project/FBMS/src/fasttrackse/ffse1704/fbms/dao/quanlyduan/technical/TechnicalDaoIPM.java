@@ -52,9 +52,10 @@ public class TechnicalDaoIPM implements TechnicalDao {
 
 	@Override
 	public Technical getTechnicalByIdTechnical(String matechnical) {
-		Session session = this.sessionFactory.openSession();
-		Technical technical = session.get(Technical.class, matechnical);
-		session.close();
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Technical> listTechnical = session.createQuery("from Technical where maTechnical = '" + matechnical + "'", Technical.class)
+				.list();
+		Technical technical = listTechnical.get(0);
 		return technical;
 	}
 
