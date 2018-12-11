@@ -465,7 +465,7 @@
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item"
 							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
-						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/luunhap">● danh sánh</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn chờ
 								duyệt</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
