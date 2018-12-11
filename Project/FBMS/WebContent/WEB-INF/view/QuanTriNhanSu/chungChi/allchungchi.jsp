@@ -40,10 +40,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="cc" items="${chungchi}">
+				<c:forEach var="cc" items="${chungchi.listChungChi}">
 					<tr>
 						<td>${cc.ID}</td>
-						<td>${cc.maNhanVien}</td>
+						<td>${cc.nhanSu.maNhanVien}</td>
 						<td>${cc.tenChungChi}</td>
 						<td>${cc.ngayCap}</td>
 						<td>${cc.donViCap}</td>
