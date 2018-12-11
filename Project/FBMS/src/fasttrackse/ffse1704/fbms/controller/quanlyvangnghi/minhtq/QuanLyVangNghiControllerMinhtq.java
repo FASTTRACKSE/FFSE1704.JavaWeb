@@ -96,48 +96,36 @@ public class QuanLyVangNghiControllerMinhtq {
 	}
 
 	@RequestMapping(value = "/addDonNghiPhepNhap", method = RequestMethod.POST)
-	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphepnhap,
+	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphep,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String action)
 			throws IllegalStateException, IOException {
-
+		String url = "";
 		if (bindingResult.hasErrors()) {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
-		}
+		} else {
 
-		String msg = "";
-		if (action.equals("nhap")) {
-			msg = "trạng thái lưu nháp";
-			TrangThaiVangNghiMinhtq trangThaiNghiphep = new TrangThaiVangNghiMinhtq();
-			trangThaiNghiphep.setMaTrangThai(1);
-			donnghiphepnhap.setTrangThaiDNP(trangThaiNghiphep);
-		} else if (action.equals("them")) {
-			msg = "đang chờ phê duyệt";
-			TrangThaiVangNghiMinhtq trangThaiNghiphep = new TrangThaiVangNghiMinhtq();
-			trangThaiNghiphep.setMaTrangThai(2);
-			donnghiphepnhap.setTrangThaiDNP(trangThaiNghiphep);
-		}
+			if (action.equals("nhap")) {
 
-		donNghiPhepService.addDonNghiPhepNhap(donnghiphepnhap);
-		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
-		redirectAttributes.addFlashAttribute("button", msg);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+				donnghiphep.setTrangThai(1);
+				donNghiPhepService.addDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+			}
+			if (action.equals("them")) {
+				
+				donnghiphep.setTrangThai(2);
+				donNghiPhepService.addDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess",
+						"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet";
+			}
+
+		}
+		return url;
 	}
 
-	// thêm một đơn nghỉ phép chờ phê duyệt
-	@RequestMapping(value = "/addDonNghiPhepChoDuyet", method = RequestMethod.POST)
-	public String listDonChoDuyet(@Valid @ModelAttribute("taodonmoi") DonNghiPhepMinhtq donnghiphepduyet,
-			BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
-		if (result.hasErrors()) {
-
-			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
-		}
-		donNghiPhepService.addDonNghiPhepNhap(donnghiphepduyet);
-		;
-		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
-	}
-
+	
 	// tìm view đơn nghỉ phép nháp theo id
 	@RequestMapping(value = "/suaDonNghiPhepView/{id}", method = RequestMethod.GET)
 	public String edit_ById(@PathVariable("id") int id, Model model) {
@@ -222,13 +210,13 @@ public class QuanLyVangNghiControllerMinhtq {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
-	
+
 	@RequestMapping("/deleteTrangThai/{maTrangThai}")
 	public String deletetrangthai(@PathVariable int maTrangThai, Model model) {
 		donNghiPhepService.deleteTrangThai(maTrangThai);
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
-	
+
 	/////////////////// hết CRUD List trạng thái///////////////
 
 	/////////////////// CRUD List loại ngày nghỉ///////////////
@@ -262,13 +250,12 @@ public class QuanLyVangNghiControllerMinhtq {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
-	
+
 	@RequestMapping("/deleteLoaiNgayNghi/{maNgayNghi}")
 	public String deleteloaingaynghi(@PathVariable int maNgayNghi, Model model) {
 		donNghiPhepService.deleteLoaiNgayNghi(maNgayNghi);
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
-	
-	
+
 	/////////////////// hết CRUD List loại ngày nghỉ///////////////
 }

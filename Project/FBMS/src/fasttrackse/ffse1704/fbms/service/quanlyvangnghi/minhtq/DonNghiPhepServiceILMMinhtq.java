@@ -70,8 +70,8 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
-		donNghiPhepDao.addDonNghiPhepNhap(donnghiphepnhap);
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
+		donNghiPhepDao.addDonNghiPhep(donnghiphep);
 
 	}
 

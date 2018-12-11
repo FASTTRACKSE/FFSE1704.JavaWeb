@@ -75,9 +75,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// crud cho đơn nghỉ phép nháp của nhân viên
-	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.save(donnghiphepnhap);
+		session.save(donnghiphep);
 		
 	}
 

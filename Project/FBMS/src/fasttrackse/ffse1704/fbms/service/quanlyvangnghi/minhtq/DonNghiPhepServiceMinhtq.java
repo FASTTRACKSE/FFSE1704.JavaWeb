@@ -22,7 +22,7 @@ public interface DonNghiPhepServiceMinhtq {
 
 	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
 
-	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
 
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
