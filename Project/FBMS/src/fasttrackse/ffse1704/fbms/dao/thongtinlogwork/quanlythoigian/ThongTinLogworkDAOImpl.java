@@ -86,7 +86,7 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	}
 
 	@Override
-	public ThongTinLogwork findByIdLogwork(String id) {
+	public ThongTinLogwork findByIdLogwork(int id) {
 		Session session = this.sessionFactory.openSession();
 		ThongTinLogwork logwork = session.get(ThongTinLogwork.class, id);
 		session.close();

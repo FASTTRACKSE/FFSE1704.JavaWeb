@@ -24,7 +24,7 @@ public interface ThongTinLogworkDAO {
 
 	public void delete(String id);
 
-	public ThongTinLogwork findByIdLogwork(String id);
+	public ThongTinLogwork findByIdLogwork(int id);
 
 	public List<ThongTinLogwork> findAll(int iDisplayStart, int iDisplayLength, String sql);
 
