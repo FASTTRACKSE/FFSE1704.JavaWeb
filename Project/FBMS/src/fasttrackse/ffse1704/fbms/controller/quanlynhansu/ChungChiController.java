@@ -42,7 +42,7 @@ public class ChungChiController {
 	}
 
 	// danh sach edit
-	@RequestMapping(value = "/ViewCC/editCC/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/ViewCC/updateCC/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable("id") int id, Model model) {
 
 		model.addAttribute("chungChi", chungChiService.getChungChiUpdate(id));

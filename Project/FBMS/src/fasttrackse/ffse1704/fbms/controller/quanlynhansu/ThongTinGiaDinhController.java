@@ -1,13 +1,18 @@
 package fasttrackse.ffse1704.fbms.controller.quanlynhansu;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinGiaDinh;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.ThongTinGiaDinhService;
@@ -17,27 +22,42 @@ public class ThongTinGiaDinhController {
 	@Autowired
 	ThongTinGiaDinhService thongTinGiaDinhService;
 
-	@RequestMapping("/QuanTriNhanSu/danhsach_ttgiadinh")
-	public String ShowList() {
-		return "redirect:/QuanTriNhanSu/danhsach_ttgiadinh/1";
+	public void setThongTinGiaDinhService(ThongTinGiaDinhService thongTinGiaDinhService) {
+		this.thongTinGiaDinhService = thongTinGiaDinhService;
+	}
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
+	}
+
+	// danh sach bằng cấp
+	@RequestMapping(value = "/ViewTTGD/{maNhanVien}", method = RequestMethod.GET)
+	public String ViewThongTinGiaDinh(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
+		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
+
+		return "QuanTriNhanSu/thongTinGiaDinh/allthongtin";
 
 	}
 
-	@RequestMapping("/QuanTriNhanSu/danhsach_ttgiadinh/{page}")
-	public ModelAndView ShowList(@PathVariable int page, Model model) {
-		long record = thongTinGiaDinhService.countTT();
+	// danh sach edit
+	@RequestMapping(value = "/ViewTTGD/updateTTGD/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") int id, Model model) {
 
-		int perpage = 1;
-		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
+		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.getThongTinGiaDinhUpdate(id));
 
-		if (page == 0) {
-			page = 1;
-		}
-		int start = (page - 1) * perpage;
+		return "QuanTriNhanSu/thongTinGiaDinh/updateTTGD";
 
-		List<ThongTinGiaDinh> list = thongTinGiaDinhService.getThongTinByPage(start, perpage);
-		model.addAttribute("page", page);
-		model.addAttribute("totalPage", totalPage);
-		return new ModelAndView("QuanTriNhanSu/thongTinGiaDinh/allthongtin", "thongtin", list);
+	}
+
+	// UPDATE
+	@RequestMapping(value = "/ViewTTGD/update", method = RequestMethod.POST)
+	public String editSave(@ModelAttribute("thongTinGiaDinh") ThongTinGiaDinh thongTinGiaDinh, Model model) {
+
+		thongTinGiaDinhService.update(thongTinGiaDinh);
+
+		return "QuanTriNhanSu/thongTinGiaDinh/allthongtin";
+
 	}
 }

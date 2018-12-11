@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ThongTinGiaDinhDao;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinGiaDinh;
 
 @Service
@@ -24,33 +25,50 @@ public class ThongTinGiaDinhServiceImpl implements ThongTinGiaDinhService {
 	}
 
 	@Override
-	public void addTT(ThongTinGiaDinh tt) {
-		this.thongTinGiaDinhDao.addTT(tt);
+	public List<ThongTinGiaDinh> viewAll() {
+		return this.thongTinGiaDinhDao.viewAll();
 	}
 
 	@Override
-	public void updateTT(ThongTinGiaDinh tt) {
-		this.thongTinGiaDinhDao.updateTT(tt);
+	public void addThongTinGiaDinh(ThongTinGiaDinh tt) {
+this.thongTinGiaDinhDao.addThongTinGiaDinh(tt);		
 	}
 
 	@Override
-	public ThongTinGiaDinh getThongTinById(int id) {
-		return this.thongTinGiaDinhDao.getThongTinById(id);
+	public List<ThongTinGiaDinh> GetListThongTinGiaDinhByPage(int start, int total) {
+		return this.thongTinGiaDinhDao.GetListThongTinGiaDinhByPage(start, total);
 	}
 
 	@Override
-	public void deleteTT(ThongTinGiaDinh tt) {
-		this.thongTinGiaDinhDao.deleteTT(tt);
+	public long CountThongTinGiaDinh() {
+		return this.thongTinGiaDinhDao.CountThongTinGiaDinh();
 	}
 
 	@Override
-	public List<ThongTinGiaDinh> getThongTinByPage(int pageid, int total) {
-		return this.thongTinGiaDinhDao.getThongTinByPage(pageid, total);
+	public NhanSu getThongTinGiaDinhByID(String id) {
+		return this.thongTinGiaDinhDao.getThongTinGiaDinhByID(id);
 	}
 
 	@Override
-	public long countTT() {
-		return this.thongTinGiaDinhDao.countTT();
+	public void update(ThongTinGiaDinh tt) {
+this.thongTinGiaDinhDao.update(tt);		
 	}
+
+	@Override
+	public void delete(int id) {
+this.thongTinGiaDinhDao.delete(id);		
+	}
+
+	@Override
+	public boolean checkExistMa(String maNS) {
+		return this.thongTinGiaDinhDao.checkExistMa(maNS);
+	}
+
+	@Override
+	public ThongTinGiaDinh getThongTinGiaDinhUpdate(int id) {
+		return this.thongTinGiaDinhDao.getThongTinGiaDinhUpdate(id);
+	}
+
+	
 
 }

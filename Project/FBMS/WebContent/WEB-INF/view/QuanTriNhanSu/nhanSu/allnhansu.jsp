@@ -170,7 +170,7 @@
 						  </c:otherwise>
 													</c:choose></td>
 												<%-- <td>${ns.trangThai}</td> --%>
-												<td><a href="editNS/${ns.id}" class="btn btn-info">Gia
+												<td><a href="http://localhost:8080/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
 														Đình</a></td>
 
 												<td><a href="http://localhost:8080/FBMS/ViewBC/${ns.maNhanVien}"
