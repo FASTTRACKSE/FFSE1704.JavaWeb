@@ -166,9 +166,9 @@ public class NhanSu implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ThongTinGiaDinh> listGiaDinh;
 
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<ThongTinHopDong> listHopDong;
+	public List<ThongTinHopDong> listHopDong;
 
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)

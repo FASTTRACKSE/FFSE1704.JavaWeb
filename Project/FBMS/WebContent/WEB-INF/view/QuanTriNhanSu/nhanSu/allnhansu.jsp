@@ -178,9 +178,7 @@
 													href="http://localhost:8080/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
 														chỉ</a></td>
 
-												<td><a href="DeleteNS/${ns.id}" class="btn btn-warning">Hợp
-														đồng</a> <a href="DeleteNS/${ns.id}" class="btn btn-primary">Chế
-														độ</a></td>
+												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}" class="btn btn-warning">Hợp đồng</a> <a href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}" class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
 												<td><a href="editNS/${ns.id}"><button>sửa</button></a>
 

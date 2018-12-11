@@ -81,4 +81,15 @@ public class XemThongTinNVController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/thongTinHopDong/{maNhanVien}", method = RequestMethod.GET)
+	public String thongTinHopDong(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+	}
+	@RequestMapping(value = "/thongTinKinhNghiem/{maNhanVien}", method = RequestMethod.GET)
+	public String thongTingKinhNghiem(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinKinhNghiem";
+	}
+	
 }
