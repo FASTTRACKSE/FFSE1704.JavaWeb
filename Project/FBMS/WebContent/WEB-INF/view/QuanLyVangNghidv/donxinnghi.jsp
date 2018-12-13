@@ -3,11 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 <title>Insert title here</title>
+   <link rel="apple-touch-icon" href="<c:url value="/resources/images/ico/apple-icon-120.png "/>">
+   <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/images/ico/favicon.ico "/>">
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
@@ -114,11 +116,10 @@
 													<fieldset
 														class="form-group position-relative has-icon-left">
 														<input id="iconLeft10"
+															name ="tennv"
 															type="text"
 															class="form-control round"
 															value="${nhanVien.getHoDem()+=' '+=nhanVien.getTen()} ">
-														<input type="hidden" name="tennv"
-															value="${nhanVien.getHoDem()+=' '+=nhanVien.getTen()}">
 														<div class="form-control-position">
 															<i class="fa fa-user-circle-o"></i>
 														</div>
@@ -135,7 +136,7 @@
 														<input id="iconLeft10"
 															 type="text" class="form-control round"
 															value="${nhanVien.getPhongBan().getTenPhongBan()}">
-														<input type="hidden" name="phong_ban"
+														<input type="hidden" name="phongban"
 															value="${nhanVien.getPhongBan().getTenPhongBan()}">
 														<div class="form-control-position">
 															<i class="fa fa-users"></i>
@@ -193,7 +194,7 @@
 											<h4 class="form-section">
 												<i class="fa fa-calendar-o"></i> Chọn ngày nghỉ
 											</h4>
-											<div class="row">
+											<!-- <div class="row">
 												<div class="form-group col-md-4 mb-2 has-icon-left">
 													<p>Ngày bắt đầu*</p>
 													
@@ -216,7 +217,7 @@
 
 													
 												</div>												
-											</div>
+											</div> -->
 
 											<h4 class="form-section">
 												<i class="fa fa-list-ul"></i> Lý do nghỉ*
@@ -225,12 +226,8 @@
 											<div class="row">
 												<div class="form-group col-md-12 mb-2">
 												
-													<select id="customSelect" name="loainghi"
-														class="custom-select block round">
-														<c:forEach items="${loaingaynghiphep}" var="loainghi" >
-															<option value="${loaingaynghiphep.getTenloainghi()}">${lyDo.getTenloainghi()}</option>
-														</c:forEach>
-													</select>
+													<input  name="lydo" type="text"
+																class="form-control round" 	>
 												</div>
 											</div>
 
@@ -248,8 +245,6 @@
 													</div>
 												</div>
 											</div> 
-											<input  name="ghichu" type="text"
-																class="form-control round" 	>
 											<div class="form-actions">
 												<button type="submit" class="btn btn-primary">
 													<i class="fa ft-save"></i> Lưu nháp

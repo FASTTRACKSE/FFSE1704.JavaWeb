@@ -455,7 +455,9 @@
 						<li class=""><a class="menu-item"
 							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
 						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/luunhap">● danh sánh</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn chờ
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/choduyet">● đơn chờ
+								duyệt</a></li>
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/daduyet">● đơn đã
 								duyệt</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn duyệt
@@ -464,7 +466,7 @@
 								lần 2</a></li>
 						<li class=""><a class="menu-item" href="#">● ghi chú</a></li>
 						<li class=""><a class="menu-item" href="#">● ghi chú tp</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn lưu nháp</a></li>
+						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/luunhap">● đơn lưu nháp</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn được sửa</a></li>
 						<li class=""><a class="menu-item" href="#">● xem danh
 								sách phê duyệt</a></li>
