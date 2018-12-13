@@ -1,15 +1,24 @@
 package fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq;
 
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "minhtq_loai_ngay_nghi")
-public class LoaiNgayNghiMinhtq {
+public class LoaiNgayNghiMinhtq implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,17 +29,17 @@ public class LoaiNgayNghiMinhtq {
 	private int maNgayNghi;
 
 	@Column(name = "ten_loai_ngay_nghi")
-	private String tenNgayNghi;
+	private String tenLoaiNgayNghi;
 
-	public LoaiNgayNghiMinhtq() {
-		super();
-		// TODO Auto-generated constructor stub
+	@OneToMany(mappedBy = "loaiNgayNghi")
+	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
+
+	public Collection<DonNghiPhepMinhtq> getDonNghiPhepMinhtq() {
+		return donNghiPhepMinhtq;
 	}
 
-	public LoaiNgayNghiMinhtq(int id, int maNgayNghi, String tenNgayNghi) {
-		super();
-		this.maNgayNghi = maNgayNghi;
-		this.tenNgayNghi = tenNgayNghi;
+	public void setDonNghiPhepMinhtq(Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
+		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
 
 	public int getId() {
@@ -49,12 +58,26 @@ public class LoaiNgayNghiMinhtq {
 		this.maNgayNghi = maNgayNghi;
 	}
 
-	public String getTenNgayNghi() {
-		return tenNgayNghi;
+	public String getTenLoaiNgayNghi() {
+		return tenLoaiNgayNghi;
 	}
 
-	public void setTenNgayNghi(String tenNgayNghi) {
-		this.tenNgayNghi = tenNgayNghi;
+	public void setTenLoaiNgayNghi(String tenLoaiNgayNghi) {
+		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+	}
+
+	public LoaiNgayNghiMinhtq() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public LoaiNgayNghiMinhtq(int id, int maNgayNghi, String tenLoaiNgayNghi,
+			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
+		super();
+		this.id = id;
+		this.maNgayNghi = maNgayNghi;
+		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
 
 }

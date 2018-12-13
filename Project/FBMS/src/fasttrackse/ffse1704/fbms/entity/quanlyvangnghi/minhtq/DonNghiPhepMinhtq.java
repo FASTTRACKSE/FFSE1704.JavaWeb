@@ -47,6 +47,18 @@ public class DonNghiPhepMinhtq {
 	private int trangThai;
 
 	@ManyToOne
+	@JoinColumn(name = "loai_ngay_nghi", referencedColumnName = "ma_loai_ngay_nghi", insertable = false, updatable = false, nullable = false)
+	private LoaiNgayNghiMinhtq loaiNgayNghiPhep;
+
+	public LoaiNgayNghiMinhtq getLoaiNgayNghiPhep() {
+		return loaiNgayNghiPhep;
+	}
+
+	public void setLoaiNgayNghiPhep(LoaiNgayNghiMinhtq loaiNgayNghiPhep) {
+		this.loaiNgayNghiPhep = loaiNgayNghiPhep;
+	}
+
+	@ManyToOne
 	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trang_thai", insertable = false, updatable = false, nullable = false)
 	private TrangThaiVangNghiMinhtq trangThaiDNP;
 
@@ -115,7 +127,8 @@ public class DonNghiPhepMinhtq {
 	}
 
 	public DonNghiPhepMinhtq(int id, String maNhanVien, int loaiNgayNghi, int soLuong, Date thoiGianBatDau,
-			Date thoiGianKetThuc, int trangThai, TrangThaiVangNghiMinhtq trangThaiDNP) {
+			Date thoiGianKetThuc, int trangThai, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
+			TrangThaiVangNghiMinhtq trangThaiDNP) {
 		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
@@ -124,6 +137,7 @@ public class DonNghiPhepMinhtq {
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.trangThai = trangThai;
+		this.loaiNgayNghiPhep = loaiNgayNghiPhep;
 		this.trangThaiDNP = trangThaiDNP;
 	}
 
@@ -132,8 +146,4 @@ public class DonNghiPhepMinhtq {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	
-	
 }

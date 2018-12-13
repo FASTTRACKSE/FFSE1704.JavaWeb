@@ -135,7 +135,7 @@
 											<tr>
 												<td>${dnpn.id}</td>
 												<td>${dnpn.maNhanVien}</td>
-												<td>${dnpn.loaiNgayNghi}</td>
+												<td>${dnpn.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>

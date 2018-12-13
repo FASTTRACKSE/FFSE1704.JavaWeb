@@ -88,7 +88,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		return countryList;
 	}
 
-	// thêm một đơn nghỉ phép nháp
+	// thêm một đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/addDonNghiPhepMoi", method = RequestMethod.GET)
 	public String showForm(Model model) {
 		model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
@@ -112,7 +112,7 @@ public class QuanLyVangNghiControllerMinhtq {
 				redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
 			}
-			if (action.equals("them")) {
+			if (action.equals("chopheduyet")) {
 				
 				donnghiphep.setTrangThai(2);
 				donNghiPhepService.addDonNghiPhep(donnghiphep);
@@ -133,7 +133,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "/QuanLyVangNghi/minhtq/donnghiphepnhap/edit_form";
 	}
 
-	// sửa đơn nghỉ phép nháp
+	// sửa đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/suaDonNghiPhepNhap", method = RequestMethod.POST)
 	public String editDonNghiPhepnhap(Model model, @ModelAttribute("suadonnhap") @Valid DonNghiPhepMinhtq donnghiphep,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
@@ -149,7 +149,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
 	}
 
-	// xóa một đơn nghỉ phép nháp
+	// xóa một đơn nghỉ phép nháp 
 	@RequestMapping("/deleteDonNghiPhepNhap/{id}")
 	public String xoaDonNghiPhepNhap(@PathVariable int id, HttpSession session, Model model) {
 		donNghiPhepService.deleteDonNghiPhep(id);

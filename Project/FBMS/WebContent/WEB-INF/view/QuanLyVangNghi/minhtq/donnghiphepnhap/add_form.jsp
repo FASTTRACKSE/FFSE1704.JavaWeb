@@ -213,8 +213,8 @@
 									class="btn btn-outline-success round  mr-1 mb-1" value="nhap"
 									name="action">lưu nháp</button>
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1" value="them"
-									name="action">gửi thông tin</button>
+									class="btn btn-outline-success round  mr-1 mb-1" value="chopheduyet"
+									name="action">gửi đơn</button>
 
 							</div>
 						</div>
