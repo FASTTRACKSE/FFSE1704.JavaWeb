@@ -39,12 +39,15 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" enctype="multipart/form-data"
-						action="addCC" modelAttribute="chungChi">
+					<form:form method="post" action="/FBMS/saveCC"
+						modelAttribute="chungChi">
+						<div>
+							<form:hidden path="ID" />
+						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text"
-								path="nhanSu.maNhanVien" />
+							<form:input class="form-control" type="text" path="maNhanVien"
+								value="${chungChi2.maNhanVien}" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên Chứng Chỉ:</label>
