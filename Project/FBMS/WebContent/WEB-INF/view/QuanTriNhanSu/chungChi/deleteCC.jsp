@@ -41,8 +41,8 @@
 				<div class="row">
 					<form:form method="post" enctype="multipart/form-data"
 						action="deleteCC" modelAttribute="chungChi">
-						<div class="form-group col-sm-12">
-							<form:hidden class="form-control" type="text" path="ID" />
+						<div>
+							<form:hidden path="ID" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
@@ -68,7 +68,7 @@
 
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Save" /></td>
+							<td><input type="submit" value="Xóa" /></td>
 						</tr>
 					</form:form>
 				</div>

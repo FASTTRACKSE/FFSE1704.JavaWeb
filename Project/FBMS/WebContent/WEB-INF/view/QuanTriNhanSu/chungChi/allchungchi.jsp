@@ -64,7 +64,8 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="addCC"> <span class="fa fa-plus"></span> Thêm mới
+					<a href="/FBMS/addCC/${chungChi.maNhanVien}/"> <span
+						class="fa fa-plus"></span> Thêm mới
 					</a>
 				</div>
 			</div>
@@ -132,8 +133,8 @@
 												<td>${cc.tenChungChi}</td>
 												<td>${cc.ngayCap}</td>
 												<td>${cc.donViCap}</td>
-												<td><a href="updateCC/${cc.ID}"><button>Sửa</button></a>
-													<a href="deleteCC/${cc.ID}"><button>Xóa</button></a></td>
+												<td><a href="${maNhanVien}/updateCC/${cc.ID}"><button>Sửa</button></a>
+													<a href="${maNhanVien}/deleteCC/${cc.ID}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
