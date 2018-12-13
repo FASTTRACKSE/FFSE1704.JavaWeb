@@ -26,7 +26,7 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 	

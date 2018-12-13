@@ -134,31 +134,5 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable")
-				.dataTable(
-						{
-							responsive : true,
-							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-							"bServerSide" : true,
-							"sAjaxSource" : "/FBMS/QuanTriHeThong/chuc_nang/view/getListChucNang",
-						});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

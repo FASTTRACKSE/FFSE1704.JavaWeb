@@ -76,7 +76,7 @@ public class HopDongDaoImpl implements HopDongDao {
 	@Override
 	public void deleteHopDong(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		nhanSu.listHopDong.remove(findById(id));
-		session.save(nhanSu);
+//		nhanSu.listHopDong.remove(findById(id));
+		session.delete(findById(id));
 	}
 }
