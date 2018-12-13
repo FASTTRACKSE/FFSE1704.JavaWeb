@@ -132,7 +132,8 @@
 												<td>${cc.tenChungChi}</td>
 												<td>${cc.ngayCap}</td>
 												<td>${cc.donViCap}</td>
-												<td><a href="#"><button>Sửa</button></a> <a href="#"><button>Xóa</button></a></td>
+												<td><a href="updateCC/${cc.ID}"><button>Sửa</button></a>
+													<a href="deleteCC/${cc.ID}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
