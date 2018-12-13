@@ -35,7 +35,7 @@
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-		<form:form action="" method="POST" modelAttribute="document"
+		<form:form action="" method="POST" modelAttribute="documentupdate"
 			enctype="multipart/form-data"
 			class="form form-horizontal striped-rows form-bordered">
 
@@ -95,6 +95,8 @@
 						</form:select>
 					</div>
 				</div>
+				<form:hidden path="maTrangThai.maTrangThai" class="form-control"
+							id="projectinput5" value="${TrangThai.maTrangThai}" />
 				<!-- ///////////////////// -->
 
 	
@@ -102,14 +104,9 @@
 				<!-- ///////////////////// -->
 
 				<div class="form-actions">
-					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentSave"
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentUpdate"
 						class="btn btn-success mr-1">
-						Submit
-					</button>
-					<button
-						formaction="<%=request.getContextPath()%>/documentSave/draft"
-						class="btn btn-info mr-1">
-						Lưu vào nháp
+						Update
 					</button>
 					<a href="<%=request.getContextPath()%>/quanlytailieu/index"
 						class="btn btn-danger mr-1"> Cancel</a>

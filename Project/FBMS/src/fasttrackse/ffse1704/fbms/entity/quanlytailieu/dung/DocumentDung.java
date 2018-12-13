@@ -14,7 +14,7 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "tai_lieu_dung")
-public class Document {
+public class DocumentDung {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,48 +73,48 @@ public class Document {
 		this.maPhongBan = maPhongBan;
 	}
 
-	public DanhMuc getMaDanhMuc() {
+	public DanhMucDung getMaDanhMuc() {
 		return maDanhMuc;
 	}
 
-	public void setMaDanhMuc(DanhMuc maDanhMuc) {
+	public void setMaDanhMuc(DanhMucDung maDanhMuc) {
 		this.maDanhMuc = maDanhMuc;
 	}
 
 
 	@ManyToOne
 	@JoinColumn(name = "ma_danh_muc", referencedColumnName = "ma_danh_muc")
-	private DanhMuc maDanhMuc;
+	private DanhMucDung maDanhMuc;
 	
 	
 	@ManyToOne
 	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai")
-	private TrangThai maTrangThai;
+	private TrangThaiDung maTrangThai;
 
 	
 
 	
-	public TrangThai getMaTrangThai() {
+	public TrangThaiDung getMaTrangThai() {
 		return maTrangThai;
 	}
 
-	public void setMaTrangThai(TrangThai maTrangThai) {
+	public void setMaTrangThai(TrangThaiDung maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
 
-
+	
 	@ManyToOne
 	@JoinColumn(name = "ma_icon", referencedColumnName = "ma_icon")
-	private Icon maIcon;
+	private IconDung maIcon;
 	
 	// getter and setter
 	 
 	
-	public Icon getMaIcon() {
+	public IconDung getMaIcon() {
 		return maIcon;
 	}
 
-	public void setMaIcon(Icon maIcon) {
+	public void setMaIcon(IconDung maIcon) {
 		this.maIcon = maIcon;
 	}
 
@@ -134,6 +134,24 @@ public class Document {
 
 	public void setFile(String file) {
 		this.file = file;
+	}
+
+	public DocumentDung(int id, String tenTaiLieu, String file, String moTa, String ghiChu, PhongBan maPhongBan,
+			DanhMucDung maDanhMuc, TrangThaiDung maTrangThai, IconDung maIcon) {
+		super();
+		this.id = id;
+		this.tenTaiLieu = tenTaiLieu;
+		this.file = file;
+		this.moTa = moTa;
+		this.ghiChu = ghiChu;
+		this.maPhongBan = maPhongBan;
+		this.maDanhMuc = maDanhMuc;
+		this.maTrangThai = maTrangThai;
+		this.maIcon = maIcon;
+	}
+
+	public DocumentDung() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

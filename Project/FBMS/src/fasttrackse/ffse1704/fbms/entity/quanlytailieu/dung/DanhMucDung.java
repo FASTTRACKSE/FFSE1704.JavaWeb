@@ -13,18 +13,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "danh_muc_tai_lieu")
-public class DanhMuc implements Serializable {	
+public class DanhMucDung implements Serializable {	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8800040796985248779L;
 	@OneToMany(mappedBy="maDanhMuc")
-	private List<Document> Document;
-	public List<Document> getDocument() {
-		return Document;
+	private List<DocumentDung> DocumentDung;
+	public List<DocumentDung> getDocument() {
+		return DocumentDung;
 	}
-	public void setDocument(List<Document> document) {
-		Document = document;
+	public void setDocument(List<DocumentDung> documentDung) {
+		DocumentDung = documentDung;
 	}
 	@Id
 	@Column(name = "id")

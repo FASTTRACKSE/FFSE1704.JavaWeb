@@ -425,7 +425,7 @@
 				<!-- Dũng -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/quanlytailieu/index">●
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/index">●
 								Danh mục tài liệu</a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
