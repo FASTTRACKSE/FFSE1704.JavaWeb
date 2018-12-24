@@ -106,9 +106,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+</div>	
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 

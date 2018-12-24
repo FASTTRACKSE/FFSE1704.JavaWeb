@@ -275,7 +275,10 @@ body, html {
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th scope="col">Quê quán</th>
+													<th scope="col">Địa chỉ</th>
+													<th scope="col">Quận/Huyện</th>
+													<th scope="col">Phường/Xã</th>
+													<th scope="col">Tỉnh/Thành phố</th>
 													<th scope="col">Quốc tịch</th>
 													<th scope="col">Nơi tạm trú</th>
 													<th scope="col">Số điện thoại</th>
@@ -285,6 +288,9 @@ body, html {
 											<tbody>
 												<tr>
 													<td>${thongTinNhanVien.queQuan}</td>
+													<td>${thongTinNhanVien.quanHuyen.name}</td>
+													<td>${thongTinNhanVien.xaPhuong.name}</td>
+													<td>${thongTinNhanVien.thanhPho.name}</td>
 													<td>${thongTinNhanVien.quocTich.tenQuocTich}</td>
 													<td>${thongTinNhanVien.noiTamTru}</td>
 													<td>@${thongTinNhanVien.soDienThoai}</td>
@@ -358,9 +364,10 @@ body, html {
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
+												
 													<c:forEach var="hopDong"
 														items="${thongTinNhanVien.listHopDong}">
+														<tr>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
 														<c:forEach var="ngayNghi"
 															items="${thongTinNhanVien.listNgayNghi}">
@@ -370,8 +377,9 @@ body, html {
 														<td>${hopDong.ngayBatDau}</td>
 														<td>${hopDong.ngayKetThuc}</td>
 														<td>${hopDong.cheDoHuong.luong}</td>
+														</tr>
 													</c:forEach>
-												</tr>
+												
 											</tbody>
 										</table>
 
@@ -418,11 +426,11 @@ body, html {
 													<tr>
 														<td>${hopDong.thongTinDuAn.maDuAn}</td>
 														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
-														
+
 														<td>${hopDong.vaiTro.tenVaiTro}</td>
 														<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
-														
-														
+
+
 													</tr>
 												</c:forEach>
 

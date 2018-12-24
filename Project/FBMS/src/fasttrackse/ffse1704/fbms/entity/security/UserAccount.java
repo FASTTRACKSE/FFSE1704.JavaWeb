@@ -114,7 +114,7 @@ public class UserAccount implements java.io.Serializable {
 		
 		// Additional title and roles
 		for (UsersRoles usersRoles : this.usersRoleses) {
-			//authorities.add(new SimpleGrantedAuthority(usersRoles.getRole().getName()));
+//			authorities.add(new SimpleGrantedAuthority(usersRoles.getRole().getName()));
 		}
 		
 		return authorities;

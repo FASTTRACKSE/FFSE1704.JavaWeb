@@ -1,13 +1,10 @@
 package fasttrackse.ffse1704.fbms.entity.security;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -32,8 +29,6 @@ public class PhongBan implements Serializable {
 	// bi-directional many-to-one association to HoSoNhanVien
 //	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phongBan")
 //	private List<HoSoNhanVien> hoSoNhanViens;
-	
-	
 
 	public PhongBan() {
 	}
@@ -61,6 +56,5 @@ public class PhongBan implements Serializable {
 //	public void setHoSoNhanViens(List<HoSoNhanVien> hoSoNhanViens) {
 //		this.hoSoNhanViens = hoSoNhanViens;
 //	}
-	
 
 }

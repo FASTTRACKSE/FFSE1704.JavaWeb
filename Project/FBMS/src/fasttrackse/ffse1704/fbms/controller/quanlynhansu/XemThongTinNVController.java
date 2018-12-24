@@ -63,6 +63,7 @@ public class XemThongTinNVController {
 		int startPosition = recordsPerPage * (currentPage - 1);
 		
 		model.addAttribute("listThongTin", xemThongTinNVService.findAllForPaging(maPhongBan, startPosition, recordsPerPage));
+		model.addAttribute("listPhongBan", xemThongTinNVService.findTenPhongBanByMaPhongBan(maPhongBan));
 		model.addAttribute("lastPage", totalPages);
 		model.addAttribute("currentPage", currentPage);
 		return "QuanTriNhanSu/xemThongTinHoSo/dsnhanvien";

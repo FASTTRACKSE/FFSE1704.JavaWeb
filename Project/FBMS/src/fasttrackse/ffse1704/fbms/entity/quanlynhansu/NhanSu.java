@@ -48,9 +48,20 @@ public class NhanSu implements Serializable {
 	private String maNhanVien;
 
 	@ManyToOne
-	@JoinColumn(name = "ma_phong_ban", nullable = false)
+	@JoinColumn(name = "ma_phong_ban", nullable = false, insertable= false, updatable = false)
 	@NotNull
 	private PhongBan phongBan;
+	
+	@Column(name = "ma_phong_ban", nullable = false)
+	private String maPhongBan;
+
+	public String getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "ma_chuc_danh", nullable = false)

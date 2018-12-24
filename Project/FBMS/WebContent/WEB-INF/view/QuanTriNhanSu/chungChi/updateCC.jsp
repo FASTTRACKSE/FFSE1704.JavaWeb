@@ -39,10 +39,10 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" enctype="multipart/form-data"
-						action="updateCC" modelAttribute="chungChi">
+					<form:form method="post" action="/FBMS/updateCC"
+						modelAttribute="chungChi">
 						<div>
-							<form:hidden path="ID" />
+							<form:hidden path="chungChi2.ID" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>

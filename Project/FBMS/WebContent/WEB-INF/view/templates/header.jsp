@@ -321,7 +321,7 @@
 
 						</ul></li>
 				</ul>
-				<!-- **********************End Quản Lý Dự Án************************************* -->F
+				<!-- **********************End Quản Lý Dự Án************************************* -->
 
 
 
@@ -335,12 +335,14 @@
 						data-original-title="Joker" class=" ft-minus"></i></li>
 					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
 							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
+					<li class=" nav-item"><a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/"><i
+							class="ft-bookmark"></i> Danh sách nhân viên</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
 				</ul>
 
 
-
+				<!-- **********************End Quản Lý Nhân Sự************************************** -->
 
 
 

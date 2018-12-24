@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -98,8 +97,22 @@
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">Danh sach chứng chỉ</h4>
+							<br />
+							<p style="text-align: center;">
+							<h5>Mã nhân viên:</h5>
+							${chungChi.maNhanVien}
+							</p>
+							<p style="text-align: center;">
+							<h5>Tên nhân viên:</h5>
+							${chungChi.hoLot} ${chungChi.ten}
+							</p>
+							<p style="text-align: center;">
+							<h5>Ngày sinh:</h5>
+							${chungChi.namSinh}
+							</p>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
+
 							<div class="heading-elements">
 								<ul class="list-inline mb-0">
 									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -118,7 +131,7 @@
 											<tr>
 
 												<th>ID</th>
-												<th>Mã nhân viên</th>
+
 												<th>Tên Chứng Chỉ</th>
 												<th>Ngày Cấp</th>
 												<th>Đơn Vị Cấp</th>
@@ -129,11 +142,11 @@
 										<c:forEach var="cc" items="${chungChi.listChungChi}">
 											<tr>
 												<td>${cc.ID}</td>
-												<td>${chungChi.maNhanVien}</td>
+
 												<td>${cc.tenChungChi}</td>
 												<td>${cc.ngayCap}</td>
 												<td>${cc.donViCap}</td>
-												<td><a href="${maNhanVien}/updateCC/${cc.ID}"><button>Sửa</button></a>
+												<td><a href="${maNhanVien}/updateCC/${cc.ID}/"><button>Sửa</button></a>
 													<a href="${maNhanVien}/deleteCC/${cc.ID}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
