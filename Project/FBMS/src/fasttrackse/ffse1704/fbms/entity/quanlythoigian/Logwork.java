@@ -2,11 +2,20 @@ package fasttrackse.ffse1704.fbms.entity.quanlythoigian;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 
 @Entity
@@ -67,11 +76,17 @@ public class Logwork {
 	@Column(name = "mo_ta", nullable = true, length = 11)
 	private String moTa;
 
-	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 25)
-	private String thoiGianBatDau;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@Column(name = "thoi_gian_bat_dau", nullable = true)
+	@NotNull	
+	private Date thoiGianBatDau;
 
-	@Column(name = "thoi_gian_ket_thuc", nullable = true, length = 25)
-	private String thoiGianKetThuc;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@Column(name = "thoi_gian_ket_thuc", nullable = true)
+	@NotNull
+	private Date thoiGianKetThuc;
 
 	@Column(name = "nhan_xet_PM", nullable = true)
 	private String nhanXetPM;
@@ -101,18 +116,19 @@ public class Logwork {
 
 	
 	
+
 	public Logwork(int id, DuAnLogwork maDuAn, NhanVienLogwork maNhanVien, VaiTroDuAnLogwork maVaiTroDuAn,
-			PhongBanLogwork maPhongBan, String tenCongViec, String moTa, TrangThaiLogwork trangThai,
-			String thoiGianBatDau, String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
+			PhongBanLogwork maPhongBan, TrangThaiLogwork trangThaiLogwork, String tenCongViec, String moTa,
+			Date thoiGianBatDau, Date thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
 		this.maNhanVien = maNhanVien;
 		this.maVaiTroDuAn = maVaiTroDuAn;
 		this.maPhongBan = maPhongBan;
+		this.trangThaiLogwork = trangThaiLogwork;
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
-		this.trangThaiLogwork = trangThai;
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.nhanXetPM = nhanXetPM;
@@ -144,20 +160,21 @@ public class Logwork {
 	}
 
 
-	public String getThoiGianBatDau() {
+	public Date getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(String thoiGianBatDau) {
-		this.thoiGianBatDau = thoiGianBatDau;
-	}
 
-	public String getThoiGianKetThuc() {
+	public Date getThoiGianKetThuc() {
 		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianKetThuc(String thoiGianKetThuc) {
+	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
 		this.thoiGianKetThuc = thoiGianKetThuc;
+	}
+
+	public void setThoiGianBatDau(Date thoiGianBatDau) {
+		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
 	public String getNhanXetPM() {

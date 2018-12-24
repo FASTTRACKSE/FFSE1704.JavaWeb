@@ -18,6 +18,10 @@ public interface LogworkService {
 	
 	public List<DuAnLogwork> listDuAn();
 	
+	public List<Logwork> listMonth(int start, int total, String month);
+	
+	public List<Logwork> listAllMonth(String month);
+	
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
 
 	public void addNew(Logwork logwork);

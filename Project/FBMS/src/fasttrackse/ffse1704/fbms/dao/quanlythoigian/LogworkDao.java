@@ -9,13 +9,13 @@ import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
 public interface LogworkDao {
 	public List<Logwork> findAll();
-	
+
 	public List<Logwork> findAllForPaging(int star, int total);
-	
+
 	public List<PhongBanLogwork> listPhongBan();
-	
+
 	public List<DuAnLogwork> listDuAn();
-	
+
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
 
 	public void addNew(Logwork logwork);
@@ -31,4 +31,7 @@ public interface LogworkDao {
 	public String getRecordsTotal();
 
 	public String getRecordsFiltered(String sql);
+
+	public List<Logwork> listMonth(int start, int total, String month);
+	public List<Logwork> listAllMonth(String month);
 }

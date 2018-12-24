@@ -91,13 +91,13 @@
 							<label>Trạng thái</label>
 							<form:input class="form-control"
 								path="trangThaiLogwork.maTrangThai" type="hidden" />
-							<form:input class="form-control" path=""
-								placeholder="${editlogwork.trangThaiLogwork.tenTrangThai}" />
+							<input class="form-control"
+								value="${editlogwork.trangThaiLogwork.tenTrangThai}" readonly="readonly" />
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" name="action" value="edit"
 								class="btn btn-success">Sửa</button>
-							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 4 }">
+							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 5 }">
 								<button type="submit" name="action" value="submit"
 									class="btn btn-info">Submit</button>
 							</c:if>

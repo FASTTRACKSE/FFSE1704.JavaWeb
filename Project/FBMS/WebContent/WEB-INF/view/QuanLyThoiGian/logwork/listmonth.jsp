@@ -55,7 +55,8 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách Logwork</li>
+							<li class="breadcrumb-item active">Danh sách Logwork Theo
+								Tháng</li>
 						</ol>
 					</div>
 				</div>
@@ -109,7 +110,15 @@
 							</div>
 						</div>
 
-
+						<div class="card-header">
+							<label><h2>Tháng:</h2></label>
+							<form:form method="POST"
+								action="">
+								<form:select path="thang"
+								items="${thang}"
+								/>
+							</form:form>
+						</div>
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
@@ -128,7 +137,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="lg" items="${logwork}">
+											<c:forEach var="lg" items="${listMonth}">
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn.tenDuAn}</td>
