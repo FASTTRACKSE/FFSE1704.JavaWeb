@@ -10,4 +10,5 @@ public interface XemThongTinNVDao {
 	public List<NhanSu> findByPhongBan(String maPhongBan);
 	public List<NhanSu> findAllForPaging(String maPhongBan,int startPosition,int maxResult);
 	public NhanSu findByMaNhanVien(String maNhanVien);
+	public PhongBan findTenPhongBanByMaPhongBan(String maPhongBan);
 }

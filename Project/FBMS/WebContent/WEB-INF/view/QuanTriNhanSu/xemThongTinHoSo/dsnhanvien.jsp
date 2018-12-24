@@ -94,9 +94,8 @@
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">
-								<c:forEach var="sv" items="${listThongTin}">
-			Danh sách nhân viên:  <a style="color: red">${sv.phongBan.tenPhongBan}</a>
-								</c:forEach>
+								
+			Danh sách nhân viên:  <a style="color: red">${listPhongBan.tenPhongBan}</a>
 
 							</h4>
 							<a class="heading-elements-toggle"><i

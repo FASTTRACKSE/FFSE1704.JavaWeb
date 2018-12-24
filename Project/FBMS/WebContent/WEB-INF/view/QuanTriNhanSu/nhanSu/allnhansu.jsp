@@ -126,7 +126,7 @@
 												<th>Trạng thái</th>
 												<th>Chi tiết</th>
 												<th>Gia đình</th>
-												<th>Khác</th>
+												<th>Trình độ</th>
 												<th>Hợp đồng/Chế độ TH</th>
 												<th>Chức năng</th>
 											</tr>
@@ -172,13 +172,13 @@
 													</c:choose></td>
 												<%-- <td>${ns.trangThai}</td> --%>
 												
-												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}" class="btn btn-info">Xem TT Chi Tiết</a></td>
-												<td><a href="http://localhost:8080/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
+												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}" class="btn btn-success">Xem TT Chi Tiết</a></td>
+												<td><a href="/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
 														Đình</a></td>
 
-												<td><a href="http://localhost:8080/FBMS/ViewBC/${ns.maNhanVien}"
+												<td><a href="/FBMS/ViewBC/${ns.maNhanVien}"
 													class="btn btn-warning">Bằng Cấp</a> <a
-													href="http://localhost:8080/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
+													href="/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
 														chỉ</a></td>
 
 												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}" class="btn btn-warning">Hợp đồng</a> <a href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}" class="btn btn-primary">DS Kinh nghiệm DA</a></td>
@@ -247,30 +247,6 @@
 </div>
 
 
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable").dataTable({
-			responsive : true,
-			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-			"bServerSide" : true,
-			"sAjaxSource" : "/ffse-fbms/QuanTriNhanSu/danhsach_nhansu/{page}",
-		});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

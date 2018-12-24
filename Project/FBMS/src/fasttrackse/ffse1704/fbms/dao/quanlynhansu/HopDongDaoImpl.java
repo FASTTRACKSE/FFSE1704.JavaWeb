@@ -95,6 +95,7 @@ public class HopDongDaoImpl implements HopDongDao {
 //		session.delete(findById(id));
 		String hql = "delete from ThongTinHopDong where id= :id";
 		Query query = session.createQuery(hql);
+		
 		query.setInteger("id", id);
 		query.executeUpdate();
 		System.out.println(query.executeUpdate());
