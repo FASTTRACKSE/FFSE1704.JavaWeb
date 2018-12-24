@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.CongViecKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.LoaiCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienDuAn;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.TrangThaiKhanhCN;;
 
@@ -99,6 +100,14 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<DuAnKhanhCN> da = session.createQuery("from DuAnKhanhCN").list();
 		return da;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NhanVienDuAn> nhanVienDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<NhanVienDuAn> nvda = session.createQuery("from NhanVienDuAn").list();
+		return nvda;
 	}
 
 	@SuppressWarnings("unchecked")

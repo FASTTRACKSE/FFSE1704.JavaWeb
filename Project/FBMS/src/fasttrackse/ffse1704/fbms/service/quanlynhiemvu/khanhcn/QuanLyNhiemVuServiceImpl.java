@@ -12,6 +12,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.CongViecKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.LoaiCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienDuAn;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.TrangThaiKhanhCN;
 
@@ -79,6 +80,12 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 	public List<DuAnKhanhCN> duAn() {
 		// TODO Auto-generated method stub
 		return congViecDao.duAn();
+	}
+
+	@Override
+	public List<NhanVienDuAn> nhanVienDuAn() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

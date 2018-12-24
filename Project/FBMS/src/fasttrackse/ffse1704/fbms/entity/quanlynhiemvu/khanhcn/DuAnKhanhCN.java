@@ -1,7 +1,9 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +31,6 @@ public class DuAnKhanhCN implements Serializable {
 	@NotEmpty
 	String tenDuAn;
 
-	@OneToMany(mappedBy = "maDuAn")
-	private Collection<CongViecKhanhCN> khanhCNs;
 
 	public String getTenDuAn() {
 		return tenDuAn;
@@ -52,12 +52,5 @@ public class DuAnKhanhCN implements Serializable {
 		this.tenDuAn = tenDuAn;
 	}
 
-	public Collection<CongViecKhanhCN> getKhanhCNs() {
-		return khanhCNs;
-	}
-
-	public void setKhanhCNs(Collection<CongViecKhanhCN> khanhCNs) {
-		this.khanhCNs = khanhCNs;
-	}
 
 }

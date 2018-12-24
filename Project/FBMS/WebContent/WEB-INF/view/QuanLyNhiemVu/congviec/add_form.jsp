@@ -39,19 +39,20 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="congViec" action="add">
+					<form:form method="POST" modelAttribute="congViec" action="">
 
 
 						<div class="form-group col-sm-6">
 							<label>Mã dự án</label>
-							<form:select path="maDuAn.maDAn" items="${DuAn}"
+							<form:select path="duAnKhanhCN.maDAn" items="${DuAn}"
 								itemValue="maDAn" itemLabel="tenDuAn" class="form-control" />
 						</div>
 
 						<div class="form-group col-sm-6">
 							<label>Mã loại CV</label>
-							<form:select path="maLoaiCongViec.maLoaiCongViec" items="${LoaiCongViec}"
-								itemValue="maLoaiCongViec" itemLabel="loaiCongViec" class="form-control" />
+							<form:select path="loaiCongViec.maLoaiCongViec"
+								items="${LoaiCongViec}" itemValue="maLoaiCongViec"
+								itemLabel="loaiCongViec" class="form-control" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên CV</label>
@@ -94,8 +95,13 @@
 
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<form:select path="nguoiDuocPhanCong.maNhanVien" items="${NhanVien}"
-								itemValue="maNhanVien" itemLabel="hoDem" class="form-control" />
+							<c:forEach var="nv" items="${list}">
+							<form:select 
+							
+							path="nhanVienDuAn.nhanVienKhanhCN.maNhanVien"
+								items="${NhanVienDuAn.NhanVien}" itemValue="nv.nhanVienDuAn.nhanVienKhanhCN.maNhanVien" itemLabel="nv.nhanVienDuAn.nhanVienKhanhCN.ten"
+								class="form-control" />
+								</c:forEach>
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -108,11 +114,12 @@
 								<form:errors path="thoiGianDuKienHoanThanh" cssClass="error" />
 							</div>
 						</div>
-						
+
 						<div class="form-group col-sm-6">
 							<label>Trạng thái</label>
-							<form:select path="maTrangThai.maTrangThai" items="${TrangThai}"
-								itemValue="maTrangThai" itemLabel="tenTrangThai" class="form-control" />
+							<form:select path="trangThai" items="${TrangThai}"
+								itemValue="maTrangThai" itemLabel="tenTrangThai"
+								class="form-control" />
 						</div>
 
 						<div class="col-sm-12 text-center">
@@ -128,7 +135,6 @@
 	</div>
 </div>
 
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 

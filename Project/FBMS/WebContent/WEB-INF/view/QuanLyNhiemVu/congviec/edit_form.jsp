@@ -30,17 +30,20 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="congViec">
-					<form:input type="hidden" path="id" style="display:none" value="${congViec.id}"/>
+					<form:form method="POST" modelAttribute="congViec" action="">
+						<form:input type="hidden" path="id" style="display:none"
+							value="${congViec.id}" />
 						<div class="form-group col-sm-6">
 							<label>Mã dự án</label>
-							<form:input class="form-control" path="maDuAn"
-								value="${congViec.maDuAn}" placeholder="Mã dự án" />
+							<form:select path="duAnKhanhCN.maDAn" items="${maDuAn}"
+								itemValue="maDAn" itemLabel="tenDuAn" class="form-control" />
+
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã loại CV</label>
-							<form:input class="form-control" path="maLoaiCongViec"
-								value="${congViec.maLoaiCongViec}" placeholder="Mã loại CV" />
+							<form:select path="loaiCongViec.maLoaiCongViec"
+								items="${maLoaiCongViec}" itemValue="maLoaiCongViec"
+								itemLabel="loaiCongViec" class="form-control" />
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -69,14 +72,23 @@
 
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<form:input class="form-control" path="nguoiDuocPhanCong"
-								value="${congViec.nguoiDuocPhanCong}" placeholder="Người được PC" />
+							<form:select path="nhanVienKhanhCN.maNhanVien"
+								items="${nhanVien}" itemValue="maNhanVien" itemLabel="hoDem"
+								class="form-control" />
 						</div>
 
 						<div class="form-group col-sm-6">
 							<label>TG dự kiến HT</label>
 							<form:input class="form-control" path="thoiGianDuKienHoanThanh"
-								value="${congViec.thoiGianDuKienHoanThanh}" placeholder="TG dự kiến HT" />
+								value="${congViec.thoiGianDuKienHoanThanh}"
+								placeholder="TG dự kiến HT" />
+						</div>
+						
+						<div class="form-group col-sm-6">
+							<label>Trạng thái</label>
+							<form:select path="trangThai"
+								items="${trangThai}" itemValue="maTrangThai"
+								itemLabel="tenTrangThai" class="form-control" />
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Lưu thông
