@@ -124,6 +124,7 @@
 												<th>Ảnnh đại diện</th>
 
 												<th>Trạng thái</th>
+												<th>Chi tiết</th>
 												<th>Gia đình</th>
 												<th>Khác</th>
 												<th>Hợp đồng/Chế độ TH</th>
@@ -170,6 +171,8 @@
 						  </c:otherwise>
 													</c:choose></td>
 												<%-- <td>${ns.trangThai}</td> --%>
+												
+												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}" class="btn btn-info">Xem TT Chi Tiết</a></td>
 												<td><a href="http://localhost:8080/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
 														Đình</a></td>
 
