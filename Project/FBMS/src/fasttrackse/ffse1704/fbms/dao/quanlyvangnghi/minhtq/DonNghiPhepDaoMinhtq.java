@@ -8,6 +8,11 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiM
 
 public interface DonNghiPhepDaoMinhtq {
 
+	/////////// phân trang ////////////////
+	public int count();
+
+	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult);
+
 	/////////// ĐƠN NGHỈ PHÉP//////////////////
 	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
 
@@ -21,10 +26,14 @@ public interface DonNghiPhepDaoMinhtq {
 
 	public void deleteDonNghiPhep(int id);
 
-	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
+	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
 
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
 
+	
+	
+
+	
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 

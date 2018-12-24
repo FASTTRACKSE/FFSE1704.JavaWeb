@@ -66,7 +66,7 @@ public class SinhVienController {
 
 	@RequestMapping(value = "/addsinhvien", method = RequestMethod.GET)
 	public String showForm(Model model) {
-		model.addAttribute("command", new SinhVien());
+		model.addAttribute("command", new SinhVie	n());
 		model.addAttribute("listSinhVien", sinhVienService.listSinhVien());
 		return "/AddSinhVien";
 	}

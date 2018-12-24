@@ -20,12 +20,31 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@Autowired
 	SessionFactory sessionFactory;
 
+	
+	
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	
+	// đếm trong bảng Dơn nghỉ phép
+	public int count() {
+		Session session = sessionFactory.getCurrentSession();
+		int rowCount = session.createQuery("from DonNghiPhepMinhtq").list().size();
+		return rowCount;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult) {
+		Session session = sessionFactory.getCurrentSession();
+		List<DonNghiPhepMinhtq> donnghiphep = session.createQuery("from DonNghiPhepMinhtq").setFirstResult(offset)
+				.setMaxResults(maxResult).list();
+		return donnghiphep;
 	}
 
 	// list toàn bộ đơn nghỉ phép nháp của nhân viên
@@ -64,8 +83,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		return list;
 	}
 
-	
-
 	// tìm kiếm đơn nghỉ phép theo id
 	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -75,10 +92,13 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// crud cho đơn nghỉ phép nháp của nhân viên
+	
+	
+	
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphep);
-		
+
 	}
 
 	public void deleteDonNghiPhep(int id) {
@@ -86,9 +106,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		session.delete(getByIdDonNghiPhep(id));
 	}
 
-	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
+	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(donnghiphepnhap);
+		session.update(donnghiphep);
 
 	}
 
@@ -108,7 +128,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(loaingaynghi);
-		
+
 	}
 
 	public void deleteLoaiNgayNghi(int maNgayNghi) {
@@ -131,11 +151,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// hết phần crud cho loại ngày nghỉ
-	
-	
-	
+
 	/////////////////// TRẠNG THÁI/////////////
-	//list trạng thái
+	// list trạng thái
 	@SuppressWarnings("unchecked")
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai() {
 		Session session = sessionFactory.getCurrentSession();
@@ -143,11 +161,12 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 		return list;
 	}
+
 	// crud cho trạng thái
 	public void addTrangThai(TrangThaiVangNghiMinhtq trangthai) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(trangthai);
-		
+
 	}
 
 	public void deleteTrangThai(int maNgayNghi) {
@@ -164,12 +183,11 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	// tìm kiếm Trang thái theo id trạng thái
 	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai) {
 		Session session = this.sessionFactory.getCurrentSession();
-		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class, maTrangThai);
+		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class,
+				maTrangThai);
 
 		return trangthai;
 	}
 	// hết phần crud cho trạng thái
-
-	
 
 }

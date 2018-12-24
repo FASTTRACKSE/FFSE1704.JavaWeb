@@ -140,11 +140,8 @@
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
 												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
-												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
-														<button>sửa</button>
-												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.id}"><button>
+												<td> <a
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.id}"><button class="btn btn-primary">
 															xóa</button></a></td>
 										</c:forEach>
 										

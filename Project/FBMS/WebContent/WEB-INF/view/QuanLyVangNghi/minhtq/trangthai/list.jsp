@@ -127,12 +127,12 @@
 
 												<td><a
 													href="/FBMS/QuanLyVangNghi/minhtq/editViewTrangThai/${dnpn.maTrangThai}">
-														<button>sửa</button>
+														<button class="btn btn-danger">sửa</button>
 												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteTrangThai/${dnpn.maTrangThai}"><button>
-															xóa</button></a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteTrangThai/${dnpn.maTrangThai}"><button
+															class="btn btn-danger">xóa</button></a></td>
 										</c:forEach>
-									
+
 									</table>
 								</div>
 							</div>

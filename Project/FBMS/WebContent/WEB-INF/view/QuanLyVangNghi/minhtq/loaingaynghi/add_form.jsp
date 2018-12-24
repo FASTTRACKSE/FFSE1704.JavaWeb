@@ -36,7 +36,7 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>tên loại ngày nghỉ </label>
-							<form:input class="form-control" path="tenNgayNghi"
+							<form:input class="form-control" path="tenLoaiNgayNghi"
 								placeholder="nhập tên loại ngày nghỉ" />
 
 						</div>

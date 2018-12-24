@@ -201,7 +201,7 @@
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
 								name="location" items="${listLoaiNgayNghi}"
-								itemValue="maNgayNghi" itemLabel="tenNgayNghi">
+								itemValue="maNgayNghi" itemLabel="tenLoaiNgayNghi">
 
 							</form:select>
 
@@ -210,7 +210,7 @@
 						<div class="row">
 							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1" value="nhap"
+									class="btn btn-outline-success round  mr-1 mb-1" value="luunhap"
 									name="action">lưu nháp</button>
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1" value="chopheduyet"

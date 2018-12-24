@@ -26,11 +26,14 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="trangthai" action="">
-						<form:input type="hidden" path="maTrangThai" style="display:none" value=""/>
+					<form:form method="POST" modelAttribute="suatrangthai" action="suaTrangThai">
+						<div class="form-group col-sm-6">
+							<label>mã trạng thái</label>
+							<form:input class="form-control" path="maTrangThai" />
+						</div>
 						<div class="form-group col-sm-6">
 						  	<label>Tên trạng thái</label>
-						  	<form:input class="form-control" path="tenTrangThai" value="" placeholder="nhập tên trạng thái" />
+						  	<form:input class="form-control" path="tenTrangThai" value=""  />
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" class="btn btn-success">Lưu thông tin</button>

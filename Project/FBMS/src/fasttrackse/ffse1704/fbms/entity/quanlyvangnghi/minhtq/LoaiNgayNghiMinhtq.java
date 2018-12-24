@@ -80,4 +80,5 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
 
+	
 }

@@ -124,12 +124,12 @@
 										<c:forEach var="dnpn" items="${listloaingaynghi}">
 											<tr>
 												<td>${dnpn.maNgayNghi}</td>
-												<td>${dnpn.tenNgayNghi}</td>
+												<td>${dnpn.tenLoaiNgayNghi}</td>
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/editViewLoaiNgayNghi/${dnpn.maNgayNghi}"
-													class="btn btn-primary">edit</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteLoaiNgayNghi/${dnpn.maNgayNghi}"
-													class="btn btn-danger">delete</a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/editViewLoaiNgayNghi/${dnpn.maNgayNghi}"><button
+															class="btn btn-primary">sửa</button></a> <a
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteLoaiNgayNghi/${dnpn.maNgayNghi}"><button
+															class="btn btn-primary">xóa</button></a></td>
 										</c:forEach>
 
 									</table>
