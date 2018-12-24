@@ -43,7 +43,24 @@ public class DocumentServiceImpl implements DocumentService {
 	//update
 		public void updateDocument(DocumentDung document) {
 			documentDAO.updateDocument(document);
-		}	
+		}		
+		// list pending approve
+		public List<DocumentDung> getAllPendingApprove(){
+			return documentDAO.getAllPendingApprove();
+		}
+		// list pending approve
+		public List<DocumentDung> getAllDocumentRefuse(){
+			return documentDAO.getAllDocumentRefuse();
+		}
+	//accept
+		public void accept(DocumentDung document) {
+			documentDAO.accept(document);
+		}
+		
+	//refuse 
+		public void refuse(DocumentDung document) {
+					documentDAO.refuse(document);
+				}	
 	@Override
 	@Transactional
 	public List<PhongBan> listQuyen(){

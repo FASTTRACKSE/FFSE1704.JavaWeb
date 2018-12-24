@@ -429,8 +429,10 @@
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/index">●
 								Danh mục tài liệu</a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
+								Phê duyệt tài liệu</a></li>
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
+								Tài liệu bị từ chối</a></li>
 					</ul></li>
 				<!-- Sỹ -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>

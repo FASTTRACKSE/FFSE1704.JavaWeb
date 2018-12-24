@@ -65,7 +65,8 @@
 
     <!-- Resources theme location -->
     <mvc:resources mapping="/resources/**" location="/resources/stack-admin/" />
-
+    
+    
     <!-- Resources files upload location -->
     <mvc:resources mapping="/uploads/**" location="/uploads/" />
 

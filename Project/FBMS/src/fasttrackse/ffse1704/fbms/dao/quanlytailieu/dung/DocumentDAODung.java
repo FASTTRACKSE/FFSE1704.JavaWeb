@@ -23,6 +23,15 @@ public interface DocumentDAODung  {
 	//delete
 	public void delete(final int id);
 	
+	//list pending approve
+	public List<DocumentDung> getAllPendingApprove();
+	
+	public List<DocumentDung> getAllDocumentRefuse();
+	
+	//accept
+	public void accept(final DocumentDung document);
+	//refuse
+	public void refuse(final DocumentDung document);
 	//find by id
 	public DocumentDung findById(final int id);
 	

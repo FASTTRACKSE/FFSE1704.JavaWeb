@@ -22,6 +22,16 @@ public interface DocumentService  {
 	
 	public void delete(int id);
 	
+	//pending approve
+	public List<DocumentDung> getAllPendingApprove();
+	//DocumentRefure
+	public List<DocumentDung> getAllDocumentRefuse();
+	//refuse
+	public void refuse(DocumentDung document);
+	
+	
+	public void accept(DocumentDung document);
+	
 	//update
 	public void updateDocument(DocumentDung document);
 	

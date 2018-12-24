@@ -35,7 +35,7 @@
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-		<form:form action="" method="POST" modelAttribute="documentupdate"
+		<form:form action="" method="POST" modelAttribute="viewDocument"
 			enctype="multipart/form-data"
 			class="form form-horizontal striped-rows form-bordered">
 
@@ -50,23 +50,15 @@
 						Tên Tài Liệu
 					</label>
 					<div class="col-md-9">
-						<form:input path="tenTaiLieu" class="form-control"
+						<form:input path="tenTaiLieu" readonly="true" class="form-control"
 							id="projectinput5" value="${document.tenTaiLieu}" />
 					</div>
 				</div>
 				<!-- //////////////////// -->
 				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Danh Mục
-					</label>
-					<div class="col-md-9">
-						<form:select path="maDanhMuc.maDanhMuc">
-							<c:forEach var="DanhMuc" items="${listCategory}">
-								<form:option value="${DanhMuc.maDanhMuc}"
-									label="${DanhMuc.tenDanhMuc}" />
-							</c:forEach>
-						</form:select>
-					</div>
+						<form:hidden path="maDanhMuc.maDanhMuc" 
+								 value="${DanhMuc.maDanhMuc}"   
+									/>						
 				</div>
 				<!-- ///////////////////// -->
 				<div class="form-group row">
@@ -74,53 +66,38 @@
 						Mô Tả
 					</label>
 					<div class="col-md-9">
-						<form:textarea path="moTa" class="form-control"
-							id="basicTextarea" />
-					
-
+						<form:textarea path="moTa"  readonly="true" class="form-control"
+							id="basicTextarea" />					
 					</div>
 				</div>
 				<!-- ///////////////////// -->
-				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Phòng Ban
-					</label>
-					<div class="col-md-9">
-						<form:select path="maPhongBan.maPhongBan">
-							<c:forEach var="PhongBan" items="${listQuyen}">
-								<form:option value="${PhongBan.maPhongBan}"
-									label="${PhongBan.tenPhongBan}" />
-							</c:forEach>
-							<option value="it">
-						</form:select>
-					</div>
+				<div class="form-group row">				
+						<form:hidden path="maPhongBan.maPhongBan"	
+								 value="${PhongBan.maPhongBan}"  
+									/>														
 				</div>
 				<form:hidden path="maTrangThai.maTrangThai" class="form-control"
 							id="projectinput5" value="${TrangThai.maTrangThai}" />
 				<!-- ///////////////////// -->
-				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Tài Liệu Cũ
-					</label>
-						<td><img src="<c:url value="${documentupdate.maIcon.hinhAnh}"/>" width="50" height="50"></td>
-						<td>${documentupdate.nameFile}</td>
-				</div>
-					<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Thay đổi
-					</label>
-						<form:hidden path="nameFile" />
-									<input type="file" class="form-control-file"
-										id="basicInputFile" name="file">
-				</div>
-		
 
 				<!-- ///////////////////// -->
-
+				<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput5">
+						Nhắc Nhở
+					</label>
+					<div class="col-md-9">
+						<form:input path="ghiChu" class="form-control"
+							id="projectinput5" value="${document.ghiChu}" />
+					</div>
+				</div>
 				<div class="form-actions">
-					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentUpdate"
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentAccept"
 						class="btn btn-success mr-1">
-						Update
+						Chấp nhận
+					</button>
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentRefuse/${document.id}"
+						class="btn btn-success mr-1">
+						Từ Chối
 					</button>
 					<a href="<%=request.getContextPath()%>/quanlytailieu/index"
 						class="btn btn-danger mr-1"> Cancel</a>

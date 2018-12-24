@@ -44,7 +44,28 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 		List<DocumentDung> listPublicDocument = session.createQuery(cq).getResultList();
 		return listPublicDocument;
 	}
-
+	// list pending approve
+		public List<DocumentDung> getAllPendingApprove() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			cq.select(root).where(cb.equal(MaTrangThaiJoin.get("maTrangThai"), "cho_phe_duyet"));
+			List<DocumentDung> listPendingApprove = session.createQuery(cq).getResultList();
+			return listPendingApprove;
+		}
+	// list refure document	
+		public List<DocumentDung> getAllDocumentRefuse() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			cq.select(root).where(cb.equal(MaTrangThaiJoin.get("maTrangThai"), "tu_choi"));
+			List<DocumentDung> listRefuseDocument = session.createQuery(cq).getResultList();
+			return listRefuseDocument;
+		}
 	public void saveDraft(final DocumentDung documentDung) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(documentDung);
@@ -67,6 +88,24 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 				public DocumentDung findById(final int id) {
 					Session session = this.sessionFactory.getCurrentSession();
 					return session.get(DocumentDung.class, id);
+				}
+				
+		// accept
+				public void accept( final DocumentDung document) {
+					Session session = this.sessionFactory.getCurrentSession();
+					TrangThaiDung st = new TrangThaiDung();
+					st.setMaTrangThai("da_phe_duyet");
+					document.setMaTrangThai(st);
+					session.update(document);
+
+				}
+		// refuse
+				public void refuse(final DocumentDung document) {
+					Session session = this.sessionFactory.getCurrentSession();
+					TrangThaiDung st = new TrangThaiDung();
+					st.setMaTrangThai("tu_choi");
+					document.setMaTrangThai(st);
+					session.update(document);
 				}
 	
 	public List<PhongBan> listQuyen() {

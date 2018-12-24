@@ -31,10 +31,26 @@ public class DocumentDung {
 	public void setTenTaiLieu(String tenTaiLieu) {
 		this.tenTaiLieu = tenTaiLieu;
 	}
+	@Column(name="name_file")
+	private String nameFile;
 
+	public String getNameFile() {
+		return nameFile;
+	}
 
-	@Column(name = "file")
-	private String file;
+	public void setNameFile(String nameFile) {
+		this.nameFile = nameFile;
+	}
+
+	public String getLinkFile() {
+		return linkFile;
+	}
+
+	public void setLinkFile(String linkFile) {
+		this.linkFile = linkFile;
+	}
+	@Column(name = "link_file")
+	private String linkFile;
 	
 	@Column(name = "mo_ta")
 	private String moTa;
@@ -128,27 +144,7 @@ public class DocumentDung {
 		this.id = id;
 	}
 	
-	public String getFile() {
-		return file;
-	}
 
-	public void setFile(String file) {
-		this.file = file;
-	}
-
-	public DocumentDung(int id, String tenTaiLieu, String file, String moTa, String ghiChu, PhongBan maPhongBan,
-			DanhMucDung maDanhMuc, TrangThaiDung maTrangThai, IconDung maIcon) {
-		super();
-		this.id = id;
-		this.tenTaiLieu = tenTaiLieu;
-		this.file = file;
-		this.moTa = moTa;
-		this.ghiChu = ghiChu;
-		this.maPhongBan = maPhongBan;
-		this.maDanhMuc = maDanhMuc;
-		this.maTrangThai = maTrangThai;
-		this.maIcon = maIcon;
-	}
 
 	public DocumentDung() {
 		// TODO Auto-generated constructor stub

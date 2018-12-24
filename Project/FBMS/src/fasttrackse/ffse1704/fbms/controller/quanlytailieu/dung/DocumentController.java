@@ -1,7 +1,11 @@
 package fasttrackse.ffse1704.fbms.controller.quanlytailieu.dung;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.DanhMucDung;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.DocumentDung;
+import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.IconDung;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.TrangThaiDung;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlytailieu.dung.DocumentService;
@@ -24,8 +31,9 @@ import fasttrackse.ffse1704.fbms.service.quanlytailieu.dung.DocumentService;
 @Controller
 @RequestMapping("/quanlytailieu")
 @SessionAttributes({"quyenTruyCap"})
-public class DocumentController {
 
+public class DocumentController {
+	private static final String UPLOAD_DIRECTORY = "/upload";
 	@Autowired
 	private DocumentService documentService;
 
@@ -55,20 +63,39 @@ public class DocumentController {
 		return "quanlytailieu/dung/documentInsert";
 	}	
 	@RequestMapping(value = "/documentSave", method = RequestMethod.POST)
-	public String saveDocument(@ModelAttribute("document") DocumentDung documentDung, HttpSession session, BindingResult bindingResult) {
-		
-		// DocumentDung documentDung thêm biến vào dữ liệu		
-		// RequestMethod.POST - 
-		TrangThaiDung trangThai = new TrangThaiDung();
-		trangThai.setMaTrangThai("cho_phe_duyet");
-		documentDung.setMaTrangThai(trangThai);
-		documentService.saveDraft(documentDung); 
-		// Kiểu là document, Spring tự map
-		
-		
+	public String submitTL(@ModelAttribute("document") DocumentDung documentDung, @RequestParam("file") MultipartFile file,
+			BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+			if (result.hasErrors()) {
+				return "quanlytailieu/dung/documentInsert";
+			}
+			String nameFile = file.getOriginalFilename();
+			File fileDir = new File(request.getServletContext().getRealPath(UPLOAD_DIRECTORY));
+			byte[] bytes = file.getBytes();
+			if (!fileDir.exists()) {
+				fileDir.mkdir();
+			}
+			File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(bytes);
+			stream.flush();
+			stream.close();
+			documentDung.setNameFile(nameFile);
+			documentDung.setLinkFile(File.separator + "upload" + File.separator + nameFile);
+			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+			
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				documentDung.setMaIcon(icon);
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("cho_phe_duyet");
+				documentDung.setMaTrangThai(trangThai);
+				documentService.saveDraft(documentDung);
+		} catch (Exception e) {
+		}
 		return "redirect:/quanlytailieu/";
 	}
-	
 	
 	// Update tài liệu
 	@RequestMapping(value = "/documentUpdateView/{id}")
@@ -76,12 +103,39 @@ public class DocumentController {
 		model.addAttribute("documentupdate",documentService.findById(id));
 		return "quanlytailieu/dung/documentUpdate";
 	}	
-	@RequestMapping(value="/documentUpdate")
-	public String documentUpdate(@ModelAttribute("documentupdate") DocumentDung document, HttpSession session, BindingResult bindingResult) {
-		documentService.updateDocument(document);
-		
+	
+	@RequestMapping(value = "/documentUpdate", method = RequestMethod.POST)
+	public String updateTL(@ModelAttribute("documentupdate") DocumentDung document, @RequestParam("file") MultipartFile file,
+			BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+			if (result.hasErrors()) {
+				return "quanlytailieu/dung/documentUpdate";
+			}
+			String nameFile = file.getOriginalFilename();
+			File fileDir = new File(request.getServletContext().getRealPath(UPLOAD_DIRECTORY));
+			byte[] bytes = file.getBytes();
+			if (!fileDir.exists()) {
+				fileDir.mkdir();
+			}
+			File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(bytes);
+			stream.flush();
+			stream.close();
+			document.setNameFile(nameFile);
+			document.setLinkFile(File.separator + "upload" + File.separator + nameFile);
+			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+			
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				document.setMaIcon(icon);
+				documentService.updateDocument(document);
+		} catch (Exception e) {
+		}
 		return "redirect:/quanlytailieu/";
 	}
+	
 	
 	// Delete tài liệu
 	@RequestMapping(value = "/documentDelete/{id}", method = RequestMethod.GET)
@@ -90,6 +144,42 @@ public class DocumentController {
 		return "redirect:/quanlytailieu/";
 	}
 	
+	
+	// ----------- document pending approve -------//
+		@RequestMapping(value = "/pendingApprove", method = RequestMethod.GET)
+		public String pendingApprove(Model model) {
+			model.addAttribute("listPendingApprove", documentService.getAllPendingApprove());
+			return "quanlytailieu/dung/pendingapprove";
+		}
+		//List những tài liệu bị từ chối
+		@RequestMapping(value = "/documentRefuse", method = RequestMethod.GET)
+		public String RefureDocument(Model model) {
+			model.addAttribute("listRefuseDocument", documentService.getAllDocumentRefuse());
+			return "quanlytailieu/dung/DocumentRefuse";
+		}
+		
+	//View tài liệu để phê duyệt
+		@RequestMapping(value = "/pendingApproveView/{id}", method = RequestMethod.GET)
+		public String viewDocument(@PathVariable int id,Model model) {
+			model.addAttribute("viewDocument", documentService.findById(id));
+			return "quanlytailieu/dung/Documentview";
+		}
+	// Chấp thuận tài liệu
+		
+		@RequestMapping(value="/documentAccept")
+		public String documentAccept(@ModelAttribute("viewDocument") DocumentDung document, HttpSession session, BindingResult bindingResult) {
+			documentService.accept(document);
+			return "redirect:/quanlytailieu/pendingApprove";
+		}
+		
+		
+	// refuse document
+		
+		@RequestMapping(value="/documentRefuse")
+		public String documentRefuse(@ModelAttribute("viewDocument") DocumentDung document, HttpSession session, BindingResult bindingResult) {
+			documentService.refuse(document);
+			return "redirect:/quanlytailieu/pendingApprove";
+		}
 	@ModelAttribute("listQuyen")
 	public List<PhongBan> listQuyen() {
 		return this.documentService.listQuyen();
