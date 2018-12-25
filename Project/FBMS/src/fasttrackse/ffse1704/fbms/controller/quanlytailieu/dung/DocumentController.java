@@ -33,7 +33,7 @@ import fasttrackse.ffse1704.fbms.service.quanlytailieu.dung.DocumentService;
 @SessionAttributes({"quyenTruyCap"})
 
 public class DocumentController {
-	private static final String UPLOAD_DIRECTORY = "/upload";
+	private static final String UPLOAD_DIRECTORY = "/uploads";
 	@Autowired
 	private DocumentService documentService;
 
@@ -45,6 +45,12 @@ public class DocumentController {
    
         model.addAttribute("listDocument", list);
 		return "quanlytailieu/dung/index";		
+	}
+	
+	@RequestMapping(value = {"/draft" }, method = RequestMethod.GET)
+	public String draft(Model model ) {  
+        model.addAttribute("listDocumentDraft", documentService.getDraft());
+		return "quanlytailieu/dung/DocumentDraft";		
 	}
 	// ----------- document public -------//
 	@RequestMapping(value = "/documentPublic", method = RequestMethod.GET)
@@ -82,7 +88,7 @@ public class DocumentController {
 			stream.flush();
 			stream.close();
 			documentDung.setNameFile(nameFile);
-			documentDung.setLinkFile(File.separator + "upload" + File.separator + nameFile);
+			documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
 			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
 			
 				IconDung icon = new IconDung();
@@ -92,6 +98,36 @@ public class DocumentController {
 				trangThai.setMaTrangThai("cho_phe_duyet");
 				documentDung.setMaTrangThai(trangThai);
 				documentService.saveDraft(documentDung);
+		} catch (Exception e) {
+		}
+		return "redirect:/quanlytailieu/";
+	}
+	
+	//thêm vào nháp
+	
+	@RequestMapping(value = "/documentSaveDraft", method = RequestMethod.POST)
+	public String addDraft(@ModelAttribute("document") DocumentDung documentDung, @RequestParam("file") MultipartFile file,
+			BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+			String nameFile = file.getOriginalFilename();
+			File fileDir = new File(request.getServletContext().getRealPath(UPLOAD_DIRECTORY));
+			byte[] bytes = file.getBytes();
+			File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(bytes);
+			stream.flush();
+			stream.close();
+			documentDung.setNameFile(nameFile);
+			documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+			IconDung icon = new IconDung();
+			icon.setMaIcon(format);
+			documentDung.setMaIcon(icon);
+			TrangThaiDung trangThai = new TrangThaiDung();
+			trangThai.setMaTrangThai("nhap");
+			documentDung.setMaTrangThai(trangThai);
+			documentService.saveDraft(documentDung);
 		} catch (Exception e) {
 		}
 		return "redirect:/quanlytailieu/";
@@ -118,7 +154,7 @@ public class DocumentController {
 			stream.flush();
 			stream.close();
 			document.setNameFile(nameFile);
-			document.setLinkFile(File.separator + "upload" + File.separator + nameFile);
+			document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
 			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
 				IconDung icon = new IconDung();
 				icon.setMaIcon(format);

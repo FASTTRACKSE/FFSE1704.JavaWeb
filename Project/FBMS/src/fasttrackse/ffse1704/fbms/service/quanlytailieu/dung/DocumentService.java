@@ -26,6 +26,8 @@ public interface DocumentService  {
 	public List<DocumentDung> getAllPendingApprove();
 	//DocumentRefure
 	public List<DocumentDung> getAllDocumentRefuse();
+	
+	public List<DocumentDung> getDraft();
 	//refuse
 	public void refuse(DocumentDung document);
 	
