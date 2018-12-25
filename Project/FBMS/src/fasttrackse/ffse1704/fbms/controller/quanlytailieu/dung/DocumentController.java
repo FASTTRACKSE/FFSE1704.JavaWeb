@@ -109,15 +109,9 @@ public class DocumentController {
 			BindingResult result, HttpServletRequest request, Model model,
 			final RedirectAttributes redirectAttributes) {
 		try {
-			if (result.hasErrors()) {
-				return "quanlytailieu/dung/documentUpdate";
-			}
 			String nameFile = file.getOriginalFilename();
 			File fileDir = new File(request.getServletContext().getRealPath(UPLOAD_DIRECTORY));
 			byte[] bytes = file.getBytes();
-			if (!fileDir.exists()) {
-				fileDir.mkdir();
-			}
 			File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 			stream.write(bytes);
@@ -126,7 +120,6 @@ public class DocumentController {
 			document.setNameFile(nameFile);
 			document.setLinkFile(File.separator + "upload" + File.separator + nameFile);
 			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
-			
 				IconDung icon = new IconDung();
 				icon.setMaIcon(format);
 				document.setMaIcon(icon);
