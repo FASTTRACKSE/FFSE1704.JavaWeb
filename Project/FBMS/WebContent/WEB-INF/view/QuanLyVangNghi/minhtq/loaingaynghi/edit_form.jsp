@@ -31,12 +31,16 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="POST" modelAttribute="sualydo"
-						action="/FBMS/QuanLyVangNghi/minhtq/suaLoaiNgayNghi">
-						<div class="form-group col-sm-6">
+						action="suaLoaiNgayNghi">
+						<div class="form-group col-sm-4">
+							<label>id</label>
+							<form:input class="form-control" path="id" readonly="true"/>
+						</div>
+						<div class="form-group col-sm-4">
 							<label>mã loại ngày nghỉ</label>
 							<form:input class="form-control" path="maNgayNghi" />
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>tên loại ngày nghỉ </label>
 							<form:input class="form-control" path="tenLoaiNgayNghi" />
 
