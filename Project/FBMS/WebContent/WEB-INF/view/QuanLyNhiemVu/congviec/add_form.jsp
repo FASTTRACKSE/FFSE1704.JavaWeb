@@ -90,18 +90,13 @@
 							</div>
 						</div>
 
-
-
-
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<c:forEach var="nv" items="${list}">
-							<form:select 
-							
-							path="nhanVienDuAn.nhanVienKhanhCN.maNhanVien"
-								items="${NhanVienDuAn.NhanVien}" itemValue="nv.nhanVienDuAn.nhanVienKhanhCN.maNhanVien" itemLabel="nv.nhanVienDuAn.nhanVienKhanhCN.ten"
-								class="form-control" />
+							<form:select class="custom-select block "  path="nguoiPhanCong" >
+							<c:forEach  items="${NhanVien}" var="nv">
+									<form:option  value="${nv.maNhanVien}" label=" ${nv.hoDem} ${nv.ten}" class="form-control"  />
 								</c:forEach>
+							</form:select>
 						</div>
 
 						<div class="form-group col-sm-6">

@@ -64,4 +64,20 @@ public class NhanVienKhanhCN implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public NhanVienKhanhCN() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public NhanVienKhanhCN(String maNhanVien, @NotEmpty String hoDem, @NotEmpty String ten) {
+		super();
+		this.maNhanVien = maNhanVien;
+		this.hoDem = hoDem;
+		this.ten = ten;
+	}
+
+	
+	
+	
 }
