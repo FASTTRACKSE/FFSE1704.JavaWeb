@@ -4,6 +4,7 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 
 public interface BangCapService {
 
@@ -16,4 +17,5 @@ public interface BangCapService {
 	public void delete(int id);
 	public boolean checkExistMa(String maNS);
 	public BangCap getBangCapUpdate(int id);
+	public List<TrinhDo> listTrinhDo();
 }

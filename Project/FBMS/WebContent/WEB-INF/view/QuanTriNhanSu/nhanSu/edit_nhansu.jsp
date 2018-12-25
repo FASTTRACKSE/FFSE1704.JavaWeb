@@ -10,16 +10,16 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa công việc</h3>
+				<h3 class="content-header-title mb-0">Sửa Nhân sự</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh
-									sách công việc </a></li>
-							<li class="breadcrumb-item active">Sửa công việc</li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh
+									sách Nhân sự </a></li>
+							<li class="breadcrumb-item active">Sửa Thông tin nhân sư</li>
 						</ol>
 					</div>
 				</div>
@@ -47,18 +47,62 @@
 							<br>
 						</div>
 						<div class="form-group">
-							<label>Mã Phòng Ban:</label>
-							<form:input class="form-control" type="text"
-								path="phongBan.maPhongBan" />
+							<label>Phòng Ban:</label>
+							<form:select path="maPhongBan"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listPhongBan}" var="lpb">
+									<form:option value="${lpb.maPhongBan}" label="${lpb.tenPhongBan}" />
+								</c:forEach>
+							</form:select>
 
 							<br>
 						</div>
 						<div class="form-group">
-							<label>Mã Chức Danh</label>
-							<form:input class="form-control" type="text"
-								path="chucDanh.maChucDanh" />
+							<label>Chức Danh</label>
+							<form:select path="maChucDanh"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listChucDanh}" var="lcd">
+									<form:option value="${lcd.maChucDanh}" label="${lcd.tenChucDanh}" />
+								</c:forEach>
+							</form:select>
 							<br>
 						</div>
+							<div class="form-group col-sm-6">
+							<label>Tinh thanh</label>
+							
+							 <form:select path="tinhThanhPho"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listTinhThanh}" var="ltt">
+									<form:option value="${ltt.matp}" label="${ltt.name}" />
+								</c:forEach>
+							</form:select> 
+
+						</div>
+						
+						<div class="form-group col-sm-6">
+							<label>Quan Huyen</label>
+							
+							 <form:select path="maQuanHuyen"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listQuanHuyen}" var="lqh">
+									<form:option value="${lqh.maqh}" label="${lqh.name}" />
+								</c:forEach>
+							</form:select>
+
+						</div>
+						
+						<div class="form-group col-sm-6">
+							<label>Xa Phuong</label>
+							
+							 <form:select path="maXaPhuong"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listXaPhuong}" var="lxp">
+									<form:option value="${lxp.xaid}" label="${lxp.name}" />
+								</c:forEach>
+							</form:select> 
+							
+						</div>
+							<br>
 						<div class="form-group">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />

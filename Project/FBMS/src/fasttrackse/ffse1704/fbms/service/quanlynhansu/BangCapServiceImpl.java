@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.BangCapDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 @Service
 @Transactional
 public class BangCapServiceImpl implements BangCapService{
@@ -73,6 +74,13 @@ public class BangCapServiceImpl implements BangCapService{
 	public BangCap getBangCapUpdate(int id) {
 		// TODO Auto-generated method stub
 		return bangCapDao.getBangCapUpdate(id);
+	}
+
+
+	@Override
+	public List<TrinhDo> listTrinhDo() {
+		
+		return bangCapDao.listTrinhDo();
 	}
 
 }

@@ -64,7 +64,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="addNS"> <span class="fa fa-plus"></span> Thêm mới
+					<a href="/FBMS/addBC/${bangCap.maNhanVien}"> <span class="fa fa-plus"></span> Thêm mới
 					</a>
 				</div>
 			</div>
@@ -108,6 +108,12 @@
 								</ul>
 							</div>
 						</div>
+						<p style="text-align: center ;color:red">Mã nhân viên:</p>
+						<p style="text-align: center">${bangCap.maNhanVien}</p>
+						<p style="text-align: center ;color:red">Tên nhân viên:</p>
+						<p style="text-align: center">${bangCap.hoLot} ${bangCap.ten}</p>
+						
+						
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
@@ -117,7 +123,7 @@
 											<tr>
 
 												<th>Thứ tự</th>
-												<th>Mã nhân viên</th>
+												
 												<th>Trình độ</th>
 												<th>Tên Ngành</th>
 												<th>Thời gian</th>
@@ -130,7 +136,7 @@
 										<c:forEach var="bc" items="${bangCap.listBangCap}">
 											<tr>
 												<td>${bc.id}</td>
-												<td>${bangCap.maNhanVien}</td>
+												
 											 <td>${bc.trinhDo.tenTrinhDo}</td> 
 												<td>${bc.tenNganh}</td>
 												<td>${bc.thoiGian}</td>
@@ -139,7 +145,7 @@
 	
 												<td><a href="editBC/${bc.id}"><button>sửa</button></a>
 
-													<a href="DeleteNS/${ns.id}"><button>Xoa</button></a></td>
+													<a href="DeleteBC/${bc.id}"><button>Xoa</button></a></td>
 
 											</tr>
 										</c:forEach>
@@ -201,30 +207,6 @@
 </div>
 
 
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable").dataTable({
-			responsive : true,
-			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-			"bServerSide" : true,
-			"sAjaxSource" : "/ffse-fbms/QuanTriNhanSu/danhsach_nhansu/{page}",
-		});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

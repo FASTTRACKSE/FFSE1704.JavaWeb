@@ -49,7 +49,7 @@
 						
 						<div class="form-group">
 							<label>Trình độ:</label>
-							<form:input class="form-control" type="text" path="trinhDo.tenTrinhDo" />
+							<form:input class="form-control" type="text" path="trinhDo.id" />
 
 							<br>
 						</div>
