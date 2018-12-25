@@ -26,18 +26,27 @@ public class XaPhuong implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="xaid",unique = true, nullable = false)
+	@Column(name = "xaid", unique = true, nullable = false)
 	private String xaid;
-	
-	@Column(name="name",nullable = false)
+
+	@Column(name = "name", nullable = false)
 	private String name;
-	
-//	@ManyToOne
+
+	@Column(name = "maqh", nullable = false)
+	private String maqh;
+
+	public String getMaqh() {
+		return maqh;
+	}
+
+	public void setMaqh(String maqh) {
+		this.maqh = maqh;
+	}
+
+	// @ManyToOne
 //	@JoinColumn(name="maqh",referencedColumnName="maqh",nullable= false)
 //	private QuanHuyen quanHuyen;
 //	
-	@OneToMany(mappedBy="xaPhuong",fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-	private List<NhanSu> listNhanSuXP;
 
 	public String getXaid() {
 		return xaid;
@@ -63,15 +72,4 @@ public class XaPhuong implements Serializable {
 //		this.quanHuyen = quanHuyen;
 //	}
 
-	public List<NhanSu> getListNhanSuXP() {
-		return listNhanSuXP;
-	}
-
-	public void setListNhanSuXP(List<NhanSu> listNhanSuXP) {
-		this.listNhanSuXP = listNhanSuXP;
-	}
-
-	
-	
-	
 }
