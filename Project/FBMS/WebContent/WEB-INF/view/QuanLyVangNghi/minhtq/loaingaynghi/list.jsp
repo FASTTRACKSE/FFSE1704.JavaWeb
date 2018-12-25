@@ -116,6 +116,7 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
+												<th>id</th>
 												<th>Mã loại ngày nghỉ</th>
 												<th>Tên loại ngày nghỉ</th>
 												<th>chức năng</th>
@@ -123,12 +124,13 @@
 										</thead>
 										<c:forEach var="dnpn" items="${listloaingaynghi}">
 											<tr>
+												<td>${dnpn.id}</td>
 												<td>${dnpn.maNgayNghi}</td>
 												<td>${dnpn.tenLoaiNgayNghi}</td>
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/editViewLoaiNgayNghi/${dnpn.maNgayNghi}"><button
+													href="/FBMS/QuanLyVangNghi/minhtq/editViewLoaiNgayNghi/${dnpn.id}"><button
 															class="btn btn-primary">sửa</button></a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteLoaiNgayNghi/${dnpn.maNgayNghi}"><button
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteLoaiNgayNghi/${dnpn.id}"><button
 															class="btn btn-primary">xóa</button></a></td>
 										</c:forEach>
 

@@ -47,25 +47,19 @@ public class NhanSu implements Serializable {
 	@Column(name = "ma_nhan_vien", nullable = false)
 	private String maNhanVien;
 
-	@ManyToOne
-	@JoinColumn(name = "ma_phong_ban", nullable = false, insertable= false, updatable = false)
-	@NotNull
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "ma_phong_ban", insertable = false, updatable = false, nullable = false)
 	private PhongBan phongBan;
-	
+
 	@Column(name = "ma_phong_ban", nullable = false)
 	private String maPhongBan;
-
-	public String getMaPhongBan() {
-		return maPhongBan;
-	}
-
-	public void setMaPhongBan(String maPhongBan) {
-		this.maPhongBan = maPhongBan;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "ma_chuc_danh", nullable = false)
+	
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "ma_chuc_danh", insertable = false, updatable = false, nullable = false)
 	private ChucDanh chucDanh;
+	
+	@Column(name = "ma_chuc_danh", nullable = false)
+	private String maChucDanh;
 
 	@NotEmpty(message = "Vui Lòng Nhập họ hót của nhân viên")
 	@Column(name = "ho_dem", nullable = false)
@@ -89,19 +83,25 @@ public class NhanSu implements Serializable {
 	private Integer gioiTinh;
 	
 	@ManyToOne
-	@JoinColumn(name="ThanhPho_TinhThanh",referencedColumnName="matp",nullable = false)
-	@NotNull
+	@JoinColumn(name="ThanhPho_TinhThanh",referencedColumnName="matp", insertable = false, updatable = false, nullable = false)
 	private ThanhPho thanhPho;
 	
-	@ManyToOne
-	@JoinColumn(name="Quan_Huyen",referencedColumnName="maqh",nullable = false)
-	@NotNull
-	private QuanHuyen quanHuyen;
+	@Column(name="ThanhPho_TinhThanh")
+	private String tinhThanhPho;
 	
 	@ManyToOne
-	@JoinColumn(name="Phuong_xa_thitran",referencedColumnName="xaid",nullable = false)
-	@NotNull
+	@JoinColumn(name="Quan_Huyen",referencedColumnName="maqh", insertable = false, updatable = false,nullable = false)
+	private QuanHuyen quanHuyen;
+	
+	@Column(name="Quan_Huyen")
+	private String maQuanHuyen;
+	
+	@ManyToOne
+	@JoinColumn(name="Phuong_xa_thitran",referencedColumnName="xaid", insertable = false, updatable = false,nullable = false)
 	private XaPhuong xaPhuong;
+	
+	@Column(name="Phuong_xa_thitran")
+	private String maXaPhuong;
 
 	public ThanhPho getThanhPho() {
 		return thanhPho;
@@ -187,7 +187,7 @@ public class NhanSu implements Serializable {
 	
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<PhanCongNhiemVuNS> listPhanCongNhiemVuNS;
+	private List<PhanCongNhiemVuNS> listPhanCongNhiemVuNS ;
 	
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -219,6 +219,22 @@ public class NhanSu implements Serializable {
 
 	public List<ThongTinHopDong> getListHopDong() {
 		return listHopDong;
+	}
+
+	public String getMaQuanHuyen() {
+		return maQuanHuyen;
+	}
+
+	public void setMaQuanHuyen(String maQuanHuyen) {
+		this.maQuanHuyen = maQuanHuyen;
+	}
+
+	public String getMaXaPhuong() {
+		return maXaPhuong;
+	}
+
+	public void setMaXaPhuong(String maXaPhuong) {
+		this.maXaPhuong = maXaPhuong;
 	}
 
 	public void setListHopDong(List<ThongTinHopDong> listHopDong) {
@@ -391,6 +407,30 @@ public class NhanSu implements Serializable {
 
 	public void setQuocTich(QuocTich quocTich) {
 		this.quocTich = quocTich;
+	}
+
+	public String getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public String getMaChucDanh() {
+		return maChucDanh;
+	}
+
+	public void setMaChucDanh(String maChucDanh) {
+		this.maChucDanh = maChucDanh;
+	}
+
+	public String getTinhThanhPho() {
+		return tinhThanhPho;
+	}
+
+	public void setTinhThanhPho(String tinhThanhPho) {
+		this.tinhThanhPho = tinhThanhPho;
 	}
 
 }

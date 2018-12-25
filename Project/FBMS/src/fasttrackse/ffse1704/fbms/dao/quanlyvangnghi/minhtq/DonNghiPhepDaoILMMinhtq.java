@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
@@ -119,10 +120,12 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@SuppressWarnings("unchecked")
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
 		Session session = sessionFactory.getCurrentSession();
-		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").list();
+		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").getResultList();
 
 		return list;
 	}
+
+	
 
 	// crud cho loại ngày nghỉ
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
@@ -131,9 +134,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	}
 
-	public void deleteLoaiNgayNghi(int maNgayNghi) {
+	public void deleteLoaiNgayNghi(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdLoaiNgayNghi(maNgayNghi));
+		session.delete(getByIdLoaiNgayNghi(id));
 	}
 
 	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
@@ -141,11 +144,12 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		session.update(loaingaynghi);
 
 	}
+	
 
 	// tìm kiếm đơn nghỉ phép theo id loại ngày nghỉ
-	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int maNgayNghi) {
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		LoaiNgayNghiMinhtq loaingaynghi = (LoaiNgayNghiMinhtq) session.get(LoaiNgayNghiMinhtq.class, maNgayNghi);
+		LoaiNgayNghiMinhtq loaingaynghi = (LoaiNgayNghiMinhtq) session.get(LoaiNgayNghiMinhtq.class, id);
 
 		return loaingaynghi;
 	}
@@ -169,9 +173,9 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	}
 
-	public void deleteTrangThai(int maNgayNghi) {
+	public void deleteTrangThai(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(getByIdTrangThai(maNgayNghi));
+		session.delete(getByIdTrangThai(id));
 	}
 
 	public void editTrangThai(TrangThaiVangNghiMinhtq trangthai) {
@@ -181,10 +185,10 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// tìm kiếm Trang thái theo id trạng thái
-	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai) {
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class,
-				maTrangThai);
+				id);
 
 		return trangthai;
 	}

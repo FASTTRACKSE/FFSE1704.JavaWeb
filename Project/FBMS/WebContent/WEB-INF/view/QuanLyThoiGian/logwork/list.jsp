@@ -142,7 +142,7 @@
 															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
 															<a href="delete/${lg.id }"
-																onclick="return confirm('Bạn có muốn xóa sinh viên này?');"><i
+																onclick="return confirm('Bạn có muốn xóa ?');"><i
 																class="fa fa-trash"></i></a>
 														</c:if></td>
 												</tr>

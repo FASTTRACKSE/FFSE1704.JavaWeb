@@ -364,9 +364,20 @@
 					<li class=" nav-item"><a
 						href="<c:url value = "/QuanLyThoiGian/Logwork/list"/>"><i
 							class="ft-book"></i> Danh Sách Logwork</a></li>
-					<li class=" nav-item"><a
-						href="<c:url value = "/QuanLyThoiGian/Logwork/listMonth/12"/>"><i
-							class="ft-book"></i> Danh Sách Logwork theo tháng</a></li>
+					<li class=" nav-item">
+						<!--  --> <script type="text/javascript">
+							var today = new Date();
+
+							var m = today.getMonth() + 1;
+							document.write(" <a href = ' ");
+							document.write("/FBMS/QuanLyThoiGian/Logwork/listMonth/"
+									+ m);
+							document.write("' >");
+							document.write("<i class='ft-book'></i>");
+							document.write("Logwork theo tháng");
+							document.write("</a>");
+						</script>
+					</li>
 				</ul>
 				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 

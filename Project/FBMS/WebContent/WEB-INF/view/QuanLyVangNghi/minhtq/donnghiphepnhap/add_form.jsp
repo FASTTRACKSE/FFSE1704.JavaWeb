@@ -200,7 +200,7 @@
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
-								name="location" items="${listLoaiNgayNghi}"
+								name="location" items="${countryList}"
 								itemValue="maNgayNghi" itemLabel="tenLoaiNgayNghi">
 
 							</form:select>

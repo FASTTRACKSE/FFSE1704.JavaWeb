@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,34 +38,6 @@ public class QuanLyVangNghiControllerMinhtq {
 	public void setDonNghiPhepService(DonNghiPhepServiceMinhtq donNghiPhepService) {
 		this.donNghiPhepService = donNghiPhepService;
 	}
-
-	// @RequestMapping("/")
-	// public String view(HttpSession session) {
-	// int currentPage;
-	// if (session.getAttribute("page") == null) {
-	// currentPage = 1;
-	// } else {
-	// currentPage = (int) session.getAttribute("page");
-	// }
-	// return "redirect:/list/" + currentPage;
-	// }
-	//
-	// public int totalPage(int perPage) {
-	// int totalPage = (int) Math.ceil((double) donNghiPhepService.count() /
-	// (double) perPage);
-	// return totalPage;
-	// }
-
-	// @RequestMapping("/list/{page}")
-	// public String index(Model model,@PathVariable("page") int page) {
-	// int start = (page - 1) * perPage;
-	// List<DonNghiPhepMinhtq> list = donNghiPhepService.findAll(start, perPage);
-	// model.addAttribute("list", list);
-	// model.addAttribute("total", totalPage(perPage));
-	// model.addAttribute("page", page);
-	//
-	// return "ViewSinhVien";
-	// }
 
 	//////////////////// list 4 loại danh sách đơn nghỉ phép///////////////////
 	// list toàn bộ đơn nghỉ phép nháp
@@ -111,16 +82,11 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	//////////////////// hết phần list 4 loại danh sách đơn nghỉ phép///////////////
 
-	// list danh sách loại ngày nghỉ
-	@ModelAttribute("listLoaiNgayNghi")
-	public List<LoaiNgayNghiMinhtq> getCountryList() {
-		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
-		return countryList;
-	}
-
 	// thêm một đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/addDonNghiPhepMoi", method = RequestMethod.GET)
 	public String showForm(Model model) {
+		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
 		return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
 	}
@@ -129,6 +95,7 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphep,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String action)
 			throws IllegalStateException, IOException {
+
 		String url = "";
 		if (bindingResult.hasErrors()) {
 
@@ -223,20 +190,6 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
 	}
 
-	// xóa một đơn nghỉ phép chờ duyệt
-	@RequestMapping("/deleteDonNghiPhepChoDuyet/{id}")
-	public String xoaDonNghiPhepChoDuyet(@PathVariable int id, HttpSession session, Model model) {
-		donNghiPhepService.deleteDonNghiPhep(id);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet";
-	}
-
-	// xóa một đơn nghỉ phép đã duyệt
-	@RequestMapping("/deleteDonNghiPhepDuyet/{id}")
-	public String xoaDonNghiPhepDaDuyet(@PathVariable int id, HttpSession session, Model model) {
-		donNghiPhepService.deleteDonNghiPhep(id);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet";
-	}
-
 	// xóa một đơn nghỉ phép từ chối
 	@RequestMapping("/deleteDonNghiPhepTuChoi/{id}")
 	public String xoaDonNghiPhepTuChoi(@PathVariable int id, HttpSession session, Model model) {
@@ -278,24 +231,24 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
 
-	@RequestMapping("/deleteTrangThai/{maTrangThai}")
-	public String deletetrangthai(@PathVariable int maTrangThai, Model model) {
-		donNghiPhepService.deleteTrangThai(maTrangThai);
+	@RequestMapping("/deleteTrangThai/{id}")
+	public String deletetrangthai(@PathVariable int id, Model model) {
+		donNghiPhepService.deleteTrangThai(id);
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
 
 	// tìm view trạng thái theo id
-	@RequestMapping(value = "/editViewTrangThai/{maTrangThai}", method = RequestMethod.GET)
-	public String edittrangthai_ById(@PathVariable("maTrangThai") int maTrangThai, Model model) {
-		model.addAttribute("suatrangthai", donNghiPhepService.getByIdTrangThai(maTrangThai));
+	@RequestMapping(value = "/editViewTrangThai/{id}", method = RequestMethod.GET)
+	public String edittrangthai_ById(@PathVariable("id") int id, Model model) {
+		model.addAttribute("suatrangthai", donNghiPhepService.getByIdTrangThai(id));
 		return "/QuanLyVangNghi/minhtq/trangthai/edit_form";
 	}
 
 	// sửa đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/suaTrangThai", method = RequestMethod.POST)
-	public String edittrangthai(Model model, @ModelAttribute("suatrangthai") @Valid TrangThaiVangNghiMinhtq trangthai,
-			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
-			throws SQLException, IllegalStateException, IOException {
+	public String edittrangthai(Model model,
+			@ModelAttribute("suatrangthaimoi") @Valid TrangThaiVangNghiMinhtq trangthai, BindingResult bindingResult,
+			final RedirectAttributes redirectAttributes) throws SQLException, IllegalStateException, IOException {
 
 		if (bindingResult.hasErrors()) {
 
@@ -324,15 +277,15 @@ public class QuanLyVangNghiControllerMinhtq {
 	}
 
 	// tìm view loại nghỉ phép theo id
-	@RequestMapping(value = "/editViewLoaiNgayNghi/{maNgayNghi}", method = RequestMethod.GET)
-	public String editngaynghi_ById(@PathVariable("maNgayNghi") int maNgayNghi, Model model) {
-		model.addAttribute("sualydo", donNghiPhepService.getByIdLoaiNgayNghi(maNgayNghi));
+	@RequestMapping(value = "/editViewLoaiNgayNghi/{id}", method = RequestMethod.GET)
+	public String editngaynghi_ById(@PathVariable("id") int id, Model model) {
+		model.addAttribute("sualydo", donNghiPhepService.getByIdLoaiNgayNghi(id));
 		return "/QuanLyVangNghi/minhtq/loaingaynghi/edit_form";
 	}
 
 	// sửa đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/suaLoaiNgayNghi", method = RequestMethod.POST)
-	public String editloaingaynghi(Model model, @ModelAttribute("sualydo") @Valid LoaiNgayNghiMinhtq loaingaynghi,
+	public String editloaingaynghi(Model model, @ModelAttribute("sualydomoi") @Valid LoaiNgayNghiMinhtq loaingaynghi,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
 			throws SQLException, IllegalStateException, IOException {
 
@@ -370,9 +323,9 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
 
-	@RequestMapping("/deleteLoaiNgayNghi/{maNgayNghi}")
-	public String deleteloaingaynghi(@PathVariable int maNgayNghi, Model model) {
-		donNghiPhepService.deleteLoaiNgayNghi(maNgayNghi);
+	@RequestMapping("/deleteLoaiNgayNghi/{id}")
+	public String deleteloaingaynghi(@PathVariable int id, Model model) {
+		donNghiPhepService.deleteLoaiNgayNghi(id);
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
 

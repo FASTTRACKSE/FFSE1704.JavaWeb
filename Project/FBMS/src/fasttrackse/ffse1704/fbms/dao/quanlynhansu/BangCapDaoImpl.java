@@ -2,7 +2,6 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.RestrictionDocument.Restriction;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -100,6 +100,14 @@ public class BangCapDaoImpl implements BangCapDao {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		BangCap ns = (BangCap) session.get(BangCap.class, id);
 		return ns;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<TrinhDo> listTrinhDo() {
+		Session session = sessionFactory.getCurrentSession();
+		List<TrinhDo> listTrinhDo = session.createQuery("FROM TrinhDo").getResultList();
+		return listTrinhDo;
 	}
 
 }

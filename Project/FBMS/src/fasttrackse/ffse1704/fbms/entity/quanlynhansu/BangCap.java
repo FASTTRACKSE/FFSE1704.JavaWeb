@@ -2,8 +2,10 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,13 +32,35 @@ public class BangCap {
 	@Column(name = "id")
 	private int id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
+	@Column(name = "ma_nhan_vien")
+	private String maNhanVien;
+	
+	public String getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
 	@ManyToOne
-	@JoinColumn(name = "id_trinh_do", referencedColumnName = "id_trinh_do", nullable = false)
+	@JoinColumn(name = "id_trinh_do", referencedColumnName = "id_trinh_do", insertable = false, updatable = false, nullable = false)
 	private TrinhDo trinhDo;
+	
+	@Column(name = "id_trinh_do", nullable = false)
+	private String IdtrinhDo;
+
+	public String getIdtrinhDo() {
+		return IdtrinhDo;
+	}
+
+	public void setIdtrinhDo(String idtrinhDo) {
+		IdtrinhDo = idtrinhDo;
+	}
 
 	@Column(name = "ten_nganh", nullable = false)
 	private String tenNganh;
