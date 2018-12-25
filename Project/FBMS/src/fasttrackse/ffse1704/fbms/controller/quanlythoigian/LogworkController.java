@@ -1,6 +1,7 @@
 package fasttrackse.ffse1704.fbms.controller.quanlythoigian;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -166,14 +167,10 @@ public class LogworkController {
 			totalPages = totalRecords / total + 1;
 		}
 		int star = total * (currentPage - 1);
-		Map<String, String> thang = new LinkedHashMap<String, String>();
-		for(int i = 1; i <12; i++) {
-			thang.put(Integer.toString(i), Integer.toString(i));
-		}
 		model.addAttribute("listMonth", logworkService.listMonth(star, total, month));
 		model.addAttribute("lastPage", totalPages);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("thang",thang);
+		model.addAttribute("thang",month);
 		return "QuanLyThoiGian/logwork/listmonth";
 	}
 }

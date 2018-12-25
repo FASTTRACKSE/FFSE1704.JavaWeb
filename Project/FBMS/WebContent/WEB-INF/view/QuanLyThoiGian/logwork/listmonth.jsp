@@ -43,6 +43,57 @@
 	content: ""
 }
 </style>
+<style>
+.dropbtn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 8px;
+	border-radius: 4px;
+	width:100px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.card-header{
+    margin-bottom: -35px;
+}
+.dropdown-content {
+	display : none;
+	padding: 8px;
+	position: absolute;
+	background-color: #17a2b8;
+	border-radius:0px 25px 25px 0px;
+	min-width: 570px;
+	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 100);
+	z-index: 1;
+	display: none;
+	margin-left: 97px;
+    margin-top: -36px;
+}
+
+.dropdown-content a {
+	color: white;
+	padding: 12px 16px;
+	text-decoration: none;
+}
+
+.dropdown-content a:hover {
+	background-color: #ffc107;
+	color: black;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+</style>
 <div class="app-content content container-fluid">
 	<div class="content-wrapper">
 
@@ -64,9 +115,6 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyThoiGian/Logwork/addlogwork"/>"
-						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
-						mới</a>
 				</div>
 			</div>
 		</div>
@@ -111,13 +159,16 @@
 						</div>
 
 						<div class="card-header">
-							<label><h2>Tháng:</h2></label>
-							<form:form method="POST"
-								action="">
-								<form:select path="thang"
-								items="${thang}"
-								/>
-							</form:form>
+							<div class="dropdown">
+								<button class="dropbtn">Tháng ${month}</button>
+								<div class="dropdown-content">
+									<c:forEach var="i" begin="1" end="12">
+										<a
+											href="http://localhost:8080/FBMS/QuanLyThoiGian/Logwork/listMonth/${i}"><c:out
+												value="${i}" /></a>
+									</c:forEach>
+								</div>
+							</div>
 						</div>
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
@@ -146,8 +197,10 @@
 													<td>${lg.maPhongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a>
-														<c:if test="${lg.trangThaiLogwork.maTrangThai != 2 }">
+													<td><a
+														href="/FBMS/QuanLyThoiGian/Logwork/view/${lg.id }"><i
+															class="fa fa-eye"></i></a> <c:if
+															test="${lg.trangThaiLogwork.maTrangThai != 2 }">
 															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
 															<a href="delete/${lg.id }"
