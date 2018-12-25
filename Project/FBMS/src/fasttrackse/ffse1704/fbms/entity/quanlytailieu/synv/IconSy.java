@@ -1,16 +1,19 @@
 package fasttrackse.ffse1704.fbms.entity.quanlytailieu.synv;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "icon")
+@Table(name = "icon_")
 public class IconSy implements Serializable {
 	/**
 	 * 
@@ -22,6 +25,12 @@ public class IconSy implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(name = "ma_icon", insertable = true, updatable = false)
+	private String maIcon;
+
+	@Column(name = "hinh_anh")
+	private String hinhAnh;
+
 	public int getId() {
 		return id;
 	}
@@ -30,26 +39,25 @@ public class IconSy implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "ma_icon",insertable = true , updatable = false)
-	private String ma_icon;
-
-	@Column(name = "hinh_anh")
-	private String hinh_anh;
-
-	public String getMa_icon() {
-		return ma_icon;
+	public String getMaIcon() {
+		return maIcon;
 	}
 
-	public void setMa_icon(String ma_icon) {
-		this.ma_icon = ma_icon;
+	public void setMaIcon(String maIcon) {
+		this.maIcon = maIcon;
 	}
 
-	public String getHinh_anh() {
-		return hinh_anh;
+	public String getHinhAnh() {
+		return hinhAnh;
 	}
 
-	public void setHinh_anh(String hinh_anh) {
-		this.hinh_anh = hinh_anh;
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 
 }
