@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fasttrackse.ffse1704.fbms.entity.logwork.ThoiGianLamViec;
+import fasttrackse.ffse1704.fbms.entity.logwork.VuDuAnLogwork;
+import fasttrackse.ffse1704.fbms.entity.logwork.VuPhongBan;
+import fasttrackse.ffse1704.fbms.entity.logwork.VuVaiTroDuAn;
 
 @Repository
 public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
@@ -70,8 +73,8 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 	@SuppressWarnings("unchecked")
 	public List<ThoiGianLamViec> findAll(int iDisplayStart, int iDisplayLength, String sql) {
 		Session session = this.sessionFactory.openSession();
-		List<ThoiGianLamViec> listThoiGianLamViec = session.createQuery(sql).setFirstResult(iDisplayStart).setMaxResults(iDisplayLength)
-				.list();
+		List<ThoiGianLamViec> listThoiGianLamViec = session.createQuery(sql).setFirstResult(iDisplayStart)
+				.setMaxResults(iDisplayLength).list();
 		session.close();
 		return listThoiGianLamViec;
 	}
@@ -87,11 +90,44 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 	}
 
 	@Override
+	public ThoiGianLamViec findByIdLogwork(int id) {
+		Session session = this.sessionFactory.openSession();
+		ThoiGianLamViec logwork = session.get(ThoiGianLamViec.class, id);
+		session.close();
+		return logwork;
+
+	}
+
+	@Override
 	public String getRecordsFiltered(String sql) {
 		Session session = this.sessionFactory.openSession();
 		Query query = session.createQuery(sql.replace("select thoigianlamviec", "select count(*)"));
 		String recordsFilterd = query.getSingleResult().toString();
 		session.close();
 		return recordsFilterd;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<VuPhongBan> listPhongBan() {
+		Session session = sessionFactory.getCurrentSession();
+		List<VuPhongBan> listPhongBan = session.createQuery("from VuPhongBan").getResultList();
+		return listPhongBan;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<VuDuAnLogwork> listDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<VuDuAnLogwork> listDuAn = session.createQuery("from VuDuAnLogwork").getResultList();
+		return listDuAn;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<VuVaiTroDuAn> listVaiTroDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<VuVaiTroDuAn> listVaiTroDuAn = session.createQuery("from VuVaiTroDuAn").getResultList();
+		return listVaiTroDuAn;
 	}
 }
