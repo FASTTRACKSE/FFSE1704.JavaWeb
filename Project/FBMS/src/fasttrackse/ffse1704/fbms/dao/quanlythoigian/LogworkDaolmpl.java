@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.NhanVienLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
@@ -122,6 +123,13 @@ public class LogworkDaolmpl implements LogworkDao {
 		return listVaiTroDuAn;
 	}
 
+	@Override
+	public List<NhanVienLogwork> listNhanVien() {
+		Session session = sessionFactory.getCurrentSession();
+		List<NhanVienLogwork> listNV = session.createQuery("from NhanVienLogwork").getResultList();
+		return listNV;
+	}
+	
 	@Override
 	public List<Logwork> findAllForPaging(int start, int total) {
 		Session session = this.sessionFactory.getCurrentSession();

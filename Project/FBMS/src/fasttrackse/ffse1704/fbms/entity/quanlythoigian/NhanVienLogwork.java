@@ -7,13 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "ho_so_nhan_vien")
+@Table(name = "ho_so_nhan_su")
 public class NhanVienLogwork {
 	@Id
 	@Column(name = "ma_nhan_vien")
-	int maNVien;
+	String maNVien;
 
 	@Column(name = "ho_dem")
 	String hoDem;
@@ -21,14 +22,21 @@ public class NhanVienLogwork {
 	@Column(name = "ten")
 	String ten;
 	
+	@Transient
+	String fullName;
+	
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	@OneToMany(mappedBy = "maNhanVien")
 	private Collection<Logwork> logworks;
 
-	public int getMaNVien() {
+	public String getMaNVien() {
 		return maNVien;
 	}
 
-	public void setMaNVien(int maNVien) {
+	public void setMaNVien(String maNVien) {
 		this.maNVien = maNVien;
 	}
 
@@ -55,8 +63,9 @@ public class NhanVienLogwork {
 	public void setLogworks(Collection<Logwork> logworks) {
 		this.logworks = logworks;
 	}
-	public String getTenNhanVien() {
-		return hoDem + ten ;
+	
+	public String getFullName() {
+		return hoDem + " " + ten ;
 	}
 	
 }

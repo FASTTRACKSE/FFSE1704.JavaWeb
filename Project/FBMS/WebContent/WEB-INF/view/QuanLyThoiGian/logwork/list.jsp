@@ -132,13 +132,13 @@
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn.tenDuAn}</td>
-													<td>${lg.maNhanVien.hoDem}${lg.maNhanVien.ten}</td>
+													<td>${lg.maNhanVien.hoDem} ${lg.maNhanVien.ten}</td>
 													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 													<td>${lg.maPhongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a>
-														<c:if test="${lg.trangThaiLogwork.maTrangThai != 2 }">
+														<c:if test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
 															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
 															<a href="delete/${lg.id }"

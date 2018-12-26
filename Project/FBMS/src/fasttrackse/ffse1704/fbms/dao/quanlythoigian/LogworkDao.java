@@ -4,6 +4,7 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.NhanVienLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
@@ -17,6 +18,8 @@ public interface LogworkDao {
 	public List<DuAnLogwork> listDuAn();
 
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
+	
+	public List<NhanVienLogwork> listNhanVien();
 
 	public void addNew(Logwork logwork);
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.NhanVienLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 
@@ -23,6 +24,8 @@ public interface LogworkService {
 	public List<Logwork> listAllMonth(String month);
 	
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
+	
+	public List<NhanVienLogwork> listNhanVien();
 
 	public void addNew(Logwork logwork);
 

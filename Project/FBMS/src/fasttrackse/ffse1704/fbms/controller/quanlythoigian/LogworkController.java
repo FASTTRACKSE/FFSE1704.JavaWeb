@@ -1,31 +1,21 @@
 package fasttrackse.ffse1704.fbms.controller.quanlythoigian;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.DuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.NhanVienLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.TrangThaiLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
-import fasttrackse.ffse1704.fbms.entity.security.ChucNang;
 import fasttrackse.ffse1704.fbms.service.quanlythoigian.LogworkService;
 
 @Controller
@@ -70,11 +60,13 @@ public class LogworkController {
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {
 		List<PhongBanLogwork> listPhongBan = logworkService.listPhongBan();
 		List<DuAnLogwork> listDuAn = logworkService.listDuAn();
+		List<NhanVienLogwork> listNhanVien = logworkService.listNhanVien();
 		List<VaiTroDuAnLogwork> listVaiTroDuAn = logworkService.listVaiTroDuAn();
 		model.addAttribute("logworkk", new Logwork());
 		model.addAttribute("dsPhongBan", listPhongBan);
 		model.addAttribute("dsDuAn", listDuAn);
 		model.addAttribute("dsVaiTroDuAn", listVaiTroDuAn);
+		model.addAttribute("dsNhanVien", listNhanVien);
 		return "QuanLyThoiGian/logwork/add_logwork";
 	}
 
@@ -110,10 +102,12 @@ public class LogworkController {
 	public String edit_view(@PathVariable("id") int id, Model model) {
 		List<PhongBanLogwork> listPhongBan = logworkService.listPhongBan();
 		List<DuAnLogwork> listDuAn = logworkService.listDuAn();
+		List<NhanVienLogwork> listNhanVien = logworkService.listNhanVien();
 		List<VaiTroDuAnLogwork> listVaiTroDuAn = logworkService.listVaiTroDuAn();
 		model.addAttribute("dsPhongBan", listPhongBan);
 		model.addAttribute("dsDuAn", listDuAn);
 		model.addAttribute("dsVaiTroDuAn", listVaiTroDuAn);
+		model.addAttribute("dsNhanVien", listNhanVien);
 		model.addAttribute("editlogwork", logworkService.findByIdLogwork(id));
 		return "QuanLyThoiGian/logwork/edit_logwork";
 	}
@@ -127,6 +121,11 @@ public class LogworkController {
 				msg = "Đã gửi phê duyệt";
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
 				trangThaiLogwork.setMaTrangThai(5);
+				logwork.setTrangThaiLogwork(trangThaiLogwork);
+			} else if (action.equals("luunhap")) {
+				msg = "Đã lưu nháp";
+				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
+				trangThaiLogwork.setMaTrangThai(4);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
 			} else if (action.equals("edit")) {
 				msg = "Sửa thành công";
@@ -170,7 +169,7 @@ public class LogworkController {
 		model.addAttribute("listMonth", logworkService.listMonth(star, total, month));
 		model.addAttribute("lastPage", totalPages);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("thang",month);
+		model.addAttribute("thang", month);
 		return "QuanLyThoiGian/logwork/listmonth";
 	}
 }

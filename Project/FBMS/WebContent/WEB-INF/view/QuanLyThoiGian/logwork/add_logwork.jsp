@@ -48,8 +48,8 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien.maNVien"
-								placeholder="Mã nhân viên" />
+							<form:select path="maNhanVien.maNVien" class="form-control"
+								items="${dsNhanVien}" itemValue="maNVien" itemLabel="fullName" />
 							<form:errors path="maNhanVien.maNVien" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
