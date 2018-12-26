@@ -64,14 +64,14 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
-		donNghiPhepDao.editDonNghiPhepNhap(donnghiphepnhap);
+	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
+		donNghiPhepDao.editDonNghiPhep(donnghiphep);
 
 	}
 
 	@Override
-	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap) {
-		donNghiPhepDao.addDonNghiPhepNhap(donnghiphepnhap);
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
+		donNghiPhepDao.addDonNghiPhep(donnghiphep);
 
 	}
 
@@ -134,5 +134,18 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 		donNghiPhepDao.addLoaiNgayNghi(loaingaynghi);
 
 	}
+
+	@Override
+	public int count() {
+		return donNghiPhepDao.count();
+	}
+
+	@Override
+	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult) {
+		
+		return donNghiPhepDao.findAll(offset, maxResult);
+	}
+
+	
 
 }

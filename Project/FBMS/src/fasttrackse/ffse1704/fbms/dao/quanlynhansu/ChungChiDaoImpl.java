@@ -2,14 +2,18 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -26,43 +30,71 @@ public class ChungChiDaoImpl implements ChungChiDao {
 	}
 
 	@Override
-	public void addCC(ChungChi cc) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
-		session.persist(cc);
+	public List<ChungChi> viewAll() {
+		Session session = sessionFactory.getCurrentSession();
+		List<ChungChi> listChungChi = session.createQuery("FROM ChungChi").getResultList();
+		return listChungChi;
 	}
 
 	@Override
-	public void updateCC(ChungChi cc) {
+	public List<ChungChi> GetListChungChiByPage(int start, int total) {
+		Session session = sessionFactory.getCurrentSession();
+		List<ChungChi> listCC = session.createQuery("FROM ChungChi").setFirstResult(start).setMaxResults(total).list();
+		return listCC;
+	}
+
+	@Override
+	public long CountChungChi() {
+		return (Long) sessionFactory.getCurrentSession().createCriteria(ChungChi.class)
+				.setProjection(Projections.rowCount()).uniqueResult();
+	}
+
+	@Override
+	public NhanSu getChungChiByID(String id) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(NhanSu.class);
+		NhanSu result = (NhanSu) criteria.add(Restrictions.eqOrIsNull("maNhanVien", id)).uniqueResult();
+		return result;
+	}
+
+	@Override
+	public void update(ChungChi cc) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		session.update(cc);
 	}
 
 	@Override
-	public void deleteCC(ChungChi cc) {
+	public void delete(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		session.delete(cc);
+		ChungChi cc = session.load(ChungChi.class, id);
+		if (null != cc) {
+			session.delete(cc);
+		}
 	}
 
 	@Override
-	public ChungChi getChungChiById(int id) {
-		Session session = this.sessionFactory.getCurrentSession();
+	public boolean checkExistMa(String maNS) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Query query = (Query) session.createCriteria("select count(*) from ChungChi Where maNhanVien = :maNhanVien");
+		Long check = (Long) query.uniqueResult();
+		if (check > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public ChungChi getChungChiUpdate(int id) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
 		ChungChi cc = (ChungChi) session.get(ChungChi.class, id);
 		return cc;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<ChungChi> getChungChiByPage(int pageid, int total) {
-		Session session = (Session) this.sessionFactory.getCurrentSession();
-		List<ChungChi> listChungChi = session.createQuery("FROM ChungChi").setFirstResult(pageid).setMaxResults(total)
-				.list();
-		return listChungChi;
-	}
-
-	@Override
-	public long countSV() {
-		return (Long) sessionFactory.getCurrentSession().createCriteria(ChungChi.class)
-				.setProjection(Projections.rowCount()).uniqueResult();
+	public void addChungChi(ChungChi cc) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(cc);
 	}
 
 }

@@ -7,6 +7,12 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 public interface DonNghiPhepServiceMinhtq {
+
+	/////////// phân trang ///////////////
+	public int count();
+
+	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult);
+
 	/////////// ĐƠN NGHỈ PHÉP//////////////////
 	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
 
@@ -20,16 +26,18 @@ public interface DonNghiPhepServiceMinhtq {
 
 	public void deleteDonNghiPhep(int id);
 
-	public void editDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
+	public void editDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
 
-	public void addDonNghiPhepNhap(DonNghiPhepMinhtq donnghiphepnhap);
+	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
+
+	
 
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 
-	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id);
+	public TrangThaiVangNghiMinhtq getByIdTrangThai(int maTrangThai);
 
-	public void deleteTrangThai(int id);
+	public void deleteTrangThai(int maTrangThai);
 
 	public void editTrangThai(TrangThaiVangNghiMinhtq trangthai);
 
@@ -38,9 +46,9 @@ public interface DonNghiPhepServiceMinhtq {
 	/////////////// LOẠI NGÀY NGHỈ//////////////////
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi();
 
-	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id);
+	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int maNgayNghi);
 
-	public void deleteLoaiNgayNghi(int id);
+	public void deleteLoaiNgayNghi(int maNgayNghi);
 
 	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
 

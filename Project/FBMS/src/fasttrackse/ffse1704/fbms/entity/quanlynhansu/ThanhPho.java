@@ -1,20 +1,27 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
-@Table(name = "thanh_pho")
+@Table(name = "tinhthanhpho")
 public class ThanhPho implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "provinceid", unique = true, nullable = false, length = 5)
-	private String provinceid;
+	@Column(name = "matp", unique = true, nullable = false, length = 5)
+	private String matp;
 
 	@Column(name = "name", nullable = false, length = 100)
 	private String name;
@@ -22,22 +29,15 @@ public class ThanhPho implements Serializable {
 	@Column(name = "type", nullable = false, length = 30)
 	private String type;
 
-	public ThanhPho() {
+	@OneToMany(mappedBy = "thanhPho", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<NhanSu> listNhanSuTP;
+
+	public String getMatp() {
+		return matp;
 	}
 
-	public ThanhPho(String provinceid, String name, String type) {
-		super();
-		this.provinceid = provinceid;
-		this.name = name;
-		this.type = type;
-	}
-
-	public String getProvinceid() {
-		return provinceid;
-	}
-
-	public void setProvinceid(String provinceid) {
-		this.provinceid = provinceid;
+	public void setMatp(String matp) {
+		this.matp = matp;
 	}
 
 	public String getName() {
@@ -54,6 +54,14 @@ public class ThanhPho implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<NhanSu> getListNhanSuTP() {
+		return listNhanSuTP;
+	}
+
+	public void setListNhanSuTP(List<NhanSu> listNhanSuTP) {
+		this.listNhanSuTP = listNhanSuTP;
 	}
 
 }

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
 
 @Controller
@@ -55,7 +62,7 @@ public class NhanSuController {
 	public ModelAndView ViewNhanSuPage(@PathVariable int page, Model model) {
 
 		long record = nhanSuService.CountNhanSu();
-		int perpage = 2;
+		int perpage = 4;
 		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
 
 		if (page == 0) {
@@ -71,16 +78,33 @@ public class NhanSuController {
 	}
 
 	@RequestMapping("/QuanTriNhanSu/danhsach_nhansu/addNS")
-	public ModelAndView ShowViewADD() {
+	public String ShowViewADD(Model model) {
 
-		return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu", "nhanSu", new NhanSu());
+		model.addAttribute("nhanSu", new NhanSu());
+		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
+		model.addAttribute("listChucDanh",listChucDanh);
+		
+		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
+		model.addAttribute("listPhongBan",listPhongBan);
+		
+		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
+		model.addAttribute("listTinhThanh",listTinhThanh);
+		
+		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+		model.addAttribute("listQuanHuyen",listQuanHuyen);
+		
+		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+		model.addAttribute("listXaPhuong",listXaPhuong);
+		
+		return "QuanTriNhanSu/nhanSu/ViewAddNhanSu";
 
 	}
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(@ModelAttribute("nhanSu") @Valid NhanSu nhanSu, BindingResult bindingResult,
+	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu, BindingResult bindingResult,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
+		
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			nhanSu.setAnhDaiDien(fileName);
@@ -88,8 +112,15 @@ public class NhanSuController {
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		}
+//		boolean checkMaNhanSu = nhanSuService.checkExistMa(nhanSu.getMaNhanVien());
+//		if(checkMaNhanSu==true) {
+//			nhanSuService.addNS(nhanSu);
+//			
+//		}else {
+//			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
+//			
+//		}
 		nhanSuService.addNS(nhanSu);
-
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
 
 	}
@@ -99,6 +130,21 @@ public class NhanSuController {
 		
 		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
 		model.addAttribute("nhanSu",nhanSu);
+		//model.addAttribute("nhanSu", new NhanSu());
+		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
+		model.addAttribute("listChucDanh",listChucDanh);
+		
+		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
+		model.addAttribute("listPhongBan",listPhongBan);
+		
+		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
+		model.addAttribute("listTinhThanh",listTinhThanh);
+		
+		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+		model.addAttribute("listQuanHuyen",listQuanHuyen);
+		
+		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+		model.addAttribute("listXaPhuong",listXaPhuong);
 		return "QuanTriNhanSu/nhanSu/edit_nhansu";
 		
 	}
@@ -116,11 +162,47 @@ public class NhanSuController {
 		
 	}
 	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
 
+	@RequestMapping(value="/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}",method = RequestMethod.GET)
+	public ModelAndView getdeleteNhanSuByID(@PathVariable int id,Model model) {
+		
+		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
+		model.addAttribute("nhanSu",nhanSu);
+		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
+		model.addAttribute("listChucDanh",listChucDanh);
+		
+		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
+		model.addAttribute("listPhongBan",listPhongBan);
+		
+		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
+		model.addAttribute("listTinhThanh",listTinhThanh);
+		
+		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+		model.addAttribute("listQuanHuyen",listQuanHuyen);
+		
+		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+		model.addAttribute("listXaPhuong",listXaPhuong);
+
+		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
+	}
+	
+	// thực hiện lệnh xóa
+		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "delete")
+		public ModelAndView doDel(@PathVariable int id) {
+			nhanSuService.delete(id);
+			return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
+		}
+		// hủy xóa
+		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "cancel", method = RequestMethod.POST)
+		public String cancelUpdateUser(HttpServletRequest request) {
+			return "redirect:/QuanTriNhanSu/danhsach_nhansu";
+		}
+	
 	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 
 		String fileName = file.getOriginalFilename();
@@ -138,5 +220,12 @@ public class NhanSuController {
 		return fileName;
 
 	}
-
+	
+	@RequestMapping(value = "chonquan/maTinhThanh", method = RequestMethod.GET)
+	public @ResponseBody String chonQuanHuyen(@PathVariable String maTinhThanh) {
+//		List<QuanHuyen> listQuanHuyen = nhanSuService.listQuanHuyenbyID(maTinhThanh);
+		return maTinhThanh;
+		
+	}
+		
 }

@@ -2,8 +2,10 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,8 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import com.sun.istack.internal.NotNull;
-
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 
 @Entity
 @Table(name = "tencongviec")
@@ -30,19 +30,17 @@ public class CongViecKhanhCN implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "ma_du_an", nullable = false, referencedColumnName = "ma_du_an")
-	private DuAnKhanhCN maDuAn;
+	private DuAnKhanhCN duAnKhanhCN;
 
 	@ManyToOne
 	@JoinColumn(name = "ma_loai_congviec", nullable = false, referencedColumnName = "ma_loai_congviec")
-	@NotNull
-	private LoaiCongViec maLoaiCongViec;
+	private LoaiCongViec loaiCongViec;
 
 	@Column(name = "ten_cong_viec")
 	@NotEmpty
 	private String tenCongViec;
 
 	@Column(name = "mo_ta")
-	@NotEmpty
 	private String moTa;
 
 	@Column(name = "thoigian_batdau")
@@ -54,17 +52,39 @@ public class CongViecKhanhCN implements Serializable {
 	private String thoiGianKetThuc;
 
 	@ManyToOne
-	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false)
-	private NhanVienKhanhCN nguoiDuocPhanCong;
+	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien", insertable= false, updatable= false)
+	private NhanVienDuAn nhanVienDuAn;
+	
+	@Column(name = "nguoi_duoc_phan_cong")
+	private String nguoiPhanCong;
+
+	public String getNguoiPhanCong() {
+		return nguoiPhanCong;
+	}
+
+	public void setNguoiPhanCong(String nguoiPhanCong) {
+		this.nguoiPhanCong = nguoiPhanCong;
+	}
 
 	@Column(name = "thoigian_dukien_hoanthanh")
 	@NotEmpty
 	private String thoiGianDuKienHoanThanh;
 
-	@ManyToOne
-	@JoinColumn(name = "trang_thai", nullable = false, referencedColumnName = "ma_trangthai", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trangthai", insertable = false, updatable = false, nullable = false)
+	private TrangThaiKhanhCN trangThaiKhanhCN; // không phải cái này được lưu
+
+	@Column(name = "trang_thai")
 	@NotNull
-	private TrangThaiKhanhCN maTrangThai;
+	private int trangThai; // -> cái này cần lưu, jsp path để trỏ đến thuộc tính nay
+
+	public int getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(int trangThai) {
+		this.trangThai = trangThai;
+	}
 
 	public int getId() {
 		return id;
@@ -74,20 +94,20 @@ public class CongViecKhanhCN implements Serializable {
 		this.id = id;
 	}
 
-	public DuAnKhanhCN getMaDuAn() {
-		return maDuAn;
+	public DuAnKhanhCN getDuAnKhanhCN() {
+		return duAnKhanhCN;
 	}
 
-	public void setMaDuAn(DuAnKhanhCN maDuAn) {
-		this.maDuAn = maDuAn;
+	public void setDuAnKhanhCN(DuAnKhanhCN duAnKhanhCN) {
+		this.duAnKhanhCN = duAnKhanhCN;
 	}
 
-	public LoaiCongViec getMaLoaiCongViec() {
-		return maLoaiCongViec;
+	public LoaiCongViec getLoaiCongViec() {
+		return loaiCongViec;
 	}
 
-	public void setMaLoaiCongViec(LoaiCongViec maLoaiCongViec) {
-		this.maLoaiCongViec = maLoaiCongViec;
+	public void setLoaiCongViec(LoaiCongViec loaiCongViec) {
+		this.loaiCongViec = loaiCongViec;
 	}
 
 	public String getTenCongViec() {
@@ -122,28 +142,12 @@ public class CongViecKhanhCN implements Serializable {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
-	public NhanVienKhanhCN getNguoiDuocPhanCong() {
-		return nguoiDuocPhanCong;
-	}
-
-	public void setNguoiDuocPhanCong(NhanVienKhanhCN nguoiDuocPhanCong) {
-		this.nguoiDuocPhanCong = nguoiDuocPhanCong;
-	}
-
 	public String getThoiGianDuKienHoanThanh() {
 		return thoiGianDuKienHoanThanh;
 	}
 
 	public void setThoiGianDuKienHoanThanh(String thoiGianDuKienHoanThanh) {
 		this.thoiGianDuKienHoanThanh = thoiGianDuKienHoanThanh;
-	}
-
-	public TrangThaiKhanhCN getMaTrangThai() {
-		return maTrangThai;
-	}
-
-	public void setMaTrangThai(TrangThaiKhanhCN maTrangThai) {
-		this.maTrangThai = maTrangThai;
 	}
 
 	public static long getSerialversionuid() {
@@ -155,20 +159,37 @@ public class CongViecKhanhCN implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CongViecKhanhCN(int id, DuAnKhanhCN maDuAn, LoaiCongViec maLoaiCongViec, @NotEmpty String tenCongViec,
-			@NotEmpty String moTa, @NotEmpty String thoiGianBatDau, @NotEmpty String thoiGianKetThuc,
-			NhanVienKhanhCN nguoiDuocPhanCong, @NotEmpty String thoiGianDuKienHoanThanh, TrangThaiKhanhCN maTrangThai) {
+	public NhanVienDuAn getNhanVienDuAn() {
+		return nhanVienDuAn;
+	}
+
+	public void setNhanVienDuAn(NhanVienDuAn nhanVienDuAn) {
+		this.nhanVienDuAn = nhanVienDuAn;
+	}
+
+	public TrangThaiKhanhCN getTrangThaiKhanhCN() {
+		return trangThaiKhanhCN;
+	}
+
+	public void setTrangThaiKhanhCN(TrangThaiKhanhCN trangThaiKhanhCN) {
+		this.trangThaiKhanhCN = trangThaiKhanhCN;
+	}
+
+	public CongViecKhanhCN(int id, DuAnKhanhCN duAnKhanhCN, LoaiCongViec loaiCongViec, @NotEmpty String tenCongViec,
+			String moTa, @NotEmpty String thoiGianBatDau, @NotEmpty String thoiGianKetThuc, NhanVienDuAn nhanVienDuAn,
+			@NotEmpty String thoiGianDuKienHoanThanh, TrangThaiKhanhCN trangThaiKhanhCN, int trangThai) {
 		super();
 		this.id = id;
-		this.maDuAn = maDuAn;
-		this.maLoaiCongViec = maLoaiCongViec;
+		this.duAnKhanhCN = duAnKhanhCN;
+		this.loaiCongViec = loaiCongViec;
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
-		this.nguoiDuocPhanCong = nguoiDuocPhanCong;
+		this.nhanVienDuAn = nhanVienDuAn;
 		this.thoiGianDuKienHoanThanh = thoiGianDuKienHoanThanh;
-		this.maTrangThai = maTrangThai;
+		this.trangThaiKhanhCN = trangThaiKhanhCN;
+		this.trangThai = trangThai;
 	}
 
 }

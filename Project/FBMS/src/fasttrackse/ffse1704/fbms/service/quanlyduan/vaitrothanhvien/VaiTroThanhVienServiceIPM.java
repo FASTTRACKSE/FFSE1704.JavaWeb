@@ -42,15 +42,15 @@ public class VaiTroThanhVienServiceIPM implements VaiTroThanhVienService {
 
 	@Override
 	@Transactional
-	public void delete(String VaiTroThanhVienDao) {
-		this.vaiTroThanhVienDao.delete(VaiTroThanhVienDao);
+	public void delete(String VaiTroThanhVien) {
+		this.vaiTroThanhVienDao.delete(VaiTroThanhVien);
 
 	}
 
 	@Override
 	@Transactional
-	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVienDao) {
-		return this.vaiTroThanhVienDao.getVaiTroThanhVienByIdVaiTroThanhVien(maVaiTroThanhVienDao);
+	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVien) {
+		return this.vaiTroThanhVienDao.getVaiTroThanhVienByIdVaiTroThanhVien(maVaiTroThanhVien);
 	}
 
 	@Override

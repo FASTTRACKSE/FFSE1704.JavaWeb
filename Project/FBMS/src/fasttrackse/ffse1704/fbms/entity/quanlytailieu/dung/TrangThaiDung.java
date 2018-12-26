@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "trang_thai_tai_lieu")
-public class TrangThai implements Serializable{
+public class TrangThaiDung implements Serializable{
 
 	/**
 	 * 
@@ -21,12 +21,12 @@ public class TrangThai implements Serializable{
 	private static final long serialVersionUID = -6931934795016309418L;
 
 	@OneToMany(mappedBy="maTrangThai")
-	private List<Document> Document;
-	public List<Document> getDocument() {
-		return Document;
+	private List<DocumentDung> DocumentDung;
+	public List<DocumentDung> getDocument() {
+		return DocumentDung;
 	}
-	public void setDocument(List<Document> document) {
-		Document = document;
+	public void setDocument(List<DocumentDung> documentDung) {
+		DocumentDung = documentDung;
 	}
 	
 	@Id

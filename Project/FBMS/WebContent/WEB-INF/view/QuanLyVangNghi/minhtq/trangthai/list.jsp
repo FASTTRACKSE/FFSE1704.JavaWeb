@@ -115,6 +115,7 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
+												<th>id</th>
 												<th>Mã trạng thái</th>
 												<th>Tên trạng thái</th>
 												<th>chức năng</th>
@@ -122,17 +123,18 @@
 										</thead>
 										<c:forEach var="dnpn" items="${listtrangthai}">
 											<tr>
+												<td>${dnpn.id}</td>
 												<td>${dnpn.maTrangThai}</td>
 												<td>${dnpn.tenTrangThai}</td>
 
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.maTrangThai}">
-														<button>sửa</button>
+													href="/FBMS/QuanLyVangNghi/minhtq/editViewTrangThai/${dnpn.id}">
+														<button class="btn btn-danger">sửa</button>
 												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.tenTrangThai}"><button>
-															xóa</button></a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteTrangThai/${dnpn.id}"><button
+															class="btn btn-danger">xóa</button></a></td>
 										</c:forEach>
-									
+
 									</table>
 								</div>
 							</div>

@@ -10,7 +10,7 @@
 			<!-- Path -->
 			<div class="content-header row">
 				<div class="content-header-left col-md-6 col-xs-12 mb-2">
-					<h3 class="content-header-title mb-0">Thêm mới Domain</h3>
+					<h3 class="content-header-title mb-0">Xóa Domain</h3>
 					<div class="row breadcrumbs-top">
 						<div class="breadcrumb-wrapper col-xs-12">
 							<ol class="breadcrumb">
@@ -28,24 +28,26 @@
 			</div>
 			<!-- End Path -->
 		</div>
-		<form:form method="post" action="/FBMS/Quan_Ly_Du_An/Submit_Delete_Domain">
+		<form:form method="post"
+			action="/FBMS/Quan_Ly_Du_An/Submit_Delete_Domain">
 			<div class="form-body">
 
 				<div class="form-group">
 					<form:hidden path="id" class="form-control" />
 				</div>
 				<div class="form-group">
-				<label for="issueinput2">Mã Domain: </label>
-					<form:hidden path="maDomain" class="form-control" /><strong>${command.maDomain}</strong>
+					<label for="issueinput2">Mã Domain: </label>
+					<form:hidden path="maDomain" class="form-control" />
+					<strong>${command.maDomain}</strong>
 				</div>
 				<div class="form-group">
 					<label for="issueinput2">Tên Domain</label>
-					<form:hidden path="tenDomain" class="form-control"/>
+					<form:hidden path="tenDomain" class="form-control" />
 					<strong>${command.tenDomain}</strong>
 				</div>
 
 				<div class="form-group">
-					<label for="issueinput2">Ghi Chú</label>
+					<label for="issueinput2">Ghi Chú: </label>
 					<form:hidden path="ghiChu" class="form-control" />
 					<strong>${command.ghiChu}</strong>
 				</div>
@@ -53,7 +55,8 @@
 				<div class="form-actions">
 
 					<button type="button" class="btn btn-warning mr-1">
-						<i class="ft-x"></i> Cancel
+						<i class="ft-x"></i><a
+							href='<c:url value="/Quan_Ly_Du_An/List_Domain/1" />'>Cancel</a>
 					</button>
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check-square-o"></i> Delete

@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 
 <div class="app-content content container-fluid">
@@ -13,8 +14,11 @@
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh sách chức danh</a></li>
+							<li class="breadcrumb-item"><a
+								href='<c:url value="/home" />'>Home</a></li>
+							<li class="breadcrumb-item"><a
+								href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh
+									sách chức danh</a></li>
 							<li class="breadcrumb-item active">Sửa chức danh</li>
 						</ol>
 					</div>
@@ -26,15 +30,24 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="loạingaynghi" action="">
-						<label>Mã loại ngày nghỉ</label>
-						<form:input type="hidden" path="maLoaiNgayNghi" style="display:none" value=""/>
-						<div class="form-group col-sm-6">
-						  	<label>Tên loại ngày nghỉ</label>
-						  	<form:input class="form-control" path="tenLoaiNgayNghi" value="" placeholder="nhập tên loại ngày nghỉ" />
+					<form:form method="POST" modelAttribute="sualydo"
+						action="suaLoaiNgayNghi">
+						<div class="form-group col-sm-4">
+							<label>id</label>
+							<form:input class="form-control" path="id" readonly="true"/>
+						</div>
+						<div class="form-group col-sm-4">
+							<label>mã loại ngày nghỉ</label>
+							<form:input class="form-control" path="maNgayNghi" />
+						</div>
+						<div class="form-group col-sm-4">
+							<label>tên loại ngày nghỉ </label>
+							<form:input class="form-control" path="tenLoaiNgayNghi" />
+
 						</div>
 						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-success">Lưu thông tin</button>
+							<button type="submit" class="btn btn-success">Lưu thông
+								tin</button>
 						</div>
 					</form:form>
 				</div>

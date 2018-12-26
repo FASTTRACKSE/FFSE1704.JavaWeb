@@ -133,7 +133,7 @@
 											<c:forEach var="lg" items="${thongTinLogwork}">
 												<tr>
 													<td>${lg.id}</td>
-													<td>${lg.maDuAn}</td>
+													<td>${lg.duAn.tenDuAn}</td>
 													<td>${lg.nhanVien.hoDem} ${lg.nhanVien.ten}</td>
 													<td>${lg.vaiTro.tenVaiTro}</td>
 													<td>${lg.phongBan.tenPhongBan}</td>

@@ -2,18 +2,25 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinGiaDinh;
 
 public interface ThongTinGiaDinhDao {
-	public void addTT(ThongTinGiaDinh tt);
+	public List<ThongTinGiaDinh> viewAll();
 
-	public void updateTT(ThongTinGiaDinh tt);
+	public void addThongTinGiaDinh(ThongTinGiaDinh tt);
 
-	public ThongTinGiaDinh getThongTinById(int id);
+	public List<ThongTinGiaDinh> GetListThongTinGiaDinhByPage(int start, int total);
 
-	public void deleteTT(ThongTinGiaDinh tt);
+	public long CountThongTinGiaDinh();
 
-	public List<ThongTinGiaDinh> getThongTinByPage(int pageid, int total);
+	public NhanSu getThongTinGiaDinhByID(String id);
 
-	public long countTT();
+	public void update(ThongTinGiaDinh tt);
+
+	public void delete(int id);
+
+	public boolean checkExistMa(String maNS);
+
+	public ThongTinGiaDinh getThongTinGiaDinhUpdate(int id);
 }

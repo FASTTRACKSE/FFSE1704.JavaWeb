@@ -262,6 +262,8 @@
 				<!-- --------------------------End Quản trị hệ thống-------------------------- -->
 
 
+
+
 				<!-- ************************* Quản Lý Dự Án********************************** -->
 				<ul id="main-menu-navigation" data-menu="menu-navigation"
 					class="navigation navigation-main">
@@ -277,8 +279,8 @@
 									Hàng</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-puzzle"></i>Vai
-									Trò Thành Viên</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_VaiTroThanhVien/1"/>"><i
+									class="icon-puzzle"></i>Vai Trò Thành Viên</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="<c:url value="/Quan_Ly_Du_An/List_Domain/1"/>"><i
@@ -295,11 +297,12 @@
 								href="/FBMS/quanlytailieu/index"><i class="icon-link"></i>Vendor</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-book-open"></i>Programming
-									Language</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_ProgrammingLanguage/1"/>"><i
+									class="icon-book-open"></i>Programming Language</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="/FBMS/quanlytailieu/index"><i class="icon-magic-wand"></i>Technical</a></li>
+								href="<c:url value="/Quan_Ly_Du_An/List_Technical/1"/>"><i
+									class="icon-magic-wand"></i>Technical</a></li>
 
 							<li class="nav-item"><a class="nav-link"
 								href="/FBMS/quanlytailieu/index"><i class="icon-refresh"></i>Trạng
@@ -324,6 +327,32 @@
 
 
 
+				<!-- ************************* Quản Lý Nhân Sự********************************** -->
+
+				<ul id="main-menu-navigation" data-menu="menu-navigation"
+					class="navigation navigation-main">
+					<li class=" navigation-header"><span>Quản Lý Nhân Sự</span><i
+						data-toggle="tooltip" data-placement="right"
+						data-original-title="Joker" class=" ft-minus"></i></li>
+					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
+							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
+					<li class=" nav-item"><a
+						href="/FBMS/QuanTriNhanSu/danhsach_nhansu/"><i
+							class="ft-bookmark"></i> Danh sách nhân viên</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
+				</ul>
+
+
+				<!-- **********************End Quản Lý Nhân Sự************************************** -->
+
+
+
+
+
+
+
+
 
 				<!-- --------------------------Quản lý thời gian-------------------------- -->
 
@@ -335,6 +364,20 @@
 					<li class=" nav-item"><a
 						href="<c:url value = "/QuanLyThoiGian/Logwork/list"/>"><i
 							class="ft-book"></i> Danh Sách Logwork</a></li>
+					<li class=" nav-item">
+						<!--  --> <script type="text/javascript">
+							var today = new Date();
+
+							var m = today.getMonth() + 1;
+							document.write(" <a href = ' ");
+							document.write("/FBMS/QuanLyThoiGian/Logwork/listMonth/"
+									+ m);
+							document.write("' >");
+							document.write("<i class='ft-book'></i>");
+							document.write("Logwork theo tháng");
+							document.write("</a>");
+						</script>
+					</li>
 				</ul>
 				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 
@@ -400,10 +443,18 @@
 				<!-- Dũng -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/quanlytailieu/index">●
-								Danh mục tài liệu</a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/index">●
+								Tài liệu của tôi</a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/draft">●
+								Tài liệu nháp</a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
+								Phê duyệt tài liệu</a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
+								Tài liệu bị từ chối</a></li>
 					</ul></li>
 				<!-- Sỹ -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
@@ -427,10 +478,14 @@
 					data-original-title="davidvy" class=" ft-minus"></i></li>
 				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
-						<li class=""><a class="menu-item" href="#">● danh sánh</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn chờ
-								duyệt</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/luunhap">● danh sánh</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/choduyet">● đơn chờ duyệt</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/daduyet">● đơn đã duyệt</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn duyệt
 								lần 1</a></li>
@@ -438,7 +493,8 @@
 								lần 2</a></li>
 						<li class=""><a class="menu-item" href="#">● ghi chú</a></li>
 						<li class=""><a class="menu-item" href="#">● ghi chú tp</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn lưu nháp</a></li>
+						<li class=""><a class="menu-item"
+							href="/FBMS/QuanLyVangNghi/luunhap">● đơn lưu nháp</a></li>
 						<li class=""><a class="menu-item" href="#">● đơn được sửa</a></li>
 						<li class=""><a class="menu-item" href="#">● xem danh
 								sách phê duyệt</a></li>

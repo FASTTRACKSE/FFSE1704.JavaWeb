@@ -112,7 +112,7 @@ public class DomainController {
 	}
 	
 	@RequestMapping(value = "/Submit_Delete_Domain", method = RequestMethod.POST)
-	public String deleteSinhVien(@ModelAttribute("command") Domain domain) {
+	public String deleteDomain(@ModelAttribute("command") Domain domain) {
 		domainService.delete(domain.getMaDomain());;
 		return "redirect:/Quan_Ly_Du_An/List_Domain/1";
 	}

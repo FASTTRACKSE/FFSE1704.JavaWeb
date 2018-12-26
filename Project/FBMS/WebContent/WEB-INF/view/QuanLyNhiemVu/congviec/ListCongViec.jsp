@@ -131,15 +131,15 @@
 										<c:forEach var="nv" items="${list}">
 											<tr>
 												<td>${nv.id}</td>
-												<td>${nv.maDuAn.tenDuAn}</td>
-												<td>${nv.maLoaiCongViec.loaiCongViec}</td>
+												<td>${nv.duAnKhanhCN.tenDuAn}</td>
+												<td>${nv.loaiCongViec.loaiCongViec}</td>
 												<td>${nv.tenCongViec}</td>
 												<td>${nv.moTa}</td>
 												<td>${nv.thoiGianBatDau}</td>
 												<td>${nv.thoiGianKetThuc}</td>
-												<td>${nv.nguoiDuocPhanCong.ten}</td>
+												<td>${nv.nhanVienDuAn.nhanVienKhanhCN.hoDem} ${nv.nhanVienDuAn.nhanVienKhanhCN.ten}</td>
 												<td>${nv.thoiGianDuKienHoanThanh}</td>
-												<td>${nv.maTrangThai.tenTrangThai}</td>
+												<td>${nv.trangThaiKhanhCN.tenTrangThai}</td>
 												<td><a href="edit/${nv.id}"><button>sửa</button></a> <a
 													href="delete/${nv.id}"><button>xóa</button></a></td>
 
@@ -184,32 +184,6 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable")
-				.dataTable(
-						{
-							responsive : true,
-							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-							"bServerSide" : true,
-							"sAjaxSource" : "/ffse-fbms/QuanLyNhiemVu/cong_viec/view/getListCongViec",
-						});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

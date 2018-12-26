@@ -3,15 +3,19 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "thong_tin_hop_dong")
@@ -22,24 +26,60 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
+	
+	@Column(name = "ma_nhan_vien")
+	private String maNhanVien;
+	
+	@Column(name = "ma_hop_dong")
+	private String maHopDong;
+	
+	@Column(name = "luong_thang_13")
+	private String luongThang13;
 
-	@ManyToOne
-	@JoinColumn(name = "ma_hop_dong",referencedColumnName = "ma_hop_dong", nullable = false)
-	@NotNull
+	public String getMaHopDong() {
+		return maHopDong;
+	}
+
+	public void setMaHopDong(String maHopDong) {
+		this.maHopDong = maHopDong;
+	}
+
+	public String getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
+	public String getLuongThang13() {
+		return luongThang13;
+	}
+
+	public void setLuongThang13(String luongThang13) {
+		this.luongThang13 = luongThang13;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "ma_hop_dong",referencedColumnName = "ma_hop_dong", nullable = false, insertable = false, updatable = false)
 	private HopDong loaihopDong;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_bat_dau", nullable = false)
 	private Date ngayBatDau;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_ket_thuc", nullable = false)
 	private Date ngayKetThuc;
 
 	
-	@ManyToOne
-	@JoinColumn(name = "luong_thang_13",referencedColumnName = "id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "luong_thang_13",referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private CheDoHuong cheDoHuong;
 
 	public ThongTinHopDong() {

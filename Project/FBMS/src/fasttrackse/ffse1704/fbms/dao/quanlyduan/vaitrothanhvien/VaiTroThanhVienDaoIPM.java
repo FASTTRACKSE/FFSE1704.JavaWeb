@@ -42,21 +42,22 @@ public class VaiTroThanhVienDaoIPM implements VaiTroThanhVienDao {
 	}
 
 	@Override
-	public void delete(String VaiTroThanhVienDao) {
+	public void delete(String VaiTroThanhVien) {
 		Session session = this.sessionFactory.openSession();
 		Transaction pd = session.beginTransaction();
-		session.update(session.get(VaiTroThanhVien.class, VaiTroThanhVienDao));
+		session.update(session.get(VaiTroThanhVien.class, VaiTroThanhVien));
 		pd.commit();
 		session.close();
 
 	}
 
 	@Override
-	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVienDao) {
-		Session session = this.sessionFactory.openSession();
-		VaiTroThanhVien vaiTroThanhVienDao = session.get(VaiTroThanhVien.class, maVaiTroThanhVienDao);
-		session.close();
-		return vaiTroThanhVienDao;
+	public VaiTroThanhVien getVaiTroThanhVienByIdVaiTroThanhVien(String maVaiTroThanhVien) {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<VaiTroThanhVien> listVaiTroThanhVien = session.createQuery("from VaiTroThanhVien where maVaiTro = '" + maVaiTroThanhVien + "'", VaiTroThanhVien.class)
+				.list();
+		VaiTroThanhVien vaiTroThanhVien = listVaiTroThanhVien.get(0);
+		return vaiTroThanhVien;
 	}
 
 	@SuppressWarnings("unchecked")

@@ -1,7 +1,9 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,28 +30,13 @@ public class LoaiCongViec implements Serializable {
 	@NotEmpty
 	private String loaiCongViec;
 
-	@OneToMany(mappedBy = "maLoaiCongViec")
-	private Collection<CongViecKhanhCN> khanhCNs;
-
-	
-	public Collection<CongViecKhanhCN> getKhanhCNs() {
-		return khanhCNs;
-	}
-
-
-
-	public void setKhanhCNs(Collection<CongViecKhanhCN> khanhCNs) {
-		this.khanhCNs = khanhCNs;
-	}
-
-
+	@OneToMany(mappedBy = "loaiCongViec")
+	private List<CongViecKhanhCN> congViecKhanhCN = new ArrayList<CongViecKhanhCN>();
 
 	public LoaiCongViec() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	public int getMaLoaiCongViec() {
 		return maLoaiCongViec;
@@ -65,6 +52,14 @@ public class LoaiCongViec implements Serializable {
 
 	public String getLoaiCongViec() {
 		return loaiCongViec;
+	}
+
+	public List<CongViecKhanhCN> getCongViecKhanhCN() {
+		return congViecKhanhCN;
+	}
+
+	public void setCongViecKhanhCN(List<CongViecKhanhCN> congViecKhanhCN) {
+		this.congViecKhanhCN = congViecKhanhCN;
 	}
 
 	public void setLoaiCongViec(String loaiCongViec) {

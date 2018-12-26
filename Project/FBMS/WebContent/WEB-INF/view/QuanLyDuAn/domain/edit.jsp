@@ -10,7 +10,7 @@
 			<!-- Path -->
 			<div class="content-header row">
 				<div class="content-header-left col-md-6 col-xs-12 mb-2">
-					<h3 class="content-header-title mb-0">Thêm mới Domain</h3>
+					<h3 class="content-header-title mb-0">Chỉnh sửa thông tin Domain</h3>
 					<div class="row breadcrumbs-top">
 						<div class="breadcrumb-wrapper col-xs-12">
 							<ol class="breadcrumb">
@@ -48,13 +48,13 @@
 
 				<div class="form-group">
 					<label for="issueinput2">Ghi Chú</label>
-					<form:input path="ghiChu" class="form-control" placeholder="VD: 1" />
+					<form:textarea path="ghiChu" class="form-control" placeholder="VD: 1" />
 				</div>
 
 				<div class="form-actions">
 
 					<button type="button" class="btn btn-warning mr-1">
-						<i class="ft-x"></i> Cancel
+						<i class="ft-x"></i><a href='<c:url value="/Quan_Ly_Du_An/List_Domain/1" />'>Cancel</a>
 					</button>
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check-square-o"></i> Edit

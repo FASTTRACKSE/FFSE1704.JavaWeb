@@ -10,7 +10,7 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Tài Liệu<h3>
+				<h3 class="content-header-title mb-0">Sửa Tài Liệu<h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -67,6 +67,7 @@
 										<th>Trạng Thái</th>
 										<th>Phòng Ban</th>
 										<th>Phương Thức</th>
+										<th>Tải về</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -81,7 +82,9 @@
 												<td>${document.maPhongBan.tenPhongBan}</td>
 												<td>
 												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
-												<a href="documentEdit/${document.id}" class="btn-warning btn" role="button" > Sửa </a></td>
+												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateView/${document.id}" class="btn-warning btn" role="button" > Sửa </a>
+												</td>
+												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>
 											</tr>
 										</c:forEach>
 									</c:if>

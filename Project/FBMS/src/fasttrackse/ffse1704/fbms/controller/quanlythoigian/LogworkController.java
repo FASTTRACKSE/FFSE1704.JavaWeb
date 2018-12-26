@@ -1,7 +1,10 @@
 package fasttrackse.ffse1704.fbms.controller.quanlythoigian;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -31,11 +34,35 @@ public class LogworkController {
 	@Autowired
 	private LogworkService logworkService;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String viewLogwork(Model model) {
-		List<Logwork> allLogwork = logworkService.findAll();
-		model.addAttribute("logwork", allLogwork);
+	/*
+	 * @RequestMapping(value = "/list", method = RequestMethod.GET) public String
+	 * viewLogwork(Model model) { List<Logwork> allLogwork =
+	 * logworkService.findAll(); model.addAttribute("logwork", allLogwork); return
+	 * "QuanLyThoiGian/logwork/list"; }
+	 */
+	@RequestMapping("/list")
+	public String viewLogworkPage(Model model,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
+		int totalRecords = logworkService.findAll().size();
+		System.out.println(totalRecords);
+		int total = 10;
+		int totalPages = 0;
+		if ((totalRecords / total) % 2 != 0) {
+			totalPages = totalRecords / total;
+		} else {
+			totalPages = totalRecords / total + 1;
+		}
+		int star = total * (currentPage - 1);
+		model.addAttribute("logwork", logworkService.findAllForPaging(star, total));
+		model.addAttribute("lastPage", totalPages);
+		model.addAttribute("currentPage", currentPage);
 		return "QuanLyThoiGian/logwork/list";
+	}
+
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+	public String viewLogwork(@PathVariable("id") int id, Model model) {
+		model.addAttribute("viewLogwork", logworkService.findByIdLogwork(id));
+		return "QuanLyThoiGian/logwork/viewOne";
 	}
 
 	// add
@@ -64,7 +91,7 @@ public class LogworkController {
 			} else if (action.equals("submit")) {
 				msg = "Đã gửi phê duyệt";
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
-				trangThaiLogwork.setMaTrangThai(1);
+				trangThaiLogwork.setMaTrangThai(5);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
 			} else if (action.equals("exit")) {
 				return "redirect:/QuanLyThoiGian/Logwork/list";
@@ -99,13 +126,10 @@ public class LogworkController {
 			if (action.equals("submit")) {
 				msg = "Đã gửi phê duyệt";
 				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
-				trangThaiLogwork.setMaTrangThai(1);
+				trangThaiLogwork.setMaTrangThai(5);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
 			} else if (action.equals("edit")) {
 				msg = "Sửa thành công";
-				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
-				trangThaiLogwork.setMaTrangThai(1);
-				logwork.setTrangThaiLogwork(trangThaiLogwork);
 			} else if (action.equals("exit")) {
 				return "redirect:/QuanLyThoiGian/Logwork/list";
 			}
@@ -129,4 +153,24 @@ public class LogworkController {
 		return "redirect:/QuanLyThoiGian/Logwork/list";
 	}
 
+	// list ds theo tháng
+	@RequestMapping(value = "/listMonth/{month}")
+	public String viewMonth(@PathVariable("month") String month, Model model,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
+		int totalRecords = logworkService.listAllMonth(month).size();
+		System.out.println(totalRecords);
+		int total = 10;
+		int totalPages = 0;
+		if ((totalRecords / total) % 2 != 0) {
+			totalPages = totalRecords / total;
+		} else {
+			totalPages = totalRecords / total + 1;
+		}
+		int star = total * (currentPage - 1);
+		model.addAttribute("listMonth", logworkService.listMonth(star, total, month));
+		model.addAttribute("lastPage", totalPages);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("thang",month);
+		return "QuanLyThoiGian/logwork/listmonth";
+	}
 }

@@ -4,6 +4,29 @@
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <div class="app-content content container-fluid">
 	<div class="container">
+
+		<div class="content-wrapper">
+			<!-- Path -->
+			<div class="content-header row">
+				<div class="content-header-left col-md-6 col-xs-12 mb-2">
+					<h3 class="content-header-title mb-0">Danh sách Domain</h3>
+					<div class="row breadcrumbs-top">
+						<div class="breadcrumb-wrapper col-xs-12">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a
+									href='<c:url value="/home" />'>Home</a></li>
+								<li class="breadcrumb-item active">Quản lý dự án</li>
+								<li class="breadcrumb-item active">Quản lý danh mục</li>
+								<li class="breadcrumb-item"><a
+									href='<c:url value="/Quan_Ly_Du_An/List_Domain/1" />'>Domain</a></li>
+								<li class="breadcrumb-item active">Danh sách Domain</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Path -->
+		</div>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 

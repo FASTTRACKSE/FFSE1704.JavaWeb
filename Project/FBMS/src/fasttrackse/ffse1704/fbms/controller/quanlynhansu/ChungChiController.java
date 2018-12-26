@@ -1,9 +1,7 @@
 package fasttrackse.ffse1704.fbms.controller.quanlynhansu;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -25,39 +23,8 @@ public class ChungChiController {
 	@Autowired
 	ChungChiService chungChiService;
 
-	@RequestMapping("/QuanTriNhanSu/danhsach_chungchi")
-	public String ShowList() {
-		return "redirect:/QuanTriNhanSu/danhsach_chungchi/1";
-
-	}
-
-	@RequestMapping("/QuanTriNhanSu/danhsach_chungchi/{page}")
-	public ModelAndView ShowList(@PathVariable int page, Model model) {
-		long record = chungChiService.countSV();
-
-		int perpage = 1;
-		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
-
-		if (page == 0) {
-			page = 1;
-		}
-		int start = (page - 1) * perpage;
-
-		List<ChungChi> list = chungChiService.getChungChiByPage(start, perpage);
-		model.addAttribute("page", page);
-		model.addAttribute("totalPage", totalPage);
-		return new ModelAndView("QuanTriNhanSu/chungChi/allchungchi", "chungchi", list);
-	}
-
-	@RequestMapping("QuanTriNhanSu/danhsach_chungchi/addCC")
-	public ModelAndView chungchi() {
-		return new ModelAndView("QuanTriNhanSu/chungChi/addCC", "chungChi", new ChungChi());
-	}
-
-	@RequestMapping(value = "QuanTriNhanSu/danhsach_chungchi/addCC", method = RequestMethod.POST)
-	public ModelAndView addCC(@ModelAttribute("chungChi") ChungChi chungChi) throws IllegalStateException, IOException {
-		chungChiService.addCC(chungChi);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_chungchi");
+	public void setChungChiService(ChungChiService chungChiService) {
+		this.chungChiService = chungChiService;
 	}
 
 	@InitBinder
@@ -65,32 +32,54 @@ public class ChungChiController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
 
-	@RequestMapping(value = "/QuanTriNhanSu/danhsach_chungchi/updateCC/{id}")
-	public String update(@PathVariable int id, Model model) {
-		ChungChi chungChi = chungChiService.getChungChiById(id);
-		model.addAttribute("chungchi", chungChi);
+	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
+	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
+		return "QuanTriNhanSu/chungChi/allchungchi";
+	}
+
+	@RequestMapping(value = "/addCC/{maNhanVien}")
+	public String ViewAddChungChi(Model model, @PathVariable("maNhanVien") String maNhanVien) {
+		model.addAttribute("chungChi", new ChungChi());
+		model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
+		return "QuanTriNhanSu/chungChi/addCC";
+	}
+
+	@RequestMapping(value = "saveCC")
+	public ModelAndView AddChungChi(@ModelAttribute("chungChi") ChungChi chungChi) {
+		chungChiService.addChungChi(chungChi);
+		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+	}
+
+	@RequestMapping("/updateCC/{maNhanVien}")
+	public String ShowViewUpdate(Model model, @PathVariable("maNhanVien") int id) {
+		model.addAttribute("chungChi", new ChungChi());
+		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
 		return "QuanTriNhanSu/chungChi/updateCC";
 	}
 
-	@RequestMapping(value = "/QuanTriNhanSu/danhsach_chungchi/updateCC", method = RequestMethod.POST)
-	public ModelAndView updateCC(@ModelAttribute("chungChi") ChungChi chungChi)
-			throws IllegalStateException, IOException {
-		chungChiService.updateCC(chungChi);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_chungchi");
+	@RequestMapping(value = "updateCC")
+	public ModelAndView UpdateCC(@ModelAttribute("chungChi") ChungChi chungChi) {
+		chungChiService.update(chungChi);
+		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
 	}
 
-	@RequestMapping(value = "/QuanTriNhanSu/danhsach_chungchi/deleteCC/{id}")
-	public String delete(@PathVariable int id, Model model) {
-		ChungChi chungChi = chungChiService.getChungChiById(id);
-		model.addAttribute("chungchi", chungChi);
+	@RequestMapping("/deleteCC/{maNhanVien}")
+	public String ShowViewDelete(Model model, @PathVariable("maNhanVien") int id) {
+		model.addAttribute("chungChi", new ChungChi());
+		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
 		return "QuanTriNhanSu/chungChi/deleteCC";
 	}
 
-	@RequestMapping(value = "/QuanTriNhanSu/danhsach_chungchi/deleteCC", method = RequestMethod.POST)
-	public ModelAndView deleteCC(@ModelAttribute("chungChi") ChungChi chungChi)
-			throws IllegalStateException, IOException {
-		chungChiService.deleteCC(chungChi);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_chungchi");
+	@RequestMapping(value = "deleteCC")
+	public ModelAndView DeleteCC(@ModelAttribute("chungChi") ChungChi chungChi) {
+		chungChiService.update(chungChi);
+		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+	}
+
+	@RequestMapping("/ViewCC/{maNhanVien}/deleteCC/{ID}")
+	public ModelAndView ShowViewDelete() {
+		return new ModelAndView("QuanTriNhanSu/chungChi/deleteCC", "chungChi", new ChungChi());
 	}
 
 }

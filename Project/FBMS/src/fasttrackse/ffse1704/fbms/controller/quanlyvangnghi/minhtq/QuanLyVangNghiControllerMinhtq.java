@@ -29,6 +29,7 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	@Autowired
 	private DonNghiPhepServiceMinhtq donNghiPhepService;
+	// private int perPage = 2;
 
 	public DonNghiPhepServiceMinhtq getDonNghiPhepService() {
 		return donNghiPhepService;
@@ -81,58 +82,44 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	//////////////////// hết phần list 4 loại danh sách đơn nghỉ phép///////////////
 
-	// list danh sách loại ngày nghỉ
-	@ModelAttribute("listLoaiNgayNghi")
-	public List<LoaiNgayNghiMinhtq> getCountryList() {
-		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
-		return countryList;
-	}
-
-	// thêm một đơn nghỉ phép nháp
+	// thêm một đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/addDonNghiPhepMoi", method = RequestMethod.GET)
 	public String showForm(Model model) {
+		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
 		return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
 	}
 
 	@RequestMapping(value = "/addDonNghiPhepNhap", method = RequestMethod.POST)
-	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphepnhap,
+	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphep,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String action)
 			throws IllegalStateException, IOException {
 
+		String url = "";
 		if (bindingResult.hasErrors()) {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
+		} else {
+
+			if (action.equals("luunhap")) {
+
+				donnghiphep.setTrangThai(1);
+				donNghiPhepService.addDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+			}
+			if (action.equals("chopheduyet")) {
+
+				donnghiphep.setTrangThai(2);
+				donNghiPhepService.addDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess",
+						"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet";
+			}
+
 		}
-
-		String msg = "";
-		if (action.equals("nhap")) {
-			msg = "trạng thái lưu nháp";
-			donnghiphepnhap.setTrangThai(1);
-
-		} else if (action.equals("them")) {
-			msg = "đang chờ phê duyệt ";
-			donnghiphepnhap.setTrangThai(2);
-		}
-
-		donNghiPhepService.addDonNghiPhepNhap(donnghiphepnhap);
-		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
-		redirectAttributes.addFlashAttribute("button", msg);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
-	}
-
-	// thêm một đơn nghỉ phép chờ phê duyệt
-	@RequestMapping(value = "/addDonNghiPhepChoDuyet", method = RequestMethod.POST)
-	public String listDonChoDuyet(@Valid @ModelAttribute("taodonmoi") DonNghiPhepMinhtq donnghiphepduyet,
-			BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
-		if (result.hasErrors()) {
-
-			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/add_form";
-		}
-		donNghiPhepService.addDonNghiPhepNhap(donnghiphepduyet);
-		;
-		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+		return url;
 	}
 
 	// tìm view đơn nghỉ phép nháp theo id
@@ -144,18 +131,56 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	// sửa đơn nghỉ phép nháp
 	@RequestMapping(value = "/suaDonNghiPhepNhap", method = RequestMethod.POST)
-	public String editDonNghiPhepnhap(Model model, @ModelAttribute("suadonnhap") @Valid DonNghiPhepMinhtq donnghiphep,
-			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
+	public String editDonNghiPhepnhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphep,
+			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String actional)
 			throws SQLException, IllegalStateException, IOException {
 
+		String url = "";
 		if (bindingResult.hasErrors()) {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphepnhap/edit_form";
-		}
+		} else {
 
-		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa sửa thành công một đơn nghỉ phép nháp!");
-		donNghiPhepService.editDonNghiPhepNhap(donnghiphep);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+			if (actional.equals("cancel")) {
+
+				donnghiphep.setTrangThai(1);
+				donNghiPhepService.editDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess", "Đã hủy gửi đơn!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
+			} else {
+
+				donnghiphep.setTrangThai(2);
+				donNghiPhepService.editDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess",
+						"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet";
+			}
+
+		}
+		return url;
+
+	}
+
+	// Đơn chờ phê duyệt
+	@RequestMapping(value = "/DonChoPheDuyet/PheDuyet/{id}", method = RequestMethod.GET)
+	public String DonChoPheDuyet(@PathVariable("id") int id, final RedirectAttributes redirectAttributes)
+			throws IllegalStateException, IOException {
+
+		donNghiPhepService.getByIdDonNghiPhep(id);
+
+		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
+		return "/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet";
+
+	}
+
+	// Đơn bị từ chối
+	@RequestMapping(value = "/DonChoPheDuyet/TuChoi/{id}", method = RequestMethod.GET)
+	public String DonBiTuChoi(@PathVariable("id") int id, final RedirectAttributes redirectAttributes)
+			throws IllegalStateException, IOException {
+
+		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
+		return "/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi";
+
 	}
 
 	// xóa một đơn nghỉ phép nháp
@@ -163,20 +188,6 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String xoaDonNghiPhepNhap(@PathVariable int id, HttpSession session, Model model) {
 		donNghiPhepService.deleteDonNghiPhep(id);
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepNhap";
-	}
-
-	// xóa một đơn nghỉ phép chờ duyệt
-	@RequestMapping("/deleteDonNghiPhepChoDuyet/{id}")
-	public String xoaDonNghiPhepChoDuyet(@PathVariable int id, HttpSession session, Model model) {
-		donNghiPhepService.deleteDonNghiPhep(id);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet";
-	}
-
-	// xóa một đơn nghỉ phép đã duyệt
-	@RequestMapping("/deleteDonNghiPhepDuyet/{id}")
-	public String xoaDonNghiPhepDaDuyet(@PathVariable int id, HttpSession session, Model model) {
-		donNghiPhepService.deleteDonNghiPhep(id);
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet";
 	}
 
 	// xóa một đơn nghỉ phép từ chối
@@ -219,6 +230,39 @@ public class QuanLyVangNghiControllerMinhtq {
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
+
+	@RequestMapping("/deleteTrangThai/{id}")
+	public String deletetrangthai(@PathVariable int id, Model model) {
+		donNghiPhepService.deleteTrangThai(id);
+		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
+	}
+
+	// tìm view trạng thái theo id
+	@RequestMapping(value = "/editViewTrangThai/{id}", method = RequestMethod.GET)
+	public String edittrangthai_ById(@PathVariable("id") int id, Model model) {
+		model.addAttribute("suatrangthai", donNghiPhepService.getByIdTrangThai(id));
+		return "/QuanLyVangNghi/minhtq/trangthai/edit_form";
+	}
+
+	// sửa đơn nghỉ phép nháp và chờ phê duyệt
+	@RequestMapping(value = "/suaTrangThai", method = RequestMethod.POST)
+	public String edittrangthai(Model model,
+			@ModelAttribute("suatrangthaimoi") @Valid TrangThaiVangNghiMinhtq trangthai, BindingResult bindingResult,
+			final RedirectAttributes redirectAttributes) throws SQLException, IllegalStateException, IOException {
+
+		if (bindingResult.hasErrors()) {
+
+			return "/QuanLyVangNghi/minhtq/trangthai/edit_form";
+		} else {
+
+			donNghiPhepService.editTrangThai(trangthai);
+			redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một trạng thái!");
+			return "/QuanLyVangNghi/minhtq/listTrangThai";
+
+		}
+
+	}
+
 	/////////////////// hết CRUD List trạng thái///////////////
 
 	/////////////////// CRUD List loại ngày nghỉ///////////////
@@ -230,6 +274,32 @@ public class QuanLyVangNghiControllerMinhtq {
 		model.addAttribute("listloaingaynghi", listloaingaynghi);
 
 		return "QuanLyVangNghi/minhtq/loaingaynghi/list";
+	}
+
+	// tìm view loại nghỉ phép theo id
+	@RequestMapping(value = "/editViewLoaiNgayNghi/{id}", method = RequestMethod.GET)
+	public String editngaynghi_ById(@PathVariable("id") int id, Model model) {
+		model.addAttribute("sualydo", donNghiPhepService.getByIdLoaiNgayNghi(id));
+		return "/QuanLyVangNghi/minhtq/loaingaynghi/edit_form";
+	}
+
+	// sửa đơn nghỉ phép nháp và chờ phê duyệt
+	@RequestMapping(value = "/suaLoaiNgayNghi", method = RequestMethod.POST)
+	public String editloaingaynghi(Model model, @ModelAttribute("sualydomoi") @Valid LoaiNgayNghiMinhtq loaingaynghi,
+			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
+			throws SQLException, IllegalStateException, IOException {
+
+		if (bindingResult.hasErrors()) {
+
+			return "/QuanLyVangNghi/minhtq/loaingaynghi/edit_form";
+		} else {
+
+			donNghiPhepService.editLoaiNgayNghi(loaingaynghi);
+			redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
+			return "/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
+
+		}
+
 	}
 
 	// thêm một loại ngày nghỉ
@@ -249,9 +319,15 @@ public class QuanLyVangNghiControllerMinhtq {
 		}
 
 		donNghiPhepService.addLoaiNgayNghi(loaingaynghi);
-		;
 		redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một loại ngày nghỉ!");
 		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
 	}
+
+	@RequestMapping("/deleteLoaiNgayNghi/{id}")
+	public String deleteloaingaynghi(@PathVariable int id, Model model) {
+		donNghiPhepService.deleteLoaiNgayNghi(id);
+		return "redirect:/QuanLyVangNghi/minhtq/listLoaiNgayNghi";
+	}
+
 	/////////////////// hết CRUD List loại ngày nghỉ///////////////
 }

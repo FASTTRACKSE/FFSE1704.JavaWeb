@@ -88,6 +88,21 @@ public class LogworkServicelmpl implements LogworkService {
 		return logworkDao.listVaiTroDuAn();
 	}
 
+	@Override
+	public List<Logwork> findAllForPaging(int star, int total) {
+		return logworkDao.findAllForPaging(star, total);
+	}
+
+	@Override
+	public List<Logwork> listMonth(int start, int total, String month) {
+		return logworkDao.listMonth(start, total, month);
+	}
+
+	@Override
+	public List<Logwork> listAllMonth(String month) {
+		return logworkDao.listAllMonth(month);
+	}
+
 	/*@Override
 	public String toJson(Logwork logwork) {
 		int id = logwork.getId();

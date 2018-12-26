@@ -10,10 +10,9 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ListTenDuAn;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinLogwork;
-import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinNhanVienPhuongNH;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.ThongTinPhongBan;
-import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.TrangThaiThongTinLogwork;
 import fasttrackse.ffse1704.fbms.entity.thongtinlogwork.quanlythoigian.VaiTroDuAn;
 
 @Repository
@@ -42,6 +41,15 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	public List<VaiTroDuAn> listVaiTro() {
 		Session session = this.sessionFactory.openSession();
 		List<VaiTroDuAn> list = session.createQuery("from VaiTroDuAn").getResultList();
+		session.close();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ListTenDuAn> listTenDuAn() {
+		Session session = this.sessionFactory.openSession();
+		List<ListTenDuAn> list = session.createQuery("from ListTenDuAn").getResultList();
 		session.close();
 		return list;
 	}
@@ -78,7 +86,7 @@ public class ThongTinLogworkDAOImpl implements ThongTinLogworkDAO {
 	}
 
 	@Override
-	public ThongTinLogwork findByIdLogwork(String id) {
+	public ThongTinLogwork findByIdLogwork(int id) {
 		Session session = this.sessionFactory.openSession();
 		ThongTinLogwork logwork = session.get(ThongTinLogwork.class, id);
 		session.close();

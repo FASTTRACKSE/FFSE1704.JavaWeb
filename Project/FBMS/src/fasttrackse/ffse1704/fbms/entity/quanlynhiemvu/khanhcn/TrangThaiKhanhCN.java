@@ -1,45 +1,36 @@
 package fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-
-import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "trangthai")
 public class TrangThaiKhanhCN implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	@NotNull
 	private int id;
 
 	@Column(name = "ma_trangthai")
-	@NotEmpty
 	private int maTrangThai;
 
-	@Column(name = "ten_TrangThai")
-	@NotEmpty
+	@Column(name = "ten_trangThai")
 	private String tenTrangThai;
 
-	@OneToMany(mappedBy = "maTrangThai")
-	private Collection<CongViecKhanhCN> khanhCNs;
-
-	public TrangThaiKhanhCN() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@OneToMany(mappedBy = "trangThaiKhanhCN")
+//	private List<CongViecKhanhCN> congViecKhanhCN = new ArrayList<CongViecKhanhCN>();
+	private List<CongViecKhanhCN> congViecKhanhCN;
 
 	public int getId() {
 		return id;
@@ -65,12 +56,12 @@ public class TrangThaiKhanhCN implements Serializable {
 		this.tenTrangThai = tenTrangThai;
 	}
 
-	public Collection<CongViecKhanhCN> getKhanhCNs() {
-		return khanhCNs;
+	public List<CongViecKhanhCN> getCongViecKhanhCN() {
+		return congViecKhanhCN;
 	}
 
-	public void setKhanhCNs(Collection<CongViecKhanhCN> khanhCNs) {
-		this.khanhCNs = khanhCNs;
+	public void setCongViecKhanhCN(List<CongViecKhanhCN> congViecKhanhCN) {
+		this.congViecKhanhCN = congViecKhanhCN;
 	}
 
 	public static long getSerialversionuid() {

@@ -13,6 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.CongViecKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.DuAnKhanhCN;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.LoaiCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.NhanVienKhanhCN;
+import fasttrackse.ffse1704.fbms.entity.quanlynhiemvu.khanhcn.TrangThaiKhanhCN;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.ChucNang;
 import fasttrackse.ffse1704.fbms.service.quanlynhiemvu.khanhcn.QuanLyNhiemVuService;
@@ -40,9 +43,9 @@ public class QuanLyNhiemVuController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(Model model, final RedirectAttributes redirectAttributes) {
 		model.addAttribute("congViec", new CongViecKhanhCN());
-
 		model.addAttribute("DuAn", quanLyNhiemVuService.duAn());
 		model.addAttribute("LoaiCongViec", quanLyNhiemVuService.loaiCongViec());
+		model.addAttribute("NhanVienDuAn", quanLyNhiemVuService.nhanVienDuAn());
 		model.addAttribute("NhanVien", quanLyNhiemVuService.nhanVien());
 		model.addAttribute("TrangThai", quanLyNhiemVuService.trangThai());
 
@@ -52,18 +55,30 @@ public class QuanLyNhiemVuController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String doAdd(Model model, @ModelAttribute("congViec") CongViecKhanhCN cv,
 			final RedirectAttributes redirectAttributes) {
+
+		quanLyNhiemVuService.addCongViec(cv);
+
 		try {
-			quanLyNhiemVuService.addCongViec(cv);
-			redirectAttributes.addFlashAttribute("messageSuccess", "Thêm mới thành công..");
+
+			redirectAttributes.addFlashAttribute("messageSuccess", "Thêm mới thành công.");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
+
 		return "redirect:/QuanLyNhiemVu/cong_viec/danhsachcongviec";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editForm(@PathVariable("id") int id, Model model) {
+		List<DuAnKhanhCN> duAnKhanhCNs = quanLyNhiemVuService.duAn();
+		List<LoaiCongViec> loaiCongViecs = quanLyNhiemVuService.loaiCongViec();
+		List<NhanVienKhanhCN> nhanVienKhanhCNs = quanLyNhiemVuService.nhanVien();
+		List<TrangThaiKhanhCN> trangThaiKhanhCNs = quanLyNhiemVuService.trangThai();
 		model.addAttribute("congViec", quanLyNhiemVuService.findByID(id));
+		model.addAttribute("maDuAn", duAnKhanhCNs);
+		model.addAttribute("maLoaiCongViec", loaiCongViecs);
+		model.addAttribute("nhanVien", nhanVienKhanhCNs);
+		model.addAttribute("trangThai", trangThaiKhanhCNs);
 		return "QuanLyNhiemVu/congviec/edit_form";
 	}
 
@@ -72,7 +87,7 @@ public class QuanLyNhiemVuController {
 			final RedirectAttributes redirectAttributes) {
 		try {
 			quanLyNhiemVuService.updateCongViec(cv);
-			redirectAttributes.addFlashAttribute("messageSuccess", "Thành công..");
+			redirectAttributes.addFlashAttribute("messageSuccess", "Update thành công");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}

@@ -78,29 +78,22 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
-							<div class='input-group date' id='datetimepicker11'>
-								<form:input class="form-control" type="text"
-									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
-								<span class="input-group-addon"> <span
-									class="fa fa-calendar"></span>
-								</span>
-							</div>
+							<form:input path="thoiGianBatDau" class="form-control"
+									type="text" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc</label>
-							<div class='input-group date' id='datetimepicker5'>
 								<form:input path="thoiGianKetThuc" class="form-control"
 									type="text" />
-								<span class="input-group-addon"> <span
-									class="fa fa-calendar"></span>
-								</span>
-							</div>
 						</div>
 
 						<div class="col-sm-12 text-center">
-							<button type="submit" name = "action" value="luuNhap" class="btn btn-success">Lưu nháp</button>
-							<button type="submit" name = "action" value="submit" class="btn btn-info">Submit</button>
-							<button type="submit" name = "action" value="exit" class="btn btn-warning">Exit</button>
+							<button type="submit" name="action" value="luuNhap"
+								class="btn btn-success">Lưu nháp</button>
+							<button type="submit" name="action" value="submit"
+								class="btn btn-info">Submit</button>
+							<button type="submit" name="action" value="exit"
+								class="btn btn-warning">Exit</button>
 						</div>
 					</form:form>
 				</div>
@@ -125,3 +118,8 @@
 	src="<c:url value="/resources/vendors/js/pickers/daterange/daterangepicker.js"/> "></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/scripts/pickers/dateTime/picker-date-time.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/dateTime/moment-with-locales.min.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/scripts/pickers/dateTime/bootstrap-datetime.js"/> "></script>
+

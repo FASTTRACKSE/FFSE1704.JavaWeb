@@ -23,7 +23,7 @@ public class ThongTinPhongBan {
 	@Column(name = "ten_phong_ban", nullable = false)
 	@NotEmpty
 	String tenPhongBan;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "phongBan")
 	private Collection<ThongTinLogwork> thongTinLogworks;
 
@@ -50,10 +50,5 @@ public class ThongTinPhongBan {
 	public void setThongTinLogworks(Collection<ThongTinLogwork> thongTinLogworks) {
 		this.thongTinLogworks = thongTinLogworks;
 	}
-
-	
-
-
-
 
 }

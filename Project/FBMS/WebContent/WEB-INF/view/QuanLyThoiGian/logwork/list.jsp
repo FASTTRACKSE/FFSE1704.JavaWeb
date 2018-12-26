@@ -108,10 +108,12 @@
 								</ul>
 							</div>
 						</div>
+
+
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
-									<table id="datatable"
+									<table
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
@@ -121,12 +123,7 @@
 												<th scope="col">Vai Trò</th>
 												<th scope="col">Phòng Ban</th>
 												<th scope="col">Công Việc</th>
-												<th scope="col">Mô Tả</th>
-												<th scope="col">Thời Gian Bắt Đầu</th>
-												<th scope="col">Thời Gian Kết Thúc</th>
 												<th scope="col">Trạng Thái</th>
-												<th scope="col">Nhận Xét PM</th>
-												<th scope="col">Nhận Xét Trưởng Phó Phòng</th>
 												<th scope="col">Action</th>
 											</tr>
 										</thead>
@@ -139,21 +136,14 @@
 													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 													<td>${lg.maPhongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
-													<td>${lg.moTa}</td>
-													<td>${lg.thoiGianBatDau}</td>
-													<td>${lg.thoiGianKetThuc}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td>${lg.nhanXetPM}</td>
-													<td>${lg.nhanXetTPP}</td>
-													<td><c:if
-															test="${lg.trangThaiLogwork.maTrangThai != 2 }">
-															<a href="edit/${lg.id }"><button
-																	class="btn btn-success">sửa</button></a>
+													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a>
+														<c:if test="${lg.trangThaiLogwork.maTrangThai != 2 }">
+															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="delete/${lg.id }"><button
-																	class="btn btn-danger"
-																	onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
-																	xóa</button></a>
+															<a href="delete/${lg.id }"
+																onclick="return confirm('Bạn có muốn xóa ?');"><i
+																class="fa fa-trash"></i></a>
 														</c:if></td>
 												</tr>
 											</c:forEach>
@@ -189,6 +179,34 @@
 									</table>
 								</div>
 							</div>
+						</div>
+						<div class="card-header">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="?page=1">trang
+											đầu</a></li>
+									<c:if test="${currentPage > 2}">
+										<li class="page-item"><a class="page-link"
+											href="?page=${currentPage-2}">${currentPage-2}</a></li>
+									</c:if>
+									<c:if test="${currentPage > 1}">
+										<li class="page-item"><a class="page-link"
+											href="?page=${currentPage-1}">${currentPage-1}</a></li>
+									</c:if>
+									<li class="page-item active"><a class="page-link"
+										href="?page=${currentPage}">${currentPage}</a></li>
+									<c:if test="${currentPage < lastPage}">
+										<li class="page-item"><a class="page-link"
+											href="?page=${currentPage+1}">${currentPage+1}</a></li>
+									</c:if>
+									<c:if test="${currentPage < lastPage - 1}">
+										<li class="page-item"><a class="page-link"
+											href="?page=${currentPage+2}">${currentPage+2}</a></li>
+									</c:if>
+									<li class="page-item"><a class="page-link"
+										href="?page=${lastPage }">trang cuối</a></li>
+								</ul>
+							</nav>
 						</div>
 					</div>
 				</div>

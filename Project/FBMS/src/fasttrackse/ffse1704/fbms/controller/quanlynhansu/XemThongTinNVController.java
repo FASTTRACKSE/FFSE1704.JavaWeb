@@ -11,10 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
@@ -50,8 +54,21 @@ public class XemThongTinNVController {
 	
 
 	@RequestMapping(value = "/listThongTin/{maPhongBan}", method = RequestMethod.GET)
-	public String listThongTin(@PathVariable("maPhongBan") String maPhongBan, Model model) {
-		model.addAttribute("listThongTin", xemThongTinNVService.findByPhongBan(maPhongBan));
+	public String listNhanVienofPhongBan(@PathVariable("maPhongBan") String maPhongBan, Model model, @RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
+		int totalRecords = xemThongTinNVService.findByPhongBan(maPhongBan).size();
+		int recordsPerPage = 2;
+		int totalPages = 0;
+		if ((totalRecords / recordsPerPage) % 2 == 0) {
+			totalPages = totalRecords / recordsPerPage;
+		} else {
+			totalPages = totalRecords / recordsPerPage + 1;
+		}
+		int startPosition = recordsPerPage * (currentPage - 1);
+		
+		model.addAttribute("listThongTin", xemThongTinNVService.findAllForPaging(maPhongBan, startPosition, recordsPerPage));
+		model.addAttribute("listPhongBan", xemThongTinNVService.findTenPhongBanByMaPhongBan(maPhongBan));
+		model.addAttribute("lastPage", totalPages);
+		model.addAttribute("currentPage", currentPage);
 		return "QuanTriNhanSu/xemThongTinHoSo/dsnhanvien";
 	}
 
@@ -67,5 +84,60 @@ public class XemThongTinNVController {
 		model.addObject("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return model;
 	}
+	
+	@RequestMapping(value = "/thongTinHopDong/{maNhanVien}", method = RequestMethod.GET)
+	public String thongTinHopDong(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+	}
+	@RequestMapping(value = "/thongTinKinhNghiem/{maNhanVien}", method = RequestMethod.GET)
+	public String thongTingKinhNghiem(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinKinhNghiem";
+	}
+	
+	
+	@RequestMapping(value= "selectQuanHuyen/{matp}", method= RequestMethod.GET, produces= "text/plain;charset=UTF-8")
+	@ResponseBody //return ko tra ve trang jsp ma tra ve trang html
+	public String selectQuan(@PathVariable("matp") String maThanhPho, HttpServletResponse res) {
+		List<QuanHuyen> listQuanHuyen =  xemThongTinNVService.findQuanHuyenByIdThanhPho(maThanhPho);
+		
+		String json = "[";
+		
+		for(int i =0; i < listQuanHuyen.size(); i++) {
+			
+			if (i == listQuanHuyen.size() - 1) {
+				json += "{\"maQuanHuyen\":" + "\"" + listQuanHuyen.get(i).getMaqh() + "\"" + ", \"tenQuanHuyen\" :" + "\"" + listQuanHuyen.get(i).getName() + "\"" + "}";
+			} else {
+				json += "{\"maQuanHuyen\":" + "\"" + listQuanHuyen.get(i).getMaqh() + "\"" + ", \"tenQuanHuyen\" :" + "\"" + listQuanHuyen.get(i).getName() + "\"" + "},";
+			}
+		}
+		json += "]";
+				
+		return json;
+		
+	}
+	
+	@RequestMapping(value= "selectXaPhuong/{maqh}", method= RequestMethod.GET, produces= "text/plain;charset=UTF-8")
+	@ResponseBody 
+	public String selectXaPhuong(@PathVariable("maqh") String maQuanHuyen) {
+		List<XaPhuong> listXaPhuong =  xemThongTinNVService.findXaPhuongByIdQuanHuyen(maQuanHuyen);
+		
+		String json = "[";
+		
+		for(int i =0; i < listXaPhuong.size(); i++) {
+			
+			if (i == listXaPhuong.size() - 1) {
+				json += "{\"maXaPhuong\":" + "\"" + listXaPhuong.get(i).getXaid() + "\"" + ", \"tenXaPhuong\" :" + "\"" + listXaPhuong.get(i).getName() + "\"" + "}";
+			} else {
+				json += "{\"maXaPhuong\":" + "\"" + listXaPhuong.get(i).getXaid() + "\"" + ", \"tenXaPhuong\" :" + "\"" + listXaPhuong.get(i).getName() + "\"" + "},";
+			}
+		}
+		json += "]";
+		
+		return json;
+		
+	}
+	
 	
 }

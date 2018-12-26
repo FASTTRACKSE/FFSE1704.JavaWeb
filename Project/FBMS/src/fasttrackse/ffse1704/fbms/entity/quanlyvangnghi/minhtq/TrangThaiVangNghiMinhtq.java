@@ -22,6 +22,9 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	int id;
+
 	@Column(name = "ma_trang_thai")
 	int maTrangThai;
 
@@ -30,6 +33,27 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 
 	@OneToMany(mappedBy = "trangThai")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs;
+
+	public TrangThaiVangNghiMinhtq() {
+		super();
+	}
+	
+	public TrangThaiVangNghiMinhtq(int id, int maTrangThai, String tenTrangThai,
+			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
+		super();
+		this.id = id;
+		this.maTrangThai = maTrangThai;
+		this.tenTrangThai = tenTrangThai;
+		this.donNghiPhepMinhtqs = donNghiPhepMinhtqs;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getMaTrangThai() {
 		return maTrangThai;
@@ -53,22 +77,6 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 
 	public void setDonNghiPhepMinhtqs(Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
 		this.donNghiPhepMinhtqs = donNghiPhepMinhtqs;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public TrangThaiVangNghiMinhtq(int maTrangThai, String tenTrangThai,
-			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
-		super();
-		this.maTrangThai = maTrangThai;
-		this.tenTrangThai = tenTrangThai;
-		this.donNghiPhepMinhtqs = donNghiPhepMinhtqs;
-	}
-
-	public TrangThaiVangNghiMinhtq() {
-		super();
 	}
 
 }

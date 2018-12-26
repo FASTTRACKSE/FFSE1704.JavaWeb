@@ -46,14 +46,14 @@
 				</div>
 
 				<div class="form-group">
-				<label for="issueinput2">Ghi Chú</label>
-					<form:input path="ghiChu" class="form-control"
+				<label for="issueinput2">Ghi Chú: </label>
+					<form:textarea path="ghiChu" class="form-control"
 						placeholder="VD: 1" />
 				</div>
 
 				<div class="form-actions">
 				
-					<button type="button" class="btn btn-warning mr-1">
+					<button type="reset" class="btn btn-warning mr-1">
 						<i class="ft-x"></i> Cancel
 					</button>
 					<button type="submit" class="btn btn-primary">

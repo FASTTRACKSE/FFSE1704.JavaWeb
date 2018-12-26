@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.NhanSuDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Service
 @Transactional
@@ -64,6 +69,55 @@ public class NhanSuServiceImpl implements NhanSuService {
 	public void update(NhanSu ns) {
 		this.nhanSuDao.update(ns);
 		
+	}
+
+
+	@Override
+	public void delete(int id) {
+		this.nhanSuDao.delete(id);
+		
+	}
+
+
+	@Override
+	public boolean checkExistMa(String maNS) {
+		// TODO Auto-generated method stub
+		return nhanSuDao.checkExistMa(maNS);
+	}
+
+
+	@Override
+	public List<ChucDanh> listChucDanh() {
+		
+		return nhanSuDao.listChucDanh();
+	}
+
+
+	@Override
+	public List<PhongBan> listPhongBan() {
+		
+		return nhanSuDao.listPhongBan();
+	}
+
+
+	@Override
+	public List<ThanhPho> listTinhThanh() {
+		
+		return nhanSuDao.listTinhThanh();
+	}
+
+
+	@Override
+	public List<QuanHuyen> listQuanHuyen() {
+		
+		return nhanSuDao.listQuanHuyen();
+	}
+
+
+	@Override
+	public List<XaPhuong> listXaPhuong() {
+		// TODO Auto-generated method stub
+		return nhanSuDao.listXaPhuong();
 	}
 
 }

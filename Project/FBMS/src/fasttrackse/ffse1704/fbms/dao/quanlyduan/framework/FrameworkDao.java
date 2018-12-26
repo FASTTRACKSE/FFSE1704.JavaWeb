@@ -24,4 +24,6 @@ public interface FrameworkDao {
 	public void delete(String maFramework);
 
 	public Framework getFrameworkByMaFramework(String maFramework);
+	
+	public int getRecordsByMaFramework(String maFramework);
 }

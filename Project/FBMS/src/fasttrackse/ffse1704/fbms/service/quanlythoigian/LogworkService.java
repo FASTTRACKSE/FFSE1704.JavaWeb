@@ -12,9 +12,15 @@ import fasttrackse.ffse1704.fbms.entity.quanlythoigian.VaiTroDuAnLogwork;
 public interface LogworkService {
 	public List<Logwork> findAll();
 	
+	public List<Logwork> findAllForPaging(int star, int total);
+	
 	public List<PhongBanLogwork> listPhongBan();
 	
 	public List<DuAnLogwork> listDuAn();
+	
+	public List<Logwork> listMonth(int start, int total, String month);
+	
+	public List<Logwork> listAllMonth(String month);
 	
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
 

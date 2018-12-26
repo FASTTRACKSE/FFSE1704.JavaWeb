@@ -2,8 +2,10 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,13 +21,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "chung_chi")
 public class ChungChi {
-
+	
 	@Id
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
@@ -42,6 +44,17 @@ public class ChungChi {
 	@Column(name = "don_vi_cap", nullable = false, length = 255)
 	@NotNull
 	private String donViCap;
+
+	@Column(name = "ma_nhan_vien")
+	private String maNhanVien;
+
+	public String getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
 
 	public int getID() {
 		return ID;

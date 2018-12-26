@@ -2,6 +2,7 @@ package fasttrackse.ffse1704.fbms.dao.quanlythoigian;
 
 import java.util.List;
 
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
@@ -96,7 +97,7 @@ public class LogworkDaolmpl implements LogworkDao {
 		Query query = session.createQuery(sql.replace("select logwork", "select count(*)"));
 		String recordsFilterd = query.getSingleResult().toString();
 		session.close();
- 		return recordsFilterd;
+		return recordsFilterd;
 	}
 
 	@Override
@@ -119,5 +120,43 @@ public class LogworkDaolmpl implements LogworkDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<VaiTroDuAnLogwork> listVaiTroDuAn = session.createQuery("from VaiTroDuAnLogwork").getResultList();
 		return listVaiTroDuAn;
+	}
+
+	@Override
+	public List<Logwork> findAllForPaging(int start, int total) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork ORDER BY id DESC ");
+		query.setFirstResult(start);
+		query.setMaxResults(total);
+		return query.getResultList();
+	}
+
+	/*
+	 * @Override public listMonth(String month) { Session session =
+	 * this.sessionFactory.openSession();
+	 * 
+	 * String sql = "SELECT COUNT(*) FROM `chuc_danh`"; List<Logwork> list =
+	 * session.createSQLQuery(sql);
+	 * 
+	 * return list; }
+	 */
+
+	@Override
+	public List<Logwork> listMonth(int start, int total, String month) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork so where MONTH(so.thoiGianBatDau) = :month");
+		query.setParameter("month", Integer.parseInt(month));
+		query.setFirstResult(start);
+		query.setMaxResults(total);
+		List<Logwork> logwork = (List<Logwork>) query.getResultList();
+		return logwork;
+	}
+	@Override
+	public List<Logwork> listAllMonth(String month) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork so where MONTH(so.thoiGianBatDau) = :month");
+		query.setParameter("month", Integer.parseInt(month));
+		List<Logwork> logwork = (List<Logwork>) query.getResultList();
+		return logwork;
 	}
 }

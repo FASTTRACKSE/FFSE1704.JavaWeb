@@ -14,7 +14,7 @@ import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "tai_lieu_dung")
-public class Document {
+public class DocumentDung {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +31,26 @@ public class Document {
 	public void setTenTaiLieu(String tenTaiLieu) {
 		this.tenTaiLieu = tenTaiLieu;
 	}
+	@Column(name="name_file")
+	private String nameFile;
 
+	public String getNameFile() {
+		return nameFile;
+	}
 
-	@Column(name = "file")
-	private String file;
+	public void setNameFile(String nameFile) {
+		this.nameFile = nameFile;
+	}
+
+	public String getLinkFile() {
+		return linkFile;
+	}
+
+	public void setLinkFile(String linkFile) {
+		this.linkFile = linkFile;
+	}
+	@Column(name = "link_file")
+	private String linkFile;
 	
 	@Column(name = "mo_ta")
 	private String moTa;
@@ -73,48 +89,48 @@ public class Document {
 		this.maPhongBan = maPhongBan;
 	}
 
-	public DanhMuc getMaDanhMuc() {
+	public DanhMucDung getMaDanhMuc() {
 		return maDanhMuc;
 	}
 
-	public void setMaDanhMuc(DanhMuc maDanhMuc) {
+	public void setMaDanhMuc(DanhMucDung maDanhMuc) {
 		this.maDanhMuc = maDanhMuc;
 	}
 
 
 	@ManyToOne
 	@JoinColumn(name = "ma_danh_muc", referencedColumnName = "ma_danh_muc")
-	private DanhMuc maDanhMuc;
+	private DanhMucDung maDanhMuc;
 	
 	
 	@ManyToOne
 	@JoinColumn(name = "ma_trang_thai", referencedColumnName = "ma_trang_thai")
-	private TrangThai maTrangThai;
+	private TrangThaiDung maTrangThai;
 
 	
 
 	
-	public TrangThai getMaTrangThai() {
+	public TrangThaiDung getMaTrangThai() {
 		return maTrangThai;
 	}
 
-	public void setMaTrangThai(TrangThai maTrangThai) {
+	public void setMaTrangThai(TrangThaiDung maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
 
-
+	
 	@ManyToOne
 	@JoinColumn(name = "ma_icon", referencedColumnName = "ma_icon")
-	private Icon maIcon;
+	private IconDung maIcon;
 	
 	// getter and setter
 	 
 	
-	public Icon getMaIcon() {
+	public IconDung getMaIcon() {
 		return maIcon;
 	}
 
-	public void setMaIcon(Icon maIcon) {
+	public void setMaIcon(IconDung maIcon) {
 		this.maIcon = maIcon;
 	}
 
@@ -128,12 +144,10 @@ public class Document {
 		this.id = id;
 	}
 	
-	public String getFile() {
-		return file;
-	}
 
-	public void setFile(String file) {
-		this.file = file;
+
+	public DocumentDung() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

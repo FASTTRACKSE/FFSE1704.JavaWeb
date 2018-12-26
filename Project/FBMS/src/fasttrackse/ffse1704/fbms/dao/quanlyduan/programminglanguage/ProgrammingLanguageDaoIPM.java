@@ -52,9 +52,10 @@ public class ProgrammingLanguageDaoIPM implements ProgrammingLanguageDao {
 
 	@Override
 	public ProgrammingLanguage getProgrammingLanguageByIdProgrammingLanguage(String maProgrammingLanguage) {
-		Session session = this.sessionFactory.openSession();
-		ProgrammingLanguage programmingLanguage = session.get(ProgrammingLanguage.class, maProgrammingLanguage);
-		session.close();
+		Session session = this.sessionFactory.getCurrentSession();
+		List<ProgrammingLanguage> listProgrammingLanguage = session.createQuery("from ProgrammingLanguage where maProgrammingLanguage = '" + maProgrammingLanguage + "'", ProgrammingLanguage.class)
+				.list();
+		ProgrammingLanguage programmingLanguage = listProgrammingLanguage.get(0);
 		return programmingLanguage;
 	}
 

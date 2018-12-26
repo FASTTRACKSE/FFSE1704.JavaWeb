@@ -13,18 +13,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "icon_dung")
-public class Icon implements Serializable {
+public class IconDung implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2598675781648548689L;
 	@OneToMany(mappedBy="maIcon")
-	private List<Document> Document;
-	public List<Document> getDocument() {
-		return Document;
+	private List<DocumentDung> DocumentDung;
+	public List<DocumentDung> getDocument() {
+		return DocumentDung;
 	}
-	public void setDocument(List<Document> document) {
-		Document = document;
+	public void setDocument(List<DocumentDung> documentDung) {
+		DocumentDung = documentDung;
 	}
 	@Id
 	@Column(name = "id")

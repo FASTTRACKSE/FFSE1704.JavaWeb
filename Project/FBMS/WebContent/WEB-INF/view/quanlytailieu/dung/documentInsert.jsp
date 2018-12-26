@@ -35,11 +35,11 @@
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-		<form:form action="" method="POST" modelAttribute="document"
+		<form:form action="" method="POST" modelAttribute="document" name ="form1"
 			enctype="multipart/form-data"
 			class="form form-horizontal striped-rows form-bordered">
 
-			<div class="form-body">-
+			<div class="form-body">
 				<!-- ///////////////////// -->
 				<c:if test="${not empty id}">
 					<form:hidden path="id" class="form-control" id="projectinput5"
@@ -95,6 +95,13 @@
 						</form:select>
 					</div>
 				</div>
+					<div class="form-group col-sm-6">
+								<fieldset class="form-group">
+									<label for="basicInputFile">Tài Liệu</label>
+									<form:hidden path="nameFile" />
+									<input type="file" class="form-control-file"
+										id="basicInputFile" name="file">
+							
 				<!-- ///////////////////// -->
 
 	
@@ -102,16 +109,16 @@
 				<!-- ///////////////////// -->
 
 				<div class="form-actions">
-					<button formaction="<%=request.getContextPath()%>/documentSave"
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentSave"
 						class="btn btn-success mr-1">
 						Submit
 					</button>
 					<button
-						formaction="<%=request.getContextPath()%>/documentSave/draft"
+						formaction="<%=request.getContextPath()%>/quanlytailieu/documentSaveDraft"
 						class="btn btn-info mr-1">
 						Lưu vào nháp
 					</button>
-					<a href="<%=request.getContextPath()%>/index"
+					<a href="<%=request.getContextPath()%>/quanlytailieu/index"
 						class="btn btn-danger mr-1"> Cancel</a>
 				</div>
 			</div>

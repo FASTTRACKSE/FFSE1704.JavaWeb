@@ -131,23 +131,23 @@
 
 											</tr>
 										</thead>
-										<c:forEach var="dnpn" items="${listchoduyet}">
+										<c:forEach var="dnp" items="${listchoduyet}">
 											<tr>
-												<td>${dnpn.id}</td>
-												<td>${dnpn.maNhanVien}</td>
-												<td>${dnpn.loaiNgayNghi}</td>
-												<td>${dnpn.soLuong}</td>
-												<td>${dnpn.thoiGianBatDau}</td>
-												<td>${dnpn.thoiGianKetThuc}</td>
-												<td>${dnpn.trangThai}</td>
+												<td>${dnp.id}</td>
+												<td>${dnp.maNhanVien}</td>
+												<td>${dnp.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
+												<td>${dnp.soLuong}</td>
+												<td>${dnp.thoiGianBatDau}</td>
+												<td>${dnp.thoiGianKetThuc}</td>
+												<td>${dnp.trangThaiDNP.tenTrangThai}</td>
 												<td><a
-													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
-														<button>sửa</button>
+													href="/FBMS/QuanLyVangNghi/minhtq/DonChoPheDuyet/PheDuyet/${dnp.id}">
+														<button class="btn btn-primary">Phê duyệt</button>
 												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepChoDuyet/${dnpn.id}"><button>
-															xóa</button></a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/DonChoPheDuyet/TuChoi/${dnp.id}"><button
+															class="btn btn-primary">Từ chối</button></a></td>
 										</c:forEach>
-										
+
 									</table>
 								</div>
 							</div>

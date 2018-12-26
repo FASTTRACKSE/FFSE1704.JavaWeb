@@ -143,19 +143,19 @@
 											<tr>
 												<td>${dnpn.id}</td>
 												<td>${dnpn.maNhanVien}</td>
-												<td>${dnpn.loaiNgayNghi}</td>
+												<td>${dnpn.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
-												<td>${dnpn.trangThai.tenTrangThai}</td>
+												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
 												<td><a
 													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
-														<button>sửa</button>
+														<button class="btn btn-primary">sửa</button>
 												</a> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepNhap/${dnpn.id}"><button>
-															xóa</button></a></td>
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepNhap/${dnpn.id}"><button
+															class="btn btn-primary">xóa</button></a></td>
 										</c:forEach>
-									
+
 									</table>
 								</div>
 							</div>

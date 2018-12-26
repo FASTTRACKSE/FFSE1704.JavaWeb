@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2018 at 05:19 AM
+-- Generation Time: Dec 25, 2018 at 07:01 AM
 -- Server version: 5.6.30
 -- PHP Version: 5.5.35
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `icon_dung` (
   `id` int(11) NOT NULL,
   `ma_icon` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `hinh_anh` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `hinh_anh` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -37,12 +37,12 @@ CREATE TABLE IF NOT EXISTS `icon_dung` (
 --
 
 INSERT INTO `icon_dung` (`id`, `ma_icon`, `hinh_anh`) VALUES
-(1, 'jpg', '/resources/icon/img.jpg'),
-(2, 'pdf', '/resources/icon/pdf.png'),
-(3, 'xlsx', '/resources/icon/xls.png'),
-(4, 'doc', '/resources/icon/word.png'),
-(5, 'docx', '/resources/icon/word.png'),
-(6, 'png', '/resources/icon/img.jpg');
+(1, 'jpg', '/resources/images/icon/img.png'),
+(2, 'pdf', '/resources/images/icon/pdf.png'),
+(3, 'xlsx', '/resources/images/icon/xls.png'),
+(4, 'doc', '/resources/images/icon/word.png'),
+(5, 'docx', '/resources/images/icon/word.png'),
+(6, 'png', '/resources/images/icon/img.png');
 
 --
 -- Indexes for dumped tables

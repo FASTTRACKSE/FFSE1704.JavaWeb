@@ -21,7 +21,7 @@ public class TrinhDo {
 	private int id;
 	
 	@Column(name = "ten_trinh_do", nullable = false)
-	private String tenTrinhDo;
+	private String tenTrinhDo;	
 	
 	public TrinhDo() {
 		super();
