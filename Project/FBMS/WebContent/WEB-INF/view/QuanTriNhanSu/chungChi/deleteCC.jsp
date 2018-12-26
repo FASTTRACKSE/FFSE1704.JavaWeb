@@ -39,8 +39,8 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" enctype="multipart/form-data"
-						action="deleteCC" modelAttribute="chungChi">
+					<form:form method="post" action="deleteCC"
+						modelAttribute="chungChi">
 						<div>
 							<form:hidden path="ID" />
 						</div>
