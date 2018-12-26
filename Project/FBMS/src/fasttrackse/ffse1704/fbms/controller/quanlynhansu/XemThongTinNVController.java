@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.HopDongService;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
@@ -29,6 +32,17 @@ public class XemThongTinNVController {
 
 	public void setXemThongTinNVService(XemThongTinNVService xemThongTinNVService) {
 		this.xemThongTinNVService = xemThongTinNVService;
+	}
+	
+	@Autowired
+	HopDongService hopDongService;
+
+	public HopDongService getHopDongService() {
+		return hopDongService;
+	}
+
+	public void setHopDongService(HopDongService hopDongService) {
+		this.hopDongService = hopDongService;
 	}
 
 //	@RequestMapping("/dsphongban")
@@ -90,6 +104,17 @@ public class XemThongTinNVController {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
 	}
+	
+	@RequestMapping(value = "/thongTinChiTietHopDong/{maNhanVien}&{id}", method = RequestMethod.GET)
+	public String thongTinChiTietHopDong(@PathVariable("maNhanVien") String maNhanVien,@PathVariable("id") int id, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("ngaynghiconlai", hopDongService.findNgayNghiConLaibyMaNV(maNhanVien));
+		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
+		model.addAttribute("dsnn", listDSNN);
+		model.addAttribute("hopDong", hopDongService.findById(id));
+		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
+	}
+	
 	@RequestMapping(value = "/thongTinKinhNghiem/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTingKinhNghiem(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));

@@ -293,8 +293,8 @@ body, html {
 													<td>${thongTinNhanVien.thanhPho.name}</td>
 													<td>${thongTinNhanVien.quocTich.tenQuocTich}</td>
 													<td>${thongTinNhanVien.noiTamTru}</td>
-													<td>@${thongTinNhanVien.soDienThoai}</td>
-													<td>@${thongTinNhanVien.email}</td>
+													<td>${thongTinNhanVien.soDienThoai}</td>
+													<td>${thongTinNhanVien.email}</td>
 												</tr>
 											</tbody>
 										</table>
@@ -360,26 +360,43 @@ body, html {
 													<th scope="col">Số ngày nghỉ còn lại</th>
 													<th scope="col">Ngày bắt đầu</th>
 													<th scope="col">Ngày kết thúc</th>
+													<th scope="col">Loại công việc</th>
+													<th scope="col">Địa điểm làm việc</th>
+													<th scope="col">Thời gian làm việc</th>
+													<th scope="col">Mức lương ban đầu</th>
 													<th scope="col">Lương tháng 13</th>
+													<th scope="col">Các loại ngày nghỉ đặc biệt</th>
+													<th scope="col">Hình thức thanh toán lương</th>
 												</tr>
 											</thead>
 											<tbody>
-												
-													<c:forEach var="hopDong"
-														items="${thongTinNhanVien.listHopDong}">
-														<tr>
+
+												<c:forEach var="hopDong"
+													items="${thongTinNhanVien.listHopDong}">
+													<tr>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
 														<c:forEach var="ngayNghi"
 															items="${thongTinNhanVien.listNgayNghi}">
-															<td>${ngayNghi.soNgayPhepNam}</td>
+															<td>${hopDong.soNgayNghiTrongNam}</td>
 															<td>${ngayNghi.soNgayNghiConLai}</td>
 														</c:forEach>
 														<td>${hopDong.ngayBatDau}</td>
 														<td>${hopDong.ngayKetThuc}</td>
+														<td>${hopDong.congViec.tenCongViec}</td>
+														<td>${hopDong.diaDiem.tenDiaDiem}</td>
+														<td>${hopDong.thoiGianBatDauLamViec}  đến
+															${hopDong.thoiGianKetThucLamViec}</td>
+														<td>${hopDong.mucLuongBanDau}</td>
 														<td>${hopDong.cheDoHuong.luong}</td>
-														</tr>
-													</c:forEach>
-												
+														<td>${hopDong.ngayNghiDacBiet}</td>
+														<td><c:choose>
+																<c:when test="${hopDong.hinhThucTraLuong == 1}"> Tiền mặt</c:when>
+																<c:when test="${hopDong.hinhThucTraLuong == 2}">Ngân hàng</c:when>
+																<c:otherwise></c:otherwise>
+															</c:choose></td>
+													</tr>
+												</c:forEach>
+
 											</tbody>
 										</table>
 

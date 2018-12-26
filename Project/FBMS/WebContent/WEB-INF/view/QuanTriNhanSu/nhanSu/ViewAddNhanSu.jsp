@@ -85,7 +85,6 @@
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
 							</form:select>
-
 						</div>
 
 						<div class="form-group col-sm-6">
