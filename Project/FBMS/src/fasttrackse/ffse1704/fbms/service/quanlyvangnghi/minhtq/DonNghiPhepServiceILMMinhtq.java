@@ -28,27 +28,27 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult) {
 
-		return donNghiPhepDao.listDonNghiPhepNhap();
+		return donNghiPhepDao.listDonNghiPhepNhap(start, maxResult);
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult) {
 
-		return donNghiPhepDao.listDonNghiPhepChoDuyet();
+		return donNghiPhepDao.listDonNghiPhepChoDuyet(start, maxResult);
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult) {
 
-		return donNghiPhepDao.listDonNghiPhepDaDuyet();
+		return donNghiPhepDao.listDonNghiPhepDaDuyet(start, maxResult);
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult) {
 
-		return donNghiPhepDao.listDonNghiPhepTuChoi();
+		return donNghiPhepDao.listDonNghiPhepTuChoi(start, maxResult);
 	}
 
 	@Override
@@ -140,12 +140,7 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 		return donNghiPhepDao.count();
 	}
 
-	@Override
-	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult) {
-		
-		return donNghiPhepDao.findAll(offset, maxResult);
-	}
-
+	
 	
 
 }

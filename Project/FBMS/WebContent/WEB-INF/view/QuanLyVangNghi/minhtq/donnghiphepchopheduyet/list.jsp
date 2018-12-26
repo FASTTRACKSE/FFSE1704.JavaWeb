@@ -149,6 +149,32 @@
 										</c:forEach>
 
 									</table>
+
+									<div style="text-align: center">
+										<c:if test="${page >1}">
+											<a href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/1">Trang
+												đầu</a>
+										</c:if>
+
+										<c:if test="${page > 1}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/${page-1}">${page-1}</a>
+										</c:if>
+
+										<a
+											href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/${page}">${page}</a>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/${page+1}">${page+1}</a>
+										</c:if>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/${total}">Trang
+												cuối</a>
+										</c:if>
+									</div>
 								</div>
 							</div>
 						</div>

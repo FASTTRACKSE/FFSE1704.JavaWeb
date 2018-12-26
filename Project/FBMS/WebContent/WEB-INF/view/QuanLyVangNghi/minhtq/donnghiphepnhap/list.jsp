@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -157,6 +158,33 @@
 										</c:forEach>
 
 									</table>
+
+									<div style="text-align: center">
+										<c:if test="${page >1}">
+											<a href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/1">Trang
+												đầu</a>
+										</c:if>
+
+										<c:if test="${page > 1}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/${page-1}">${page-1}</a>
+										</c:if>
+
+										<a
+											href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/${page}">${page}</a>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/${page+1}">${page+1}</a>
+										</c:if>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/${total}">Trang
+												cuối</a>
+										</c:if>
+									</div>
+
 								</div>
 							</div>
 						</div>

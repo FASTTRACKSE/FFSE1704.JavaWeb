@@ -30,8 +30,8 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="sualydo"
-						action="suaLoaiNgayNghi">
+					<form:form method="POST" modelAttribute="suamoilydo"
+						action="/FBMS/QuanLyVangNghi/minhtq/suaLoaiNgayNghi">
 						<div class="form-group col-sm-4">
 							<label>id</label>
 							<form:input class="form-control" path="id" readonly="true"/>

@@ -395,16 +395,16 @@
 							kê danh sách</span></a>
 					<ul class="menu-content">
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepNhap"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/1"/>"
 							class="menu-item">danh sách nháp</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/1"/>"
 							class="menu-item">danh sách chờ duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet/1"/>"
 							class="menu-item">danh sách duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/1"/>"
 							class="menu-item">danh sách từ chối</a></li>
 					</ul></li>
 				<li class=" nav-item pbho_so"><a href="#"><i

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fasttrackse.ffse1704.fbms.entity.quanlythoigian.PhongBanLogwork;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
@@ -37,49 +36,41 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		Session session = sessionFactory.getCurrentSession();
 		int rowCount = session.createQuery("from DonNghiPhepMinhtq").list().size();
 		return rowCount;
-
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult) {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> donnghiphep = session.createQuery("from DonNghiPhepMinhtq").setFirstResult(offset)
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='1' ORDER BY id ASC").setFirstResult(start)
 				.setMaxResults(maxResult).list();
-		return donnghiphep;
-	}
-
-	// list toàn bộ đơn nghỉ phép nháp của nhân viên
-	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap() {
-		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='1'").list();
-
 		return list;
 	}
 
+	
+
 	// list toàn bộ đơn nghỉ phép chờ phê duyệt của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='2'").list();
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='2' ORDER BY id ASC").list();
 
 		return list;
 	}
 
 	// list toàn bộ đơn nghỉ phép dã duyệt của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='3'").list();
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='3' ORDER BY id ASC").list();
 
 		return list;
 	}
 
 	// list toàn bộ đơn nghỉ phép Từ chối của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi() {
+	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='4'").list();
+		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='4' ORDER BY id ASC").list();
 
 		return list;
 	}

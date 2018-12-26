@@ -29,7 +29,7 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	@Autowired
 	private DonNghiPhepServiceMinhtq donNghiPhepService;
-	// private int perPage = 2;
+	private int perPage = 2;
 
 	public DonNghiPhepServiceMinhtq getDonNghiPhepService() {
 		return donNghiPhepService;
@@ -39,44 +39,72 @@ public class QuanLyVangNghiControllerMinhtq {
 		this.donNghiPhepService = donNghiPhepService;
 	}
 
+	// khi vào list đơn nghỉ phép thì mặ định ở trang 1
+	@RequestMapping("/")
+	public String view(HttpSession session) {
+		int currentPage;
+		if (session.getAttribute("page") == null) {
+			currentPage = 1;
+
+		} else {
+			currentPage = (int) session.getAttribute("page");
+
+		}
+		return "redirect:/list/" + currentPage;
+	}
+
+	// tính tổng toàn bộ số page
+	public int totalPage(int perPage) {
+		int totalPage = (int) Math.ceil((double) donNghiPhepService.count() / (double) perPage);
+		return totalPage;
+	}
+
 	//////////////////// list 4 loại danh sách đơn nghỉ phép///////////////////
 	// list toàn bộ đơn nghỉ phép nháp
-	@RequestMapping(value = "/listDonNghiPhepNhap", method = RequestMethod.GET)
-	public String listNhap(Model model) {
 
-		List<DonNghiPhepMinhtq> listnhap = donNghiPhepService.listDonNghiPhepNhap();
+	@RequestMapping(value = "/listDonNghiPhepNhap/{page}", method = RequestMethod.GET)
+	public String listNhap(Model model, @PathVariable("page") int page) {
+		int start = (page - 1) * perPage;
+		List<DonNghiPhepMinhtq> listnhap = donNghiPhepService.listDonNghiPhepNhap(start, perPage);
 		model.addAttribute("listnhap", listnhap);
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 
 		return "QuanLyVangNghi/minhtq/donnghiphepnhap/list";
 	}
 
 	// list toàn bộ đơn nghỉ phép chờ phê duyệt
-	@RequestMapping(value = "/listDonNghiPhepChoDuyet", method = RequestMethod.GET)
-	public String listChoDuyet(Model model) {
-
-		List<DonNghiPhepMinhtq> listchoduyet = donNghiPhepService.listDonNghiPhepChoDuyet();
+	@RequestMapping(value = "/listDonNghiPhepChoDuyet/{page}", method = RequestMethod.GET)
+	public String listChoDuyet(Model model, @PathVariable("page") int page) {
+		int start = (page - 1) * perPage;
+		List<DonNghiPhepMinhtq> listchoduyet = donNghiPhepService.listDonNghiPhepChoDuyet(start, perPage);
 		model.addAttribute("listchoduyet", listchoduyet);
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 
 		return "QuanLyVangNghi/minhtq/donnghiphepchopheduyet/list";
 	}
 
 	// list toàn bộ đơn nghỉ phép đã duyêt
-	@RequestMapping(value = "/listDonNghiPhepDaDuyet", method = RequestMethod.GET)
-	public String listDaDuyet(Model model) {
+	@RequestMapping(value = "/listDonNghiPhepDaDuyet/{page}", method = RequestMethod.GET)
+	public String listDaDuyet(Model model, @PathVariable("page") int page) {
 
-		List<DonNghiPhepMinhtq> listdaduyet = donNghiPhepService.listDonNghiPhepDaDuyet();
+		int start = (page - 1) * perPage;
+		List<DonNghiPhepMinhtq> listdaduyet = donNghiPhepService.listDonNghiPhepDaDuyet(start, perPage);
 		model.addAttribute("listdaduyet", listdaduyet);
-
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 		return "QuanLyVangNghi/minhtq/donnghiphepdapheduyet/list";
 	}
 
 	// list toàn bộ đơn nghỉ phép từ chối
-	@RequestMapping(value = "/listDonNghiPhepTuChoi", method = RequestMethod.GET)
-	public String listTuChoi(Model model) {
-
-		List<DonNghiPhepMinhtq> listtuchoi = donNghiPhepService.listDonNghiPhepTuChoi();
+	@RequestMapping(value = "/listDonNghiPhepTuChoi/{page}", method = RequestMethod.GET)
+	public String listTuChoi(Model model, @PathVariable("page") int page) {
+		int start = (page - 1) * perPage;
+		List<DonNghiPhepMinhtq> listtuchoi = donNghiPhepService.listDonNghiPhepTuChoi(start, perPage);
 		model.addAttribute("listtuchoi", listtuchoi);
-
+		model.addAttribute("total", totalPage(perPage));
+		model.addAttribute("page", page);
 		return "QuanLyVangNghi/minhtq/donnghipheptuchoi/list";
 	}
 
@@ -125,6 +153,8 @@ public class QuanLyVangNghiControllerMinhtq {
 	// tìm view đơn nghỉ phép nháp theo id
 	@RequestMapping(value = "/suaDonNghiPhepView/{id}", method = RequestMethod.GET)
 	public String edit_ById(@PathVariable("id") int id, Model model) {
+		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("suadonnhap", donNghiPhepService.getByIdDonNghiPhep(id));
 		return "/QuanLyVangNghi/minhtq/donnghiphepnhap/edit_form";
 	}
@@ -231,6 +261,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}
 
+	// xóa trạng thái
 	@RequestMapping("/deleteTrangThai/{id}")
 	public String deletetrangthai(@PathVariable int id, Model model) {
 		donNghiPhepService.deleteTrangThai(id);
@@ -246,9 +277,9 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	// sửa đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/suaTrangThai", method = RequestMethod.POST)
-	public String edittrangthai(Model model,
-			@ModelAttribute("suatrangthaimoi") @Valid TrangThaiVangNghiMinhtq trangthai, BindingResult bindingResult,
-			final RedirectAttributes redirectAttributes) throws SQLException, IllegalStateException, IOException {
+	public String edittrangthai(Model model, @ModelAttribute("suatrangthai") @Valid TrangThaiVangNghiMinhtq trangthai,
+			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
+			throws SQLException, IllegalStateException, IOException {
 
 		if (bindingResult.hasErrors()) {
 
@@ -279,13 +310,13 @@ public class QuanLyVangNghiControllerMinhtq {
 	// tìm view loại nghỉ phép theo id
 	@RequestMapping(value = "/editViewLoaiNgayNghi/{id}", method = RequestMethod.GET)
 	public String editngaynghi_ById(@PathVariable("id") int id, Model model) {
-		model.addAttribute("sualydo", donNghiPhepService.getByIdLoaiNgayNghi(id));
+		model.addAttribute("suamoilydo", donNghiPhepService.getByIdLoaiNgayNghi(id));
 		return "/QuanLyVangNghi/minhtq/loaingaynghi/edit_form";
 	}
 
 	// sửa đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/suaLoaiNgayNghi", method = RequestMethod.POST)
-	public String editloaingaynghi(Model model, @ModelAttribute("sualydomoi") @Valid LoaiNgayNghiMinhtq loaingaynghi,
+	public String editloaingaynghi(Model model, @ModelAttribute("suamoilydo") @Valid LoaiNgayNghiMinhtq loaingaynghi,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes)
 			throws SQLException, IllegalStateException, IOException {
 

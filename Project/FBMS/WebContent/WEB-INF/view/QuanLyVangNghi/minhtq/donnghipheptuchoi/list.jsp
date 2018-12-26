@@ -140,12 +140,40 @@
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
 												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
-												<td> <a
-													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.id}"><button class="btn btn-primary">
-															xóa</button></a></td>
+												<td><a
+													href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}"><button
+															class="btn btn-primary">sửa</button></a> <a
+													href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepTuChoi/${dnpn.id}"><button
+															class="btn btn-primary">xóa</button></a></td>
 										</c:forEach>
-										
+
 									</table>
+									
+									<div style="text-align: center">
+										<c:if test="${page >1}">
+											<a href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/1">Trang
+												đầu</a>
+										</c:if>
+
+										<c:if test="${page > 1}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/${page-1}">${page-1}</a>
+										</c:if>
+
+										<a
+											href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/${page}">${page}</a>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/${page+1}">${page+1}</a>
+										</c:if>
+
+										<c:if test="${page < total}">
+											<a
+												href="/FBMS/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/${total}">Trang
+												cuối</a>
+										</c:if>
+									</div>
 								</div>
 							</div>
 						</div>

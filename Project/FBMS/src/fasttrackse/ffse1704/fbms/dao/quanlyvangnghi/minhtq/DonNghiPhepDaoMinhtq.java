@@ -11,16 +11,15 @@ public interface DonNghiPhepDaoMinhtq {
 	/////////// phân trang ////////////////
 	public int count();
 
-	public List<DonNghiPhepMinhtq> findAll(Integer offset, Integer maxResult);
-
 	/////////// ĐƠN NGHỈ PHÉP//////////////////
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap();
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult);
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult);
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi();
+	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult);
+
+	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult);
 
 	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id);
 
@@ -30,10 +29,6 @@ public interface DonNghiPhepDaoMinhtq {
 
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep);
 
-	
-	
-
-	
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 
