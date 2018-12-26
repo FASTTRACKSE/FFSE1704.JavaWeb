@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.XemThongTinNVDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Service
@@ -40,5 +42,15 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 	@Override
 	public PhongBan findTenPhongBanByMaPhongBan(String maPhongBan) {
 		return xemThongTinNVDao.findTenPhongBanByMaPhongBan(maPhongBan);
+	}
+
+	@Override
+	public List<QuanHuyen> findQuanHuyenByIdThanhPho(String maThanhPho) {
+		return xemThongTinNVDao.findQuanHuyenByIdThanhPho(maThanhPho);
+	}
+
+	@Override
+	public List<XaPhuong> findXaPhuongByIdQuanHuyen(String maQuanHuyen) {
+		return xemThongTinNVDao.findXaPhuongByIdQuanHuyen(maQuanHuyen);
 	}
 }

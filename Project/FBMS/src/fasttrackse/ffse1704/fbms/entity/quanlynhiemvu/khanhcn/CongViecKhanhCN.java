@@ -52,8 +52,19 @@ public class CongViecKhanhCN implements Serializable {
 	private String thoiGianKetThuc;
 
 	@ManyToOne
-	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien")
+	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien", insertable= false, updatable= false)
 	private NhanVienDuAn nhanVienDuAn;
+	
+	@Column(name = "nguoi_duoc_phan_cong")
+	private String nguoiPhanCong;
+
+	public String getNguoiPhanCong() {
+		return nguoiPhanCong;
+	}
+
+	public void setNguoiPhanCong(String nguoiPhanCong) {
+		this.nguoiPhanCong = nguoiPhanCong;
+	}
 
 	@Column(name = "thoigian_dukien_hoanthanh")
 	@NotEmpty

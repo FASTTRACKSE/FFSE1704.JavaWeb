@@ -54,7 +54,7 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/home" />'>Home</a></li>
+								href='<c:url value="/list" />'>Home</a></li>
 							<li class="breadcrumb-item active">Danh sách Logwork</li>
 						</ol>
 					</div>
@@ -63,7 +63,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyThoiGian/Logwork/addlogwork"/>"
+					<a href="<c:url value = "addlogwork"/>"
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
@@ -108,12 +108,10 @@
 								</ul>
 							</div>
 						</div>
-
-
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
-									<table
+									<table id="datatable"
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
@@ -123,7 +121,12 @@
 												<th scope="col">Vai Trò</th>
 												<th scope="col">Phòng Ban</th>
 												<th scope="col">Công Việc</th>
+												<th scope="col">Mô Tả</th>
+												<th scope="col">Thời Gian Bắt Đầu</th>
+												<th scope="col">Thời Gian Kết Thúc</th>
 												<th scope="col">Trạng Thái</th>
+												<th scope="col">Nhận Xét PM</th>
+												<th scope="col">Nhận Xét Trưởng Phó Phòng</th>
 												<th scope="col">Action</th>
 											</tr>
 										</thead>
@@ -132,19 +135,21 @@
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn.tenDuAn}</td>
-													<td>${lg.maNhanVien.hoDem} ${lg.maNhanVien.ten}</td>
+													<td>${lg.maNhanVien.hoDem} <b>${lg.maNhanVien.ten}</b></td>
 													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 													<td>${lg.maPhongBan.tenPhongBan}</td>
 													<td>${lg.tenCongViec}</td>
+													<td>${lg.moTa}</td>
+													<td>${lg.thoiGianBatDau}</td>
+													<td>${lg.thoiGianKetThuc}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a>
-														<c:if test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
-														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="delete/${lg.id }"
-																onclick="return confirm('Bạn có muốn xóa ?');"><i
-																class="fa fa-trash"></i></a>
-														</c:if></td>
+													<td>${lg.nhanXetPM}</td>
+													<td>${lg.nhanXetTPP}</td>
+													<td><a href="edit/${lg.id }"><button
+																class="btn btn-success">sửa</button></a> <a
+														href="delete/${lg.id }"><button class="btn btn-danger"
+																onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
+																xóa</button></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -180,34 +185,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="card-header">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="?page=1">trang
-											đầu</a></li>
-									<c:if test="${currentPage > 2}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage-2}">${currentPage-2}</a></li>
-									</c:if>
-									<c:if test="${currentPage > 1}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage-1}">${currentPage-1}</a></li>
-									</c:if>
-									<li class="page-item active"><a class="page-link"
-										href="?page=${currentPage}">${currentPage}</a></li>
-									<c:if test="${currentPage < lastPage}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage+1}">${currentPage+1}</a></li>
-									</c:if>
-									<c:if test="${currentPage < lastPage - 1}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage+2}">${currentPage+2}</a></li>
-									</c:if>
-									<li class="page-item"><a class="page-link"
-										href="?page=${lastPage }">trang cuối</a></li>
-								</ul>
-							</nav>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -225,12 +202,14 @@
 
 		$('#datatable').dataTable().fnDestroy();
 
-		$("#datatable").dataTable({
-			responsive : true,
-			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-			"bServerSide" : true,
-			"sAjaxSource" : "/FBMS/QuanLyThoiGian/Logwork/list",
-		});
+		$("#datatable")
+				.dataTable(
+						{
+							responsive : true,
+							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
+							"bServerSide" : true,
+							"sAjaxSource" : "/FBMS/QuanTriHeThong/chuc_nang/view/getListChucNang",
+						});
 	};
 
 	window.setTimeout(function() {

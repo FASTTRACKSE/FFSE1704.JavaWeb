@@ -1,54 +1,62 @@
 package fasttrackse.ffse1704.fbms.entity.logwork;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="thoi_gian_cong_viec")
+@Table(name = "thoi_gian_cong_viec")
 public class ThoiGianLamViec {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, length = 11)
 	private int id;
-	
-	@Column(name="ma_du_an" ,nullable = true,length = 11)
-	private int maDuAn;
-	
-	@Column(name="ma_nhan_vien", nullable = true,length = 11)
-	private int maNhanVien;
-	
-	@Column(name="ma_vai_tro", nullable = true,length = 11)
-	private int maVaiTro;
-	
-	@Column(name="ma_phong_ban",nullable = true,length = 11)
-	private int maPhongBan;
-	
-	
-	@Column(name="ten_cong_viec", nullable = true)
+
+	@ManyToOne()
+	@JoinColumn(name = "ma_du_an")
+	private VuDuAnLogwork maDuAn;
+
+	public VuDuAnLogwork getMaDuAn() {
+		return maDuAn;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", nullable = false, referencedColumnName = "ma_nhan_vien")
+	private VuNhanVien maNhanVien;
+
+	@ManyToOne
+	@JoinColumn(name = "ma_vai_tro", nullable = false, referencedColumnName = "ma_vai_tro")
+	private VuVaiTroDuAn maVaiTroDuAn;
+
+	@ManyToOne
+	@JoinColumn(name = "ma_phong_ban", nullable = false, referencedColumnName = "ma_phong_ban")
+	private VuPhongBan maPhongBan;
+
+	@ManyToOne
+	@JoinColumn(name = "trang_thai", nullable = false, referencedColumnName = "id_trang_thai")
+	private VuTrangThai trangThaiLogwork;
+
+	@Column(name = "ten_cong_viec", nullable = true, length = 255)
 	private String tenCongViec;
-	
-	@Column(name="mo_ta", nullable = true)
+
+	@Column(name = "mo_ta", nullable = true, length = 11)
 	private String moTa;
-	
-	@Column(name="trang_thai", nullable = true,length = 11)
-	private int trangThai;
-	
-	@Column(name="thoi_gian_bat_dau", nullable = true)
-	private Date thoiGianBatDau;
-	
-	@Column(name="thoi_gian_ket_thuc", nullable = true)
-	private Date thoiGianKetThuc;
-	
-	@Column(name="nhan_xet_PM", nullable = true)
+
+	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 25)
+	private String thoiGianBatDau;
+
+	@Column(name = "thoi_gian_ket_thuc", nullable = true, length = 25)
+	private String thoiGianKetThuc;
+
+	@Column(name = "nhan_xet_PM", nullable = true)
 	private String nhanXetPM;
-	
-	@Column(name="nhan_xet_tpp", nullable = true)
+
+	@Column(name = "nhan_xet_tpp", nullable = true)
 	private String nhanXetTPP;
 
 	public int getId() {
@@ -57,40 +65,6 @@ public class ThoiGianLamViec {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	
-
-	public int getMaDuAn() {
-		return maDuAn;
-	}
-
-	public void setMaDuAn(int maDuAn) {
-		this.maDuAn = maDuAn;
-	}
-
-	public int getMaNhanVien() {
-		return maNhanVien;
-	}
-
-	public void setMaNhanVien(int maNhanVien) {
-		this.maNhanVien = maNhanVien;
-	}
-
-	public int getMaVaiTro() {
-		return maVaiTro;
-	}
-
-	public void setMaVaiTro(int maVaiTro) {
-		this.maVaiTro = maVaiTro;
-	}
-
-	public int getMaPhongBan() {
-		return maPhongBan;
-	}
-
-	public void setMaPhongBan(int maPhongBan) {
-		this.maPhongBan = maPhongBan;
 	}
 
 	public String getTenCongViec() {
@@ -109,27 +83,19 @@ public class ThoiGianLamViec {
 		this.moTa = moTa;
 	}
 
-	public int getTrangThai() {
-		return trangThai;
-	}
-
-	public void setTrangThai(int trangThai) {
-		this.trangThai = trangThai;
-	}
-
-	public Date getThoiGianBatDau() {
+	public String getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(Date thoiGianBatDau) {
+	public void setThoiGianBatDau(String thoiGianBatDau) {
 		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
-	public Date getThoiGianKetThuc() {
+	public String getThoiGianKetThuc() {
 		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
+	public void setThoiGianKetThuc(String thoiGianKetThuc) {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
@@ -149,31 +115,63 @@ public class ThoiGianLamViec {
 		this.nhanXetTPP = nhanXetTPP;
 	}
 
+	public VuNhanVien getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(VuNhanVien maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
+	public VuVaiTroDuAn getMaVaiTroDuAn() {
+		return maVaiTroDuAn;
+	}
+
+	public void setMaVaiTroDuAn(VuVaiTroDuAn maVaiTroDuAn) {
+		this.maVaiTroDuAn = maVaiTroDuAn;
+	}
+
+	public VuPhongBan getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(VuPhongBan maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public VuTrangThai getTrangThaiLogwork() {
+		return trangThaiLogwork;
+	}
+
+	public void setTrangThaiLogwork(VuTrangThai trangThaiLogwork) {
+		this.trangThaiLogwork = trangThaiLogwork;
+	}
+
+	public void setMaDuAn(VuDuAnLogwork maDuAn) {
+		this.maDuAn = maDuAn;
+	}
+
 	public ThoiGianLamViec() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ThoiGianLamViec(int id, int maDuAn, int maNhanVien, int maVaiTro, int maPhongBan, String tenCongViec,
-			String moTa, int trangThai, Date thoiGianBatDau, Date thoiGianKetThuc, String nhanXetPM,
-			String nhanXetTPP) {
+	public ThoiGianLamViec(int id, VuDuAnLogwork maDuAn, VuNhanVien maNhanVien, VuVaiTroDuAn maVaiTroDuAn,
+			VuPhongBan maPhongBan, VuTrangThai trangThaiLogwork, String tenCongViec, String moTa, String thoiGianBatDau,
+			String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
 		this.maNhanVien = maNhanVien;
-		this.maVaiTro = maVaiTro;
+		this.maVaiTroDuAn = maVaiTroDuAn;
 		this.maPhongBan = maPhongBan;
+		this.trangThaiLogwork = trangThaiLogwork;
 		this.tenCongViec = tenCongViec;
 		this.moTa = moTa;
-		this.trangThai = trangThai;
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.nhanXetPM = nhanXetPM;
 		this.nhanXetTPP = nhanXetTPP;
 	}
 
-	
-	
-	
-	
 }

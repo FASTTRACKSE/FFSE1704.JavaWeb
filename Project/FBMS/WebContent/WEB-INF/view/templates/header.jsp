@@ -445,7 +445,10 @@
 					<ul class="menu-content" style="">
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/index">●
-								Danh mục tài liệu</a></li>
+								Tài liệu của tôi</a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/draft">●
+								Tài liệu nháp</a></li>
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
 								Phê duyệt tài liệu</a></li>

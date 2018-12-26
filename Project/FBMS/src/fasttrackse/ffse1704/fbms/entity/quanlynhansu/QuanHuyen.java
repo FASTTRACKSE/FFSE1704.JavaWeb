@@ -39,11 +39,22 @@ public class QuanHuyen implements Serializable {
 	
 	@Column(name="type",nullable = false)
 	private String type;
+	
+	@Column(name="matp",nullable = false)
+	private String matp;
 //	
 //	@ManyToOne
 //	@JoinColumn(name="matp",referencedColumnName="matp",nullable= false)
 //	private ThanhPho thanhPho;
 	
+	public String getMatp() {
+		return matp;
+	}
+
+	public void setMatp(String matp) {
+		this.matp = matp;
+	}
+
 	@OneToMany(mappedBy="quanHuyen",fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<NhanSu> listNhanSuQH;

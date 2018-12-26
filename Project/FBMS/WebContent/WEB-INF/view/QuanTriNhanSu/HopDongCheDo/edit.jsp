@@ -54,17 +54,17 @@
 						vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 					</p>
 
-					<form:form method="post" action="/FBMS/editHopDongCheDo"
+					<form:form method="post" action="/FBMS/editHopDongCheDo/${thongTinNhanVien.maNhanVien}"
 						modelAttribute="hopdong">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<form:input path="id" type="hidden" />
-							
-							
+
+
 							<form:input path="maNhanVien" type="hidden"
 								value="${thongTinNhanVien.maNhanVien}" />
 							<label>Loại hợp đồng:</label>
-							<form:select path="maHopDong"
-								class="custom-select block round" id="customSelect">
+							<form:select path="maHopDong" class="custom-select block round"
+								id="customSelect">
 								<c:forEach items="${hd}" var="lhd">
 									<form:option value="${lhd.maHopDong}" label="${lhd.tenHopDong}" />
 								</c:forEach>
@@ -72,19 +72,46 @@
 
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Ngày bắt đầu</label>
 							<form:input class="form-control" type="Date" path="ngayBatDau" />
 
 						</div>
 
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Ngày kết thúc</label>
 							<form:input class="form-control" type="Date" path="ngayKetThuc" />
 
 						</div>
+						<div class="form-group col-sm-3">
+							<label>Loại công việc:</label>
+							<form:select path="maCongViec" class="custom-select block round"
+								id="customSelect">
+								<c:forEach items="${dscv}" var="dscv">
+									<form:option value="${dscv.maCongViec}"
+										label="${dscv.tenCongViec}" />
+								</c:forEach>
+							</form:select>
 
-						<div class="form-group col-sm-6">
+						</div>
+						<div class="form-group col-sm-3">
+							<label>Địa điểm làm việc:</label>
+							<form:select path="maDiaDiemLamViec"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${ddlv}" var="ddlv">
+									<form:option value="${ddlv.maDiaDiem}"
+										label="${ddlv.tenDiaDiem}" />
+								</c:forEach>
+							</form:select>
+
+						</div>
+
+						<div class="form-group col-sm-3">
+							<label>Mức lương ban đầu</label>
+							<form:input class="form-control" type="text"
+								path="mucLuongBanDau" />
+						</div>
+						<div class="form-group col-sm-3">
 							<label>Lương tháng 13 </label>
 							<form:select path="luongThang13"
 								class="custom-select block round" id="customSelect">
@@ -94,18 +121,72 @@
 							</form:select>
 
 						</div>
+
+						<div class="form-group col-sm-4">
+							<label>Số ngày nghỉ trong năm</label>
+							<form:input value="15" class="form-control" type="text"
+								path="soNgayNghiTrongNam" />
+						</div>
+
+
+						<form:input value="FULL" path="ngayNghiDacBiet" type="hidden" />
+
+
+						<div class="form-group col-sm-4">
+							<label>Thời gian bắt đầu làm việc</label>
+							<div class='input-group date' id='datetimepicker3'>
+								<form:input type='text' class="form-control"
+									path="thoiGianBatDauLamViec" />
+								<span class="input-group-addon"> <span
+									class="glyphicon glyphicon-time">Chọn thời gian</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-4">
+							<label>Thời gian kết thúc làm việc</label>
+							<div class='input-group date' id='dateout'>
+								<form:input type='text' class="form-control"
+									path="thoiGianKetThucLamViec" />
+								<span class="input-group-addon"> <span
+									class="glyphicon glyphicon-time">Chọn thời gian</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-6">
+							<label>Hình thức trả lương: </label><br> Tiền mặt
+							<form:radiobutton path="hinhThucTraLuong" value="1" />
+							Ngân hàng
+							<form:radiobutton path="hinhThucTraLuong" value="2" />
+						</div>
+							<div class="form-group col-sm-12">
 						<tr>
 							<td></td>
 							<td><input class="btn btn-danger" type="submit" value="Sửa thông tin" /></td>
 							<td><a href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}" class="btn btn-warning">Hủy</a></td>
 						</tr>
+						</div>
 					</form:form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker3').datetimepicker({
+			format : 'LT'
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$('#dateout').datetimepicker({
+			format : 'LT'
+		});
+	});
+</script>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 

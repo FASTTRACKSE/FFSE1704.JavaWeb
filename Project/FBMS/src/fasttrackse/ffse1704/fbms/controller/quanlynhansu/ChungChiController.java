@@ -64,6 +64,19 @@ public class ChungChiController {
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
 	}
 
+	@RequestMapping("/deleteCC/{maNhanVien}")
+	public String ShowViewDelete(Model model, @PathVariable("maNhanVien") int id) {
+		model.addAttribute("chungChi", new ChungChi());
+		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
+		return "QuanTriNhanSu/chungChi/deleteCC";
+	}
+
+	@RequestMapping(value = "deleteCC")
+	public ModelAndView DeleteCC(@ModelAttribute("chungChi") ChungChi chungChi) {
+		chungChiService.update(chungChi);
+		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+	}
+
 	@RequestMapping("/ViewCC/{maNhanVien}/deleteCC/{ID}")
 	public ModelAndView ShowViewDelete() {
 		return new ModelAndView("QuanTriNhanSu/chungChi/deleteCC", "chungChi", new ChungChi());

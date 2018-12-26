@@ -28,6 +28,7 @@ public interface DocumentDAODung  {
 	
 	public List<DocumentDung> getAllDocumentRefuse();
 	
+	public List<DocumentDung> getDraft();
 	//accept
 	public void accept(final DocumentDung document);
 	//refuse

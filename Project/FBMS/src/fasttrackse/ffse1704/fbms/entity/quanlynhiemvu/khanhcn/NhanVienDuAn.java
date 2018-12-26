@@ -57,17 +57,6 @@ public class NhanVienDuAn implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NhanVienDuAn(int id, @NotEmpty String maDuAn, NhanVienKhanhCN nhanVienKhanhCN, @NotEmpty String maNhanVien,
-			@NotEmpty String maVaiTro, List<CongViecKhanhCN> congViecKhanhCN) {
-		super();
-		this.id = id;
-		this.maDuAn = maDuAn;
-		this.nhanVienKhanhCN = nhanVienKhanhCN;
-		this.maNhanVien = maNhanVien;
-		this.maVaiTro = maVaiTro;
-		this.congViecKhanhCN = congViecKhanhCN;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -114,6 +103,10 @@ public class NhanVienDuAn implements Serializable {
 
 	public void setMaNhanVien(String maNhanVien) {
 		this.maNhanVien = maNhanVien;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

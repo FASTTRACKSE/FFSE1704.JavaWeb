@@ -55,6 +55,17 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 			List<DocumentDung> listPendingApprove = session.createQuery(cq).getResultList();
 			return listPendingApprove;
 		}
+	//list document draft
+		public List<DocumentDung> getDraft() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			cq.select(root).where(cb.equal(MaTrangThaiJoin.get("maTrangThai"), "nhap"));
+			List<DocumentDung> draft = session.createQuery(cq).getResultList();
+			return draft;
+		}
 	// list refure document	
 		public List<DocumentDung> getAllDocumentRefuse() {
 			Session session = sessionFactory.getCurrentSession();

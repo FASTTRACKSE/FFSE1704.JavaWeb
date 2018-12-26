@@ -1,4 +1,4 @@
-package fasttrackse.ffse1704.fbms.entity.quanlythoigian;
+package fasttrackse.ffse1704.fbms.entity.logwork;
 
 import java.util.Collection;
 
@@ -7,14 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
-@Table(name = "ho_so_nhan_su")
-public class NhanVienLogwork {
+@Table(name = "ho_so_nhan_vien")
+public class VuNhanVien {
 	@Id
 	@Column(name = "ma_nhan_vien")
-	String maNVien;
+	int maNVien;
 
 	@Column(name = "ho_dem")
 	String hoDem;
@@ -22,21 +21,14 @@ public class NhanVienLogwork {
 	@Column(name = "ten")
 	String ten;
 	
-	@Transient
-	String fullName;
-	
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
 	@OneToMany(mappedBy = "maNhanVien")
-	private Collection<Logwork> logworks;
+	private Collection<ThoiGianLamViec> thoiGianLamViec;
 
-	public String getMaNVien() {
+	public int getMaNVien() {
 		return maNVien;
 	}
 
-	public void setMaNVien(String maNVien) {
+	public void setMaNVien(int maNVien) {
 		this.maNVien = maNVien;
 	}
 
@@ -56,16 +48,16 @@ public class NhanVienLogwork {
 		this.ten = ten;
 	}
 
-	public Collection<Logwork> getLogworks() {
-		return logworks;
+	public Collection<ThoiGianLamViec> getThoiGianLamViec() {
+		return thoiGianLamViec;
 	}
 
-	public void setLogworks(Collection<Logwork> logworks) {
-		this.logworks = logworks;
+	public void setThoiGianLamViec(Collection<ThoiGianLamViec> thoiGianLamViec) {
+		this.thoiGianLamViec = thoiGianLamViec;
 	}
-	
-	public String getFullName() {
-		return hoDem + " " + ten ;
+
+	public String getTenNhanVien() {
+		return hoDem + ten ;
 	}
 	
 }

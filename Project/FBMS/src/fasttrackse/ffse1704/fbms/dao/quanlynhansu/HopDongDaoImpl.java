@@ -2,17 +2,24 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.CheDoHuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -99,5 +106,35 @@ public class HopDongDaoImpl implements HopDongDao {
 		query.setInteger("id", id);
 		query.executeUpdate();
 		System.out.println(query.executeUpdate());
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<DanhSachCongViec> listDanhSachCongViec() {
+		Session session = sessionFactory.getCurrentSession();
+		List<DanhSachCongViec> listDanhSachCongViec = session.createQuery("from DanhSachCongViec").getResultList();
+		return listDanhSachCongViec;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<DiaDiemLamViec> listDiaDiemLamViec() {
+		Session session = sessionFactory.getCurrentSession();
+		List<DiaDiemLamViec> listDiaDiemLamViec = session.createQuery("from DiaDiemLamViec").getResultList();
+		return listDiaDiemLamViec;
+	}
+	@SuppressWarnings("deprecation")
+	@Override
+	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(SoNgayNghiNhanVien.class);
+		SoNgayNghiNhanVien yourObject = (SoNgayNghiNhanVien) criteria.add(Restrictions.eq("maNhanVien", maNhanVien)).uniqueResult();
+		return yourObject;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<DanhSachNgayNghi> listDanhSachNgayNghi() {
+		Session session = sessionFactory.getCurrentSession();
+		List<DanhSachNgayNghi> listDanhSachNgayNghi = session.createQuery("from DanhSachNgayNghi").getResultList();
+		return listDanhSachNgayNghi;
 	}
 }

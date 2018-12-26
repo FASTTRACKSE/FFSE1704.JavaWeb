@@ -153,7 +153,7 @@ body, html {
 								href='<c:url value="/home" />'>Home</a></li>
 
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/dsphongban" />'>Danh sách nhân sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh sách nhân sự</a></li>
 
 							<li class="breadcrumb-item active">Thông tin hợp đồng / Chế
 								độ thụ hưởng</li>
@@ -235,36 +235,28 @@ body, html {
 											class="table table-striped table-bordered dataex-res-constructor">
 											<thead>
 												<tr>
+													<th scope="col">Mã hợp đồng</th>
 													<th scope="col">Loại hợp đồng</th>
 													<th scope="col">Ngày bắt đầu</th>
 													<th scope="col">Ngày kết thúc</th>
-													<th scope="col">Tổng số ngày nghỉ</th>
-													<th scope="col">Số ngày nghỉ còn lại</th>
-													<th scope="col">Lương tháng 13</th>
-													<th scope="col">Sửa</th>
-													<th scope="col">Xóa</th>
+													<th scope="col">Tên công việc</th>
+													<th scope="col">Địa điểm làm việc</th>
+													<th scope="col">Xem chi tiết</th>
 												</tr>
 											</thead>
 											<tbody>
 												<c:forEach var="hopDong"
 													items="${thongTinNhanVien.listHopDong}">
 													<tr>
+														<td>${hopDong.id}</td>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
 														<td>${hopDong.ngayBatDau}</td>
 														<td>${hopDong.ngayKetThuc}</td>
-														<c:forEach var="ngayNghi"
-															items="${thongTinNhanVien.listNgayNghi}">
-															<td>${ngayNghi.soNgayPhepNam}</td>
-															<td>${ngayNghi.soNgayNghiConLai}</td>
-														</c:forEach>
-														<td>${hopDong.cheDoHuong.luong}</td>
+														<td>${hopDong.congViec.tenCongViec}</td>
+														<td>${hopDong.diaDiem.tenDiaDiem}</td>
 														<td><a
-															href="/FBMS/editHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}"><button
-																	class="btn btn-success">Sửa</button></a></td>
-														<td><a
-															href="/FBMS/deleteHopDongCheDo/${hopDong.id}&${thongTinNhanVien.maNhanVien} "><button
-																	class="btn btn-success"
-																	onclick="return confirm('Bạn có muốn xóa hợp đồng này?');">Xóa</button></a></td>
+															href="/FBMS/thongTinChiTietHopDong/${thongTinNhanVien.maNhanVien}&${hopDong.id}"><button
+																	class="btn btn-success">Xem chi tiết</button></a></td>
 													</tr>
 												</c:forEach>
 											</tbody>

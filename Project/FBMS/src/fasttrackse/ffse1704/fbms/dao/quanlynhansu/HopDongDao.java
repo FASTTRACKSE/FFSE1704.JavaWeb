@@ -4,7 +4,11 @@ import java.util.List;
 
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.CheDoHuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 
 
@@ -15,4 +19,8 @@ public interface HopDongDao {
 	public void editHopDong(ThongTinHopDong thongtinhopdong);
 	public ThongTinHopDong findById(int id);
 	public void deleteHopDong(int id);
+	public List<DanhSachCongViec> listDanhSachCongViec();
+	public List<DiaDiemLamViec> listDiaDiemLamViec();
+	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien);
+	public List<DanhSachNgayNghi> listDanhSachNgayNghi();
 }

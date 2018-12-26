@@ -10,7 +10,7 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa Tài Liệu<h3>
+				<h3 class="content-header-title mb-0">Nháp<h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -35,8 +35,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Tài Liệu</h1>
-			<a href="<%=request.getContextPath()%>/quanlytailieu/documentInsert">Thêm</a>
+			<h1>Nháp</h1>
 		</div>
 
 		<!-- Border color end-->
@@ -64,21 +63,18 @@
 										<th>Tên Tài Liệu</th>
 										<th>Mô Tả</th>
 										<th>Danh Mục</th>
-										<th>Trạng Thái</th>
 										<th>Phòng Ban</th>
 										<th>Phương Thức</th>
 										<th>Tải về</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:if test="${not empty listDocument}">
-										<c:forEach var="document" items="${listDocument}" varStatus="stt">
+										<c:forEach var="document" items="${listDocumentDraft}" varStatus="stt">
 											<tr class="border-bottom-success border-custom-color">
 												<td>${stt.count}</td>
 												<td><img src="<c:url value="${document.maIcon.hinhAnh}"/>" width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td>${document.maTrangThai.tenTrangThai}</td>
 												<td>${document.maPhongBan.tenPhongBan}</td>
 												<td>
 												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
@@ -87,7 +83,6 @@
 												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>
 											</tr>
 										</c:forEach>
-									</c:if>
 								</tbody>
 							</table>
 						</div>

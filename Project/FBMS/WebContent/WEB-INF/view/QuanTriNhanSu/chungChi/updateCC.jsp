@@ -39,7 +39,7 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" action="/FBMS/updateCC"
+					<form:form method="post" action="updateCC"
 						modelAttribute="chungChi">
 						<div>
 							<form:hidden path="chungChi2.ID" />

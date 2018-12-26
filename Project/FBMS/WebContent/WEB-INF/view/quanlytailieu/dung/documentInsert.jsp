@@ -114,7 +114,7 @@
 						Submit
 					</button>
 					<button
-						formaction="<%=request.getContextPath()%>/documentSave/draft"
+						formaction="<%=request.getContextPath()%>/quanlytailieu/documentSaveDraft"
 						class="btn btn-info mr-1">
 						Lưu vào nháp
 					</button>
