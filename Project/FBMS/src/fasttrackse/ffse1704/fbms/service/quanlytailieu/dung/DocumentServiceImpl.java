@@ -48,6 +48,14 @@ public class DocumentServiceImpl implements DocumentService {
 		public List<DocumentDung> getAllPendingApprove(){
 			return documentDAO.getAllPendingApprove();
 		}
+		//list my document accept
+		public List<DocumentDung> getMyDocumentAccept() {
+			return documentDAO.getMyDocumentAccept();
+		}
+		//list my document accept
+		public List<DocumentDung> getMyDocumentPendingApprove(){
+			return documentDAO.getMyDocumentPendingApprove();
+		} 
 		// list pending approve
 				public List<DocumentDung> getDraft(){
 					return documentDAO.getDraft();

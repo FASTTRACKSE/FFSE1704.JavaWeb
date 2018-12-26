@@ -72,12 +72,11 @@
 				</div>
 				<!-- ///////////////////// -->
 				<div class="form-group row">				
-						<form:hidden path="maPhongBan.maPhongBan"	
-								 value="${PhongBan.maPhongBan}"  
-									/>														
+						<form:hidden path="maPhongBan.maPhongBan"/>	
+						<form:hidden path= "nameFile" class= "form-control" />
+				<form:hidden path="maIcon.maIcon" class = "form-control"/>
+				<form:hidden path="maTrangThai.maTrangThai" class="form-control" />													
 				</div>
-				<form:hidden path="maTrangThai.maTrangThai" class="form-control"
-							id="projectinput5" value="${TrangThai.maTrangThai}" />
 				<!-- ///////////////////// -->
 
 				<!-- ///////////////////// -->

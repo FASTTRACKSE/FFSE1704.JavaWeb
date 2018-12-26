@@ -91,12 +91,13 @@
 								<form:option value="${PhongBan.maPhongBan}"
 									label="${PhongBan.tenPhongBan}" />
 							</c:forEach>
-							<option value="it">
+							<option value="">
 						</form:select>
 					</div>
 				</div>
-				<form:hidden path="maTrangThai.maTrangThai" class="form-control"
-							id="projectinput5" value="${TrangThai.maTrangThai}" />
+				<form:hidden path= "nameFile" class= "form-control" />
+				<form:hidden path="maIcon.maIcon" class = "form-control"/>
+				<form:hidden path="maTrangThai.maTrangThai" class="form-control" />
 				<!-- ///////////////////// -->
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput6">
@@ -109,9 +110,7 @@
 					<label class="col-md-3 label-control" for="projectinput6">
 						Thay đổi
 					</label>
-						<form:hidden path="nameFile" />
-									<input type="file" class="form-control-file"
-										id="basicInputFile" name="file">
+					<input type="file" class="form-control-file" id="basicInputFile" name="file">
 				</div>
 		
 

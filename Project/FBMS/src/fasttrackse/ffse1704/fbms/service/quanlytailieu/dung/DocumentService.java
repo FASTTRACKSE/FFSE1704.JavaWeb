@@ -26,7 +26,11 @@ public interface DocumentService  {
 	public List<DocumentDung> getAllPendingApprove();
 	//DocumentRefure
 	public List<DocumentDung> getAllDocumentRefuse();
-	
+	//list my document được phê duyệt
+	public List<DocumentDung> getMyDocumentAccept();
+	//list my document chờ phê duyệt
+	public List<DocumentDung> getMyDocumentPendingApprove();
+	//list tài liệu nháp
 	public List<DocumentDung> getDraft();
 	//refuse
 	public void refuse(DocumentDung document);

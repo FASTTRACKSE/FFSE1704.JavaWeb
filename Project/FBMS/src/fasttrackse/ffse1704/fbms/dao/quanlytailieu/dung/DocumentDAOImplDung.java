@@ -77,6 +77,28 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 			List<DocumentDung> listRefuseDocument = session.createQuery(cq).getResultList();
 			return listRefuseDocument;
 		}
+	//list accept document
+		public List<DocumentDung> getMyDocumentAccept() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			cq.select(root).where(cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));
+			List<DocumentDung> listDocumentAccept = session.createQuery(cq).getResultList();
+			return listDocumentAccept;
+		}
+	//list my pendingapprove document
+		public List<DocumentDung> getMyDocumentPendingApprove() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			cq.select(root).where(cb.equal(MaTrangThaiJoin.get("maTrangThai"), "cho_phe_duyet"));
+			List<DocumentDung> listMyDocumentPendingApprove = session.createQuery(cq).getResultList();
+			return listMyDocumentPendingApprove;
+		}
 	public void saveDraft(final DocumentDung documentDung) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(documentDung);

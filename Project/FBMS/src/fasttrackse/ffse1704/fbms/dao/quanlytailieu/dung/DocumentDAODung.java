@@ -23,15 +23,20 @@ public interface DocumentDAODung  {
 	//delete
 	public void delete(final int id);
 	
+	
 	//list pending approve
 	public List<DocumentDung> getAllPendingApprove();
-	
+	// list my document accept
+	public List<DocumentDung> getMyDocumentAccept() ;
+	//list my pending approve
+	public List<DocumentDung> getMyDocumentPendingApprove();
+	//list document từ chối
 	public List<DocumentDung> getAllDocumentRefuse();
-	
+	//list tài liệu nháp
 	public List<DocumentDung> getDraft();
-	//accept
+	//accept document
 	public void accept(final DocumentDung document);
-	//refuse
+	//refuse document
 	public void refuse(final DocumentDung document);
 	//find by id
 	public DocumentDung findById(final int id);

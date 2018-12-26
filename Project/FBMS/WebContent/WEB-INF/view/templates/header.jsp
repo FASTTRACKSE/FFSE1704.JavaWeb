@@ -441,20 +441,32 @@
 							href="FBMS/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
 					</ul></li>
 				<!-- Dũng -->
-				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
+					<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
 					<ul class="menu-content" style="">
+					<li class="" ><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/documentInsert"">
+								Thêm Tài Liệu</a> </li>
+						<li class=""><a class="menu-item" href="#">
+								Tài liệu của tôi</a>
+						<ul class="menu-content" style="" >
 						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/index">●
-								Tài liệu của tôi</a></li>
+							href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingAccept">●
+								Đã được phê duyệt</a></li>
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">●
+								Chưa được phê duyệt</a></li>
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/draft">●
 								Tài liệu nháp</a></li>
 						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
-								Phê duyệt tài liệu</a></li>
-						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
 								Tài liệu bị từ chối</a></li>
+						</ul>
+								</li>
+						
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
+								Phê duyệt tài liệu</a></li>
+						
 					</ul></li>
 				<!-- Sỹ -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>

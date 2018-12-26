@@ -91,7 +91,6 @@
 								<form:option value="${PhongBan.maPhongBan}"
 									label="${PhongBan.tenPhongBan}" />
 							</c:forEach>
-							<option value="it">
 						</form:select>
 					</div>
 				</div>

@@ -10,12 +10,12 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Nháp<h3>
+				<h3 class="content-header-title mb-0">Tài Liệu Nháp<h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/index">Home</a></li>
-							<li class="breadcrumb-item active">Tài Liệu</li>
+							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/home">Home</a></li>
+							<li class="breadcrumb-item active">Tài Liệu Nháp</li>
 						</ol>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Nháp</h1>
+			<h1>Tài Liệu Nháp</h1>
 		</div>
 
 		<!-- Border color end-->
