@@ -58,7 +58,7 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text" path="maNhanVien" />
+							<form:input class="form-control" type="text" path="maNhanVien" disabled="true"/>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Họ Và Tên:</label>

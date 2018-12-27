@@ -58,22 +58,22 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text" path="maNhanVien" />
+							<form:input class="form-control" type="text" path="maNhanVien" disabled="true"/>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên Chứng Chỉ:</label>
-							<form:input class="form-control" type="text" path="tenChungChi" />
+							<form:input class="form-control" type="text" path="tenChungChi" disabled="true"/>
 						</div>
 
 
 						<div class="form-group col-sm-6">
 							<label>Ngày Cấp:</label>
-							<form:input class="form-control" type="Date" path="ngayCap" />
+							<form:input class="form-control" type="Date" path="ngayCap" disabled="true"/>
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Đơn Vị Cấp:</label>
-							<form:input class="form-control" type="text" path="donViCap" />
+							<form:input class="form-control" type="text" path="donViCap" disabled="true"/>
 
 						</div>
 
