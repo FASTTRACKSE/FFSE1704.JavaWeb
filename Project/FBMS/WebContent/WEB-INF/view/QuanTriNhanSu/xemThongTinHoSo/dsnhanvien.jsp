@@ -94,8 +94,8 @@
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">
-								
-			Danh sách nhân viên:  <a style="color: red">${listPhongBan.tenPhongBan}</a>
+
+								Danh sách nhân viên: <a style="color: red">${listPhongBan.tenPhongBan}</a>
 
 							</h4>
 							<a class="heading-elements-toggle"><i
@@ -134,33 +134,35 @@
 										</tbody>
 										<tbody>
 										</tbody>
+
 										
-										 <nav aria-label="Page navigation example">
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="?page=1">Trang nhất</a></li>
-			<c:if test="${currentPage > 2}">
-				<li class="page-item"><a class="page-link"
-					href="?page=${currentPage-2}">${currentPage-2}</a></li>
-			</c:if>
-			<c:if test="${currentPage > 1}">
-				<li class="page-item"><a class="page-link"
-					href="?page=${currentPage-1}">${currentPage-1}</a></li>
-			</c:if>
-			<li class="page-item active"><a class="page-link"
-				href="?page=${currentPage}">${currentPage}</a></li>
-			<c:if test="${currentPage < lastPage}">
-				<li class="page-item"><a class="page-link"
-					href="?page=${currentPage+1}">${currentPage+1}</a></li>
-			</c:if>
-			<c:if test="${currentPage < lastPage - 1}">
-				<li class="page-item"><a class="page-link"
-					href="?page=${currentPage+2}">${currentPage+2}</a></li>
-			</c:if>
-			<li class="page-item"><a class="page-link"
-				href="?page=${lastPage }">Trang cuối</a></li>
-		</ul>
-		</nav>
 									</table>
+									<nav aria-label="Page navigation example">
+											<ul class="pagination">
+												<li class="page-item"><a class="page-link"
+													href="?page=1">Trang nhất</a></li>
+												<c:if test="${currentPage > 2}">
+													<li class="page-item"><a class="page-link"
+														href="?page=${currentPage-2}">${currentPage-2}</a></li>
+												</c:if>
+												<c:if test="${currentPage > 1}">
+													<li class="page-item"><a class="page-link"
+														href="?page=${currentPage-1}">${currentPage-1}</a></li>
+												</c:if>
+												<li class="page-item active"><a class="page-link"
+													href="?page=${currentPage}">${currentPage}</a></li>
+												<c:if test="${currentPage < lastPage}">
+													<li class="page-item"><a class="page-link"
+														href="?page=${currentPage+1}">${currentPage+1}</a></li>
+												</c:if>
+												<c:if test="${currentPage < lastPage - 1}">
+													<li class="page-item"><a class="page-link"
+														href="?page=${currentPage+2}">${currentPage+2}</a></li>
+												</c:if>
+												<li class="page-item"><a class="page-link"
+													href="?page=${lastPage }">Trang cuối</a></li>
+											</ul>
+										</nav>
 								</div>
 							</div>
 						</div>

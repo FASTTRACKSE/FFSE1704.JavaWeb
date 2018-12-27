@@ -54,7 +54,7 @@
 						vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 					</p>
 
-					<form:form method="post" action="/FBMS/editHopDongCheDo/${thongTinNhanVien.maNhanVien}"
+					<form:form method="post" action="/FBMS/editHopDongCheDo/${thongTinNhanVien.maNhanVien}&${hopdong.id}"
 						modelAttribute="hopdong">
 						<div class="form-group col-sm-4">
 							<form:input path="id" type="hidden" />
@@ -164,7 +164,7 @@
 						<tr>
 							<td></td>
 							<td><input class="btn btn-danger" type="submit" value="Sửa thông tin" /></td>
-							<td><a href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}" class="btn btn-warning">Hủy</a></td>
+							<td><a href="/FBMS/thongTinChiTietHopDong/${thongTinNhanVien.maNhanVien}&${hopdong.id}" class="btn btn-warning">Hủy</a></td>
 						</tr>
 						</div>
 					</form:form>

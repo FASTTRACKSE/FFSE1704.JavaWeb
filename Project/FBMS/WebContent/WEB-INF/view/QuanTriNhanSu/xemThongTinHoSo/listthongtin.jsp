@@ -338,16 +338,18 @@ body, html {
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
+												
 													<c:forEach var="bangCap"
 														items="${thongTinNhanVien.listBangCap}">
+														<tr>
 														<td>${bangCap.trinhDo.tenTrinhDo}</td>
 														<td>${bangCap.tenNganh}</td>
 														<td>${bangCap.thoiGian}</td>
 														<td>${bangCap.xepLoai}</td>
 														<td>${bangCap.noiCap}</td>
+															</tr>
 													</c:forEach>
-												</tr>
+											
 											</tbody>
 										</table>
 									</div>

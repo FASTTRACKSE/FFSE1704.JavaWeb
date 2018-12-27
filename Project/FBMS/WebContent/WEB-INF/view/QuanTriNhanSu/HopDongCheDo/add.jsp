@@ -156,14 +156,14 @@
 
 						<div class="form-group col-sm-6">
 							<label>Hình thức trả lương: </label><br> Tiền mặt
-							<form:radiobutton path="hinhThucTraLuong" value="1" />
+							<form:radiobutton path="hinhThucTraLuong"  value="1" />
 							Ngân hàng
 							<form:radiobutton path="hinhThucTraLuong" value="2" />
 						</div>
 						<div class="form-group col-sm-12">
 						
 							
-								<td><input class="btn btn-secondary" type="submit"
+								<td><input class="btn btn-primary" type="submit"
 									value="Thêm" /></td>
 								<td><a
 									href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"

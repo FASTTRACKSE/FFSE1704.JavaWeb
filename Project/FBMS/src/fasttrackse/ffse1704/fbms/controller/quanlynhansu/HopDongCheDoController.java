@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.CheDoHuong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
@@ -84,12 +85,16 @@ public class HopDongCheDoController {
 		model.addAttribute("ddlv", listDDLV);
 		return "QuanTriNhanSu/HopDongCheDo/edit";
 	}
-	@RequestMapping(value = "/editHopDongCheDo/{maNhanVien}", method = RequestMethod.POST)
-	public String editGiaBan(@PathVariable("maNhanVien") String maNhanVien,Model model, @ModelAttribute("hopdong") @Valid ThongTinHopDong thongtinhopdong, HttpSession session,
+	@RequestMapping(value = "/editHopDongCheDo/{maNhanVien}&{id}", method = RequestMethod.POST)
+	public String editGiaBan(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id,Model model, @ModelAttribute("hopdong") @Valid ThongTinHopDong thongtinhopdong, HttpSession session,
 			MultipartFile file, BindingResult bindingResult) throws IllegalStateException, IOException {
 		hopDongService.editHopDong(thongtinhopdong);
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+		model.addAttribute("ngaynghiconlai", hopDongService.findNgayNghiConLaibyMaNV(maNhanVien));
+		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
+		model.addAttribute("dsnn", listDSNN);
+		model.addAttribute("hopDong", hopDongService.findById(id));
+		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
 	}
 	@RequestMapping("/deleteHopDongCheDo/{id}&{maNhanVien}")
 	public String deleteHopDongCheDo(@PathVariable("id") int id, @PathVariable("maNhanVien") String maNhanVien, HttpSession session, Model model) {
