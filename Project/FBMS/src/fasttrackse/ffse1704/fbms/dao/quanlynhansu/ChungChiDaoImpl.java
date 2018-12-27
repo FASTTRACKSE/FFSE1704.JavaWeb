@@ -66,10 +66,11 @@ public class ChungChiDaoImpl implements ChungChiDao {
 	@Override
 	public void delete(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		ChungChi cc = session.load(ChungChi.class, id);
-		if (null != cc) {
-			session.delete(cc);
-		}
+		String hql = "DELETE FROM ChungChi WHERE id =:ID";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("ID", id);
+		query.executeUpdate();
 	}
 
 	@Override

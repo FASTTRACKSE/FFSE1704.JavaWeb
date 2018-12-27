@@ -31,6 +31,7 @@ public class ChungChi {
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
+	
 	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	@NotNull
 	private String tenChungChi;

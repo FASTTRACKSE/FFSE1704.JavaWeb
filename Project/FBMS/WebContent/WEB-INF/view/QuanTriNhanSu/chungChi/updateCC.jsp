@@ -35,19 +35,30 @@
 			</div>
 		</div>
 		<!-- End Path -->
-
+		<p style="text-align: center;">
+		<h5>Mã nhân viên:</h5>
+		${chungChi.maNhanVien}
+		</p>
+		<p style="text-align: center;">
+		<h5>Tên nhân viên:</h5>
+		${chungChi.hoLot} ${chungChi.ten}
+		</p>
+		<p style="text-align: center;">
+		<h5>Ngày sinh:</h5>
+		${chungChi.namSinh}
+		</p>
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" action="updateCC"
-						modelAttribute="chungChi">
+					<form:form method="post"
+						action="/FBMS/viewUpdate/${chungChi.maNhanVien}"
+						modelAttribute="chungChi2">
 						<div>
-							<form:hidden path="chungChi2.ID" />
+							<form:hidden path="ID" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text"
-								path="nhanSu.maNhanVien" />
+							<form:input class="form-control" type="text" path="maNhanVien" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên Chứng Chỉ:</label>
@@ -68,7 +79,7 @@
 
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Save" /></td>
+							<td><input type="submit" value="Update" /></td>
 						</tr>
 					</form:form>
 				</div>
@@ -79,7 +90,6 @@
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 <!-- ////////////////////////////////////////////////////////////////////////////-->
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 
 <script type="text/javascript"
 	src="<c:url value="/resources/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js"/> "></script>

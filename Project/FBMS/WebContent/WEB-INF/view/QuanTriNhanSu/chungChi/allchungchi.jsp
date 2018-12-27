@@ -146,8 +146,8 @@
 												<td>${cc.tenChungChi}</td>
 												<td>${cc.ngayCap}</td>
 												<td>${cc.donViCap}</td>
-												<td><a href="${maNhanVien}/updateCC/${cc.ID}/"><button>Sửa</button></a>
-													<a href="${maNhanVien}/deleteCC/${cc.ID}"><button>Xóa</button></a></td>
+												<td><a href="/FBMS/updateCC/${cc.ID}&${chungChi.maNhanVien}"><button>Sửa</button></a>
+													<a href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
