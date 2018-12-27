@@ -146,8 +146,10 @@
 												<td>${cc.tenChungChi}</td>
 												<td>${cc.ngayCap}</td>
 												<td>${cc.donViCap}</td>
-												<td><a href="/FBMS/updateCC/${cc.ID}&${chungChi.maNhanVien}"><button>Sửa</button></a>
-													<a href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button>Xóa</button></a></td>
+												<td><a class="btn btn-success"
+													href="/FBMS/updateCC/${cc.ID}&${chungChi.maNhanVien}"><button>Sửa</button></a>
+													<a class="btn btn-success"
+													href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
@@ -208,30 +210,6 @@
 </div>
 
 
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable").dataTable({
-			responsive : true,
-			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-			"bServerSide" : true,
-			"sAjaxSource" : "/ffse-fbms/QuanTriNhanSu/danhsach_nhansu/{page}",
-		});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

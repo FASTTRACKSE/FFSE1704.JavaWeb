@@ -58,7 +58,8 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text" path="maNhanVien" disabled="true"/>
+							<form:input class="form-control" type="text" path="maNhanVien"
+								disabled="true" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên Chứng Chỉ:</label>
@@ -78,8 +79,10 @@
 						</div>
 
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Update" /></td>
+							<td><input class="btn btn-success" type="submit"
+								value="Update" /></td>
+							<td><a class="btn btn-success"
+								href="/FBMS/ViewCC/${chungChi.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>
 				</div>

@@ -67,8 +67,11 @@
 						</div>
 
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Save" /></td>
+							<td><input class="btn btn-success" type="submit"
+								value="Save" /></td>
+							<td><a class="btn btn-success"
+								href="/FBMS/ViewCC/${chungChi2.maNhanVien}">Quay
+									lại</a></td>
 						</tr>
 					</form:form>
 				</div>

@@ -58,38 +58,45 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text" path="maNhanVien" disabled="true"/>
+							<form:input class="form-control" type="text" path="maNhanVien"
+								disabled="true" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Họ Và Tên:</label>
-							<form:input class="form-control" type="text" path="hoVaTen" disabled="true"/>
+							<form:input class="form-control" type="text" path="hoVaTen"
+								disabled="true" />
 						</div>
 
 
 						<div class="form-group col-sm-6">
 							<label>Quan Hệ:</label>
-							<form:input class="form-control" type="text" path="quanHe" disabled="true"/>
+							<form:input class="form-control" type="text" path="quanHe"
+								disabled="true" />
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Năm Sinh:</label>
-							<form:input class="form-control" type="Date" path="namSinh" disabled="true"/>
+							<form:input class="form-control" type="Date" path="namSinh"
+								disabled="true" />
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Nghề Nghiệp:</label>
-							<form:input class="form-control" type="text" path="ngheNghiep" disabled="true"/>
+							<form:input class="form-control" type="text" path="ngheNghiep"
+								disabled="true" />
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Địa Chỉ:</label>
-							<form:input class="form-control" type="text" path="diaChi" disabled="true"/>
+							<form:input class="form-control" type="text" path="diaChi"
+								disabled="true" />
 
 						</div>
 
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Xóa" /></td>
+							<td><input class="btn btn-success" type="submit" value="Xóa" /></td>
+							<td><a class="btn btn-success"
+								href="/FBMS/ViewTT/${thongTinGiaDinh2.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>
 				</div>

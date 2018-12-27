@@ -50,36 +50,40 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post"
-						action="/FBMS/viewDelete/${chungChi2.ID}"
+					<form:form method="post" action="/FBMS/viewDelete/${chungChi2.ID}"
 						modelAttribute="chungChi2">
 						<div>
 							<form:hidden path="ID" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" type="text" path="maNhanVien" disabled="true"/>
+							<form:input class="form-control" type="text" path="maNhanVien"
+								disabled="true" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên Chứng Chỉ:</label>
-							<form:input class="form-control" type="text" path="tenChungChi" disabled="true"/>
+							<form:input class="form-control" type="text" path="tenChungChi"
+								disabled="true" />
 						</div>
 
 
 						<div class="form-group col-sm-6">
 							<label>Ngày Cấp:</label>
-							<form:input class="form-control" type="Date" path="ngayCap" disabled="true"/>
+							<form:input class="form-control" type="Date" path="ngayCap"
+								disabled="true" />
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Đơn Vị Cấp:</label>
-							<form:input class="form-control" type="text" path="donViCap" disabled="true"/>
+							<form:input class="form-control" type="text" path="donViCap"
+								disabled="true" />
 
 						</div>
 
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Xóa" /></td>
+							<td><input class="btn btn-success" type="submit" value="Xóa" /></td>
+							<td><a class="btn btn-success"
+								href="/FBMS/ViewCC/${chungChi.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>
 				</div>
