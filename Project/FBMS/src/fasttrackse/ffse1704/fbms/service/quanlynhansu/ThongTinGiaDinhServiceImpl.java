@@ -31,7 +31,7 @@ public class ThongTinGiaDinhServiceImpl implements ThongTinGiaDinhService {
 
 	@Override
 	public void addThongTinGiaDinh(ThongTinGiaDinh tt) {
-this.thongTinGiaDinhDao.addThongTinGiaDinh(tt);		
+		this.thongTinGiaDinhDao.addThongTinGiaDinh(tt);
 	}
 
 	@Override
@@ -51,12 +51,12 @@ this.thongTinGiaDinhDao.addThongTinGiaDinh(tt);
 
 	@Override
 	public void update(ThongTinGiaDinh tt) {
-this.thongTinGiaDinhDao.update(tt);		
+		this.thongTinGiaDinhDao.update(tt);
 	}
 
 	@Override
 	public void delete(int id) {
-this.thongTinGiaDinhDao.delete(id);		
+		this.thongTinGiaDinhDao.delete(id);
 	}
 
 	@Override
@@ -68,7 +68,5 @@ this.thongTinGiaDinhDao.delete(id);
 	public ThongTinGiaDinh getThongTinGiaDinhUpdate(int id) {
 		return this.thongTinGiaDinhDao.getThongTinGiaDinhUpdate(id);
 	}
-
-	
 
 }

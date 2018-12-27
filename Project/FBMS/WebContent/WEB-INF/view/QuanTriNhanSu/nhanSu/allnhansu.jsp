@@ -173,7 +173,7 @@
 												<%-- <td>${ns.trangThai}</td> --%>
 												
 												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}" class="btn btn-success">Xem TT Chi Tiết</a></td>
-												<td><a href="/FBMS/ViewTTGD/${ns.maNhanVien}" class="btn btn-info">Gia
+												<td><a href="/FBMS/ViewTT/${ns.maNhanVien}" class="btn btn-info">Gia
 														Đình</a></td>
 
 												<td><a href="/FBMS/ViewBC/${ns.maNhanVien}"

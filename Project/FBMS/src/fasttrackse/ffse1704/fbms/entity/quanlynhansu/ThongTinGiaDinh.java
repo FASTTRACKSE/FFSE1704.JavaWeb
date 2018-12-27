@@ -3,8 +3,10 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,8 +21,8 @@ public class ThongTinGiaDinh implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@ManyToOne
-	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", updatable = false, nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
 	@Column(name = "ho_va_ten", nullable = false, length = 255)
@@ -38,16 +40,15 @@ public class ThongTinGiaDinh implements Serializable {
 	@Column(name = "dia_chi", nullable = false, length = 255)
 	private String diaChi;
 
-	public ThongTinGiaDinh(int id, NhanSu nhanSu, String hoVaTen, String quanHe, Date namSinh, String ngheNghiep,
-			String diaChi) {
-		super();
-		this.id = id;
-		this.nhanSu = nhanSu;
-		this.hoVaTen = hoVaTen;
-		this.quanHe = quanHe;
-		this.namSinh = namSinh;
-		this.ngheNghiep = ngheNghiep;
-		this.diaChi = diaChi;
+	@Column(name = "ma_nhan_vien")
+	private String maNhanVien;
+
+	public String getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(String maNhanVien) {
+		this.maNhanVien = maNhanVien;
 	}
 
 	public ThongTinGiaDinh() {

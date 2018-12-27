@@ -74,10 +74,11 @@ public class ThongTinGiaDinhDaoImpl implements ThongTinGiaDinhDao {
 	@Override
 	public void delete(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		ThongTinGiaDinh tt = session.load(ThongTinGiaDinh.class, id);
-		if (null != tt) {
-			session.delete(tt);
-		}
+		String hql = "DELETE FROM ThongTinGiaDinh WHERE id =:id";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		query.executeUpdate();
 
 	}
 

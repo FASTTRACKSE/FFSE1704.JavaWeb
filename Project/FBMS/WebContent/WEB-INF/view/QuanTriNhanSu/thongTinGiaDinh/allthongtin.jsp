@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -56,7 +55,8 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Thông tin gia đình</li>
+							<li class="breadcrumb-item active">Quản lý thông tin gia
+								đình</li>
 						</ol>
 					</div>
 				</div>
@@ -64,7 +64,8 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="addTT"> <span class="fa fa-plus"></span> Thêm mới
+					<a href="/FBMS/addTT/${thongTinGiaDinh.maNhanVien}/"> <span
+						class="fa fa-plus"></span> Thêm mới
 					</a>
 				</div>
 			</div>
@@ -96,9 +97,23 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach chứng chỉ</h4>
+							<h4 class="card-title">Danh sach thông tin gia đình</h4>
+							<br />
+							<p style="text-align: center;">
+							<h5>Mã nhân viên:</h5>
+							${thongTinGiaDinh.maNhanVien}
+							</p>
+							<p style="text-align: center;">
+							<h5>Tên nhân viên:</h5>
+							${thongTinGiaDinh.hoLot} ${thongTinGiaDinh.ten}
+							</p>
+							<p style="text-align: center;">
+							<h5>Ngày sinh:</h5>
+							${thongTinGiaDinh.namSinh}
+							</p>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
+
 							<div class="heading-elements">
 								<ul class="list-inline mb-0">
 									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -117,11 +132,11 @@
 											<tr>
 
 												<th>ID</th>
-												<th>Mã nhân viên</th>
 												<th>Họ Và Tên</th>
 												<th>Quan Hệ</th>
 												<th>Năm Sinh</th>
 												<th>Nghề Nghiệp</th>
+												<th>Địa Chỉ</th>
 												<th>Chức Năng</th>
 											</tr>
 										</thead>
@@ -129,13 +144,15 @@
 										<c:forEach var="tt" items="${thongTinGiaDinh.listGiaDinh}">
 											<tr>
 												<td>${tt.id}</td>
-												<td>${thongTinGiaDinh.maNhanVien}</td>
 												<td>${tt.hoVaTen}</td>
 												<td>${tt.quanHe}</td>
 												<td>${tt.namSinh}</td>
 												<td>${tt.ngheNghiep}</td>
 												<td>${tt.diaChi}</td>
-												<td><a href="#"><button>Sửa</button></a> <a href="#"><button>Xóa</button></a></td>
+												<td><a
+													href="/FBMS/updateTT/${tt.id}&${thongTinGiaDinh.maNhanVien}"><button>Sửa</button></a>
+													<a
+													href="/FBMS/deleteTT/${tt.id}&${thongTinGiaDinh.maNhanVien}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
