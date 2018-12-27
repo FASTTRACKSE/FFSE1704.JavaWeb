@@ -51,11 +51,10 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mã Phòng Ban:</label>
-							<form:select path="maPhongBan" class="custom-select block round"
-								id="customSelect">
+							<form:select path="maPhongBan"
+								class="custom-select block round" id="customSelect">
 								<c:forEach items="${listPhongBan}" var="lpb">
-									<form:option value="${lpb.maPhongBan}"
-										label="${lpb.tenPhongBan}" />
+									<form:option value="${lpb.maPhongBan}" label="${lpb.tenPhongBan}" />
 								</c:forEach>
 							</form:select>
 						</div>
@@ -63,46 +62,44 @@
 
 						<div class="form-group col-sm-6">
 							<label>Mã Chức Danh</label>
-							<form:select path="maChucDanh" class="custom-select block round"
-								id="customSelect">
+							<form:select path="maChucDanh"
+								class="custom-select block round" id="customSelect">
 								<c:forEach items="${listChucDanh}" var="lcd">
-									<form:option value="${lcd.maChucDanh}"
-										label="${lcd.tenChucDanh}" />
+									<form:option value="${lcd.maChucDanh}" label="${lcd.tenChucDanh}" />
 								</c:forEach>
 							</form:select>
 
 						</div>
-
+						
 						<div class="form-group col-sm-6">
-							<label for="thanhPhoId">Tinh thanh</label>
-
-							<form:select path="tinhThanhPho" type="text" id="thanhPhoId"
-								class="custom-select block round" name="thanhPhoSelect"
-								onchange="clickComboboxThanhPho()">
-								<option value="" selected="selected" disabled>Chọn
-									Thành phố</option>
+							<label>Tinh thanh</label>
+							
+							 <form:select path="tinhThanhPho"
+								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
 								<c:forEach items="${listTinhThanh}" var="ltt">
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
-							</form:select>
-						</div>
-
-						<div class="form-group col-sm-6">
-							<label for="quanHuyenId">Quận/Huyện</label>
-							<form:select path="maQuanHuyen" id="quanHuyenId" name="quanHuyen"
-								type="text" class="form-control" onchange="clickComboboxQuan()">
-								<option value="" selected="selected" disabled>Chọn Quận/Huyện</option>
-							</form:select>
+							</form:select> 
 
 						</div>
-
+						
 						<div class="form-group col-sm-6">
-							<label for="phuongXaId">Xã/Phường</label>
-							<form:select path="maXaPhuong" type="text" id="phuongXaId"
-								class="form-control" name="phuongXaSelect" >
-								<option value="noPhuongXa" selected="selected">Chọn Xã/Phường</option>
-
+							<label>Quan Huyen</label>
+							
+							 <form:select path="maQuanHuyen"
+								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
+								<option value="" selected="selected" disabled="disabled">Chon quan huyen</option>
 							</form:select>
+
+						</div>
+						
+						<div class="form-group col-sm-6">
+							<label>Xa Phuong</label>
+							
+							 <form:select path="maXaPhuong"
+								class="custom-select block round" id="idPhuongXa" >
+								<option value="" selected="selected" disabled="disabled">Chon xa phuong</option>
+							</form:select> 
 
 						</div>
 						<div class="form-group col-sm-6">
@@ -207,76 +204,74 @@
 		</div>
 	</div>
 </div>
-<!-- Ajax Select City from Quanlt -->
-<script type="text/javascript">
-
-	function clickComboboxThanhPho() {
-		var maThanhPho = $("#thanhPhoId").val(); //click thanh pho
-
-		$('#quanHuyenId option').remove(); // delete old data
-		$('#phuongXaId option').remove();
-
-		$.ajax({
-			url : "/FBMS/selectQuanHuyen/" + maThanhPho,
-			dataType : "json",
-			success : function(data) {
-				$('#quanHuyenId').append($('<option>', {
-					value : 'noQuanHuyen',
-					text : 'Chọn Quận/Huyện'
-				}));
-				$('#quanHuyenId option[value=noQuanHuyen]').attr('disabled',
-						true);
-
-				for (var i = 0; i < data.length; i++) {
-					$('#quanHuyenId').append($('<option>', {
-						value : data[i].maQuanHuyen,
-						text : data[i].tenQuanHuyen
-					}));
+	
+	 <script type="text/javascript">
+	 function selectThanhPho(){
+    	 var maThanhPho = $("#idThanhPho").val(); /* when click thanh pho */
+    	 $('#idQuanHuyen option').remove();
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonquan/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idQuanHuyen').append($('<option>', { // insert default data in quan huyen
+             		    value: 'noQuanHuyen',
+             		    text: 'Chọn Quận Huyện'
+             		}));
+        		$('#idQuanHuyen option[value=noQuanHuyen]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idQuanHuyen').append($('<option>', {
+             		    value: data[i].maQuanHuyen,
+             		    text: data[i].tenQuanHuyen
+             		}));
 				}
-
-				$('#phuongXaId').append($('<option>', {
-					value : 'noPhuongXa',
-					text : 'Chọn Phường/Xã'
-				}));
-				$('#phuongXaId option[value=noPhuongXa]')
-						.attr('disabled', true);
-
-			}
-		});
-	};
-</script>
-<!-- Ajax Select QuanHuyen from Quanlt -->
-<script type="text/javascript">
-	function clickComboboxQuan() { //click quan huyen
-		var maQuanHuyen = $("#quanHuyenId").val();
-
-		$('#phuongXaId option').remove(); // xoa old data
-
-		$.ajax({
-			url : "/FBMS/selectXaPhuong/" + maQuanHuyen,
-			dataType : "json",
-			success : function(data) {
-
-				$('#phuongXaId').append($('<option>', {//default data
-					value : 'noPhuongXa',
-					text : 'Chọn Phường/Xã'
-				}));
-				$('#phuongXaId option[value=noPhuongXa]')
-						.attr('disabled', true);
-
-				for (var i = 0; i < data.length; i++) {//new data
-					$('#phuongXaId').append($('<option>', {
-						value : data[i].maXaPhuong,
-						text : data[i].tenXaPhuong
-					}));
+        		
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+         		    value: 'quanHuyen',
+         		    text: 'Chọn Xã Phường'
+         		}));
+    		$('#idPhuongXa option[value=quanHuyen]').attr('disabled', true);
+        		
+        	
+         }});
+     };
+	 </script>
+	 
+	 <!-- chon quan huyen ra xa phuong -->
+	 
+	  <script type="text/javascript">
+	 function selectQuan(){
+    	 var maThanhPho = $("#idQuanHuyen").val(); /* when click thanh pho */
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonXaPhuong/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+             		    value: 'phuongxa',
+             		    text: 'Chọn Xã Phường'
+             		}));
+        		$('#idPhuongXa option[value=phuongxa]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idPhuongXa').append($('<option>', {
+             		    value: data[i].maXaPhuong,
+             		    text: data[i].tenXaPhuong
+             		}));
 				}
-
-			}
-		});
-	};
-</script>
+        		
+        	
+         }});
+     };
+	 </script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 <!-- ////////////////////////////////////////////////////////////////////////////-->
+<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 
 <script type="text/javascript"
 	src="<c:url value="/resources/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js"/> "></script>
