@@ -101,23 +101,42 @@ public class NhanSuServiceImpl implements NhanSuService {
 
 
 	@Override
-	public List<ThanhPho> listTinhThanh() {
-		
-		return nhanSuDao.listTinhThanh();
+	public List<ThanhPho> listTinhThanhPho() {
+		return nhanSuDao.listTinhThanhPho();
 	}
 
 
-	@Override
-	public List<QuanHuyen> listQuanHuyen() {
-		
-		return nhanSuDao.listQuanHuyen();
-	}
+
 
 
 	@Override
-	public List<XaPhuong> listXaPhuong() {
+	public List<QuanHuyen> listQuanHuyenbyID(String maTinhThanh) {
 		// TODO Auto-generated method stub
-		return nhanSuDao.listXaPhuong();
+		return nhanSuDao.listQuanHuyenbyID(maTinhThanh);
 	}
+
+
+
+
+
+	@Override
+	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen) {
+		// TODO Auto-generated method stub
+		return nhanSuDao.listPhuongXabyID(maQuanHuyen);
+	}
+
+
+//	@Override
+//	public List<QuanHuyen> listQuanHuyen() {
+//		// TODO Auto-generated method stub
+//		return nhanSuDao.listQuanHuyen();
+//	}
+//
+//
+//	@Override
+//	public List<XaPhuong> listXaPhuong() {
+//		// TODO Auto-generated method stub
+//		return nhanSuDao.listXaPhuong();
+//	}
 
 }

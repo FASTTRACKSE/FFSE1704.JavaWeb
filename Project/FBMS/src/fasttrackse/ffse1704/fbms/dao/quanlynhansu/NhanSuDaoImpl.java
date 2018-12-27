@@ -2,11 +2,10 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
@@ -115,37 +113,37 @@ public class NhanSuDaoImpl implements NhanSuDao {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<ThanhPho> listTinhThanh() {
+	public List<ThanhPho> listTinhThanhPho() {
 		Session session = sessionFactory.getCurrentSession();
-		List<ThanhPho> listTinhThanh = session.createQuery("FROM ThanhPho").getResultList();
-		return listTinhThanh;
+		List<ThanhPho> dsTinhThanh = session.createQuery("FROM ThanhPho").getResultList();
+		return dsTinhThanh;
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<QuanHuyen> listQuanHuyen() {
-		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("rawtypes")
-		Query query = session.createQuery("FROM QuanHuyen");
-		query.setFirstResult(0);  
-		query.setMaxResults(10);
-		
-		List<QuanHuyen> listQuanHuyen = query.list();
-		return listQuanHuyen;
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<XaPhuong> listXaPhuong() {
-		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("rawtypes")
-		Query query = session.createQuery("FROM XaPhuong");
-		query.setFirstResult(0);  
-		query.setMaxResults(10);
-		 
-		List<XaPhuong> listXaPhuong = query.list();
-		return listXaPhuong;
-	}
+//	@Override
+//	@SuppressWarnings("unchecked")
+//	public List<QuanHuyen> listQuanHuyen() {
+//		Session session = sessionFactory.getCurrentSession();
+//		@SuppressWarnings("rawtypes")
+//		Query query = session.createQuery("FROM QuanHuyen");
+//		query.setFirstResult(0);  
+//		query.setMaxResults(10);
+//		
+//		List<QuanHuyen> listQuanHuyen = query.list();
+//		return listQuanHuyen;
+//	}
+//
+//	@Override
+//	@SuppressWarnings("unchecked")
+//	public List<XaPhuong> listXaPhuong() {
+//		Session session = sessionFactory.getCurrentSession();
+//		@SuppressWarnings("rawtypes")
+//		Query query = session.createQuery("FROM XaPhuong");
+//		query.setFirstResult(0);  
+//		query.setMaxResults(10);
+//		 
+//	QuanHuyen	List<XaPhuong> listXaPhuong = query.list();
+//		return listXaPhuong;
+//	}
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -153,9 +151,23 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("rawtypes")
 		Query query = (Query) session.createQuery("from QuanHuyen qh where qh.matp = :maThanhPho");
+		query.setParameter("maThanhPho", maThanhPho);
 		List<QuanHuyen> listQuanHuyen = query.list();
 		return listQuanHuyen;
 	}
+
+	@Override
+	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		@SuppressWarnings("rawtypes")
+		Query query =  session.createQuery("from XaPhuong xp where xp.maqh = :maQuanHuyen");
+		query.setParameter("maQuanHuyen", maQuanHuyen);
+		@SuppressWarnings("unchecked")
+		List<XaPhuong> listXaPhuong = query.list();
+		return listXaPhuong;
+	}
+
+
 
 	
 

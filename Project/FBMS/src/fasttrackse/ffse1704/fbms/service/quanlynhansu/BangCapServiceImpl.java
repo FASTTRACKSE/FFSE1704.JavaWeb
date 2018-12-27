@@ -83,4 +83,11 @@ public class BangCapServiceImpl implements BangCapService{
 		return bangCapDao.listTrinhDo();
 	}
 
+
+	@Override
+	public BangCap getBangCapIdBangCap(String id) {
+		
+		return bangCapDao.getBangCapIdBangCap(id);
+	}
+
 }

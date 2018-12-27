@@ -81,20 +81,18 @@ public class NhanSuController {
 	public String ShowViewADD(Model model) {
 
 		model.addAttribute("nhanSu", new NhanSu());
-		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
-		model.addAttribute("listChucDanh",listChucDanh);
+
+		model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
 		
-		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
-		model.addAttribute("listPhongBan",listPhongBan);
+		model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
 		
-		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
-		model.addAttribute("listTinhThanh",listTinhThanh);
+		model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
 		
-		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
-		model.addAttribute("listQuanHuyen",listQuanHuyen);
-		
-		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
-		model.addAttribute("listXaPhuong",listXaPhuong);
+//		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+//		model.addAttribute("listQuanHuyen",listQuanHuyen);
+//		
+//		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+//		model.addAttribute("listXaPhuong",listXaPhuong);
 		
 		return "QuanTriNhanSu/nhanSu/ViewAddNhanSu";
 
@@ -137,14 +135,14 @@ public class NhanSuController {
 		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
 		model.addAttribute("listPhongBan",listPhongBan);
 		
-		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
+		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
 		model.addAttribute("listTinhThanh",listTinhThanh);
-		
-		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
-		model.addAttribute("listQuanHuyen",listQuanHuyen);
-		
-		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
-		model.addAttribute("listXaPhuong",listXaPhuong);
+//		
+//		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+//		model.addAttribute("listQuanHuyen",listQuanHuyen);
+//		
+//		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+//		model.addAttribute("listXaPhuong",listXaPhuong);
 		return "QuanTriNhanSu/nhanSu/edit_nhansu";
 		
 	}
@@ -179,14 +177,10 @@ public class NhanSuController {
 		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
 		model.addAttribute("listPhongBan",listPhongBan);
 		
-		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanh();
+		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
 		model.addAttribute("listTinhThanh",listTinhThanh);
 		
-		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
-		model.addAttribute("listQuanHuyen",listQuanHuyen);
-		
-		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
-		model.addAttribute("listXaPhuong",listXaPhuong);
+
 
 		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
 	}
@@ -221,10 +215,43 @@ public class NhanSuController {
 
 	}
 	
-	@RequestMapping(value = "chonquan/maTinhThanh", method = RequestMethod.GET)
-	public @ResponseBody String chonQuanHuyen(@PathVariable String maTinhThanh) {
-//		List<QuanHuyen> listQuanHuyen = nhanSuService.listQuanHuyenbyID(maTinhThanh);
-		return maTinhThanh;
+	@RequestMapping(value = "/QuanTriNhanSu/chonquan/{maTinhThanh}", method = RequestMethod.GET,produces ="text/plain;charset=UTF-8")
+	public @ResponseBody String chonQuanHuyen(@PathVariable String maTinhThanh,Model model) {
+		List<QuanHuyen> listQuanHuyen = nhanSuService.listQuanHuyenbyID(maTinhThanh);
+		//model.addAttribute("listQuanHuyen",listQuanHuyen);
+		String json = "[";
+		for (int i=0;i<=listQuanHuyen.size()-1;i++) {
+			if(i==listQuanHuyen.size()-1) {
+				json+="{\"maQuanHuyen\":" + "\""+listQuanHuyen.get(i).getMaqh()+"\"," +"\"tenQuanHuyen\":" 
+			+"\""+listQuanHuyen.get(i).getName()+"\"}";
+			}else {
+				json+="{\"maQuanHuyen\":" +"\""+listQuanHuyen.get(i).getMaqh()+"\"," +"\"tenQuanHuyen\":"
+			+"\""+listQuanHuyen.get(i).getName()+"\"},";
+			}
+		}
+		json+="]";
+		return json;
+		//return listQuanHuyen.get(0).getName();
+		
+	}
+	
+	@RequestMapping(value = "/QuanTriNhanSu/chonXaPhuong/{maQuanHuyen}", method = RequestMethod.GET,produces ="text/plain;charset=UTF-8")
+	public @ResponseBody String chonXaPhuong(@PathVariable String maQuanHuyen,Model model) {
+		List<XaPhuong> listXaPhuong = nhanSuService.listPhuongXabyID(maQuanHuyen);
+		//model.addAttribute("listQuanHuyen",listQuanHuyen);
+		String json = "[";
+		for (int i=0;i<=listXaPhuong.size()-1;i++) {
+			if(i==listXaPhuong.size()-1) {
+				json+="{\"maXaPhuong\":" + "\""+listXaPhuong.get(i).getXaid()+"\"," +"\"tenXaPhuong\":" 
+			+"\""+listXaPhuong.get(i).getName()+"\"}";
+			}else {
+				json+="{\"maXaPhuong\":" +"\""+listXaPhuong.get(i).getXaid()+"\"," +"\"tenXaPhuong\":"
+			+"\""+listXaPhuong.get(i).getName()+"\"},";
+			}
+		}
+		json+="]";
+		return json;
+		//return listQuanHuyen.get(0).getName();
 		
 	}
 		

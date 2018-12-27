@@ -47,8 +47,8 @@
 							<form:input path="id" type="hidden" />
 							</div>
 						<div class="form-group col-sm-6">
-							<label>Mã Nhân Viên:</label>
-							<form:input class="form-control" path="maNhanVien" 
+							<!-- <label>Mã Nhân Viên:</label> -->
+							<form:hidden class="form-control" path="maNhanVien" 
 								value="${bangCap.maNhanVien}" />
 						</div>
 						<div class="form-group col-sm-6">

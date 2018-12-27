@@ -29,9 +29,6 @@ public class ThanhPho implements Serializable {
 	@Column(name = "type", nullable = false, length = 30)
 	private String type;
 
-	@OneToMany(mappedBy = "thanhPho", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<NhanSu> listNhanSuTP;
-
 	public String getMatp() {
 		return matp;
 	}
@@ -54,14 +51,6 @@ public class ThanhPho implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public List<NhanSu> getListNhanSuTP() {
-		return listNhanSuTP;
-	}
-
-	public void setListNhanSuTP(List<NhanSu> listNhanSuTP) {
-		this.listNhanSuTP = listNhanSuTP;
 	}
 
 }

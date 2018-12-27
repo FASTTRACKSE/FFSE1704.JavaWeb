@@ -20,10 +20,11 @@ public interface NhanSuDao {
 	public boolean checkExistMa(String maNS);
 	public List<ChucDanh> listChucDanh();
 	public List<PhongBan> listPhongBan();
-	public List<ThanhPho> listTinhThanh();
-	public List<QuanHuyen> listQuanHuyen();
+	public List<ThanhPho> listTinhThanhPho();
+//	public List<QuanHuyen> listQuanHuyen();
 	public List<QuanHuyen> listQuanHuyenbyID(String maThanhPho);
-	public List<XaPhuong> listXaPhuong();
+	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen);
+//	public List<XaPhuong> listXaPhuong();
 	
 	
 }

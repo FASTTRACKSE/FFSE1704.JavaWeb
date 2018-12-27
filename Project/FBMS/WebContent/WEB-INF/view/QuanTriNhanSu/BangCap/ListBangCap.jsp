@@ -143,7 +143,7 @@
 												<td>${bc.xepLoai}</td>
 												<td>${bc.noiCap}</td>
 	
-												<td><a href="editBC/${bc.id}"><button>sửa</button></a>
+												<td><a href="/FBMS/editBC/${bc.id}&${bangCap.maNhanVien}"><button>sửa</button></a>
 
 													<a href="DeleteBC/${bc.id}"><button>Xoa</button></a></td>
 

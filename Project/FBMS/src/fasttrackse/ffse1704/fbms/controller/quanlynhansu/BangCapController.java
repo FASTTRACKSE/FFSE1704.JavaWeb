@@ -71,32 +71,33 @@ public class BangCapController {
 	}
 	
 	
-	@RequestMapping(value = "/ViewBC/DeleteBC/{id}", method = RequestMethod.GET)
-	public String ViewDeleteBC(@PathVariable("id") int id, Model model) {
+	@RequestMapping(value = "/DeleteBC/{id}&{maNhanVien}", method = RequestMethod.GET)
+	public String ViewDeleteBC(@PathVariable("id") int id,@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
-		model.addAttribute("bangCap", bangCapService.getBangCapUpdate(id));
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
 
-		return "QuanTriNhanSu/BangCap/editBangCap";
+		return "QuanTriNhanSu/BangCap/deleteBangCap";
 
 	}
 
 	// danh sach edit
-	@RequestMapping(value = "/ViewBC/editBC/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") int id, Model model) {
+	@RequestMapping(value = "/editBC/{id}&{maNhanVien}", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") int id,@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
-		model.addAttribute("bangCap", bangCapService.getBangCapUpdate(id));
-
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
 		return "QuanTriNhanSu/BangCap/editBangCap";
 
 	}
 
 	// UPDATE
 	@RequestMapping(value = "/ViewBC/update", method = RequestMethod.POST)
-	public String editSave(@ModelAttribute("bangCap") BangCap bangCap, Model model) {
+	public String editSave(@ModelAttribute("bangCap2") BangCap bangCap, Model model) {
 
 		bangCapService.update(bangCap);
 
-		return "QuanTriNhanSu/BangCap/ListBangCap";
+		return "redirect:/QuanTriNhanSu/danhsach_nhansu/1";
 
 	}
 	

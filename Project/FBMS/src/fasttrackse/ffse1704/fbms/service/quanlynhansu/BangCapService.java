@@ -18,4 +18,5 @@ public interface BangCapService {
 	public boolean checkExistMa(String maNS);
 	public BangCap getBangCapUpdate(int id);
 	public List<TrinhDo> listTrinhDo();
+	public BangCap getBangCapIdBangCap(String id);
 }

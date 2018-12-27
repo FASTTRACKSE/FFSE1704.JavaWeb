@@ -4,6 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/daterange/daterangepicker.css"/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/datetime/bootstrap-datetimepicker.css"/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/vendors/css/pickers/pickadate/pickadate.css"/>">
+
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/plugins/pickers/daterange/daterange.css"/>">
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+
 <div class="app-content content container-fluid">
 	<div class="content-wrapper">
 
@@ -71,7 +82,7 @@
 							<label>Tinh thanh</label>
 							
 							 <form:select path="tinhThanhPho"
-								class="custom-select block round" id="customSelect">
+								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
 								<c:forEach items="${listTinhThanh}" var="ltt">
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
@@ -83,10 +94,8 @@
 							<label>Quan Huyen</label>
 							
 							 <form:select path="maQuanHuyen"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listQuanHuyen}" var="lqh">
-									<form:option value="${lqh.maqh}" label="${lqh.name}" />
-								</c:forEach>
+								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
+								<option value="" selected="selected" disabled="disabled">Chon quan huyen</option>
 							</form:select>
 
 						</div>
@@ -95,14 +104,11 @@
 							<label>Xa Phuong</label>
 							
 							 <form:select path="maXaPhuong"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listXaPhuong}" var="lxp">
-									<form:option value="${lxp.xaid}" label="${lxp.name}" />
-								</c:forEach>
+								class="custom-select block round" id="idPhuongXa" >
+								<option value="" selected="selected" disabled="disabled">Chon xa phuong</option>
 							</form:select> 
-							
+
 						</div>
-							<br>
 						<div class="form-group">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
@@ -204,5 +210,86 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	 function selectThanhPho(){
+    	 var maThanhPho = $("#idThanhPho").val(); /* when click thanh pho */
+    	 $('#idQuanHuyen option').remove();
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonquan/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idQuanHuyen').append($('<option>', { // insert default data in quan huyen
+             		    value: 'noQuanHuyen',
+             		    text: 'Chọn Quận Huyện'
+             		}));
+        		$('#idQuanHuyen option[value=noQuanHuyen]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idQuanHuyen').append($('<option>', {
+             		    value: data[i].maQuanHuyen,
+             		    text: data[i].tenQuanHuyen
+             		}));
+				}
+        		
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+         		    value: 'quanHuyen',
+         		    text: 'Chọn Xã Phường'
+         		}));
+    		$('#idPhuongXa option[value=quanHuyen]').attr('disabled', true);
+        		
+        	
+         }});
+     };
+	 </script>
+	 
+	 <!-- chon quan huyen ra xa phuong -->
+	 
+	  <script type="text/javascript">
+	 function selectQuan(){
+    	 var maThanhPho = $("#idQuanHuyen").val(); /* when click thanh pho */
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonXaPhuong/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+             		    value: 'phuongxa',
+             		    text: 'Chọn Xã Phường'
+             		}));
+        		$('#idPhuongXa option[value=phuongxa]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idPhuongXa').append($('<option>', {
+             		    value: data[i].maXaPhuong,
+             		    text: data[i].tenXaPhuong
+             		}));
+				}
+        		
+        	
+         }});
+     };
+	 </script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.date.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.time.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/pickadate/legacy.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/vendors/js/pickers/daterange/daterangepicker.js"/> "></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/scripts/pickers/dateTime/picker-date-time.js"/> "></script>
+
+

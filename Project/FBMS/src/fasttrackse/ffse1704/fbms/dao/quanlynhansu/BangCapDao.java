@@ -20,5 +20,6 @@ public interface BangCapDao {
 	public void delete(int id);
 	public boolean checkExistMa(String maNS);
 	public BangCap getBangCapUpdate(int id);
+	public BangCap getBangCapIdBangCap(String id);
 	public List<TrinhDo> listTrinhDo();
 }

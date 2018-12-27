@@ -110,4 +110,11 @@ public class BangCapDaoImpl implements BangCapDao {
 		return listTrinhDo;
 	}
 
+	@Override
+	public BangCap getBangCapIdBangCap(String id) {
+		Session session = sessionFactory.getCurrentSession();
+		BangCap bc = session.get(BangCap.class, id);
+		return bc;
+	}
+
 }
