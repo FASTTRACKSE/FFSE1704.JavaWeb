@@ -160,7 +160,7 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String DonChoPheDuyet(@PathVariable("id") int id, final RedirectAttributes redirectAttributes)
 			throws IllegalStateException, IOException {
 		donNghiPhepService.getByIdDonNghiPhep(id);
-
+	
 		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
 		return "/QuanLyVangNghi/minhtq/listDonNghiPhep";
 

@@ -382,7 +382,7 @@
 				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 
 
-				<!--  Quản lí Vắng nghỉ minhtq -->
+					<!--  Quản lí Vắng nghỉ minhtq -->
 
 				<li class="navigation-header"><span>quản lý vắng nghỉ</span><i
 					class=" ft-minus" data-toggle="tooltip" data-placement="right"
@@ -395,34 +395,32 @@
 							kê danh sách</span></a>
 					<ul class="menu-content">
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepNhap/1"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1"/>"
 							class="menu-item">danh sách nháp</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepChoDuyet/1"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2"/>"
 							class="menu-item">danh sách chờ duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet/1"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3"/>"
 							class="menu-item">danh sách duyệt</a></li>
 						<li><a
-							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepTuChoi/1"/>"
+							href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/TT4"/>"
 							class="menu-item">danh sách từ chối</a></li>
 					</ul></li>
 				<li class=" nav-item pbho_so"><a href="#"><i
-						class="ft-users"></i><span data-i18n="" class="menu-title">thống
-							kê loại ngày nghỉ</span></a>
+						class="ft-users"></i><span data-i18n="" class="menu-title">danh mục</span></a>
 					<ul class="menu-content">
 						<li><a
 							href="<c:url value="/QuanLyVangNghi/minhtq/listLoaiNgayNghi"/>"
 							class="menu-item">danh sách loại ngày nghỉ</a></li>
-					</ul></li>
-				<li class=" nav-item pbho_so"><a href="#"><i
-						class="ft-users"></i><span data-i18n="" class="menu-title">thống
-							kê trạng thái</span></a>
+					</ul>
 					<ul class="menu-content">
 						<li><a
 							href="<c:url value="/QuanLyVangNghi/minhtq/listTrangThai"/>"
 							class="menu-item">danh sách trạng thái</a></li>
-					</ul></li>
+					</ul>
+					</li>
+				
 
 
 				<!-- hết Quản lí Vắng nghỉ minhtq -->
