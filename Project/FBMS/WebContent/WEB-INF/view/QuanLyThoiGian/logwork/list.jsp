@@ -67,6 +67,16 @@
 						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
 						mới</a>
 				</div>
+				<div class="dropdown">
+								<button class="dropbtn">Tháng ${month}</button>
+								<div class="dropdown-content">
+									<c:forEach var="i" begin="1" end="12">
+										<a
+											href="http://localhost:8080/FBMS/QuanLyThoiGian/Logwork/listMonth/${i}"><c:out
+												value="${i}" /></a>
+									</c:forEach>
+								</div>
+							</div>
 			</div>
 		</div>
 		<!-- End Path -->

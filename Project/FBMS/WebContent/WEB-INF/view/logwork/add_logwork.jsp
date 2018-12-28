@@ -25,8 +25,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyThoiGian/Logwork/list" />'>Danh
-									sách logwork</a></li>
+								href='<c:url value="/logwork/list" />'>Danh sách logwork</a></li>
 							<li class="breadcrumb-item active">Thêm mới logwork</li>
 						</ol>
 					</div>
@@ -78,28 +77,22 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
-							<div class='input-group date' id='datetimepicker11'>
-								<form:input class="form-control" type="text"
-									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
-								<span class="input-group-addon"> <span
-									class="fa fa-calendar"></span>
-								</span>
-							</div>
+							<form:input class="form-control" type="text"
+								path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
+
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc</label>
-							<div class='input-group date' id='datetimepicker5'>
-								<form:input path="thoiGianKetThuc" class="form-control"
-									type="text" />
-								<span class="input-group-addon"> <span
-									class="fa fa-calendar"></span>
-								</span>
-							</div>
+							<form:input path="thoiGianKetThuc" class="form-control"
+								type="text" />
+
 						</div>
 
 						<div class="col-sm-12 text-center">
-							<button type="submit" name = "action" value="luuNhap" class="btn btn-success">Lưu nháp</button>
-							<button type="submit" name = "action" value="submit" class="btn btn-success">Submit</button>
+							<button type="submit" name="action" value="luuNhap"
+								class="btn btn-success">Lưu nháp</button>
+							<button type="submit" name="action" value="submit"
+								class="btn btn-success">Submit</button>
 						</div>
 					</form:form>
 				</div>

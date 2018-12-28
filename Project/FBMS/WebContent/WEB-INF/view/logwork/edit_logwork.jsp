@@ -10,15 +10,15 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa chức năng</h3>
+				<h3 class="content-header-title mb-0">Sửa Logwork</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriHeThong/chuc_nang/view/danhSachChucNang" />'>Danh
-									sách chức năng</a></li>
+								href='<c:url value="/logwork/list" />'>Danh
+									sách Logwork</a></li>
 							<li class="breadcrumb-item active">Sửa chức năng</li>
 						</ol>
 					</div>
@@ -95,7 +95,7 @@
 								placeholder="${editlogwork.trangThaiLogwork.tenTrangThai}" />
 						</div>
 						<div class="col-sm-12 text-center">
-							<button type="submit" name="action" value="edit"
+							<button type="submit" name="action" value="editlogwork"
 									class="btn btn-success">Sửa</button>
 							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 1 }">
 								<button type="submit" name="action" value="luuNhap"

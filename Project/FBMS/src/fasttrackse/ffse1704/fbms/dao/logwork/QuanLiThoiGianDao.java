@@ -51,7 +51,7 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		Session session = this.sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.delete(session.get(ThoiGianLamViec.class, id));
@@ -130,4 +130,15 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 		List<VuVaiTroDuAn> listVaiTroDuAn = session.createQuery("from VuVaiTroDuAn").getResultList();
 		return listVaiTroDuAn;
 	}
+	
+	@Override
+	public List<ThoiGianLamViec> listOneMonth(String month){
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from ThoiGianLamViec so where MONTH(so.thoiGianBatDau) = :month");
+		query.setParameter("month", Integer.parseInt(month));
+		List<ThoiGianLamViec> logwork = (List<ThoiGianLamViec>) query.getResultList();
+		return logwork;
+		
+	}
+	
 }

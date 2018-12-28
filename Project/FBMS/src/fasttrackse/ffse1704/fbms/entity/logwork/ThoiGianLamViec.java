@@ -1,5 +1,7 @@
 package fasttrackse.ffse1704.fbms.entity.logwork;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "thoi_gian_cong_viec")
@@ -47,11 +53,15 @@ public class ThoiGianLamViec {
 	@Column(name = "mo_ta", nullable = true, length = 11)
 	private String moTa;
 
-	@Column(name = "thoi_gian_bat_dau", nullable = true, length = 25)
-	private String thoiGianBatDau;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	@Column(name = "thoi_gian_bat_dau", nullable = true)
+	private Date thoiGianBatDau;
 
-	@Column(name = "thoi_gian_ket_thuc", nullable = true, length = 25)
-	private String thoiGianKetThuc;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	@Column(name = "thoi_gian_ket_thuc", nullable = true)
+	private Date thoiGianKetThuc;
 
 	@Column(name = "nhan_xet_PM", nullable = true)
 	private String nhanXetPM;
@@ -83,19 +93,19 @@ public class ThoiGianLamViec {
 		this.moTa = moTa;
 	}
 
-	public String getThoiGianBatDau() {
+	public Date getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
 
-	public void setThoiGianBatDau(String thoiGianBatDau) {
+	public void setThoiGianBatDau(Date thoiGianBatDau) {
 		this.thoiGianBatDau = thoiGianBatDau;
 	}
 
-	public String getThoiGianKetThuc() {
+	public Date getThoiGianKetThuc() {
 		return thoiGianKetThuc;
 	}
 
-	public void setThoiGianKetThuc(String thoiGianKetThuc) {
+	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
@@ -144,7 +154,7 @@ public class ThoiGianLamViec {
 	}
 
 	public void setTrangThaiLogwork(VuTrangThai trangThaiLogwork) {
-		this.trangThaiLogwork = trangThaiLogwork;
+		this.trangThaiLogwork = trangThaiLogwork; 
 	}
 
 	public void setMaDuAn(VuDuAnLogwork maDuAn) {
@@ -157,8 +167,8 @@ public class ThoiGianLamViec {
 	}
 
 	public ThoiGianLamViec(int id, VuDuAnLogwork maDuAn, VuNhanVien maNhanVien, VuVaiTroDuAn maVaiTroDuAn,
-			VuPhongBan maPhongBan, VuTrangThai trangThaiLogwork, String tenCongViec, String moTa, String thoiGianBatDau,
-			String thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
+			VuPhongBan maPhongBan, VuTrangThai trangThaiLogwork, String tenCongViec, String moTa, Date thoiGianBatDau,
+			Date thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;

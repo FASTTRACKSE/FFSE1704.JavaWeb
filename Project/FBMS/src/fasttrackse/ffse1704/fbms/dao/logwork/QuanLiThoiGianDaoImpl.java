@@ -15,7 +15,7 @@ public interface QuanLiThoiGianDaoImpl {
 
 	public void update(ThoiGianLamViec thoiGianLamViec);
 
-	public void delete(String id);
+	public void delete(int id);
 
 	public ThoiGianLamViec findByIdThoiGianLamViec(String id);
 
@@ -32,5 +32,7 @@ public interface QuanLiThoiGianDaoImpl {
 	public List<VuPhongBan> listPhongBan();
 
 	public ThoiGianLamViec findByIdLogwork(int id);
+
+	public List<ThoiGianLamViec> listOneMonth(String month);
 
 }

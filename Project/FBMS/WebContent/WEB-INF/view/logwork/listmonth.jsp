@@ -29,6 +29,21 @@
 	color: #d9534f;
 }
 
+#datatable tr td:last-child {
+	letter-spacing: 15px;
+	min-width: 100px;
+	text-align: center !important;
+}
+
+#datatable>thead>tr>th:last-child[class*="sort"]::after {
+	content: ""
+}
+
+#datatable>thead>tr>th:last-child[class*="sort"]::before {
+	content: ""
+}
+</style>
+<style>
 .dropbtn {
 	background-color: #4CAF50;
 	color: white;
@@ -80,20 +95,6 @@
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
 }
-
-#datatable tr td:last-child {
-	letter-spacing: 15px;
-	min-width: 100px;
-	text-align: center !important;
-}
-
-#datatable>thead>tr>th:last-child[class*="sort"]::after {
-	content: ""
-}
-
-#datatable>thead>tr>th:last-child[class*="sort"]::before {
-	content: ""
-}
 </style>
 <div class="app-content content container-fluid">
 	<div class="content-wrapper">
@@ -106,28 +107,16 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/list" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách Logwork</li>
+								href='<c:url value="/home" />'>Home</a></li>
+							<li class="breadcrumb-item active">Danh sách Logwork Theo
+								Tháng</li>
 						</ol>
 					</div>
 				</div>
 			</div>
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
-					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "addlogwork"/>" class="btn btn-primary"><span
-						class="fa fa-plus"></span> Thêm mới</a>
-				</div>
-			</div>
-			<div class="content-header-left col-md-6">
-				<div class="dropdown">
-					<button class="dropbtn">Tháng ${month}</button>
-					<div class="dropdown-content">
-						<c:forEach var="i" begin="1" end="12">
-							<a href="listMonth/${i}"><c:out value="${i}" /></a>
-						</c:forEach>
-					</div>
-				</div>
+					class="btn-group float-md-right" id="add-new"></div>
 			</div>
 		</div>
 		<!-- End Path -->
@@ -169,10 +158,22 @@
 								</ul>
 							</div>
 						</div>
+
+						<div class="card-header">
+							<div class="dropdown">
+								<button class="dropbtn">Tháng ${month}</button>
+								<div class="dropdown-content">
+									<c:forEach var="i" begin="1" end="12">
+										<a href="/FBMS/logwork/listMonth/${i}"><c:out
+												value="${i}" /></a>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
-									<table id="datatable"
+									<table
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
@@ -181,28 +182,28 @@
 												<th scope="col">Tên Nhân Viên</th>
 												<th scope="col">Vai Trò</th>
 												<th scope="col">Phòng Ban</th>
-												<th scope="col">Mô Tả</th>
+												<th scope="col">Công Việc</th>
 												<th scope="col">Trạng Thái</th>
 												<th scope="col">Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="lg" items="${logwork}">
+											<c:forEach var="lg" items="${listMonth}">
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn.tenDuAn}</td>
-													<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
+													<td>${lg.maNhanVien.hoDem}${lg.maNhanVien.ten}</td>
 													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 													<td>${lg.maPhongBan.tenPhongBan}</td>
-													<td>${lg.moTa}</td>
+													<td>${lg.tenCongViec}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td><a href="view/${lg.id }"><button
+													<td><a href="/FBMS/logwork/view/${lg.id }"><button
 																class="btn btn-success">View</button></a> <c:if
 															test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-															<a href="editlogwork/${lg.id }"><button
+															<a href="/FBMS/logwork/editlogwork/${lg.id }"><button
 																	class="btn btn-success">sửa</button></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="deletelogwork/${lg.id }"><button
+															<a href="/FBMS/logwork/deletelogwork/${lg.id }"><button
 																	class="btn btn-danger"
 																	onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
 																	xóa</button></a>
@@ -242,6 +243,7 @@
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>

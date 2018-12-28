@@ -39,7 +39,7 @@ public class VuLogworkServiceImpl implements VuLogworkService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		quanLiThoiGianDAO.delete(id);
 	}
 
@@ -85,5 +85,9 @@ public class VuLogworkServiceImpl implements VuLogworkService {
 	@Override
 	public List<VuVaiTroDuAn> listVaiTroDuAn() {
 		return quanLiThoiGianDAO.listVaiTroDuAn();
+	}
+	@Override
+	public List<ThoiGianLamViec> listOneMonth(String month) {
+		return quanLiThoiGianDAO.listOneMonth(month);
 	}
 }
