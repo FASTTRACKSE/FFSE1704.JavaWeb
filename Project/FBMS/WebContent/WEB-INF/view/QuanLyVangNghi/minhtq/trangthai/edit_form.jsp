@@ -31,7 +31,7 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="POST" modelAttribute="suatrangthai"
-						action="suaTrangThai">
+						action="">
 						<div class="form-group col-sm-4">
 							<label>id</label>
 							<form:input class="form-control" path="id" readonly="true"/>

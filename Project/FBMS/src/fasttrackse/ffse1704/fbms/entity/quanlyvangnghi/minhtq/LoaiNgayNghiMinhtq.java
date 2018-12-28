@@ -26,7 +26,7 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	private int id;
 
 	@Column(name = "ma_loai_ngay_nghi")
-	private int maNgayNghi;
+	private String maNgayNghi;
 
 	@Column(name = "ten_loai_ngay_nghi")
 	private String tenLoaiNgayNghi;
@@ -50,11 +50,11 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		this.id = id;
 	}
 
-	public int getMaNgayNghi() {
+	public String getMaNgayNghi() {
 		return maNgayNghi;
 	}
 
-	public void setMaNgayNghi(int maNgayNghi) {
+	public void setMaNgayNghi(String maNgayNghi) {
 		this.maNgayNghi = maNgayNghi;
 	}
 
@@ -71,7 +71,7 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoaiNgayNghiMinhtq(int id, int maNgayNghi, String tenLoaiNgayNghi,
+	public LoaiNgayNghiMinhtq(int id, String maNgayNghi, String tenLoaiNgayNghi,
 			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		super();
 		this.id = id;

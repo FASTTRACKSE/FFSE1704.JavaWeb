@@ -14,10 +14,9 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a
-								href='<c:url value="" />'>sửa đơn nghỉ phép 
-									 </a></li>
-							
+							<li class="breadcrumb-item"><a href='<c:url value="" />'>sửa
+									đơn nghỉ phép </a></li>
+
 						</ol>
 					</div>
 				</div>
@@ -28,16 +27,18 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="POST" modelAttribute="suadonnhap" action="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepNhap">
-							<div class="form-group col-sm-12">
-								<label>id</label>
-								<form:input class="form-control" path="id" readonly="true" />
-	
-							</div>
+					<form:form method="POST" modelAttribute="suadonnhap"
+						action="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepNhap">
+						<div class="form-group col-sm-12">
+							<label>id</label>
+							<form:input class="form-control" path="id" readonly="true" />
+
+						</div>
 
 						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien" readonly="true"  />
+							<form:input class="form-control" path="maNhanVien"
+								readonly="true" />
 
 						</div>
 
@@ -186,18 +187,19 @@
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
 								class="custom-select form-control" id="location1"
-								name="location" items="${countryList}"
-								itemValue="maNgayNghi" itemLabel="tenLoaiNgayNghi">
+								name="location" items="${countryList}" itemValue="maNgayNghi"
+								itemLabel="tenLoaiNgayNghi">
 
 							</form:select>
 
 						</div>
 
 						<div class="row">
-							<div class="col-md-12" style="padding-left: 3%;">
+							<div class="col-md-12" >
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1"
-									value="cancel" name="actional">Cancel</button>
+									class="btn btn-outline-success round  mr-1 mb-1" value="cancel"
+									name="actional">Cancel</button>
+
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1"
 									value="chopheduyet" name="actional">gửi đơn</button>

@@ -8,20 +8,18 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiM
 
 public interface DonNghiPhepDaoMinhtq {
 
-	/////////// phân trang ////////////////
-	public int count();
+	
 
 	/////////// ĐƠN NGHỈ PHÉP//////////////////
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult);
+	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage ,String idTT);
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult);
+	public List<DonNghiPhepMinhtq> listAllDonNghiPhep(String idTT);
 
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult);
-
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult);
-
+	
 	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id);
+
+	public DonNghiPhepMinhtq read(int id);
 
 	public void deleteDonNghiPhep(int id);
 
@@ -50,5 +48,7 @@ public interface DonNghiPhepDaoMinhtq {
 	public void editLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
 
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi);
+
+
 
 }

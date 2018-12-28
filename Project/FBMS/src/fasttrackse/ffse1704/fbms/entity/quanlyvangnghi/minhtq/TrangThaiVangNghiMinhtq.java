@@ -26,7 +26,7 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 	int id;
 
 	@Column(name = "ma_trang_thai")
-	int maTrangThai;
+	String maTrangThai;
 
 	@Column(name = "ten_trang_thai")
 	String tenTrangThai;
@@ -38,7 +38,7 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 		super();
 	}
 	
-	public TrangThaiVangNghiMinhtq(int id, int maTrangThai, String tenTrangThai,
+	public TrangThaiVangNghiMinhtq(int id, String maTrangThai, String tenTrangThai,
 			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs) {
 		super();
 		this.id = id;
@@ -55,11 +55,11 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 		this.id = id;
 	}
 
-	public int getMaTrangThai() {
+	public String getMaTrangThai() {
 		return maTrangThai;
 	}
 
-	public void setMaTrangThai(int maTrangThai) {
+	public void setMaTrangThai(String maTrangThai) {
 		this.maTrangThai = maTrangThai;
 	}
 

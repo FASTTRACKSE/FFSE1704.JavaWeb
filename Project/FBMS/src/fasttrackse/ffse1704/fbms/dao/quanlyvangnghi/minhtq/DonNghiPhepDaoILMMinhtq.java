@@ -2,12 +2,17 @@ package fasttrackse.ffse1704.fbms.dao.quanlyvangnghi.minhtq;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
@@ -20,8 +25,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	
-	
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -30,47 +33,34 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		this.sessionFactory = sessionFactory;
 	}
 
-	
-	// đếm trong bảng Dơn nghỉ phép
-	public int count() {
+	public DonNghiPhepMinhtq read(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		int rowCount = session.createQuery("from DonNghiPhepMinhtq").list().size();
-		return rowCount;
+		Criteria criteria = session.createCriteria(DonNghiPhepMinhtq.class);
+		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) criteria.add(Restrictions.eq("id", id)).uniqueResult();
+		return donnghiphep;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult) {
+	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage, String idTT) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='1' ORDER BY id ASC").setFirstResult(start)
-				.setMaxResults(maxResult).list();
+		Query query = session.createQuery("from DonNghiPhepMinhtq where trangThai = :idTT");
+		query.setParameter("idTT", idTT);
+		query.setFirstResult(start);
+		query.setMaxResults(perPage);
+
+		List<DonNghiPhepMinhtq> list = (List<DonNghiPhepMinhtq>) query.getResultList();
+
 		return list;
 	}
-
-	
 
 	// list toàn bộ đơn nghỉ phép chờ phê duyệt của nhân viên
 	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult) {
+	public List<DonNghiPhepMinhtq> listAllDonNghiPhep(String idTT) {
 		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='2' ORDER BY id ASC").list();
 
-		return list;
-	}
-
-	// list toàn bộ đơn nghỉ phép dã duyệt của nhân viên
-	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult) {
-		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='3' ORDER BY id ASC").list();
-
-		return list;
-	}
-
-	// list toàn bộ đơn nghỉ phép Từ chối của nhân viên
-	@SuppressWarnings("unchecked")
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult) {
-		Session session = sessionFactory.getCurrentSession();
-		List<DonNghiPhepMinhtq> list = session.createQuery("from DonNghiPhepMinhtq where trangThai ='4' ORDER BY id ASC").list();
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :idTT");
+		query.setParameter("idTT", idTT);
+		List<DonNghiPhepMinhtq> list = (List<DonNghiPhepMinhtq>) query.getResultList();
 
 		return list;
 	}
@@ -84,9 +74,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// crud cho đơn nghỉ phép nháp của nhân viên
-	
-	
-	
+
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphep);
@@ -116,8 +104,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		return list;
 	}
 
-	
-
 	// crud cho loại ngày nghỉ
 	public void addLoaiNgayNghi(LoaiNgayNghiMinhtq loaingaynghi) {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -135,7 +121,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		session.update(loaingaynghi);
 
 	}
-	
 
 	// tìm kiếm đơn nghỉ phép theo id loại ngày nghỉ
 	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id) {
@@ -178,8 +163,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	// tìm kiếm Trang thái theo id trạng thái
 	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class,
-				id);
+		TrangThaiVangNghiMinhtq trangthai = (TrangThaiVangNghiMinhtq) session.get(TrangThaiVangNghiMinhtq.class, id);
 
 		return trangthai;
 	}

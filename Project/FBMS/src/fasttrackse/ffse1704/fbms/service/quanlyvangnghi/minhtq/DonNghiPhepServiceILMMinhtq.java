@@ -28,27 +28,15 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepNhap(int start, int maxResult) {
+	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage, String idTT) {
 
-		return donNghiPhepDao.listDonNghiPhepNhap(start, maxResult);
+		return donNghiPhepDao.listDonNghiPhep(start, perPage, idTT);
 	}
 
 	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepChoDuyet(int start, int maxResult) {
+	public List<DonNghiPhepMinhtq> listAllDonNghiPhep(String idTT) {
 
-		return donNghiPhepDao.listDonNghiPhepChoDuyet(start, maxResult);
-	}
-
-	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepDaDuyet(int start, int maxResult) {
-
-		return donNghiPhepDao.listDonNghiPhepDaDuyet(start, maxResult);
-	}
-
-	@Override
-	public List<DonNghiPhepMinhtq> listDonNghiPhepTuChoi(int start, int maxResult) {
-
-		return donNghiPhepDao.listDonNghiPhepTuChoi(start, maxResult);
+		return donNghiPhepDao.listAllDonNghiPhep(idTT);
 	}
 
 	@Override
@@ -136,11 +124,9 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 	}
 
 	@Override
-	public int count() {
-		return donNghiPhepDao.count();
+	public DonNghiPhepMinhtq read(int id) {
+		// TODO Auto-generated method stub
+		return donNghiPhepDao.read(id);
 	}
-
-	
-	
 
 }

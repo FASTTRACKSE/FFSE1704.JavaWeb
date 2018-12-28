@@ -28,7 +28,7 @@ public class DonNghiPhepMinhtq {
 	private String maNhanVien;
 
 	@Column(name = "loai_ngay_nghi")
-	private int loaiNgayNghi;
+	private String loaiNgayNghi;
 
 	@Column(name = "so_luong")
 	private int soLuong;
@@ -44,7 +44,7 @@ public class DonNghiPhepMinhtq {
 	private Date thoiGianKetThuc;
 
 	@Column(name = "trang_thai")
-	private int trangThai;
+	private String trangThai;
 
 	@ManyToOne
 	@JoinColumn(name = "loai_ngay_nghi", referencedColumnName = "ma_loai_ngay_nghi", insertable = false, updatable = false, nullable = false)
@@ -86,11 +86,11 @@ public class DonNghiPhepMinhtq {
 		this.maNhanVien = maNhanVien;
 	}
 
-	public int getLoaiNgayNghi() {
+	public String getLoaiNgayNghi() {
 		return loaiNgayNghi;
 	}
 
-	public void setLoaiNgayNghi(int loaiNgayNghi) {
+	public void setLoaiNgayNghi(String loaiNgayNghi) {
 		this.loaiNgayNghi = loaiNgayNghi;
 	}
 
@@ -118,16 +118,16 @@ public class DonNghiPhepMinhtq {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
-	public int getTrangThai() {
+	public String getTrangThai() {
 		return trangThai;
 	}
 
-	public void setTrangThai(int trangThai) {
+	public void setTrangThai(String trangThai) {
 		this.trangThai = trangThai;
 	}
 
-	public DonNghiPhepMinhtq(int id, String maNhanVien, int loaiNgayNghi, int soLuong, Date thoiGianBatDau,
-			Date thoiGianKetThuc, int trangThai, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
+	public DonNghiPhepMinhtq(int id, String maNhanVien, String loaiNgayNghi, int soLuong, Date thoiGianBatDau,
+			Date thoiGianKetThuc, String trangThai, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
 			TrangThaiVangNghiMinhtq trangThaiDNP) {
 		super();
 		this.id = id;
