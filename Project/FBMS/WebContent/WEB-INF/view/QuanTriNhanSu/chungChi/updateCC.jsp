@@ -81,7 +81,7 @@
 						<tr>
 							<td><input class="btn btn-success" type="submit"
 								value="Update" /></td>
-							<td><a class="btn btn-success"
+							<td><a class="btn btn-secondary"
 								href="/FBMS/ViewCC/${chungChi.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>

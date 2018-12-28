@@ -55,8 +55,9 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Quản lý thông tin gia
-								đình</li>
+							<li class="breadcrumb-item active"><a
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'>Quản
+									lý thông tin gia đình</a></li>
 						</ol>
 					</div>
 				</div>
@@ -151,7 +152,7 @@
 												<td>${tt.diaChi}</td>
 												<td><a class="btn btn-success"
 													href="/FBMS/updateTT/${tt.id}&${thongTinGiaDinh.maNhanVien}"><button>Sửa</button></a>
-													<a class="btn btn-success"
+													<a class="btn btn-danger"
 													href="/FBMS/deleteTT/${tt.id}&${thongTinGiaDinh.maNhanVien}"><button>Xóa</button></a></td>
 											</tr>
 										</c:forEach>

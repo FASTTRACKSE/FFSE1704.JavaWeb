@@ -90,7 +90,7 @@
 
 						<tr>
 							<td><input class="btn btn-success" type="submit" value="Sửa" /></td>
-							<td><a class="btn btn-success"
+							<td><a class="btn btn-secondary"
 								href="/FBMS/ViewTT/${thongTinGiaDinh.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>

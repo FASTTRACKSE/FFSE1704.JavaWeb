@@ -80,7 +80,7 @@
 						<tr>
 							<td><input class="btn btn-success" type="submit"
 								value="Save" /></td>
-							<td><a class="btn btn-success"
+							<td><a class="btn btn-secondary"
 								href="/FBMS/ViewTT/${thongTinGiaDinh2.maNhanVien}">Quay lại</a></td>
 						</tr>
 					</form:form>
