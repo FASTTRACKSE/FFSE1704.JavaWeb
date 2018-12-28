@@ -21,10 +21,10 @@ public interface NhanSuDao {
 	public List<ChucDanh> listChucDanh();
 	public List<PhongBan> listPhongBan();
 	public List<ThanhPho> listTinhThanhPho();
-//	public List<QuanHuyen> listQuanHuyen();
+
 	public List<QuanHuyen> listQuanHuyenbyID(String maThanhPho);
 	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen);
-//	public List<XaPhuong> listXaPhuong();
+
 	
 	
 }

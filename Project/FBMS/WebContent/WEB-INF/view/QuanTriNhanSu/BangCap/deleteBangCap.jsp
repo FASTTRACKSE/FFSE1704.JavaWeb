@@ -61,7 +61,14 @@
 						</div>
 						<div class="form-group">
 							<label>Thời gian:</label>
-							<form:input class="form-control" type="Date" path="thoiGian" />
+							<form:input class="form-control" type="Date" path="batDau" />
+
+							<br>
+						</div>
+						
+						<div class="form-group">
+							<label>Thời gian:</label>
+							<form:input class="form-control" type="Date" path="ketThuc" />
 
 							<br>
 						</div>

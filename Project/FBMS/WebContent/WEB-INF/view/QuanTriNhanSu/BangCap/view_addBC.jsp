@@ -42,7 +42,7 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="post" 
-						action="/FBMS/saveBangCap" modelAttribute="bang">
+						action="/FBMS/saveBangCap/${bangCap.maNhanVien}" modelAttribute="bang">
 						<div class="form-group col-sm-6">
 							<form:input path="id" type="hidden" />
 							</div>
@@ -67,7 +67,12 @@
 						
 						<div class="form-group col-sm-6">
 							<label>Thời gian:</label>
-							<form:input class="form-control" type="Date" path="thoiGian" />
+							<form:input class="form-control" type="Date" path="batDau" />
+						</div>
+						
+						<div class="form-group col-sm-6">
+							<label>Thời gian:</label>
+							<form:input class="form-control" type="Date" path="ketThuc" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Xếp loại:</label>

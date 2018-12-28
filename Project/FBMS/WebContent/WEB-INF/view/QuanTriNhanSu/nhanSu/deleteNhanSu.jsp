@@ -71,40 +71,35 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tinh thanh</label>
-
-							<form:select path="tinhThanhPho"
-								class="custom-select block round" id="customSelect">
+							
+							 <form:select path="tinhThanhPho"
+								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
 								<c:forEach items="${listTinhThanh}" var="ltt">
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
-							</form:select>
+							</form:select> 
 
 						</div>
-
+						
 						<div class="form-group col-sm-6">
 							<label>Quan Huyen</label>
-
-							<form:select path="maQuanHuyen" class="custom-select block round"
-								id="customSelect">
-								<c:forEach items="${listQuanHuyen}" var="lqh">
-									<form:option value="${lqh.maqh}" label="${lqh.name}" />
-								</c:forEach>
+							
+							 <form:select path="maQuanHuyen"
+								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
+								<option value="" selected="selected" disabled="disabled">Chon quan huyen</option>
 							</form:select>
 
 						</div>
-
+						
 						<div class="form-group col-sm-6">
 							<label>Xa Phuong</label>
-
-							<form:select path="maXaPhuong" class="custom-select block round"
-								id="customSelect">
-								<c:forEach items="${listXaPhuong}" var="lxp">
-									<form:option value="${lxp.xaid}" label="${lxp.name}" />
-								</c:forEach>
-							</form:select>
+							
+							 <form:select path="maXaPhuong"
+								class="custom-select block round" id="idPhuongXa" >
+								<option value="" selected="selected" disabled="disabled">Chon xa phuong</option>
+							</form:select> 
 
 						</div>
-						<br>
 						<div class="form-group">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
@@ -210,4 +205,68 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	 function selectThanhPho(){
+    	 var maThanhPho = $("#idThanhPho").val(); /* when click thanh pho */
+    	 $('#idQuanHuyen option').remove();
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonquan/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idQuanHuyen').append($('<option>', { // insert default data in quan huyen
+             		    value: 'noQuanHuyen',
+             		    text: 'Chọn Quận Huyện'
+             		}));
+        		$('#idQuanHuyen option[value=noQuanHuyen]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idQuanHuyen').append($('<option>', {
+             		    value: data[i].maQuanHuyen,
+             		    text: data[i].tenQuanHuyen
+             		}));
+				}
+        		
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+         		    value: 'quanHuyen',
+         		    text: 'Chọn Xã Phường'
+         		}));
+    		$('#idPhuongXa option[value=quanHuyen]').attr('disabled', true);
+        		
+        	
+         }});
+     };
+	 </script>
+	 
+	 <!-- chon quan huyen ra xa phuong -->
+	 
+	  <script type="text/javascript">
+	 function selectQuan(){
+    	 var maThanhPho = $("#idQuanHuyen").val(); /* when click thanh pho */
+    	 $('#idPhuongXa option').remove();
+    		
+         $.ajax({
+        	 url: "/FBMS/QuanTriNhanSu/chonXaPhuong/" + maThanhPho, 
+        	 dataType: "json",
+        	 success: function(data){
+        		 alert('Hello');
+        		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
+             		    value: 'phuongxa',
+             		    text: 'Chọn Xã Phường'
+             		}));
+        		$('#idPhuongXa option[value=phuongxa]').attr('disabled', true);
+        		
+        		for (var i = 0; i < data.length; i++) { // insert new data in quan huyen
+        			$('#idPhuongXa').append($('<option>', {
+             		    value: data[i].maXaPhuong,
+             		    text: data[i].tenXaPhuong
+             		}));
+				}
+        		
+        	
+         }});
+     };
+	 </script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

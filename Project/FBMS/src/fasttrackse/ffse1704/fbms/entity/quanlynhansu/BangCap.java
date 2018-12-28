@@ -67,9 +67,13 @@ public class BangCap {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "thoi_gian", nullable = false)
-	@NotNull
-	private Date thoiGian;
+	@Column(name = "thoi_gian_bat_dau", nullable = false)
+	private Date batDau;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "thoi_gian_ket_thuc", nullable = false)
+	private Date ketThuc;
 
 	@Column(name = "xep_loai", nullable = false)
 	private String xepLoai;
@@ -109,13 +113,6 @@ public class BangCap {
 		this.tenNganh = tenNganh;
 	}
 
-	public Date getThoiGian() {
-		return thoiGian;
-	}
-
-	public void setThoiGian(Date thoiGian) {
-		this.thoiGian = thoiGian;
-	}
 
 	public String getXepLoai() {
 		return xepLoai;
@@ -131,5 +128,21 @@ public class BangCap {
 
 	public void setNoiCap(String noiCap) {
 		this.noiCap = noiCap;
+	}
+
+	public Date getBatDau() {
+		return batDau;
+	}
+
+	public void setBatDau(Date batDau) {
+		this.batDau = batDau;
+	}
+
+	public Date getKetThuc() {
+		return ketThuc;
+	}
+
+	public void setKetThuc(Date ketThuc) {
+		this.ketThuc = ketThuc;
 	}
 }

@@ -31,7 +31,7 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="post" 
-						action="/FBMS/ViewBC/update"
+						action="/FBMS/ViewBC/update/${bangCap.maNhanVien}"
 						modelAttribute="bangCap2">
 
 						<div class="form-group">
@@ -61,7 +61,14 @@
 						</div>
 						<div class="form-group">
 							<label>Thời gian:</label>
-							<form:input class="form-control" type="Date" path="thoiGian" />
+							<form:input class="form-control" type="Date" path="batDau" />
+
+							<br>
+						</div>
+						
+						<div class="form-group">
+							<label>Thời gian:</label>
+							<form:input class="form-control" type="Date" path="ketThuc" />
 
 							<br>
 						</div>

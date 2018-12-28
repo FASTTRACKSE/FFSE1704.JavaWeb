@@ -332,7 +332,8 @@ body, html {
 												<tr>
 													<th scope="col">Trình độ</th>
 													<th scope="col">Ngành</th>
-													<th scope="col">Thời gian</th>
+													<th scope="col">Thời gian bắt đầu</th>
+													<th scope="col">Thời gian kết thúc</th>
 													<th scope="col">Xếp loại</th>
 													<th scope="col">Nơi cấp</th>
 												</tr>
@@ -344,7 +345,8 @@ body, html {
 														<tr>
 														<td>${bangCap.trinhDo.tenTrinhDo}</td>
 														<td>${bangCap.tenNganh}</td>
-														<td>${bangCap.thoiGian}</td>
+														<td>${bangCap.batDau}</td>
+														<td>${bangCap.ketThuc}</td>
 														<td>${bangCap.xepLoai}</td>
 														<td>${bangCap.noiCap}</td>
 															</tr>

@@ -40,24 +40,17 @@ public class NhanSuServiceImpl implements NhanSuService {
 	@Override
 	public void addNS(NhanSu ns) {
 		this.nhanSuDao.addNS(ns);
-		
 	}
-
-
 	@Override
 	public List<NhanSu> GetListNhanSuByPage(int start, int total) {
-		// TODO Auto-generated method stub
+		
 		return this.nhanSuDao.GetListNhanSuByPage(start, total);
 	}
-
-
 	@Override
 	public long CountNhanSu() {
 		// TODO Auto-generated method stub
 		return this.nhanSuDao.CountNhanSu();
 	}
-
-
 	@Override
 	public NhanSu getNhanSuByID(int id) {
 		// TODO Auto-generated method stub
@@ -81,7 +74,7 @@ public class NhanSuServiceImpl implements NhanSuService {
 
 	@Override
 	public boolean checkExistMa(String maNS) {
-		// TODO Auto-generated method stub
+		
 		return nhanSuDao.checkExistMa(maNS);
 	}
 
@@ -111,7 +104,7 @@ public class NhanSuServiceImpl implements NhanSuService {
 
 	@Override
 	public List<QuanHuyen> listQuanHuyenbyID(String maTinhThanh) {
-		// TODO Auto-generated method stub
+		
 		return nhanSuDao.listQuanHuyenbyID(maTinhThanh);
 	}
 
@@ -121,22 +114,11 @@ public class NhanSuServiceImpl implements NhanSuService {
 
 	@Override
 	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen) {
-		// TODO Auto-generated method stub
+		
 		return nhanSuDao.listPhuongXabyID(maQuanHuyen);
 	}
 
 
-//	@Override
-//	public List<QuanHuyen> listQuanHuyen() {
-//		// TODO Auto-generated method stub
-//		return nhanSuDao.listQuanHuyen();
-//	}
-//
-//
-//	@Override
-//	public List<XaPhuong> listXaPhuong() {
-//		// TODO Auto-generated method stub
-//		return nhanSuDao.listXaPhuong();
-//	}
+
 
 }

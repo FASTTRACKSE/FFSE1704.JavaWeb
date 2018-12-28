@@ -51,13 +51,13 @@
 							<br>
 
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6">
 							<label>Mã Nhân Viên:</label>
 							<form:input class="form-control" type="text" path="maNhanVien" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6">
 							<label>Phòng Ban:</label>
 							<form:select path="maPhongBan"
 								class="custom-select block round" id="customSelect">
@@ -68,7 +68,7 @@
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6">
 							<label>Chức Danh</label>
 							<form:select path="maChucDanh"
 								class="custom-select block round" id="customSelect">
@@ -78,7 +78,7 @@
 							</form:select>
 							<br>
 						</div>
-							<div class="form-group col-sm-6">
+							<div class="form-group col-md-6">
 							<label>Tinh thanh</label>
 							
 							 <form:select path="tinhThanhPho"
@@ -109,28 +109,28 @@
 							</form:select> 
 
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Tên</label>
 							<form:input class="form-control" type="text" path="ten" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Ảnh</label> <input id="upload" type="file"
 								class="form-control-file" name="file"> <br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Năm Sinh</label>
 							<form:input class="form-control" type="Date" path="namSinh" />
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Giới tính:</label>
 							<%-- <form:input class="form-control" type="text" path="gioiTinh" /> --%>
 
@@ -141,61 +141,61 @@
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Quê quán</label>
 							<form:input class="form-control" type="text" path="queQuan" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Dân tộc</label>
 							<form:input class="form-control" type="text" path="danToc" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Quốc Tịch</label>
 							<form:input class="form-control" type="text"
 								path="quocTich.maQuocTich" />
 							<br>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Tạm trú</label>
 							<form:input class="form-control" type="text" path="noiTamTru" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Điện thoại</label>
 							<form:input class="form-control" type="text" path="soDienThoai" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Email</label>
 							<form:input class="form-control" type="text" path="email" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Chứng minh</label>
 							<form:input class="form-control" type="text" path="soCMND" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Nơi cấp</label>
 							<form:input class="form-control" type="text" path="noiCap" />
 
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Ngày cấp</label>
 							<form:input class="form-control" type="Date" path="ngayCap" />
 							<br>
 						</div>
-						<div class="form-group">
+						<div class="form-group col-sm-6">
 							<label>Trạng thái</label>
 							<form:input class="form-control" type="text" path="trangThai" />
 							<br>

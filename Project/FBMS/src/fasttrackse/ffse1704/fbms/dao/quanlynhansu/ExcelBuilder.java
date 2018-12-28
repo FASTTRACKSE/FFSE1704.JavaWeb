@@ -140,22 +140,28 @@ public class ExcelBuilder extends AbstractXlsxView {
 		Row rowThongTinBangCap = sheet3.createRow(4);
 		rowThongTinBangCap.createCell(0).setCellValue("Trình độ");
 		rowThongTinBangCap.createCell(1).setCellValue("Ngành");
-		rowThongTinBangCap.createCell(2).setCellValue("Thời gian");
+		rowThongTinBangCap.createCell(2).setCellValue("Bắt đầu");
+		rowThongTinBangCap.createCell(2).setCellValue("Kết thúc");
 		rowThongTinBangCap.createCell(3).setCellValue("Xếp loại");
 		rowThongTinBangCap.createCell(4).setCellValue("Nơi cấp");
 
 		Row rowThongTinBangCapCT = sheet3.createRow(5);
 		int rowTTBCCT = 5;
 		for (int i = 0; i < nhanSu.getListBangCap().size(); i++) {
-			Date date = nhanSu.getListBangCap().get(i).getThoiGian();
+			Date date = nhanSu.getListBangCap().get(i).getBatDau();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			String strDate = dateFormat.format(date);
+			
+			Date date2 = nhanSu.getListBangCap().get(i).getKetThuc();
+			DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			String strDate2 = dateFormat2.format(date2);
 
 			rowThongTinBangCapCT = sheet3.createRow(rowTTBCCT);
 			rowThongTinBangCapCT.createCell(0)
 					.setCellValue(nhanSu.getListBangCap().get(i).getTrinhDo().getTenTrinhDo());
 			rowThongTinBangCapCT.createCell(1).setCellValue(nhanSu.getListBangCap().get(i).getTenNganh());
 			rowThongTinBangCapCT.createCell(2).setCellValue(strDate);
+			rowThongTinBangCapCT.createCell(2).setCellValue(strDate2);
 			rowThongTinBangCapCT.createCell(3).setCellValue(nhanSu.getListBangCap().get(i).getXepLoai());
 			rowThongTinBangCapCT.createCell(4).setCellValue(nhanSu.getListBangCap().get(i).getNoiCap());
 		}

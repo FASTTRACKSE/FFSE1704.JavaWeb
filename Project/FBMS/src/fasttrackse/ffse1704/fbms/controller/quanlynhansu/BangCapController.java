@@ -62,11 +62,13 @@ public class BangCapController {
 
 	}
 	
-	@RequestMapping(value="/saveBangCap",method = RequestMethod.POST)
-	public ModelAndView addSave(@ModelAttribute("bang") BangCap bang) {
+	@RequestMapping(value="/saveBangCap/{maNhanVien}",method = RequestMethod.POST)
+	public String addSave(Model model, @ModelAttribute("bang") BangCap bang, @PathVariable("maNhanVien") String maNhanVien) {
 		
 		bangCapService.addBangCap(bang);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+
+		return "QuanTriNhanSu/BangCap/ListBangCap";
 		
 	}
 	
@@ -92,12 +94,15 @@ public class BangCapController {
 	}
 
 	// UPDATE
-	@RequestMapping(value = "/ViewBC/update", method = RequestMethod.POST)
-	public String editSave(@ModelAttribute("bangCap2") BangCap bangCap, Model model) {
+	@RequestMapping(value = "/ViewBC/update/{maNhanVien}", method = RequestMethod.POST)
+	public String editSave(@ModelAttribute("bangCap2") BangCap bangCap,@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
 		bangCapService.update(bangCap);
 
-		return "redirect:/QuanTriNhanSu/danhsach_nhansu/1";
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+
+		return "QuanTriNhanSu/BangCap/ListBangCap";
+		
 
 	}
 	

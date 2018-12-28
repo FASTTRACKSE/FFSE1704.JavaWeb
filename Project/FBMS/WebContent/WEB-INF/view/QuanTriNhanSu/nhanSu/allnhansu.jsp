@@ -171,21 +171,25 @@
 						  </c:otherwise>
 													</c:choose></td>
 												<%-- <td>${ns.trangThai}</td> --%>
-												
-												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}" class="btn btn-success">Xem TT Chi Tiết</a></td>
-												<td><a href="/FBMS/ViewTT/${ns.maNhanVien}" class="btn btn-info">Gia
-														Đình</a></td>
+
+												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}"
+													class="btn btn-success">Xem TT Chi Tiết</a></td>
+												<td><a href="/FBMS/ViewTT/${ns.maNhanVien}"
+													class="btn btn-info">Gia Đình</a></td>
 
 												<td><a href="/FBMS/ViewBC/${ns.maNhanVien}"
 													class="btn btn-warning">Bằng Cấp</a> <a
-													href="/FBMS/ViewCC/${ns.maNhanVien}" class="btn btn-primary">Chứng
-														chỉ</a></td>
+													href="/FBMS/ViewCC/${ns.maNhanVien}"
+													class="btn btn-primary">Chứng chỉ</a></td>
 
-												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}" class="btn btn-warning">Hợp đồng</a> <a href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}" class="btn btn-primary">DS Kinh nghiệm DA</a></td>
+												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}"
+													class="btn btn-warning">Hợp đồng</a> <a
+													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
+													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
-												<td><a href="editNS/${ns.id}"><button>sửa</button></a>
+												<td><a href="editNS/${ns.id}" ><button class="btn btn-success">sửa</button></a>
 
-													<a href="DeleteNS/${ns.id}"><button>Xoa</button></a></td>
+													<a href="DeleteNS/${ns.id}" ><button class="btn btn-danger">Xóa</button></a></td>
 
 											</tr>
 										</c:forEach>

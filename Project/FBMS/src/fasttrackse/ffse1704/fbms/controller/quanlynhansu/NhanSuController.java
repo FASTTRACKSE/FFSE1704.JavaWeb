@@ -62,7 +62,7 @@ public class NhanSuController {
 	public ModelAndView ViewNhanSuPage(@PathVariable int page, Model model) {
 
 		long record = nhanSuService.CountNhanSu();
-		int perpage = 4;
+		int perpage = 3;
 		int totalPage = (int) Math.ceil(record * 1.0 / perpage);
 
 		if (page == 0) {
