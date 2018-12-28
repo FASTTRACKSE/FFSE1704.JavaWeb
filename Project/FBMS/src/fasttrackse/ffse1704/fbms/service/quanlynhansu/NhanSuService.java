@@ -21,8 +21,8 @@ public interface NhanSuService {
 	public List<ChucDanh> listChucDanh();
 	public List<PhongBan> listPhongBan();
 	public List<ThanhPho> listTinhThanhPho();
-	//public List<QuanHuyen> listQuanHuyen();
-	//public List<XaPhuong> listXaPhuong();
+	public List<QuanHuyen> listQuanHuyen();
+	public List<XaPhuong> listXaPhuong();
 	public List<QuanHuyen> listQuanHuyenbyID(String maTinhThanh);
 	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen);
 }

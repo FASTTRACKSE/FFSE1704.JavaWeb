@@ -47,14 +47,14 @@ public class NhanSu implements Serializable {
 	@Column(name = "ma_nhan_vien", nullable = false)
 	private String maNhanVien;
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_phong_ban", insertable = false, updatable = false, nullable = false)
 	private PhongBan phongBan;
 
 	@Column(name = "ma_phong_ban", nullable = false)
 	private String maPhongBan;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ma_chuc_danh", insertable = false, updatable = false, nullable = false)
 	private ChucDanh chucDanh;
 	
@@ -170,33 +170,33 @@ public class NhanSu implements Serializable {
 	@NotNull
 	private Integer trangThai;
 
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	private List<BangCap> listBangCap;
 
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ThongTinGiaDinh> listGiaDinh;
 
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	public List<ThongTinHopDong> listHopDong;
 
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ChungChi> listChungChi;
 	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<PhanCongNhiemVuNS> listPhanCongNhiemVuNS ;
 	
-	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<SoNgayNghiNhanVien> listNgayNghi;
 	
 	public List<SoNgayNghiNhanVien> getListNgayNghi() {
 		return listNgayNghi;
 	}
-
+	// cascade = CascadeType.ALL
 	public void setListNgayNghi(List<SoNgayNghiNhanVien> listNgayNghi) {
 		this.listNgayNghi = listNgayNghi;
 	}

@@ -128,7 +128,7 @@ public class NhanSuController {
 		
 		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
 		model.addAttribute("nhanSu",nhanSu);
-		//model.addAttribute("nhanSu", new NhanSu());
+		
 		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
 		model.addAttribute("listChucDanh",listChucDanh);
 		
@@ -137,12 +137,12 @@ public class NhanSuController {
 		
 		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
 		model.addAttribute("listTinhThanh",listTinhThanh);
-//		
-//		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
-//		model.addAttribute("listQuanHuyen",listQuanHuyen);
-//		
-//		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
-//		model.addAttribute("listXaPhuong",listXaPhuong);
+		
+		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+		model.addAttribute("listQuanHuyen",listQuanHuyen);
+		
+		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+		model.addAttribute("listXaPhuong",listXaPhuong);
 		return "QuanTriNhanSu/nhanSu/edit_nhansu";
 		
 	}
@@ -180,22 +180,27 @@ public class NhanSuController {
 		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
 		model.addAttribute("listTinhThanh",listTinhThanh);
 		
+		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
+		model.addAttribute("listQuanHuyen",listQuanHuyen);
+		
+		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
+		model.addAttribute("listXaPhuong",listXaPhuong);
 
 
 		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
 	}
 	
 	// thực hiện lệnh xóa
-		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "delete")
-		public ModelAndView doDel(@PathVariable int id) {
-			nhanSuService.delete(id);
-			return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
-		}
-		// hủy xóa
-		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", params = "cancel", method = RequestMethod.POST)
-		public String cancelUpdateUser(HttpServletRequest request) {
+		@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/delNS/{id}",method = RequestMethod.POST)
+		public String doDel(@PathVariable int id,@RequestParam("delete") String delete,Model model) {
+			
+			if( delete.equals("xoa") ){
+				nhanSuService.delete(id);
+		    }
+			
 			return "redirect:/QuanTriNhanSu/danhsach_nhansu";
 		}
+		
 	
 	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 

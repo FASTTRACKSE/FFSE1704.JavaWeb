@@ -167,6 +167,22 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		return listXaPhuong;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<QuanHuyen> listQuanHuyen() {
+		Session session = sessionFactory.getCurrentSession();
+		List<QuanHuyen> dsQuanHuyen = session.createQuery("FROM QuanHuyen").getResultList();
+		return dsQuanHuyen;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<XaPhuong> listXaPhuong() {
+		Session session = sessionFactory.getCurrentSession();
+		List<XaPhuong> dsXaPhuong = session.createQuery("FROM XaPhuong").getResultList();
+		return dsXaPhuong;
+	}
+
 
 
 	

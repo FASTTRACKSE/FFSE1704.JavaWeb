@@ -84,21 +84,21 @@
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Quan Huyen</label>
+							<label>Quận Huyện</label>
 							
 							 <form:select path="maQuanHuyen"
 								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
-								<option value="" selected="selected" disabled="disabled">Chon quan huyen</option>
+								<option value="" selected="selected" disabled="disabled">Chọn quận huyện</option>
 							</form:select>
 
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Xa Phuong</label>
+							<label>Xã Phường</label>
 							
 							 <form:select path="maXaPhuong"
 								class="custom-select block round" id="idPhuongXa" >
-								<option value="" selected="selected" disabled="disabled">Chon xa phuong</option>
+								<option value="" selected="selected" disabled="disabled">Chon xã phường</option>
 							</form:select> 
 
 						</div>
@@ -195,10 +195,18 @@
 
 						</div>
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Save" /></td>
+							
+							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
+							<td><a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a></td>
+							
 						</tr>
+						
 					</form:form>
+						<tr>
+							
+							
+							
+						</tr>
 				</div>
 			</div>
 		</div>

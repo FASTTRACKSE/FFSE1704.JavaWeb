@@ -119,6 +119,20 @@ public class NhanSuServiceImpl implements NhanSuService {
 	}
 
 
+	@Override
+	public List<QuanHuyen> listQuanHuyen() {
+		
+		return nhanSuDao.listQuanHuyen();
+	}
+
+
+	@Override
+	public List<XaPhuong> listXaPhuong() {
+		
+		return nhanSuDao.listXaPhuong();
+	}
+
+
 
 
 }

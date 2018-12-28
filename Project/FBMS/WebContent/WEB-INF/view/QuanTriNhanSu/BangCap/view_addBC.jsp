@@ -86,8 +86,8 @@
 
 
 						<tr>
-							
-							<td><input type="submit" value="Save" /></td>
+							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
+							<td><a class="btn btn-danger" href="/FBMS/ViewBC/${bangCap.maNhanVien}" >Back</a></td>
 						</tr>
 					</form:form>
 				</div>

@@ -79,7 +79,7 @@
 							<br>
 						</div>
 							<div class="form-group col-md-6">
-							<label>Tinh thanh</label>
+							<label>Tỉnh thành</label>
 							
 							 <form:select path="tinhThanhPho"
 								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
@@ -91,21 +91,27 @@
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Quan Huyen</label>
+							<label>Quận Huyện</label>
 							
 							 <form:select path="maQuanHuyen"
 								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
-								<option value="" selected="selected" disabled="disabled">Chon quan huyen</option>
+								<option value="" selected="selected" disabled="disabled">Chọn quận huyện</option>
+								<c:forEach items="${listQuanHuyen}" var="lqh">
+									<form:option value="${lqh.maqh}" label="${lqh.name}" />
+								</c:forEach>
 							</form:select>
 
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Xa Phuong</label>
+							<label>Xã Phường</label>
 							
 							 <form:select path="maXaPhuong"
 								class="custom-select block round" id="idPhuongXa" >
-								<option value="" selected="selected" disabled="disabled">Chon xa phuong</option>
+								<option value="" selected="selected" disabled="disabled">Chọn xã phường</option>
+								<c:forEach items="${listXaPhuong}" var="lxp">
+									<form:option value="${lxp.xaid}" label="${lxp.name}" />
+								</c:forEach>
 							</form:select> 
 
 						</div>
@@ -201,8 +207,8 @@
 							<br>
 						</div>
 						<tr>
-							<td></td>
-							<td><input type="submit" value="Save" /></td>
+							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
+							<td><a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a></td>
 						</tr>
 					</form:form>
 				</div>
