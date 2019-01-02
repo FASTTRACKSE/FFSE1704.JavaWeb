@@ -164,7 +164,8 @@ public class QuanLyVangNghiControllerMinhtq {
 			throws IllegalStateException, IOException {
 		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
 
-		TrangThaiVangNghiMinhtq trangthaiDNP = donNghiPhepService.getByIdTrangThai(id);
+	
+		//TrangThaiVangNghiMinhtq trangthaiDNP = donNghiPhepService.getByIdTrangThai(id);
 		donnghiphep.setTrangThai("TT3");
 
 		donNghiPhepService.editDonNghiPhep(donnghiphep);

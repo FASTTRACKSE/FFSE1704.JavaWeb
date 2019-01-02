@@ -237,12 +237,11 @@ body, html {
 										<tr>
 
 											<td><a class="btn btn-success"
-												
-													href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet/1"/>"
+												href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet/1"/>"
 												class="btn btn-warning">Quay lại</a></td>
 
 										</tr>
-										
+
 									</div>
 								</div>
 							</div>
