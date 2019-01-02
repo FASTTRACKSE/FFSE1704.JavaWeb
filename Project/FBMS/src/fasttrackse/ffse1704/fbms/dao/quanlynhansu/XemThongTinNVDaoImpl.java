@@ -146,12 +146,11 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		query.setParameter("mhd", maPhongBan);
 		return (List<ThongTinHopDong>) query.list();
 	}
-
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "select maPhongBan, maChucDanh from ThongTinHopDong hd where hd.maNhanVien = :mnv AND hd.maTrangThai = :mtt";
-		@SuppressWarnings("rawtypes")
+		String hql = "from ThongTinHopDong hd where hd.maNhanVien = :mnv AND hd.maTrangThai = :mtt";
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
 		query.setParameter("mtt", "ACTIVE");
