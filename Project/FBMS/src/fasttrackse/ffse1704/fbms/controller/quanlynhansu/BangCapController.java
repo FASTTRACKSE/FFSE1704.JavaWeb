@@ -102,8 +102,6 @@ public class BangCapController {
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
 
 		return "QuanTriNhanSu/BangCap/ListBangCap";
-		
-
 	}
 	
 }

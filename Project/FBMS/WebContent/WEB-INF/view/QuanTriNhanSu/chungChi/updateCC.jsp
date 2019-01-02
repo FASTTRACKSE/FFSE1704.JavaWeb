@@ -26,7 +26,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyNhiemVu/congviec/" />'>Danh sách
+								href='<c:url value="/ViewCC/${chungChi2.maNhanVien}" />'>Danh sách
 									chứng chỉ</a></li>
 							<li class="breadcrumb-item active">Sửa chứng chỉ</li>
 						</ol>
@@ -35,18 +35,43 @@
 			</div>
 		</div>
 		<!-- End Path -->
-		<p style="text-align: center;">
-		<h5>Mã nhân viên:</h5>
-		${chungChi.maNhanVien}
-		</p>
-		<p style="text-align: center;">
-		<h5>Tên nhân viên:</h5>
-		${chungChi.hoLot} ${chungChi.ten}
-		</p>
-		<p style="text-align: center;">
-		<h5>Ngày sinh:</h5>
-		${chungChi.namSinh}
-		</p>
+		<%-- <div class="main-content">
+			<div class="row">
+				<div class="form-group col-md-3"></div>
+				<div class="form-group col-md-3">
+					<h1 style="text-align: center; color: green">
+						<p style="text-align: center">${chungChi.hoLot}
+							${chungChi.ten}</p>
+						</a>
+					</h1>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Mã nhân viên:</a>
+						${chungChi.maNhanVien}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Ngày sinh:</a>
+						${chungChi.namSinh}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Phòng ban:</a>
+						${chungChi.phongBan.tenPhongBan}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue"> Chức vụ:</a>
+						${chungChi.chucDanh.tenChucDanh}
+					</p>
+				</div>
+				<div class="form-group col-md-3">
+					<p style="text-align: center;">
+						<a
+							style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+							đại diện</a> </br> <img style="width: 200px;hight=150px;"
+							src='<c:url value="/uploads/${chungChi.anhDaiDien}" />'>
+					</p>
+				</div>
+				<div class="form-group col-md-3"></div>
+			</div>
+		</div> --%>
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">

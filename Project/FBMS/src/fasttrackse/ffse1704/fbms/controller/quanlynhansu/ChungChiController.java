@@ -33,7 +33,7 @@ public class ChungChiController {
 	}
 
 	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
-	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+	public String ViewChungChi(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
 		return "QuanTriNhanSu/chungChi/allchungchi";
 	}
@@ -45,10 +45,11 @@ public class ChungChiController {
 		return "QuanTriNhanSu/chungChi/addCC";
 	}
 
-	@RequestMapping(value = "saveCC")
-	public ModelAndView AddChungChi(@ModelAttribute("chungChi") ChungChi chungChi) {
+	@RequestMapping(value = "saveCC/{maNhanVien}")
+	public ModelAndView AddChungChi(@PathVariable("maNhanVien") String maNhanVien,
+			@ModelAttribute("chungChi") ChungChi chungChi) {
 		chungChiService.addChungChi(chungChi);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewCC/{maNhanVien}");
 	}
 
 	@RequestMapping("/updateCC/{id}&{maNhanVien}")
@@ -61,9 +62,10 @@ public class ChungChiController {
 	}
 
 	@RequestMapping(value = "/viewUpdate/{maNhanVien}")
-	public ModelAndView UpdateCC(@ModelAttribute("chungChi") ChungChi chungChi) {
+	public ModelAndView UpdateCC(@PathVariable("maNhanVien") String maNhanVien,
+			@ModelAttribute("chungChi") ChungChi chungChi) {
 		chungChiService.update(chungChi);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewCC/{maNhanVien}");
 	}
 
 	@RequestMapping("/deleteCC/{id}&{maNhanVien}")
@@ -75,10 +77,10 @@ public class ChungChiController {
 		return "QuanTriNhanSu/chungChi/deleteCC";
 	}
 
-	@RequestMapping(value = "/viewDelete/{ID}")
-	public ModelAndView DeleteCC(@PathVariable("ID") int id) {
+	@RequestMapping(value = "/viewDelete/{ID}/{maNhanVien}")
+	public ModelAndView DeleteCC(@PathVariable("maNhanVien") String maNhanVien,@PathVariable("ID") int id) {
 		chungChiService.delete(id);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewCC/{maNhanVien}");
 	}
 
 }

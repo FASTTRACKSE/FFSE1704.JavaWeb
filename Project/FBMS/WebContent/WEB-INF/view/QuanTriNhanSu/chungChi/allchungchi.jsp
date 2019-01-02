@@ -55,8 +55,10 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
+								<li class="breadcrumb-item"><a
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'>Danh Sách Nhân Sự</a></li>
 							<li class="breadcrumb-item active"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'>Quản
+								href='<c:url value="#" />'>Quản
 									lý chứng chỉ</a></li>
 						</ol>
 					</div>
@@ -98,10 +100,10 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach chứng chỉ</h4>
+							<h4 class="card-title" style="text-align: center;">Danh sach chứng chỉ</h4>
 							<br />
 
-							<div class="main-content">
+							<%-- <div class="main-content">
 								<div class="row">
 									<div class="form-group col-md-3"></div>
 									<div class="form-group col-md-3">
@@ -137,7 +139,7 @@
 									</div>
 									<div class="form-group col-md-3"></div>
 								</div>
-							</div>
+							</div> --%>
 
 
 							<a class="heading-elements-toggle"><i
@@ -148,7 +150,7 @@
 									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
 									<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
 									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-									<li><a data-action="close"><i class="ft-x"></i></a></li>
+									<!-- <li><a data-action="close"><i class="ft-x"></i></a></li> -->
 								</ul>
 							</div>
 						</div>

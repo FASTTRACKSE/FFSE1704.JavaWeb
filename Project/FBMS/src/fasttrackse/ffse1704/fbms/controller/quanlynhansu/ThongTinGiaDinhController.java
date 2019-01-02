@@ -45,10 +45,11 @@ public class ThongTinGiaDinhController {
 		return "QuanTriNhanSu/thongTinGiaDinh/addTT";
 	}
 
-	@RequestMapping(value = "saveTT")
-	public ModelAndView AddThongTin(@ModelAttribute("thongTinGiaDinh") ThongTinGiaDinh thongTinGiaDinh) {
+	@RequestMapping(value = "saveTT/{maNhanVien}")
+	public ModelAndView AddThongTin(@PathVariable("maNhanVien") String maNhanVien,
+			@ModelAttribute("thongTinGiaDinh") ThongTinGiaDinh thongTinGiaDinh) {
 		thongTinGiaDinhService.addThongTinGiaDinh(thongTinGiaDinh);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewTT/{maNhanVien}");
 	}
 
 	@RequestMapping("/updateTT/{id}&{maNhanVien}")
@@ -61,9 +62,10 @@ public class ThongTinGiaDinhController {
 	}
 
 	@RequestMapping(value = "/viewUpdateTT/{maNhanVien}")
-	public ModelAndView UpdateTT(@ModelAttribute("thongTinGiaDinh") ThongTinGiaDinh thongTinGiaDinh) {
+	public ModelAndView UpdateTT(@PathVariable("maNhanVien") String maNhanVien,
+			@ModelAttribute("thongTinGiaDinh") ThongTinGiaDinh thongTinGiaDinh) {
 		thongTinGiaDinhService.update(thongTinGiaDinh);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewTT/{maNhanVien}");
 	}
 
 	@RequestMapping("/deleteTT/{id}&{maNhanVien}")
@@ -75,10 +77,10 @@ public class ThongTinGiaDinhController {
 		return "QuanTriNhanSu/thongTinGiaDinh/deleteTT";
 	}
 
-	@RequestMapping(value = "/viewDeleteTT/{id}")
-	public ModelAndView DeleteTT(@PathVariable("id") int id) {
+	@RequestMapping(value = "/viewDeleteTT/{id}/{maNhanVien}")
+	public ModelAndView DeleteTT(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id) {
 		thongTinGiaDinhService.delete(id);
-		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu/1");
+		return new ModelAndView("redirect:/ViewTT/{maNhanVien}");
 	}
 
 }

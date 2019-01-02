@@ -36,6 +36,7 @@ public class ChungChiDaoImpl implements ChungChiDao {
 		return listChungChi;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<ChungChi> GetListChungChiByPage(int start, int total) {
 		Session session = sessionFactory.getCurrentSession();

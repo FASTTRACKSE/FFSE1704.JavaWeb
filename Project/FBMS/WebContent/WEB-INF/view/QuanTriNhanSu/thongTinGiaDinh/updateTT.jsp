@@ -26,8 +26,8 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyNhiemVu/congviec/" />'>Danh sách
-									thông tin gia đình</a></li>
+								href='<c:url value="/ViewTT/${thongTinGiaDinh2.maNhanVien}" />'>Danh
+									sách thông tin gia đình</a></li>
 							<li class="breadcrumb-item active">Sửa thông tin gia đình</li>
 						</ol>
 					</div>
@@ -35,23 +35,48 @@
 			</div>
 		</div>
 		<!-- End Path -->
-		<p style="text-align: center;">
-		<h5>Mã nhân viên:</h5>
-		${thongTinGiaDinh.maNhanVien}
-		</p>
-		<p style="text-align: center;">
-		<h5>Tên nhân viên:</h5>
-		${thongTinGiaDinh.hoLot} ${thongTinGiaDinh.ten}
-		</p>
-		<p style="text-align: center;">
-		<h5>Ngày sinh:</h5>
-		${thongTinGiaDinh.namSinh}
-		</p>
+		<%-- <div class="main-content">
+			<div class="row">
+				<div class="form-group col-md-3"></div>
+				<div class="form-group col-md-3">
+					<h1 style="text-align: center; color: green">
+						<p style="text-align: center">${thongTinGiaDinh.hoLot}
+							${thongTinGiaDinh.ten}</p>
+						</a>
+					</h1>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Mã nhân viên:</a>
+						${thongTinGiaDinh.maNhanVien}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Ngày sinh:</a>
+						${thongTinGiaDinh.namSinh}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue">Phòng ban:</a>
+						${thongTinGiaDinh.phongBan.tenPhongBan}
+					</p>
+					<p style="text-align: center;">
+						<a style="text-align: center; color: blue"> Chức vụ:</a>
+						${thongTinGiaDinh.chucDanh.tenChucDanh}
+					</p>
+				</div>
+				<div class="form-group col-md-3">
+					<p style="text-align: center;">
+						<a
+							style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+							đại diện</a> </br> <img style="width: 200px;hight=150px;"
+							src='<c:url value="/uploads/${thongTinGiaDinh.anhDaiDien}" />'>
+					</p>
+				</div>
+				<div class="form-group col-md-3"></div>
+			</div>
+		</div> --%>
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
 					<form:form method="post"
-						action="/FBMS/viewUpdateTT/${thongTinGiaDinh2.id}"
+						action="/FBMS/viewUpdateTT/${thongTinGiaDinh2.maNhanVien}"
 						modelAttribute="thongTinGiaDinh2">
 						<div>
 							<form:hidden path="id" />
