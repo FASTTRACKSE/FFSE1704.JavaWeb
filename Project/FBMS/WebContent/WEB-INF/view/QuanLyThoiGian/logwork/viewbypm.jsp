@@ -59,19 +59,19 @@
 						<div class="form-group col-sm-6">
 							<label>Tên công việc</label>
 							<form:input class="form-control" path="tenCongViec"
-								placeholder="Tên công việc" />
+								placeholder="Tên công việc" readonly="readonly"/>
 							<form:errors path="tenCongViec" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mô tả</label>
-							<form:input class="form-control" path="moTa" placeholder="Mô tả" />
+							<form:input class="form-control" path="moTa" placeholder="Mô tả" readonly="readonly" />
 							<form:errors path="moTa" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
 							<div class='input-group date' id='datetimepicker1'>
 								<form:input class="form-control" type="text"
-									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
+									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" readonly="readonly" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>
@@ -81,7 +81,7 @@
 							<label>Thời gian kết thúc</label>
 							<div class='input-group date' id='datetimepicker5'>
 								<form:input path="thoiGianKetThuc" class="form-control"
-									type="text" />
+									type="text" readonly="readonly" />
 								<span class="input-group-addon"> <span
 									class="fa fa-calendar"></span>
 								</span>
@@ -95,11 +95,18 @@
 								value="${editlogwork.trangThaiLogwork.tenTrangThai}"
 								readonly="readonly" />
 						</div>
+						<div class="form-group col-sm-6">
+							<label>Nhận xét PM</label></br>
+							<form:textarea path="nhanXetPM" rows="4" cols="62" />
+						</div>
+						<h1>${da}</h1>
 						<div class="col-sm-12 text-center">
-							<button type="submit" name="action" value="edit"
-								class="btn btn-success">Sửa</button>
-							<c:if
-								test="${editlogwork.trangThaiLogwork.maTrangThai == 4}">
+						<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 5}">
+						<button type="submit" name="action" value="pheduyet"
+								class="btn btn-success">Phê duyệt</button>
+						</c:if>
+							
+							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 4}">
 								<button type="submit" name="action" value="submit"
 									class="btn btn-info">Submit</button>
 							</c:if>

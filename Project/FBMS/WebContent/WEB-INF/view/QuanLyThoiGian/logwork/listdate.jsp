@@ -146,7 +146,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách Logwork</h4>
+							<h4 class="card-title">Danh sách Logwork nhân viên</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -156,19 +156,6 @@
 									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
-							</div>
-						</div>
-
-						<div class="card-header">
-							<div class="dropdown">
-								<button class="dropbtn">Tháng ${month}</button>
-								<div class="dropdown-content">
-									<c:forEach var="i" begin="1" end="12">
-										<a
-											href="http://localhost:8080/FBMS/QuanLyThoiGian/Logwork/listMonth/${i}"><c:out
-												value="${i}" /></a>
-									</c:forEach>
-								</div>
 							</div>
 						</div>
 						<div class="card-body collapse in">
@@ -189,7 +176,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="lg" items="${listMonth}">
+											<c:forEach var="lg" items="${listDate}">
 												<tr>
 													<td>${lg.id}</td>
 													<td>${lg.maDuAn.tenDuAn}</td>
@@ -199,15 +186,9 @@
 													<td>${lg.tenCongViec}</td>
 													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 													<td><a
-														href="/FBMS/QuanLyThoiGian/Logwork/view/${lg.id }"><i
-															class="fa fa-eye"></i></a> <c:if
-															test="${lg.trangThaiLogwork.maTrangThai != 2 }">
-															<a href="/FBMS/QuanLyThoiGian/Logwork/edit/${lg.id }"><i class="fa fa-pencil"></i></a>
-														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="/FBMS/QuanLyThoiGian/Logwork/delete/${lg.id }"
-																onclick="return confirm('Bạn có muốn xóa sinh viên này?');"><i
-																class="fa fa-trash"></i></a>
-														</c:if></td>
+														href="/FBMS/QuanLyThoiGian/Logwork/pmview/${lg.id }"><i
+															class="fa fa-eye"></i></a> 
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -246,29 +227,30 @@
 						<div class="card-header">
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
-								<c:if test="${lastPage > 1 }">
-									<li class="page-item"><a class="page-link" href="?page=1">Trang đầu</a></li>
-									<c:if test="${currentPage > 2}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage-2}">${currentPage-2}</a></li>
-									</c:if>
-									<c:if test="${currentPage > 1}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage-1}">${currentPage-1}</a></li>
-									</c:if>
-									<li class="page-item active"><a class="page-link"
-										href="?page=${currentPage}">${currentPage}</a></li>
-									<c:if test="${currentPage < lastPage}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage+1}">${currentPage+1}</a></li>
-									</c:if>
-									<c:if test="${currentPage < lastPage - 1}">
-										<li class="page-item"><a class="page-link"
-											href="?page=${currentPage+2}">${currentPage+2}</a></li>
-									</c:if>
-									<li class="page-item"><a class="page-link"
-										href="?page=${lastPage }">Trang cuối</a></li>
+									<c:if test="${lastPage > 1 }">
+										<li class="page-item"><a class="page-link" href="?page=1">Trang
+												đầu</a></li>
+										<c:if test="${currentPage > 2}">
+											<li class="page-item"><a class="page-link"
+												href="?page=${currentPage-2}">${currentPage-2}</a></li>
 										</c:if>
+										<c:if test="${currentPage > 1}">
+											<li class="page-item"><a class="page-link"
+												href="?page=${currentPage-1}">${currentPage-1}</a></li>
+										</c:if>
+										<li class="page-item active"><a class="page-link"
+											href="?page=${currentPage}">${currentPage}</a></li>
+										<c:if test="${currentPage < lastPage}">
+											<li class="page-item"><a class="page-link"
+												href="?page=${currentPage+1}">${currentPage+1}</a></li>
+										</c:if>
+										<c:if test="${currentPage < lastPage - 1}">
+											<li class="page-item"><a class="page-link"
+												href="?page=${currentPage+2}">${currentPage+2}</a></li>
+										</c:if>
+										<li class="page-item"><a class="page-link"
+											href="?page=${lastPage }">Trang cuối</a></li>
+									</c:if>
 								</ul>
 							</nav>
 						</div>

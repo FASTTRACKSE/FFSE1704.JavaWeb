@@ -36,5 +36,10 @@ public interface LogworkDao {
 	public String getRecordsFiltered(String sql);
 
 	public List<Logwork> listMonth(int start, int total, String month);
+	
 	public List<Logwork> listAllMonth(String month);
+	
+	public List<Logwork> listDate(int start, int total, String date);
+	
+	public List<Logwork> listAllDate(String date);
 }
