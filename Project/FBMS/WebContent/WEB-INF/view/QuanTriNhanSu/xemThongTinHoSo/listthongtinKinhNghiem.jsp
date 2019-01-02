@@ -9,8 +9,8 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-					<h3 class="content-header-title mb-0">THÔNG TIN NHÂN VIÊN</h3>
-					<div class="row breadcrumbs-top">
+				<h3 class="content-header-title mb-0">THÔNG TIN NHÂN VIÊN</h3>
+				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
@@ -56,8 +56,8 @@
 					<div class="col-xs-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">Thông tin danh sách kinh
-								nghiệm dự án</h4>
+								<h4 class="card-title">Thông tin danh sách kinh nghiệm dự
+									án</h4>
 								<a class="heading-elements-toggle"><i
 									class="fa fa-ellipsis-v font-medium-3"></i></a>
 								<div class="heading-elements">
@@ -82,8 +82,8 @@
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a></a> -
+											Chức vụ:<a></a>
 										</p>
 
 
@@ -97,19 +97,29 @@
 													<th scope="col">Mã dự án</th>
 													<th scope="col">Tên dự án</th>
 													<th scope="col">Vai trò</th>
+													<th scope="col">Domain</th>
+													<th scope="col">Framework</th>
+													<th scope="col">Database</th>
+													<th scope="col">Ngôn ngữ</th>
+													<th scope="col">Mô tả</th>
 													<th scope="col">Trạng thái</th>
 												</tr>
 											</thead>
 
-												<c:forEach var="hopDong"
-													items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
-													<tr>
-														<td>${hopDong.thongTinDuAn.maDuAn}</td>
-														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
-														<td>${hopDong.vaiTro.tenVaiTro}</td>
-														<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
-													</tr>
-												</c:forEach>
+											<c:forEach var="hopDong"
+												items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
+												<tr>
+													<td>${hopDong.thongTinDuAn.maDuAn}</td>
+													<td>${hopDong.thongTinDuAn.tenDuAn}</td>
+													<td>${hopDong.vaiTro.tenVaiTro}</td>
+													<td>${hopDong.thongTinDuAn.domainNS.tenDomain}</td>
+													<td>${hopDong.thongTinDuAn.frameWorkNS.tenFramework}</td>
+													<td>Chưa hiển thị được</td>
+													<td>${hopDong.thongTinDuAn.programmingLaguageNS.tenProgrammingLanguage}</td>
+													<td>${hopDong.thongTinDuAn.moTa}</td>
+													<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
+												</tr>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -120,5 +130,5 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+</div>
+<jsp:include page="/WEB-INF/view/templates/footer.jsp" />

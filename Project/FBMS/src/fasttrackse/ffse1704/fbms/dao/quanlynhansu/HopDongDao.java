@@ -10,6 +10,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 
 
 public interface HopDongDao {
@@ -23,4 +24,5 @@ public interface HopDongDao {
 	public List<DiaDiemLamViec> listDiaDiemLamViec();
 	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien);
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi();
+	public List<TrangThaiHopDong> TrangThaiHopDong();
 }

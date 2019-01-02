@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -133,5 +134,29 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		List<XaPhuong> yourObject = (List<XaPhuong>) criteria.add(Restrictions.eq("maqh", maQuanHuyen))
 				.list();
 		return yourObject;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ThongTinHopDong> findTTByMaPhongBan(String maPhongBan) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong hd where hd.maHopDong = :mhd";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("mhd", maPhongBan);
+		return (List<ThongTinHopDong>) query.list();
+	}
+
+	@Override
+	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select maPhongBan, maChucDanh from ThongTinHopDong hd where hd.maNhanVien = :mnv AND hd.maTrangThai = :mtt";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mtt", "ACTIVE");
+		query.executeUpdate();
+		return (ThongTinHopDong) query.uniqueResult();
+			
 	}
 }

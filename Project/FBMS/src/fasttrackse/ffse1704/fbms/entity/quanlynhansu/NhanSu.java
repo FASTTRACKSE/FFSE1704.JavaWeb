@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,8 +25,6 @@ import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
-import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
-import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "ho_so_nhan_su")
@@ -46,20 +43,6 @@ public class NhanSu implements Serializable {
 	@NotEmpty(message = "Vui Lòng Nhập Mã nhân viên")
 	@Column(name = "ma_nhan_vien", nullable = false)
 	private String maNhanVien;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_phong_ban", insertable = false, updatable = false, nullable = false)
-	private PhongBan phongBan;
-
-	@Column(name = "ma_phong_ban", nullable = false)
-	private String maPhongBan;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_chuc_danh", insertable = false, updatable = false, nullable = false)
-	private ChucDanh chucDanh;
-	
-	@Column(name = "ma_chuc_danh", nullable = false)
-	private String maChucDanh;
 
 	@NotEmpty(message = "Vui Lòng Nhập họ hót của nhân viên")
 	@Column(name = "ho_dem", nullable = false)
@@ -385,44 +368,12 @@ public class NhanSu implements Serializable {
 		this.trangThai = trangThai;
 	}
 
-	public PhongBan getPhongBan() {
-		return phongBan;
-	}
-
-	public void setPhongBan(PhongBan phongBan) {
-		this.phongBan = phongBan;
-	}
-
-	public ChucDanh getChucDanh() {
-		return chucDanh;
-	}
-
-	public void setChucDanh(ChucDanh chucDanh) {
-		this.chucDanh = chucDanh;
-	}
-
 	public QuocTich getQuocTich() {
 		return quocTich;
 	}
 
 	public void setQuocTich(QuocTich quocTich) {
 		this.quocTich = quocTich;
-	}
-
-	public String getMaPhongBan() {
-		return maPhongBan;
-	}
-
-	public void setMaPhongBan(String maPhongBan) {
-		this.maPhongBan = maPhongBan;
-	}
-
-	public String getMaChucDanh() {
-		return maChucDanh;
-	}
-
-	public void setMaChucDanh(String maChucDanh) {
-		this.maChucDanh = maChucDanh;
 	}
 
 	public String getTinhThanhPho() {

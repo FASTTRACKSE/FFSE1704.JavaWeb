@@ -32,6 +32,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class NhanSuController {
@@ -51,6 +52,15 @@ public class NhanSuController {
 	//
 	// }
 	// mac dinh
+	
+	@Autowired
+	XemThongTinNVService xemThongTinNVService;
+
+	public void setXemThongTinNVService(XemThongTinNVService xemThongTinNVService) {
+		this.xemThongTinNVService = xemThongTinNVService;
+	}
+	
+	
 	@RequestMapping("/QuanTriNhanSu/danhsach_nhansu")
 	public String ShowList() {
 		return "redirect:/QuanTriNhanSu/danhsach_nhansu/1";
@@ -72,7 +82,10 @@ public class NhanSuController {
 		List<NhanSu> nhansu = nhanSuService.GetListNhanSuByPage(start, perpage);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);
-
+		// by Quan LT
+		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
+		model.addAttribute("dsPhongBan", allPhongBan);
+		
 		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu", "nhansu", nhansu);
 
 	}

@@ -223,8 +223,8 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a>${pbcd.tenPhongBan}</a> -
+											Chức vụ:<a>${pbcd.tenChucDanh}</a>
 										</p>
 
 
@@ -241,6 +241,7 @@ body, html {
 													<th scope="col">Ngày kết thúc</th>
 													<th scope="col">Tên công việc</th>
 													<th scope="col">Địa điểm làm việc</th>
+													<th scope="col">Trạng thái</th>
 													<th scope="col">Xem chi tiết</th>
 												</tr>
 											</thead>
@@ -254,6 +255,7 @@ body, html {
 														<td>${hopDong.ngayKetThuc}</td>
 														<td>${hopDong.congViec.tenCongViec}</td>
 														<td>${hopDong.diaDiem.tenDiaDiem}</td>
+														<td>${hopDong.trangthai.tenTrangThai}</td>
 														<td><a
 															href="/FBMS/thongTinChiTietHopDong/${thongTinNhanVien.maNhanVien}&${hopDong.id}"><button
 																	class="btn btn-success">Xem chi tiết</button></a></td>

@@ -24,10 +24,19 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.HopDongService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class HopDongCheDoController {
+	
+	@Autowired
+	NhanSuService nhanSuService;
+
+	public void setNhanSuService(NhanSuService nhanSuService) {
+		this.nhanSuService = nhanSuService;
+	}
+	
 	@Autowired
 	XemThongTinNVService xemThongTinNVService;
 
@@ -46,6 +55,23 @@ public class HopDongCheDoController {
 		this.hopDongService = hopDongService;
 	}
 
+	@RequestMapping(value = "/thongTinHopDong/{maNhanVien}", method = RequestMethod.GET)
+	public String thongTinHopDong(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+	}
+	
+	@RequestMapping(value = "/thongTinChiTietHopDong/{maNhanVien}&{id}", method = RequestMethod.GET)
+	public String thongTinChiTietHopDong(@PathVariable("maNhanVien") String maNhanVien,@PathVariable("id") int id, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("ngaynghiconlai", hopDongService.findNgayNghiConLaibyMaNV(maNhanVien));
+		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
+		model.addAttribute("dsnn", listDSNN);
+		model.addAttribute("hopDong", hopDongService.findById(id));
+		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
+	}
+	
 	@RequestMapping(value = "/addHopDongCheDo/{maNhanVien}")
 	public String addHopDongCheDo(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("hopdongchedo", new ThongTinHopDong());
@@ -58,6 +84,9 @@ public class HopDongCheDoController {
 		model.addAttribute("dscv", listDSCV);
 		List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
 		model.addAttribute("ddlv", listDDLV);
+		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
 		return "QuanTriNhanSu/HopDongCheDo/add";
 	}
 	
@@ -67,8 +96,7 @@ public class HopDongCheDoController {
 	public String saveHopDongCheDo(@PathVariable("maNhanVien") String maNhanVien,@Valid ThongTinHopDong hopdongchedo, BindingResult result,
         Model model) {
 		hopDongService.saveHopDongCheDo(hopdongchedo);
-		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+		return "redirect:/thongTinHopDong/{maNhanVien}";
 	}
 	
 	@RequestMapping(value = "/editHopDong/{id}&{maNhanVien}", method = RequestMethod.GET)
@@ -83,23 +111,20 @@ public class HopDongCheDoController {
 		model.addAttribute("dscv", listDSCV);
 		List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
 		model.addAttribute("ddlv", listDDLV);
+		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
 		return "QuanTriNhanSu/HopDongCheDo/edit";
 	}
 	@RequestMapping(value = "/editHopDongCheDo/{maNhanVien}&{id}", method = RequestMethod.POST)
 	public String editGiaBan(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id,Model model, @ModelAttribute("hopdong") @Valid ThongTinHopDong thongtinhopdong, HttpSession session,
 			MultipartFile file, BindingResult bindingResult) throws IllegalStateException, IOException {
 		hopDongService.editHopDong(thongtinhopdong);
-		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		model.addAttribute("ngaynghiconlai", hopDongService.findNgayNghiConLaibyMaNV(maNhanVien));
-		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
-		model.addAttribute("dsnn", listDSNN);
-		model.addAttribute("hopDong", hopDongService.findById(id));
-		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
+		return "redirect:/thongTinHopDong/{maNhanVien}";
 	}
 	@RequestMapping("/deleteHopDongCheDo/{id}&{maNhanVien}")
 	public String deleteHopDongCheDo(@PathVariable("id") int id, @PathVariable("maNhanVien") String maNhanVien, HttpSession session, Model model) {
 		hopDongService.deleteHopDong(id);
-		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
+		return "redirect:/thongTinHopDong/{maNhanVien}";
 	}
 }

@@ -45,6 +45,59 @@ public class QuanLyThongTinDuAnNS implements Serializable {
 	@OneToMany(mappedBy = "thongTinDuAn", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<PhanCongNhiemVuNS> listPhanCongNhiemVu;
+	
+	@Column(name = "mo_ta", nullable = false, length = 255)
+	@NotEmpty
+	private String moTa;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_domain", referencedColumnName = "ma_domain", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private DomainNS domainNS;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_framework",referencedColumnName = "ma_framework", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private FrameworkNS frameWorkNS;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_programming_language",referencedColumnName = "ma_programming_language", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private ProgrammingLanguageNS programmingLaguageNS;
+
+	public DomainNS getDomainNS() {
+		return domainNS;
+	}
+
+	public void setDomainNS(DomainNS domainNS) {
+		this.domainNS = domainNS;
+	}
+
+	public FrameworkNS getFrameWorkNS() {
+		return frameWorkNS;
+	}
+
+	public void setFrameWorkNS(FrameworkNS frameWorkNS) {
+		this.frameWorkNS = frameWorkNS;
+	}
+
+	public ProgrammingLanguageNS getProgrammingLaguageNS() {
+		return programmingLaguageNS;
+	}
+
+	public void setProgrammingLaguageNS(ProgrammingLanguageNS programmingLaguageNS) {
+		this.programmingLaguageNS = programmingLaguageNS;
+	}
+
+	public String getMoTa() {
+		return moTa;
+	}
+
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
+	}
 
 	public TrangThaiDuAnNS getTrangThaiDuAnNS() {
 		return trangThaiDuAnNS;

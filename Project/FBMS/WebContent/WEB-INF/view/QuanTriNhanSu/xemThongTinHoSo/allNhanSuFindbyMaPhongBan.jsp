@@ -50,13 +50,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách Nhan Su</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân sự</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách Nhan su</li>
+							<li class="breadcrumb-item active">Danh sách nhân sự</li>
 						</ol>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach nhan su</h4>
+							<h4 class="card-title">Danh sách nhân sự phòng<a style="color: red">Phòng Giám đốc</a></h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -106,6 +106,20 @@
 									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
+							</div>
+							<p>
+								Xem theo: <a style="color: red">Phòng ban</a>
+							</p>
+							<div class="col-sm-3">
+								<form method="post" action="/FBMS/listTTfindbyMaPhongBan"
+									style="width: 150px;">
+									<select class="form-control" name="dsPhongBanId">
+										<c:forEach items="${dsPhongBan}" var="dsPhongBan">
+											<option value="${dsPhongBan.maPhongBan}">${dsPhongBan.tenPhongBan}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
+
 							</div>
 						</div>
 						<div class="card-body collapse in">
@@ -131,16 +145,16 @@
 												<th>Chức năng</th>
 											</tr>
 										</thead>
-										<c:forEach var="ns" items="${nhansu}">
+										<c:forEach var="ns" items="${thongTinNhanVien}">
 											<tr>
-												<td>${ns.id}</td>
+												<td>${ns.nhanSu.id}</td>
 												<td>${ns.maNhanVien}</td>
-												<td>PB</td>
-												<td>CD</td>
-												<td>${ns.hoLot}${ns.ten}</td>
+												<td>${ns.tenPhongBan}</td>
+												<td>${ns.tenChucDanh}</td>
+												<td>${ns.nhanSu.hoLot} ${ns.nhanSu.ten}</td>
 
 												<td><img style="width: 70px;hight=70px;"
-													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>
+													src="<c:url value="/uploads/${ns.nhanSu.anhDaiDien}"/>"></td>
 
 												<%-- <td>${ns.namSinh}</td> --%>
 												<%-- <td><c:choose>
@@ -187,9 +201,9 @@
 													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
-												<td><a href="editNS/${ns.id}" ><button class="btn btn-success">sửa</button></a>
+												<td><a href="editNS/${ns.nhanSu.id}"><button>sửa</button></a>
 
-													<a href="DeleteNS/${ns.id}" ><button class="btn btn-danger">Xóa</button></a></td>
+													<a href="DeleteNS/${ns.nhanSu.id}"><button>Xoa</button></a></td>
 
 											</tr>
 										</c:forEach>

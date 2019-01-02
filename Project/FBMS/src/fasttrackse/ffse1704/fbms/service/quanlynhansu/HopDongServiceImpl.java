@@ -15,6 +15,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 
 @Service
 @Transactional
@@ -66,6 +67,11 @@ public class HopDongServiceImpl implements HopDongService {
 	@Override
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi() {
 		return hopDongDao.listDanhSachNgayNghi();
+	}
+
+	@Override
+	public List<TrangThaiHopDong> TrangThaiHopDong() {
+		return hopDongDao.TrangThaiHopDong();
 	}
 
 }

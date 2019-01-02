@@ -20,6 +20,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -136,5 +137,13 @@ public class HopDongDaoImpl implements HopDongDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<DanhSachNgayNghi> listDanhSachNgayNghi = session.createQuery("from DanhSachNgayNghi").getResultList();
 		return listDanhSachNgayNghi;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<TrangThaiHopDong> TrangThaiHopDong() {
+		Session session = sessionFactory.getCurrentSession();
+		List<TrangThaiHopDong> listTrangThaiHopDong = session.createQuery("from TrangThaiHopDong").getResultList();
+		return listTrangThaiHopDong;
 	}
 }

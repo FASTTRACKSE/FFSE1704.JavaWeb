@@ -215,8 +215,8 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a></a> -
+											Chức vụ:<a></a>
 										</p>
 
 										<div class="col-sm-12 col-md-6">
@@ -249,6 +249,13 @@ body, html {
 																</tr>
 																<tr>
 																	<td>
+																		<h6>Trạng thái</h6>
+																	</td>
+																	<td class="type-info text-right"><a
+																		style="color: red"><h6>${hopDong.trangthai.tenTrangThai}</h6></a></td>
+																</tr>
+																<tr>
+																	<td>
 																		<h6>Ngày bắt đầu</h6>
 																	</td>
 																	<td class="type-info text-right"><a
@@ -267,6 +274,20 @@ body, html {
 																	</td>
 																	<td class="type-info text-right"><a
 																		style="color: red"><h6>${hopDong.congViec.tenCongViec}</h6></a></td>
+																</tr>
+																<tr>
+																	<td>
+																		<h6>Phòng ban</h6>
+																	</td>
+																	<td class="type-info text-right"><a
+																		style="color: red"><h6>${hopDong.phongBan.tenPhongBan}</h6></a></td>
+																</tr>
+																<tr>
+																	<td>
+																		<h6>Chức vụ</h6>
+																	</td>
+																	<td class="type-info text-right"><a
+																		style="color: red"><h6>${hopDong.chucDanh.tenChucDanh}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>

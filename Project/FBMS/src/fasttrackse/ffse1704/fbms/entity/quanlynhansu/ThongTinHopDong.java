@@ -3,6 +3,8 @@ package fasttrackse.ffse1704.fbms.entity.quanlynhansu;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,6 +21,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "thong_tin_hop_dong")
@@ -27,54 +34,123 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
-	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_cong_viec", referencedColumnName = "ma_vai_tro", insertable = false, updatable = false, nullable = false)
 	private DanhSachCongViec congViec;
-	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_dia_diem_lam_viec", referencedColumnName = "id_dia_diem", insertable = false, updatable = false, nullable = false)
 	private DiaDiemLamViec diaDiem;
-	
+
 	@Column(name = "ma_nhan_vien")
 	@NotNull
 	private String maNhanVien;
-	
+
 	@Column(name = "ma_hop_dong")
 	private String maHopDong;
-	
+
 	@Column(name = "luong_thang_13")
 	private String luongThang13;
 
 	@Column(name = "ma_cong_viec")
 	private String maCongViec;
-	
+
 	@Column(name = "ma_dia_diem_lam_viec")
 	private String maDiaDiemLamViec;
-	
+
 	@Column(name = "muc_luong_ban_dau")
 	@NotNull
 	private int mucLuongBanDau;
-	
+
 	@Column(name = "so_ngay_nghi_trong_nam")
 	@NotNull
 	private int soNgayNghiTrongNam;
-	
+
 	@Column(name = "ngay_nghi_dac_biet")
 	private String ngayNghiDacBiet;
-	
+
 	@Column(name = "hinh_thuc_tra_luong")
 	private int hinhThucTraLuong;
-	
+
 	@Column(name = "thoi_gian_bat_dau_lam_viec")
 	private String thoiGianBatDauLamViec;
-	
+
 	@Column(name = "thoi_gian_ket_thuc_lam_viec")
 	private String thoiGianKetThucLamViec;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_phong_ban", insertable = false, updatable = false, nullable = false)
+	private PhongBan phongBan;
+
+	@Column(name = "ma_phong_ban", nullable = false)
+	private String maPhongBan;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_chuc_danh", insertable = false, updatable = false, nullable = false)
+	private ChucDanh chucDanh;
+
+	@Column(name = "ma_chuc_danh", nullable = false)
+	private String maChucDanh;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trang_thai", insertable = false, updatable = false, nullable = false)
+	private TrangThaiHopDong trangthai;
+
+	@Column(name = "trang_thai", nullable = false)
+	private String maTrangThai;
+
+	public PhongBan getPhongBan() {
+		return phongBan;
+	}
+
+	public void setPhongBan(PhongBan phongBan) {
+		this.phongBan = phongBan;
+	}
+
+	public String getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public ChucDanh getChucDanh() {
+		return chucDanh;
+	}
+
+	public void setChucDanh(ChucDanh chucDanh) {
+		this.chucDanh = chucDanh;
+	}
+
+	public String getMaChucDanh() {
+		return maChucDanh;
+	}
+
+	public void setMaChucDanh(String maChucDanh) {
+		this.maChucDanh = maChucDanh;
+	}
+
+	public TrangThaiHopDong getTrangthai() {
+		return trangthai;
+	}
+
+	public void setTrangthai(TrangThaiHopDong trangthai) {
+		this.trangthai = trangthai;
+	}
+
+	public String getMaTrangThai() {
+		return maTrangThai;
+	}
+
+	public void setMaTrangThai(String maTrangThai) {
+		this.maTrangThai = maTrangThai;
+	}
+
 	public DanhSachCongViec getCongViec() {
 		return congViec;
 	}
@@ -139,8 +215,6 @@ public class ThongTinHopDong implements Serializable {
 		this.hinhThucTraLuong = hinhThucTraLuong;
 	}
 
-	
-
 	public String getThoiGianBatDauLamViec() {
 		return thoiGianBatDauLamViec;
 	}
@@ -181,8 +255,8 @@ public class ThongTinHopDong implements Serializable {
 		this.luongThang13 = luongThang13;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinColumn(name = "ma_hop_dong",referencedColumnName = "ma_hop_dong", nullable = false, insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_hop_dong", referencedColumnName = "ma_hop_dong", nullable = false, insertable = false, updatable = false)
 	private HopDong loaihopDong;
 
 	@Temporal(TemporalType.DATE)
@@ -195,9 +269,8 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "ngay_ket_thuc", nullable = false)
 	private Date ngayKetThuc;
 
-	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinColumn(name = "luong_thang_13",referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "luong_thang_13", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
 	private CheDoHuong cheDoHuong;
 
 	public ThongTinHopDong() {
@@ -250,6 +323,5 @@ public class ThongTinHopDong implements Serializable {
 	public void setCheDoHuong(CheDoHuong cheDoHuong) {
 		this.cheDoHuong = cheDoHuong;
 	}
-
 
 }

@@ -16,5 +16,7 @@ public interface XemThongTinNVDao {
 	public PhongBan findTenPhongBanByMaPhongBan(String maPhongBan);
 	public List<QuanHuyen> findQuanHuyenByIdThanhPho(String maThanhPho);
 	public List<XaPhuong> findXaPhuongByIdQuanHuyen(String maQuanHuyen);
+	public List<ThongTinHopDong> findTTByMaPhongBan(String maPhongBan);
+	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien);
 	
 }
