@@ -107,6 +107,13 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
+							<form method="GET" action="/FBMS/listTTfindbyMaPhongBan" style="width: 150px;">
+								<select class="form-control" name="dsPhongBanId">
+								<c:forEach items="${dsPhongBan}" var="pb">
+									<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
+								</c:forEach>
+								</select> <input class="btn btn-success" type="submit" value="Xem">
+							</form>
 						</div>
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
@@ -187,9 +194,10 @@
 													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
-												<td><a href="editNS/${ns.id}" ><button class="btn btn-success">sửa</button></a>
-
-													<a href="DeleteNS/${ns.id}" ><button class="btn btn-danger">Xóa</button></a></td>
+												<td><a href="editNS/${ns.id}"><button
+															class="btn btn-success">sửa</button></a> <a
+													href="DeleteNS/${ns.id}"><button
+															class="btn btn-danger">Xóa</button></a></td>
 
 											</tr>
 										</c:forEach>

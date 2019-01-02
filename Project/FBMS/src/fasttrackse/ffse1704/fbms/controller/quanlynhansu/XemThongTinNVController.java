@@ -103,11 +103,14 @@ public class XemThongTinNVController {
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinKinhNghiem";
 	}
 	
-	@RequestMapping(value = "/listTTfindbyMaPhongBan", method = RequestMethod.POST)
+	@RequestMapping(value = "/listTTfindbyMaPhongBan", method = RequestMethod.GET)
     public String submit( @RequestParam ("dsPhongBanId") String maPhongBan,Model model) { 
+		
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findTTByMaPhongBan(maPhongBan));
+		model.addAttribute("phongBan", xemThongTinNVService.findTenPhongBanByMaPhongBan(maPhongBan));
 		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
 		model.addAttribute("dsPhongBan", allPhongBan);
+		
         return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyMaPhongBan";
 
     }

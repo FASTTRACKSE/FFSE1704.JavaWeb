@@ -150,11 +150,9 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 	@Override
 	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from ThongTinHopDong hd where hd.maNhanVien = :mnv AND hd.maTrangThai = :mtt";
+		String hql = "from ThongTinHopDong hd where hd.maNhanVien = :mnv AND hd.maTrangThai = 'ACTIVE'";
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
-		query.setParameter("mtt", "ACTIVE");
-		query.executeUpdate();
 		return (ThongTinHopDong) query.uniqueResult();
 			
 	}
