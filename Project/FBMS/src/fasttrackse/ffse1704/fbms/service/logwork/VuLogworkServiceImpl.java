@@ -90,4 +90,8 @@ public class VuLogworkServiceImpl implements VuLogworkService {
 	public List<ThoiGianLamViec> listOneMonth(String month) {
 		return quanLiThoiGianDAO.listOneMonth(month);
 	}
+	@Override
+	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai) {
+		return quanLiThoiGianDAO.listTheoTrangThai(maTrangThai);
+	}
 }

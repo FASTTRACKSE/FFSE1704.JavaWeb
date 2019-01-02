@@ -35,4 +35,6 @@ public interface QuanLiThoiGianDaoImpl {
 
 	public List<ThoiGianLamViec> listOneMonth(String month);
 
+	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai);
+
 }

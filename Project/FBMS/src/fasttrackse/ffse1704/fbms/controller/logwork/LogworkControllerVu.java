@@ -56,26 +56,30 @@ public class LogworkControllerVu {
 				VuTrangThai trangThaiLogwork = new VuTrangThai();
 				trangThaiLogwork.setMaTrangThai(4);
 				thoiGianLamViec.setTrangThaiLogwork(trangThaiLogwork);
+				return "redirect:/logwork/list/4";
 			} else if (action.equals("submit")) {
 				msg = "Đã gửi phê duyệt";
 				VuTrangThai trangThaiLogwork = new VuTrangThai();
-				trangThaiLogwork.setMaTrangThai(1);
+				trangThaiLogwork.setMaTrangThai(5);
 				thoiGianLamViec.setTrangThaiLogwork(trangThaiLogwork);
+				return "redirect:/logwork/list/5";
 			} else if (action.equals("exit")) {
-				return "redirect:/logwork/list";
+				return "redirect:/logwork/list/4";
 			}
 			service.create(thoiGianLamViec);
 			redirectAttributes.addFlashAttribute("button", msg);
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
-		return "redirect:/logwork/list";
+		return "redirect:/logwork/list/4";
 	}
+
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String viewLogwork(@PathVariable("id") int id, Model model) {
 		model.addAttribute("viewLogwork", service.findByIdLogwork(id));
 		return "logwork/view";
 	}
+
 	@RequestMapping(value = "/editlogwork/{id}", method = RequestMethod.GET)
 	public String editForm(@PathVariable("id") int id, Model model, final RedirectAttributes redirectAttributes) {
 		List<VuPhongBan> listPhongBan = service.listPhongBan();
@@ -97,7 +101,7 @@ public class LogworkControllerVu {
 			if (action.equals("submit")) {
 				msg = "Đã Chuyển Trạng Thái Thành Đã gửi phê duyệt";
 				VuTrangThai trangThaiLogwork = new VuTrangThai();
-				trangThaiLogwork.setMaTrangThai(1);
+				trangThaiLogwork.setMaTrangThai(5);
 				logwork.setTrangThaiLogwork(trangThaiLogwork);
 			} else if (action.equals("editlogwork")) {
 				msg = "Sửa thành công";
@@ -112,7 +116,7 @@ public class LogworkControllerVu {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
-		return "redirect:/logwork/list";
+		return "redirect:/logwork/list/4";
 	}
 
 	@RequestMapping(value = "/deletelogwork/{id}", method = RequestMethod.GET)
@@ -123,20 +127,63 @@ public class LogworkControllerVu {
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại");
 		}
-		return "redirect:/logwork/list";
+		return "redirect:/logwork/list/2";
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String viewLogwork(Model model) {
-		List<ThoiGianLamViec> allLogwork = service.findAll();
+	@RequestMapping(value = "/list/{maTrangThai}", method = RequestMethod.GET)
+	public String viewLogworkTheoTrangThai(@PathVariable("maTrangThai") int maTrangThai, Model model) {
+		List<ThoiGianLamViec> allLogwork = service.listTheoTrangThai(maTrangThai);
 		model.addAttribute("logwork", allLogwork);
 		return "logwork/list";
 	}
+
 	@RequestMapping(value = "/listMonth/{month}")
 	public String viewMonth(@PathVariable("month") String month, Model model) {
 		model.addAttribute("thang", month);
 		model.addAttribute("listMonth", service.listOneMonth(month));
 		return "logwork/listmonth";
-		
+
+	}
+
+	@RequestMapping(value = "/listChoPheDuyetPM", method = RequestMethod.GET)
+	public String viewChoPheDuyetPM(Model model) {
+		List<ThoiGianLamViec> allLogwork = service.findAll();
+		model.addAttribute("logwork", allLogwork);
+		return "logwork/listChoPheDuyet";
+	}
+
+	@RequestMapping(value = "/viewPheDuyet/{id}", method = RequestMethod.GET)
+	public String viewPheDuyet(@PathVariable("id") int id, Model model) {
+		model.addAttribute("viewPheDuyet", service.findByIdLogwork(id));
+		return "logwork/ViewPheDuyetPM";
+	}
+
+	@RequestMapping(value = "/viewPheDuyet/{id}", method = RequestMethod.POST)
+	public String doPheDuyet(@PathVariable("id") int id, Model model, final RedirectAttributes redirectAttributes,
+			@RequestParam String action,@RequestParam("nhanXetPM") String nhanXetPM) {
+
+		try {
+			ThoiGianLamViec logwork = service.findByIdLogwork(id);
+			String msg = "";
+			if (action.equals("pheDuyet")) {
+				msg = "Đã  phê duyệt,Chờ TPP Phê Duyệt";
+				VuTrangThai trangThaiLogwork = new VuTrangThai();
+				trangThaiLogwork.setMaTrangThai(1);
+				logwork.setNhanXetPM(nhanXetPM);
+				logwork.setTrangThaiLogwork(trangThaiLogwork);
+
+			} else if (action.equals("tuChoi")) {
+				msg = "Đã Từ Chối";
+				VuTrangThai trangThaiLogwork = new VuTrangThai();
+				trangThaiLogwork.setMaTrangThai(3);
+				logwork.setNhanXetPM(nhanXetPM);
+				logwork.setTrangThaiLogwork(trangThaiLogwork);
+			}
+			service.update(logwork);
+			redirectAttributes.addFlashAttribute("button", msg);
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
+		}
+		return "redirect:/logwork/listChoPheDuyetPM";
 	}
 }

@@ -106,7 +106,7 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/list" />'>Home</a></li>
+								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item active">Danh sách Logwork</li>
 						</ol>
 					</div>
@@ -115,131 +115,131 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "addlogwork"/>" class="btn btn-primary"><span
-						class="fa fa-plus"></span> Thêm mới</a>
+					<a href="<c:url value = "/logwork/addlogwork"/>"
+						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
+						mới</a>
 				</div>
 			</div>
-			<div class="content-header-left col-md-6">
-				<div class="dropdown">
-					<button class="dropbtn">Tháng ${month}</button>
-					<div class="dropdown-content">
-						<c:forEach var="i" begin="1" end="12">
-							<a href="listMonth/${i}"><c:out value="${i}" /></a>
-						</c:forEach>
-					</div>
+			<div class="content-header-left col-md-9">
+
+				<button class="dropbtn">Chọn Tháng ${month}</button>
+				<div class="dropdown-content">
+					<c:forEach var="i" begin="1" end="12">
+						<a href="/FBMS/logwork/listMonth/${i}"><c:out value="${i}" /></a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
-		<!-- End Path -->
+	</div>
+	<!-- End Path -->
 
-		<div class="content-body">
+	<div class="content-body">
 
-			<!-- Show message -->
-			<c:if test="${button ne null}">
-				<div class="alert alert-success alert-dismissable" role="alert">
-					<button type="button" class="close" data-dismiss="alert">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					${button}
-				</div>
-			</c:if>
-			<c:if test="${messageError ne null}">
-				<div class="alert alert-danger alert-dismissable" role="alert">
-					<button type="button" class="close" data-dismiss="alert">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					${messageError}
-				</div>
-			</c:if>
-			<!-- End Show message -->
+		<!-- Show message -->
+		<c:if test="${button ne null}">
+			<div class="alert alert-success alert-dismissable" role="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				${button}
+			</div>
+		</c:if>
+		<c:if test="${messageError ne null}">
+			<div class="alert alert-danger alert-dismissable" role="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				${messageError}
+			</div>
+		</c:if>
+		<!-- End Show message -->
 
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">Danh sách Logwork</h4>
-							<a class="heading-elements-toggle"><i
-								class="fa fa-ellipsis-v font-medium-3"></i></a>
-							<div class="heading-elements">
-								<ul class="list-inline mb-0">
-									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-									<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-									<li><a data-action="close"><i class="ft-x"></i></a></li>
-								</ul>
-							</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Danh sách Logwork</h4>
+						<a class="heading-elements-toggle"><i
+							class="fa fa-ellipsis-v font-medium-3"></i></a>
+						<div class="heading-elements">
+							<ul class="list-inline mb-0">
+								<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+								<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+								<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+								<li><a data-action="close"><i class="ft-x"></i></a></li>
+							</ul>
 						</div>
-						<div class="card-body collapse in">
-							<div class="card-block card-dashboard">
-								<div class="table-responsive">
-									<table id="datatable"
-										class="table table-striped table-bordered dataex-res-constructor">
-										<thead>
+					</div>
+					<div class="card-body collapse in">
+						<div class="card-block card-dashboard">
+							<div class="table-responsive">
+								<table id="datatable"
+									class="table table-striped table-bordered dataex-res-constructor">
+									<thead>
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">Dự Án</th>
+											<th scope="col">Tên Nhân Viên</th>
+											<th scope="col">Vai Trò</th>
+											<th scope="col">Phòng Ban</th>
+											<th scope="col">Mô Tả</th>
+											<th scope="col">Trạng Thái</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="lg" items="${logwork}">
 											<tr>
-												<th scope="col">ID</th>
-												<th scope="col">Dự Án</th>
-												<th scope="col">Tên Nhân Viên</th>
-												<th scope="col">Vai Trò</th>
-												<th scope="col">Phòng Ban</th>
-												<th scope="col">Mô Tả</th>
-												<th scope="col">Trạng Thái</th>
-												<th scope="col">Action</th>
+												<td>${lg.id}</td>
+												<td>${lg.maDuAn.tenDuAn}</td>
+												<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
+												<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
+												<td>${lg.maPhongBan.tenPhongBan}</td>
+												<td>${lg.moTa}</td>
+												<td>${lg.trangThaiLogwork.tenTrangThai}</td>
+												<td><a href="/FBMS/logwork/view/${lg.id }"><button
+															class="btn btn-success">View</button></a> <c:if
+														test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
+														<a href="/FBMS/logwork/editlogwork/${lg.id }"><button
+																class="btn btn-success">sửa</button></a>
+													</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
+														<a href="/FBMS/logwork/deletelogwork/${lg.id }"><button
+																class="btn btn-danger"
+																onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
+																xóa</button></a>
+													</c:if></td>
 											</tr>
-										</thead>
-										<tbody>
-											<c:forEach var="lg" items="${logwork}">
-												<tr>
-													<td>${lg.id}</td>
-													<td>${lg.maDuAn.tenDuAn}</td>
-													<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
-													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
-													<td>${lg.maPhongBan.tenPhongBan}</td>
-													<td>${lg.moTa}</td>
-													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td><a href="view/${lg.id }"><button
-																class="btn btn-success">View</button></a> <c:if
-															test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-															<a href="editlogwork/${lg.id }"><button
-																	class="btn btn-success">sửa</button></a>
-														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="deletelogwork/${lg.id }"><button
-																	class="btn btn-danger"
-																	onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
-																	xóa</button></a>
-														</c:if></td>
-												</tr>
-											</c:forEach>
-										</tbody>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
+										</c:forEach>
+									</tbody>
+									<tbody>
+										<div class="modal fade" id="confirm-delete" tabindex="-1"
+											role="dialog" aria-labelledby="myModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
 
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">&times;</button>
+														<h4 class="modal-title" id="myModalLabel">Bạn có chắc
+															muốn xóa</h4>
+													</div>
 
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
+													<div class="modal-body">
+														<p>Bạn có chắc muốn xóa</p>
+														<p class="debug-url"></p>
+													</div>
 
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default"
+															data-dismiss="modal">Quay lại</button>
+														<a class="btn btn-danger btn-ok">Xóa</a>
 													</div>
 												</div>
 											</div>
-										</tbody>
-									</table>
-								</div>
+										</div>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -247,6 +247,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

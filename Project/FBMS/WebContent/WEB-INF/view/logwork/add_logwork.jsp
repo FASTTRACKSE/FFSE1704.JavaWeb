@@ -70,11 +70,7 @@
 								placeholder="Tên công việc" />
 							<form:errors path="tenCongViec" cssClass="error" />
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Mô tả</label>
-							<form:input class="form-control" path="moTa" placeholder="Mô tả" />
-							<form:errors path="moTa" cssClass="error" />
-						</div>
+
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
 							<form:input class="form-control" type="text"
@@ -85,9 +81,12 @@
 							<label>Thời gian kết thúc</label>
 							<form:input path="thoiGianKetThuc" class="form-control"
 								type="text" />
-
 						</div>
-
+						<div class="form-group col-sm-6">
+							<label>Mô tả</label>
+							<form:textarea type="" class="form-control" path="moTa" placeholder="Mô tả" />
+							<form:errors path="moTa" cssClass="error" />
+						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" name="action" value="luuNhap"
 								class="btn btn-success">Lưu nháp</button>

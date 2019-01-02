@@ -24,7 +24,7 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 	@Override
 	public List<ThoiGianLamViec> findAll() {
 		Session session = this.sessionFactory.openSession();
-		List<ThoiGianLamViec> list = session.createQuery("from ThoiGianLamViec").list();
+		List<ThoiGianLamViec> list = session.createQuery("from ThoiGianLamViec ORDER BY id DESC").list();
 		session.close();
 		return list;
 	}
@@ -136,6 +136,15 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 		Session session = this.sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from ThoiGianLamViec so where MONTH(so.thoiGianBatDau) = :month");
 		query.setParameter("month", Integer.parseInt(month));
+		List<ThoiGianLamViec> logwork = (List<ThoiGianLamViec>) query.getResultList();
+		return logwork;
+		
+	}
+	@Override
+	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai){
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from ThoiGianLamViec  where trangThaiLogwork.maTrangThai  = :maTrangThai");
+		query.setParameter("maTrangThai", maTrangThai);
 		List<ThoiGianLamViec> logwork = (List<ThoiGianLamViec>) query.getResultList();
 		return logwork;
 		
