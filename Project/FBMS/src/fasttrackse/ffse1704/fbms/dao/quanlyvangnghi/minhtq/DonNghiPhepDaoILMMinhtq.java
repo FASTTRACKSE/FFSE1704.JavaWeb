@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fasttrackse.ffse1704.fbms.entity.quanlythoigian.Logwork;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
@@ -73,6 +72,16 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		return donnghiphepnhap;
 	}
 
+	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :maTrangThai");
+		query.setParameter("maTrangThai", maTrangThai);
+		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) query.getResultList().get(0);
+
+		return donnghiphep;
+	}
+
+	
 	// crud cho đơn nghỉ phép nháp của nhân viên
 
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {

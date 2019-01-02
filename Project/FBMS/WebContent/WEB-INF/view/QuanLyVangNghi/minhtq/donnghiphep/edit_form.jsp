@@ -30,24 +30,23 @@
 					<form:form method="POST" modelAttribute="suadonnhap"
 						action="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepNhap">
 						<div class="form-group col-sm-12">
-							<label>id</label>
-							<form:input class="form-control" path="id" readonly="true" />
-
-						</div>
-
-						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien"
-								readonly="true" />
+							<form:input class="form-control" path="maNhanVien" readonly="true" 
+								placeholder="nhập mã nhân viên" />
 
 						</div>
 
-						<div>
-							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="form-control round" id="total"
-								readonly="true" path="soLuong" />
+						<div class="form-group col-md-12">
+							<label for="location1">Loại ngày nghỉ </label>
+							<form:select path="loaiNgayNghi"
+								class="custom-select form-control" id="location1"
+								name="location" items="${countryList}" itemValue="maNgayNghi"
+								itemLabel="tenLoaiNgayNghi">
+
+							</form:select>
 
 						</div>
+
 
 						<div class="form-group col-sm-12">
 							<label>Thời gian bắt đầu </label>
@@ -179,23 +178,26 @@
 								}
 							</script>
 
+						</div>
+						
+
+						<div class="form-group col-sm-12">
+							<label>Số ngày nghỉ</label>
+							<form:input type="text" class="custom-select form-control"
+								id="total" readonly="true" path="soLuong" />
 
 						</div>
+						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT3')}">
+							<div class="form-group col-sm-12">
+								<label>ghi chú</label>
+								<form:input type="text" class="custom-select form-control"
+									id="total" path="ghiChu" />
 
-
-						<div class="form-group col-md-12">
-							<label for="location1">Loại ngày nghỉ </label>
-							<form:select path="loaiNgayNghi"
-								class="custom-select form-control" id="location1"
-								name="location" items="${countryList}" itemValue="maNgayNghi"
-								itemLabel="tenLoaiNgayNghi">
-
-							</form:select>
-
-						</div>
+							</div>
+						</c:if>
 
 						<div class="row">
-							<div class="col-md-12" >
+							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
 									class="btn btn-outline-success round  mr-1 mb-1" value="cancel"
 									name="actional">Cancel</button>

@@ -43,6 +43,9 @@ public class DonNghiPhepMinhtq {
 	@Temporal(TemporalType.DATE)
 	private Date thoiGianKetThuc;
 
+	@Column(name = "ghi_chu")
+	private String ghiChu;
+
 	@Column(name = "trang_thai")
 	private String trangThai;
 
@@ -118,6 +121,14 @@ public class DonNghiPhepMinhtq {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 	}
 
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
+
 	public String getTrangThai() {
 		return trangThai;
 	}
@@ -127,7 +138,7 @@ public class DonNghiPhepMinhtq {
 	}
 
 	public DonNghiPhepMinhtq(int id, String maNhanVien, String loaiNgayNghi, int soLuong, Date thoiGianBatDau,
-			Date thoiGianKetThuc, String trangThai, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
+			Date thoiGianKetThuc, String ghiChu, String trangThai, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
 			TrangThaiVangNghiMinhtq trangThaiDNP) {
 		super();
 		this.id = id;
@@ -136,6 +147,7 @@ public class DonNghiPhepMinhtq {
 		this.soLuong = soLuong;
 		this.thoiGianBatDau = thoiGianBatDau;
 		this.thoiGianKetThuc = thoiGianKetThuc;
+		this.ghiChu = ghiChu;
 		this.trangThai = trangThai;
 		this.loaiNgayNghiPhep = loaiNgayNghiPhep;
 		this.trangThaiDNP = trangThaiDNP;
