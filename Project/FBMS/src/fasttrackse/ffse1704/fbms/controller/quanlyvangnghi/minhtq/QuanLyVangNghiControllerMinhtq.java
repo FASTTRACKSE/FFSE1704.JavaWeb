@@ -48,6 +48,7 @@ public class QuanLyVangNghiControllerMinhtq {
 
 		int perPage = 3;
 		int totalPages = 0;
+
 		if ((totalRecords / perPage) % 2 == 0) {
 			totalPages = totalRecords / perPage;
 		} else if ((totalRecords / perPage) % 2 != 0 && totalRecords != perPage) {
@@ -55,6 +56,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		} else if (totalRecords == perPage) {
 			totalPages = 1;
 		}
+
 		int start = perPage * (Page - 1);
 
 		model.addAttribute("listdonnghiphep", donNghiPhepService.listDonNghiPhep(start, perPage, idTT));
@@ -155,14 +157,34 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	}
 
-	// Đơn chờ phê duyệt
-	@RequestMapping(value = "/DonChoPheDuyet/PheDuyet/{id}", method = RequestMethod.GET)
-	public String DonChoPheDuyet(@PathVariable("id") int id, final RedirectAttributes redirectAttributes)
+	// chuyển Đơn chờ phê duyệt thành phê duyệt hoặc từ chối
+	@RequestMapping(value = "/pheDuyetDon/daPheDuyet/{maTrangThai}", method = RequestMethod.GET)
+	public String DonChoPheDuyet(@PathVariable("maTrangThai") String maTrangThai,
+			final RedirectAttributes redirectAttributes, DonNghiPhepMinhtq donnghiphep)
 			throws IllegalStateException, IOException {
-		donNghiPhepService.getByIdDonNghiPhep(id);
-	
+		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
+
+		TrangThaiVangNghiMinhtq trangthaiDNP = donNghiPhepService.getByIdTrangThai(id);
+		donnghiphep.setTrangThai("TT3");
+
+		donNghiPhepService.editDonNghiPhep(donnghiphep);
+
 		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
-		return "/QuanLyVangNghi/minhtq/listDonNghiPhep";
+		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3";
+
+	}
+
+	@RequestMapping(value = "/pheDuyetDon/tuChoi/{maTrangThai}", method = RequestMethod.GET)
+	public String DonTuChoi(@PathVariable("maTrangThai") String maTrangThai,
+			final RedirectAttributes redirectAttributes, DonNghiPhepMinhtq donnghiphep)
+			throws IllegalStateException, IOException {
+		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
+
+		donnghiphep.setTrangThai("TT4");
+		donNghiPhepService.editDonNghiPhep(donnghiphep);
+
+		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
+		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT4";
 
 	}
 
@@ -216,7 +238,7 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	// xóa trạng thái
 	@RequestMapping("/deleteTrangThai/{id}")
-	public String deletetrangthai(@PathVariable int id, Model model) {
+	public String deletetrangthai(@PathVariable int id) {
 		donNghiPhepService.deleteTrangThai(id);
 		return "redirect:/QuanLyVangNghi/minhtq/listTrangThai";
 	}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 05, 2018 lúc 09:58 AM
+-- Thời gian đã tạo: Th1 02, 2019 lúc 09:25 AM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
 -- Phiên bản PHP: 7.2.2
 
@@ -39,10 +39,12 @@ CREATE TABLE `minhtq_trang_thai` (
 --
 
 INSERT INTO `minhtq_trang_thai` (`id`, `ma_trang_thai`, `ten_trang_thai`) VALUES
-(1, '1', 'nháp'),
-(2, '2', 'chờ phê duyệt'),
-(3, '3', 'đã phê duyệt'),
-(4, '4', 'từ chối');
+(1, 'TT1', 'nháp'),
+(2, 'TT2', 'chờ phê duyệt'),
+(3, 'TT3', 'đã phê duyệt'),
+(4, 'TT4', 'từ chối'),
+(7, '6', 'ko làm gì hết '),
+(8, '3323', 'hahaha');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -62,7 +64,7 @@ ALTER TABLE `minhtq_trang_thai`
 -- AUTO_INCREMENT cho bảng `minhtq_trang_thai`
 --
 ALTER TABLE `minhtq_trang_thai`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

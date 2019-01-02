@@ -125,8 +125,14 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 
 	@Override
 	public DonNghiPhepMinhtq read(int id) {
-		// TODO Auto-generated method stub
+
 		return donNghiPhepDao.read(id);
+	}
+
+	@Override
+	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai) {
+
+		return donNghiPhepDao.getByIdApproved(maTrangThai);
 	}
 
 }

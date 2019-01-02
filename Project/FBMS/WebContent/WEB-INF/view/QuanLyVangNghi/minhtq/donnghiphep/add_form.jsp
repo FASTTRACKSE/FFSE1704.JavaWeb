@@ -26,28 +26,29 @@
 		<!-- End Path -->
 
 		<div class="content-body">
-		
+
 			<div class="main-content">
 				<div class="row">
-				<!-- Show message -->
-			<c:if test="${messageSuccess ne null}">
-				<div class="alert alert-success alert-dismissable" role="alert">
-					<button type="button" class="close" data-dismiss="alert">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					${messageSuccess}
-				</div>
-			</c:if>
-			<c:if test="${messageError ne null}">
-				<div class="alert alert-danger alert-dismissable" role="alert">
-					<button type="button" class="close" data-dismiss="alert">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					${messageError}
-				</div>
-			</c:if>
-			<!-- End Show message -->
-					<form:form method="POST" modelAttribute="taodonmoi" action="addDonNghiPhepNhap">
+					<!-- Show message -->
+					<c:if test="${messageSuccess ne null}">
+						<div class="alert alert-success alert-dismissable" role="alert">
+							<button type="button" class="close" data-dismiss="alert">
+								<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+							</button>
+							${messageSuccess}
+						</div>
+					</c:if>
+					<c:if test="${messageError ne null}">
+						<div class="alert alert-danger alert-dismissable" role="alert">
+							<button type="button" class="close" data-dismiss="alert">
+								<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+							</button>
+							${messageError}
+						</div>
+					</c:if>
+					<!-- End Show message -->
+					<form:form method="POST" modelAttribute="taodonmoi"
+						action="addDonNghiPhepNhap">
 						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien"
@@ -55,12 +56,17 @@
 
 						</div>
 
-						<div>
-							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="form-control round" id="total"
-								readonly="true" path="soLuong" />
+						<div class="form-group col-md-12">
+							<label for="location1">Loại ngày nghỉ </label>
+							<form:select path="loaiNgayNghi"
+								class="custom-select form-control" id="location1"
+								name="location" items="${countryList}" itemValue="maNgayNghi"
+								itemLabel="tenLoaiNgayNghi">
+
+							</form:select>
 
 						</div>
+
 
 						<div class="form-group col-sm-12">
 							<label>Thời gian bắt đầu </label>
@@ -196,25 +202,22 @@
 						</div>
 
 
-						<div class="form-group col-md-12">
-							<label for="location1">Loại ngày nghỉ </label>
-							<form:select path="loaiNgayNghi"
-								class="custom-select form-control" id="location1"
-								name="location" items="${countryList}"
-								itemValue="maNgayNghi" itemLabel="tenLoaiNgayNghi">
-
-							</form:select>
+						<div class="form-group col-sm-12">
+							<label>Số ngày nghỉ</label>
+							<form:input type="text" class="custom-select form-control" id="total"
+								readonly="true" path="soLuong" />
 
 						</div>
+						
 
 						<div class="row">
 							<div class="col-md-12" style="padding-left: 3%;">
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1" value="luunhap"
-									name="action">lưu nháp</button>
+									class="btn btn-outline-success round  mr-1 mb-1"
+									value="luunhap" name="action">lưu nháp</button>
 								<button type="submit"
-									class="btn btn-outline-success round  mr-1 mb-1" value="chopheduyet"
-									name="action">gửi đơn</button>
+									class="btn btn-outline-success round  mr-1 mb-1"
+									value="chopheduyet" name="action">gửi đơn</button>
 
 							</div>
 						</div>

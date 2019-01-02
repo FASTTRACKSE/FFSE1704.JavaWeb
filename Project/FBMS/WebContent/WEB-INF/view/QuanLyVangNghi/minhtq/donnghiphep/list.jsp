@@ -50,8 +50,9 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách đơn nghỉ phép
-					nháp</h3>
+
+
+				<h3 class="content-header-title mb-0">Danh sách đơn nghỉ phép</h3>
 
 
 			</div>
@@ -121,6 +122,7 @@
 												<th>số lượng</th>
 												<th>thời gian bắt đầu</th>
 												<th>thời gian kết thúc</th>
+												<th>ghi chú</th>
 												<th>trạng thái</th>
 												<th>chức năng</th>
 
@@ -134,6 +136,7 @@
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
+												<td>${dnpn.ghiChu}</td>
 												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
 												<td><c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT1')}">
@@ -147,12 +150,12 @@
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT2')}">
 														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
+															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/daPheDuyet/${dnpn.trangThaiDNP.maTrangThai}">
 															<button class="btn btn-primary">Phê duyệt</button>
 
 														</a>
 														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepNhap/${dnpn.id}"><button
+															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/tuChoi/${dnpn.trangThaiDNP.maTrangThai}"><button
 																class="btn btn-primary">Từ chối</button></a>
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT3')}">
@@ -177,30 +180,32 @@
 
 									<div class="card-header" style="text-align: center;">
 										<nav aria-label="Page navigation example">
-											<ul class="pagination">
-												<li class="page-item"><a class="page-link"
-													href="?page=1">trang đầu</a></li>
-												<c:if test="${currentPage > 2}">
+											<c:if test="${lastPage > 0}">
+												<ul class="pagination">
 													<li class="page-item"><a class="page-link"
-														href="?page=${currentPage-2}">${currentPage-2}</a></li>
-												</c:if>
-												<c:if test="${currentPage > 1}">
+														href="?page=1">trang đầu</a></li>
+													<c:if test="${currentPage > 2}">
+														<li class="page-item"><a class="page-link"
+															href="?page=${currentPage-2}">${currentPage-2}</a></li>
+													</c:if>
+													<c:if test="${currentPage > 1}">
+														<li class="page-item"><a class="page-link"
+															href="?page=${currentPage-1}">${currentPage-1}</a></li>
+													</c:if>
+													<li class="page-item active"><a class="page-link"
+														href="?page=${currentPage}">${currentPage}</a></li>
+													<c:if test="${currentPage < lastPage}">
+														<li class="page-item"><a class="page-link"
+															href="?page=${currentPage+1}">${currentPage+1}</a></li>
+													</c:if>
+													<c:if test="${currentPage < lastPage - 1}">
+														<li class="page-item"><a class="page-link"
+															href="?page=${currentPage+2}">${currentPage+2}</a></li>
+													</c:if>
 													<li class="page-item"><a class="page-link"
-														href="?page=${currentPage-1}">${currentPage-1}</a></li>
-												</c:if>
-												<li class="page-item active"><a class="page-link"
-													href="?page=${currentPage}">${currentPage}</a></li>
-												<c:if test="${currentPage < lastPage}">
-													<li class="page-item"><a class="page-link"
-														href="?page=${currentPage+1}">${currentPage+1}</a></li>
-												</c:if>
-												<c:if test="${currentPage < lastPage - 1}">
-													<li class="page-item"><a class="page-link"
-														href="?page=${currentPage+2}">${currentPage+2}</a></li>
-												</c:if>
-												<li class="page-item"><a class="page-link"
-													href="?page=${lastPage }">trang cuối</a></li>
-											</ul>
+														href="?page=${lastPage }">trang cuối</a></li>
+												</ul>
+											</c:if>
 										</nav>
 									</div>
 

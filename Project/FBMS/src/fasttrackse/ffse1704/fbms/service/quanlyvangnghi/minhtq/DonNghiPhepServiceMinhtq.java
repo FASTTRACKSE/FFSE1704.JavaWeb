@@ -27,6 +27,8 @@ public interface DonNghiPhepServiceMinhtq {
 	///////////// TRANGTHAI//////////////
 	public List<TrangThaiVangNghiMinhtq> listAllTrangThai();
 
+	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai);
+	
 	public TrangThaiVangNghiMinhtq getByIdTrangThai(int id);
 
 	public void deleteTrangThai(int id);
