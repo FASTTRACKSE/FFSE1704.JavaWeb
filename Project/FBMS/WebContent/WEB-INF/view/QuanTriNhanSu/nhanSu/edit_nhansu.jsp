@@ -57,27 +57,7 @@
 
 							<br>
 						</div>
-						<div class="form-group col-md-6">
-							<label>Phòng Ban:</label>
-							<form:select path="maPhongBan"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listPhongBan}" var="lpb">
-									<form:option value="${lpb.maPhongBan}" label="${lpb.tenPhongBan}" />
-								</c:forEach>
-							</form:select>
-
-							<br>
-						</div>
-						<div class="form-group col-md-6">
-							<label>Chức Danh</label>
-							<form:select path="maChucDanh"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listChucDanh}" var="lcd">
-									<form:option value="${lcd.maChucDanh}" label="${lcd.tenChucDanh}" />
-								</c:forEach>
-							</form:select>
-							<br>
-						</div>
+						
 							<div class="form-group col-md-6">
 							<label>Tỉnh thành</label>
 							
@@ -161,8 +141,12 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Quốc Tịch</label>
-							<form:input class="form-control" type="text"
-								path="quocTich.maQuocTich" />
+							<form:select path="maQuocTich"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listQuocTich}" var="lqt">
+									<form:option value="${lqt.maQuocTich}" label="${lqt.tenQuocTich}" />
+								</c:forEach>
+							</form:select>
 							<br>
 						</div>
 
@@ -203,8 +187,12 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Trạng thái</label>
-							<form:input class="form-control" type="text" path="trangThai" />
-							<br>
+							<form:select path="idTrangThai"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listTrangThai}" var="ltt">
+									<form:option value="${ltt.idTrangThai}" label="${ltt.name}" />
+								</c:forEach>
+							</form:select>
 						</div>
 						<tr>
 							<td><input class="btn btn-primary" type="submit" value="Save" /></td>

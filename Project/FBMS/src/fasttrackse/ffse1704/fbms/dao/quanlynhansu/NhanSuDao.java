@@ -4,7 +4,9 @@ import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuocTich;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
@@ -19,6 +21,8 @@ public interface NhanSuDao {
 	public void delete(int id);
 	public boolean checkExistMa(String maNS);
 	public List<ChucDanh> listChucDanh();
+	public List<QuocTich> listQuocTich();
+	public List<TrangThaiNhanSu> listTrangThai();
 	public List<PhongBan> listPhongBan();
 	public List<ThanhPho> listTinhThanhPho();
 	public List<QuanHuyen> listQuanHuyen();

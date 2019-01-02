@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuocTich;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
@@ -118,6 +120,14 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		List<ThanhPho> dsTinhThanh = session.createQuery("FROM ThanhPho").getResultList();
 		return dsTinhThanh;
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<QuocTich> listQuocTich() {
+		Session session = sessionFactory.getCurrentSession();
+		List<QuocTich> dsQuocTich = session.createQuery("FROM QuocTich").getResultList();
+		return dsQuocTich;
+	}
 
 //	@Override
 //	@SuppressWarnings("unchecked")
@@ -181,6 +191,14 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<XaPhuong> dsXaPhuong = session.createQuery("FROM XaPhuong").getResultList();
 		return dsXaPhuong;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<TrangThaiNhanSu> listTrangThai() {
+		Session session = sessionFactory.getCurrentSession();
+		List<TrangThaiNhanSu> dsTrangThai = session.createQuery("FROM TrangThaiNhanSu").getResultList();
+		return dsTrangThai;
 	}
 
 

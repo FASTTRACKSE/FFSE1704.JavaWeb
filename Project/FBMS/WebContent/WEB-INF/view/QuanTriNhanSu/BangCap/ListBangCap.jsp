@@ -123,23 +123,52 @@
 											${bangCap.ten}</p>
 										</a>
 									</h1>
+									<div class="main-content">
+										<div class="row">
+											<p>
+												<img
+													src="<c:url value="/uploads/${bangCap.anhDaiDien}"/>"
+													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; 
+													height: 150px; display: block; margin-left: auto; margin-right: auto;">
+											</p>
+											<h1 style="text-align: center; color: green">
+												${bangCap.hoLot} ${bangCap.ten}</a>
+											</h1>
+											<p style="text-align: center;">
+												<a>Mã nhân viên:</a> ${bangCap.maNhanVien}
+											</p>
+											<p style="text-align: center;">
+												<a>Ngày sinh:</a> ${bangCap.namSinh}
+											</p>
+											<p style="text-align: center;">
+												Phòng ban:<a>Phòng Giám Đốc</a> - Chức vụ:<a>Giám đốc</a>
+											</p>
+
+
+
+										</div>
+									</div>
 									<p style="text-align: center;">
-										<a style="text-align: center; color:blue">Mã nhân viên:</a> ${bangCap.maNhanVien}
+										<a style="text-align: center; color: blue">Mã nhân viên:</a>
+										${bangCap.maNhanVien}
 									</p>
 									<p style="text-align: center;">
-										<a style="text-align: center; color:blue">Ngày sinh:</a> ${bangCap.namSinh}
+										<a style="text-align: center; color: blue">Ngày sinh:</a>
+										${bangCap.namSinh}
 									</p>
-									<p style="text-align: center;">
+									<%-- <p style="text-align: center;">
 										<a style="text-align: center; color:blue">Phòng ban:</a> ${bangCap.phongBan.tenPhongBan}
 									</p>
 									<p style="text-align: center;">
 										<a style="text-align: center; color:blue"> Chức vụ:</a>${bangCap.chucDanh.tenChucDanh}
-									</p>
+									</p> --%>
 								</div>
 								<div class="form-group col-md-3">
 									<p style="text-align: center;">
 
-										<a style="text-align: center; color:blue;font-size: 20px;font-family: Arial, Helvetica, sans-serif" >Ảnh đại diện</a> </br> <img style="width: 200px;hight=150px;"
+										<a
+											style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+											đại diện</a> </br> <img style="width: 200px;hight=150px;"
 											src="<c:url value="/uploads/${bangCap.anhDaiDien}"/>">
 									</p>
 								</div>
@@ -180,10 +209,11 @@
 												<td>${bc.xepLoai}</td>
 												<td>${bc.noiCap}</td>
 
-												<td><a 
-													href="/FBMS/editBC/${bc.id}&${bangCap.maNhanVien}"><button class="btn btn-success">sửa</button></a>
-
-													<a  href="DeleteBC/${bc.id}"><button class="btn btn-danger">sửa</button></a></td>
+												<td><a
+													href="/FBMS/editBC/${bc.id}&${bangCap.maNhanVien}"><button
+															class="btn btn-success">sửa</button></a> <a
+													href="/FBMS/DeleteBC/${bc.id}&${bangCap.maNhanVien}"><button
+															class="btn btn-danger">Xoa</button></a></td>
 
 											</tr>
 										</c:forEach>
