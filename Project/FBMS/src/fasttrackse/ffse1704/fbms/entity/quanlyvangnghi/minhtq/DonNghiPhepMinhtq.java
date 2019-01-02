@@ -61,6 +61,8 @@ public class DonNghiPhepMinhtq {
 		this.loaiNgayNghiPhep = loaiNgayNghiPhep;
 	}
 
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trang_thai", insertable = false, updatable = false, nullable = false)
 	private TrangThaiVangNghiMinhtq trangThaiDNP;
