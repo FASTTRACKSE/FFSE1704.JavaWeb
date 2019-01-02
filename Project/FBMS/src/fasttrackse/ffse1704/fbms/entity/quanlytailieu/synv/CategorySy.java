@@ -36,10 +36,10 @@ public class CategorySy implements java.io.Serializable {
 
 
 	@Column(name = "ten_danh_muc")
-	private String ten_danh_muc;
+	private String tenDanhMuc;
 
 	@Column(name = "ma_danh_muc")
-	private String ma_danh_muc;
+	private String maDanhMuc;
 
 
 	public int getId() {
@@ -50,22 +50,21 @@ public class CategorySy implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public String getTen_danh_muc() {
-		return ten_danh_muc;
+	public String getTenDanhMuc() {
+		return tenDanhMuc;
 	}
 
-	public void setTen_danh_muc(String ten_danh_muc) {
-		this.ten_danh_muc = ten_danh_muc;
+	public void setTenDanhMuc(String tenDanhMuc) {
+		this.tenDanhMuc = tenDanhMuc;
 	}
 
-	public String getMa_danh_muc() {
-		return ma_danh_muc;
+	public String getMaDanhMuc() {
+		return maDanhMuc;
 	}
 
-	public void setMa_danh_muc(String ma_danh_muc) {
-		this.ma_danh_muc = ma_danh_muc;
+	public void setMaDanhMuc(String maDanhMuc) {
+		this.maDanhMuc = maDanhMuc;
 	}
 	
-
-
 }
+
