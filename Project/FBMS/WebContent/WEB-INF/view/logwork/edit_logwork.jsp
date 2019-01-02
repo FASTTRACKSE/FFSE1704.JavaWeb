@@ -17,8 +17,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/logwork/list" />'>Danh
-									sách Logwork</a></li>
+								href='<c:url value="/logwork/list" />'>Danh sách Logwork</a></li>
 							<li class="breadcrumb-item active">Sửa chức năng</li>
 						</ol>
 					</div>
@@ -96,12 +95,12 @@
 						</div>
 						<div class="col-sm-12 text-center">
 							<button type="submit" name="action" value="editlogwork"
-									class="btn btn-success">Sửa</button>
-							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 1 }">
+								class="btn btn-success">Sửa</button>
+							<c:if
+								test="${editlogwork.trangThaiLogwork.maTrangThai == 3 ||editlogwork.trangThaiLogwork.maTrangThai == 4 ||editlogwork.trangThaiLogwork.maTrangThai == 1}">
 								<button type="submit" name="action" value="luuNhap"
 									class="btn btn-success">Lưu nháp</button>
-							</c:if>
-							<c:if test="${editlogwork.trangThaiLogwork.maTrangThai == 4 }">
+
 								<button type="submit" name="action" value="submit"
 									class="btn btn-success">Submit</button>
 							</c:if>

@@ -370,8 +370,9 @@
 
 							var m = today.getMonth() + 1;
 							document.write(" <a href = ' ");
-							document.write("/FBMS/QuanLyThoiGian/Logwork/listMonth/"
-									+ m);
+							document
+									.write("/FBMS/QuanLyThoiGian/Logwork/listMonth/"
+											+ m);
 							document.write("' >");
 							document.write("<i class='ft-book'></i>");
 							document.write("Logwork theo tháng");
@@ -382,7 +383,7 @@
 				<!-- --------------------------End Quản lý thời gian-------------------------- -->
 
 
-					<!--  Quản lí Vắng nghỉ minhtq -->
+				<!--  Quản lí Vắng nghỉ minhtq -->
 
 				<li class="navigation-header"><span>quản lý vắng nghỉ</span><i
 					class=" ft-minus" data-toggle="tooltip" data-placement="right"
@@ -408,7 +409,8 @@
 							class="menu-item">danh sách từ chối</a></li>
 					</ul></li>
 				<li class=" nav-item pbho_so"><a href="#"><i
-						class="ft-users"></i><span data-i18n="" class="menu-title">danh mục</span></a>
+						class="ft-users"></i><span data-i18n="" class="menu-title">danh
+							mục</span></a>
 					<ul class="menu-content">
 						<li><a
 							href="<c:url value="/QuanLyVangNghi/minhtq/listLoaiNgayNghi"/>"
@@ -418,9 +420,8 @@
 						<li><a
 							href="<c:url value="/QuanLyVangNghi/minhtq/listTrangThai"/>"
 							class="menu-item">danh sách trạng thái</a></li>
-					</ul>
-					</li>
-				
+					</ul></li>
+
 
 
 				<!-- hết Quản lí Vắng nghỉ minhtq -->
@@ -439,32 +440,32 @@
 							href="FBMS/DoanhntQLTL/TrangThai/">● Quản lý trạng thái</a></li>
 					</ul></li>
 				<!-- Dũng -->
-					<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
+				<li class="has-sub is-shown"><a class="menu-item" href="#">Dũng</a>
 					<ul class="menu-content" style="">
-					<li class="" ><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/documentInsert"">
-								Thêm Tài Liệu</a> </li>
-						<li class=""><a class="menu-item" href="#">
-								Tài liệu của tôi</a>
-						<ul class="menu-content" style="" >
 						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingAccept">●
-								Đã được phê duyệt</a></li>
-						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">●
-								Chưa được phê duyệt</a></li>
-						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/draft">●
-								Tài liệu nháp</a></li>
-						<li class=""><a class="menu-item"
-							href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
-								Tài liệu bị từ chối</a></li>
-						</ul>
-								</li>
-						
+							href="<%=request.getContextPath()%>/quanlytailieu/documentInsert"">
+								Thêm Tài Liệu</a></li>
+						<li class=""><a class="menu-item" href="#"> Tài liệu của
+								tôi</a>
+							<ul class="menu-content" style="">
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingAccept">●
+										Đã được phê duyệt</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">●
+										Chưa được phê duyệt</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/draft">●
+										Tài liệu nháp</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
+										Tài liệu bị từ chối</a></li>
+							</ul></li>
+
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
 								Phê duyệt tài liệu</a></li>
-						
+
 					</ul></li>
 				<!-- Sỹ -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
@@ -535,9 +536,25 @@
 				<li class=" navigation-header"><span>Quản Lí Thời Gian</span><i
 					data-toggle="tooltip" data-placement="right"
 					data-original-title="Bùi Vũ" class=" ft-minus"></i></li>
+
 				<li class=" nav-item"><a
-					href="<c:url value = "/logwork/list"/>"><i class="ft-book"></i>
-						Danh Sách Logwork</a></li>
+					href="<c:url value = "/logwork/listChoPheDuyetPM"/>"><i
+						class="ft-book"></i> Danh Sách Chờ Phê Duyệt</a></li>
+				<li class=" nav-item pbho_so"><a href="#"><i
+						class="ft-users"></i><span data-i18n="" class="menu-title">Danh
+							Sách Logwork Nhân Viên</span></a>
+					<ul class="menu-content">
+						<li><a href="<c:url value="/logwork/list/4"/>"
+							class="ft-book">Logwork Lưu Nháp</a></li>
+						<li><a href="<c:url value="/logwork/list/3"/>"
+							class="ft-book">Logwork Bị Từ Chối</a></li>
+						<li><a href="<c:url value="/logwork/list/2"/>"
+							class="ft-book">Logwork Đã Phê Duyệt</a></li>
+						<li><a href="<c:url value="/logwork/list/1"/>"
+							class="ft-book">Logwork Chờ TPP Phê Duyệt</a></li>
+							<li><a href="<c:url value="/logwork/list/5"/>"
+							class="ft-book">Logwork Chờ PM Phê Duyệt</a></li>
+					</ul></li>
 			</ul>
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">

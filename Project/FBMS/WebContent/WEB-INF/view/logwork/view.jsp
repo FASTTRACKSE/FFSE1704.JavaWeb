@@ -26,8 +26,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/logwork/list" />'>Danh
-									sách Logwork</a></li>
+								href='<c:url value="/logwork/list" />'>Danh sách Logwork</a></li>
 							<li class="breadcrumb-item active">Thông tin Logwork</li>
 						</ol>
 					</div>
@@ -75,11 +74,7 @@
 									</div>
 									<div class="form-group col-sm-4">
 										<label>Dự án</label> <input class="form-control"
-											value="${viewLogwork.trangThaiLogwork.tenTrangThai}" readonly />
-									</div>
-									<div class="form-group col-sm-4">
-										<label>Dự án</label> <input class="form-control"
-											value="${viewLogwork.trangThaiLogwork.tenTrangThai}" readonly />
+											value="${viewLogwork.maDuAn.tenDuAn}" readonly />
 									</div>
 									<div class="form-group col-sm-4">
 										<label>Trạng thái</label> <input class="form-control"
@@ -110,7 +105,7 @@
 										<textarea class="form-control" readonly style="height: 150px;">${viewLogwork.nhanXetTPP}</textarea>
 									</div>
 									<div class="form-group col-sm-6">
-										<a href="/FBMS/logwork/list">
+										<a href="/FBMS/logwork/list/2">
 											<button type="submit" name="action" value="exit"
 												class="btn btn-warning">Exit</button>
 										</a>
