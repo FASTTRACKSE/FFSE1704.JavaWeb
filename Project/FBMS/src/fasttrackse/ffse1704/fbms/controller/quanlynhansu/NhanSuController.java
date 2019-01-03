@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
@@ -85,6 +86,8 @@ public class NhanSuController {
 		// by Quan LT
 		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
 		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
 		
 		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu", "nhansu", nhansu);
 

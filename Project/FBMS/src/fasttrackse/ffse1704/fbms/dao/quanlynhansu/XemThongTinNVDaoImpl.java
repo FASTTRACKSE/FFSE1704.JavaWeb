@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
@@ -154,5 +155,12 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		query.setParameter("mnv", maNhanVien);
 		return (ThongTinHopDong) query.uniqueResult();
 			
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HopDong> listHopDong() {
+		Session session = sessionFactory.getCurrentSession();
+		List<HopDong> list = session.createQuery("from HopDong").getResultList();
+		return list;
 	}
 }
