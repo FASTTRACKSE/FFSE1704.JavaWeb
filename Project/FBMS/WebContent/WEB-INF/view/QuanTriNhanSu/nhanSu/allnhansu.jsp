@@ -173,7 +173,6 @@
 											<tr>
 												<th scope="col">ID</th>
 												<th>Mã nhân viên</th>
-
 												<th>Họ tên</th>
 												<th>Ngày sinh</th>
 												<th>Ảnh đại diện</th>
