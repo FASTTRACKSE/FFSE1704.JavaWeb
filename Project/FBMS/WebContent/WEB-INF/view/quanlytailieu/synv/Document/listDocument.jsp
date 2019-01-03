@@ -11,13 +11,12 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					 Tài Liệu
+					Tài Liệu
 					<h3>
 						<div class="row breadcrumbs-top">
 							<div class="breadcrumb-wrapper col-xs-12">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a
-										href="/FBMS/quanlytailieu/">Home</a></li>
+									<li class="breadcrumb-item"><a href="/FBMS/quanlytailieu/">Home</a></li>
 									<li class="breadcrumb-item active">Tài Liệu</li>
 								</ol>
 							</div>
@@ -84,15 +83,13 @@
 											<td>${sv.phongBan.tenPhongBan}</td>
 
 
-											<td><a
-												href="/FBMS/edit/${sv.id}"
-												data-toggle="tooltip" title="edit">
+											<td><a href="/FBMS/edit/${sv.id}" data-toggle="tooltip"
+												title="edit">
 													<button type="button"
 														class="btn btn-icon btn-outline-warning">
 														<i class="fa fa-pencil"></i>
 													</button>
-											</a> <a
-												href="/FBMS/delete/${sv.id}">
+											</a> <a href="/FBMS/delete/${sv.id}">
 													<button type="button"
 														onclick="if (!confirm('Are you sure you want to delete this database?')) return false"
 														class="btn btn-outline-danger btn-icon checkid"
