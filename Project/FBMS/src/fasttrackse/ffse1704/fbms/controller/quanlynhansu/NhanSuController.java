@@ -30,6 +30,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
@@ -88,6 +89,8 @@ public class NhanSuController {
 		model.addAttribute("dsPhongBan", allPhongBan);
 		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
 		model.addAttribute("dsHopDong", allHopDong);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
 		
 		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu", "nhansu", nhansu);
 

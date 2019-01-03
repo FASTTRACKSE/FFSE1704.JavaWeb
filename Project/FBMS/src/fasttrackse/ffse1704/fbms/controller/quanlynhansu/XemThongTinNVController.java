@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
@@ -88,6 +89,7 @@ public class XemThongTinNVController {
 	@RequestMapping(value = "/thongTinNhanVien/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTinNhanVien(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtin";
 	}
 	
@@ -115,6 +117,19 @@ public class XemThongTinNVController {
         return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyMaPhongBan";
 
     }
+	@RequestMapping(value = "/listTTfindbyMaHopDong", method = RequestMethod.GET)
+	public String submit1( @RequestParam ("dsHopDongId") String maHopDong,Model model) { 
+		List<ThongTinHopDong> dsNhanVienTheoHopDong = xemThongTinNVService.findTTByMaHopDong(maHopDong);
+		model.addAttribute("dsNhanVienTheoHopDong", dsNhanVienTheoHopDong);
+		model.addAttribute("hopDong", hopDongService.findTenHopDongbyMaHopDong(maHopDong));
+		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
+		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+		
+		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyHopDong";
+		
+	}
 	
 	
 	@RequestMapping(value= "selectQuanHuyen/{matp}", method= RequestMethod.GET, produces= "text/plain;charset=UTF-8")

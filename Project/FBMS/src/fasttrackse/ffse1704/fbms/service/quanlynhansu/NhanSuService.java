@@ -29,4 +29,5 @@ public interface NhanSuService {
 	public List<XaPhuong> listXaPhuong();
 	public List<QuanHuyen> listQuanHuyenbyID(String maTinhThanh);
 	public List<XaPhuong> listPhuongXabyID(String maQuanHuyen);
+	
 }

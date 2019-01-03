@@ -74,4 +74,9 @@ public class HopDongServiceImpl implements HopDongService {
 		return hopDongDao.TrangThaiHopDong();
 	}
 
+	@Override
+	public HopDong findTenHopDongbyMaHopDong(String maHopDong) {
+		return hopDongDao.findTenHopDongbyMaHopDong(maHopDong);
+	}
+
 }
