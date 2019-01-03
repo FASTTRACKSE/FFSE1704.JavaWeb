@@ -50,13 +50,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Bằng Cấp</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân sự</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Quản lý bằng cấp</li>
+							<li class="breadcrumb-item active">Danh sách nhân sự</li>
 						</ol>
 					</div>
 				</div>
@@ -64,8 +64,7 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="/FBMS/addBC/${bangCap.maNhanVien}"> <span
-						class="fa fa-plus"></span> Thêm mới
+					<a href="addNS"> <span class="fa fa-plus"></span> Thêm mới
 					</a>
 				</div>
 			</div>
@@ -97,7 +96,9 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach bằng cấp</h4>
+							<h4 class="card-title">
+								Danh sách nhân sự Theo Trạng Thái: <a style="color: red">${trangThai.name}</a>
+							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -108,44 +109,22 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
-						</div>
-						<%-- <p style="text-align: center ;color:red">Mã nhân viên:</p>
-						<p style="text-align: center">${bangCap.maNhanVien}</p>
-						<p style="text-align: center ;color:red">Tên nhân viên:</p>
-						<p style="text-align: center">${bangCap.hoLot} ${bangCap.ten}</p> --%>
+							<p>
+								Xem theo: <a style="color: red">Trạng Thái</a>
+							</p>
+							<div class="col-sm-3">
+								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
+									style="width: 150px;">
+									<select class="form-control" name="dsTrangThaiID">
+									<option disabled="disabled">Chọn Trạng Thái</option>
+										<c:forEach items="${dsTrangThai}" var="tt">
+											<option value="${tt.idTrangThai}">${tt.name}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
 
-						<div class="main-content">
-							<div class="row">
-								<div class="form-group col-md-3"></div>
-								<div class="form-group col-md-3">
-
-									<div class="main-content">
-										<div class="row">
-											<p>
-												<img src="<c:url value="/uploads/${bangCap.anhDaiDien}"/>"
-													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
-											</p>
-											<h1 style="text-align: center; color: green">
-												${bangCap.hoLot} ${bangCap.ten}</a>
-											</h1>
-											<p style="text-align: center;">
-												<a>Mã nhân viên:</a> ${bangCap.maNhanVien}
-											</p>
-											<p style="text-align: center;">
-												<a>Ngày sinh:</a> ${bangCap.namSinh}
-											</p>
-											<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
-										</p>
-										</div>
-									</div>
-								</div>
-								<div class="form-group col-md-3"></div>
 							</div>
 						</div>
-
-
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
@@ -153,66 +132,56 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
-
-												<th>Thứ tự</th>
-
+												<th scope="col">ID</th>
+												<th>Mã nhân viên</th>
+												<th>Họ tên</th>
+												<th>Trạng thái</th>
+												<th>Chi tiết</th>
+												<th>Gia đình</th>
 												<th>Trình độ</th>
-												<th>Tên Ngành</th>
-												<th>Thời gian bắt đầu</th>
-												<th>Thời gian kết thúc</th>
-												<th>Xếp loại</th>
-												<th>Nơi cấp</th>
-												<th>Chức Năng</th>
+												<th>Hợp đồng/Chế độ TH</th>
+												<th>Chức năng</th>
 											</tr>
 										</thead>
-
-										<c:forEach var="bc" items="${bangCap.listBangCap}">
+										<c:forEach var="ns" items="${dsNhanSubyTrangThai}">
 											<tr>
-												<td>${bc.id}</td>
+												<td>${ns.id}</td>
+												<td>${ns.maNhanVien}</td>
+												<td>${ns.hoLot}${ns.ten}</td>
+												<td><c:choose>
+														<c:when test="${ns.trangThai == 1}">
+						    Còn Làm
+						  </c:when>
+														<c:when test="${ns.trangThai == 2}">
+						   Nghỉ
+						  </c:when>
+														<c:otherwise>
+						  ...
+						  </c:otherwise>
+													</c:choose></td>
 
-												<td>${bc.trinhDo.tenTrinhDo}</td>
-												<td>${bc.tenNganh}</td>
-												<td>${bc.batDau}</td>
-												<td>${bc.ketThuc}</td>
-												<td>${bc.xepLoai}</td>
-												<td>${bc.noiCap}</td>
 
-												<td><a
-													href="/FBMS/editBC/${bc.id}&${bangCap.maNhanVien}"><button
-															class="btn btn-success">sửa</button></a> <a
-													href="/FBMS/DeleteBC/${bc.id}&${bangCap.maNhanVien}"><button
-															class="btn btn-danger">Xoa</button></a></td>
+												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}"
+													class="btn btn-success">Xem TT Chi Tiết</a></td>
+												<td><a href="/FBMS/ViewTT/${ns.maNhanVien}"
+													class="btn btn-info">Gia Đình</a></td>
+
+												<td><a href="/FBMS/ViewBC/${ns.maNhanVien}"
+													class="btn btn-warning">Bằng Cấp</a> <a
+													href="/FBMS/ViewCC/${ns.maNhanVien}"
+													class="btn btn-primary">Chứng chỉ</a></td>
+
+												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}"
+													class="btn btn-warning">Hợp đồng</a> <a
+													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
+													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
+
+												<td><a href="editNS/${ns.id}"><button class="btn btn-success">Sửa</button></a>
+
+													<a href="DeleteNS/${ns.id}"><button class="btn btn-danger">Xóa</button></a></td>
 
 											</tr>
 										</c:forEach>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</tbody>
 									</table>
 								</div>
 							</div>

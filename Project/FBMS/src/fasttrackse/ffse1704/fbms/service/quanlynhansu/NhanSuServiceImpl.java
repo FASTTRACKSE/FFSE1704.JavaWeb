@@ -149,6 +149,20 @@ public class NhanSuServiceImpl implements NhanSuService {
 	}
 
 
+	@Override
+	public List<NhanSu> listNhanSuByTrangThai(int maTrangThai) {
+		// TODO Auto-generated method stub
+		return nhanSuDao.listNhanSuByTrangThai(maTrangThai);
+	}
+
+
+	@Override
+	public TrangThaiNhanSu findNameNhanSuByIdTrangThai(int maTrangThai) {
+		
+		return nhanSuDao.findNameNhanSuByIdTrangThai(maTrangThai);
+	}
+
+
 
 
 }

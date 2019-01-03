@@ -153,10 +153,13 @@
 								<p>
 									<br> Xem theo: <a style="color: red">Trạng thái</a>
 								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
+								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
 									style="width: 150px;">
-									<select class="form-control" name="dsPhongBanId">
-										<option >Còn làm</option>
+									<select class="form-control" name="dsTrangThaiID">
+									<option disabled="disabled">Chọn Trạng Thái</option>
+										<c:forEach items="${dsTrangThai}" var="tt">
+											<option value="${tt.idTrangThai}">${tt.name}</option>
+										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>

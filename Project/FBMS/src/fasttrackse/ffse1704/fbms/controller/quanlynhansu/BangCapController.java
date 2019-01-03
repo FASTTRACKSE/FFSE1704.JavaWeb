@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.BangCapService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class BangCapController {
@@ -28,6 +28,14 @@ public class BangCapController {
 	public void setBangCapService(BangCapService bangCapService) {
 		this.bangCapService = bangCapService;
 	}
+	
+	@Autowired
+	XemThongTinNVService xemThongTinNVService;
+
+	public void setXemThongTinNVService(XemThongTinNVService xemThongTinNVService) {
+		this.xemThongTinNVService = xemThongTinNVService;
+	}
+
 
 	// mac dinh
 	// @RequestMapping("/ViewBC/")
@@ -45,7 +53,7 @@ public class BangCapController {
 	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
-
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/BangCap/ListBangCap";
 
 	}

@@ -2,9 +2,11 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuocTich;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
@@ -199,6 +202,25 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<TrangThaiNhanSu> dsTrangThai = session.createQuery("FROM TrangThaiNhanSu").getResultList();
 		return dsTrangThai;
+	}
+
+	@Override
+	@SuppressWarnings({"unchecked","rawtypes"})
+	public List<NhanSu> listNhanSuByTrangThai(int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from NhanSu tt where tt.trangThai = :maTT";
+		Query query = session.createQuery(hql);
+		query.setParameter("maTT", maTrangThai);
+		return (List<NhanSu>) query.list();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public TrangThaiNhanSu findNameNhanSuByIdTrangThai(int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(TrangThaiNhanSu.class);
+		TrangThaiNhanSu trangThai = (TrangThaiNhanSu) criteria.add(Restrictions.eq("idTrangThai", maTrangThai)).uniqueResult();
+		return trangThai;
 	}
 
 

@@ -138,9 +138,7 @@
 												<th>Chức danh</th>
 												<th>Họ tên</th>
 												<th>Ngày sinh</th>
-
 												<th>Ảnh đại diện</th>
-
 												<th>Trạng thái</th>
 												<th>Chi tiết</th>
 												<th>Gia đình</th>
