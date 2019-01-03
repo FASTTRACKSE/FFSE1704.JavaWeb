@@ -70,25 +70,16 @@ CREATE TABLE IF NOT EXISTS `tai_lieu_` (
 -- Dumping data for table `tai_lieu_`
 --
 
-INSERT INTO `tai_lieu` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `file`, `ma_trang_thai`, `mo_ta`, `ghi_chu`, `ma_phong_ban`) VALUES
-(1, 'SyNV', 'IT', 'a', 'a', 'Đã phê duyệt', 'a', 'a'),
-(2, 'SyNV', 'b', 'a', 'a', 'a', 'a', 'a'),
-(3, 'SyNV', 'b', 'a', 'a', 'a', 'a', 'a'),
-(4, 'SyNV', 'IT', 'a', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng dự án', 'PDA'),
-(5, 'SyNV', 'aa', 'a', 'a', 'Đã phê duyệt', 'Phòng dự án', 'PDA'),
-(6, 'abc', 'IT', 'a', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng dự án', 'PDA'),
-(7, 'SyNV', 'IT', 'a', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng dự án', 'PDA'),
-(8, 'abc', 'IT', 'a', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng dự án', 'PDA'),
-(9, 'SyNV', 'EL', 'a', 'cho_phe_duyet', 'a', 'a', 'PDA'),
-(10, 'Tài Liệu Ôn Tập', 'EL', 'a8.jpg', 'nhap', 'nháp', 'Phòng đào tạo', 'PDT'),
-(11, 'Tài Liệu Ôn Tập', 'IT', 'diemEnglish.png', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PDT'),
-(17, 'Tài Liệu Ôn Tập', 'IT', 'Doc1.docx', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PDT'),
-(18, 'SyNV', 'IT', 'The Health Community.pptx', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PDT'),
-(19, 'Tài Liệu Ôn Tập', 'EL', 'The Health Community.pptx', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PDT'),
-(20, 'Tài Liệu Ôn Tập', 'EL', 'The Health Community.pptx', 'nhap', 'nháp', 'Phòng đào tạo', 'PDT'),
-(21, 'SyNV', 'EL', 'The Health Community.pptx', 'cho_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PNS'),
-(22, 'Tài Liệu FFSE1703dd', 'EL', 'bài tập SOL.txt', 'da_phe_duyet', 'chờ phê duyệt', 'Phòng đào tạo', 'PIT'),
-(25, 'Bài Tập English', 'EL', 'Doc1.docx', 'da_phe_duyet', 'Đã phê duyệt', 'Phòng đào tạo', 'PDT');
+INSERT INTO `tai_lieu_` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `link_file`, `name_file`, `ma_trang_thai`, `mo_ta`, `ghi_chu`, `ma_phong_ban`, `ma_icon`) VALUES
+(106, 'Nguyễn Mạnh Dũng', 'EL', NULL, '', 'da_phe_duyet', 'English', '', 'PDA1', NULL),
+(107, 'Tài liệu Tiếng Anh cơ bản', 'EL', '\\upload\\45628910_563223354173631_2030519606786916352_n.jpg', '45628910_563223354173631_2030519606786916352_n.jpg', 'tu_choi', 'English', NULL, 'PDA3', 'jpg'),
+(127, 'Tài liệu training Nhân Viên mới', 'IT', '\\upload\\31704224_1141763469314929_1979064927918227456_n.jpg', '31704224_1141763469314929_1979064927918227456_n.jpg', 'da_phe_duyet', 'Tài liệu training Nhân Viên mới : cho các thành viên mới vào ', NULL, 'PDA1', 'jpg'),
+(128, 'Tài liệu Tiếng Anh', 'IT', '\\upload\\31704224_1141763469314929_1979064927918227456_n.jpg', '31704224_1141763469314929_1979064927918227456_n.jpg', 'cho_phe_duyet', 'Tài liệu Tiếng Anh: Cho người mới bắt đầu 1', NULL, 'PDA1', 'jpg'),
+(129, 'đạt', 'IT', NULL, '', 'tu_choi', 'đạt', 'Cần bỏ sung thêm chi tiết', 'PDA1', NULL),
+(130, 'Tài Liệu IT', 'IT', '\\upload\\31301842_444188466016062_6080453128756933879_n.jpg', '31301842_444188466016062_6080453128756933879_n.jpg', 'cho_phe_duyet', 'Tài Liệu training ', NULL, 'PDA1', 'jpg'),
+(131, 'Tài liệu Tiếng Anh', 'IT', '\\upload\\29598267_10209043052672843_6711340936042064120_n.jpg', '29598267_10209043052672843_6711340936042064120_n.jpg', 'cho_phe_duyet', 'Hình Ảnh', NULL, 'PDT', 'jpg'),
+(132, 'Tài Liệu bổ sung', 'IT', '\\upload\\Chương trình quản lý thông tin sinh viên Trường FastTrackSE.docx', 'Chương trình quản lý thông tin sinh viên Trường FastTrackSE.docx', 'cho_phe_duyet', 'Bản word', NULL, 'PDA1', 'docx'),
+(133, 'q', 'IT', '\\upload\\31301842_444188466016062_6080453128756933879_n.jpg', '31301842_444188466016062_6080453128756933879_n.jpg', 'cho_phe_duyet', 'a', NULL, 'PDA1', 'jpg');
 
 -- --------------------------------------------------------
 
