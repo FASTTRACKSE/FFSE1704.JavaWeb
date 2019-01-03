@@ -24,4 +24,5 @@ public interface HopDongService {
 	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien);
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi();
 	public List<TrangThaiHopDong> TrangThaiHopDong();
+	public HopDong findTenHopDongbyMaHopDong(String maHopDong);
 }
