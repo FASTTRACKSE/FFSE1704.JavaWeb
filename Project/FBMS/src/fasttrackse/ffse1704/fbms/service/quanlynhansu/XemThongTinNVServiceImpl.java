@@ -12,6 +12,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -79,7 +80,17 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 
 	@Override
 	public List<QuanLyThongTinDuAnNS> listDuAn() {
-		// TODO Auto-generated method stub
 		return xemThongTinNVDao.listDuAn();
+	}
+
+	@Override
+	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn) {
+		return xemThongTinNVDao.findTTByMaDuAn(maDuAn);
+	}
+
+	@Override
+	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn) {
+		// TODO Auto-generated method stub
+		return xemThongTinNVDao.findTenDuAnByMaDuAn(maDuAn);
 	}
 }

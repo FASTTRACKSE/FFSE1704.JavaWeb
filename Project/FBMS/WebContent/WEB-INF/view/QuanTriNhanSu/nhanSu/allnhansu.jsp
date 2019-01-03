@@ -108,7 +108,7 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<p>
 									Option: <br> Xem theo: <a style="color: red">Phòng ban</a>
 								</p>
@@ -123,7 +123,7 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>
 								</p>
@@ -134,21 +134,8 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
-								<p>
-									<br> Xem theo: <a style="color: red">Dự án</a>
-								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaDuAn"
-									style="width: 150px;">
-									<select class="form-control" name="dsDuAnId">
-										<option disabled="disabled">Chọn dự án</option>
-										<c:forEach items="${dsDuAn}" var="da">
-											<option value="${da.maDuAn}">${da.tenDuAn}</option>
-										</c:forEach>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
-								</form>
-							</div>
-							<div class="col-md-2">
+							
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Hợp đồng</a>
 								</p>
@@ -162,7 +149,7 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trạng thái</a>
 								</p>

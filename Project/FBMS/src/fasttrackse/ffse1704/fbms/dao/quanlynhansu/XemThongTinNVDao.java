@@ -7,6 +7,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -23,6 +24,8 @@ public interface XemThongTinNVDao {
 	public List<HopDong> listHopDong();
 	public List<ThongTinHopDong> findTTByMaHopDong(String maHopDong);
 	public List<QuanLyThongTinDuAnNS> listDuAn();
+	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn);
+	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn);
 
 	
 	

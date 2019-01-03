@@ -21,6 +21,8 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.HopDongService;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
@@ -128,6 +130,23 @@ public class XemThongTinNVController {
 		model.addAttribute("dsHopDong", allHopDong);
 		
 		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyHopDong";
+		
+	}
+	@RequestMapping(value = "/listTTfindbyMaDuAn", method = RequestMethod.GET)
+	public String submit2( @RequestParam ("dsDuAnId") String maDuAn,Model model) { 
+		List<PhanCongNhiemVuNS> dsNhanVienTheoMaDuAn = xemThongTinNVService.findTTByMaDuAn(maDuAn);
+		model.addAttribute("dsNhanVienTheoMaDuAn", dsNhanVienTheoMaDuAn);
+		
+		model.addAttribute("duAn", xemThongTinNVService.findTenDuAnByMaDuAn(maDuAn));
+		
+		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
+		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
+		
+		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyMaDuAn";
 		
 	}
 	

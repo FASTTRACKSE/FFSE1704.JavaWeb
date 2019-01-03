@@ -16,6 +16,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
@@ -182,6 +183,25 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<QuanLyThongTinDuAnNS> list = session.createQuery("from QuanLyThongTinDuAnNS").getResultList();
 		return list;
+	}
+	@SuppressWarnings({ "unchecked","rawtypes" })
+	@Override
+	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from PhanCongNhiemVuNS nv where nv.maDuAn = :mda";
+		
+		Query query = session.createQuery(hql);
+		query.setParameter("mda", maDuAn);
+		return (List<PhanCongNhiemVuNS>) query.list();
+	}
+	@SuppressWarnings("deprecation")
+	@Override
+	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+	
+		Criteria criteria = session.createCriteria(QuanLyThongTinDuAnNS.class);
+		QuanLyThongTinDuAnNS yourObject = (QuanLyThongTinDuAnNS) criteria.add(Restrictions.eq("maDuAn", maDuAn)).uniqueResult();
+		return yourObject;
 	}
 
 }
