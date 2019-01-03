@@ -77,7 +77,8 @@ public class LogworkControllerVu {
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String viewLogwork(@PathVariable("id") int id, Model model) {
 		model.addAttribute("viewLogwork", service.findByIdLogwork(id));
-		return "logwork/view";
+
+  		return "logwork/view";
 	}
 
 	@RequestMapping(value = "/editlogwork/{id}", method = RequestMethod.GET)
@@ -160,7 +161,7 @@ public class LogworkControllerVu {
 
 	@RequestMapping(value = "/viewPheDuyet/{id}", method = RequestMethod.POST)
 	public String doPheDuyet(@PathVariable("id") int id, Model model, final RedirectAttributes redirectAttributes,
-			@RequestParam String action,@RequestParam("nhanXetPM") String nhanXetPM) {
+			@RequestParam String action, @RequestParam("nhanXetPM") String nhanXetPM) {
 
 		try {
 			ThoiGianLamViec logwork = service.findByIdLogwork(id);
