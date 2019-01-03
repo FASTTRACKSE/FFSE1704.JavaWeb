@@ -445,6 +445,8 @@
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/documentInsert"">
 								Thêm Tài Liệu</a></li>
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/danhmuc">Danh Mục</a>		
+						
 						<li class=""><a class="menu-item" href="#"> Tài liệu của
 								tôi</a>
 							<ul class="menu-content" style="">
@@ -461,54 +463,44 @@
 									href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
 										Tài liệu bị từ chối</a></li>
 							</ul></li>
-
+						<li class=""><a class="menu-item" href="#"> Theo
+								Phòng Ban</a>
+							<ul class="menu-content" style="">
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA1">●
+										Phòng Dự Án 1</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA2">●
+										Phòng Dự Án 2</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA3">●
+										Phòng Dự Án 3</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA4">●
+										Phòng Dự Án 4</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDT">●
+										Phòng Đào Tạo</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPGD">●
+										Phòng Giám Đốc</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPHC">●
+										Phòng Hành Chính</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPIT">●
+										Phòng IT</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPKT">●
+										Phòng Kế Toán</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPNS">●
+										Phòng Nhân sự</a></li>
+							</ul></li>
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
 								Phê duyệt tài liệu</a></li>
 
-					</ul></li>
-				<!-- Sỹ -->
-				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
-					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="#">● Danh mục tài
-								liệu</a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
-						<li class=""><a class="menu-item" href="#"></a></li>
-					</ul></li>
-
-
-				<!--  ----------------------------End Quản lí tài liệu-------------------------------  -->
-
-			</ul>
-
-			<!--  ----------------------------Quản lí vắng nghỉ-------------------------------  -->
-			<ul id="main-menu-navigation" data-menu="menu-navigation"
-				class="navigation navigation-main">
-				<li class=" navigation-header"><span>Quản Lí Vắng Nghỉ</span><i
-					data-toggle="tooltip" data-placement="right"
-					data-original-title="davidvy" class=" ft-minus"></i></li>
-				<li class="has-sub is-shown"><a class="menu-item" href="#">davidvỹ</a>
-					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item"
-							href="/FBMS/QuanLyVangNghi/donxinnghi">● đơn xin nghỉ</a></li>
-						<li class=""><a class="menu-item"
-							href="/FBMS/QuanLyVangNghi/luunhap">● danh sánh</a></li>
-						<li class=""><a class="menu-item"
-							href="/FBMS/QuanLyVangNghi/choduyet">● đơn chờ duyệt</a></li>
-						<li class=""><a class="menu-item"
-							href="/FBMS/QuanLyVangNghi/daduyet">● đơn đã duyệt</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn từ chối</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn duyệt
-								lần 1</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn duyệt
-								lần 2</a></li>
-						<li class=""><a class="menu-item" href="#">● ghi chú</a></li>
-						<li class=""><a class="menu-item" href="#">● ghi chú tp</a></li>
-						<li class=""><a class="menu-item"
-							href="/FBMS/QuanLyVangNghi/luunhap">● đơn lưu nháp</a></li>
-						<li class=""><a class="menu-item" href="#">● đơn được sửa</a></li>
-						<li class=""><a class="menu-item" href="#">● xem danh
-								sách phê duyệt</a></li>
 					</ul></li>
 			</ul>
 			<!--  ----------------------------End Quản lí vắng nghỉ-------------------------------  -->

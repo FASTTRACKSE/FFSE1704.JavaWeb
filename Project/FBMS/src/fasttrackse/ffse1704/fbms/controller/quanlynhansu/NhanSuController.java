@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
@@ -82,9 +84,15 @@ public class NhanSuController {
 		List<NhanSu> nhansu = nhanSuService.GetListNhanSuByPage(start, perpage);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);
+		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
+		model.addAttribute("dsTrangThai",dsTrangThai);
 		// by Quan LT
 		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
 		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
 		
 		return new ModelAndView("QuanTriNhanSu/nhanSu/allnhansu", "nhansu", nhansu);
 
@@ -272,5 +280,15 @@ public class NhanSuController {
 		//return listQuanHuyen.get(0).getName();
 		
 	}
+	@RequestMapping(value="/listTTfindbyMaTrangThai", method = RequestMethod.GET)
+	public String ThongKe(@RequestParam("dsTrangThaiID") int maTrangThai,Model model) {
+		List<NhanSu> dsNhanSubyTrangThai = nhanSuService.listNhanSuByTrangThai(maTrangThai);
+		model.addAttribute("dsNhanSubyTrangThai",dsNhanSubyTrangThai);
+		model.addAttribute("trangThai",nhanSuService.findNameNhanSuByIdTrangThai(maTrangThai));
+		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
+		model.addAttribute("dsTrangThai",dsTrangThai);
 		
+		return "QuanTriNhanSu/nhanSu/ListNhanSuByTrangThai";
+		
+	}
 }

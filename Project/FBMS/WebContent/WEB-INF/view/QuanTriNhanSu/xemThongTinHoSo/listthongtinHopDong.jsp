@@ -153,7 +153,8 @@ body, html {
 								href='<c:url value="/home" />'>Home</a></li>
 
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh sách nhân sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh
+									sách nhân sự</a></li>
 
 							<li class="breadcrumb-item active">Thông tin hợp đồng / Chế
 								độ thụ hưởng</li>
@@ -213,6 +214,11 @@ body, html {
 							<div class="card-body collapse in">
 								<div class="card-block card-dashboard">
 									<div class="table-responsive">
+										<p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 										<h1 style="text-align: center; color: green">${thongTinNhanVien.hoLot}<a>
 												${thongTinNhanVien.ten}</a>
 										</h1>
@@ -223,8 +229,7 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
 										</p>
 
 

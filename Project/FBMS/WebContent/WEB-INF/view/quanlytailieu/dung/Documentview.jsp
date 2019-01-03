@@ -18,10 +18,10 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/index">Home</a></li>
+								href="<%=request.getContextPath()%>/home">Home</a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/index">Tài Liệu</a></li>
-							<li class="breadcrumb-item active">Thêm Tài Liệu</li>
+								href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">Tài Liệu cần phê duyệt</a></li>
+							<li class="breadcrumb-item active">Phê Duyệt tài liệu</li>
 						</ol>
 					</div>
 				</div>
@@ -29,9 +29,9 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>
-				Thêm Tài Liệu
+				PHÊ DUYỆT TÀI LIỆU
 			</h1>
-			<a href="<%=request.getContextPath()%>/index">Back</a>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">Back</a>
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
@@ -72,8 +72,8 @@
 				</div>
 				<!-- ///////////////////// -->
 				<div class="form-group row">				
-						<form:hidden path="maPhongBan.maPhongBan"/>	
 						<form:hidden path= "nameFile" class= "form-control" />
+						<form:hidden path= "linkFile" class= "form-control" />					
 				<form:hidden path="maIcon.maIcon" class = "form-control"/>
 				<form:hidden path="maTrangThai.maTrangThai" class="form-control" />													
 				</div>
@@ -88,6 +88,13 @@
 						<form:input path="ghiChu" class="form-control"
 							id="projectinput5" value="${document.ghiChu}" />
 					</div>
+				<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput6">
+						Tài Liệu 
+					</label>
+						<td><img src="<c:url value="${viewDocument.maIcon.hinhAnh}"/>" width="50" height="50"></td>
+						<td>${viewDocument.nameFile}</td>
+				</div>
 				</div>
 				<div class="form-actions">
 					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentAccept"

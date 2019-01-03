@@ -40,6 +40,11 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
+					<p>
+						<img
+							src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+							style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+					</p>
 					<h1 style="text-align: center; color: green">${thongTinNhanVien.hoLot}<a>
 							${thongTinNhanVien.ten}</a>
 					</h1>
@@ -50,11 +55,11 @@
 						<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 					</p>
 					<p style="text-align: center;">
-						Phòng ban:<a></a> - Chức
-						vụ:<a></a>
+						Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
 					</p>
 
-					<form:form method="post" action="/FBMS/saveHopDongCheDo/${thongTinNhanVien.maNhanVien}"
+					<form:form method="post"
+						action="/FBMS/saveHopDongCheDo/${thongTinNhanVien.maNhanVien}"
 						modelAttribute="hopdongchedo">
 						<div class="form-group col-sm-4">
 							<form:input path="id" type="hidden" />
@@ -99,8 +104,7 @@
 							<form:select path="maPhongBan" class="custom-select block round"
 								id="customSelect">
 								<c:forEach items="${listPhongBan}" var="cd">
-									<form:option value="${cd.maPhongBan}"
-										label="${cd.tenPhongBan}" />
+									<form:option value="${cd.maPhongBan}" label="${cd.tenPhongBan}" />
 								</c:forEach>
 							</form:select>
 
@@ -110,8 +114,7 @@
 							<form:select path="maChucDanh" class="custom-select block round"
 								id="customSelect">
 								<c:forEach items="${listChucDanh}" var="cd">
-									<form:option value="${cd.maChucDanh}"
-										label="${cd.tenChucDanh}" />
+									<form:option value="${cd.maChucDanh}" label="${cd.tenChucDanh}" />
 								</c:forEach>
 							</form:select>
 
@@ -130,7 +133,7 @@
 
 						<div class="form-group col-sm-3">
 							<label>Mức lương ban đầu</label>
-							<form:input  class="form-control" type="text"
+							<form:input class="form-control" type="text"
 								path="mucLuongBanDau" />
 						</div>
 						<div class="form-group col-sm-3">
@@ -177,29 +180,30 @@
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Trạng thái </label>
-							<form:select path="maTrangThai"
-								class="custom-select block round" id="customSelect">
+							<form:select path="maTrangThai" class="custom-select block round"
+								id="customSelect">
 								<c:forEach items="${listTrangThaiHopDong}" var="tt">
-									<form:option value="${tt.maTrangThai}" label="${tt.tenTrangThai}" />
+									<form:option value="${tt.maTrangThai}"
+										label="${tt.tenTrangThai}" />
 								</c:forEach>
 							</form:select>
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Hình thức trả lương: </label><br> Tiền mặt
-							<form:radiobutton path="hinhThucTraLuong"  value="1" />
+							<form:radiobutton path="hinhThucTraLuong" value="1" />
 							Ngân hàng
 							<form:radiobutton path="hinhThucTraLuong" value="2" />
 						</div>
 						<div class="form-group col-sm-12">
-						
-							
-								<td><input class="btn btn-primary" type="submit"
-									value="Thêm" /></td>
-								<td><a
-									href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
-									class="btn btn-warning">Quay lại</a></td>
-						
+
+
+							<td><input class="btn btn-primary" type="submit"
+								value="Thêm" /></td>
+							<td><a
+								href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
+								class="btn btn-secondary">Quay lại</a></td>
+
 						</div>
 					</form:form>
 

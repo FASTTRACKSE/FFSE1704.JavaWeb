@@ -34,7 +34,7 @@ public class ThongTinHopDong implements Serializable {
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
@@ -102,6 +102,18 @@ public class ThongTinHopDong implements Serializable {
 
 	@Column(name = "trang_thai", nullable = false)
 	private String maTrangThai;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
+	private NhanSu nhanSuFindByHD;
+
+	public NhanSu getNhanSuFindByHD() {
+		return nhanSuFindByHD;
+	}
+
+	public void setNhanSuFindByHD(NhanSu nhanSuFindByHD) {
+		this.nhanSuFindByHD = nhanSuFindByHD;
+	}
 
 	public PhongBan getPhongBan() {
 		return phongBan;

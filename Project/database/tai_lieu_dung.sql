@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 25, 2018 at 07:01 AM
+-- Generation Time: Jan 03, 2019 at 01:01 PM
 -- Server version: 5.6.30
 -- PHP Version: 5.5.35
 
@@ -35,24 +35,29 @@ CREATE TABLE IF NOT EXISTS `tai_lieu_dung` (
   `ma_trang_thai` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mo_ta` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ghi_chu` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ma_phong_ban` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ma_icon` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tai_lieu_dung`
 --
 
-INSERT INTO `tai_lieu_dung` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `link_file`, `name_file`, `ma_trang_thai`, `mo_ta`, `ghi_chu`, `ma_phong_ban`, `ma_icon`) VALUES
-(106, 'Nguyễn Mạnh Dũng', 'EL', NULL, '', 'da_phe_duyet', 'English', '', 'PDA1', NULL),
-(107, 'Tài liệu Tiếng Anh cơ bản', 'EL', '\\upload\\45628910_563223354173631_2030519606786916352_n.jpg', '45628910_563223354173631_2030519606786916352_n.jpg', 'tu_choi', 'English', NULL, 'PDA3', 'jpg'),
-(127, 'Tài liệu training Nhân Viên mới', 'IT', '\\upload\\31704224_1141763469314929_1979064927918227456_n.jpg', '31704224_1141763469314929_1979064927918227456_n.jpg', 'da_phe_duyet', 'Tài liệu training Nhân Viên mới : cho các thành viên mới vào ', NULL, 'PDA1', 'jpg'),
-(128, 'Tài liệu Tiếng Anh', 'IT', '\\upload\\31704224_1141763469314929_1979064927918227456_n.jpg', '31704224_1141763469314929_1979064927918227456_n.jpg', 'cho_phe_duyet', 'Tài liệu Tiếng Anh: Cho người mới bắt đầu 1', NULL, 'PDA1', 'jpg'),
-(129, 'đạt', 'IT', NULL, '', 'tu_choi', 'đạt', 'Cần bỏ sung thêm chi tiết', 'PDA1', NULL),
-(130, 'Tài Liệu IT', 'IT', '\\upload\\31301842_444188466016062_6080453128756933879_n.jpg', '31301842_444188466016062_6080453128756933879_n.jpg', 'cho_phe_duyet', 'Tài Liệu training ', NULL, 'PDA1', 'jpg'),
-(131, 'Tài liệu Tiếng Anh', 'IT', '\\upload\\29598267_10209043052672843_6711340936042064120_n.jpg', '29598267_10209043052672843_6711340936042064120_n.jpg', 'cho_phe_duyet', 'Hình Ảnh', NULL, 'PDT', 'jpg'),
-(132, 'Tài Liệu bổ sung', 'IT', '\\upload\\Chương trình quản lý thông tin sinh viên Trường FastTrackSE.docx', 'Chương trình quản lý thông tin sinh viên Trường FastTrackSE.docx', 'cho_phe_duyet', 'Bản word', NULL, 'PDA1', 'docx'),
-(133, 'q', 'IT', '\\upload\\31301842_444188466016062_6080453128756933879_n.jpg', '31301842_444188466016062_6080453128756933879_n.jpg', 'cho_phe_duyet', 'a', NULL, 'PDA1', 'jpg');
+INSERT INTO `tai_lieu_dung` (`id`, `ten_tai_lieu`, `ma_danh_muc`, `link_file`, `name_file`, `ma_trang_thai`, `mo_ta`, `ghi_chu`, `ma_icon`) VALUES
+(107, 'Tài liệu Tiếng Anh cơ bản', 'GĐ', NULL, '42318067_148608579413675_1364535329259782144_n.jpg', 'tu_choi', 'English', NULL, 'jpg'),
+(127, 'Tài liệu training Nhân Viên mới', 'IT', '\\uploads\\45066091_927214004150127_2638904271180922880_n.jpg', '45066091_927214004150127_2638904271180922880_n.jpg', 'da_phe_duyet', 'Tài liệu training Nhân Viên mới : cho các thành viên mới vào ', NULL, 'jpg'),
+(130, 'Tài Liệu IT', 'IT', '\\uploads\\42318067_148608579413675_1364535329259782144_n.jpg', '42318067_148608579413675_1364535329259782144_n.jpg', 'nhap', 'Tài Liệu training ', NULL, 'jpg'),
+(131, 'Tài liệu Tiếng Anh', 'IT', '\\uploads\\44954263_927214127483448_2795604130045886464_n.jpg', '44954263_927214127483448_2795604130045886464_n.jpg', 'da_phe_duyet', 'Hình Ảnh', 'êrêr', 'jpg'),
+(132, 'Tài liệu Demo', 'EL', '\\uploads\\45628910_563223354173631_2030519606786916352_n.jpg', '45628910_563223354173631_2030519606786916352_n.jpg', 'da_phe_duyet', 'Phòng dự án 2', '', 'jpg'),
+(133, 'Tài liệu Demo', 'IT', '\\uploads\\45011807_927214194150108_1580147918789148672_n.jpg', '45011807_927214194150108_1580147918789148672_n.jpg', 'da_phe_duyet', 'Phòng dự án 3', '', 'jpg'),
+(134, 'Tài liệu Demo', 'IT', '\\uploads\\44954264_927213774150150_4044157458069848064_n.jpg', '44954264_927213774150150_4044157458069848064_n.jpg', 'da_phe_duyet', 'Phòng dự án 4', '', 'jpg'),
+(135, 'Tài liệu Demo', 'IT', '\\uploads\\45069609_927214170816777_8213787609688702976_n.jpg', '45069609_927214170816777_8213787609688702976_n.jpg', 'da_phe_duyet', 'Phòng Đào Tạo', '', 'jpg'),
+(136, 'Tài liệu Demo', 'IT', '\\uploads\\45066091_927214004150127_2638904271180922880_n.jpg', '45066091_927214004150127_2638904271180922880_n.jpg', 'da_phe_duyet', 'Phòng Giám đốc', '', 'jpg'),
+(137, 'Tài liệu Demo', 'IT', '\\uploads\\44937173_1167514903399250_2643702591464144896_n.jpg', '44937173_1167514903399250_2643702591464144896_n.jpg', 'da_phe_duyet', 'Phòng Hành Chính', '', 'jpg'),
+(138, 'Tài liệu Demo', 'IT', '\\uploads\\45066091_927214004150127_2638904271180922880_n.jpg', '45066091_927214004150127_2638904271180922880_n.jpg', 'da_phe_duyet', 'PHÒNG Kỹ Thuật', '', 'jpg'),
+(139, 'Tài liệu Demo', 'IT', '\\uploads\\45820043_563223294173637_6769981834278207488_n.jpg', '45820043_563223294173637_6769981834278207488_n.jpg', 'da_phe_duyet', 'Phòng kế Toán', '', 'jpg'),
+(140, 'Tài liệu Demo', 'IT', '\\uploads\\44943429_927214074150120_5295600938306764800_n.jpg', '44943429_927214074150120_5295600938306764800_n.jpg', 'da_phe_duyet', 'Phòng nhân sự', '', 'jpg'),
+(141, 'Tài liệu Demo', 'IT', '\\uploads\\42318067_148608579413675_1364535329259782144_n.jpg', '42318067_148608579413675_1364535329259782144_n.jpg', 'cho_phe_duyet', 'Chưa thích phê duyệt', NULL, 'jpg'),
+(142, 'Tài liệu Demo', 'IT', '\\uploads\\45011807_927214194150108_1580147918789148672_n.jpg', '45011807_927214194150108_1580147918789148672_n.jpg', 'cho_phe_duyet', 'Chưa phê duyệt', NULL, 'jpg');
 
 --
 -- Indexes for dumped tables
@@ -72,7 +77,7 @@ ALTER TABLE `tai_lieu_dung`
 -- AUTO_INCREMENT for table `tai_lieu_dung`
 --
 ALTER TABLE `tai_lieu_dung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=143;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

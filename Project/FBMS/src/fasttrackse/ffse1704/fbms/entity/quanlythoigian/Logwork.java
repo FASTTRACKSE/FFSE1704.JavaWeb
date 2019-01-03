@@ -77,13 +77,13 @@ public class Logwork {
 	private String moTa;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_bat_dau", nullable = true)
 	@NotNull	
 	private Date thoiGianBatDau;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_ket_thuc", nullable = true)
 	@NotNull
 	private Date thoiGianKetThuc;

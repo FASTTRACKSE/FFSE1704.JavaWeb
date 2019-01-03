@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.XemThongTinNVDao;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Service
@@ -63,5 +66,31 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 	@Override
 	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
 		return xemThongTinNVDao.findPBCDByMaNhanVien(maNhanVien);
+	}
+
+	@Override
+	public List<HopDong> listHopDong() {
+		return xemThongTinNVDao.listHopDong();
+	}
+
+	@Override
+	public List<ThongTinHopDong> findTTByMaHopDong(String maHopDong) {
+		return xemThongTinNVDao.findTTByMaHopDong(maHopDong);
+	}
+
+	@Override
+	public List<QuanLyThongTinDuAnNS> listDuAn() {
+		return xemThongTinNVDao.listDuAn();
+	}
+
+	@Override
+	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn) {
+		return xemThongTinNVDao.findTTByMaDuAn(maDuAn);
+	}
+
+	@Override
+	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn) {
+		// TODO Auto-generated method stub
+		return xemThongTinNVDao.findTenDuAnByMaDuAn(maDuAn);
 	}
 }

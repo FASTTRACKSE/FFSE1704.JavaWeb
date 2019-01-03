@@ -18,9 +18,9 @@
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/index">Home</a></li>
+								href="<%=request.getContextPath()%>/home">Home</a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/index">Tài Liệu</a></li>
+								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Tài Liệu</a></li>
 							<li class="breadcrumb-item active">Thêm Tài Liệu</li>
 						</ol>
 					</div>
@@ -31,7 +31,7 @@
 			<h1>
 				Thêm Tài Liệu
 			</h1>
-			<a href="<%=request.getContextPath()%>/index">Back</a>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Back</a>
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
@@ -81,19 +81,6 @@
 					</div>
 				</div>
 				<!-- ///////////////////// -->
-				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Phòng Ban
-					</label>
-					<div class="col-md-9">
-						<form:select path="maPhongBan.maPhongBan">
-							<c:forEach var="PhongBan" items="${listQuyen}">
-								<form:option value="${PhongBan.maPhongBan}"
-									label="${PhongBan.tenPhongBan}" />
-							</c:forEach>
-						</form:select>
-					</div>
-				</div>
 					<div class="form-group col-sm-6">
 								<fieldset class="form-group">
 									<label for="basicInputFile">Tài Liệu</label>

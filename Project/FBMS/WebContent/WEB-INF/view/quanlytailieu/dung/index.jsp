@@ -10,7 +10,7 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa Tài Liệu<h3>
+				<h3 class="content-header-title mb-0">Tài Liệu của tôi<h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -65,7 +65,6 @@
 										<th>Mô Tả</th>
 										<th>Danh Mục</th>
 										<th>Trạng Thái</th>
-										<th>Phòng Ban</th>
 										<th>Phương Thức</th>
 										<th>Tải về</th>
 									</tr>
@@ -79,7 +78,6 @@
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
 												<td>${document.maTrangThai.tenTrangThai}</td>
-												<td>${document.maPhongBan.tenPhongBan}</td>
 												<td>
 												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
 												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateView/${document.id}" class="btn-warning btn" role="button" > Sửa </a>

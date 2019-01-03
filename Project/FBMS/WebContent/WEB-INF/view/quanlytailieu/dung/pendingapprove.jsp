@@ -63,8 +63,8 @@
 										<th>Tên Tài Liệu</th>
 										<th>Mô Tả</th>
 										<th>Danh Mục</th>
-										<th>Trạng Thái</th>
 										<th>Phòng Ban</th>
+										<th>Trạng Thái</th>
 										<th>Chức năng</th>
 									</tr>
 								</thead>
@@ -79,8 +79,8 @@
 													width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
+												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
 												<td>${document.maTrangThai.tenTrangThai}</td>
-												<td>${document.maPhongBan.tenPhongBan}</td>
 												<td><a href="<%=request.getContextPath()%>/quanlytailieu/pendingApproveView/${document.id}"
 													class="btn-warning btn"> Xem </a></td>
 											</tr>

@@ -210,18 +210,17 @@ body, html {
 										hồ sơ nhân viên</h1>
 									<p style="text-align: center;">Nhân viên:</p>
 									<p>
-										<img
-											src="http://sohanews.sohacdn.com/thumb_w/660/2018/2/1/photo1517500807502-15175008075031371499104.jpg"
-											style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; display: block; margin-left: auto; margin-right: auto;">
-									</p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 
 									<h2 style="text-align: center;">${thongTinNhanVien.hoLot}<a>
 											${thongTinNhanVien.ten}</a>
 									</h2>
 									<p style="text-align: center;">
-										Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
-										Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
-									</p>
+											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+										</p>
 									<button class="tablink" onclick="openPage('Home', this, 'red')">Hồ
 										sơ</button>
 									<button class="tablink"
