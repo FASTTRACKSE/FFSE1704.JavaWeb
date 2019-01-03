@@ -178,9 +178,25 @@ body, html {
 
 									<div class="row">
 										<div class="col-md-12">
-											<h4 style="text-align: center">Đơn nghỉ phép của :</h4>
+											<h1 style="text-align: center; color: green">Xem thông
+												tin hồ sơ nhân viên</h1>
+											<p style="text-align: center;">Nhân viên:</p>
+											<p>
+												<img
+													src="http://sohanews.sohacdn.com/thumb_w/660/2018/2/1/photo1517500807502-15175008075031371499104.jpg"
+													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; display: block; margin-left: auto; margin-right: auto;">
+											</p>
 
+											<h2 style="text-align: center;">
+												Đơn nghỉ phép của :
+												${thongtindonnghiphep.hoSoNhanVien.hoDem}
+												${thongtindonnghiphep.hoSoNhanVien.ten}</a>
+											</h2>
+											<p style="text-align: center;">
+												Phòng ban:<a>${thongtindonnghiphep.phongBan.tenPhongBan}</a>
+												
 
+											</p>
 											<a class="heading-elements-toggle"><i
 												class="fa fa-ellipsis-v font-medium-3"></i></a>
 										</div>
@@ -227,7 +243,7 @@ body, html {
 												</tbody>
 											</table>
 										</div>
-										<div class="col-md-2" ></div>
+										<div class="col-md-2"></div>
 										<div style="text-align: center;" class="form-group col-sm-12">
 											<tr>
 

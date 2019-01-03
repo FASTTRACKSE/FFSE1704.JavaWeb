@@ -37,11 +37,28 @@
 
 						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien" readonly="true" 
-								placeholder="nhập mã nhân viên" />
+							<form:input class="form-control" path="maNhanVien"
+								readonly="true" placeholder="nhập mã nhân viên" />
 
 						</div>
+						<div class="form-group col-md-12">
+							<label for="location1">Mã nhân viên</label>
+							<form:select path="maNhanVien" class="custom-select form-control"
+								id="location1" name="location" items="${manhanvien}"
+								itemValue="maNhanVien" itemLabel="maNhanVien">
 
+							</form:select>
+
+						</div>
+						<div class="form-group col-md-12">
+							<label for="location1">Phòng ban</label>
+							<form:select path="maPhongBan" class="custom-select form-control"
+								id="location1" name="location" items="${phongban}"
+								itemValue="maPhongBan" itemLabel="tenPhongBan">
+
+							</form:select>
+
+						</div>
 						<div class="form-group col-md-12">
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
@@ -185,27 +202,26 @@
 							</script>
 
 						</div>
-						
+
 
 						<div class="form-group col-sm-12">
 							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="form-control"
-								id="total" readonly="true" path="soLuong" />
+							<form:input type="text" class="form-control" id="total"
+								readonly="true" path="soLuong" />
 
 						</div>
 						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT3')}">
 							<div class="form-group col-sm-12">
 								<label>ghi chú</label>
-								<form:input type="text" class="form-control"
-									 path="ghiChu" />
+								<form:input type="text" class="form-control" path="ghiChu" />
 
 							</div>
 						</c:if>
 						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT4')}">
 							<div class="form-group col-sm-12">
 								<label>ghi chú</label>
-								<form:input type="text" class="form-control" readonly="true" 
-									 path="ghiChu" />
+								<form:input type="text" class="form-control" readonly="true"
+									path="ghiChu" />
 
 							</div>
 						</c:if>

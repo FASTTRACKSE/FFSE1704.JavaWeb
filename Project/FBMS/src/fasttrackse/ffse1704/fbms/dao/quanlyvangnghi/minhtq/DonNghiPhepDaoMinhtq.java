@@ -3,12 +3,17 @@ package fasttrackse.ffse1704.fbms.dao.quanlyvangnghi.minhtq;
 import java.util.List;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.HoSoNhanVienMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 public interface DonNghiPhepDaoMinhtq {
 
 	/////////// ĐƠN NGHỈ PHÉP//////////////////
+	public List<PhongBanMinhtq> listPhongBan();
+
+	public List<HoSoNhanVienMinhtq> listMaNhanVien();
 
 	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage, String idTT);
 

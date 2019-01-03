@@ -49,10 +49,26 @@
 					<!-- End Show message -->
 					<form:form method="POST" modelAttribute="taodonmoi"
 						action="addDonNghiPhepNhap">
-						<div class="form-group col-sm-12">
-							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien"
-								placeholder="nhập mã nhân viên" />
+						<div class="form-group col-md-12">
+							<label for="location1">mã nhân viên</label>
+							<form:select path="maNhanVien"
+								class="custom-select form-control" 
+								 items="${manhanvien}" itemValue="maNhanVien"
+								itemLabel="maNhanVien">
+
+							</form:select>
+
+						</div>
+
+						
+						<div class="form-group col-md-12">
+							<label for="location1">Phòng ban</label>
+							<form:select path="maPhongBan"
+								class="custom-select form-control" 
+								 items="${phongban}" itemValue="maPhongBan"
+								itemLabel="tenPhongBan">
+
+							</form:select>
 
 						</div>
 
@@ -208,7 +224,7 @@
 								readonly="true" path="soLuong" />
 
 						</div>
-						
+
 
 						<div class="row">
 							<div class="col-md-12" style="padding-left: 3%;">

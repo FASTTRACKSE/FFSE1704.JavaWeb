@@ -118,6 +118,7 @@
 											<tr>
 												<th>id</th>
 												<th>mã nhân viên</th>
+												<th>phòng ban</th>
 												<th>loại ngày nghỉ</th>
 												<th>số lượng</th>
 												<th>thời gian bắt đầu</th>
@@ -132,6 +133,7 @@
 											<tr>
 												<td>${dnpn.id}</td>
 												<td>${dnpn.maNhanVien}</td>
+												<td>${dnpn.phongBan.tenPhongBan}</td>
 												<td>${dnpn.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>

@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.HoSoNhanVienMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.DonNghiPhepServiceMinhtq;
 
@@ -80,7 +82,12 @@ public class QuanLyVangNghiControllerMinhtq {
 	@RequestMapping(value = "/addDonNghiPhepMoi", method = RequestMethod.GET)
 	public String showForm(Model model) {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
+		List<HoSoNhanVienMinhtq> maNhanvien= donNghiPhepService.listMaNhanVien();
+
+		model.addAttribute("manhanvien", maNhanvien);
 		model.addAttribute("countryList", countryList);
+		model.addAttribute("phongban", phongban);
 		model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
 		return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
 	}
@@ -120,6 +127,11 @@ public class QuanLyVangNghiControllerMinhtq {
 	@RequestMapping(value = "/suaDonNghiPhepView/{id}", method = RequestMethod.GET)
 	public String edit_ById(@PathVariable("id") int id, Model model) {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
+		List<HoSoNhanVienMinhtq> maNhanvien= donNghiPhepService.listMaNhanVien();
+
+		model.addAttribute("manhanvien", maNhanvien);
+		model.addAttribute("phongban", phongban);
 		model.addAttribute("countryList", countryList);
 		model.addAttribute("suadonnhap", donNghiPhepService.getByIdDonNghiPhep(id));
 
@@ -164,8 +176,8 @@ public class QuanLyVangNghiControllerMinhtq {
 			throws IllegalStateException, IOException {
 		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
 
-	
-		//TrangThaiVangNghiMinhtq trangthaiDNP = donNghiPhepService.getByIdTrangThai(id);
+		// TrangThaiVangNghiMinhtq trangthaiDNP =
+		// donNghiPhepService.getByIdTrangThai(id);
 		donnghiphep.setTrangThai("TT3");
 
 		donNghiPhepService.editDonNghiPhep(donnghiphep);

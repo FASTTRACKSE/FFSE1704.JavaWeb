@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.HoSoNhanVienMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 @Repository(value = "donNghiPhepDaoILMMinhtq")
@@ -81,7 +83,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 		return donnghiphep;
 	}
 
-	
 	// crud cho đơn nghỉ phép nháp của nhân viên
 
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
@@ -103,12 +104,30 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	// hết crud cho đơn nghỉ phép nháp của nhân viên
 
+	// list phòng ban
+	@SuppressWarnings("unchecked")
+	public List<PhongBanMinhtq> listPhongBan() {
+		Session session = sessionFactory.getCurrentSession();
+		List<PhongBanMinhtq> list = session.createQuery("from PhongBanMinhtq").getResultList();
+
+		return list;
+	}
+
+	// list mã nhân viên
+	@SuppressWarnings("unchecked")
+	public List<HoSoNhanVienMinhtq> listMaNhanVien() {
+		Session session = sessionFactory.getCurrentSession();
+		List<HoSoNhanVienMinhtq> list = session.createQuery("from HoSoNhanVienMinhtq").getResultList();
+
+		return list;
+	}
+
 	///////////////////////////////////// LOẠI NGÀY NGHỈ//////////
 	// list loại ngày nghỉ
 	@SuppressWarnings("unchecked")
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
 		Session session = sessionFactory.getCurrentSession();
-		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").getResultList();
+		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq	").getResultList();
 
 		return list;
 	}
