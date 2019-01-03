@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.XemThongTinNVDao;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
@@ -63,5 +64,10 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 	@Override
 	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
 		return xemThongTinNVDao.findPBCDByMaNhanVien(maNhanVien);
+	}
+
+	@Override
+	public List<HopDong> listHopDong() {
+		return xemThongTinNVDao.listHopDong();
 	}
 }

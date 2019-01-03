@@ -42,7 +42,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@SuppressWarnings("unchecked")
 	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage, String idTT) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from DonNghiPhepMinhtq where trangThai = :idTT");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where trangThai = :idTT ORDER BY id DESC ");
 		query.setParameter("idTT", idTT);
 		query.setFirstResult(start);
 		query.setMaxResults(perPage);
@@ -57,7 +57,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public List<DonNghiPhepMinhtq> listAllDonNghiPhep(String idTT) {
 		Session session = sessionFactory.getCurrentSession();
 
-		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :idTT");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :idTT ORDER BY id DESC ");
 		query.setParameter("idTT", idTT);
 		List<DonNghiPhepMinhtq> list = (List<DonNghiPhepMinhtq>) query.getResultList();
 
@@ -74,7 +74,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :maTrangThai");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :maTrangThai ORDER BY id DESC ");
 		query.setParameter("maTrangThai", maTrangThai);
 		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) query.getResultList().get(0);
 

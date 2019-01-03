@@ -79,12 +79,12 @@
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
 							<form:input path="thoiGianBatDau" class="form-control"
-									type="text" />
+								type="text"  value="${time}" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc</label>
-								<form:input path="thoiGianKetThuc" class="form-control"
-									type="text" />
+							<form:input path="thoiGianKetThuc" class="form-control"
+								type="text" value="${time}" />
 						</div>
 
 						<div class="col-sm-12 text-center">

@@ -49,18 +49,20 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách đơn nghỉ phép đã được phê duyệt</h3>
+				<h3 class="content-header-title mb-0">Danh sách đơn nghỉ phép
+					đã được phê duyệt</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-								<li class="breadcrumb-item"><a
-								href='<c:url value="/" />'>Danh sách đơn nghỉ phép chờ phê duyệt</a></li>
-								<li class="breadcrumb-item"><a
-								href='<c:url value="/" />'>Danh sách đơn nghỉ phép nháp</a></li>
+							<li class="breadcrumb-item"><a href='<c:url value="/" />'>Danh
+									sách đơn nghỉ phép chờ phê duyệt</a></li>
+							<li class="breadcrumb-item"><a href='<c:url value="/" />'>Danh
+									sách đơn nghỉ phép nháp</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/quanlyvangnghi/minhtq/donnghiphepnhap/list" />'>Danh sách đơn nghỉ phép đã được phê duyệt</a></li>
+								href='<c:url value="/quanlyvangnghi/minhtq/donnghiphepnhap/list" />'>Danh
+									sách đơn nghỉ phép đã được phê duyệt</a></li>
 						</ol>
 					</div>
 				</div>
@@ -68,9 +70,8 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "addDonNghiPhep"/>"
-						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
-						mới</a>
+					<a href="<c:url value = "addDonNghiPhep"/>" class="btn btn-primary"><span
+						class="fa fa-plus"></span> Thêm mới</a>
 				</div>
 			</div>
 		</div>
@@ -101,7 +102,8 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách đơn nghỉ phép đã phê duyệt </h4>
+							<h4 class="card-title">Danh sách đơn nghỉ phép đã phê duyệt
+							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -142,34 +144,7 @@
 												<td>${sv.trangThai}</td>
 												<td></td>
 										</c:forEach>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
 
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</tbody>
 									</table>
 								</div>
 							</div>
@@ -180,32 +155,6 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
 
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable")
-				.dataTable(
-						{
-							responsive : true,
-							"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-							"bServerSide" : true,
-							"sAjaxSource" : "/ffse-fbms/QuanTriHeThong/chuc_danh/view/getListChucDanh",
-						});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

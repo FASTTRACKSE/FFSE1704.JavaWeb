@@ -69,7 +69,7 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian bắt đầu</label>
-							<div class='input-group date' id='datetimepicker11'>
+							<div class='input-group date' id='datetimepicker1'>
 								<form:input class="form-control" type="text"
 									path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
 								<span class="input-group-addon"> <span

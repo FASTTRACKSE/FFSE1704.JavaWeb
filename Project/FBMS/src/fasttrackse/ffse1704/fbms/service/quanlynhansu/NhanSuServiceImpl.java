@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.NhanSuDao;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuocTich;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
@@ -130,6 +132,20 @@ public class NhanSuServiceImpl implements NhanSuService {
 	public List<XaPhuong> listXaPhuong() {
 		
 		return nhanSuDao.listXaPhuong();
+	}
+
+
+	@Override
+	public List<QuocTich> listQuocTich() {
+		
+		return nhanSuDao.listQuocTich();
+	}
+
+
+	@Override
+	public List<TrangThaiNhanSu> listTrangThai() {
+		
+		return nhanSuDao.listTrangThai();
 	}
 
 

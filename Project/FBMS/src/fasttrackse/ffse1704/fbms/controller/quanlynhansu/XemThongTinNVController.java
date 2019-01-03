@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.HopDongService;
@@ -105,8 +106,8 @@ public class XemThongTinNVController {
 	
 	@RequestMapping(value = "/listTTfindbyMaPhongBan", method = RequestMethod.GET)
     public String submit( @RequestParam ("dsPhongBanId") String maPhongBan,Model model) { 
-		
-		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findTTByMaPhongBan(maPhongBan));
+		List<ThongTinHopDong> dsNhanVienTheoPhongBan = xemThongTinNVService.findTTByMaPhongBan(maPhongBan);
+		model.addAttribute("dsNhanVienTheoPhongBan", dsNhanVienTheoPhongBan);
 		model.addAttribute("phongBan", xemThongTinNVService.findTenPhongBanByMaPhongBan(maPhongBan));
 		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
 		model.addAttribute("dsPhongBan", allPhongBan);

@@ -103,23 +103,19 @@ public class LogworkServicelmpl implements LogworkService {
 	public List<Logwork> listAllMonth(String month) {
 		return logworkDao.listAllMonth(month);
 	}
+	
+	@Override
+	public List<Logwork> listDate(int start, int total, String date) {
+		return logworkDao.listDate(start, total, date);
+	}
+
+	@Override
+	public List<Logwork> listAllDate(String date) {
+		return logworkDao.listAllDate(date);
+	}
 
 	@Override
 	public List<NhanVienLogwork> listNhanVien() {
 		return logworkDao.listNhanVien();
 	}
-
-	/*@Override
-	public String toJson(Logwork logwork) {
-		int id = logwork.getId();
-		int maDuAn = logwork.getMaDuAn();
-		String action = "<a href='/ffse-fbms/QuanTriHeThong/chuc_danh/view/" + maChucDanh
-				+ "'><i class='fa fa-eye'></i></a>" + "<a href='/ffse-fbms/QuanTriHeThong/chuc_danh/edit/" + maChucDanh
-				+ "'><i class='fa fa-pencil'></i></a>"
-				+ "<a href='javascript:void(0);' data-toggle='modal' data-target='#confirm-delete' data-href='/ffse-fbms/QuanTriHeThong/chuc_danh/delete/"
-				+ maChucDanh + "'><i class='fa fa-trash'></i></a>";
-
-		return "[\"" + maChucDanh + "\",\"" + tenChucDanh + "\",\"" + action + "\"]";
-	}*/
-
 }

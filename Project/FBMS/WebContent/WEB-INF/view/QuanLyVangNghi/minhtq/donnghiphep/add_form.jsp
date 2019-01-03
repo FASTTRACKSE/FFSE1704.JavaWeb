@@ -204,7 +204,7 @@
 
 						<div class="form-group col-sm-12">
 							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="custom-select form-control" id="total"
+							<form:input type="text" class="form-control" id="total"
 								readonly="true" path="soLuong" />
 
 						</div>

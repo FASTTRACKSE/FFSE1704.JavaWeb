@@ -49,8 +49,12 @@
 						
 						<div class="form-group">
 							<label>Trình độ:</label>
-							<form:input class="form-control" type="text" path="IdtrinhDo" />
-
+							<form:select path="IdtrinhDo"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listTrinhDo}" var="ltd">
+									<form:option value="${ltd.id}" label="${ltd.tenTrinhDo}" />
+								</c:forEach>
+							</form:select>
 							<br>
 						</div>
 						<div class="form-group">
@@ -60,14 +64,14 @@
 							<br>
 						</div>
 						<div class="form-group">
-							<label>Thời gian:</label>
+							<label>Thời gian Bắt Đầu:</label>
 							<form:input class="form-control" type="Date" path="batDau" />
 
 							<br>
 						</div>
 						
 						<div class="form-group">
-							<label>Thời gian:</label>
+							<label>Thời gian Kết Thúc:</label>
 							<form:input class="form-control" type="Date" path="ketThuc" />
 
 							<br>

@@ -30,6 +30,12 @@
 					<form:form method="POST" modelAttribute="suadonnhap"
 						action="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepNhap">
 						<div class="form-group col-sm-12">
+							<label>id</label>
+							<form:input class="form-control" path="id" readonly="true" />
+
+						</div>
+
+						<div class="form-group col-sm-12">
 							<label>Mã nhân viên</label>
 							<form:input class="form-control" path="maNhanVien" readonly="true" 
 								placeholder="nhập mã nhân viên" />
@@ -183,15 +189,23 @@
 
 						<div class="form-group col-sm-12">
 							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="custom-select form-control"
+							<form:input type="text" class="form-control"
 								id="total" readonly="true" path="soLuong" />
 
 						</div>
 						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT3')}">
 							<div class="form-group col-sm-12">
 								<label>ghi chú</label>
-								<form:input type="text" class="custom-select form-control"
-									id="total" path="ghiChu" />
+								<form:input type="text" class="form-control"
+									 path="ghiChu" />
+
+							</div>
+						</c:if>
+						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT4')}">
+							<div class="form-group col-sm-12">
+								<label>ghi chú</label>
+								<form:input type="text" class="form-control" readonly="true" 
+									 path="ghiChu" />
 
 							</div>
 						</c:if>

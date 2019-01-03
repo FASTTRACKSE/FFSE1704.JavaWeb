@@ -76,10 +76,12 @@ public class BangCapDaoImpl implements BangCapDao {
 	@Override
 	public void delete(int id) {
 		Session session = (Session) this.sessionFactory.getCurrentSession();
-		BangCap ns = session.load(BangCap.class, id);
-		if (null != ns) {
-			session.delete(ns);
-		}
+		String hql = "DELETE FROM BangCap WHERE id =:ID";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("ID", id);
+		query.executeUpdate();
+
 
 	}
 
