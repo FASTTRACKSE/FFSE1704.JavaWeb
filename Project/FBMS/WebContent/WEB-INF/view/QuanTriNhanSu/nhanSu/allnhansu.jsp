@@ -114,9 +114,9 @@
 								</p>
 								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
 									style="width: 150px;">
-										
+
 									<select class="form-control" name="dsPhongBanId">
-									<option disabled="disabled">Chọn phòng ban</option>
+										<option disabled="disabled">Chọn phòng ban</option>
 										<c:forEach items="${dsPhongBan}" var="pb">
 											<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
 										</c:forEach>
@@ -130,11 +130,11 @@
 								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
 									style="width: 150px;">
 									<select class="form-control" name="dsPhongBanId">
-											<option >Chọn trình độ</option>
+										<option>Chọn trình độ</option>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							
+
 							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Hợp đồng</a>
@@ -156,7 +156,7 @@
 								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
 									style="width: 150px;">
 									<select class="form-control" name="dsTrangThaiID">
-									<option disabled="disabled">Chọn Trạng Thái</option>
+										<option disabled="disabled">Chọn Trạng Thái</option>
 										<c:forEach items="${dsTrangThai}" var="tt">
 											<option value="${tt.idTrangThai}">${tt.name}</option>
 										</c:forEach>
@@ -173,11 +173,10 @@
 											<tr>
 												<th scope="col">ID</th>
 												<th>Mã nhân viên</th>
-												<th>Phòng ban</th>
-												<th>Chức danh</th>
-												<th>Họ ten</th>
 
-												<th>Ảnnh đại diện</th>
+												<th>Họ tên</th>
+												<th>Ngày sinh</th>
+												<th>Ảnh đại diện</th>
 
 												<th>Trạng thái</th>
 												<th>Chi tiết</th>
@@ -191,9 +190,8 @@
 											<tr>
 												<td>${ns.id}</td>
 												<td>${ns.maNhanVien}</td>
-												<td>PB</td>
-												<td>CD</td>
 												<td>${ns.hoLot}${ns.ten}</td>
+												<td>${ns.namSinh}</td>
 
 												<td><img style="width: 70px;hight=70px;"
 													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>

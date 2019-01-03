@@ -99,6 +99,7 @@ public class XemThongTinNVController {
 	public ModelAndView exportExcelFile(@PathVariable("maNhanVien") String maNhanVien) {
 		ModelAndView model = new ModelAndView("ExcelBuilder");
 		model.addObject("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addObject("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return model;
 	}
 	
@@ -130,23 +131,6 @@ public class XemThongTinNVController {
 		model.addAttribute("dsHopDong", allHopDong);
 		
 		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyHopDong";
-		
-	}
-	@RequestMapping(value = "/listTTfindbyMaDuAn", method = RequestMethod.GET)
-	public String submit2( @RequestParam ("dsDuAnId") String maDuAn,Model model) { 
-		List<PhanCongNhiemVuNS> dsNhanVienTheoMaDuAn = xemThongTinNVService.findTTByMaDuAn(maDuAn);
-		model.addAttribute("dsNhanVienTheoMaDuAn", dsNhanVienTheoMaDuAn);
-		
-		model.addAttribute("duAn", xemThongTinNVService.findTenDuAnByMaDuAn(maDuAn));
-		
-		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
-		model.addAttribute("dsPhongBan", allPhongBan);
-		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
-		model.addAttribute("dsHopDong", allHopDong);
-		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
-		model.addAttribute("dsDuAn", allDuAn);
-		
-		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyMaDuAn";
 		
 	}
 	
