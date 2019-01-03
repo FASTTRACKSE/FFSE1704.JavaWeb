@@ -97,6 +97,8 @@ public class BangCapController {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
 		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
+		List<TrinhDo> listTrinhDo= bangCapService.listTrinhDo();
+		model.addAttribute("listTrinhDo",listTrinhDo);
 		return "QuanTriNhanSu/BangCap/editBangCap";
 
 	}

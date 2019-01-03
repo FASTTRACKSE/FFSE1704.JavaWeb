@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuocTich;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThanhPho;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
@@ -109,11 +110,11 @@ public class NhanSuController {
 		
 		model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
 		
-//		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
-//		model.addAttribute("listQuanHuyen",listQuanHuyen);
-//		
-//		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
-//		model.addAttribute("listXaPhuong",listXaPhuong);
+		List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
+		model.addAttribute("listQuocTich",listQuocTich);
+		
+		List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
+		model.addAttribute("listTrangThai",listTrangThai);
 		
 		return "QuanTriNhanSu/nhanSu/ViewAddNhanSu";
 
@@ -162,6 +163,11 @@ public class NhanSuController {
 		List<QuanHuyen> listQuanHuyen= nhanSuService.listQuanHuyen();
 		model.addAttribute("listQuanHuyen",listQuanHuyen);
 		
+		List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
+		model.addAttribute("listQuocTich",listQuocTich);
+		
+		List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
+		model.addAttribute("listTrangThai",listTrangThai);
 		List<XaPhuong> listXaPhuong= nhanSuService.listXaPhuong();
 		model.addAttribute("listXaPhuong",listXaPhuong);
 		return "QuanTriNhanSu/nhanSu/edit_nhansu";

@@ -56,7 +56,8 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách nhân sự</li>
+							<li class="breadcrumb-item active"><a
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'>Danh Sách Nhân Sự</a></li>
 						</ol>
 					</div>
 				</div>

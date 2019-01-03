@@ -208,7 +208,7 @@ public class NhanSuDaoImpl implements NhanSuDao {
 	@SuppressWarnings({"unchecked","rawtypes"})
 	public List<NhanSu> listNhanSuByTrangThai(int maTrangThai) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from NhanSu tt where tt.trangThai = :maTT";
+		String hql = "from NhanSu tt where tt.idTrangThai = :maTT";
 		Query query = session.createQuery(hql);
 		query.setParameter("maTT", maTrangThai);
 		return (List<NhanSu>) query.list();
