@@ -41,7 +41,7 @@
 				<div class="row">
 					<form:form method="post" enctype="multipart/form-data"
 						action="saveNhanSu" modelAttribute="nhanSu">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Mã Nhân Viên:</label>
 							<form:input class="form-control" type="text" path="maNhanVien" />
 							<form:errors path="maNhanVien" cssClass="error"
@@ -49,29 +49,21 @@
 							<p style="color: red">${attenion}</p>
 
 						</div>
-						<%-- <div class="form-group col-sm-6">
-							<label>Mã Phòng Ban:</label>
-							<form:select path="maPhongBan"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listPhongBan}" var="lpb">
-									<form:option value="${lpb.maPhongBan}" label="${lpb.tenPhongBan}" />
-								</c:forEach>
-							</form:select>
-						</div>
-
-
-						<div class="form-group col-sm-6">
-							<label>Mã Chức Danh</label>
-							<form:select path="maChucDanh"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listChucDanh}" var="lcd">
-									<form:option value="${lcd.maChucDanh}" label="${lcd.tenChucDanh}" />
-								</c:forEach>
-							</form:select>
-
-						</div> --%>
 						
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
+							<label>Họ đệm</label>
+							<form:input class="form-control" type="text" path="hoLot" />
+							<form:errors path="hoLot" cssClass="error" style="color:pink" />
+
+						</div>
+						<div class="form-group col-sm-4">
+							<label>Tên</label>
+							<form:input class="form-control" type="text" path="ten" />
+							<form:errors path="ten" cssClass="error" style="color:pink" />
+
+						</div>
+						
+						<div class="form-group col-sm-4">
 							<label>Tinh thanh</label>
 							
 							 <form:select path="tinhThanhPho"
@@ -83,7 +75,7 @@
 
 						</div>
 						
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Quận Huyện</label>
 							
 							 <form:select path="maQuanHuyen"
@@ -93,7 +85,7 @@
 
 						</div>
 						
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Xã Phường</label>
 							
 							 <form:select path="maXaPhuong"
@@ -102,28 +94,31 @@
 							</form:select> 
 
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Họ đệm</label>
-							<form:input class="form-control" type="text" path="hoLot" />
-							<form:errors path="hoLot" cssClass="error" style="color:pink" />
+						<div class="form-group col-sm-4">
+							<label>Quốc Tịch</label>
+							<form:select path="maQuocTich"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listQuocTich}" var="lqt">
+									<form:option value="${lqt.maQuocTich}" label="${lqt.tenQuocTich}" />
+								</c:forEach>
+							</form:select>
+						</div>
+						
+						<div class="form-group col-sm-4">
+							<label>Trạng thái</label>
+							<form:select path="idTrangThai"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listTrangThai}" var="ltt">
+									<form:option value="${ltt.idTrangThai}" label="${ltt.name}" />
+								</c:forEach>
+							</form:select>
 
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Tên</label>
-							<form:input class="form-control" type="text" path="ten" />
-							<form:errors path="ten" cssClass="error" style="color:pink" />
-
-						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Ảnh</label> <input id="upload" type="file"
 								class="form-control-file" name="file"> <br>
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Năm Sinh</label>
-							<form:input class="form-control" type="Date" path="namSinh" />
-
-						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Giới tính:</label>
 							<%-- <form:input class="form-control" type="text" path="gioiTinh" /> --%>
 
@@ -134,73 +129,62 @@
 
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
+							<label>Năm Sinh</label>
+							<form:input class="form-control" type="Date" path="namSinh" />
+
+						</div>
+						
+						<div class="form-group col-sm-4">
 							<label>Địa chỉ</label>
 							<form:input class="form-control" type="text" path="queQuan" />
 							<form:errors path="queQuan" cssClass="error" style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Dân tộc</label>
 							<form:input class="form-control" type="text" path="danToc" />
 							<form:errors path="danToc" cssClass="error" style="color:pink" />
 							<br>
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Quốc Tịch</label>
-							<form:select path="maQuocTich"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listQuocTich}" var="lqt">
-									<form:option value="${lqt.maQuocTich}" label="${lqt.tenQuocTich}" />
-								</c:forEach>
-							</form:select>
-						</div>
-						<div class="form-group col-sm-6">
+						
+						<div class="form-group col-sm-4">
 							<label>Tạm trú</label>
 							<form:input class="form-control" type="text" path="noiTamTru" />
 							<form:errors path="noiTamTru" cssClass="error" style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Điện thoại</label>
 							<form:input class="form-control" type="text" path="soDienThoai" />
 							<form:errors path="soDienThoai" cssClass="error"
 								style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Email</label>
 							<form:input class="form-control" type="text" path="email" />
 							<form:errors path="email" cssClass="error" style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Chứng minh</label>
 							<form:input class="form-control" type="text" path="soCMND" />
 							<form:errors path="soCMND" cssClass="error" style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Nơi cấp</label>
 							<form:input class="form-control" type="text" path="noiCap" />
 							<form:errors path="noiCap" cssClass="error" style="color:pink" />
 
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Ngày cấp</label>
 							<form:input class="form-control" type="Date" path="ngayCap" />
 
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Trạng thái</label>
-							<form:select path="idTrangThai"
-								class="custom-select block round" id="customSelect">
-								<c:forEach items="${listTrangThai}" var="ltt">
-									<form:option value="${ltt.idTrangThai}" label="${ltt.name}" />
-								</c:forEach>
-							</form:select>
-
-						</div>
+						
 						<tr>
 							
 							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
@@ -209,11 +193,7 @@
 						</tr>
 						
 					</form:form>
-						<tr>
-							
-							
-							
-						</tr>
+
 				</div>
 			</div>
 		</div>
