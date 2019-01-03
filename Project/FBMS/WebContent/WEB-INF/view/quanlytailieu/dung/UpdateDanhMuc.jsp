@@ -12,7 +12,7 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					Tài Liệu
+					Danh Mục
 				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
@@ -20,8 +20,8 @@
 							<li class="breadcrumb-item"><a
 								href="<%=request.getContextPath()%>/home">Home</a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Tài Liệu</a></li>
-							<li class="breadcrumb-item active">Thêm Tài Liệu</li>
+								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Danh Mục</a></li>
+							<li class="breadcrumb-item active">Update Danh Mục</li>
 						</ol>
 					</div>
 				</div>
@@ -29,84 +29,63 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>
-				Thêm Tài Liệu
+				Update Danh Mục
 			</h1>
 			<a href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Back</a>
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-		<form:form action="" method="POST" modelAttribute="document" name ="form1"
+		<form:form action="" method="POST" modelAttribute="danhmucUpdate" 
 			enctype="multipart/form-data"
 			class="form form-horizontal striped-rows form-bordered">
 
 			<div class="form-body">
 				<!-- ///////////////////// -->
-				<c:if test="${not empty id}">
 					<form:hidden path="id" class="form-control" id="projectinput5"
-						value="${document.id}" />
-				</c:if>
+						value="${danhmuc.id}" />
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput5">
-						Tên Tài Liệu
+						Mã Danh Mục
 					</label>
 					<div class="col-md-9">
-						<form:input path="tenTaiLieu" class="form-control"
-							id="projectinput5" value="${document.tenTaiLieu}" />
+						<form:input path="maDanhMuc" class="form-control"
+							id="projectinput5" value="${danhmuc.maDanhMuc}" />
 					</div>
 				</div>
-				<!-- //////////////////// -->
 				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Danh Mục
+					<label class="col-md-3 label-control" for="projectinput5">
+						Tên Danh Mục
 					</label>
 					<div class="col-md-9">
-						<form:select path="maDanhMuc.maDanhMuc">
-							<c:forEach var="DanhMuc" items="${listCategory}">
-								<form:option value="${DanhMuc.maDanhMuc}"
-									label="${DanhMuc.tenDanhMuc}" />
+						<form:input path="tenDanhMuc" class="form-control"
+							id="projectinput5" value="${danhmuc.tenDanhMuc}" />
+					</div>
+				</div>
+				<!-- ///////////////////// -->
+				<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput6">
+						Phòng Ban
+					</label>
+					<div class="col-md-9">
+						<form:select path="maPhongBan.maPhongBan">
+							<c:forEach var="PhongBan" items="${listQuyen}">
+								<form:option value="${PhongBan.maPhongBan}"
+									label="${PhongBan.tenPhongBan}" />
 							</c:forEach>
 						</form:select>
 					</div>
 				</div>
-				<!-- ///////////////////// -->
-				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput6">
-						Mô Tả
-					</label>
-					<div class="col-md-9">
-						<form:textarea path="moTa" class="form-control"
-							id="basicTextarea" />
-					
-
-					</div>
-				</div>
-				<!-- ///////////////////// -->
 					<div class="form-group col-sm-6">
-								<fieldset class="form-group">
-									<label for="basicInputFile">Tài Liệu</label>
-									<form:hidden path="nameFile" />
-									<input type="file" class="form-control-file"
-										id="basicInputFile" name="file">
-							
-				<!-- ///////////////////// -->
-
-	
-
-				<!-- ///////////////////// -->
 
 				<div class="form-actions">
-					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentSave"
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/updateDanhMuc"
 						class="btn btn-success mr-1">
-						Submit
+						Update
 					</button>
-					<button
-						formaction="<%=request.getContextPath()%>/quanlytailieu/documentSaveDraft"
-						class="btn btn-info mr-1">
-						Lưu vào nháp
-					</button>
-					<a href="<%=request.getContextPath()%>/quanlytailieu/index"
+					<a href="<%=request.getContextPath()%>/quanlytailieu/danhmuc"
 						class="btn btn-danger mr-1"> Cancel</a>
 				</div>
+			</div>
 			</div>
 		</form:form>
 		<!-- ============= kết thúc nhập form dữ liệu ở đây =============  -->
@@ -114,4 +93,4 @@
 </div>
 <!-- code here end  -->
 
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+

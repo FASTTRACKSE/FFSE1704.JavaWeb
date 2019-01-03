@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 25, 2018 at 07:02 AM
+-- Generation Time: Jan 03, 2019 at 01:01 PM
 -- Server version: 5.6.30
 -- PHP Version: 5.5.35
 
@@ -28,17 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `danh_muc_tai_lieu` (
   `id` int(11) NOT NULL,
-  `ma_danh_muc` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `ten_danh_muc` varchar(30) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ma_danh_muc` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ten_danh_muc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ma_phong_ban` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `danh_muc_tai_lieu`
 --
 
-INSERT INTO `danh_muc_tai_lieu` (`id`, `ma_danh_muc`, `ten_danh_muc`) VALUES
-(1, 'IT', 'Tài liệu IT'),
-(2, 'EL', 'Tài liệu English');
+INSERT INTO `danh_muc_tai_lieu` (`id`, `ma_danh_muc`, `ten_danh_muc`, `ma_phong_ban`) VALUES
+(1, 'IT', 'Tài liệu IT', 'PIT'),
+(2, 'EL', 'Tài liệu English', 'PNS'),
+(4, 'GĐ', 'Giám Đốc', 'PGD');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +60,7 @@ ALTER TABLE `danh_muc_tai_lieu`
 -- AUTO_INCREMENT for table `danh_muc_tai_lieu`
 --
 ALTER TABLE `danh_muc_tai_lieu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

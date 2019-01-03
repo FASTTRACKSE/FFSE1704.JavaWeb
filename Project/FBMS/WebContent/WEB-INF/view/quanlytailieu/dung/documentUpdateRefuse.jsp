@@ -12,7 +12,7 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					Tài Liệu
+					Update Tài Liệu
 				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
@@ -20,8 +20,8 @@
 							<li class="breadcrumb-item"><a
 								href="<%=request.getContextPath()%>/home">Home</a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">Tài Liệu cần phê duyệt</a></li>
-							<li class="breadcrumb-item active">Phê Duyệt tài liệu</li>
+								href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">Tài Liệu Bị Từ Chối</a></li>
+							<li class="breadcrumb-item active">Update Tài Liệu</li>
 						</ol>
 					</div>
 				</div>
@@ -29,13 +29,13 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>
-				PHÊ DUYỆT TÀI LIỆU
+				Update Tài Liệu
 			</h1>
-			<a href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">Back</a>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">Back</a>
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-		<form:form action="" method="POST" modelAttribute="viewDocument"
+		<form:form action="" method="POST" modelAttribute="documentupdateRefuse"
 			enctype="multipart/form-data"
 			class="form form-horizontal striped-rows form-bordered">
 
@@ -50,15 +50,23 @@
 						Tên Tài Liệu
 					</label>
 					<div class="col-md-9">
-						<form:input path="tenTaiLieu" readonly="true" class="form-control"
+						<form:input path="tenTaiLieu" class="form-control"
 							id="projectinput5" value="${document.tenTaiLieu}" />
 					</div>
 				</div>
 				<!-- //////////////////// -->
 				<div class="form-group row">
-						<form:hidden path="maDanhMuc.maDanhMuc" 
-								 value="${DanhMuc.maDanhMuc}"   
-									/>						
+					<label class="col-md-3 label-control" for="projectinput6">
+						Danh Mục
+					</label>
+					<div class="col-md-9">
+						<form:select path="maDanhMuc.maDanhMuc">
+							<c:forEach var="DanhMuc" items="${listCategory}">
+								<form:option value="${DanhMuc.maDanhMuc}"
+									label="${DanhMuc.tenDanhMuc}" />
+							</c:forEach>
+						</form:select>
+					</div>
 				</div>
 				<!-- ///////////////////// -->
 				<div class="form-group row">
@@ -66,46 +74,40 @@
 						Mô Tả
 					</label>
 					<div class="col-md-9">
-						<form:textarea path="moTa"  readonly="true" class="form-control"
-							id="basicTextarea" />					
-					</div>
-				</div>
-				<!-- ///////////////////// -->
-				<div class="form-group row">				
-						<form:hidden path= "nameFile" class= "form-control" />
-						<form:hidden path= "linkFile" class= "form-control" />					
-				<form:hidden path="maIcon.maIcon" class = "form-control"/>
-				<form:hidden path="maTrangThai.maTrangThai" class="form-control" />													
-				</div>
-				<!-- ///////////////////// -->
+						<form:textarea path="moTa" class="form-control"
+							id="basicTextarea" />
+					
 
-				<!-- ///////////////////// -->
-				<div class="form-group row">
-					<label class="col-md-3 label-control" for="projectinput5">
-						Nhắc Nhở
-					</label>
-					<div class="col-md-9">
-						<form:input path="ghiChu" class="form-control"
-							id="projectinput5" value="${document.ghiChu}" />
 					</div>
+				</div>
+				<!-- ///////////////////// -->
+				<form:hidden path= "nameFile" class= "form-control" />
+				<form:hidden path="maIcon.maIcon" class = "form-control"/>
+				<form:hidden path="maTrangThai.maTrangThai" class="form-control" />
+				<!-- ///////////////////// -->
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput6">
-						Tài Liệu 
+						Tài Liệu Cũ
 					</label>
-						<td><img src="<c:url value="${viewDocument.maIcon.hinhAnh}"/>" width="50" height="50"></td>
-						<td>${viewDocument.nameFile}</td>
+						<td><img src="<c:url value="${documentupdateRefuse.maIcon.hinhAnh}"/>" width="50" height="50"></td>
+						<td>${documentupdateRefuse.nameFile}</td>
 				</div>
+					<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput6">
+						Thay đổi
+					</label>
+					<input type="file" class="form-control-file" id="basicInputFile" name="file">
 				</div>
+		
+
+				<!-- ///////////////////// -->
+
 				<div class="form-actions">
-					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentAccept"
+					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentUpdateRefuse"
 						class="btn btn-success mr-1">
-						Chấp nhận
+						Update
 					</button>
-					<button formaction="<%=request.getContextPath()%>/quanlytailieu/documentRefuse/${document.id}"
-						class="btn btn-success mr-1">
-						Từ Chối
-					</button>
-					<a href="<%=request.getContextPath()%>/quanlytailieu/index"
+					<a href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse"
 						class="btn btn-danger mr-1"> Cancel</a>
 				</div>
 			</div>

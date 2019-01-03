@@ -2,7 +2,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 
 <!-- code here -->
@@ -10,16 +10,18 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Tài liệu bị từ chối</h3>
-				<div class="row breadcrumbs-top">
-					<div class="breadcrumb-wrapper col-xs-12">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/home">Home</a></li>
-							<li class="breadcrumb-item active">Tài liệu bị từ chối</li>
-						</ol>
-					</div>
-				</div>
+				<h3 class="content-header-title mb-0">
+					Tài Liệu của tôi
+					<h3>
+						<div class="row breadcrumbs-top">
+							<div class="breadcrumb-wrapper col-xs-12">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a
+										href="<%=request.getContextPath()%>/index">Home</a></li>
+									<li class="breadcrumb-item active">Danh Muc</li>
+								</ol>
+							</div>
+						</div>
 			</div>
 			<div class="content-header-right text-md-right col-md-6 col-xs-12">
 				<div class="form-group">
@@ -36,8 +38,10 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Tài liệu bị từ chối</h1>
+			<h1>Danh Mục</h1>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/addDanhMucView">Thêm</a>
 		</div>
+
 		<!-- Border color end-->
 		<div class="row">
 			<div class="col-xs-12">
@@ -56,52 +60,45 @@
 					</div>
 					<div class="card-body collapse in">
 						<div class="table-responsive">
-							<table class="table mb-0">
+							<table class="table mb-0" id="table_id">
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
 										<th>ID</th>
-										<th>Tên Tài Liệu</th>
-										<th>Mô Tả</th>
-										<th>Danh Mục</th>
+										<th>Mã Danh Muc</th>
+										<th>Tên Danh Mục</th>
 										<th>Phòng Ban</th>
-										<th width="500">Lý Do</th>
-										<th width="350">Phương Thức</th>
-										<th>Tải Về</th>
+										<th>Phương Thức</th>
+									
 									</tr>
 								</thead>
 								<tbody>
-										<c:forEach var="document" items="${listRefuseDocument}"
-											varStatus="stt">
-											<tr class="border-bottom-success border-custom-color">
-												<td>${stt.count}</td>
-												<td><img
-													src="<c:url value="${document.maIcon.hinhAnh}"/>"
-													width="20" height="20"> ${document.tenTaiLieu}</td>
-												<td>${document.moTa}</td>
-												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
-												<td>${document.ghiChu}</td>
-												<td>
-												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
-												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateViewRefuse/${document.id}" class="btn-warning btn" role="button" > Sửa </a>
-												</td>
-												<td width="100" height="100"><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>												
-											</tr>
-											
-										</c:forEach>
-
+									<!-- varStatus="stt" -->
+									<c:forEach var="danhmuc" items="${listDanhMuc}" varStatus="stt" >
+										<tr class="border-bottom-success border-custom-color">
+											<td>${stt.count}</td>
+											<td>${danhmuc.maDanhMuc}</td>
+											<td>${danhmuc.tenDanhMuc}</td>
+											<td>${danhmuc.maPhongBan.tenPhongBan}</td>
+											<td><a href="danhMucDelete/${danhmuc.id}" onclick="if (!confirm('Are you sure you want to delete this database?')) return false"
+												class="btn-warning btn" role="button">Xóa</a> <a
+												href="<%=request.getContextPath()%>/quanlytailieu/updateDanhMucView/${danhmuc.id}"
+												class="btn-warning btn" role="button"> Sửa </a></td>
+										</tr>
+									</c:forEach>
 								</tbody>
-
 							</table>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Border color end -->
-	</div>
-			
 
+	</div>
 </div>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+<script>
+	$(function() {
+		$("#table_id").dataTable();
+	})
+</script>

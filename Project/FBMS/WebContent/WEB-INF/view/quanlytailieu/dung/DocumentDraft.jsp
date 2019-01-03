@@ -75,7 +75,7 @@
 												<td><img src="<c:url value="${document.maIcon.hinhAnh}"/>" width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td>${document.maPhongBan.tenPhongBan}</td>
+												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
 												<td>
 												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
 												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateView/${document.id}" class="btn-warning btn" role="button" > Sửa </a>

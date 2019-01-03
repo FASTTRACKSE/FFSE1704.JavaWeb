@@ -46,25 +46,86 @@ public class DocumentController {
 		model.addAttribute("listDocument", list);
 		return "quanlytailieu/dung/index";
 	}
-
+	//List tài liệu nháp
 	@RequestMapping(value = { "/draft" }, method = RequestMethod.GET)
 	public String draft(Model model) {
 		model.addAttribute("listDocumentDraft", documentService.getDraft());
 		return "quanlytailieu/dung/DocumentDraft";
 	}
-	
+	//List tài liệu chờ phê duyệt
 	@RequestMapping(value = { "/MyDocumentPendingApprove" }, method = RequestMethod.GET)
 	public String MyDocumentPendingApprove(Model model) {
 		model.addAttribute("listMyDocumentPendingApprove", documentService.getMyDocumentPendingApprove());
 		return "quanlytailieu/dung/MyDocumentPendingApprove";
 	}
-	
+	//List tài liệu đã chấp nhận
 	@RequestMapping(value = { "/MyDocumentPendingAccept" }, method = RequestMethod.GET)
 	public String MyDocumentAccept(Model model) {
 		model.addAttribute("listMyDocumentAccept", documentService.getMyDocumentAccept());
 		return "quanlytailieu/dung/MyDocumentAccept";
 	}
-
+	
+	//Hiển thị theo phòng ban
+	//phòng dự án 1
+	@RequestMapping(value = { "/DocumentPDA1" }, method = RequestMethod.GET)
+	public String DocumentPDA1(Model model) {
+		model.addAttribute("listDocumentPDA1", documentService.getPDA1Document());
+		return "quanlytailieu/dung/PDA1Document";
+	}
+	//phòng dự án 2
+	@RequestMapping(value = { "/DocumentPDA2" }, method = RequestMethod.GET)
+	public String DocumentPDA2(Model model) {
+		model.addAttribute("listDocumentPDA2", documentService.getPDA2Document());
+		return "quanlytailieu/dung/PDA2Document";
+	}
+	//phòng dự án 3
+	@RequestMapping(value = { "/DocumentPDA3" }, method = RequestMethod.GET)
+	public String DocumentPDA3(Model model) {
+		model.addAttribute("listDocumentPDA3", documentService.getPDA3Document());
+		return "quanlytailieu/dung/PDA3Document";
+	}
+	//phòng dự án 4
+	@RequestMapping(value = { "/DocumentPDA4" }, method = RequestMethod.GET)
+	public String DocumentPDA4(Model model) {
+		model.addAttribute("listDocumentPDA4", documentService.getPDA4Document());
+		return "quanlytailieu/dung/PDA4Document";
+	}
+	//phòng đào tạo
+	@RequestMapping(value = { "/DocumentPDT" }, method = RequestMethod.GET)
+	public String DocumentPDT(Model model) {
+		model.addAttribute("listDocumentPDT", documentService.getPDTDocument());
+		return "quanlytailieu/dung/PDTDocument";
+	}
+	//phòng giám đốc
+	@RequestMapping(value = { "/DocumentPGD" }, method = RequestMethod.GET)
+	public String DocumentPGD(Model model) {
+		model.addAttribute("listDocumentPGD", documentService.getPGDDocument());
+		return "quanlytailieu/dung/PGDDocument";
+	}
+	//phòng hànhh chính
+	@RequestMapping(value = { "/DocumentPHC" }, method = RequestMethod.GET)
+	public String DocumentPHC(Model model) {
+		model.addAttribute("listDocumentPHC", documentService.getPHCDocument());
+		return "quanlytailieu/dung/PHCDocument";
+	}
+	//phòng IT
+	@RequestMapping(value = { "/DocumentPIT" }, method = RequestMethod.GET)
+	public String DocumentPIT(Model model) {
+		model.addAttribute("listDocumentPIT", documentService.getPITDocument());
+		return "quanlytailieu/dung/PITDocument";
+	}
+	//PhòngKT
+	@RequestMapping(value = { "/DocumentPKT" }, method = RequestMethod.GET)
+	public String DocumentPKT(Model model) {
+		model.addAttribute("listDocumentPKT", documentService.getPKTDocument());
+		return "quanlytailieu/dung/PKTDocument";
+	}
+	//Phòng nhân sự
+	@RequestMapping(value = { "/DocumentPNS" }, method = RequestMethod.GET)
+	public String DocumentPNS(Model model) {
+		model.addAttribute("listDocumentPNS", documentService.getPNSDocument());
+		return "quanlytailieu/dung/PNSDocument";
+	}
 	// ----------- document public -------//
 	@RequestMapping(value = "/documentPublic", method = RequestMethod.GET)
 	public String documentPublic(Model model) {
@@ -113,7 +174,7 @@ public class DocumentController {
 			documentService.saveDraft(documentDung);
 		} catch (Exception e) {
 		}
-		return "redirect:/quanlytailieu/";
+		return "redirect:/quanlytailieu/MyDocumentPendingApprove";
 	}
 
 	// thêm vào nháp
@@ -135,18 +196,18 @@ public class DocumentController {
 			documentService.saveDraft(documentDung);
 		} catch (Exception e) {
 		}
-		return "redirect:/quanlytailieu/";
+		return "redirect:/quanlytailieu/draft";
 	}
 
-	// Update tài liệu
-	@RequestMapping(value = "/documentUpdateView/{id}")
-	public String documentUpdateView(@PathVariable int id, Model model) {
-		model.addAttribute("documentupdate", documentService.findById(id));
-		return "quanlytailieu/dung/documentUpdate";
+	// Update tài liệu bị từ chối
+	@RequestMapping(value = "/documentUpdateViewRefuse/{id}")
+	public String documentUpdateViewRefuse(@PathVariable int id, Model model) {
+		model.addAttribute("documentupdateRefuse", documentService.findById(id));
+		return "quanlytailieu/dung/documentUpdateRefuse";
 	}
 
-	@RequestMapping(value = "/documentUpdate", method = RequestMethod.POST)
-	public String updateTL(@ModelAttribute("documentupdate") DocumentDung document,
+	@RequestMapping(value = "/documentUpdateRefuse", method = RequestMethod.POST)
+	public String updateTLRefuse(@ModelAttribute("documentupdateRefuse") DocumentDung document,
 			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
 			final RedirectAttributes redirectAttributes) {
 		try {
@@ -164,14 +225,43 @@ public class DocumentController {
 			}
 		} catch (Exception e) {
 		}
-		return "redirect:/quanlytailieu/";
+		return "redirect:/quanlytailieu/documentRefuse";
 	}
+	
+	// Update tài liệu nháp
+		@RequestMapping(value = "/documentUpdateView/{id}")
+		public String documentUpdateView(@PathVariable int id, Model model) {
+			model.addAttribute("documentupdate", documentService.findById(id));
+			return "quanlytailieu/dung/documentUpdate";
+		}
 
+		@RequestMapping(value = "/documentUpdate", method = RequestMethod.POST)
+		public String updateTL(@ModelAttribute("documentupdate") DocumentDung document,
+				@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
+				final RedirectAttributes redirectAttributes) {
+			try {
+				String nameFile = file.getOriginalFilename();
+				if (nameFile.equals("") || nameFile == null) {
+					documentService.updateDocument(document);
+				} else {
+					document.setNameFile(nameFile);
+					document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+					String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+					IconDung icon = new IconDung();
+					icon.setMaIcon(format);
+					document.setMaIcon(icon);
+					documentService.updateDocument(document);
+				}
+			} catch (Exception e) {
+			}
+			return "redirect:/quanlytailieu/draft";
+		}
+	
 	// Delete tài liệu
 	@RequestMapping(value = "/documentDelete/{id}", method = RequestMethod.GET)
 	public String documentDelete(@PathVariable int id, Model model) {
 		documentService.delete(id);
-		return "redirect:/quanlytailieu/";
+		return "redirect:/quanlytailieu/MyDocumentPendingApprove";
 	}
 
 	// ----------- document pending approve -------//
