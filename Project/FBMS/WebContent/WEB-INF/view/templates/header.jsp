@@ -467,10 +467,12 @@
 								Phê duyệt tài liệu</a></li>
 
 					</ul></li>
-				<!-- Sỹ -->
+				<!-- SyNV -->
 				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
 					<ul class="menu-content" style="">
-						<li class=""><a class="menu-item" href="#">● Danh mục tài
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu">● Quản lý tài
+								liệu</a></li>
+								<li class=""><a class="menu-item" href="<%=request.getContextPath()%>">● Danh mục tài
 								liệu</a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
 						<li class=""><a class="menu-item" href="#"></a></li>
