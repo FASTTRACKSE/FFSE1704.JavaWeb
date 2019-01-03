@@ -50,13 +50,13 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách Nhan Su</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân sự</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách Nhan su</li>
+							<li class="breadcrumb-item active">Danh sách nhân sự toàn bộ công ty</li>
 						</ol>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sach nhan su</h4>
+							<h4 class="card-title">Danh sách nhân sự toàn bộ công ty</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -107,6 +107,10 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
+							<p>
+							Option: <br>
+								Xem theo: <a style="color: red">Phòng ban</a>
+							</p>
 							<form method="GET" action="/FBMS/listTTfindbyMaPhongBan" style="width: 150px;">
 								<select class="form-control" name="dsPhongBanId">
 								<c:forEach items="${dsPhongBan}" var="pb">

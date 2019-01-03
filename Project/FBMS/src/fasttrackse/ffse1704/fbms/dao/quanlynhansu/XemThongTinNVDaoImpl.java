@@ -136,14 +136,13 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		return yourObject;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<ThongTinHopDong> findTTByMaPhongBan(String maPhongBan) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from ThongTinHopDong hd where hd.maHopDong = :mhd";
-		@SuppressWarnings("rawtypes")
+		String hql = "from ThongTinHopDong hd where hd.maPhongBan = :mpb AND hd.maTrangThai = 'ACTIVE'";
 		Query query = session.createQuery(hql);
-		query.setParameter("mhd", maPhongBan);
+		query.setParameter("mpb", maPhongBan);
 		return (List<ThongTinHopDong>) query.list();
 	}
 	@SuppressWarnings("rawtypes")

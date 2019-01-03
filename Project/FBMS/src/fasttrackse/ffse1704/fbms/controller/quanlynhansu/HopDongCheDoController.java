@@ -69,6 +69,7 @@ public class HopDongCheDoController {
 		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
 		model.addAttribute("dsnn", listDSNN);
 		model.addAttribute("hopDong", hopDongService.findById(id));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
 	}
 	
@@ -87,6 +88,7 @@ public class HopDongCheDoController {
 		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/HopDongCheDo/add";
 	}
 	
@@ -114,6 +116,7 @@ public class HopDongCheDoController {
 		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/HopDongCheDo/edit";
 	}
 	@RequestMapping(value = "/editHopDongCheDo/{maNhanVien}&{id}", method = RequestMethod.POST)
