@@ -115,8 +115,10 @@
 
 						</div>
 						<div class="form-group col-sm-4">
-							<label>Ảnh</label> <input id="upload" type="file"
-								class="form-control-file" name="file"> <br>
+							<label>Ảnh</label> <input id="imgUrl" class="form-control"
+						type="file" name="file" /> <br> <img id="img" src="#"
+						alt="your image" width="100" height="150" />
+						<p style="color: red">${messImages}</p> <br>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Giới tính:</label>
@@ -264,6 +266,21 @@
          }});
      };
 	 </script>
+	 <!-- Show image -->  
+                     <script type="text/javascript">
+						function readURL(input) {
+						if (input.files && input.files[0]) {
+						var reader = new FileReader();
+						reader.onload = function(e) {
+						$('#img').attr('src', e.target.result);
+						}
+						reader.readAsDataURL(input.files[0]);
+						}
+						}
+						$("#imgUrl").change(function() {
+						readURL(this);
+						});
+					</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

@@ -140,6 +140,7 @@ public class NhanSuController {
 //			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
 //			
 //		}
+		model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
 		nhanSuService.addNS(nhanSu);
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
 
