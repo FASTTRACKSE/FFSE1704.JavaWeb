@@ -152,13 +152,11 @@
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT2')}">
 														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/daPheDuyet/${dnpn.trangThaiDNP.maTrangThai}">
-															<button class="btn btn-primary">Phê duyệt</button>
+															href="/FBMS/QuanLyVangNghi/minhtq/viewPheDuyetDon/${dnpn.id}">
+															<button class="btn btn-primary">Xem chi tiết</button>
 
 														</a>
-														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/tuChoi/${dnpn.trangThaiDNP.maTrangThai}"><button
-																class="btn btn-primary">Từ chối</button></a>
+														
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT3')}">
 														<a href="/FBMS/QuanLyVangNghi/minhtq/readDNP/${dnpn.id}">

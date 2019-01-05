@@ -83,7 +83,7 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String showForm(Model model) {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
-		List<HoSoNhanVienMinhtq> maNhanvien= donNghiPhepService.listMaNhanVien();
+		List<HoSoNhanVienMinhtq> maNhanvien = donNghiPhepService.listMaNhanVien();
 
 		model.addAttribute("manhanvien", maNhanvien);
 		model.addAttribute("countryList", countryList);
@@ -128,7 +128,7 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String edit_ById(@PathVariable("id") int id, Model model) {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
-		List<HoSoNhanVienMinhtq> maNhanvien= donNghiPhepService.listMaNhanVien();
+		List<HoSoNhanVienMinhtq> maNhanvien = donNghiPhepService.listMaNhanVien();
 
 		model.addAttribute("manhanvien", maNhanvien);
 		model.addAttribute("phongban", phongban);
@@ -152,12 +152,11 @@ public class QuanLyVangNghiControllerMinhtq {
 
 			if (actional.equals("cancel")) {
 
-				donnghiphep.setTrangThai("TT1");
-				donNghiPhepService.editDonNghiPhep(donnghiphep);
+				
 				redirectAttributes.addFlashAttribute("messageSuccess", "Đã hủy gửi đơn!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1";
-			} else {
-
+			}
+			if (actional.equals("chopheduyet")) {
 				donnghiphep.setTrangThai("TT2");
 				donNghiPhepService.editDonNghiPhep(donnghiphep);
 				redirectAttributes.addFlashAttribute("messageSuccess", "Đã gửi lại đơn và đang chờ duyệt!");
@@ -170,34 +169,49 @@ public class QuanLyVangNghiControllerMinhtq {
 	}
 
 	// chuyển Đơn chờ phê duyệt thành phê duyệt hoặc từ chối
-	@RequestMapping(value = "/pheDuyetDon/daPheDuyet/{maTrangThai}", method = RequestMethod.GET)
-	public String DonChoPheDuyet(@PathVariable("maTrangThai") String maTrangThai,
-			final RedirectAttributes redirectAttributes, DonNghiPhepMinhtq donnghiphep)
-			throws IllegalStateException, IOException {
-		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
+	@RequestMapping(value = "/viewPheDuyetDon/{id}", method = RequestMethod.GET)
+	public String DonChoPheDuyet(@PathVariable("id") int id, Model model) {
+		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
+		List<HoSoNhanVienMinhtq> maNhanvien = donNghiPhepService.listMaNhanVien();
 
-		// TrangThaiVangNghiMinhtq trangthaiDNP =
-		// donNghiPhepService.getByIdTrangThai(id);
-		donnghiphep.setTrangThai("TT3");
-
-		donNghiPhepService.editDonNghiPhep(donnghiphep);
-
-		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3";
+		model.addAttribute("manhanvien", maNhanvien);
+		model.addAttribute("phongban", phongban);
+		model.addAttribute("countryList", countryList);
+		model.addAttribute("pheduyetdon", donNghiPhepService.getByIdDonNghiPhep(id));
+		return "/QuanLyVangNghi/minhtq/donnghiphep/pheduyet_form";
 
 	}
 
-	@RequestMapping(value = "/pheDuyetDon/tuChoi/{maTrangThai}", method = RequestMethod.GET)
-	public String DonTuChoi(@PathVariable("maTrangThai") String maTrangThai,
-			final RedirectAttributes redirectAttributes, DonNghiPhepMinhtq donnghiphep)
+	@RequestMapping(value = "/pheDuyetDon", method = RequestMethod.POST)
+	public String DonTuChoi(Model model, @ModelAttribute("pheduyetdon") @Valid DonNghiPhepMinhtq donnghiphep,
+			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String action)
 			throws IllegalStateException, IOException {
-		donnghiphep = donNghiPhepService.getByIdApproved(maTrangThai);
+		
+		String url = "";							
+		if (bindingResult.hasErrors()) {
 
-		donnghiphep.setTrangThai("TT4");
-		donNghiPhepService.editDonNghiPhep(donnghiphep);
+			return "/QuanLyVangNghi/minhtq/donnghiphep/pheduyet_form";
+		} else {
 
-		redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn nghỉ phép!");
-		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT4";
+			if (action.equals("duyetdon")) {
+
+				donnghiphep.setTrangThai("TT3");
+				donNghiPhepService.editDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn!");
+				return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3";
+			}
+			if (action.equals("tuchoi")) {
+
+				donnghiphep.setTrangThai("TT4");
+				donNghiPhepService.editDonNghiPhep(donnghiphep);
+				redirectAttributes.addFlashAttribute("messageSuccess",
+						"Đã từ chối đơn nghỉ phép!");
+				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT4";
+			}
+
+		}
+		return url;
 
 	}
 

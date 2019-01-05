@@ -44,7 +44,7 @@ public class PhongBanMinhtq implements Serializable {
 		this.tenPhongBan = tenPhongBan;
 	}
 
-	@OneToMany(mappedBy = "loaiNgayNghi")
+	@OneToMany(mappedBy = "phongBan")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
 
 	public Collection<DonNghiPhepMinhtq> getDonNghiPhepMinhtq() {

@@ -31,7 +31,7 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 	@Column(name = "ten_trang_thai")
 	String tenTrangThai;
 
-	@OneToMany(mappedBy = "trangThai")
+	@OneToMany(mappedBy = "trangThaiDNP")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtqs;
 
 	public TrangThaiVangNghiMinhtq() {
