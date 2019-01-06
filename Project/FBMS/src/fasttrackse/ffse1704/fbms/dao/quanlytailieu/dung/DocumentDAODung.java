@@ -38,24 +38,6 @@ public interface DocumentDAODung  {
 	//list Theo phòng ban
 	//phòng dự án 1
 	public List<DocumentDung> getAllDocumentPDA1();
-	//phòng dự án 2
-	public List<DocumentDung> getAllDocumentPDA2();
-	//phòng dự án 3
-	public List<DocumentDung> getAllDocumentPDA3();
-	//phòng dự án 4
-	public List<DocumentDung> getAllDocumentPDA4();
-	// phòng đào tạo
-	public List<DocumentDung> getAllDocumentPDT();
-	//Phòng giám đốc
-	public List<DocumentDung> getAllDocumentPGD();
-	//phòng hành chính
-	public List<DocumentDung> getAllDocumentPHC();
-	//Phòng IT
-	public List<DocumentDung> getAllDocumentPIT();
-	//phòng kế toán
-	public List<DocumentDung> getAllDocumentPKT();
-	//phòng nhân sự
-	public List<DocumentDung> getAllDocumentPNS();
 	
 	//accept document
 	public void accept(final DocumentDung document);

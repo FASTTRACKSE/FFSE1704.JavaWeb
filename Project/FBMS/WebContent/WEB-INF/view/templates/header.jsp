@@ -469,33 +469,6 @@
 								<li class=""><a class="menu-item"
 									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA1">●
 										Phòng Dự Án 1</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA2">●
-										Phòng Dự Án 2</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA3">●
-										Phòng Dự Án 3</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA4">●
-										Phòng Dự Án 4</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDT">●
-										Phòng Đào Tạo</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPGD">●
-										Phòng Giám Đốc</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPHC">●
-										Phòng Hành Chính</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPIT">●
-										Phòng IT</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPKT">●
-										Phòng Kế Toán</a></li>
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPNS">●
-										Phòng Nhân sự</a></li>
 							</ul></li>
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●

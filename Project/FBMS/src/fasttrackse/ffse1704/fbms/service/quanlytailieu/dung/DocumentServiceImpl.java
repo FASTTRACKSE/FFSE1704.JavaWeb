@@ -70,42 +70,7 @@ public class DocumentServiceImpl implements DocumentService {
 		public List<DocumentDung> getPDA1Document(){
 			return documentDAO.getAllDocumentPDA1();
 		}
-		//phong dự án 2
-		public List<DocumentDung> getPDA2Document(){
-			return documentDAO.getAllDocumentPDA2();
-		}
-		//phòng dự án 3
-		public List<DocumentDung> getPDA3Document(){
-			return documentDAO.getAllDocumentPDA3();
-		}
-		//phòng dự án 4
-		public List<DocumentDung> getPDA4Document(){
-			return documentDAO.getAllDocumentPDA4();
-		}
-		//phòng đào tạo
-		public List<DocumentDung> getPDTDocument(){
-			return documentDAO.getAllDocumentPDT();
-		}
-		//phòng giám đốc
-		public List<DocumentDung> getPGDDocument(){
-			return documentDAO.getAllDocumentPGD();
-		}
-		//phòng hành chính
-		public List<DocumentDung> getPHCDocument(){
-			return documentDAO.getAllDocumentPHC();
-		}
-		//phòng IT
-		public List<DocumentDung> getPITDocument(){
-			return documentDAO.getAllDocumentPIT();
-		}
-		//phòng kế toán
-		public List<DocumentDung> getPKTDocument(){
-			return documentDAO.getAllDocumentPKT();
-		}
-		//phòng nhân sự
-		public List<DocumentDung> getPNSDocument(){
-			return documentDAO.getAllDocumentPNS();
-		}
+		
 	//accept
 		public void accept(DocumentDung document) {
 			documentDAO.accept(document);

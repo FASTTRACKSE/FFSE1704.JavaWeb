@@ -66,66 +66,18 @@ public class DocumentController {
 	}
 	
 	//Hiển thị theo phòng ban
+	@RequestMapping(value = { "/PhongBan" }, method = RequestMethod.GET)
+	public String PhongBan(Model model) {
+		model.addAttribute("listQuyen",documentService.listQuyen());
+		return "quanlytailieu/dung/PhongBan";
+	}
 	//phòng dự án 1
 	@RequestMapping(value = { "/DocumentPDA1" }, method = RequestMethod.GET)
-	public String DocumentPDA1(Model model) {
+	public String DocumentPDA1(@RequestParam("tlPhongBanId") Model model) {
 		model.addAttribute("listDocumentPDA1", documentService.getPDA1Document());
 		return "quanlytailieu/dung/PDA1Document";
 	}
-	//phòng dự án 2
-	@RequestMapping(value = { "/DocumentPDA2" }, method = RequestMethod.GET)
-	public String DocumentPDA2(Model model) {
-		model.addAttribute("listDocumentPDA2", documentService.getPDA2Document());
-		return "quanlytailieu/dung/PDA2Document";
-	}
-	//phòng dự án 3
-	@RequestMapping(value = { "/DocumentPDA3" }, method = RequestMethod.GET)
-	public String DocumentPDA3(Model model) {
-		model.addAttribute("listDocumentPDA3", documentService.getPDA3Document());
-		return "quanlytailieu/dung/PDA3Document";
-	}
-	//phòng dự án 4
-	@RequestMapping(value = { "/DocumentPDA4" }, method = RequestMethod.GET)
-	public String DocumentPDA4(Model model) {
-		model.addAttribute("listDocumentPDA4", documentService.getPDA4Document());
-		return "quanlytailieu/dung/PDA4Document";
-	}
-	//phòng đào tạo
-	@RequestMapping(value = { "/DocumentPDT" }, method = RequestMethod.GET)
-	public String DocumentPDT(Model model) {
-		model.addAttribute("listDocumentPDT", documentService.getPDTDocument());
-		return "quanlytailieu/dung/PDTDocument";
-	}
-	//phòng giám đốc
-	@RequestMapping(value = { "/DocumentPGD" }, method = RequestMethod.GET)
-	public String DocumentPGD(Model model) {
-		model.addAttribute("listDocumentPGD", documentService.getPGDDocument());
-		return "quanlytailieu/dung/PGDDocument";
-	}
-	//phòng hànhh chính
-	@RequestMapping(value = { "/DocumentPHC" }, method = RequestMethod.GET)
-	public String DocumentPHC(Model model) {
-		model.addAttribute("listDocumentPHC", documentService.getPHCDocument());
-		return "quanlytailieu/dung/PHCDocument";
-	}
-	//phòng IT
-	@RequestMapping(value = { "/DocumentPIT" }, method = RequestMethod.GET)
-	public String DocumentPIT(Model model) {
-		model.addAttribute("listDocumentPIT", documentService.getPITDocument());
-		return "quanlytailieu/dung/PITDocument";
-	}
-	//PhòngKT
-	@RequestMapping(value = { "/DocumentPKT" }, method = RequestMethod.GET)
-	public String DocumentPKT(Model model) {
-		model.addAttribute("listDocumentPKT", documentService.getPKTDocument());
-		return "quanlytailieu/dung/PKTDocument";
-	}
-	//Phòng nhân sự
-	@RequestMapping(value = { "/DocumentPNS" }, method = RequestMethod.GET)
-	public String DocumentPNS(Model model) {
-		model.addAttribute("listDocumentPNS", documentService.getPNSDocument());
-		return "quanlytailieu/dung/PNSDocument";
-	}
+	
 	// ----------- document public -------//
 	@RequestMapping(value = "/documentPublic", method = RequestMethod.GET)
 	public String documentPublic(Model model) {

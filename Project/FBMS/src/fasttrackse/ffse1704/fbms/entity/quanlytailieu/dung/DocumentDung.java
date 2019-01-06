@@ -122,4 +122,8 @@ public class DocumentDung {
 		// TODO Auto-generated constructor stub
 	}
 
+	public DocumentDung(DanhMucDung maDanhMuc) {
+		this.maDanhMuc = maDanhMuc;
+	}
+
 }
