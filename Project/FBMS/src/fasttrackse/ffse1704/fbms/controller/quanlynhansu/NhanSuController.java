@@ -130,6 +130,19 @@ public class NhanSuController {
 			nhanSu.setAnhDaiDien(fileName);
 		}
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("nhanSu", new NhanSu());
+
+			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
+			
+			model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
+			
+			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
+			
+			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
+			model.addAttribute("listQuocTich",listQuocTich);
+			
+			List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
+			model.addAttribute("listTrangThai",listTrangThai);
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		}
 //		boolean checkMaNhanSu = nhanSuService.checkExistMa(nhanSu.getMaNhanVien());

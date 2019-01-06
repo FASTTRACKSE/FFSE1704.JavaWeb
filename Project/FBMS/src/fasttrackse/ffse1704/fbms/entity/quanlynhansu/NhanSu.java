@@ -179,13 +179,13 @@ public class NhanSu implements Serializable {
 	
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<SoNgayNghiNhanVien> listNgayNghi;
-	
-	public List<SoNgayNghiNhanVien> getListNgayNghi() {
+	private List<QuanLySoNgayNghi> listNgayNghi;
+
+	public List<QuanLySoNgayNghi> getListNgayNghi() {
 		return listNgayNghi;
 	}
-	// cascade = CascadeType.ALL
-	public void setListNgayNghi(List<SoNgayNghiNhanVien> listNgayNghi) {
+
+	public void setListNgayNghi(List<QuanLySoNgayNghi> listNgayNghi) {
 		this.listNgayNghi = listNgayNghi;
 	}
 

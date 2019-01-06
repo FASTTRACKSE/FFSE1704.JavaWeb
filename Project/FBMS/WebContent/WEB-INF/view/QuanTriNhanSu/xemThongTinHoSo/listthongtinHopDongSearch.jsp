@@ -244,6 +244,7 @@ body, html {
 														<c:forEach items="${hd}" var="lhd">
 															<option value="${lhd.maHopDong}">${lhd.tenHopDong}</option>
 														</c:forEach>
+														
 													</select>
 												</div>
 												<div class="col-md-4">
@@ -255,6 +256,7 @@ body, html {
 
 															<option value="${tt.maTrangThai}">${tt.tenTrangThai}</option>
 														</c:forEach>
+					
 													</select>
 												</div>
 												<a style="color: red">Xem</a>
@@ -281,7 +283,7 @@ body, html {
 											</thead>
 											<tbody>
 												<c:forEach var="hopDong"
-													items="${thongTinNhanVien.listHopDong}">
+													items="${listHopDong}">
 													<tr>
 														<td>${hopDong.id}</td>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
