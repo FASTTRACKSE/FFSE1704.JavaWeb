@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ChungChiDao;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 
 @Service
 @Transactional
@@ -64,5 +66,18 @@ public class ChungChiServiceImpl implements ChungChiService {
 	public ChungChi getChungChiUpdate(int id) {
 		return this.chungChiDao.getChungChiUpdate(id);
 	}
+
+	@Override
+	public List<TrinhDo> listTrinhDo() {
+		return chungChiDao.listTrinhDo();
+	}
+
+	@Override
+	public List<BangCap> findMaBangByMaTrinhDo(int IdtrinhDo) {
+		return chungChiDao.findMaBangByMaTrinhDo(IdtrinhDo);
+	}
+
+
+	
 
 }

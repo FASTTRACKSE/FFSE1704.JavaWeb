@@ -2,6 +2,7 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
@@ -27,6 +28,5 @@ public interface XemThongTinNVDao {
 	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn);
 	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn);
 
-	
 	
 }

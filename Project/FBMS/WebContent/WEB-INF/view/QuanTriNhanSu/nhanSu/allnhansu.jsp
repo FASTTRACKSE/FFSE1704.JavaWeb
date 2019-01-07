@@ -123,14 +123,18 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
+
 							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>
 								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
+								<form method="GET" action="/FBMS/listBCfindbyMaBangCap"
 									style="width: 150px;">
-									<select class="form-control" name="dsPhongBanId">
-										<option>Chọn trình độ</option>
+									<select class="form-control" name="dsTrinhDoId">
+										<option disabled="disabled">Chọn trình độ</option>
+										<c:forEach items="${dsTrinhDo}" var="td">
+											<option value="${td.id}">${td.tenTrinhDo}</option>
+										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
