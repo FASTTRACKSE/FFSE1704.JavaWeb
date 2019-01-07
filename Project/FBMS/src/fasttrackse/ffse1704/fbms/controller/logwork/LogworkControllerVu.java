@@ -56,13 +56,11 @@ public class LogworkControllerVu {
 				VuTrangThai trangThaiLogwork = new VuTrangThai();
 				trangThaiLogwork.setMaTrangThai(4);
 				thoiGianLamViec.setTrangThaiLogwork(trangThaiLogwork);
-				return "redirect:/logwork/list/4";
 			} else if (action.equals("submit")) {
 				msg = "Đã gửi phê duyệt";
 				VuTrangThai trangThaiLogwork = new VuTrangThai();
 				trangThaiLogwork.setMaTrangThai(5);
 				thoiGianLamViec.setTrangThaiLogwork(trangThaiLogwork);
-				return "redirect:/logwork/list/5";
 			} else if (action.equals("exit")) {
 				return "redirect:/logwork/list/4";
 			}
@@ -78,7 +76,7 @@ public class LogworkControllerVu {
 	public String viewLogwork(@PathVariable("id") int id, Model model) {
 		model.addAttribute("viewLogwork", service.findByIdLogwork(id));
 
-  		return "logwork/view";
+		return "logwork/view";
 	}
 
 	@RequestMapping(value = "/editlogwork/{id}", method = RequestMethod.GET)
@@ -146,6 +144,15 @@ public class LogworkControllerVu {
 
 	}
 
+	@RequestMapping(value = "/maNV/{maNhanVien}", method = RequestMethod.GET)
+	public String viewBaoCaoTheoMaNV(@PathVariable("maNhanVien") int maNhanVien, Model model) {
+		model.addAttribute("maNhanVien", maNhanVien);
+		model.addAttribute("baoCao", service.baoCaoTheoMaNV(maNhanVien));
+		
+		return "logwork/baocaoNv";
+
+	}
+	
 	@RequestMapping(value = "/listChoPheDuyetPM", method = RequestMethod.GET)
 	public String viewChoPheDuyetPM(Model model) {
 		List<ThoiGianLamViec> allLogwork = service.findAll();

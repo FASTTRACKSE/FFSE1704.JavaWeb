@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -54,14 +56,30 @@ public class ThoiGianLamViec {
 	private String moTa;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_bat_dau", nullable = true)
 	private Date thoiGianBatDau;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_ket_thuc", nullable = true)
 	private Date thoiGianKetThuc;
+	
+	@Transient
+	private long tongThoiGian; // = thoiGianKetThuc - thoiGianBatDau
+
+	public long getTongThoiGian() {
+		long secs = (this.thoiGianKetThuc.getTime() - this.thoiGianBatDau.getTime()) / 1000;
+		long mins = secs / 60;    
+		long hours = mins/60;
+		return hours;
+	}
+
+	public void setTongThoiGian(long tongThoiGian) {
+		this.tongThoiGian = tongThoiGian;
+	}
 
 	@Column(name = "nhan_xet_PM", nullable = true)
 	private String nhanXetPM;

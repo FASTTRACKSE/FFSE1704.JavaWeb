@@ -181,7 +181,6 @@
 												<th scope="col">Tên Nhân Viên</th>
 												<th scope="col">Vai Trò</th>
 												<th scope="col">Phòng Ban</th>
-												<th scope="col">Mô Tả</th>
 												<th scope="col">Trạng Thái</th>
 												<th scope="col">Action</th>
 											</tr>
@@ -196,7 +195,6 @@
 														<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
 														<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 														<td>${lg.maPhongBan.tenPhongBan}</td>
-														<td>${lg.moTa}</td>
 														<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 														<td><a href="viewPheDuyet/${lg.id}"><button
 																	class="btn btn-success">View</button></a></td>

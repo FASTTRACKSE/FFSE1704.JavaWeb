@@ -552,9 +552,13 @@
 							class="ft-book">Logwork Đã Phê Duyệt</a></li>
 						<li><a href="<c:url value="/logwork/list/1"/>"
 							class="ft-book">Logwork Chờ TPP Phê Duyệt</a></li>
-							<li><a href="<c:url value="/logwork/list/5"/>"
+						<li><a href="<c:url value="/logwork/list/5"/>"
 							class="ft-book">Logwork Chờ PM Phê Duyệt</a></li>
 					</ul></li>
+				<li class=" nav-item"><a
+					href="<c:url value = "/logwork/listChoPheDuyetPM"/>"><i
+						class="ft-book"></i> Báo Cáo Thời Gian Làm Việc Phòng Ban</a></li>
+
 			</ul>
 			<ul id="main-menu-navigation" data-menu="menu-navigation"
 				class="navigation navigation-main">
