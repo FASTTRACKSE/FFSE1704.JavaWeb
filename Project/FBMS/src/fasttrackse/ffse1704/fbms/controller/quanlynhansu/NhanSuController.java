@@ -192,7 +192,7 @@ public class NhanSuController {
 	public String editNhanSuSave(@ModelAttribute("nhanSu") NhanSu nhanSu,Model model,BindingResult bindingResult,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		String fileName = upload(file);
-		if (!fileName.equals("")) {
+		if (!fileName.equals("default.jpg")) {
 			nhanSu.setAnhDaiDien(fileName);
 		}
 		nhanSuService.update(nhanSu);
