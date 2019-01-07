@@ -117,7 +117,7 @@
 						<div class="form-group col-sm-4">
 							<label>Ảnh</label> <input id="imgUrl" class="form-control"
 						type="file" name="file" /> <br> <img id="img" src="#"
-						alt="your image" width="100" height="150" />
+						 width="100" height="150" />
 						<p style="color: red">${messImages}</p> <br>
 						</div>
 						<div class="form-group col-sm-4">

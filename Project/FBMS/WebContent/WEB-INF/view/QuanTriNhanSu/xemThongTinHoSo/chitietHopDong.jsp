@@ -347,28 +347,18 @@ body, html {
 																	<td class="type-info text-right"><a
 																		style="color: red"><h6>${hopDong.cheDoHuong.luong}</h6></a></td>
 																</tr>
-																<tr>
-																	<td>
-																		<h6>Số ngày nghỉ phép năm</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.soNgayNghiTrongNam}</a> --- Còn lại   <a
-																		style="color: red">${hopDong.soNgayNghiTrongNam}</h6></a></td>
-																</tr>
-																<tr>
-																	<td>
-																		<h6>Số ngày còn lại</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${ngaynghiconlai.soNgayNghiConLai }</h6></a></td>
-																</tr>
-																<tr>
-																	<td>
-																		<h6>Các loại ngày nghỉ đặc biệt</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.ngayNghiDacBiet}(*)</h6></a></td>
-																</tr>
+																<c:forEach var="ngayNhi"
+																	items="${thongTinNhanVien.listNgayNghi}">
+																	<tr>
+																		<td>
+																			<h6>Số ${ngayNhi.danhSachNgayNghi.tenNgayNghi }</h6>
+																		</td>
+																		<td class="type-info text-right"><a
+																			style="color: red"><h6>${ngayNhi.tongSoNgayDuocNghi}</a>
+																			-- Đã nghỉ <a style="color: red">${ngayNhi.soNgayDaNghi}</a>
+																			</h6></td>
+																	</tr>
+																</c:forEach>
 																<tr>
 																	<td>
 																		<h6>Hình thức thanh toán lương</h6>
@@ -391,10 +381,6 @@ body, html {
 
 															</tbody>
 														</table>
-														<a style="color: red">*</a> Các loại ngày nghỉ đặc biệt: <br>
-														<c:forEach var="dsnn" items="${dsnn}">
-													${dsnn.maNgayNghi}. ${dsnn.tenNgayNghi } <br>
-														</c:forEach>
 													</div>
 												</div>
 											</div>
@@ -412,7 +398,7 @@ body, html {
 														hợp đồng</a></td>
 												<td><a class="btn btn-success"
 													href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
-													class="btn btn-secondary">Quay lại</a></td>
+													class="btn btn-secondarys">Quay lại</a></td>
 
 											</tr>
 										</div>

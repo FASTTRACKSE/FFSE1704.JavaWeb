@@ -106,6 +106,7 @@ public class ThongTinHopDong implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSuFindByHD;
+	
 
 	public NhanSu getNhanSuFindByHD() {
 		return nhanSuFindByHD;

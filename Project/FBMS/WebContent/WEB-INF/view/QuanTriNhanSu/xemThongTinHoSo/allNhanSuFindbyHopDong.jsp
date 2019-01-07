@@ -203,10 +203,10 @@
 
 
 												<td><c:choose>
-														<c:when test="${ns.nhanSuFindByHD.trangThai == 1}">
+														<c:when test="${ns.nhanSuFindByHD.idTrangThai == 1}">
 						    Còn Làm
 						  </c:when>
-														<c:when test="${ns.nhanSuFindByHD.trangThai == 2}">
+														<c:when test="${ns.nhanSuFindByHD.idTrangThai == 2}">
 						   Nghỉ
 						  </c:when>
 														<c:otherwise>

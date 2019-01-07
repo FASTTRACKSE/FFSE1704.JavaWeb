@@ -150,10 +150,10 @@
 												<td>${ns.maNhanVien}</td>
 												<td>${ns.hoLot}${ns.ten}</td>
 												<td><c:choose>
-														<c:when test="${ns.trangThai == 1}">
+														<c:when test="${ns.idTrangThai == 1}">
 						    Còn Làm
 						  </c:when>
-														<c:when test="${ns.trangThai == 2}">
+														<c:when test="${ns.idTrangThai == 2}">
 						   Nghỉ
 						  </c:when>
 														<c:otherwise>

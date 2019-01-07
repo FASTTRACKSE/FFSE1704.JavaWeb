@@ -26,4 +26,6 @@ public interface XemThongTinNVService {
 	public List<QuanLyThongTinDuAnNS> listDuAn();
 	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn);
 	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn);
+	
+	
 }

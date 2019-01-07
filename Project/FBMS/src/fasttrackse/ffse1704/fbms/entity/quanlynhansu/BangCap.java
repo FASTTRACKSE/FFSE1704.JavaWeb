@@ -52,13 +52,13 @@ public class BangCap {
 	private TrinhDo trinhDo;
 	
 	@Column(name = "id_trinh_do", nullable = false)
-	private String IdtrinhDo;
+	private int IdtrinhDo;
 
-	public String getIdtrinhDo() {
+	public int getIdtrinhDo() {
 		return IdtrinhDo;
 	}
 
-	public void setIdtrinhDo(String idtrinhDo) {
+	public void setIdtrinhDo(int idtrinhDo) {
 		IdtrinhDo = idtrinhDo;
 	}
 

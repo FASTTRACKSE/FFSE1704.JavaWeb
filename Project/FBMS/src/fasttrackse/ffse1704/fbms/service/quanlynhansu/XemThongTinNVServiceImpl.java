@@ -93,4 +93,10 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 		// TODO Auto-generated method stub
 		return xemThongTinNVDao.findTenDuAnByMaDuAn(maDuAn);
 	}
+
+	
+
+	
+
+
 }

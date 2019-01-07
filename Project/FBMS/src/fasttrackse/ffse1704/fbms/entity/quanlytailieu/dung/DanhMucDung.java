@@ -85,4 +85,8 @@ public class DanhMucDung implements Serializable {
 		super();
 	}
 
+	public DanhMucDung(PhongBan maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
 }

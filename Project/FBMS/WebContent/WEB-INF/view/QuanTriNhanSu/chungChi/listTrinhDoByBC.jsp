@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -49,27 +50,17 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Chứng Chỉ</h3>
+				<h3 class="content-header-title mb-0">Danh sách nhân sự</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'>Danh
-									Sách Nhân Sự</a></li>
 							<li class="breadcrumb-item active"><a
-								href='<c:url value="#" />'>Quản lý chứng chỉ</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'>Danh
+									Sách Nhân Sự</a></li>
 						</ol>
 					</div>
-				</div>
-			</div>
-			<div class="content-header-right col-md-3 col-xs-12">
-				<div role="group" aria-label="Button group with nested dropdown"
-					class="btn-group float-md-right" id="add-new">
-					<a href="/FBMS/addCC/${chungChi.maNhanVien}/"> <span
-						class="fa fa-plus"></span> Thêm mới
-					</a>
 				</div>
 			</div>
 		</div>
@@ -100,51 +91,59 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title" style="text-align: center;">Danh sach
-								chứng chỉ</h4>
-							<br />
-
-							<div class="main-content">
+							<%-- <h4 class="card-title">
+								Danh sách nhân sự Theo Trạng Thái: <a style="color: red">${trangThai.name}</a>
+							</h4> --%>
+							<a class="heading-elements-toggle"><i
+								class="fa fa-ellipsis-v font-medium-3"></i></a>
+							<div class="heading-elements">
+								<ul class="list-inline mb-0">
+									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+									<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+									<li><a data-action="close"><i class="ft-x"></i></a></li>
+								</ul>
+							</div>
+							<%-- <div class="main-content">
 								<div class="row">
 									<div class="form-group col-md-12">
 										<p style="text-align: center;">
 											<a
 												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
 												đại diện</a> </br> <img style="width: 200px;hight=150px;"
-												src='<c:url value="/uploads/${chungChi.anhDaiDien}" />'>
+												src='<c:url value="/uploads/${dsTrinhDoId.anhDaiDien}" />'>
 										</p>
 									</div>
 									<div class="form-group col-md-12">
 										<h1 style="text-align: center; color: green">
-											<p style="text-align: center">${chungChi.hoLot}
-												${chungChi.ten}</p>
+											<p style="text-align: center">${dsTrinhDoId.hoLot}
+												${dsTrinhDoId.ten}</p>
 											</a>
 										</h1>
 										<p style="text-align: center;">
 											<a style="text-align: center; color: blue">Mã nhân viên:</a>
-											${chungChi.maNhanVien}
+											${dsTrinhDoId.maNhanVien}
 										</p>
 										<p style="text-align: center;">
 											<a style="text-align: center; color: blue">Ngày sinh:</a>
-											${chungChi.namSinh}
+											${dsTrinhDoId.namSinh}
 										</p>
 									</div>
-
-									<div class="form-group col-md-3"></div>
 								</div>
-							</div>
-
-
-							<a class="heading-elements-toggle"><i
-								class="fa fa-ellipsis-v font-medium-3"></i></a>
-
-							<div class="heading-elements">
-								<ul class="list-inline mb-0">
-									<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-									<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-									<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-									<!-- <li><a data-action="close"><i class="ft-x"></i></a></li> -->
-								</ul>
+							</div> --%>
+							<div class="col-md-13">
+								<p>
+									<br> Xem theo: <a style="color: red">Trình độ</a>
+								</p>
+								<form method="GET" action="/FBMS/listBCfindbyMaBangCap"
+									style="width: 150px;">
+									<select class="form-control" name="dsTrinhDoId">
+										<option disabled="disabled">Chọn trình độ</option>
+										<c:forEach items="${dsTrinhDo}" var="td">
+											<option value="${td.id}">${td.tenTrinhDo}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
 							</div>
 						</div>
 						<div class="card-body collapse in">
@@ -154,58 +153,51 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
-
-												<th>ID</th>
-
-												<th>Tên Chứng Chỉ</th>
-												<th>Ngày Cấp</th>
-												<th>Đơn Vị Cấp</th>
-												<th>Chức Năng</th>
+												<th scope="col">ID</th>
+												<th>Mã Nhân Viên</th>
+												<th>Tên Trình Độ</th>
+												<th>Tên Ngành</th>
+												<th>Thời Gian Bắt Đầu</th>
+												<th>Thời Gian Kết Thúc</th>
+												<th>Xếp Loại</th>
+												<th>Nơi Cấp</th>
+												<th>Chi tiết</th>
+												<th>Gia đình</th>
+												<th>Trình độ</th>
+												<th>Hợp đồng/Chế độ TH</th>
+												<th>Chức năng</th>
 											</tr>
 										</thead>
-
-										<c:forEach var="cc" items="${chungChi.listChungChi}">
+										<c:forEach var="bc" items="${trangThai}">
 											<tr>
-												<td>${cc.ID}</td>
+												<td>${bc.id}</td>
+												<td>${bc.maNhanVien}</td>
+												<td>${bc.trinhDo.tenTrinhDo}</td>
+												<td>${bc.tenNganh}</td>
+												<td>${bc.batDau}</td>
+												<td>${bc.ketThuc}</td>
+												<td>${bc.xepLoai}</td>
+												<td>${bc.noiCap}</td>
+												<td><a href="/FBMS/thongTinNhanVien/${bc.maNhanVien}"
+													class="btn btn-success">Xem TT Chi Tiết</a></td>
+												<td><a href="/FBMS/ViewTT/${bc.maNhanVien}"
+													class="btn btn-info">Gia Đình</a></td>
 
-												<td>${cc.tenChungChi}</td>
-												<td>${cc.ngayCap}</td>
-												<td>${cc.donViCap}</td>
-												<td><a
-													href="/FBMS/updateCC/${cc.ID}&${chungChi.maNhanVien}"><button
-															class="btn btn-success">Sửa</button></a> <a
-													href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button
-															class="btn btn-danger">Xóa</button></a></td>
+												<td><a href="/FBMS/ViewBC/${bc.maNhanVien}"
+													class="btn btn-warning">Bằng Cấp</a> <a
+													href="/FBMS/ViewCC/${bc.maNhanVien}"
+													class="btn btn-primary">Chứng chỉ</a></td>
+
+												<td><a href="/FBMS/thongTinHopDong/${bc.maNhanVien}"
+													class="btn btn-warning">Hợp đồng</a> <a
+													href="/FBMS/thongTinKinhNghiem/${bc.maNhanVien}"
+													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
+
+												<td><a href="editNS/${bc.id}"><button
+															class="btn btn-success">sửa</button></a> <a
+													href="DeleteNS/${bc.id}"><button class="btn btn-danger">Xóa</button></a></td>
 											</tr>
 										</c:forEach>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</tbody>
 									</table>
 								</div>
 							</div>
