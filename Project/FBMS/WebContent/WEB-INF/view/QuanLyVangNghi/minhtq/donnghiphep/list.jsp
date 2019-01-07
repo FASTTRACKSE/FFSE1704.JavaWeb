@@ -144,11 +144,11 @@
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT1')}">
 														<a
 															href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
-															<button class="btn btn-primary">Sửa</button>
+															<button class="btn btn-primary">Sửa đơn</button>
 														</a>
 														<a
 															href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepNhap/${dnpn.id}"><button
-																class="btn btn-primary">Xóa</button></a>
+																class="btn btn-primary">Xóa đơn</button></a>
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT2')}">
 														<a

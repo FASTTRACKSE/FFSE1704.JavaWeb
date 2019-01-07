@@ -205,7 +205,7 @@
 						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT4')}">
 							<div class="form-group col-sm-12">
 								<label>ghi chú</label>
-								<textarea rows="4" cols="62" readonly class="form-control">${suadonnhap.ghiChu}</textarea>
+								<textarea rows="4" cols="62" readonly class="form-control" style="color: red">${suadonnhap.ghiChu}</textarea>
 
 							</div>
 						</c:if>
