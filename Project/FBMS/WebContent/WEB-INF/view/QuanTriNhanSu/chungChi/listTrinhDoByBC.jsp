@@ -104,6 +104,33 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
+							<%-- <div class="main-content">
+								<div class="row">
+									<div class="form-group col-md-12">
+										<p style="text-align: center;">
+											<a
+												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+												đại diện</a> </br> <img style="width: 200px;hight=150px;"
+												src='<c:url value="/uploads/${dsTrinhDoId.anhDaiDien}" />'>
+										</p>
+									</div>
+									<div class="form-group col-md-12">
+										<h1 style="text-align: center; color: green">
+											<p style="text-align: center">${dsTrinhDoId.hoLot}
+												${dsTrinhDoId.ten}</p>
+											</a>
+										</h1>
+										<p style="text-align: center;">
+											<a style="text-align: center; color: blue">Mã nhân viên:</a>
+											${dsTrinhDoId.maNhanVien}
+										</p>
+										<p style="text-align: center;">
+											<a style="text-align: center; color: blue">Ngày sinh:</a>
+											${dsTrinhDoId.namSinh}
+										</p>
+									</div>
+								</div>
+							</div> --%>
 							<div class="col-md-13">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>

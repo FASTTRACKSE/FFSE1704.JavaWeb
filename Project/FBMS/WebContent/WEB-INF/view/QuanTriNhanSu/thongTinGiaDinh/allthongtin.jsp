@@ -104,10 +104,17 @@
 								thông tin gia đình</h4>
 							<br />
 
-							<%-- <div class="main-content">
+							<div class="main-content">
 								<div class="row">
-									<div class="form-group col-md-3"></div>
-									<div class="form-group col-md-3">
+									<div class="form-group col-md-12">
+										<p style="text-align: center;">
+											<a
+												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+												đại diện</a> </br> <img style="width: 200px;hight=150px;"
+												src='<c:url value="/uploads/${thongTinGiaDinh.anhDaiDien}" />'>
+										</p>
+									</div>
+									<div class="form-group col-md-12">
 										<h1 style="text-align: center; color: green">
 											<p style="text-align: center">${thongTinGiaDinh.hoLot}
 												${thongTinGiaDinh.ten}</p>
@@ -121,26 +128,12 @@
 											<a style="text-align: center; color: blue">Ngày sinh:</a>
 											${thongTinGiaDinh.namSinh}
 										</p>
-										<p style="text-align: center;">
-											<a style="text-align: center; color: blue">Phòng ban:</a>
-											${thongTinGiaDinh.phongBan.tenPhongBan}
-										</p>
-										<p style="text-align: center;">
-											<a style="text-align: center; color: blue"> Chức vụ:</a>
-											${thongTinGiaDinh.chucDanh.tenChucDanh}
-										</p>
+
 									</div>
-									<div class="form-group col-md-3">
-										<p style="text-align: center;">
-											<a
-												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
-												đại diện</a> </br> <img style="width: 200px;hight=150px;"
-												src='<c:url value="/uploads/${thongTinGiaDinh.anhDaiDien}" />'>
-										</p>
-									</div>
+
 									<div class="form-group col-md-3"></div>
 								</div>
-							</div> --%>
+							</div>
 
 
 							<a class="heading-elements-toggle"><i
