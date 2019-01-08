@@ -424,7 +424,7 @@
 
 
 
-				<!-- hết Quản lí Vắng nghỉ minhtq -->
+			
 
 				<!--  ----------------------------Quản lí tài liệu-------------------------------  -->
 				<li class="navigation-header"><span class="menu-title"
@@ -475,7 +475,28 @@
 								Phê duyệt tài liệu</a></li>
 
 					</ul></li>
+							<!-- SyNV -->
+							<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
+					<ul class="menu-content" style="">
+			<li class=""><a class="menu-item" href="#"> Tài liệu của
+								tôi</a>
+							<ul class="menu-content" style="">
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/">●
+										Đã được phê duyệt</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/">●
+										Chưa được phê duyệt</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/">●
+										Tài liệu nháp</a></li>
+								<li class=""><a class="menu-item"
+									href="<%=request.getContextPath()%>/quanlytailieu/">●
+										Tài liệu bị từ chối</a></li>
+							</ul></li>
+							</ul></li>
 			</ul>
+			
 			<!--  ----------------------------End Quản lí vắng nghỉ-------------------------------  -->
 
 			<!-- Quản Lí Nhiệm Vụ -->
