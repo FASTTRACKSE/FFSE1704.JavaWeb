@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
@@ -194,7 +195,8 @@
 												<td>${ns.id}</td>
 												<td>${ns.maNhanVien}</td>
 												<td>${ns.hoLot}${ns.ten}</td>
-												<td>${ns.namSinh}</td>
+												<td><fmt:formatDate value="${ns.namSinh}"
+														pattern="dd-MM-yyyy" /></td>
 
 												<td><img style="width: 70px;hight=70px;"
 													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>

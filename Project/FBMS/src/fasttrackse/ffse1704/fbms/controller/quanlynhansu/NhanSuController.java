@@ -131,10 +131,10 @@ public class NhanSuController {
 	}
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(Model model, @ModelAttribute("nhanSu") @Valid NhanSu nhanSu,
-			BindingResult bindingResult, @RequestParam("file") MultipartFile file)
-			throws IllegalStateException, IOException {
+	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu,@RequestParam("maNhanVien") String maNhanVien, BindingResult bindingResult,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
+		
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			nhanSu.setAnhDaiDien(fileName);
@@ -142,32 +142,44 @@ public class NhanSuController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("nhanSu", new NhanSu());
 
-			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-
-			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-
-			model.addAttribute("listTinhThanh", nhanSuService.listTinhThanhPho());
-
-			List<QuocTich> listQuocTich = nhanSuService.listQuocTich();
-			model.addAttribute("listQuocTich", listQuocTich);
-
-			List<TrangThaiNhanSu> listTrangThai = nhanSuService.listTrangThai();
-			model.addAttribute("listTrangThai", listTrangThai);
+			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
+			
+			model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
+			
+			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
+			
+			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
+			model.addAttribute("listQuocTich",listQuocTich);
+			
+			List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
+			model.addAttribute("listTrangThai",listTrangThai);
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		}
-		// boolean checkMaNhanSu = nhanSuService.checkExistMa(nhanSu.getMaNhanVien());
-		// if(checkMaNhanSu==true) {
-		// nhanSuService.addNS(nhanSu);
-		//
-		// }else {
-		// model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
-		//
-		// }
-		model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
-		nhanSuService.addNS(nhanSu);
+		boolean checkMaNhanSu = nhanSuService.checkExistMa(maNhanVien);
+		if(checkMaNhanSu) {
+			model.addAttribute("nhanSu", new NhanSu());
+
+			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
+			
+			model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
+			
+			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
+			
+			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
+			model.addAttribute("listQuocTich",listQuocTich);
+			
+			List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
+			model.addAttribute("listTrangThai",listTrangThai);
+			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
+			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
+		}else {
+			nhanSuService.addNS(nhanSu);
+	}
+		//model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
 
 	}
+
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/editNS/{id}")
 	public String editNhanSuByID(@PathVariable int id, Model model) {
