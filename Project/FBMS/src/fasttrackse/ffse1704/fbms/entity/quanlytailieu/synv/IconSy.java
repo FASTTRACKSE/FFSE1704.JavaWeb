@@ -55,9 +55,7 @@ public class IconSy implements Serializable {
 		this.hinhAnh = hinhAnh;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 	
 
 }

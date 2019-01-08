@@ -18,7 +18,8 @@ import javax.validation.constraints.NotNull;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.synv.CategorySy;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.synv.IconSy;
 import fasttrackse.ffse1704.fbms.entity.quanlytailieu.synv.StatusSy;
-//import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+
 
 @Entity
 @Table(name = "tai_lieu_")
@@ -31,24 +32,27 @@ public class DocumentSy {
 
 	@Column(name = "ten_tai_lieu")
 	@NotEmpty
-	private String ten_tai_lieu;
+	private String tenTaiLieu;
 	
 	
-	@Column(name = "file")
-	private String fileName;
+	@Column(name="name_file")
+	private String nameFile;
+	
+	@Column(name = "link_file")
+	private String linkFile;
 	
 	
 	@Column(name = "mo_ta")
 	@NotEmpty
-	private String mo_ta;
+	private String moTa;
 	
 	@Column(name = "ghi_chu")
 	@NotEmpty
-	private String ghi_chu;
+	private String ghiChu;
 	
 	@Column(name = "ma_phong_ban")
 	@NotEmpty
-	private String ma_phong_ban;
+	private String maPhongBan;
 
 	@ManyToOne
 	@JoinColumn(name = "ma_danh_muc", referencedColumnName = "ma_danh_muc")
@@ -62,72 +66,66 @@ public class DocumentSy {
 	@ManyToOne
 	@JoinColumn(name = "ma_icon", referencedColumnName = "ma_icon")
 	private IconSy maIcon;
-	
-	public int getId() {
-		return id;
+
+	@ManyToOne
+	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban", insertable=false, updatable=false)
+	private PhongBan phongBan;
+
+
+	public PhongBan getPhongBan() {
+		return phongBan;
 	}
 
-	public DocumentSy(@NotNull int id, @NotEmpty String ten_tai_lieu, String fileName, @NotEmpty String mo_ta,
-			@NotEmpty String ghi_chu, @NotEmpty String ma_phong_ban, CategorySy maDanhMuc, StatusSy maTrangThai,
-			IconSy maIcon) {
-		super();
-		this.id = id;
-		this.ten_tai_lieu = ten_tai_lieu;
-		this.fileName = fileName;
-		this.mo_ta = mo_ta;
-		this.ghi_chu = ghi_chu;
-		this.ma_phong_ban = ma_phong_ban;
-		this.maDanhMuc = maDanhMuc;
-		this.maTrangThai = maTrangThai;
-		this.maIcon = maIcon;
+	public void setPhongBan(PhongBan phongBan) {
+		this.phongBan = phongBan;
 	}
 
-	public DocumentSy() {
-		// TODO Auto-generated constructor stub
+	public String getTenTaiLieu() {
+		return tenTaiLieu;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTenTaiLieu(String tenTaiLieu) {
+		this.tenTaiLieu = tenTaiLieu;
 	}
 
-	public String getTen_tai_lieu() {
-		return ten_tai_lieu;
+	public String getNameFile() {
+		return nameFile;
 	}
 
-	public void setTen_tai_lieu(String ten_tai_lieu) {
-		this.ten_tai_lieu = ten_tai_lieu;
+	public void setNameFile(String nameFile) {
+		this.nameFile = nameFile;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getLinkFile() {
+		return linkFile;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setLinkFile(String linkFile) {
+		this.linkFile = linkFile;
 	}
 
-	public String getMo_ta() {
-		return mo_ta;
+	public String getMoTa() {
+		return moTa;
 	}
 
-	public void setMo_ta(String mo_ta) {
-		this.mo_ta = mo_ta;
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 
-	public String getGhi_chu() {
-		return ghi_chu;
+	public String getGhiChu() {
+		return ghiChu;
 	}
 
-	public void setGhi_chu(String ghi_chu) {
-		this.ghi_chu = ghi_chu;
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
 	}
 
-	public String getMa_phong_ban() {
-		return ma_phong_ban;
+	public String getMaPhongBan() {
+		return maPhongBan;
 	}
 
-	public void setMa_phong_ban(String ma_phong_ban) {
-		this.ma_phong_ban = ma_phong_ban;
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
 	}
 
 	public CategorySy getMaDanhMuc() {
@@ -154,11 +152,39 @@ public class DocumentSy {
 		this.maIcon = maIcon;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public DocumentSy(@NotNull int id, @NotEmpty String tenTaiLieu, String nameFile, String linkFile,
+			@NotEmpty String moTa, @NotEmpty String ghiChu, @NotEmpty String maPhongBan, CategorySy maDanhMuc,
+			StatusSy maTrangThai, IconSy maIcon) {
+		super();
+		this.id = id;
+		this.tenTaiLieu = tenTaiLieu;
+		this.nameFile = nameFile;
+		this.linkFile = linkFile;
+		this.moTa = moTa;
+		this.ghiChu = ghiChu;
+		this.maPhongBan = maPhongBan;
+		this.maDanhMuc = maDanhMuc;
+		this.maTrangThai = maTrangThai;
+		this.maIcon = maIcon;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public DocumentSy() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+
 	
 	
-//	@ManyToOne
-//	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban")
-//	private PhongBan maPhongBan;
+
 	
 	/*public Document (int id, String ten_tai_lieu, String ma_danh_muc, String fileName, String ma_trang_thai, String mo_ta, String ghi_chu, String ma_phong_ban) {
 		super();

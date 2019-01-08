@@ -8,16 +8,16 @@ import fasttrackse.ffse1704.fbms.entity.quanlytailieu.dung.DocumentDung;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 public interface DocumentDAODung  {
-	// list
+	// list toàn bộ tài liệu (test)
 	public List<DocumentDung> getAll();
-	
+	// list tài liệu mọi người đều xem được
 	public List<DocumentDung> getAllPublicDocument();
-	
+	// Tạo tài liệu nháp
 	public void saveDraft(final DocumentDung documentDung);
 	
-
+	// List danh mục
 	public List<PhongBan> listQuyen();
-	
+	// List danh mục
 	public List<DanhMucDung> listCategory();
 	
 	//delete
@@ -34,6 +34,11 @@ public interface DocumentDAODung  {
 	public List<DocumentDung> getAllDocumentRefuse();
 	//list tài liệu nháp
 	public List<DocumentDung> getDraft();
+	
+	//list Theo phòng ban
+	//phòng dự án 1
+	public List<DocumentDung> getAllDocumentPDA1();
+	
 	//accept document
 	public void accept(final DocumentDung document);
 	//refuse document

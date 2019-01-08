@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import fasttrackse.ffse1704.fbms.dao.quanlyvangnghi.minhtq.DonNghiPhepDaoMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.HoSoNhanVienMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 @Service
@@ -125,14 +127,22 @@ public class DonNghiPhepServiceILMMinhtq implements DonNghiPhepServiceMinhtq {
 
 	@Override
 	public DonNghiPhepMinhtq read(int id) {
-
 		return donNghiPhepDao.read(id);
 	}
 
 	@Override
 	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai) {
-
 		return donNghiPhepDao.getByIdApproved(maTrangThai);
+	}
+
+	@Override
+	public List<PhongBanMinhtq> listPhongBan() {
+		return donNghiPhepDao.listPhongBan();
+	}
+
+	@Override
+	public List<HoSoNhanVienMinhtq> listMaNhanVien() {
+		return donNghiPhepDao.listMaNhanVien();
 	}
 
 }

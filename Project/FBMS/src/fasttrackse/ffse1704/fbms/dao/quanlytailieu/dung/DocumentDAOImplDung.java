@@ -40,7 +40,7 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 		Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("ma_trang_thai");
 		Join<DocumentDung, PhongBan> PhongBanJoin = root.join("ma_truy_cap");
 		cq.select(root).where(cb.and(cb.equal(MaTrangThaiJoin.get("ma_trang_thai"), "da_phe_duyet"),
-				cb.equal(PhongBanJoin.get("ma_truy_cap"), "all")));
+		cb.equal(PhongBanJoin.get("ma_truy_cap"), "all")));
 		List<DocumentDung> listPublicDocument = session.createQuery(cq).getResultList();
 		return listPublicDocument;
 	}
@@ -99,6 +99,23 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 			List<DocumentDung> listMyDocumentPendingApprove = session.createQuery(cq).getResultList();
 			return listMyDocumentPendingApprove;
 		}
+		
+		// List theo phòng ban
+		// Phòng dự án 1
+		public List<DocumentDung> getAllDocumentPDA1() {
+			Session session = sessionFactory.getCurrentSession();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
+			Root<DocumentDung> root = cq.from(DocumentDung.class);
+			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
+			Join<DocumentDung, DanhMucDung> danhMucJoin = root.join("maDanhMuc");
+			Join<DanhMucDung, PhongBan> phongBanJoin = danhMucJoin.join("maPhongBan");
+			cq.select(root).where(cb.equal(phongBanJoin.get("maPhongBan"), "PIT"),
+					cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));			
+			List<DocumentDung> getDocumentPDA1 = session.createQuery(cq).getResultList();
+			return getDocumentPDA1;
+		}
+		
 	public void saveDraft(final DocumentDung documentDung) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(documentDung);

@@ -13,7 +13,6 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 
@@ -60,11 +59,6 @@ public class HopDongServiceImpl implements HopDongService {
 	}
 
 	@Override
-	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien) {
-		return hopDongDao.findNgayNghiConLaibyMaNV(maNhanVien);
-	}
-
-	@Override
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi() {
 		return hopDongDao.listDanhSachNgayNghi();
 	}
@@ -72,6 +66,27 @@ public class HopDongServiceImpl implements HopDongService {
 	@Override
 	public List<TrangThaiHopDong> TrangThaiHopDong() {
 		return hopDongDao.TrangThaiHopDong();
+	}
+
+	@Override
+	public HopDong findTenHopDongbyMaHopDong(String maHopDong) {
+		return hopDongDao.findTenHopDongbyMaHopDong(maHopDong);
+	}
+
+	@Override
+	public List<ThongTinHopDong> findByMNVandMHD(String maNhanVien, String maHopDong) {
+		
+		return hopDongDao.findByMNVandMHD(maNhanVien, maHopDong);
+	}
+
+	@Override
+	public List<ThongTinHopDong> findByMNVandMTT(String maNhanVien, String maTrangThai) {
+		return hopDongDao.findByMNVandMTT(maNhanVien, maTrangThai);
+	}
+
+	@Override
+	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien, String maHopDong, String maTrangThai) {
+		return hopDongDao.findByMNVandMHDandMTT(maNhanVien, maHopDong, maTrangThai);
 	}
 
 }

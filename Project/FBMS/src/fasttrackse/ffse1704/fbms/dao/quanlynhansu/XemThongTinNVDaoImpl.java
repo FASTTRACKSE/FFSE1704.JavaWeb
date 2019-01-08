@@ -11,10 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Repository
@@ -39,7 +42,7 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		return list;
 	}
 
-	//select no HQL
+	// select no HQL
 //	@SuppressWarnings("deprecation")
 //	@Override
 //	public List<NhanSu> findByPhongBan(String maPhongBan) {
@@ -79,7 +82,7 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		return (List<NhanSu>) query.list();
 	}
 
-	//phan trang theo maPhongBan HQL
+	// phan trang theo maPhongBan HQL
 	@SuppressWarnings({ "unchecked" })
 	@Override
 	public List<NhanSu> findAllForPaging(String maPhongBan, int startPosition, int maxResult) {
@@ -112,7 +115,7 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		PhongBan yourObject = (PhongBan) criteria.add(Restrictions.eq("maPhongBan", maPhongBan)).uniqueResult();
 		return yourObject;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public List<QuanHuyen> findQuanHuyenByIdThanhPho(String maThanhPho) {
@@ -120,10 +123,10 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		Criteria criteria = session.createCriteria(QuanHuyen.class);
 
 		@SuppressWarnings("unchecked")
-		List<QuanHuyen> yourObject = (List<QuanHuyen>) criteria.add(Restrictions.eq("matp", maThanhPho))
-				.list();
+		List<QuanHuyen> yourObject = (List<QuanHuyen>) criteria.add(Restrictions.eq("matp", maThanhPho)).list();
 		return yourObject;
 	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public List<XaPhuong> findXaPhuongByIdQuanHuyen(String maQuanHuyen) {
@@ -131,21 +134,20 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		Criteria criteria = session.createCriteria(XaPhuong.class);
 
 		@SuppressWarnings("unchecked")
-		List<XaPhuong> yourObject = (List<XaPhuong>) criteria.add(Restrictions.eq("maqh", maQuanHuyen))
-				.list();
+		List<XaPhuong> yourObject = (List<XaPhuong>) criteria.add(Restrictions.eq("maqh", maQuanHuyen)).list();
 		return yourObject;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<ThongTinHopDong> findTTByMaPhongBan(String maPhongBan) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from ThongTinHopDong hd where hd.maHopDong = :mhd";
-		@SuppressWarnings("rawtypes")
+		String hql = "from ThongTinHopDong hd where hd.maPhongBan = :mpb AND hd.maTrangThai = 'ACTIVE'";
 		Query query = session.createQuery(hql);
-		query.setParameter("mhd", maPhongBan);
+		query.setParameter("mpb", maPhongBan);
 		return (List<ThongTinHopDong>) query.list();
 	}
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public ThongTinHopDong findPBCDByMaNhanVien(String maNhanVien) {
@@ -154,6 +156,54 @@ public class XemThongTinNVDaoImpl implements XemThongTinNVDao {
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
 		return (ThongTinHopDong) query.uniqueResult();
-			
+
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HopDong> listHopDong() {
+		Session session = sessionFactory.getCurrentSession();
+		List<HopDong> list = session.createQuery("from HopDong").getResultList();
+		return list;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<ThongTinHopDong> findTTByMaHopDong(String maHopDong) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong hd where hd.maHopDong = :mhd AND hd.maTrangThai = 'ACTIVE'";
+		Query query = session.createQuery(hql);
+		query.setParameter("mhd", maHopDong);
+		return (List<ThongTinHopDong>) query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<QuanLyThongTinDuAnNS> listDuAn() {
+		Session session = sessionFactory.getCurrentSession();
+		List<QuanLyThongTinDuAnNS> list = session.createQuery("from QuanLyThongTinDuAnNS").getResultList();
+		return list;
+	}
+	@SuppressWarnings({ "unchecked","rawtypes" })
+	@Override
+	public List<PhanCongNhiemVuNS> findTTByMaDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from PhanCongNhiemVuNS nv where nv.maDuAn = :mda";
+		
+		Query query = session.createQuery(hql);
+		query.setParameter("mda", maDuAn);
+		return (List<PhanCongNhiemVuNS>) query.list();
+	}
+	@SuppressWarnings("deprecation")
+	@Override
+	public QuanLyThongTinDuAnNS findTenDuAnByMaDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+	
+		Criteria criteria = session.createCriteria(QuanLyThongTinDuAnNS.class);
+		QuanLyThongTinDuAnNS yourObject = (QuanLyThongTinDuAnNS) criteria.add(Restrictions.eq("maDuAn", maDuAn)).uniqueResult();
+		return yourObject;
+	}
+
+	
+
 }

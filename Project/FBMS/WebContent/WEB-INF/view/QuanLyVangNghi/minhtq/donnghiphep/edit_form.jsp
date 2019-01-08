@@ -30,12 +30,27 @@
 					<form:form method="POST" modelAttribute="suadonnhap"
 						action="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepNhap">
 						<div class="form-group col-sm-12">
-							<label>Mã nhân viên</label>
-							<form:input class="form-control" path="maNhanVien" readonly="true" 
-								placeholder="nhập mã nhân viên" />
+							<label>id</label>
+							<form:input class="form-control" path="id" readonly="true" />
 
 						</div>
 
+						<div class="form-group col-sm-12">
+							<label>Mã nhân viên</label>
+							<form:input class="form-control" path="maNhanVien"
+								readonly="true" placeholder="nhập mã nhân viên" />
+
+						</div>
+						
+						<div class="form-group col-md-12">
+							<label for="location1">Phòng ban</label>
+							<form:select path="maPhongBan" class="custom-select form-control"
+								id="location1" name="location" items="${phongban}"
+								itemValue="maPhongBan" itemLabel="tenPhongBan">
+
+							</form:select>
+
+						</div>
 						<div class="form-group col-md-12">
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"
@@ -179,19 +194,18 @@
 							</script>
 
 						</div>
-						
+
 
 						<div class="form-group col-sm-12">
 							<label>Số ngày nghỉ</label>
-							<form:input type="text" class="custom-select form-control"
-								id="total" readonly="true" path="soLuong" />
+							<form:input type="text" class="form-control" id="total"
+								readonly="true" path="soLuong" />
 
 						</div>
-						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT3')}">
+						<c:if test="${suadonnhap.trangThaiDNP.maTrangThai.equals('TT4')}">
 							<div class="form-group col-sm-12">
 								<label>ghi chú</label>
-								<form:input type="text" class="custom-select form-control"
-									id="total" path="ghiChu" />
+								<textarea rows="4" cols="62" readonly class="form-control" style="color: red">${suadonnhap.ghiChu}</textarea>
 
 							</div>
 						</c:if>

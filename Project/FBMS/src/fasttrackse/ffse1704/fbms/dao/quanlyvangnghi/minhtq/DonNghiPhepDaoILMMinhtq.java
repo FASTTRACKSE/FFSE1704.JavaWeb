@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.DonNghiPhepMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.HoSoNhanVienMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 
 @Repository(value = "donNghiPhepDaoILMMinhtq")
@@ -42,7 +44,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@SuppressWarnings("unchecked")
 	public List<DonNghiPhepMinhtq> listDonNghiPhep(int start, int perPage, String idTT) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from DonNghiPhepMinhtq where trangThai = :idTT");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where trangThai = :idTT ORDER BY id DESC ");
 		query.setParameter("idTT", idTT);
 		query.setFirstResult(start);
 		query.setMaxResults(perPage);
@@ -57,7 +59,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public List<DonNghiPhepMinhtq> listAllDonNghiPhep(String idTT) {
 		Session session = sessionFactory.getCurrentSession();
 
-		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :idTT");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :idTT ORDER BY id DESC ");
 		query.setParameter("idTT", idTT);
 		List<DonNghiPhepMinhtq> list = (List<DonNghiPhepMinhtq>) query.getResultList();
 
@@ -74,20 +76,19 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	public DonNghiPhepMinhtq getByIdApproved(String maTrangThai) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :maTrangThai");
+		Query query = session.createQuery("from DonNghiPhepMinhtq where  trangThai = :maTrangThai ORDER BY id DESC ");
 		query.setParameter("maTrangThai", maTrangThai);
 		DonNghiPhepMinhtq donnghiphep = (DonNghiPhepMinhtq) query.getResultList().get(0);
 
 		return donnghiphep;
 	}
 
-	
 	// crud cho đơn nghỉ phép nháp của nhân viên
 
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphep);
-
+		
 	}
 
 	public void deleteDonNghiPhep(int id) {
@@ -102,13 +103,38 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// hết crud cho đơn nghỉ phép nháp của nhân viên
+	
+	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep) {
+		Session session = sessionFactory.getCurrentSession();
+		String rowCount = session.createSQLQuery("select count(*) from quan_ly_so_ngay_nghi where ma_nhan_vien = '"
+				+ donnghiphep.getMaNhanVien() + "'").getSingleResult().toString();
+		return Integer.parseInt(rowCount);
+	}
+
+	// list phòng ban
+	@SuppressWarnings("unchecked")
+	public List<PhongBanMinhtq> listPhongBan() {
+		Session session = sessionFactory.getCurrentSession();
+		List<PhongBanMinhtq> list = session.createQuery("from PhongBanMinhtq").getResultList();
+
+		return list;
+	}
+
+	// list mã nhân viên
+	@SuppressWarnings("unchecked")
+	public List<HoSoNhanVienMinhtq> listMaNhanVien() {
+		Session session = sessionFactory.getCurrentSession();
+		List<HoSoNhanVienMinhtq> list = session.createQuery("from HoSoNhanVienMinhtq").getResultList();
+
+		return list;
+	}
 
 	///////////////////////////////////// LOẠI NGÀY NGHỈ//////////
 	// list loại ngày nghỉ
 	@SuppressWarnings("unchecked")
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
 		Session session = sessionFactory.getCurrentSession();
-		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq").getResultList();
+		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq ").getResultList();
 
 		return list;
 	}

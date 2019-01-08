@@ -28,6 +28,23 @@ public class PhanCongNhiemVuNS implements Serializable {
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 	
+	@Column(name = "ma_du_an", unique = true, length = 11)
+	@NotEmpty
+	private String maDuAn;
+	
+	@Column(name = "ma_nhan_vien", unique = true, length = 11)
+	@NotEmpty
+	private String maNhanVien;
+	
+	
+	public String getMaDuAn() {
+		return maDuAn;
+	}
+
+	public void setMaDuAn(String maDuAn) {
+		this.maDuAn = maDuAn;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "ma_du_an", referencedColumnName = "ma_du_an", insertable = false, updatable = false, nullable = false)
 	@NotEmpty
@@ -38,6 +55,18 @@ public class PhanCongNhiemVuNS implements Serializable {
 	@NotEmpty
 	private VaiTroThanhVienNS vaiTro;
 	
+	@ManyToOne
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
+	private NhanSu nhanSuFindByMaDuAn;
+	
+	public NhanSu getNhanSuFindByMaDuAn() {
+		return nhanSuFindByMaDuAn;
+	}
+
+	public void setNhanSuFindByMaDuAn(NhanSu nhanSuFindByMaDuAn) {
+		this.nhanSuFindByMaDuAn = nhanSuFindByMaDuAn;
+	}
+
 	public VaiTroThanhVienNS getVaiTro() {
 		return vaiTro;
 	}

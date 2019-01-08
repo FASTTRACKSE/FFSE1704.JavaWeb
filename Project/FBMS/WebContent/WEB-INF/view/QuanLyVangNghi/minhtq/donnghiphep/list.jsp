@@ -118,6 +118,7 @@
 											<tr>
 												<th>id</th>
 												<th>mã nhân viên</th>
+												<th>phòng ban</th>
 												<th>loại ngày nghỉ</th>
 												<th>số lượng</th>
 												<th>thời gian bắt đầu</th>
@@ -132,6 +133,7 @@
 											<tr>
 												<td>${dnpn.id}</td>
 												<td>${dnpn.maNhanVien}</td>
+												<td>${dnpn.phongBan.tenPhongBan}</td>
 												<td>${dnpn.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
 												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
@@ -142,21 +144,19 @@
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT1')}">
 														<a
 															href="/FBMS/QuanLyVangNghi/minhtq/suaDonNghiPhepView/${dnpn.id}">
-															<button class="btn btn-primary">Sửa</button>
+															<button class="btn btn-primary">Sửa đơn</button>
 														</a>
 														<a
 															href="/FBMS/QuanLyVangNghi/minhtq/deleteDonNghiPhepNhap/${dnpn.id}"><button
-																class="btn btn-primary">Xóa</button></a>
+																class="btn btn-primary">Xóa đơn</button></a>
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT2')}">
 														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/daPheDuyet/${dnpn.trangThaiDNP.maTrangThai}">
-															<button class="btn btn-primary">Phê duyệt</button>
+															href="/FBMS/QuanLyVangNghi/minhtq/viewPheDuyetDon/${dnpn.id}">
+															<button class="btn btn-primary">Xem chi tiết</button>
 
 														</a>
-														<a
-															href="/FBMS/QuanLyVangNghi/minhtq/pheDuyetDon/tuChoi/${dnpn.trangThaiDNP.maTrangThai}"><button
-																class="btn btn-primary">Từ chối</button></a>
+														
 													</c:if> <c:if
 														test="${dnpn.trangThaiDNP.maTrangThai.equals('TT3')}">
 														<a href="/FBMS/QuanLyVangNghi/minhtq/readDNP/${dnpn.id}">

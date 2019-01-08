@@ -173,76 +173,92 @@ body, html {
 							</div>
 							<div class="card-body collapse in">
 								<div class="card-block card-dashboard">
-									<div class="table-responsive" style="text-align: center">
-										<div class="col-sm-12 col-md-6">
 
-											<div class="card">
-												<div class="card-header">
 
-													<h4 style="text-align: center">Đơn nghỉ phép của :</h4>
 
-												</div>
-												<a class="heading-elements-toggle"><i
-													class="fa fa-ellipsis-v font-medium-3"></i></a>
+									<div class="row">
+										<div class="col-md-12">
+											<h1 style="text-align: center; color: green">Xem thông
+												tin hồ sơ nhân viên</h1>
+											<p style="text-align: center;">Nhân viên:</p>
+											<p>
+												<img
+													src="http://sohanews.sohacdn.com/thumb_w/660/2018/2/1/photo1517500807502-15175008075031371499104.jpg"
+													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; display: block; margin-left: auto; margin-right: auto;">
+											</p>
 
-											</div>
-											<div class="card-content">
-												<div class="table-responsive">
-													<table class="table table-borderless mb-0">
-														<tbody>
-															<tr>
-																<td>
-																	<h6>id :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.id}</h6></a></td>
-															</tr>
-															<tr>
-																<td>
-																	<h6>Mã nhân viên :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.maNhanVien}</h6></a></td>
-															</tr>
-															<tr>
-																<td>
-																	<h6>Lý do nghỉ :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.loaiNgayNghi}</h6></a></td>
-															</tr>
-															<tr>
-																<td>
-																	<h6>Số lượng :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.soLuong}</h6></a></td>
-															</tr>
-															<tr>
-																<td>
-																	<h6>thời gian bắt đầu :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.thoiGianBatDau}</h6></a></td>
-															</tr>
-															<tr>
-																<td>
-																	<h6>Thời gian kết thúc :</h6>
-																</td>
-																<td><a style="color: red"><h6>${thongtindonnghiphep.thoiGianKetThuc}</h6></a></td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
+											<h2 style="text-align: center;">
+												Đơn nghỉ phép của :
+												${thongtindonnghiphep.hoSoNhanVien.hoDem}
+												${thongtindonnghiphep.hoSoNhanVien.ten}</a>
+											</h2>
+											<p style="text-align: center;">
+												Phòng ban:<a>  ${thongtindonnghiphep.phongBan.tenPhongBan}</a>
+												
+
+											</p>
+											<a class="heading-elements-toggle"><i
+												class="fa fa-ellipsis-v font-medium-3"></i></a>
+										</div>
+										<div class="col-md-2"></div>
+										<div class="col-md-8" style="background: #dce1e8">
+											<table class="table table-borderless mb-0">
+												<tbody>
+													
+													<tr>
+														<td>
+															<h6>Mã nhân viên :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.maNhanVien}</h6></a></td>
+													</tr>
+													<tr>
+														<td>
+															<h6>Lý do nghỉ :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.loaiNgayNghiPhep.tenLoaiNgayNghi}</h6></a></td>
+													</tr>
+													<tr>
+														<td>
+															<h6>Số lượng :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.soLuong}</h6></a></td>
+													</tr>
+													<tr>
+														<td>
+															<h6>thời gian bắt đầu :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.thoiGianBatDau}</h6></a></td>
+													</tr>
+													<tr>
+														<td>
+															<h6>Thời gian kết thúc :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.thoiGianKetThuc}</h6></a></td>
+													</tr>
+													
+													<tr>
+														<td>
+															<h6>Trạng thái :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.trangThaiDNP.tenTrangThai}</h6></a></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="col-md-2"></div>
+										<div style="text-align: center; padding-top: 20px" class="form-group col-sm-12">
+											<tr>
+
+												<td><a class="btn btn-success"
+													href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3"/>"
+													class="btn btn-warning">Quay lại</a></td>
+
+											</tr>
+
 										</div>
 									</div>
 
-									<div style="text-align: center;" class="form-group col-sm-12">
-										<tr>
 
-											<td><a class="btn btn-success"
-												href="<c:url value="/QuanLyVangNghi/minhtq/listDonNghiPhepDaDuyet/1"/>"
-												class="btn btn-warning">Quay lại</a></td>
-
-										</tr>
-
-									</div>
 								</div>
 							</div>
 						</div>

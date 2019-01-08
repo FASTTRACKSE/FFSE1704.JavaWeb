@@ -2,6 +2,7 @@ package fasttrackse.ffse1704.fbms.controller.quanlynhansu;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.ChungChiService;
 
 @Controller
@@ -78,9 +83,19 @@ public class ChungChiController {
 	}
 
 	@RequestMapping(value = "/viewDelete/{ID}/{maNhanVien}")
-	public ModelAndView DeleteCC(@PathVariable("maNhanVien") String maNhanVien,@PathVariable("ID") int id) {
+	public ModelAndView DeleteCC(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("ID") int id) {
 		chungChiService.delete(id);
 		return new ModelAndView("redirect:/ViewCC/{maNhanVien}");
 	}
 
+	@RequestMapping(value = "/listBCfindbyMaBangCap", method = RequestMethod.GET)
+	public String ThongKeBC(@RequestParam("dsTrinhDoId") int IdtrinhDo, Model model) {
+		List<BangCap> trangThai = chungChiService.findMaBangByMaTrinhDo(IdtrinhDo);
+		model.addAttribute("trangThai", trangThai);
+		List<TrinhDo> dsTrinhDoBC = chungChiService.listTrinhDo();
+		model.addAttribute("dsTrinhDo", dsTrinhDoBC);
+
+		return "QuanTriNhanSu/chungChi/listTrinhDoByBC";
+
+	}
 }

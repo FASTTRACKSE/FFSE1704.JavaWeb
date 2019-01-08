@@ -11,15 +11,15 @@ public interface DocumentService  {
 	
 	//list
 	public List<DocumentDung> getAll();
-	
+	//Liệt kê tài liệu không cần cấp quyền
 	public List<DocumentDung> getAllPublicDocument();
-	
+	//Lưu nháp
 	public void saveDraft(DocumentDung documentDung);
-	
+	// List các phòng ban(Quyền truy cập)
 	public List<PhongBan> listQuyen();
-	
+	//List danh mục
 	public List<DanhMucDung> listCategory();
-	
+	// Xóa tài liệu
 	public void delete(int id);
 	
 	//pending approve
@@ -32,15 +32,17 @@ public interface DocumentService  {
 	public List<DocumentDung> getMyDocumentPendingApprove();
 	//list tài liệu nháp
 	public List<DocumentDung> getDraft();
+	
+	//List tài liệu theo phòng ban
+	//Phòng dự án 1
+	public List<DocumentDung> getPDA1Document();
 	//refuse
 	public void refuse(DocumentDung document);
-	
-	
+	//Chấp thuần tài liệu
 	public void accept(DocumentDung document);
-	
 	//update
 	public void updateDocument(DocumentDung document);
-	
+	// Tìm theo ID 
 	public DocumentDung findById(int id); 
 	
 	

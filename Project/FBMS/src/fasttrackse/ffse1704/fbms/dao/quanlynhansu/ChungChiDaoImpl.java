@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -97,6 +99,24 @@ public class ChungChiDaoImpl implements ChungChiDao {
 	public void addChungChi(ChungChi cc) {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(cc);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<TrinhDo> listTrinhDo() {
+		Session session = sessionFactory.getCurrentSession();
+		List<TrinhDo> trinhDo = session.createQuery("from TrinhDo").getResultList();
+		return trinhDo;
+	}
+
+	@SuppressWarnings({ "unchecked" })
+	@Override
+	public List<BangCap> findMaBangByMaTrinhDo(int IdtrinhDo) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from BangCap bc where bc.IdtrinhDo = :mbc";
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery(hql);
+		query.setParameter("mbc", IdtrinhDo);
+		return (List<BangCap>) query.list();
 	}
 
 }

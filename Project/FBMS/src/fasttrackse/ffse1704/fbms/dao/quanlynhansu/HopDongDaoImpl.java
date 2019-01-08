@@ -17,17 +17,17 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanLySoNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
-import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
 public class HopDongDaoImpl implements HopDongDao {
 
 	ThongTinHopDong thongtinhopdong;
-	
+
 	public ThongTinHopDong getThongtinhopdong() {
 		return thongtinhopdong;
 	}
@@ -76,14 +76,51 @@ public class HopDongDaoImpl implements HopDongDao {
 	@Override
 	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong) {
 		Session session = sessionFactory.getCurrentSession();
+		
+		String maHD = thongtinhopdong.getMaHopDong();
+		String trangThaiHD = thongtinhopdong.getMaTrangThai();
+		
+		if(maHD=="HD3" && trangThaiHD=="ACTIVE") {
+		String maNV = thongtinhopdong.getMaNhanVien();
+		int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
+		session.save(khoiTaoThongTinNgayNghi);
+        session.flush();
+        session.clear();
+
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi2 = new QuanLySoNgayNghi(maNV, "DO", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi2);
+        session.flush();
+        session.clear();
+
+        QuanLySoNgayNghi khoiTaoThongTinNgayNghi3 = new QuanLySoNgayNghi(maNV, "TG", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi3);
+		
+        session.flush();
+        session.clear();
+        
+        QuanLySoNgayNghi khoiTaoThongTinNgayNghi4 = new QuanLySoNgayNghi(maNV, "SD", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi4);
 		session.save(thongtinhopdong);
+		}else {
+			session.save(thongtinhopdong);
+		}
 	}
 
 	@Override
 	public void editHopDong(ThongTinHopDong thongtinhopdong) {
 		Session session = this.sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		session.update(thongtinhopdong);
+		String maHD = thongtinhopdong.getMaHopDong();
+		if(maHD=="HD3") {
+			String maNV = thongtinhopdong.getMaNhanVien();
+			int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
+			QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
+			session.update(khoiTaoThongTinNgayNghi);
+			session.update(thongtinhopdong);
+		}else {
+			session.update(thongtinhopdong);
+		}
 		tx.commit();
 		session.close();
 	}
@@ -103,12 +140,12 @@ public class HopDongDaoImpl implements HopDongDao {
 //		session.delete(findById(id));
 		String hql = "delete from ThongTinHopDong where id= :id";
 		Query query = session.createQuery(hql);
-		
+
 		query.setInteger("id", id);
 		query.executeUpdate();
 		System.out.println(query.executeUpdate());
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<DanhSachCongViec> listDanhSachCongViec() {
@@ -116,6 +153,7 @@ public class HopDongDaoImpl implements HopDongDao {
 		List<DanhSachCongViec> listDanhSachCongViec = session.createQuery("from DanhSachCongViec").getResultList();
 		return listDanhSachCongViec;
 	}
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<DiaDiemLamViec> listDiaDiemLamViec() {
@@ -123,14 +161,7 @@ public class HopDongDaoImpl implements HopDongDao {
 		List<DiaDiemLamViec> listDiaDiemLamViec = session.createQuery("from DiaDiemLamViec").getResultList();
 		return listDiaDiemLamViec;
 	}
-	@SuppressWarnings("deprecation")
-	@Override
-	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien) {
-		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria = session.createCriteria(SoNgayNghiNhanVien.class);
-		SoNgayNghiNhanVien yourObject = (SoNgayNghiNhanVien) criteria.add(Restrictions.eq("maNhanVien", maNhanVien)).uniqueResult();
-		return yourObject;
-	}
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi() {
@@ -145,5 +176,49 @@ public class HopDongDaoImpl implements HopDongDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<TrangThaiHopDong> listTrangThaiHopDong = session.createQuery("from TrangThaiHopDong").getResultList();
 		return listTrangThaiHopDong;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public HopDong findTenHopDongbyMaHopDong(String maHopDong) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(HopDong.class);
+		HopDong yourObject = (HopDong) criteria.add(Restrictions.eq("maHopDong", maHopDong)).uniqueResult();
+		return yourObject;
+	}
+
+	@SuppressWarnings({ "unchecked","rawtypes" })
+	@Override
+	public List<ThongTinHopDong> findByMNVandMHD(String maNhanVien, String maHopDong) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maHopDong = :mhd";
+		
+		Query query = session.createQuery(hql);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mhd", maHopDong);
+		return (List<ThongTinHopDong>) query.list();
+	}
+	@SuppressWarnings({ "unchecked","rawtypes" })
+	@Override
+	public List<ThongTinHopDong> findByMNVandMTT(String maNhanVien, String maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maTrangThai = :mtt";
+		
+		Query query = session.createQuery(hql);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mtt", maTrangThai);
+		return (List<ThongTinHopDong>) query.list();
+	}
+	@SuppressWarnings({ "unchecked","rawtypes" })
+	@Override
+	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien, String maHopDong, String maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maHopDong = :mhd  AND tthd.maTrangThai = :mtt";
+		
+		Query query = session.createQuery(hql);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mhd", maHopDong);
+		query.setParameter("mtt", maTrangThai);
+		return (List<ThongTinHopDong>) query.list();
 	}
 }

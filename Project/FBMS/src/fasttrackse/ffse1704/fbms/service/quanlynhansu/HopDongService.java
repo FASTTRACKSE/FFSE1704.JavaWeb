@@ -7,7 +7,6 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.SoNgayNghiNhanVien;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 
@@ -21,7 +20,10 @@ public interface HopDongService {
 	public void deleteHopDong(int id);
 	public List<DanhSachCongViec> listDanhSachCongViec();
 	public List<DiaDiemLamViec> listDiaDiemLamViec();
-	public SoNgayNghiNhanVien findNgayNghiConLaibyMaNV(String maNhanVien);
 	public List<DanhSachNgayNghi> listDanhSachNgayNghi();
 	public List<TrangThaiHopDong> TrangThaiHopDong();
+	public HopDong findTenHopDongbyMaHopDong(String maHopDong);
+	public List<ThongTinHopDong> findByMNVandMHD(String maNhanVien, String maHopDong);
+	public List<ThongTinHopDong> findByMNVandMTT(String maNhanVien, String maTrangThai);
+	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien,String maHopDong, String maTrangThai);
 }

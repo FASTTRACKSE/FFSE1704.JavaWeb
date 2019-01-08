@@ -49,7 +49,7 @@
 	color: white;
 	padding: 8px;
 	border-radius: 4px;
-	width:100px;
+	width: 100px;
 	border: none;
 	cursor: pointer;
 }
@@ -58,21 +58,23 @@
 	position: relative;
 	display: inline-block;
 }
-.card-header{
-    margin-bottom: -35px;
+
+.card-header {
+	margin-bottom: -35px;
 }
+
 .dropdown-content {
-	display : none;
+	display: none;
 	padding: 8px;
 	position: absolute;
 	background-color: #17a2b8;
-	border-radius:0px 25px 25px 0px;
+	border-radius: 0px 25px 25px 0px;
 	min-width: 570px;
 	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 100);
 	z-index: 1;
 	display: none;
 	margin-left: 97px;
-    margin-top: -36px;
+	margin-top: -36px;
 }
 
 .dropdown-content a {
@@ -114,8 +116,7 @@
 			</div>
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
-					class="btn-group float-md-right" id="add-new">
-				</div>
+					class="btn-group float-md-right" id="add-new"></div>
 			</div>
 		</div>
 		<!-- End Path -->
@@ -201,9 +202,9 @@
 														href="/FBMS/QuanLyThoiGian/Logwork/view/${lg.id }"><i
 															class="fa fa-eye"></i></a> <c:if
 															test="${lg.trangThaiLogwork.maTrangThai != 2 }">
-															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
+															<a href="/FBMS/QuanLyThoiGian/Logwork/edit/${lg.id }"><i class="fa fa-pencil"></i></a>
 														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="delete/${lg.id }"
+															<a href="/FBMS/QuanLyThoiGian/Logwork/delete/${lg.id }"
 																onclick="return confirm('Bạn có muốn xóa sinh viên này?');"><i
 																class="fa fa-trash"></i></a>
 														</c:if></td>
@@ -245,8 +246,8 @@
 						<div class="card-header">
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="?page=1">trang
-											đầu</a></li>
+								<c:if test="${lastPage > 1 }">
+									<li class="page-item"><a class="page-link" href="?page=1">Trang đầu</a></li>
 									<c:if test="${currentPage > 2}">
 										<li class="page-item"><a class="page-link"
 											href="?page=${currentPage-2}">${currentPage-2}</a></li>
@@ -266,7 +267,8 @@
 											href="?page=${currentPage+2}">${currentPage+2}</a></li>
 									</c:if>
 									<li class="page-item"><a class="page-link"
-										href="?page=${lastPage }">trang cuối</a></li>
+										href="?page=${lastPage }">Trang cuối</a></li>
+										</c:if>
 								</ul>
 							</nav>
 						</div>

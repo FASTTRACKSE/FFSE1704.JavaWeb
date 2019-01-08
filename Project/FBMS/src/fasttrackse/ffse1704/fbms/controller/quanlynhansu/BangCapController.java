@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.BangCapService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class BangCapController {
@@ -28,6 +28,14 @@ public class BangCapController {
 	public void setBangCapService(BangCapService bangCapService) {
 		this.bangCapService = bangCapService;
 	}
+	
+	@Autowired
+	XemThongTinNVService xemThongTinNVService;
+
+	public void setXemThongTinNVService(XemThongTinNVService xemThongTinNVService) {
+		this.xemThongTinNVService = xemThongTinNVService;
+	}
+
 
 	// mac dinh
 	// @RequestMapping("/ViewBC/")
@@ -45,7 +53,7 @@ public class BangCapController {
 	public String ViewBangCap(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
-
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/BangCap/ListBangCap";
 
 	}
@@ -72,16 +80,7 @@ public class BangCapController {
 		
 	}
 	
-	
-	@RequestMapping(value = "/DeleteBC/{id}&{maNhanVien}", method = RequestMethod.GET)
-	public String ViewDeleteBC(@PathVariable("id") int id,@PathVariable("maNhanVien") String maNhanVien, Model model) {
 
-		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
-		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
-
-		return "QuanTriNhanSu/BangCap/deleteBangCap";
-
-	}
 
 	// danh sach edit
 	@RequestMapping(value = "/editBC/{id}&{maNhanVien}", method = RequestMethod.GET)
@@ -89,6 +88,8 @@ public class BangCapController {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
 		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
+		List<TrinhDo> listTrinhDo= bangCapService.listTrinhDo();
+		model.addAttribute("listTrinhDo",listTrinhDo);
 		return "QuanTriNhanSu/BangCap/editBangCap";
 
 	}
@@ -104,4 +105,25 @@ public class BangCapController {
 		return "QuanTriNhanSu/BangCap/ListBangCap";
 	}
 	
+	
+	@RequestMapping(value = "/DeleteBC/{id}&{maNhanVien}", method = RequestMethod.GET)
+	public String ViewDeleteBC(@PathVariable("id") int id,@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
+
+		return "QuanTriNhanSu/BangCap/deleteBangCap";
+
+	}
+	@RequestMapping(value = "/ViewBC/delete/{id}&{maNhanVien}", method = RequestMethod.POST)
+	public String doDelete(@ModelAttribute("id") int id,@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
+		bangCapService.delete(id);;
+
+		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+
+		return "QuanTriNhanSu/BangCap/ListBangCap";
+		
+
+	}
 }

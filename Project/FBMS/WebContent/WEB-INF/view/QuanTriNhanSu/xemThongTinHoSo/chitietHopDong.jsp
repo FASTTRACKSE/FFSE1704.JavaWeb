@@ -153,7 +153,8 @@ body, html {
 								href='<c:url value="/home" />'>Home</a></li>
 
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/thongTinHopDong/${thongTinNhanVien.maNhanVien}" />'>Danh sách hợp đồng</a></li>
+								href='<c:url value="/thongTinHopDong/${thongTinNhanVien.maNhanVien}" />'>Danh
+									sách hợp đồng</a></li>
 
 							<li class="breadcrumb-item active">Chi tiết hợp đồng / Chế
 								độ thụ hưởng</li>
@@ -161,7 +162,7 @@ body, html {
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- End Path -->
 
 			<div class="content-body">
@@ -205,6 +206,11 @@ body, html {
 							<div class="card-body collapse in">
 								<div class="card-block card-dashboard">
 									<div class="table-responsive">
+										<p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 										<h1 style="text-align: center; color: green">${thongTinNhanVien.hoLot}<a>
 												${thongTinNhanVien.ten}</a>
 										</h1>
@@ -215,8 +221,7 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a></a> -
-											Chức vụ:<a></a>
+											Phòng ban: <a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ: <a>${pbcd.chucDanh.tenChucDanh}</a>
 										</p>
 
 										<div class="col-sm-12 col-md-6">
@@ -332,7 +337,8 @@ body, html {
 																		<h6>Mức lương ban đầu</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.mucLuongBanDau} VND</h6></a></td>
+																		style="color: red"><h6>${hopDong.mucLuongBanDau}
+																				VND</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
@@ -341,27 +347,18 @@ body, html {
 																	<td class="type-info text-right"><a
 																		style="color: red"><h6>${hopDong.cheDoHuong.luong}</h6></a></td>
 																</tr>
-																<tr>
-																	<td>
-																		<h6>Số ngày nghỉ trong năm</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.soNgayNghiTrongNam}</h6></a></td>
-																</tr>
-																<tr>
-																	<td>
-																		<h6>Số ngày còn lại</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${ngaynghiconlai.soNgayNghiConLai }</h6></a></td>
-																</tr>
-																<tr>
-																	<td>
-																		<h6>Các loại ngày nghỉ đặc biệt</h6>
-																	</td>
-																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.ngayNghiDacBiet}(*)</h6></a></td>
-																</tr>
+																<c:forEach var="ngayNhi"
+																	items="${thongTinNhanVien.listNgayNghi}">
+																	<tr>
+																		<td>
+																			<h6>Số ${ngayNhi.danhSachNgayNghi.tenNgayNghi }</h6>
+																		</td>
+																		<td class="type-info text-right"><a
+																			style="color: red"><h6>${ngayNhi.tongSoNgayDuocNghi}</a>
+																			-- Đã nghỉ <a style="color: red">${ngayNhi.soNgayDaNghi}</a>
+																			</h6></td>
+																	</tr>
+																</c:forEach>
 																<tr>
 																	<td>
 																		<h6>Hình thức thanh toán lương</h6>
@@ -384,11 +381,6 @@ body, html {
 
 															</tbody>
 														</table>
-														<a style="color: red">*</a> Các loại ngày nghỉ đặc biệt: <br>
-														<c:forEach var="dsnn"
-													items="${dsnn}">
-													${dsnn.maNgayNghi}. ${dsnn.tenNgayNghi } <br>
-													</c:forEach>
 													</div>
 												</div>
 											</div>
@@ -398,14 +390,16 @@ body, html {
 												<td></td>
 												<td><a
 													href="/FBMS/editHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
-													class="btn btn-warning">Sửa thông tin</a></td>
-													<td><a class="btn btn-danger"
+													class="btn btn-success">Sửa thông tin</a></td>
+												<td><a class="btn btn-danger"
 													href="/FBMS/deleteHopDongCheDo/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
-													class="btn btn-warning" onclick="return confirm('Bạn có muốn hợp đồng này?');">Xóa hợp đồng</a></td>
+													class="btn btn-danger"
+													onclick="return confirm('Bạn có muốn hợp đồng này?');">Xóa
+														hợp đồng</a></td>
 												<td><a class="btn btn-success"
 													href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
-													class="btn btn-warning">Quay lại</a></td>
-													
+													class="btn btn-secondarys">Quay lại</a></td>
+
 											</tr>
 										</div>
 									</div>

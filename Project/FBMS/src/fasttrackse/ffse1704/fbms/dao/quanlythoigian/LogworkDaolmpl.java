@@ -148,11 +148,11 @@ public class LogworkDaolmpl implements LogworkDao {
 	 * 
 	 * return list; }
 	 */
-
+//list all month
 	@Override
 	public List<Logwork> listMonth(int start, int total, String month) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from Logwork so where MONTH(so.thoiGianBatDau) = :month");
+		Query query = session.createQuery("from Logwork lg where MONTH(lg.thoiGianBatDau) = :month ORDER BY id DESC");
 		query.setParameter("month", Integer.parseInt(month));
 		query.setFirstResult(start);
 		query.setMaxResults(total);
@@ -164,6 +164,26 @@ public class LogworkDaolmpl implements LogworkDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Logwork so where MONTH(so.thoiGianBatDau) = :month");
 		query.setParameter("month", Integer.parseInt(month));
+		List<Logwork> logwork = (List<Logwork>) query.getResultList();
+		return logwork;
+	}
+	//list all date pm
+	
+	@Override
+	public List<Logwork> listDate(int start, int total, String date) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork where DATE_FORMAT(thoiGianBatDau, '%Y%m%d') = :date ORDER BY id DESC");
+		query.setParameter("date",date);
+		query.setFirstResult(start);
+		query.setMaxResults(total);
+		List<Logwork> logwork = (List<Logwork>) query.getResultList();
+		return logwork;
+	}
+	@Override
+	public List<Logwork> listAllDate(String date) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Logwork where DATE_FORMAT(thoiGianBatDau, '%Y%m%d') = :date ");
+		query.setParameter("date",date);
 		List<Logwork> logwork = (List<Logwork>) query.getResultList();
 		return logwork;
 	}

@@ -75,7 +75,7 @@
 												<td><img src="<c:url value="${document.maIcon.hinhAnh}"/>" width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td>${document.maPhongBan.tenPhongBan}</td>
+												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
 												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>
 											</tr>
 										</c:forEach>

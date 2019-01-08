@@ -119,9 +119,11 @@ public class NhanSu implements Serializable {
 	private String danToc;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ma_quoc_tich", referencedColumnName = "ma_quoc_tich", nullable = false, updatable = false)
-	@NotNull
+	@JoinColumn(name = "ma_quoc_tich", referencedColumnName = "ma_quoc_tich",insertable = false, nullable = false, updatable = false)
 	private QuocTich quocTich;
+	
+	@Column(name="ma_quoc_tich")
+	private String maQuocTich;
 
 	@NotEmpty(message = "Vui Lòng Nhập nơi tạm trú")
 	@Column(name = "noi_tam_tru")
@@ -149,9 +151,12 @@ public class NhanSu implements Serializable {
 	@NotNull
 	private Date ngayCap;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "trang_thai", referencedColumnName = "id_trang_thai",insertable = false, nullable = false, updatable = false)
+	private TrangThaiNhanSu trangThaiNS;
+	
 	@Column(name = "trang_thai")
-	@NotNull
-	private Integer trangThai;
+	private Integer idTrangThai;
 
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	private List<BangCap> listBangCap;
@@ -174,13 +179,13 @@ public class NhanSu implements Serializable {
 	
 	@OneToMany(mappedBy = "nhanSu", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<SoNgayNghiNhanVien> listNgayNghi;
-	
-	public List<SoNgayNghiNhanVien> getListNgayNghi() {
+	private List<QuanLySoNgayNghi> listNgayNghi;
+
+	public List<QuanLySoNgayNghi> getListNgayNghi() {
 		return listNgayNghi;
 	}
-	// cascade = CascadeType.ALL
-	public void setListNgayNghi(List<SoNgayNghiNhanVien> listNgayNghi) {
+
+	public void setListNgayNghi(List<QuanLySoNgayNghi> listNgayNghi) {
 		this.listNgayNghi = listNgayNghi;
 	}
 
@@ -360,13 +365,6 @@ public class NhanSu implements Serializable {
 		this.ngayCap = ngayCap;
 	}
 
-	public Integer getTrangThai() {
-		return trangThai;
-	}
-
-	public void setTrangThai(Integer trangThai) {
-		this.trangThai = trangThai;
-	}
 
 	public QuocTich getQuocTich() {
 		return quocTich;
@@ -382,6 +380,30 @@ public class NhanSu implements Serializable {
 
 	public void setTinhThanhPho(String tinhThanhPho) {
 		this.tinhThanhPho = tinhThanhPho;
+	}
+
+	public String getMaQuocTich() {
+		return maQuocTich;
+	}
+
+	public void setMaQuocTich(String maQuocTich) {
+		this.maQuocTich = maQuocTich;
+	}
+
+	public TrangThaiNhanSu getTrangThaiNS() {
+		return trangThaiNS;
+	}
+
+	public void setTrangThaiNS(TrangThaiNhanSu trangThaiNS) {
+		this.trangThaiNS = trangThaiNS;
+	}
+
+	public Integer getIdTrangThai() {
+		return idTrangThai;
+	}
+
+	public void setIdTrangThai(Integer idTrangThai) {
+		this.idTrangThai = idTrangThai;
 	}
 
 }

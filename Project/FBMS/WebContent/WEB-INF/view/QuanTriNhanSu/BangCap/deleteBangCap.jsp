@@ -10,7 +10,7 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa Bằng cấp</h3>
+				<h3 class="content-header-title mb-0">Xóa Bằng cấp</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -19,7 +19,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/QuanTriHeThong/chuc_danh/" />'>Danh
 									bằng cấp </a></li>
-							<li class="breadcrumb-item active">Sửa bằng cấp</li>
+							<li class="breadcrumb-item active">Xóa bằng cấp</li>
 						</ol>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 			<div class="main-content">
 				<div class="row">
 					<form:form method="post" 
-						action="/FBMS/ViewBC/update"
+						action="/FBMS/ViewBC/delete/${bangCap2.id}&${bangCap.maNhanVien}"
 						modelAttribute="bangCap2">
 
 						<div class="form-group">

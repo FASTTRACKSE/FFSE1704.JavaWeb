@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "minhtq_loai_ngay_nghi")
+@Table(name = "danh_sach_ngay_nghi")
 public class LoaiNgayNghiMinhtq implements Serializable {
 
 	/**
@@ -25,13 +25,14 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "ma_loai_ngay_nghi")
+	@Column(name = "ma_ngay_nghi")
 	private String maNgayNghi;
 
-	@Column(name = "ten_loai_ngay_nghi")
+	@Column(name = "ten_ngay_nghi")
 	private String tenLoaiNgayNghi;
 
-	@OneToMany(mappedBy = "loaiNgayNghi")
+	// liên kết với bảng đơn nghỉ phép
+	@OneToMany(mappedBy = "loaiNgayNghiPhep")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
 
 	public Collection<DonNghiPhepMinhtq> getDonNghiPhepMinhtq() {
@@ -41,6 +42,8 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	public void setDonNghiPhepMinhtq(Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
+
+	
 
 	public int getId() {
 		return id;
@@ -78,7 +81,7 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		this.maNgayNghi = maNgayNghi;
 		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
+		
 	}
 
-	
 }

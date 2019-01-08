@@ -27,10 +27,10 @@ public class StatusSy implements Serializable{
 	private int id;
 	
 	@Column(name = "ma_trang_thai")
-	private String ma_trang_thai;
+	private String maTrangThai;
 	
 	@Column(name = "ten_trang_thai")
-	private String ten_trang_thai;
+	private String tenTrangThai;
 
 
 	public int getId() {
@@ -41,21 +41,23 @@ public class StatusSy implements Serializable{
 		this.id = id;
 	}
 
-	public String getMa_trang_thai() {
-		return ma_trang_thai;
+	public String getMaTrangThai() {
+		return maTrangThai;
 	}
 
-	public void setMa_trang_thai(String ma_trang_thai) {
-		this.ma_trang_thai = ma_trang_thai;
+	public void setMaTrangThai(String maTrangThai) {
+		this.maTrangThai = maTrangThai;
 	}
 
-	public String getTen_trang_thai() {
-		return ten_trang_thai;
+	public String getTenTrangThai() {
+		return tenTrangThai;
 	}
 
-	public void setTen_trang_thai(String ten_trang_thai) {
-		this.ten_trang_thai = ten_trang_thai;
+	public void setTenTrangThai(String tenTrangThai) {
+		this.tenTrangThai = tenTrangThai;
 	}
+
+
 
 	
 }

@@ -46,29 +46,7 @@
 
 							<br>
 						</div>
-						<div class="form-group">
-							<label>Phòng Ban:</label>
-							<form:select path="maPhongBan" class="custom-select block round"
-								id="customSelect">
-								<c:forEach items="${listPhongBan}" var="lpb">
-									<form:option value="${lpb.maPhongBan}"
-										label="${lpb.tenPhongBan}" />
-								</c:forEach>
-							</form:select>
-
-							<br>
-						</div>
-						<div class="form-group">
-							<label>Chức Danh</label>
-							<form:select path="maChucDanh" class="custom-select block round"
-								id="customSelect">
-								<c:forEach items="${listChucDanh}" var="lcd">
-									<form:option value="${lcd.maChucDanh}"
-										label="${lcd.tenChucDanh}" />
-								</c:forEach>
-							</form:select>
-							<br>
-						</div>
+						
 						<div class="form-group col-sm-6">
 							<label>Tinh thanh</label>
 							

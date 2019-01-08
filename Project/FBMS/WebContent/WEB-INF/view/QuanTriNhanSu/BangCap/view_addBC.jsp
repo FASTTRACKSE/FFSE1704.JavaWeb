@@ -66,12 +66,12 @@
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Thời gian:</label>
+							<label>Thời gian Bắt đầu:</label>
 							<form:input class="form-control" type="Date" path="batDau" />
 						</div>
 						
 						<div class="form-group col-sm-6">
-							<label>Thời gian:</label>
+							<label>Thời gian kết thúc:</label>
 							<form:input class="form-control" type="Date" path="ketThuc" />
 						</div>
 						<div class="form-group col-sm-6">

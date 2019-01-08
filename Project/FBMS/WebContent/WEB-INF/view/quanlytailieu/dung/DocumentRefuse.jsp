@@ -79,11 +79,11 @@
 													width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td>${document.maPhongBan.tenPhongBan}</td>
+												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
 												<td>${document.ghiChu}</td>
 												<td>
 												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
-												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateView/${document.id}" class="btn-warning btn" role="button" > Sửa </a>
+												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateViewRefuse/${document.id}" class="btn-warning btn" role="button" > Sửa </a>
 												</td>
 												<td width="100" height="100"><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>												
 											</tr>

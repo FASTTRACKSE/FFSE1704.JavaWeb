@@ -210,18 +210,17 @@ body, html {
 										hồ sơ nhân viên</h1>
 									<p style="text-align: center;">Nhân viên:</p>
 									<p>
-										<img
-											src="http://sohanews.sohacdn.com/thumb_w/660/2018/2/1/photo1517500807502-15175008075031371499104.jpg"
-											style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; display: block; margin-left: auto; margin-right: auto;">
-									</p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 
 									<h2 style="text-align: center;">${thongTinNhanVien.hoLot}<a>
 											${thongTinNhanVien.ten}</a>
 									</h2>
 									<p style="text-align: center;">
-										Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
-										Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
-									</p>
+											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+										</p>
 									<button class="tablink" onclick="openPage('Home', this, 'red')">Hồ
 										sơ</button>
 									<button class="tablink"
@@ -360,8 +359,6 @@ body, html {
 											<thead>
 												<tr>
 													<th scope="col">Loại hợp đồng</th>
-													<th scope="col">Tổng số ngày nghỉ</th>
-													<th scope="col">Số ngày nghỉ còn lại</th>
 													<th scope="col">Ngày bắt đầu</th>
 													<th scope="col">Ngày kết thúc</th>
 													<th scope="col">Loại công việc</th>
@@ -379,11 +376,6 @@ body, html {
 													items="${thongTinNhanVien.listHopDong}">
 													<tr>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
-														<c:forEach var="ngayNghi"
-															items="${thongTinNhanVien.listNgayNghi}">
-															<td>${hopDong.soNgayNghiTrongNam}</td>
-															<td>${ngayNghi.soNgayNghiConLai}</td>
-														</c:forEach>
 														<td>${hopDong.ngayBatDau}</td>
 														<td>${hopDong.ngayKetThuc}</td>
 														<td>${hopDong.congViec.tenCongViec}</td>
@@ -437,6 +429,11 @@ body, html {
 													<th scope="col">Mã dự án</th>
 													<th scope="col">Tên dự án</th>
 													<th scope="col">Vai trò</th>
+													<th scope="col">Domain</th>
+													<th scope="col">Framework</th>
+													<th scope="col">Database</th>
+													<th scope="col">Ngôn ngữ</th>
+													<th scope="col">Mô tả</th>
 													<th scope="col">Trạng thái</th>
 												</tr>
 											</thead>
@@ -446,10 +443,14 @@ body, html {
 													items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
 													<tr>
 														<td>${hopDong.thongTinDuAn.maDuAn}</td>
-														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
-
-														<td>${hopDong.vaiTro.tenVaiTro}</td>
-														<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
+													<td>${hopDong.thongTinDuAn.tenDuAn}</td>
+													<td>${hopDong.vaiTro.tenVaiTro}</td>
+													<td>${hopDong.thongTinDuAn.domainNS.tenDomain}</td>
+													<td>${hopDong.thongTinDuAn.frameWorkNS.tenFramework}</td>
+													<td>Chưa hiển thị được</td>
+													<td>${hopDong.thongTinDuAn.programmingLaguageNS.tenProgrammingLanguage}</td>
+													<td>${hopDong.thongTinDuAn.moTa}</td>
+													<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
 
 
 													</tr>

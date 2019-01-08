@@ -153,7 +153,8 @@ body, html {
 								href='<c:url value="/home" />'>Home</a></li>
 
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh sách nhân sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/" />'>Danh
+									sách nhân sự</a></li>
 
 							<li class="breadcrumb-item active">Thông tin hợp đồng / Chế
 								độ thụ hưởng</li>
@@ -213,6 +214,11 @@ body, html {
 							<div class="card-body collapse in">
 								<div class="card-block card-dashboard">
 									<div class="table-responsive">
+										<p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 										<h1 style="text-align: center; color: green">${thongTinNhanVien.hoLot}<a>
 												${thongTinNhanVien.ten}</a>
 										</h1>
@@ -223,13 +229,41 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
 										</p>
 
 
+										<div>
+											<form action="/FBMS/findListHDByMultiOption" style="width: 550px;">
+												<input type="hidden" name="maNV" value="${thongTinNhanVien.maNhanVien}">
+												<div class="col-md-4">
+													<a style="color: red">Xem theo: Loại HĐ</a> <select
+														class="form-control" name="maHD">
+														<option disabled="disabled">Chọn loại hợp đồng</option>
+														<option style="color: red" value="KO">Không chọn</option>
+														<c:forEach items="${hd}" var="lhd">
+															<option value="${lhd.maHopDong}">${lhd.tenHopDong}</option>
+														</c:forEach>
+													</select>
+												</div>
+												<div class="col-md-4">
+													<a style="color: red">Trạng thái:</a> <select
+														class="form-control" name="maTT">
+														<option disabled="disabled">Chọn loại trạng thái</option>
+														<option style="color: red" value="KO">Không chọn</option>
+														<c:forEach items="${listTrangThaiHopDong}" var="tt">
 
+															<option value="${tt.maTrangThai}">${tt.tenTrangThai}</option>
+														</c:forEach>
+													</select>
+												</div>
+												<a style="color: red">Xem</a>
+												<div class="col-md-4">
 
+													<input class="btn btn-success" type="submit" value="Xem">
+												</div>
+											</form>
+										</div>
 
 										<table id="datatable"
 											class="table table-striped table-bordered dataex-res-constructor">
