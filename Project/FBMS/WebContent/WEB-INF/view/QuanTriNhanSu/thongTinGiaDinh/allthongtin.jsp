@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -126,7 +127,8 @@
 										</p>
 										<p style="text-align: center;">
 											<a style="text-align: center; color: blue">Ngày sinh:</a>
-											${thongTinGiaDinh.namSinh}
+											<fmt:formatDate value="${thongTinGiaDinh.namSinh}"
+												pattern="dd-MM-yyyy" />
 										</p>
 
 									</div>
@@ -171,7 +173,8 @@
 												<td>${tt.id}</td>
 												<td>${tt.hoVaTen}</td>
 												<td>${tt.quanHe}</td>
-												<td>${tt.namSinh}</td>
+												<td><fmt:formatDate value="${tt.namSinh}"
+														pattern="dd-MM-yyyy" /></td>
 												<td>${tt.ngheNghiep}</td>
 												<td>${tt.diaChi}</td>
 												<td><a

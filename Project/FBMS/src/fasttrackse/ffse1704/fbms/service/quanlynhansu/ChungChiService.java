@@ -28,4 +28,5 @@ public interface ChungChiService {
 	
 	public List<TrinhDo> listTrinhDo();
 	public List<BangCap> findMaBangByMaTrinhDo(int IdtrinhDo);
+	public TrinhDo findTenTrinhDoByMaTrinhDo(int maTrinhDo);
 }

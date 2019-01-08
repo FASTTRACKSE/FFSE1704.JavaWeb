@@ -119,4 +119,13 @@ public class ChungChiDaoImpl implements ChungChiDao {
 		return (List<BangCap>) query.list();
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public TrinhDo findTenTrinhDoByMaTrinhDo(int maTrinhDo) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(TrinhDo.class);
+		TrinhDo trinhdo = (TrinhDo) criteria.add(Restrictions.eq("id", maTrinhDo)).uniqueResult();
+		return trinhdo;
+	}
+
 }

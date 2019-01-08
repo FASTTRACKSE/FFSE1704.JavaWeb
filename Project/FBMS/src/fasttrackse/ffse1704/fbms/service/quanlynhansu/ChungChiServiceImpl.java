@@ -77,6 +77,11 @@ public class ChungChiServiceImpl implements ChungChiService {
 		return chungChiDao.findMaBangByMaTrinhDo(IdtrinhDo);
 	}
 
+	@Override
+	public TrinhDo findTenTrinhDoByMaTrinhDo(int maTrinhDo) {
+		return chungChiDao.findTenTrinhDoByMaTrinhDo(maTrinhDo);
+	}
+
 
 	
 

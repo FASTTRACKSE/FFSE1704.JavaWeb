@@ -19,17 +19,38 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.ChungChiService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class ChungChiController {
+
 	@Autowired
 	ChungChiService chungChiService;
 
 	public void setChungChiService(ChungChiService chungChiService) {
 		this.chungChiService = chungChiService;
+	}
+
+	@Autowired
+	NhanSuService nhanSuService;
+
+	public void setNhanSuService(NhanSuService nhanSuService) {
+		this.nhanSuService = nhanSuService;
+	}
+
+	@Autowired
+	XemThongTinNVService xemThongTinNVService;
+
+	public void setXemThongTinNVService(XemThongTinNVService xemThongTinNVService) {
+		this.xemThongTinNVService = xemThongTinNVService;
 	}
 
 	@InitBinder
@@ -92,10 +113,28 @@ public class ChungChiController {
 	public String ThongKeBC(@RequestParam("dsTrinhDoId") int IdtrinhDo, Model model) {
 		List<BangCap> trangThai = chungChiService.findMaBangByMaTrinhDo(IdtrinhDo);
 		model.addAttribute("trangThai", trangThai);
+		model.addAttribute("trinhdo", chungChiService.findTenTrinhDoByMaTrinhDo(IdtrinhDo));
+		
+		List<NhanSu> dsNhanSu = nhanSuService.allNS();
+		model.addAttribute("nSu", dsNhanSu);
+		
 		List<TrinhDo> dsTrinhDoBC = chungChiService.listTrinhDo();
 		model.addAttribute("dsTrinhDo", dsTrinhDoBC);
+
+		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
+		model.addAttribute("dsTrangThai", dsTrangThai);
+
+		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
+		model.addAttribute("dsPhongBan", allPhongBan);
+
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
 
 		return "QuanTriNhanSu/chungChi/listTrinhDoByBC";
 
 	}
+
 }

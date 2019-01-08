@@ -1,7 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -91,9 +91,9 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<%-- <h4 class="card-title">
-								Danh sách nhân sự Theo Trạng Thái: <a style="color: red">${trangThai.name}</a>
-							</h4> --%>
+							<h4 class="card-title">
+								Danh sách nhân sự Theo Trình Độ: <a style="color: red">${trinhdo.tenTrinhDo}</a>
+							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -131,7 +131,22 @@
 									</div>
 								</div>
 							</div> --%>
-							<div class="col-md-13">
+							<div class="col-md-3">
+								<p>
+									Option: <br> Xem theo: <a style="color: red">Phòng ban</a>
+								</p>
+								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
+									style="width: 150px;">
+
+									<select class="form-control" name="dsPhongBanId">
+										<option disabled="disabled">Chọn phòng ban</option>
+										<c:forEach items="${dsPhongBan}" var="pb">
+											<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
+							</div>
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>
 								</p>
@@ -141,6 +156,34 @@
 										<option disabled="disabled">Chọn trình độ</option>
 										<c:forEach items="${dsTrinhDo}" var="td">
 											<option value="${td.id}">${td.tenTrinhDo}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
+							</div>
+							<div class="col-md-3">
+								<p>
+									<br> Xem theo: <a style="color: red">Hợp đồng</a>
+								</p>
+								<form method="GET" action="/FBMS/listTTfindbyMaHopDong"
+									style="width: 150px;">
+									<select class="form-control" name="dsHopDongId">
+										<option disabled="disabled">Chọn hợp đồng</option>
+										<c:forEach items="${dsHopDong}" var="hd">
+											<option value="${hd.maHopDong}">${hd.tenHopDong}</option>
+										</c:forEach>
+									</select> <input class="btn btn-success" type="submit" value="Xem">
+								</form>
+							</div>
+							<div class="col-md-3">
+								<p>
+									<br> Xem theo: <a style="color: red">Trạng thái</a>
+								</p>
+								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
+									style="width: 150px;">
+									<select class="form-control" name="dsTrangThaiID">
+										<option disabled="disabled">Chọn Trạng Thái</option>
+										<c:forEach items="${dsTrangThai}" var="tt">
+											<option value="${tt.idTrangThai}">${tt.name}</option>
 										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
@@ -155,6 +198,9 @@
 											<tr>
 												<th scope="col">ID</th>
 												<th>Mã Nhân Viên</th>
+												<th>Tên Nhân Viên</th>
+												<th>Ảnh đại diện</th>
+												<th>Ngày Sinh</th>
 												<th>Tên Trình Độ</th>
 												<th>Tên Ngành</th>
 												<th>Thời Gian Bắt Đầu</th>
@@ -165,17 +211,24 @@
 												<th>Gia đình</th>
 												<th>Trình độ</th>
 												<th>Hợp đồng/Chế độ TH</th>
-												<th>Chức năng</th>
+												<th></th>
 											</tr>
 										</thead>
 										<c:forEach var="bc" items="${trangThai}">
 											<tr>
 												<td>${bc.id}</td>
 												<td>${bc.maNhanVien}</td>
+												<td>${bc.nhanSuBC.hoLot}${bc.nhanSuBC.ten}</td>
+												<td><img style="width: 70px;hight=70px;"
+													src="<c:url value="/uploads/${bc.nhanSuBC.anhDaiDien}"/>"></td>
+												<td><fmt:formatDate value="${bc.nhanSuBC.namSinh}"
+														pattern="dd-MM-yyyy" /></td>
 												<td>${bc.trinhDo.tenTrinhDo}</td>
 												<td>${bc.tenNganh}</td>
-												<td>${bc.batDau}</td>
-												<td>${bc.ketThuc}</td>
+												<td><fmt:formatDate value="${bc.batDau}"
+														pattern="dd-MM-yyyy" /></td>
+												<td><fmt:formatDate value="${bc.ketThuc}"
+														pattern="dd-MM-yyyy" /></td>
 												<td>${bc.xepLoai}</td>
 												<td>${bc.noiCap}</td>
 												<td><a href="/FBMS/thongTinNhanVien/${bc.maNhanVien}"
@@ -192,10 +245,7 @@
 													class="btn btn-warning">Hợp đồng</a> <a
 													href="/FBMS/thongTinKinhNghiem/${bc.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
-
-												<td><a href="editNS/${bc.id}"><button
-															class="btn btn-success">sửa</button></a> <a
-													href="DeleteNS/${bc.id}"><button class="btn btn-danger">Xóa</button></a></td>
+												<td></td>
 											</tr>
 										</c:forEach>
 									</table>
