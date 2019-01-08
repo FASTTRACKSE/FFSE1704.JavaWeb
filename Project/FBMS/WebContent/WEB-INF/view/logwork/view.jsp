@@ -107,7 +107,7 @@
 									<div class="form-group col-sm-6">
 										<a href="/FBMS/logwork/list/2">
 											<button type="submit" name="action" value="exit"
-												class="btn btn-warning">Exit</button>
+												class="btn btn-warning">Back</button>
 										</a>
 									</div>
 								</div>

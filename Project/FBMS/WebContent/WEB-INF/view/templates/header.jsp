@@ -548,12 +548,13 @@
 							class="ft-book">Logwork Lưu Nháp</a></li>
 						<li><a href="<c:url value="/logwork/list/3"/>"
 							class="ft-book">Logwork Bị Từ Chối</a></li>
-						<li><a href="<c:url value="/logwork/list/2"/>"
-							class="ft-book">Logwork Đã Phê Duyệt</a></li>
+
 						<li><a href="<c:url value="/logwork/list/1"/>"
 							class="ft-book">Logwork Chờ TPP Phê Duyệt</a></li>
 						<li><a href="<c:url value="/logwork/list/5"/>"
 							class="ft-book">Logwork Chờ PM Phê Duyệt</a></li>
+						<li><a href="<c:url value="/logwork/list/2"/>"
+							class="ft-book">Logwork Đã Phê Duyệt</a></li>
 					</ul></li>
 				<li class=" nav-item"><a
 					href="<c:url value = "/logwork/listChoPheDuyetPM"/>"><i

@@ -205,8 +205,9 @@
 												 <c:set var="total" value="${total + lg.tongThoiGian}" />
 											</tr>
 										</c:forEach>
-										<tr> Tổng Thời Gian Làm Việc: <p style="color:red";> ${total}</p></tr>
+									
 									</tbody>
+										<tr> <td>Tổng Thời Gian Làm Việc: <p style="color:red";> ${total}h</p></td></tr>
 									<tbody>
 										<div class="modal fade" id="confirm-delete" tabindex="-1"
 											role="dialog" aria-labelledby="myModalLabel"
