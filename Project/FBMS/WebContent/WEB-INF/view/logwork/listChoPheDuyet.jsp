@@ -119,16 +119,7 @@
 						class="fa fa-plus"></span> Thêm mới</a>
 				</div>
 			</div>
-			<div class="content-header-left col-md-6">
-				<div class="dropdown">
-					<button class="dropbtn">Tháng ${month}</button>
-					<div class="dropdown-content">
-						<c:forEach var="i" begin="1" end="12">
-							<a href="listMonth/${i}"><c:out value="${i}" /></a>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
+
 		</div>
 		<!-- End Path -->
 
