@@ -2,8 +2,6 @@ package fasttrackse.ffse1704.fbms.service.logwork;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import fasttrackse.ffse1704.fbms.entity.logwork.ThoiGianLamViec;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuDuAnLogwork;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuPhongBan;
@@ -38,5 +36,7 @@ public interface VuLogworkService {
 	public List<ThoiGianLamViec> listOneMonth(String month);
 
 	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai);
+
+	public List<ThoiGianLamViec> baoCaoTheoMaNV(int maNhanVien);
 
 }

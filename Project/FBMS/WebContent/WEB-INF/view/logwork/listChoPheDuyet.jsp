@@ -119,16 +119,7 @@
 						class="fa fa-plus"></span> Thêm mới</a>
 				</div>
 			</div>
-			<div class="content-header-left col-md-6">
-				<div class="dropdown">
-					<button class="dropbtn">Tháng ${month}</button>
-					<div class="dropdown-content">
-						<c:forEach var="i" begin="1" end="12">
-							<a href="listMonth/${i}"><c:out value="${i}" /></a>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
+
 		</div>
 		<!-- End Path -->
 
@@ -181,7 +172,6 @@
 												<th scope="col">Tên Nhân Viên</th>
 												<th scope="col">Vai Trò</th>
 												<th scope="col">Phòng Ban</th>
-												<th scope="col">Mô Tả</th>
 												<th scope="col">Trạng Thái</th>
 												<th scope="col">Action</th>
 											</tr>
@@ -196,7 +186,6 @@
 														<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
 														<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 														<td>${lg.maPhongBan.tenPhongBan}</td>
-														<td>${lg.moTa}</td>
 														<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 														<td><a href="viewPheDuyet/${lg.id}"><button
 																	class="btn btn-success">View</button></a></td>

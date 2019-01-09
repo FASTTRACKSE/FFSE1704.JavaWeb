@@ -32,13 +32,26 @@ public class BangCap {
 	@Column(name = "id")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
+	private NhanSu nhanSuBC;
+	
+	
+	public NhanSu getNhanSuBC() {
+		return nhanSuBC;
+	}
+
+	public void setNhanSuBC(NhanSu nhanSuBC) {
+		this.nhanSuBC = nhanSuBC;
+	}
+
 	@Column(name = "ma_nhan_vien")
 	private String maNhanVien;
-	
+
 	public String getMaNhanVien() {
 		return maNhanVien;
 	}
@@ -50,15 +63,15 @@ public class BangCap {
 	@ManyToOne
 	@JoinColumn(name = "id_trinh_do", referencedColumnName = "id_trinh_do", insertable = false, updatable = false, nullable = false)
 	private TrinhDo trinhDo;
-	
-	@Column(name = "id_trinh_do", nullable = false)
-	private String IdtrinhDo;
 
-	public String getIdtrinhDo() {
+	@Column(name = "id_trinh_do", nullable = false)
+	private int IdtrinhDo;
+
+	public int getIdtrinhDo() {
 		return IdtrinhDo;
 	}
 
-	public void setIdtrinhDo(String idtrinhDo) {
+	public void setIdtrinhDo(int idtrinhDo) {
 		IdtrinhDo = idtrinhDo;
 	}
 
@@ -69,7 +82,7 @@ public class BangCap {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "thoi_gian_bat_dau", nullable = false)
 	private Date batDau;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "thoi_gian_ket_thuc", nullable = false)
@@ -112,7 +125,6 @@ public class BangCap {
 	public void setTenNganh(String tenNganh) {
 		this.tenNganh = tenNganh;
 	}
-
 
 	public String getXepLoai() {
 		return xepLoai;

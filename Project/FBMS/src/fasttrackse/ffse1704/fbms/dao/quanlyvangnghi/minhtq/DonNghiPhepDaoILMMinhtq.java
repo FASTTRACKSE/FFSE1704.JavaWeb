@@ -88,7 +88,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public void addDonNghiPhep(DonNghiPhepMinhtq donnghiphep) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donnghiphep);
-
+		
 	}
 
 	public void deleteDonNghiPhep(int id) {
@@ -103,6 +103,13 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	}
 
 	// hết crud cho đơn nghỉ phép nháp của nhân viên
+	
+	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep) {
+		Session session = sessionFactory.getCurrentSession();
+		String rowCount = session.createSQLQuery("select count(*) from quan_ly_so_ngay_nghi where ma_nhan_vien = '"
+				+ donnghiphep.getMaNhanVien() + "'").getSingleResult().toString();
+		return Integer.parseInt(rowCount);
+	}
 
 	// list phòng ban
 	@SuppressWarnings("unchecked")
@@ -127,7 +134,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	@SuppressWarnings("unchecked")
 	public List<LoaiNgayNghiMinhtq> listLoaiNgayNghi() {
 		Session session = sessionFactory.getCurrentSession();
-		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq	").getResultList();
+		List<LoaiNgayNghiMinhtq> list = session.createQuery("from LoaiNgayNghiMinhtq ").getResultList();
 
 		return list;
 	}

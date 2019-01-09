@@ -47,52 +47,39 @@
 							<form:errors path="maNhanVien" cssClass="error"
 								style="color:pink" />
 							<p style="color: red">${attenion}</p>
-
 						</div>
-						
 						<div class="form-group col-sm-4">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
 							<form:errors path="hoLot" cssClass="error" style="color:pink" />
-
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Tên</label>
 							<form:input class="form-control" type="text" path="ten" />
 							<form:errors path="ten" cssClass="error" style="color:pink" />
-
 						</div>
-						
 						<div class="form-group col-sm-4">
 							<label>Tinh thanh</label>
-							
 							 <form:select path="tinhThanhPho"
 								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
 								<c:forEach items="${listTinhThanh}" var="ltt">
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
 							</form:select> 
-
 						</div>
-						
 						<div class="form-group col-sm-4">
 							<label>Quận Huyện</label>
-							
 							 <form:select path="maQuanHuyen"
 								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
 								<option value="" selected="selected" disabled="disabled">Chọn quận huyện</option>
 							</form:select>
-
 						</div>
-						
 						<div class="form-group col-sm-4">
 							<label>Xã Phường</label>
-							
 							 <form:select path="maXaPhuong"
 								class="custom-select block round" id="idPhuongXa" >
 								<option value="" selected="selected" disabled="disabled">Chon xã phường</option>
 							</form:select> 
-
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Quốc Tịch</label>
@@ -103,7 +90,6 @@
 								</c:forEach>
 							</form:select>
 						</div>
-						
 						<div class="form-group col-sm-4">
 							<label>Trạng thái</label>
 							<form:select path="idTrangThai"
@@ -128,20 +114,16 @@
 							<form:radiobutton path="gioiTinh" value="1" />
 							Female
 							<form:radiobutton path="gioiTinh" value="2" />
-
-
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Năm Sinh</label>
 							<form:input class="form-control" type="Date" path="namSinh" />
-
 						</div>
 						
 						<div class="form-group col-sm-4">
 							<label>Địa chỉ</label>
 							<form:input class="form-control" type="text" path="queQuan" />
 							<form:errors path="queQuan" cssClass="error" style="color:pink" />
-
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Dân tộc</label>
@@ -184,16 +166,11 @@
 						<div class="form-group col-sm-4">
 							<label>Ngày cấp</label>
 							<form:input class="form-control" type="Date" path="ngayCap" />
-
 						</div>
-						
 						<tr>
-							
 							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
 							<td><a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a></td>
-							
 						</tr>
-						
 					</form:form>
 
 				</div>
@@ -212,7 +189,7 @@
         	 url: "/FBMS/QuanTriNhanSu/chonquan/" + maThanhPho, 
         	 dataType: "json",
         	 success: function(data){
-        		 alert('Hello');
+        		/*  alert('Hello'); */
         		$('#idQuanHuyen').append($('<option>', { // insert default data in quan huyen
              		    value: 'noQuanHuyen',
              		    text: 'Chọn Quận Huyện'
@@ -248,7 +225,7 @@
         	 url: "/FBMS/QuanTriNhanSu/chonXaPhuong/" + maThanhPho, 
         	 dataType: "json",
         	 success: function(data){
-        		 alert('Hello');
+        		/*  alert('Hello'); */
         		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
              		    value: 'phuongxa',
              		    text: 'Chọn Xã Phường'

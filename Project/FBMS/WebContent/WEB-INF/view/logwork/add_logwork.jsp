@@ -75,12 +75,14 @@
 							<label>Thời gian bắt đầu</label>
 							<form:input class="form-control" type="text"
 								path="thoiGianBatDau" placeholder="Thời gian bắt đầu" />
+								<form:errors path="thoiGianBatDau" cssClass="error" />
 
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc</label>
 							<form:input path="thoiGianKetThuc" class="form-control"
 								type="text" />
+								<form:errors path="thoiGianKetThuc" cssClass="error" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mô tả</label>

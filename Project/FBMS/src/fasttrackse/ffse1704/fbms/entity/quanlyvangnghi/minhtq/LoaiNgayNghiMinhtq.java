@@ -43,17 +43,7 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
 
-	// liên kết với bảng số ngày nghỉ
-	@OneToMany(mappedBy = "loaiNgayNghiDNP")
-	private Collection<SoNgayNghiMinhtq> soNgayNghiMinhtq;
-
-	public Collection<SoNgayNghiMinhtq> getSoNgayNghiMinhtq() {
-		return soNgayNghiMinhtq;
-	}
-
-	public void setSoNgayNghiMinhtq(Collection<SoNgayNghiMinhtq> soNgayNghiMinhtq) {
-		this.soNgayNghiMinhtq = soNgayNghiMinhtq;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -85,13 +75,13 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	}
 
 	public LoaiNgayNghiMinhtq(int id, String maNgayNghi, String tenLoaiNgayNghi,
-			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq, Collection<SoNgayNghiMinhtq> soNgayNghiMinhtq) {
+			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		super();
 		this.id = id;
 		this.maNgayNghi = maNgayNghi;
 		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
-		this.soNgayNghiMinhtq = soNgayNghiMinhtq;
+		
 	}
 
 }

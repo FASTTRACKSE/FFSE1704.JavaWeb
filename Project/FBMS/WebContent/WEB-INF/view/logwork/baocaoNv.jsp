@@ -182,38 +182,32 @@
 										<tr>
 											<th scope="col">ID</th>
 											<th scope="col">Dự Án</th>
-											<th scope="col">Tên Nhân Viên</th>
+											<th scope="col">Tên Công Việc</th>
 											<th scope="col">Vai Trò</th>
 											<th scope="col">Phòng Ban</th>
 											<th scope="col">Mô Tả</th>
 											<th scope="col">Trạng Thái</th>
-											<th scope="col">Action</th>
+											<th scope="col">Thời Gian (Giờ)</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="lg" items="${logwork}">
+									<c:set var="total" value="${0}" />
+										<c:forEach var="lg" items="${baoCao}">
 											<tr>
 												<td>${lg.id}</td>
 												<td>${lg.maDuAn.tenDuAn}</td>
-												<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
+												<td>${lg.tenCongViec}</td>
 												<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 												<td>${lg.maPhongBan.tenPhongBan}</td>
 												<td>${lg.moTa}</td>
 												<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-												<td><a href="/FBMS/logwork/view/${lg.id }"><button
-															class="btn btn-success">View</button></a> <c:if
-														test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-														<a href="/FBMS/logwork/editlogwork/${lg.id }"><button
-																class="btn btn-success">sửa</button></a>
-													</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-														<a href="/FBMS/logwork/deletelogwork/${lg.id }"><button
-																class="btn btn-danger"
-																onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
-																xóa</button></a>
-													</c:if></td>
+												<td><b style="text-align: left;">${lg.tongThoiGian}h</b></td>
+												 <c:set var="total" value="${total + lg.tongThoiGian}" />
 											</tr>
 										</c:forEach>
+									
 									</tbody>
+										<tr> <td>Tổng Thời Gian Làm Việc: <p style="color:red";> ${total}h</p></td></tr>
 									<tbody>
 										<div class="modal fade" id="confirm-delete" tabindex="-1"
 											role="dialog" aria-labelledby="myModalLabel"

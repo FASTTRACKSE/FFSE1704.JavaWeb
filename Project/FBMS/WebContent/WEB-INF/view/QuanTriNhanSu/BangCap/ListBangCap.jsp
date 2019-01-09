@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
@@ -132,12 +133,12 @@
 												<a>Mã nhân viên:</a> ${bangCap.maNhanVien}
 											</p>
 											<p style="text-align: center;">
-												<a>Ngày sinh:</a> ${bangCap.namSinh}
+												<a>Ngày sinh:</a> <fmt:formatDate value="${bangCap.namSinh}"
+														pattern="dd-MM-yyyy" />
 											</p>
 											<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> -
-											Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
-										</p>
+												Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+											</p>
 										</div>
 									</div>
 								</div>
@@ -172,8 +173,10 @@
 
 												<td>${bc.trinhDo.tenTrinhDo}</td>
 												<td>${bc.tenNganh}</td>
-												<td>${bc.batDau}</td>
-												<td>${bc.ketThuc}</td>
+												<td><fmt:formatDate value="${bc.batDau}"
+														pattern="dd-MM-yyyy" /></td>
+												<td><fmt:formatDate value="${bc.ketThuc}"
+														pattern="dd-MM-yyyy" /></td>
 												<td>${bc.xepLoai}</td>
 												<td>${bc.noiCap}</td>
 

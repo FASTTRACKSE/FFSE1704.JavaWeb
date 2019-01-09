@@ -52,6 +52,18 @@ public class DonNghiPhepMinhtq {
 	@Column(name = "trang_thai")
 	private String trangThai;
 
+	@ManyToOne
+	@JoinColumn(name = "loai_ngay_nghi", referencedColumnName = "ma_ngay_nghi", insertable = false, updatable = false, nullable = false)
+	private SoNgayNghiMinhtq soNgayNghiDNP;
+
+	public SoNgayNghiMinhtq getSoNgayNghiDNP() {
+		return soNgayNghiDNP;
+	}
+
+	public void setSoNgayNghiDNP(SoNgayNghiMinhtq soNgayNghiDNP) {
+		this.soNgayNghiDNP = soNgayNghiDNP;
+	}
+
 	// hồ sơ nhân viên
 	@ManyToOne
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
@@ -177,9 +189,10 @@ public class DonNghiPhepMinhtq {
 	}
 
 	public DonNghiPhepMinhtq(int id, String maNhanVien, String maPhongBan, String loaiNgayNghi, int soLuong,
-			Date thoiGianBatDau, Date thoiGianKetThuc, String ghiChu, String trangThai, HoSoNhanVienMinhtq hoSoNhanVien,
-			PhongBanMinhtq phongBan, LoaiNgayNghiMinhtq loaiNgayNghiPhep, TrangThaiVangNghiMinhtq trangThaiDNP) {
-		super();	
+			Date thoiGianBatDau, Date thoiGianKetThuc, String ghiChu, String trangThai, SoNgayNghiMinhtq soNgayNghiDNP,
+			HoSoNhanVienMinhtq hoSoNhanVien, PhongBanMinhtq phongBan, LoaiNgayNghiMinhtq loaiNgayNghiPhep,
+			TrangThaiVangNghiMinhtq trangThaiDNP) {
+		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
 		this.maPhongBan = maPhongBan;
@@ -189,6 +202,7 @@ public class DonNghiPhepMinhtq {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.ghiChu = ghiChu;
 		this.trangThai = trangThai;
+		this.soNgayNghiDNP = soNgayNghiDNP;
 		this.hoSoNhanVien = hoSoNhanVien;
 		this.phongBan = phongBan;
 		this.loaiNgayNghiPhep = loaiNgayNghiPhep;

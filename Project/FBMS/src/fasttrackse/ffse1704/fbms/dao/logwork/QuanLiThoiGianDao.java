@@ -143,8 +143,17 @@ public class QuanLiThoiGianDao implements QuanLiThoiGianDaoImpl {
 	@Override
 	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai){
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from ThoiGianLamViec  where trangThaiLogwork.maTrangThai  = :maTrangThai");
+		Query query = session.createQuery("from ThoiGianLamViec  where trangThaiLogwork.maTrangThai  = :maTrangThai ORDER BY id DESC");
 		query.setParameter("maTrangThai", maTrangThai);
+		List<ThoiGianLamViec> logwork = (List<ThoiGianLamViec>) query.getResultList();
+		return logwork;
+		
+	}
+	@Override
+	public List<ThoiGianLamViec> baoCaoTheoMaNV(int maNhanVien){
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from ThoiGianLamViec  where maNhanVien.maNVien = :maNhanVien");
+		query.setParameter("maNhanVien", maNhanVien);
 		List<ThoiGianLamViec> logwork = (List<ThoiGianLamViec>) query.getResultList();
 		return logwork;
 		

@@ -92,12 +92,11 @@ public class NhanSuDaoImpl implements NhanSuDao {
 	public boolean checkExistMa(String maNhanVien) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query query = (Query) session.createCriteria("select count(*) from NhanSu Where maNhanVien = :maNhanVien");
-		Long check = (Long) query.uniqueResult();
-		if(check > 0) {
-			return true;
-		}
-		return false;
+		Query query = session.createQuery(" from NhanSu Where maNhanVien = :maNhanVien");
+		query.setParameter("maNhanVien", maNhanVien);
+		int check = query.getResultList().size();
+		
+		return (check>0);
 	}
 
 	@Override
@@ -131,33 +130,6 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		List<QuocTich> dsQuocTich = session.createQuery("FROM QuocTich").getResultList();
 		return dsQuocTich;
 	}
-
-//	@Override
-//	@SuppressWarnings("unchecked")
-//	public List<QuanHuyen> listQuanHuyen() {
-//		Session session = sessionFactory.getCurrentSession();
-//		@SuppressWarnings("rawtypes")
-//		Query query = session.createQuery("FROM QuanHuyen");
-//		query.setFirstResult(0);  
-//		query.setMaxResults(10);
-//		
-//		List<QuanHuyen> listQuanHuyen = query.list();
-//		return listQuanHuyen;
-//	}
-//
-//	@Override
-//	@SuppressWarnings("unchecked")
-//	public List<XaPhuong> listXaPhuong() {
-//		Session session = sessionFactory.getCurrentSession();
-//		@SuppressWarnings("rawtypes")
-//		Query query = session.createQuery("FROM XaPhuong");
-//		query.setFirstResult(0);  
-//		query.setMaxResults(10);
-//		 
-//	QuanHuyen	List<XaPhuong> listXaPhuong = query.list();
-//		return listXaPhuong;
-//	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<QuanHuyen> listQuanHuyenbyID(String maThanhPho) {

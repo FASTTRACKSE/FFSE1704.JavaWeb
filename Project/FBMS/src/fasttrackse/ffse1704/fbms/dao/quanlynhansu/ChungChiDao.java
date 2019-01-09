@@ -2,8 +2,10 @@ package fasttrackse.ffse1704.fbms.dao.quanlynhansu;
 
 import java.util.List;
 
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ChungChi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 
 public interface ChungChiDao {
 	public List<ChungChi> viewAll();
@@ -23,4 +25,8 @@ public interface ChungChiDao {
 	public boolean checkExistMa(String maNS);
 
 	public ChungChi getChungChiUpdate(int id);
+	
+	public List<TrinhDo> listTrinhDo();
+	public List<BangCap> findMaBangByMaTrinhDo(int IdtrinhDo);
+	public TrinhDo findTenTrinhDoByMaTrinhDo(int maTrinhDo);
 }

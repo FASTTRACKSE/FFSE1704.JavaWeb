@@ -126,7 +126,7 @@
 
 
 											<button type="submit" name="action" value="exit"
-												class="btn btn-warning">Exit</button>
+												class="btn btn-warning">Back</button>
 
 
 											<c:if

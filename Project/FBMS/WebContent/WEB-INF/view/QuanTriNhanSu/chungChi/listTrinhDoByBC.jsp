@@ -1,8 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -57,17 +56,11 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
-							<li class="breadcrumb-item active">Danh sách nhân sự toàn bộ
-								công ty</li>
+							<li class="breadcrumb-item active"><a
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'>Danh
+									Sách Nhân Sự</a></li>
 						</ol>
 					</div>
-				</div>
-			</div>
-			<div class="content-header-right col-md-3 col-xs-12">
-				<div role="group" aria-label="Button group with nested dropdown"
-					class="btn-group float-md-right" id="add-new">
-					<a href="addNS"> <span class="fa fa-plus"></span> Thêm mới
-					</a>
 				</div>
 			</div>
 		</div>
@@ -98,7 +91,9 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách nhân sự toàn bộ công ty</h4>
+							<h4 class="card-title">
+								Danh sách nhân sự Theo Trình Độ: <a style="color: red">${trinhdo.tenTrinhDo}</a>
+							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -109,6 +104,33 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
+							<%-- <div class="main-content">
+								<div class="row">
+									<div class="form-group col-md-12">
+										<p style="text-align: center;">
+											<a
+												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
+												đại diện</a> </br> <img style="width: 200px;hight=150px;"
+												src='<c:url value="/uploads/${dsTrinhDoId.anhDaiDien}" />'>
+										</p>
+									</div>
+									<div class="form-group col-md-12">
+										<h1 style="text-align: center; color: green">
+											<p style="text-align: center">${dsTrinhDoId.hoLot}
+												${dsTrinhDoId.ten}</p>
+											</a>
+										</h1>
+										<p style="text-align: center;">
+											<a style="text-align: center; color: blue">Mã nhân viên:</a>
+											${dsTrinhDoId.maNhanVien}
+										</p>
+										<p style="text-align: center;">
+											<a style="text-align: center; color: blue">Ngày sinh:</a>
+											${dsTrinhDoId.namSinh}
+										</p>
+									</div>
+								</div>
+							</div> --%>
 							<div class="col-md-3">
 								<p>
 									Option: <br> Xem theo: <a style="color: red">Phòng ban</a>
@@ -124,7 +146,6 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-
 							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>
@@ -139,7 +160,6 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-
 							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Hợp đồng</a>
@@ -177,109 +197,57 @@
 										<thead>
 											<tr>
 												<th scope="col">ID</th>
-												<th>Mã nhân viên</th>
-												<th>Họ tên</th>
-												<th>Ngày sinh</th>
+												<th>Mã Nhân Viên</th>
+												<th>Tên Nhân Viên</th>
 												<th>Ảnh đại diện</th>
-
-												<th>Trạng thái</th>
+												<th>Ngày Sinh</th>
+												<th>Tên Trình Độ</th>
+												<th>Tên Ngành</th>
+												<th>Thời Gian Bắt Đầu</th>
+												<th>Thời Gian Kết Thúc</th>
+												<th>Xếp Loại</th>
+												<th>Nơi Cấp</th>
 												<th>Chi tiết</th>
 												<th>Gia đình</th>
 												<th>Trình độ</th>
 												<th>Hợp đồng/Chế độ TH</th>
-												<th>Chức năng</th>
+												<th></th>
 											</tr>
 										</thead>
-										<c:forEach var="ns" items="${nhansu}">
+										<c:forEach var="bc" items="${trangThai}">
 											<tr>
-												<td>${ns.id}</td>
-												<td>${ns.maNhanVien}</td>
-												<td>${ns.hoLot}${ns.ten}</td>
-												<td><fmt:formatDate value="${ns.namSinh}"
-														pattern="dd-MM-yyyy" /></td>
-
+												<td>${bc.id}</td>
+												<td>${bc.maNhanVien}</td>
+												<td>${bc.nhanSuBC.hoLot}${bc.nhanSuBC.ten}</td>
 												<td><img style="width: 70px;hight=70px;"
-													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>
-
-												<%-- <td>${ns.namSinh}</td> --%>
-												<%-- <td><c:choose>
-														<c:when test="${ns.gioiTinh == 1}">
-						    Nam
-						  </c:when>
-														<c:when test="${ns.gioiTinh == 2}">
-						   Nữ
-						  </c:when>
-														<c:otherwise>
-						   ...
-						  </c:otherwise>
-													</c:choose></td> --%>
-												<%-- <td>${ns.gioiTinh}</td> --%>
-												<%-- <td>${ns.queQuan}</td> --%>
-												<%-- <td>${ns.danToc}</td> --%>
-												<%-- <td>${ns.quocTich.tenQuocTich}</td> --%>
-												<%-- <td>${ns.thanhPho.name}</td> --%>
-												<td><c:choose>
-														<c:when test="${ns.idTrangThai == 1}">
-						    Còn Làm
-						  </c:when>
-														<c:when test="${ns.idTrangThai == 2}">
-						   Nghỉ
-						  </c:when>
-														<c:otherwise>
-						  ...
-						  </c:otherwise>
-													</c:choose></td>
-												<%-- <td>${ns.trangThai}</td> --%>
-
-												<td><a href="/FBMS/thongTinNhanVien/${ns.maNhanVien}"
+													src="<c:url value="/uploads/${bc.nhanSuBC.anhDaiDien}"/>"></td>
+												<td><fmt:formatDate value="${bc.nhanSuBC.namSinh}"
+														pattern="dd-MM-yyyy" /></td>
+												<td>${bc.trinhDo.tenTrinhDo}</td>
+												<td>${bc.tenNganh}</td>
+												<td><fmt:formatDate value="${bc.batDau}"
+														pattern="dd-MM-yyyy" /></td>
+												<td><fmt:formatDate value="${bc.ketThuc}"
+														pattern="dd-MM-yyyy" /></td>
+												<td>${bc.xepLoai}</td>
+												<td>${bc.noiCap}</td>
+												<td><a href="/FBMS/thongTinNhanVien/${bc.maNhanVien}"
 													class="btn btn-success">Xem TT Chi Tiết</a></td>
-												<td><a href="/FBMS/ViewTT/${ns.maNhanVien}"
+												<td><a href="/FBMS/ViewTT/${bc.maNhanVien}"
 													class="btn btn-info">Gia Đình</a></td>
 
-												<td><a href="/FBMS/ViewBC/${ns.maNhanVien}"
+												<td><a href="/FBMS/ViewBC/${bc.maNhanVien}"
 													class="btn btn-warning">Bằng Cấp</a> <a
-													href="/FBMS/ViewCC/${ns.maNhanVien}"
+													href="/FBMS/ViewCC/${bc.maNhanVien}"
 													class="btn btn-primary">Chứng chỉ</a></td>
 
-												<td><a href="/FBMS/thongTinHopDong/${ns.maNhanVien}"
+												<td><a href="/FBMS/thongTinHopDong/${bc.maNhanVien}"
 													class="btn btn-warning">Hợp đồng</a> <a
-													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
+													href="/FBMS/thongTinKinhNghiem/${bc.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
-
-												<td><a href="editNS/${ns.id}"><button
-															class="btn btn-success">sửa</button></a> <a
-													href="DeleteNS/${ns.id}"><button class="btn btn-danger">Xóa</button></a></td>
-
+												<td></td>
 											</tr>
 										</c:forEach>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</tbody>
 									</table>
 								</div>
 							</div>

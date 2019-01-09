@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
@@ -67,12 +68,14 @@
 						
 						<div class="form-group col-sm-6">
 							<label>Thời gian Bắt đầu:</label>
-							<form:input class="form-control" type="Date" path="batDau" />
+							
+							<form:input class="form-control" type="Date" path="batDau" /> 
 						</div>
 						
 						<div class="form-group col-sm-6">
 							<label>Thời gian kết thúc:</label>
 							<form:input class="form-control" type="Date" path="ketThuc" />
+							<p style="color: red">${attenion}</p>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Xếp loại:</label>
