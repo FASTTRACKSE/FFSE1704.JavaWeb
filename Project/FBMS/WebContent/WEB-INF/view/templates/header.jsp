@@ -331,16 +331,17 @@
 
 				<ul id="main-menu-navigation" data-menu="menu-navigation"
 					class="navigation navigation-main">
-					<li class=" navigation-header"><span>Quản Lý Nhân Sự</span><i
-						data-toggle="tooltip" data-placement="right"
-						data-original-title="Joker" class=" ft-minus"></i></li>
+					<li class=" navigation-header"><span><spring:message
+								code="label.QuanTriNhanSu.qlns" /></span><i data-toggle="tooltip"
+						data-placement="right" data-original-title="Joker"
+						class=" ft-minus"></i></li>
 					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
-							class="ft-bookmark"></i> Danh sách phòng ban</a></li>
+							class="ft-bookmark"></i> <spring:message
+								code="label.QuanTriNhanSu.dspb" /></a></li>
 					<li class=" nav-item"><a
 						href="/FBMS/QuanTriNhanSu/danhsach_nhansu/"><i
-							class="ft-bookmark"></i> Danh sách nhân viên</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/FBMS/dsphongban"><i class="icon-puzzle"></i>Ahihi</a></li>
+							class="ft-bookmark"></i> <spring:message
+								code="label.QuanTriNhanSu.dsnv" /></a></li>
 				</ul>
 
 
@@ -424,7 +425,7 @@
 
 
 
-			
+
 
 				<!--  ----------------------------Quản lí tài liệu-------------------------------  -->
 				<li class="navigation-header"><span class="menu-title"
@@ -445,8 +446,9 @@
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/documentInsert"">
 								Thêm Tài Liệu</a></li>
-						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/danhmuc">Danh Mục</a>		
-						
+						<li class=""><a class="menu-item"
+							href="<%=request.getContextPath()%>/quanlytailieu/danhmuc">Danh
+								Mục</a>
 						<li class=""><a class="menu-item" href="#"> Tài liệu của
 								tôi</a>
 							<ul class="menu-content" style="">
@@ -463,8 +465,8 @@
 									href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
 										Tài liệu bị từ chối</a></li>
 							</ul></li>
-						<li class=""><a class="menu-item" href="#"> Theo
-								Phòng Ban</a>
+						<li class=""><a class="menu-item" href="#"> Theo Phòng
+								Ban</a>
 							<ul class="menu-content" style="">
 								<li class=""><a class="menu-item"
 									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA1">●
@@ -475,28 +477,28 @@
 								Phê duyệt tài liệu</a></li>
 
 					</ul></li>
-							<!-- SyNV -->
-							<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
+				<!-- SyNV -->
+				<li class="has-sub is-shown"><a class="menu-item" href="#">SyNV</a>
 					<ul class="menu-content" style="">
-			<li class=""><a class="menu-item" href="#"> Tài liệu của
+						<li class=""><a class="menu-item" href="#"> Tài liệu của
 								tôi</a>
 							<ul class="menu-content" style="">
 								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/">●
-										Đã được phê duyệt</a></li>
+									href="<%=request.getContextPath()%>/quanlytailieu/">● Đã
+										được phê duyệt</a></li>
 								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/">●
-										Chưa được phê duyệt</a></li>
+									href="<%=request.getContextPath()%>/quanlytailieu/">● Chưa
+										được phê duyệt</a></li>
 								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/">●
-										Tài liệu nháp</a></li>
+									href="<%=request.getContextPath()%>/quanlytailieu/">● Tài
+										liệu nháp</a></li>
 								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/">●
-										Tài liệu bị từ chối</a></li>
+									href="<%=request.getContextPath()%>/quanlytailieu/">● Tài
+										liệu bị từ chối</a></li>
 							</ul></li>
-							</ul></li>
+					</ul></li>
 			</ul>
-			
+
 			<!--  ----------------------------End Quản lí vắng nghỉ-------------------------------  -->
 
 			<!-- Quản Lí Nhiệm Vụ -->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
@@ -50,17 +51,21 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Chứng Chỉ</h3>
+				<h3 class="content-header-title mb-0">
+					<spring:message code="chungchi.QuanTriNhanSu.chungchi" />
+				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/home" />'>Home</a></li>
+								href='<c:url value="/home" />'><spring:message
+										code="chungchi.QuanTriNhanSu.trangchu" /></a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'>Danh
-									Sách Nhân Sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu/1" />'><spring:message
+										code="chungchi.QuanTriNhanSu.dsnhansu" /></a></li>
 							<li class="breadcrumb-item active"><a
-								href='<c:url value="#" />'>Quản lý chứng chỉ</a></li>
+								href='<c:url value="#" />'><spring:message
+										code="chungchi.QuanTriNhanSu.qlchungchi" /></a></li>
 						</ol>
 					</div>
 				</div>
@@ -69,7 +74,8 @@
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
 					<a href="/FBMS/addCC/${chungChi.maNhanVien}/"> <span
-						class="fa fa-plus"></span> Thêm mới
+						class="fa fa-plus"></span> <spring:message
+							code="chungchi.QuanTriNhanSu.them" />
 					</a>
 				</div>
 			</div>
@@ -101,32 +107,26 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title" style="text-align: center;">Danh sach
-								chứng chỉ</h4>
+							<h4 class="card-title" style="text-align: center;">
+								<spring:message code="chungchi.QuanTriNhanSu.tieude" />
+							</h4>
 							<br />
-
 							<div class="main-content">
 								<div class="row">
 									<div class="form-group col-md-12">
-										<p style="text-align: center;">
-											<a
-												style="text-align: center; color: blue; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Ảnh
-												đại diện</a> </br> <img style="width: 200px;hight=150px;"
-												src='<c:url value="/uploads/${chungChi.anhDaiDien}" />'>
+										<p>
+											<img src="<c:url value="/uploads/${chungChi.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
 										</p>
-									</div>
-									<div class="form-group col-md-12">
 										<h1 style="text-align: center; color: green">
-											<p style="text-align: center">${chungChi.hoLot}
-												${chungChi.ten}</p>
-											</a>
+											${chungChi.hoLot} ${chungChi.ten}
 										</h1>
 										<p style="text-align: center;">
-											<a style="text-align: center; color: blue">Mã nhân viên:</a>
+											<a><spring:message code="chungchi.QuanTriNhanSu.manv" />:</a>
 											${chungChi.maNhanVien}
 										</p>
 										<p style="text-align: center;">
-											<a style="text-align: center; color: blue">Ngày sinh:</a>
+											<a><spring:message code="chungchi.QuanTriNhanSu.ngaysinh" />:</a>
 											<fmt:formatDate value="${chungChi.namSinh}"
 												pattern="dd-MM-yyyy" />
 										</p>
@@ -157,28 +157,33 @@
 										<thead>
 											<tr>
 
-												<th>ID</th>
-
-												<th>Tên Chứng Chỉ</th>
-												<th>Ngày Cấp</th>
-												<th>Đơn Vị Cấp</th>
-												<th>Chức Năng</th>
+												<th><spring:message code="chungchi.QuanTriNhanSu.id" /></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.tenchungchi" /></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.ngaycap" /></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.donvicap" /></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.chucnang" /></th>
 											</tr>
 										</thead>
 
 										<c:forEach var="cc" items="${chungChi.listChungChi}">
 											<tr>
 												<td>${cc.ID}</td>
-
 												<td>${cc.tenChungChi}</td>
 												<td><fmt:formatDate value="${cc.ngayCap}"
 														pattern="dd-MM-yyyy" /></td>
 												<td>${cc.donViCap}</td>
 												<td><a
 													href="/FBMS/updateCC/${cc.ID}&${chungChi.maNhanVien}"><button
-															class="btn btn-success">Sửa</button></a> <a
-													href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button
-															class="btn btn-danger">Xóa</button></a></td>
+															class="btn btn-success">
+															<spring:message code="chungchi.QuanTriNhanSu.sua" />
+														</button></a> <a href="/FBMS/deleteCC/${cc.ID}&${chungChi.maNhanVien}"><button
+															class="btn btn-danger">
+															<spring:message code="chungchi.QuanTriNhanSu.xoa" />
+														</button></a></td>
 											</tr>
 										</c:forEach>
 										<tbody>
