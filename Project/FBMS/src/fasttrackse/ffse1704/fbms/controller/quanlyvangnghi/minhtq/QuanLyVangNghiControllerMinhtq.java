@@ -25,6 +25,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.SoNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.DonNghiPhepServiceMinhtq;
+import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.SoNgayNghiPhepServiceMinhtq;
 
 @Controller
 @RequestMapping("/QuanLyVangNghi/minhtq")
@@ -41,8 +42,19 @@ public class QuanLyVangNghiControllerMinhtq {
 		this.donNghiPhepService = donNghiPhepService;
 	}
 
+	@Autowired
+	private SoNgayNghiPhepServiceMinhtq soNgayNghiService;
+
 	//////////////////// list 4 loại danh sách đơn nghỉ phép///////////////////
 	// list toàn bộ đơn nghỉ phép nháp
+
+	public SoNgayNghiPhepServiceMinhtq getSoNgayNghiService() {
+		return soNgayNghiService;
+	}
+
+	public void setSoNgayNghiService(SoNgayNghiPhepServiceMinhtq soNgayNghiService) {
+		this.soNgayNghiService = soNgayNghiService;
+	}
 
 	@RequestMapping(value = "/listDonNghiPhep/{idTT}", method = RequestMethod.GET)
 	public String listNhap(Model model, @PathVariable("idTT") String idTT,
@@ -84,9 +96,11 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String showForm(Model model) {
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
-		List<HoSoNhanVienMinhtq> maNhanvien = donNghiPhepService.listMaNhanVien();
+		List<HoSoNhanVienMinhtq> manhanvien = donNghiPhepService.listMaNhanVien();
+		List<SoNgayNghiMinhtq> songaynghi = soNgayNghiService.listSoNgayNghi();
 
-		model.addAttribute("manhanvien", maNhanvien);
+		model.addAttribute("songaynghi", songaynghi);
+		model.addAttribute("manhanvien", manhanvien);
 		model.addAttribute("countryList", countryList);
 		model.addAttribute("phongban", phongban);
 		model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
@@ -104,7 +118,6 @@ public class QuanLyVangNghiControllerMinhtq {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
 		} else {
-
 			if (action.equals("luunhap")) {
 
 				donnghiphep.setTrangThai("TT1");
@@ -120,11 +133,10 @@ public class QuanLyVangNghiControllerMinhtq {
 						"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2";
 			}
-
 		}
+
 		return url;
 	}
-	
 
 	// tìm view đơn nghỉ phép nháp theo id
 	@RequestMapping(value = "/suaDonNghiPhepView/{id}", method = RequestMethod.GET)
@@ -198,17 +210,7 @@ public class QuanLyVangNghiControllerMinhtq {
 		} else {
 
 			if (action.equals("duyetdon")) {
-				int soNgayNghi = donnghiphep.getSoLuong();
-				int soNgayDuocNghi = donnghiphep.getSoNgayNghiDNP().getTongNgayDuocNghi();
-				// int soNgayDaNghi = donnghiphep.getSoNgayNghiDNP().getSoNgayDaNghi();
 
-				int tongngaydanghi = soNgayDuocNghi - soNgayNghi;
-				
-				SoNgayNghiMinhtq songaynghi = new SoNgayNghiMinhtq();
-				songaynghi.setSoNgayDaNghi(tongngaydanghi);
-				
-				
-				
 				donnghiphep.setTrangThai("TT3");
 				donNghiPhepService.editDonNghiPhep(donnghiphep);
 				redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn!");
@@ -229,14 +231,18 @@ public class QuanLyVangNghiControllerMinhtq {
 
 	// xóa một đơn nghỉ phép nháp
 	@RequestMapping("/deleteDonNghiPhepNhap/{id}")
-	public String xoaDonNghiPhepNhap(@PathVariable int id, HttpSession session, Model model) {
+	public String xoaDonNghiPhepNhap(@PathVariable int id, HttpSession session, Model model,
+			final RedirectAttributes redirectAttributes) {
 		donNghiPhepService.deleteDonNghiPhep(id);
+		redirectAttributes.addFlashAttribute("messageSuccess", "Đã xóa một đơn nghỉ phép !");
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1";
 	}
 
 	// xóa một đơn nghỉ phép từ chối
 	@RequestMapping("/deleteDonNghiPhepTuChoi/{id}")
-	public String xoaDonNghiPhepTuChoi(@PathVariable int id, HttpSession session, Model model) {
+	public String xoaDonNghiPhepTuChoi(@PathVariable int id, HttpSession session, Model model,
+			final RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("messageSuccess", "Đã xóa một đơn nghỉ phép !");
 		donNghiPhepService.deleteDonNghiPhep(id);
 		return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT4";
 	}

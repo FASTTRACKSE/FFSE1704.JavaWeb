@@ -193,8 +193,9 @@ body, html {
 												${thongtindonnghiphep.hoSoNhanVien.ten}</a>
 											</h2>
 											<p style="text-align: center;">
-												Phòng ban:<a>  ${thongtindonnghiphep.phongBan.tenPhongBan}</a>
-												
+												Phòng ban:<a>
+													${thongtindonnghiphep.phongBan.tenPhongBan}</a>
+
 
 											</p>
 											<a class="heading-elements-toggle"><i
@@ -204,7 +205,7 @@ body, html {
 										<div class="col-md-8" style="background: #dce1e8">
 											<table class="table table-borderless mb-0">
 												<tbody>
-													
+
 													<tr>
 														<td>
 															<h6>Mã nhân viên :</h6>
@@ -235,18 +236,26 @@ body, html {
 														</td>
 														<td><a style="color: red"><h6>${thongtindonnghiphep.thoiGianKetThuc}</h6></a></td>
 													</tr>
-													
+
+
 													<tr>
 														<td>
 															<h6>Trạng thái :</h6>
 														</td>
 														<td><a style="color: red"><h6>${thongtindonnghiphep.trangThaiDNP.tenTrangThai}</h6></a></td>
 													</tr>
+													<tr>
+														<td>
+															<h6>Ghi chú :</h6>
+														</td>
+														<td><a style="color: red"><h6>${thongtindonnghiphep.ghiChu}</h6></a></td>
+													</tr>
 												</tbody>
 											</table>
 										</div>
 										<div class="col-md-2"></div>
-										<div style="text-align: center; padding-top: 20px" class="form-group col-sm-12">
+										<div style="text-align: center; padding-top: 20px"
+											class="form-group col-sm-12">
 											<tr>
 
 												<td><a class="btn btn-success"

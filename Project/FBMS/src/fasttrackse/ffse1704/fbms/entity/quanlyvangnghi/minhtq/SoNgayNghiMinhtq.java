@@ -42,6 +42,7 @@ public class SoNgayNghiMinhtq implements Serializable {
 	@OneToMany(mappedBy = "soNgayNghiDNP")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
 
+	
 	public SoNgayNghiMinhtq(int id, String maNhanVien, String maNgayNghi, int tongNgayDuocNghi, int soNgayDaNghi,
 			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		super();

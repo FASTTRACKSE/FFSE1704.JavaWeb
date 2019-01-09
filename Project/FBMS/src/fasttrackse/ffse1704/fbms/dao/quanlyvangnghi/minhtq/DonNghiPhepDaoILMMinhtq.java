@@ -70,7 +70,6 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public DonNghiPhepMinhtq getByIdDonNghiPhep(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		DonNghiPhepMinhtq donnghiphepnhap = (DonNghiPhepMinhtq) session.get(DonNghiPhepMinhtq.class, id);
-
 		return donnghiphepnhap;
 	}
 
@@ -104,12 +103,7 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 
 	// hết crud cho đơn nghỉ phép nháp của nhân viên
 	
-	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep) {
-		Session session = sessionFactory.getCurrentSession();
-		String rowCount = session.createSQLQuery("select count(*) from quan_ly_so_ngay_nghi where ma_nhan_vien = '"
-				+ donnghiphep.getMaNhanVien() + "'").getSingleResult().toString();
-		return Integer.parseInt(rowCount);
-	}
+	
 
 	// list phòng ban
 	@SuppressWarnings("unchecked")

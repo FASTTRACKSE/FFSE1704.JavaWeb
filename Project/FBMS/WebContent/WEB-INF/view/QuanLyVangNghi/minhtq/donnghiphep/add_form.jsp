@@ -51,21 +51,19 @@
 						action="addDonNghiPhepNhap">
 						<div class="form-group col-md-12">
 							<label for="location1">mã nhân viên</label>
-							<form:select path="maNhanVien"
-								class="custom-select form-control" 
-								 items="${manhanvien}" itemValue="maNhanVien"
+							<form:select path="maNhanVien" class="custom-select form-control"
+								items="${manhanvien}" itemValue="maNhanVien"
 								itemLabel="maNhanVien">
 
 							</form:select>
 
 						</div>
 
-						
+
 						<div class="form-group col-md-12">
 							<label for="location1">Phòng ban</label>
-							<form:select path="maPhongBan"
-								class="custom-select form-control" 
-								 items="${phongban}" itemValue="maPhongBan"
+							<form:select path="maPhongBan" class="custom-select form-control"
+								items="${phongban}" itemValue="maPhongBan"
 								itemLabel="tenPhongBan">
 
 							</form:select>

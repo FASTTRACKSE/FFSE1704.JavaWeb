@@ -46,11 +46,9 @@
 							<label for="location1">Phòng ban</label>
 							<form:select path="maPhongBan" class="custom-select form-control"
 								id="location1" name="location" items="${phongban}"
-								itemValue="maPhongBan" itemLabel="tenPhongBan" readonly="true">
-
-							</form:select>
-
+								itemValue="maPhongBan" itemLabel="tenPhongBan" readonly="true"/>
 						</div>
+						
 						<div class="form-group col-md-6">
 							<label for="location1">Loại ngày nghỉ </label>
 							<form:select path="loaiNgayNghi"

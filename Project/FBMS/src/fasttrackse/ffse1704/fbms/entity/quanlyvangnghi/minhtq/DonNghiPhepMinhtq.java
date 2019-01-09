@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -53,7 +54,10 @@ public class DonNghiPhepMinhtq {
 	private String trangThai;
 
 	@ManyToOne
-	@JoinColumn(name = "loai_ngay_nghi", referencedColumnName = "ma_ngay_nghi", insertable = false, updatable = false, nullable = false)
+	@JoinColumns({
+			@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false),
+			@JoinColumn(name = "loai_ngay_nghi", referencedColumnName = "ma_ngay_nghi", insertable = false, updatable = false, nullable = false)
+	})
 	private SoNgayNghiMinhtq soNgayNghiDNP;
 
 	public SoNgayNghiMinhtq getSoNgayNghiDNP() {
