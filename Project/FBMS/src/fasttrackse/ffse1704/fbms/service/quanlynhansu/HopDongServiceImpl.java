@@ -37,8 +37,8 @@ public class HopDongServiceImpl implements HopDongService {
 	public List<CheDoHuong> listCheDoHuong() {
 		return hopDongDao.listCheDoHuong();
 	}
-	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong) {
-		hopDongDao.saveHopDongCheDo(thongtinhopdong);
+	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong, boolean checkMaNV) {
+		hopDongDao.saveHopDongCheDo(thongtinhopdong, checkMaNV);
 	}
 	public void editHopDong(ThongTinHopDong thongtinhopdong) {
 		hopDongDao.editHopDong(thongtinhopdong);
@@ -87,6 +87,22 @@ public class HopDongServiceImpl implements HopDongService {
 	@Override
 	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien, String maHopDong, String maTrangThai) {
 		return hopDongDao.findByMNVandMHDandMTT(maNhanVien, maHopDong, maTrangThai);
+	}
+
+	@Override
+	public void editNgayNghiPhepNam(String maNhanVien, int soNgayNghi) {
+		 hopDongDao.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
+		
+	}
+
+	@Override
+	public boolean checkExistMaNV(String maNhanVien) {
+		return hopDongDao.checkExistMaNV(maNhanVien);
+	}
+
+	@Override
+	public boolean checkExistMaTT(String maNhanVien, String maTrangThai) {
+		return hopDongDao.checkExistMaTT(maNhanVien, maTrangThai);
 	}
 
 }

@@ -74,35 +74,35 @@ public class HopDongDaoImpl implements HopDongDao {
 	}
 
 	@Override
-	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong) {
+	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong, boolean checkMaNV) {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		String maHD = thongtinhopdong.getMaHopDong();
 		String trangThaiHD = thongtinhopdong.getMaTrangThai();
-		
-		if(maHD=="HD3" && trangThaiHD=="ACTIVE") {
-		String maNV = thongtinhopdong.getMaNhanVien();
-		int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
-		QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
-		session.save(khoiTaoThongTinNgayNghi);
-        session.flush();
-        session.clear();
 
-		QuanLySoNgayNghi khoiTaoThongTinNgayNghi2 = new QuanLySoNgayNghi(maNV, "DO", 3, 0);
-		session.save(khoiTaoThongTinNgayNghi2);
-        session.flush();
-        session.clear();
+		if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE") && checkMaNV==false) {
+			String maNV = thongtinhopdong.getMaNhanVien();
+			int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
+			QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
+			session.save(khoiTaoThongTinNgayNghi);
+			session.flush();
+			session.clear();
 
-        QuanLySoNgayNghi khoiTaoThongTinNgayNghi3 = new QuanLySoNgayNghi(maNV, "TG", 3, 0);
-		session.save(khoiTaoThongTinNgayNghi3);
-		
-        session.flush();
-        session.clear();
-        
-        QuanLySoNgayNghi khoiTaoThongTinNgayNghi4 = new QuanLySoNgayNghi(maNV, "SD", 3, 0);
-		session.save(khoiTaoThongTinNgayNghi4);
-		session.save(thongtinhopdong);
-		}else {
+			QuanLySoNgayNghi khoiTaoThongTinNgayNghi2 = new QuanLySoNgayNghi(maNV, "DO", 3, 0);
+			session.save(khoiTaoThongTinNgayNghi2);
+			session.flush();
+			session.clear();
+
+			QuanLySoNgayNghi khoiTaoThongTinNgayNghi3 = new QuanLySoNgayNghi(maNV, "TG", 3, 0);
+			session.save(khoiTaoThongTinNgayNghi3);
+
+			session.flush();
+			session.clear();
+
+			QuanLySoNgayNghi khoiTaoThongTinNgayNghi4 = new QuanLySoNgayNghi(maNV, "SD", 3, 0);
+			session.save(khoiTaoThongTinNgayNghi4);
+			session.save(thongtinhopdong);
+		} else {
 			session.save(thongtinhopdong);
 		}
 	}
@@ -111,16 +111,7 @@ public class HopDongDaoImpl implements HopDongDao {
 	public void editHopDong(ThongTinHopDong thongtinhopdong) {
 		Session session = this.sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		String maHD = thongtinhopdong.getMaHopDong();
-		if(maHD=="HD3") {
-			String maNV = thongtinhopdong.getMaNhanVien();
-			int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
-			QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
-			session.update(khoiTaoThongTinNgayNghi);
-			session.update(thongtinhopdong);
-		}else {
-			session.update(thongtinhopdong);
-		}
+		session.update(thongtinhopdong);
 		tx.commit();
 		session.close();
 	}
@@ -187,38 +178,74 @@ public class HopDongDaoImpl implements HopDongDao {
 		return yourObject;
 	}
 
-	@SuppressWarnings({ "unchecked","rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<ThongTinHopDong> findByMNVandMHD(String maNhanVien, String maHopDong) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maHopDong = :mhd";
-		
+
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
 		query.setParameter("mhd", maHopDong);
 		return (List<ThongTinHopDong>) query.list();
 	}
-	@SuppressWarnings({ "unchecked","rawtypes" })
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<ThongTinHopDong> findByMNVandMTT(String maNhanVien, String maTrangThai) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maTrangThai = :mtt";
-		
+
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
 		query.setParameter("mtt", maTrangThai);
 		return (List<ThongTinHopDong>) query.list();
 	}
-	@SuppressWarnings({ "unchecked","rawtypes" })
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien, String maHopDong, String maTrangThai) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv AND tthd.maHopDong = :mhd  AND tthd.maTrangThai = :mtt";
-		
+
 		Query query = session.createQuery(hql);
 		query.setParameter("mnv", maNhanVien);
 		query.setParameter("mhd", maHopDong);
 		query.setParameter("mtt", maTrangThai);
 		return (List<ThongTinHopDong>) query.list();
+	}
+	
+	@Override
+	@SuppressWarnings({ "rawtypes" })
+	public void editNgayNghiPhepNam(String maNhanVien, int soNgayNghi) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("update QuanLySoNgayNghi set tongSoNgayDuocNghi = :sndn" + " where maNhanVien = :mnv and maNgayNghi = :mnn");
+		query.setParameter("sndn", soNgayNghi);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mnn", "PN");
+		query.executeUpdate();
+		System.out.println(query.executeUpdate());
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean checkExistMaNV(String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(" from QuanLySoNgayNghi Where maNhanVien = :maNhanVien");
+		query.setParameter("maNhanVien", maNhanVien);
+		int check = query.getResultList().size();
+		
+		return (check>0);
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean checkExistMaTT(String maNhanVien,String maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(" from ThongTinHopDong where maNhanVien= :maNhanVien AND maTrangThai = :maTrangThai");
+		query.setParameter("maNhanVien", maNhanVien);
+		query.setParameter("maTrangThai", maTrangThai);
+		int check = query.getResultList().size();
+		
+		return (check>0);
 	}
 }

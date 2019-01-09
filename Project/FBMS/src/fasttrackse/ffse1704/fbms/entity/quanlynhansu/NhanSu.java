@@ -58,11 +58,11 @@ public class NhanSu implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "nam_sinh", nullable = false)
-	@NotNull
+	@NotNull(message = "Vui Lòng Nhập ngày sinh")
 	private Date namSinh;
 
 	@Column(name = "gioi_tinh")
-	@NotNull
+	@NotNull(message = "Vui Lòng Nhập giới tính")
 	private Integer gioiTinh;
 	
 	@ManyToOne
@@ -148,7 +148,7 @@ public class NhanSu implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_cap_cmnd")
-	@NotNull
+	@NotNull(message = "Vui Lòng Nhập ngày cấp")
 	private Date ngayCap;
 
 	@ManyToOne(fetch = FetchType.EAGER)

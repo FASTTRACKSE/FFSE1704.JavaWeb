@@ -263,6 +263,8 @@ body, html {
 												<div class="col-md-4">
 
 													<input class="btn btn-success" type="submit" value="Xem">
+													<a href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
+													class="btn btn-success">Xem tất cả</a>
 												</div>
 											</form>
 										</div>

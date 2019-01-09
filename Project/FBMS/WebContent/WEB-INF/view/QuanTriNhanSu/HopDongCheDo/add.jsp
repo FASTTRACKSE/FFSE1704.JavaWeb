@@ -134,7 +134,7 @@
 						<div class="form-group col-sm-3">
 							<label>Mức lương ban đầu</label>
 							<form:input class="form-control" type="text"
-								path="mucLuongBanDau" />
+								path="mucLuongBanDau" value="0" />
 						</div>
 						<div class="form-group col-sm-3">
 							<label>Lương tháng 13 </label>
@@ -200,6 +200,7 @@
 
 							<td><input class="btn btn-primary" type="submit"
 								value="Thêm" /></td>
+								<p style="color: red">${attenion}</p>
 							<td><a
 								href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
 								class="btn btn-secondary">Quay lại</a></td>

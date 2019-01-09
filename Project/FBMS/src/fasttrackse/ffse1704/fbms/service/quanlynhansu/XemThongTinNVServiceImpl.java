@@ -94,9 +94,6 @@ public class XemThongTinNVServiceImpl implements XemThongTinNVService {
 		return xemThongTinNVDao.findTenDuAnByMaDuAn(maDuAn);
 	}
 
-	
-
-	
 
 
 }

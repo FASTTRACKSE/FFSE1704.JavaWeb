@@ -21,16 +21,33 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.ChungChiService;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.HopDongService;
+import fasttrackse.ffse1704.fbms.service.quanlynhansu.NhanSuService;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.XemThongTinNVService;
 
 @Controller
 public class XemThongTinNVController {
+	@Autowired
+	NhanSuService nhanSuService;
+
+	public void setNhanSuService(NhanSuService nhanSuService) {
+		this.nhanSuService = nhanSuService;
+	}
+	
+	@Autowired
+	ChungChiService chungChiService;
+
+	public void setChungChiService(ChungChiService chungChiService) {
+		this.chungChiService = chungChiService;
+	}
+	
 	@Autowired
 	XemThongTinNVService xemThongTinNVService;
 
@@ -118,6 +135,14 @@ public class XemThongTinNVController {
 		model.addAttribute("phongBan", xemThongTinNVService.findTenPhongBanByMaPhongBan(maPhongBan));
 		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
 		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+		List<TrinhDo> allTrinhDo = chungChiService.listTrinhDo();
+		model.addAttribute("dsTrinhDo", allTrinhDo);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
+		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
+		model.addAttribute("dsTrangThai", dsTrangThai);
 
 		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyMaPhongBan";
 
@@ -132,6 +157,12 @@ public class XemThongTinNVController {
 		model.addAttribute("dsPhongBan", allPhongBan);
 		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
 		model.addAttribute("dsHopDong", allHopDong);
+		List<TrinhDo> allTrinhDo = chungChiService.listTrinhDo();
+		model.addAttribute("dsTrinhDo", allTrinhDo);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
+		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
+		model.addAttribute("dsTrangThai", dsTrangThai);
 
 		return "QuanTriNhanSu/xemThongTinHoSo/allNhanSuFindbyHopDong";
 

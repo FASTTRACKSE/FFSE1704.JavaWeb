@@ -60,8 +60,20 @@ public class QuanLyThongTinDuAnNS implements Serializable {
 	@NotEmpty
 	private FrameworkNS frameWorkNS;
 	
+	@ManyToOne
+	@JoinColumn(name = "ma_database", referencedColumnName = "ma_database", insertable = false, updatable = false, nullable = false)
+	@NotEmpty
+	private DatabaseNS databaseNS;
 	
 	
+	public DatabaseNS getDatabaseNS() {
+		return databaseNS;
+	}
+
+	public void setDatabaseNS(DatabaseNS databaseNS) {
+		this.databaseNS = databaseNS;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "ma_programming_language",referencedColumnName = "ma_programming_language", insertable = false, updatable = false, nullable = false)
 	@NotEmpty

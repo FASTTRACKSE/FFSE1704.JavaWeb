@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .tbl_actions a {
 	color: #333;
@@ -285,8 +286,14 @@ body, html {
 													<tr>
 														<td>${hopDong.id}</td>
 														<td>${hopDong.loaihopDong.tenHopDong}</td>
-														<td>${hopDong.ngayBatDau}</td>
-														<td>${hopDong.ngayKetThuc}</td>
+														<td>
+														<fmt:formatDate value="${hopDong.ngayBatDau}"
+														pattern="dd-MM-yyyy" />
+														</td>
+														<td>
+														<fmt:formatDate value="${hopDong.ngayKetThuc}"
+														pattern="dd-MM-yyyy" />
+														</td>
 														<td>${hopDong.congViec.tenCongViec}</td>
 														<td>${hopDong.diaDiem.tenDiaDiem}</td>
 														<td>${hopDong.trangthai.tenTrangThai}</td>

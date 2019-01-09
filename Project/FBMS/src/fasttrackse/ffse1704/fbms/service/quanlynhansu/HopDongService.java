@@ -14,7 +14,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
 public interface HopDongService {
 	public List<HopDong> listHopDong();
 	public List<CheDoHuong> listCheDoHuong();
-	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong);
+	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong, boolean checkMaNV);
 	public void editHopDong(ThongTinHopDong thongtinhopdong);
 	public ThongTinHopDong findById(int id);
 	public void deleteHopDong(int id);
@@ -26,4 +26,7 @@ public interface HopDongService {
 	public List<ThongTinHopDong> findByMNVandMHD(String maNhanVien, String maHopDong);
 	public List<ThongTinHopDong> findByMNVandMTT(String maNhanVien, String maTrangThai);
 	public List<ThongTinHopDong> findByMNVandMHDandMTT(String maNhanVien,String maHopDong, String maTrangThai);
+	public void editNgayNghiPhepNam(String maNhanVien, int soNgayNghi);
+	public boolean checkExistMaNV(String maNhanVien);
+	public boolean checkExistMaTT(String maNhanVien, String maTrangThai);
 }

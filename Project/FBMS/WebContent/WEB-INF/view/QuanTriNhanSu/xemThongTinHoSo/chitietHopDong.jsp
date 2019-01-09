@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .tbl_actions a {
 	color: #333;
@@ -250,63 +251,69 @@ body, html {
 																		<h6>Loại hợp đồng</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.loaihopDong.tenHopDong}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.loaihopDong.tenHopDong}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Trạng thái</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.trangthai.tenTrangThai}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.trangthai.tenTrangThai}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Ngày bắt đầu</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.ngayBatDau}</h6></a></td>
+																		style="color: blue"><h6>
+																		<fmt:formatDate value="${hopDong.ngayBatDau}"
+														pattern="dd-MM-yyyy" />
+																		</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Ngày kết thúc</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.ngayKetThuc}</h6></a></td>
+																		style="color: blue"><h6>
+																		<fmt:formatDate value="${hopDong.ngayKetThuc}"
+														pattern="dd-MM-yyyy" />
+																		</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Loại công việc</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.congViec.tenCongViec}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.congViec.tenCongViec}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Phòng ban</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.phongBan.tenPhongBan}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.phongBan.tenPhongBan}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Chức vụ</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.chucDanh.tenChucDanh}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.chucDanh.tenChucDanh}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Địa điểm làm việc</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.diaDiem.tenDiaDiem}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.diaDiem.tenDiaDiem}</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
 																		<h6>Thời gian làm việc</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.thoiGianBatDauLamViec}
+																		style="color: blue"><h6>${hopDong.thoiGianBatDauLamViec}
 																				đến ${hopDong.thoiGianKetThucLamViec}</h6></a></td>
 																</tr>
 															</tbody>
@@ -337,7 +344,7 @@ body, html {
 																		<h6>Mức lương ban đầu</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.mucLuongBanDau}
+																		style="color: blue"><h6>${hopDong.mucLuongBanDau}
 																				VND</h6></a></td>
 																</tr>
 																<tr>
@@ -345,7 +352,7 @@ body, html {
 																		<h6>Lương tháng 13</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>${hopDong.cheDoHuong.luong}</h6></a></td>
+																		style="color: blue"><h6>${hopDong.cheDoHuong.luong}</h6></a></td>
 																</tr>
 																<c:forEach var="ngayNhi"
 																	items="${thongTinNhanVien.listNgayNghi}">
@@ -354,8 +361,8 @@ body, html {
 																			<h6>Số ${ngayNhi.danhSachNgayNghi.tenNgayNghi }</h6>
 																		</td>
 																		<td class="type-info text-right"><a
-																			style="color: red"><h6>${ngayNhi.tongSoNgayDuocNghi}</a>
-																			-- Đã nghỉ <a style="color: red">${ngayNhi.soNgayDaNghi}</a>
+																			style="color: blue"><h6>${ngayNhi.tongSoNgayDuocNghi}</a>
+																			-- Đã nghỉ <a style="color: blue">${ngayNhi.soNgayDaNghi}</a>
 																			</h6></td>
 																	</tr>
 																</c:forEach>
@@ -364,8 +371,11 @@ body, html {
 																		<h6>Hình thức thanh toán lương</h6>
 																	</td>
 																	<td class="type-info text-right"><a
-																		style="color: red"><h6>
+																		style="color: blue"><h6>
 																				<c:choose>
+																				<c:when test="${hopDong.hinhThucTraLuong == 0}">
+						    Chưa được chọn
+						  </c:when>
 																					<c:when test="${hopDong.hinhThucTraLuong == 1}">
 						    Tiền mặt
 						  </c:when>

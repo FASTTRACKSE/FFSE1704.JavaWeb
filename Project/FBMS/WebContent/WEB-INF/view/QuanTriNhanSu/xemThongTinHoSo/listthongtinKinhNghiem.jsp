@@ -114,7 +114,7 @@
 													<td>${hopDong.vaiTro.tenVaiTro}</td>
 													<td>${hopDong.thongTinDuAn.domainNS.tenDomain}</td>
 													<td>${hopDong.thongTinDuAn.frameWorkNS.tenFramework}</td>
-													<td>Chưa hiển thị được</td>
+													<td>${hopDong.thongTinDuAn.databaseNS.tenDatabase}</td>
 													<td>${hopDong.thongTinDuAn.programmingLaguageNS.tenProgrammingLanguage}</td>
 													<td>${hopDong.thongTinDuAn.moTa}</td>
 													<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="database")
+@Table(name="cosodulieu")
 public class DatabaseNS implements Serializable {
 
 	/**

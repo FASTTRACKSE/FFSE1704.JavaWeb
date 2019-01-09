@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .tbl_actions a {
 	color: #333;
@@ -102,44 +103,38 @@
 									<li><a data-action="close"><i class="ft-x"></i></a></li>
 								</ul>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<p>
 									Option: <br> Xem theo: <a style="color: red">Phòng ban</a>
 								</p>
 								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
 									style="width: 150px;">
-										
+
 									<select class="form-control" name="dsPhongBanId">
-									<option disabled="disabled">Chọn phòng ban</option>
+										<option disabled="disabled">Chọn phòng ban</option>
 										<c:forEach items="${dsPhongBan}" var="pb">
 											<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
 										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
+
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trình độ</a>
 								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
+								<form method="GET" action="/FBMS/listBCfindbyMaBangCap"
 									style="width: 150px;">
-									<select class="form-control" name="dsPhongBanId">
-											<option >Chọn trình độ</option>
+									<select class="form-control" name="dsTrinhDoId">
+										<option disabled="disabled">Chọn trình độ</option>
+										<c:forEach items="${dsTrinhDo}" var="td">
+											<option value="${td.id}">${td.tenTrinhDo}</option>
+										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
-								<p>
-									<br> Xem theo: <a style="color: red">Dự án</a>
-								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
-									style="width: 150px;">
-									<select class="form-control" name="dsPhongBanId">
-										<option >Chọn Dự án</option>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
-								</form>
-							</div>
-							<div class="col-md-2">
+
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Hợp đồng</a>
 								</p>
@@ -153,14 +148,17 @@
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<p>
 									<br> Xem theo: <a style="color: red">Trạng thái</a>
 								</p>
-								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
+								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
 									style="width: 150px;">
-									<select class="form-control" name="dsPhongBanId">
-										<option >Còn làm</option>
+									<select class="form-control" name="dsTrangThaiID">
+										<option disabled="disabled">Chọn Trạng Thái</option>
+										<c:forEach items="${dsTrangThai}" var="tt">
+											<option value="${tt.idTrangThai}">${tt.name}</option>
+										</c:forEach>
 									</select> <input class="btn btn-success" type="submit" value="Xem">
 								</form>
 							</div>
@@ -196,7 +194,10 @@
 												<td>${ns.phongBan.tenPhongBan}</td>
 												<td>${ns.chucDanh.tenChucDanh}</td>
 												<td>${ns.nhanSuFindByHD.hoLot}${ns.nhanSuFindByHD.ten}</td>
-												<td>${ns.nhanSuFindByHD.namSinh}</td>
+												<td>
+												<fmt:formatDate value="${ns.nhanSuFindByHD.namSinh}"
+														pattern="dd-MM-yyyy" />
+												</td>
 												<td><img style="width: 70px;hight=70px;"
 													src="<c:url value="/uploads/${ns.nhanSuFindByHD.anhDaiDien}"/>"></td>
 
