@@ -42,11 +42,22 @@ public class DanhMucDung implements Serializable {
 	@Column(name = "ma_danh_muc")
 	private String maDanhMuc;
 	
+	@Column(name="hinh_anh")
+	private String hinhAnh;
+	
+	public String getHinhAnh() {
+		return hinhAnh;
+	}
+
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban")
 	private PhongBan maPhongBan;
 
-
+	
 
 	public PhongBan getMaPhongBan() {
 		return maPhongBan;

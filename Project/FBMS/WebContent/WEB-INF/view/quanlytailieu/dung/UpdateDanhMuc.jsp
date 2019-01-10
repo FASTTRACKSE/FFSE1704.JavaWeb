@@ -12,16 +12,16 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					Danh Mục
+					<spring:message code="tailieu.danhMuc"/>
 				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/home">Home</a></li>
+								href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Danh Mục</a></li>
-							<li class="breadcrumb-item active">Update Danh Mục</li>
+								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove"><spring:message code="tailieu.danhMuc"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.update"/> <spring:message code="tailieu.danhMuc"/></li>
 						</ol>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>
-				Update Danh Mục
+				<spring:message code="tailieu.update"/> <spring:message code="tailieu.danhMuc"/>
 			</h1>
 			<a href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Back</a>
 		</div>
@@ -45,7 +45,7 @@
 						value="${danhmuc.id}" />
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput5">
-						Mã Danh Mục
+						<spring:message code="tailieu.ma"/> <spring:message code="tailieu.danhMuc"/>
 					</label>
 					<div class="col-md-9">
 						<form:input path="maDanhMuc" class="form-control"
@@ -54,7 +54,7 @@
 				</div>
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput5">
-						Tên Danh Mục
+						<spring:message code="tailieu.ten"/> <spring:message code="tailieu.danhMuc"/>
 					</label>
 					<div class="col-md-9">
 						<form:input path="tenDanhMuc" class="form-control"
@@ -64,7 +64,7 @@
 				<!-- ///////////////////// -->
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput6">
-						Phòng Ban
+						<spring:message code="tailieu.phongBan"/>
 					</label>
 					<div class="col-md-9">
 						<form:select path="maPhongBan.maPhongBan">
@@ -75,15 +75,28 @@
 						</form:select>
 					</div>
 				</div>
+				<form:hidden path= "hinhAnh" class= "form-control" />				
+				<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput6">
+						<spring:message code="tailieu.hinhAnh"/> (<spring:message code="tailieu.cu"/>) 
+					</label>
+						<td><img src="<c:url value="${danhmucUpdate.hinhAnh}"/>" width="100" height="100"></td>
+				</div>
+					<div class="form-group row">
+					<label class="col-md-3 label-control" for="projectinput6">
+						<spring:message code="tailieu.thayDoi"/> 
+					</label>
+					<input type="file" class="form-control-file" id="basicInputFile" name="file">
+				</div>
 					<div class="form-group col-sm-6">
 
 				<div class="form-actions">
 					<button formaction="<%=request.getContextPath()%>/quanlytailieu/updateDanhMuc"
 						class="btn btn-success mr-1">
-						Update
+						<spring:message code="tailieu.update"/>
 					</button>
 					<a href="<%=request.getContextPath()%>/quanlytailieu/danhmuc"
-						class="btn btn-danger mr-1"> Cancel</a>
+						class="btn btn-danger mr-1"><spring:message code="tailieu.cancel"/></a>
 				</div>
 			</div>
 			</div>

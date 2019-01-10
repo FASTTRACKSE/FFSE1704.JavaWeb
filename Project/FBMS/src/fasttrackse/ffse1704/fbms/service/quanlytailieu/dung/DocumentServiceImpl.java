@@ -67,8 +67,8 @@ public class DocumentServiceImpl implements DocumentService {
 		}
 		// List tài liệu theo phòng ban
 		// phòng dự án 1
-		public List<DocumentDung> getPDA1Document(){
-			return documentDAO.getAllDocumentPDA1();
+		public List<DocumentDung> getPDADocument(String maPhongBan){
+			return documentDAO.getAllDocumentPDA(maPhongBan);
 		}
 		
 	//accept

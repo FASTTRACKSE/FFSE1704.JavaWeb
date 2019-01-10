@@ -10,12 +10,12 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa Tài Liệu<h3>
+				<h3 class="content-header-title mb-0"><spring:message code="tailieu.dangChoPheDuyet"/></h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/home">Home</a></li>
-							<li class="breadcrumb-item active">Tài Liệu chưa được phê duyệt </li>
+							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.dangChoPheDuyet"/></li>
 						</ol>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Tài Liệu chưa được phê duyệt</h1>
+			<h1><spring:message code="tailieu.dangChoPheDuyet"/></h1>
 		</div>
 
 		<!-- Border color end-->
@@ -59,12 +59,12 @@
 							<table class="table mb-0" id="table_id" >
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
-										<th>ID</th>
-										<th>Tên Tài Liệu</th>
-										<th>Mô Tả</th>
-										<th>Danh Mục</th>
-										<th>Phòng Ban</th>
-										<th>Tải về</th>
+							        	<th><spring:message code="tailieu.id"/></th>
+										<th><spring:message code="tailieu.ten"/></th>
+										<th><spring:message code="tailieu.moTa"/></th>
+										<th><spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.phongBan"/></th>
+										<th><spring:message code="tailieu.download"/></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -76,7 +76,7 @@
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
 												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
-												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>
+												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" ><spring:message code="tailieu.download"/></a></td>
 											</tr>
 										</c:forEach>
 									</c:if>

@@ -11,14 +11,14 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					Tài Liệu của tôi
-					<h3>
+					<spring:message code="tailieu.danhMuc"/>
+					</h3>
 						<div class="row breadcrumbs-top">
 							<div class="breadcrumb-wrapper col-xs-12">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a
-										href="<%=request.getContextPath()%>/index">Home</a></li>
-									<li class="breadcrumb-item active">Danh Muc</li>
+										href="<%=request.getContextPath()%>/index"><spring:message code="tailieu.home"/></a></li>
+									<li class="breadcrumb-item active"><spring:message code="tailieu.update"/></li>
 								</ol>
 							</div>
 						</div>
@@ -38,8 +38,8 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Danh Mục</h1>
-			<a href="<%=request.getContextPath()%>/quanlytailieu/addDanhMucView">Thêm</a>
+			<h1><spring:message code="tailieu.danhMuc"/></h1>
+			<a href="<%=request.getContextPath()%>/quanlytailieu/addDanhMucView"><spring:message code="tailieu.them"/> <spring:message code="tailieu.danhMuc"/>	</a>
 		</div>
 
 		<!-- Border color end-->
@@ -63,11 +63,11 @@
 							<table class="table mb-0" id="table_id">
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
-										<th>ID</th>
-										<th>Mã Danh Muc</th>
-										<th>Tên Danh Mục</th>
-										<th>Phòng Ban</th>
-										<th>Phương Thức</th>
+										<th><spring:message code="tailieu.id"/></th>
+										<th><spring:message code="tailieu.ma"/> <spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.ten"/> <spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.phongBan"/></th>
+										<th><spring:message code="tailieu.phuongThuc"/></th>
 									
 									</tr>
 								</thead>
@@ -77,12 +77,12 @@
 										<tr class="border-bottom-success border-custom-color">
 											<td>${stt.count}</td>
 											<td>${danhmuc.maDanhMuc}</td>
-											<td>${danhmuc.tenDanhMuc}</td>
+											<td><img src="<c:url value="${danhmuc.hinhAnh}"/>" width="20" height="20">${danhmuc.tenDanhMuc}</td>
 											<td>${danhmuc.maPhongBan.tenPhongBan}</td>
-											<td><a href="danhMucDelete/${danhmuc.id}" onclick="if (!confirm('Are you sure you want to delete this database?')) return false"
-												class="btn-warning btn" role="button">Xóa</a> <a
+											<td><a href="danhMucDelete/${danhmuc.id}" onclick="if (!confirm('<spring:message code="tailieu.message"/>')) return false"
+												class="btn-warning btn" role="button"><spring:message code="tailieu.delete"/></a> <a
 												href="<%=request.getContextPath()%>/quanlytailieu/updateDanhMucView/${danhmuc.id}"
-												class="btn-warning btn" role="button"> Sửa </a></td>
+												class="btn-warning btn" role="button"> <spring:message code="tailieu.update"/> </a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

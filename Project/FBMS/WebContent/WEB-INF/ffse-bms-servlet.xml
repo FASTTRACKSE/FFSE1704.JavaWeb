@@ -68,7 +68,7 @@
     
     
     <!-- Resources files upload location -->
-    <mvc:resources mapping="/uploads/**" location="file:/E:/lp5_image/" />
+    <mvc:resources mapping="/uploads/**" location="file:/E:/lp5/" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />

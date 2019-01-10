@@ -102,7 +102,7 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 		
 		// List theo phòng ban
 		// Phòng dự án 1
-		public List<DocumentDung> getAllDocumentPDA1() {
+		public List<DocumentDung> getAllDocumentPDA(String maPhongBan) {
 			Session session = sessionFactory.getCurrentSession();
 			CriteriaBuilder cb = session.getCriteriaBuilder();
 			CriteriaQuery<DocumentDung> cq = cb.createQuery(DocumentDung.class);
@@ -110,7 +110,7 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
 			Join<DocumentDung, DanhMucDung> danhMucJoin = root.join("maDanhMuc");
 			Join<DanhMucDung, PhongBan> phongBanJoin = danhMucJoin.join("maPhongBan");
-			cq.select(root).where(cb.equal(phongBanJoin.get("maPhongBan"), "PIT"),
+			cq.select(root).where(cb.equal(phongBanJoin.get("maPhongBan"), maPhongBan),
 					cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));			
 			List<DocumentDung> getDocumentPDA1 = session.createQuery(cq).getResultList();
 			return getDocumentPDA1;

@@ -46,38 +46,42 @@ public class DocumentController {
 		model.addAttribute("listDocument", list);
 		return "quanlytailieu/dung/index";
 	}
-	//List tài liệu nháp
+
+	// List tài liệu nháp
 	@RequestMapping(value = { "/draft" }, method = RequestMethod.GET)
 	public String draft(Model model) {
 		model.addAttribute("listDocumentDraft", documentService.getDraft());
 		return "quanlytailieu/dung/DocumentDraft";
 	}
-	//List tài liệu chờ phê duyệt
+
+	// List tài liệu chờ phê duyệt
 	@RequestMapping(value = { "/MyDocumentPendingApprove" }, method = RequestMethod.GET)
 	public String MyDocumentPendingApprove(Model model) {
 		model.addAttribute("listMyDocumentPendingApprove", documentService.getMyDocumentPendingApprove());
 		return "quanlytailieu/dung/MyDocumentPendingApprove";
 	}
-	//List tài liệu đã chấp nhận
+
+	// List tài liệu đã chấp nhận
 	@RequestMapping(value = { "/MyDocumentPendingAccept" }, method = RequestMethod.GET)
 	public String MyDocumentAccept(Model model) {
 		model.addAttribute("listMyDocumentAccept", documentService.getMyDocumentAccept());
 		return "quanlytailieu/dung/MyDocumentAccept";
 	}
-	
-	//Hiển thị theo phòng ban
+
+	// Hiển thị theo phòng ban
 	@RequestMapping(value = { "/PhongBan" }, method = RequestMethod.GET)
 	public String PhongBan(Model model) {
-		model.addAttribute("listQuyen",documentService.listQuyen());
+		model.addAttribute("listQuyen", documentService.listQuyen());
 		return "quanlytailieu/dung/PhongBan";
 	}
-	//phòng dự án 1
-	@RequestMapping(value = { "/DocumentPDA1" }, method = RequestMethod.GET)
-	public String DocumentPDA1(@RequestParam("tlPhongBanId") Model model) {
-		model.addAttribute("listDocumentPDA1", documentService.getPDA1Document());
-		return "quanlytailieu/dung/PDA1Document";
+
+	// phòng dự án 1
+	@RequestMapping(value = { "/DocumentPB" }, method = RequestMethod.GET)
+	public String DocumentPDA(@RequestParam("tlPhongBanId") String maPhongBan, Model model) {
+		model.addAttribute("listDocument", documentService.getPDADocument(maPhongBan));
+		return "quanlytailieu/dung/PBDocument";
 	}
-	
+
 	// ----------- document public -------//
 	@RequestMapping(value = "/documentPublic", method = RequestMethod.GET)
 	public String documentPublic(Model model) {
@@ -99,33 +103,36 @@ public class DocumentController {
 			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
 			final RedirectAttributes redirectAttributes) {
 		try {
-			if (result.hasErrors()) {
-				return "quanlytailieu/dung/documentInsert";
-			}
-			String nameFile = file.getOriginalFilename();
-			File fileDir = new File(request.getServletContext().getRealPath(UPLOAD_DIRECTORY));
-			byte[] bytes = file.getBytes();
-			if (!fileDir.exists()) {
-				fileDir.mkdir();
-			}
-			File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-			stream.write(bytes);
-			stream.flush();
-			stream.close();
-			documentDung.setNameFile(nameFile);
-			documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
-			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
 
-			IconDung icon = new IconDung();
-			icon.setMaIcon(format);
-			documentDung.setMaIcon(icon);
-			TrangThaiDung trangThai = new TrangThaiDung();
-			trangThai.setMaTrangThai("cho_phe_duyet");
-			documentDung.setMaTrangThai(trangThai);
-			documentService.saveDraft(documentDung);
+			String nameFile = file.getOriginalFilename();
+			if (nameFile.equals("") || nameFile == null) {
+				return "quanlytailieu/dung/documentInsert";
+			} else {
+				File fileDir = new File("E:\\lp5");
+				byte[] bytes = file.getBytes();
+				if (!fileDir.exists()) {
+					fileDir.mkdir();
+				}
+				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
+				documentDung.setNameFile(nameFile);
+				documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+				String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				documentDung.setMaIcon(icon);
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("cho_phe_duyet");
+				documentDung.setMaTrangThai(trangThai);
+				documentService.saveDraft(documentDung);
+			}
 		} catch (Exception e) {
 		}
+
 		return "redirect:/quanlytailieu/MyDocumentPendingApprove";
 	}
 
@@ -136,19 +143,79 @@ public class DocumentController {
 			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model) {
 		try {
 			String nameFile = file.getOriginalFilename();
-			documentDung.setNameFile(nameFile);
-			documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
-			String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
-			IconDung icon = new IconDung();
-			icon.setMaIcon(format);
-			documentDung.setMaIcon(icon);
-			TrangThaiDung trangThai = new TrangThaiDung();
-			trangThai.setMaTrangThai("nhap");
-			documentDung.setMaTrangThai(trangThai);
-			documentService.saveDraft(documentDung);
+			if (nameFile.equals("") || nameFile == null) {
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("nhap");
+				documentDung.setMaTrangThai(trangThai);
+				documentService.saveDraft(documentDung);
+			} else {
+				File fileDir = new File("E:\\lp5");
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
+				documentDung.setNameFile(nameFile);
+				documentDung.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+				String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				documentDung.setMaIcon(icon);
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("nhap");
+				documentDung.setMaTrangThai(trangThai);
+				documentService.saveDraft(documentDung);
+			}
 		} catch (Exception e) {
 		}
 		return "redirect:/quanlytailieu/draft";
+	}
+
+	// Submit tài liệu nháp lên
+	@RequestMapping(value = "/documentSubmitDraft", method = RequestMethod.POST)
+	public String submitDraft(@ModelAttribute("documentupdate") DocumentDung document,
+			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+
+			String nameFile = file.getOriginalFilename();
+			if (nameFile.equals("") || nameFile == null) {
+				if (document.getNameFile().equals("") || document.getNameFile() == null) {
+					return "quanlytailieu/dung/documentUpdate";
+				}
+				else {
+					TrangThaiDung trangThai = new TrangThaiDung();
+					trangThai.setMaTrangThai("cho_phe_duyet");
+					document.setMaTrangThai(trangThai);
+					documentService.updateDocument(document);
+				}
+			} else {
+
+					File fileDir = new File("E:\\lp5");
+					byte[] bytes = file.getBytes();
+					File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+					stream.write(bytes);
+					stream.flush();
+					stream.close();
+					document.setNameFile(nameFile);
+					document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+					String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+					IconDung icon = new IconDung();
+					icon.setMaIcon(format);
+					document.setMaIcon(icon);
+					TrangThaiDung trangThai = new TrangThaiDung();
+					trangThai.setMaTrangThai("cho_phe_duyet");
+					document.setMaTrangThai(trangThai);
+					documentService.updateDocument(document);
+
+				}
+			
+		} catch (Exception e) {
+		}
+
+		return "redirect:/quanlytailieu/MyDocumentPendingApprove";
 	}
 
 	// Update tài liệu bị từ chối
@@ -156,6 +223,43 @@ public class DocumentController {
 	public String documentUpdateViewRefuse(@PathVariable int id, Model model) {
 		model.addAttribute("documentupdateRefuse", documentService.findById(id));
 		return "quanlytailieu/dung/documentUpdateRefuse";
+	}
+
+	@RequestMapping(value = "/documentSubmitRefuse", method = RequestMethod.POST)
+	public String SubmitTLRefuse(@ModelAttribute("documentupdateRefuse") DocumentDung document,
+			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+			String nameFile = file.getOriginalFilename();
+			if (nameFile.equals("") || nameFile == null) {
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("cho_phe_duyet");
+				document.setMaTrangThai(trangThai);
+				document.setGhiChu(null);
+				documentService.updateDocument(document);
+
+			} else {
+				File fileDir = new File("E:\\lp5");
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
+				document.setNameFile(nameFile);
+				document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+				String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				document.setMaIcon(icon);
+				TrangThaiDung trangThai = new TrangThaiDung();
+				trangThai.setMaTrangThai("cho_phe_duyet");
+				document.setMaTrangThai(trangThai);
+				documentService.updateDocument(document);
+			}
+		} catch (Exception e) {
+		}
+		return "redirect:/quanlytailieu/documentRefuse";
 	}
 
 	@RequestMapping(value = "/documentUpdateRefuse", method = RequestMethod.POST)
@@ -167,6 +271,13 @@ public class DocumentController {
 			if (nameFile.equals("") || nameFile == null) {
 				documentService.updateDocument(document);
 			} else {
+				File fileDir = new File("E:\\lp5");
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
 				document.setNameFile(nameFile);
 				document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
 				String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
@@ -179,36 +290,43 @@ public class DocumentController {
 		}
 		return "redirect:/quanlytailieu/documentRefuse";
 	}
-	
-	// Update tài liệu nháp
-		@RequestMapping(value = "/documentUpdateView/{id}")
-		public String documentUpdateView(@PathVariable int id, Model model) {
-			model.addAttribute("documentupdate", documentService.findById(id));
-			return "quanlytailieu/dung/documentUpdate";
-		}
 
-		@RequestMapping(value = "/documentUpdate", method = RequestMethod.POST)
-		public String updateTL(@ModelAttribute("documentupdate") DocumentDung document,
-				@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
-				final RedirectAttributes redirectAttributes) {
-			try {
-				String nameFile = file.getOriginalFilename();
-				if (nameFile.equals("") || nameFile == null) {
-					documentService.updateDocument(document);
-				} else {
-					document.setNameFile(nameFile);
-					document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
-					String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
-					IconDung icon = new IconDung();
-					icon.setMaIcon(format);
-					document.setMaIcon(icon);
-					documentService.updateDocument(document);
-				}
-			} catch (Exception e) {
+	// Update tài liệu nháp
+	@RequestMapping(value = "/documentUpdateView/{id}")
+	public String documentUpdateView(@PathVariable int id, Model model) {
+		model.addAttribute("documentupdate", documentService.findById(id));
+		return "quanlytailieu/dung/documentUpdate";
+	}
+
+	@RequestMapping(value = "/documentUpdate", method = RequestMethod.POST)
+	public String updateTL(@ModelAttribute("documentupdate") DocumentDung document,
+			@RequestParam("file") MultipartFile file, BindingResult result, HttpServletRequest request, Model model,
+			final RedirectAttributes redirectAttributes) {
+		try {
+			String nameFile = file.getOriginalFilename();
+			if (nameFile.equals("") || nameFile == null) {
+				documentService.updateDocument(document);
+			} else {
+				File fileDir = new File("E:\\lp5");
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
+				document.setNameFile(nameFile);
+				document.setLinkFile(File.separator + "uploads" + File.separator + nameFile);
+				String format = nameFile.substring(nameFile.lastIndexOf(".") + 1, nameFile.length());
+				IconDung icon = new IconDung();
+				icon.setMaIcon(format);
+				document.setMaIcon(icon);
+				documentService.updateDocument(document);
 			}
-			return "redirect:/quanlytailieu/draft";
+		} catch (Exception e) {
 		}
-	
+		return "redirect:/quanlytailieu/draft";
+	}
+
 	// Delete tài liệu
 	@RequestMapping(value = "/documentDelete/{id}", method = RequestMethod.GET)
 	public String documentDelete(@PathVariable int id, Model model) {

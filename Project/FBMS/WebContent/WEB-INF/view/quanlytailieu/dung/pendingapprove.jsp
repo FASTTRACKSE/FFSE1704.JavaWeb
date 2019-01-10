@@ -10,13 +10,13 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Phê duyệt tài liệu</h3>
+				<h3 class="content-header-title mb-0"><spring:message code="tailieu.pheDuyetTaiLieu"/></h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/index">Home</a></li>
-							<li class="breadcrumb-item active">Phê duyệt tài liệu</li>
+								href="<%=request.getContextPath()%>/index"><spring:message code="tailieu.home"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.pheDuyetTaiLieu"/></li>
 						</ol>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Phê duyệt tài liệu</h1>
+			<h1><spring:message code="tailieu.pheDuyetTaiLieu"/></h1>
 		</div>
 		<!-- Border color end-->
 		<div class="row">
@@ -59,13 +59,12 @@
 							<table class="table mb-0">
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
-										<th>ID</th>
-										<th>Tên Tài Liệu</th>
-										<th>Mô Tả</th>
-										<th>Danh Mục</th>
-										<th>Phòng Ban</th>
-										<th>Trạng Thái</th>
-										<th>Chức năng</th>
+								<th><spring:message code="tailieu.id"/></th>
+										<th><spring:message code="tailieu.ten"/></th>
+										<th><spring:message code="tailieu.moTa"/></th>
+										<th><spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.phongBan"/></th>
+										<th><spring:message code="tailieu.phuongThuc"/></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -80,9 +79,8 @@
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
 												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
-												<td>${document.maTrangThai.tenTrangThai}</td>
 												<td><a href="<%=request.getContextPath()%>/quanlytailieu/pendingApproveView/${document.id}"
-													class="btn-warning btn"> Xem </a></td>
+													class="btn-warning btn"><spring:message code="tailieu.xem"/></a></td>
 											</tr>
 											
 										</c:forEach>

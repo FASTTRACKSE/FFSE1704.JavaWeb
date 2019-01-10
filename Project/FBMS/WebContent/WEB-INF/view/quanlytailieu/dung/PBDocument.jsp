@@ -10,12 +10,13 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Tài liệu đã được phê duyệt<h3>
+				<h3 class="content-header-title mb-0"><spring:message code="tailieu.daDuocPheDuyet"/></h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/home">Home</a></li>
-							<li class="breadcrumb-item active">Tài liệu đã được phê duyệt</li>
+							<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.daDuocPheDuyet"/></li>
+							<li class="breadcrumb-item active">${maDanhMuc.tenDanhMuc}</li>							
 						</ol>
 					</div>
 				</div>
@@ -35,7 +36,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Tài liệu đã được phê duyệt</h1>
+			<h1><spring:message code="tailieu.daDuocPheDuyet"/></h1>
 		</div>
 
 		<!-- Border color end-->
@@ -59,27 +60,29 @@
 							<table class="table mb-0" id="table_id" >
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
-										<th>ID</th>
-										<th>Tên Tài Liệu</th>
-										<th>Mô Tả</th>
-										<th>Danh Mục</th>
-										<th>Tải về</th>
+										<th><spring:message code="tailieu.id"/></th>
+										<th><spring:message code="tailieu.ten"/><spring:message code="tailieu.taiLieu"/></th>
+										<th><spring:message code="tailieu.moTa"/></th>
+										<th><spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.download"/></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:if test="${not empty listDocumentPDA1}">
-										<c:forEach var="document" items="${listDocumentPDA1}" varStatus="stt">
+									<c:if test="${not empty listDocument}">
+										<c:forEach var="document" items="${listDocument}" varStatus="stt">
 											<tr class="border-bottom-success border-custom-color">
 												<td>${stt.count}</td>
 												<td><img src="<c:url value="${document.maIcon.hinhAnh}"/>" width="20" height="20"> ${document.tenTaiLieu}</td>
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
-												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>
+												<td><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > <spring:message code="tailieu.download"/></a></td>
 											</tr>
 										</c:forEach>
 									</c:if>
 								</tbody>
 							</table>
+							<a href="<%=request.getContextPath()%>/quanlytailieu/PhongBan"
+												class="btn btn-danger mr-1"><spring:message code="tailieu.back"/></a>
 						</div>
 					</div>
 				</div>

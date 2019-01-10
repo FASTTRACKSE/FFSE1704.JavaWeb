@@ -35,7 +35,7 @@ public interface DocumentService  {
 	
 	//List tài liệu theo phòng ban
 	//Phòng dự án 1
-	public List<DocumentDung> getPDA1Document();
+	public List<DocumentDung> getPDADocument(String maPhongBan);
 	//refuse
 	public void refuse(DocumentDung document);
 	//Chấp thuần tài liệu

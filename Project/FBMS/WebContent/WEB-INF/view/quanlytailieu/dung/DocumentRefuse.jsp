@@ -10,13 +10,13 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Tài liệu bị từ chối</h3>
+				<h3 class="content-header-title mb-0"><spring:message code="tailieu.taiLieu"/> <spring:message code="tailieu.tuChoi"/></h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/home">Home</a></li>
-							<li class="breadcrumb-item active">Tài liệu bị từ chối</li>
+								href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.taiLieu"/> <spring:message code="tailieu.tuChoi"/></li>
 						</ol>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1>Tài liệu bị từ chối</h1>
+			<h1><spring:message code="tailieu.taiLieu"/> <spring:message code="tailieu.tuChoi"/></h1>
 		</div>
 		<!-- Border color end-->
 		<div class="row">
@@ -59,14 +59,13 @@
 							<table class="table mb-0">
 								<thead>
 									<tr class="border-bottom-active border-custom-color">
-										<th>ID</th>
-										<th>Tên Tài Liệu</th>
-										<th>Mô Tả</th>
-										<th>Danh Mục</th>
-										<th>Phòng Ban</th>
-										<th width="500">Lý Do</th>
-										<th width="350">Phương Thức</th>
-										<th>Tải Về</th>
+										<th><spring:message code="tailieu.id"/></th>
+										<th><spring:message code="tailieu.ten"/></th>
+										<th><spring:message code="tailieu.moTa"/></th>
+										<th><spring:message code="tailieu.danhMuc"/></th>
+										<th><spring:message code="tailieu.phongBan"/></th>
+										<th><spring:message code="tailieu.phuongThuc"/></th>
+										<th><spring:message code="tailieu.download"/></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -80,12 +79,11 @@
 												<td>${document.moTa}</td>
 												<td>${document.maDanhMuc.tenDanhMuc}</td>
 												<td>${document.maDanhMuc.maPhongBan.tenPhongBan}</td>
-												<td>${document.ghiChu}</td>
 												<td>
-												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button">Xóa</a>
-												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateViewRefuse/${document.id}" class="btn-warning btn" role="button" > Sửa </a>
+												<a href="documentDelete/${document.id}" class="btn-warning btn" role="button"><spring:message code="tailieu.delete"/></a>
+												<a href="<%=request.getContextPath()%>/quanlytailieu/documentUpdateViewRefuse/${document.id}" class="btn-warning btn" role="button" ><spring:message code="tailieu.update"/></a>
 												</td>
-												<td width="100" height="100"><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" > Download</a></td>												
+												<td width="100" height="100"><a href="<%=request.getContextPath()%>${document.linkFile}" class="btn btn-success mr-1" role="button" ><spring:message code="tailieu.download"/></a></td>												
 											</tr>
 											
 										</c:forEach>

@@ -12,16 +12,15 @@
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">
-					Tài Liệu
-				</h3>
+							<spring:message code="tailieu.them"/> <spring:message code="tailieu.danhMuc"/>				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/home">Home</a></li>
+								href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Danh Mục</a></li>
-							<li class="breadcrumb-item active">Thêm Danh Mục</li>
+								href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove"><spring:message code="tailieu.danhMuc"/></a></li>
+							<li class="breadcrumb-item active"><spring:message code="tailieu.them"/> <spring:message code="tailieu.danhMuc"/></li>
 						</ol>
 					</div>
 				</div>
@@ -29,9 +28,8 @@
 		</div>
 		<div style="text-align: center; color: red;">
 			<h1>
-				Thêm Danh Mục
+				<spring:message code="tailieu.them"/> <spring:message code="tailieu.danhMuc"/>
 			</h1>
-			<a href="<%=request.getContextPath()%>/quanlytailieu/MyDocumentPendingApprove">Back</a>
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
@@ -45,7 +43,7 @@
 						value="${danhmuc.id}" />
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput5">
-						Mã Danh Mục
+				<spring:message code="tailieu.ma"/> <spring:message code="tailieu.danhMuc"/>
 					</label>
 					<div class="col-md-9">
 						<form:input path="maDanhMuc" class="form-control"
@@ -54,7 +52,7 @@
 				</div>
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput5">
-						Tên Danh Mục
+				<spring:message code="tailieu.danhMuc"/> <spring:message code="tailieu.ten"/>
 					</label>
 					<div class="col-md-9">
 						<form:input path="tenDanhMuc" class="form-control"
@@ -64,7 +62,7 @@
 				<!-- ///////////////////// -->
 				<div class="form-group row">
 					<label class="col-md-3 label-control" for="projectinput6">
-						Phòng Ban
+							<spring:message code="tailieu.phongBan"/>					
 					</label>
 					<div class="col-md-9">
 						<form:select path="maPhongBan.maPhongBan">
@@ -76,19 +74,25 @@
 					</div>
 				</div>
 					<div class="form-group col-sm-6">
-
+					<fieldset class="form-group">
+									<label for="basicInputFile"><spring:message code="tailieu.hinhAnh"/></label>
+									<input type="file" class="form-control-file"
+										id="basicInputFile" name="file">
+								</fieldset>
 				<div class="form-actions">
 					<button formaction="<%=request.getContextPath()%>/quanlytailieu/addDanhMuc"
 						class="btn btn-success mr-1">
-						Thêm
+						<spring:message code="tailieu.them"/>
 					</button>
 					<a href="<%=request.getContextPath()%>/quanlytailieu/danhmuc"
-						class="btn btn-danger mr-1"> Cancel</a>
+						class="btn btn-danger mr-1"><spring:message code="tailieu.cancel"/></a>
 				</div>
+			</div>
 			</div>
 		</form:form>
 		<!-- ============= kết thúc nhập form dữ liệu ở đây =============  -->
 	</div>
+	
 </div>
 <!-- code here end  -->
 

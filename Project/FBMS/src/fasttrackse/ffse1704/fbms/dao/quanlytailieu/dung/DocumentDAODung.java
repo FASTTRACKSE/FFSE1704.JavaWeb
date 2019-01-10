@@ -37,7 +37,7 @@ public interface DocumentDAODung  {
 	
 	//list Theo phòng ban
 	//phòng dự án 1
-	public List<DocumentDung> getAllDocumentPDA1();
+	public List<DocumentDung> getAllDocumentPDA(String maPhongBan);
 	
 	//accept document
 	public void accept(final DocumentDung document);
