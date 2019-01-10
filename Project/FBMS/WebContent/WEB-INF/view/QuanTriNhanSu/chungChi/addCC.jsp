@@ -69,6 +69,7 @@
 				<div class="form-group col-md-3"></div>
 			</div>
 		</div>
+		<p>${thatbai}</p>
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
@@ -79,36 +80,35 @@
 							<form:hidden path="ID" />
 						</div>
 						<div class="form-group col-sm-6">
-							<form:errors path="maNhanVien"
-								cssStyle="color:red; display:block" />
 							<label><spring:message code="chungchi.QuanTriNhanSu.manv" />:</label>
 							<form:input class="form-control" type="text" path="maNhanVien"
-								value="${chungChi2.maNhanVien}" />
-
+								value="${chungChi2.maNhanVien}" disabled="true" />
+							<form:errors path="maNhanVien"
+								cssStyle="color:red; display:block" />
 						</div>
 						<div class="form-group col-sm-6">
-							<form:errors path="tenChungChi"
-								cssStyle="color:red; display:block" />
+
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.tenchungchi" />:</label>
 							<form:input class="form-control" type="text" path="tenChungChi" />
-
+							<form:errors path="tenChungChi"
+								cssStyle="color:red; display:block" />
 						</div>
 
 
 						<div class="form-group col-sm-6">
-							<form:errors path="ngayCap" cssStyle="color:red; display:block" />
+
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.ngaycap" />:</label>
 							<form:input class="form-control" type="Date" path="ngayCap" />
-
+							<form:errors path="ngayCap" cssStyle="color:red; display:block" />
 						</div>
 						<div class="form-group col-sm-6">
-							<form:errors path="donViCap" cssStyle="color:red; display:block" />
+
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.donvicap" />:</label>
 							<form:input class="form-control" type="text" path="donViCap" />
-
+							<form:errors path="donViCap" cssStyle="color:red; display:block" />
 						</div>
 
 						<tr>

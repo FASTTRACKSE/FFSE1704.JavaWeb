@@ -141,7 +141,6 @@
 								</div>
 							</div>
 
-
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 
@@ -154,6 +153,7 @@
 								</ul>
 							</div>
 						</div>
+						
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">

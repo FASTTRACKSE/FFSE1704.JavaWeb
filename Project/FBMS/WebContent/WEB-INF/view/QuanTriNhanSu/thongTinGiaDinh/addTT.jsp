@@ -71,6 +71,7 @@
 				<div class="form-group col-md-3"></div>
 			</div>
 		</div>
+		<p>${thatbai}</p>
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">

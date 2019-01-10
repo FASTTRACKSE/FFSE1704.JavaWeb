@@ -66,6 +66,7 @@ public class ThongTinGiaDinhController {
 			model.addAttribute("thongTinGiaDinh", new ThongTinGiaDinh());
 			model.addAttribute("thongTinGiaDinh2", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
 			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+			model.addAttribute("thatbai", "Xin mời bạn nhập lại!");
 			return "QuanTriNhanSu/thongTinGiaDinh/addTT";
 		}
 		thongTinGiaDinhService.addThongTinGiaDinh(thongTinGiaDinh);

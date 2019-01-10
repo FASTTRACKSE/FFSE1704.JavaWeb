@@ -78,13 +78,15 @@ public class ChungChiController {
 
 	@RequestMapping(value = "saveCC/{maNhanVien}")
 	public String AddChungChi(@PathVariable("maNhanVien") String maNhanVien,
-			@ModelAttribute("chungChi") @Valid ChungChi chungChi, BindingResult bindingResult,Model model) {
+			@ModelAttribute("chungChi") @Valid ChungChi chungChi, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("chungChi", new ChungChi());
 			model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
 			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+			model.addAttribute("thatbai", "Xin mời bạn nhập lại!");
 			return "QuanTriNhanSu/chungChi/addCC";
 		}
+		
 		chungChiService.addChungChi(chungChi);
 		return ("redirect:/ViewCC/{maNhanVien}");
 	}
