@@ -4,10 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -61,6 +64,7 @@ public class ChungChiController {
 	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
 	public String ViewChungChi(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/allchungchi";
 	}
 
@@ -68,14 +72,21 @@ public class ChungChiController {
 	public String ViewAddChungChi(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("chungChi", new ChungChi());
 		model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/addCC";
 	}
 
 	@RequestMapping(value = "saveCC/{maNhanVien}")
-	public ModelAndView AddChungChi(@PathVariable("maNhanVien") String maNhanVien,
-			@ModelAttribute("chungChi") ChungChi chungChi) {
+	public String AddChungChi(@PathVariable("maNhanVien") String maNhanVien,
+			@ModelAttribute("chungChi") @Valid ChungChi chungChi, BindingResult bindingResult,Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("chungChi", new ChungChi());
+			model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
+			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+			return "QuanTriNhanSu/chungChi/addCC";
+		}
 		chungChiService.addChungChi(chungChi);
-		return new ModelAndView("redirect:/ViewCC/{maNhanVien}");
+		return ("redirect:/ViewCC/{maNhanVien}");
 	}
 
 	@RequestMapping("/updateCC/{id}&{maNhanVien}")
@@ -84,6 +95,7 @@ public class ChungChiController {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/updateCC";
 	}
 
@@ -99,6 +111,7 @@ public class ChungChiController {
 			@PathVariable("id") int id) {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
 		return "QuanTriNhanSu/chungChi/deleteCC";
 	}
@@ -114,10 +127,10 @@ public class ChungChiController {
 		List<BangCap> trangThai = chungChiService.findMaBangByMaTrinhDo(IdtrinhDo);
 		model.addAttribute("trangThai", trangThai);
 		model.addAttribute("trinhdo", chungChiService.findTenTrinhDoByMaTrinhDo(IdtrinhDo));
-		
+
 		List<NhanSu> dsNhanSu = nhanSuService.allNS();
 		model.addAttribute("nSu", dsNhanSu);
-		
+
 		List<TrinhDo> dsTrinhDoBC = chungChiService.listTrinhDo();
 		model.addAttribute("dsTrinhDo", dsTrinhDoBC);
 

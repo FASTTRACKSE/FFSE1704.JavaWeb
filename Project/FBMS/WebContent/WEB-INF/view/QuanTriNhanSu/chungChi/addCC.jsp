@@ -49,8 +49,7 @@
 							style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
 					</p>
 					<h1 style="text-align: center; color: green">
-						${chungChi2.hoLot} ${chungChi2.ten}
-					</h1>
+						${chungChi2.hoLot} ${chungChi2.ten}</h1>
 					<p style="text-align: center;">
 						<a><spring:message code="chungchi.QuanTriNhanSu.manv" />:</a>
 						${chungChi2.maNhanVien}
@@ -58,6 +57,12 @@
 					<p style="text-align: center;">
 						<a><spring:message code="chungchi.QuanTriNhanSu.ngaysinh" />:</a>
 						<fmt:formatDate value="${chungChi2.namSinh}" pattern="dd-MM-yyyy" />
+					</p>
+					<p style="text-align: center;">
+						<spring:message code="chungchi.QuanTriNhanSu.phongban" />
+						:<a>${pbcd.phongBan.tenPhongBan}</a> -
+						<spring:message code="chungchi.QuanTriNhanSu.chucdanh" />
+						:<a>${pbcd.chucDanh.tenChucDanh}</a>
 					</p>
 				</div>
 
@@ -67,30 +72,39 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
-					<form:form method="post" action="/FBMS/saveCC"
+					<form:form method="post"
+						action="/FBMS/saveCC/${chungChi2.maNhanVien}"
 						modelAttribute="chungChi">
 						<div>
 							<form:hidden path="ID" />
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="maNhanVien"
+								cssStyle="color:red; display:block" />
 							<label><spring:message code="chungchi.QuanTriNhanSu.manv" />:</label>
 							<form:input class="form-control" type="text" path="maNhanVien"
 								value="${chungChi2.maNhanVien}" />
+
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="tenChungChi"
+								cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.tenchungchi" />:</label>
 							<form:input class="form-control" type="text" path="tenChungChi" />
+
 						</div>
 
 
 						<div class="form-group col-sm-6">
+							<form:errors path="ngayCap" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.ngaycap" />:</label>
 							<form:input class="form-control" type="Date" path="ngayCap" />
 
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="donViCap" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="chungchi.QuanTriNhanSu.donvicap" />:</label>
 							<form:input class="form-control" type="text" path="donViCap" />

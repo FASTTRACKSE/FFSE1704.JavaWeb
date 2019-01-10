@@ -60,6 +60,12 @@
 						<fmt:formatDate value="${thongTinGiaDinh2.namSinh}"
 							pattern="dd-MM-yyyy" />
 					</p>
+					<p style="text-align: center;">
+						<spring:message code="chungchi.QuanTriNhanSu.phongban" />
+						:<a>${pbcd.phongBan.tenPhongBan}</a> -
+						<spring:message code="chungchi.QuanTriNhanSu.chucdanh" />
+						:<a>${pbcd.chucDanh.tenChucDanh}</a>
+					</p>
 				</div>
 
 				<div class="form-group col-md-3"></div>
@@ -75,12 +81,15 @@
 							<form:hidden path="id" />
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="maNhanVien"
+								cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.manv" />:</label>
 							<form:input class="form-control" type="text" path="maNhanVien"
 								disabled="true" value="${thongTinGiaDinh2.maNhanVien}" />
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="hoVaTen" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.hovaten" />:</label>
 							<form:input class="form-control" type="text" path="hoVaTen" />
@@ -88,24 +97,29 @@
 
 
 						<div class="form-group col-sm-6">
+							<form:errors path="quanHe" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.quanhe" />:</label>
 							<form:input class="form-control" type="text" path="quanHe" />
 
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="namSinh" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.namsinh" />:</label>
 							<form:input class="form-control" type="Date" path="namSinh" />
 
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="ngheNghiep"
+								cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.nghenghiep" />:</label>
 							<form:input class="form-control" type="text" path="ngheNghiep" />
 
 						</div>
 						<div class="form-group col-sm-6">
+							<form:errors path="diaChi" cssStyle="color:red; display:block" />
 							<label><spring:message
 									code="thongtingd.QuanTriNhanSu.diachi" />:</label>
 							<form:input class="form-control" type="text" path="diaChi" />

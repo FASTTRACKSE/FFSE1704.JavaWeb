@@ -119,8 +119,7 @@
 												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
 										</p>
 										<h1 style="text-align: center; color: green">
-											${chungChi.hoLot} ${chungChi.ten}
-										</h1>
+											${chungChi.hoLot} ${chungChi.ten}</h1>
 										<p style="text-align: center;">
 											<a><spring:message code="chungchi.QuanTriNhanSu.manv" />:</a>
 											${chungChi.maNhanVien}
@@ -129,6 +128,12 @@
 											<a><spring:message code="chungchi.QuanTriNhanSu.ngaysinh" />:</a>
 											<fmt:formatDate value="${chungChi.namSinh}"
 												pattern="dd-MM-yyyy" />
+										</p>
+										<p style="text-align: center;">
+											<spring:message code="chungchi.QuanTriNhanSu.phongban" />
+											:<a>${pbcd.phongBan.tenPhongBan}</a> -
+											<spring:message code="chungchi.QuanTriNhanSu.chucdanh" />
+											:<a>${pbcd.chucDanh.tenChucDanh}</a>
 										</p>
 									</div>
 

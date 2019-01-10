@@ -14,14 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "chung_chi")
 public class ChungChi {
-	
+
 	@Id
 	@Column(name = "id", unique = true, nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +33,10 @@ public class ChungChi {
 	@JoinColumn(name = "ma_nhan_vien", referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false, nullable = false)
 	private NhanSu nhanSu;
 
-	
-	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	@NotNull
+	@NotEmpty(message="Tên không được rỗng!")
+	@Size(min = 5, max = 30)
+	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	private String tenChungChi;
 
 	@NotNull
@@ -42,10 +45,13 @@ public class ChungChi {
 	@Column(name = "ngay_cap", nullable = false)
 	private Date ngayCap;
 
-	@Column(name = "don_vi_cap", nullable = false, length = 255)
 	@NotNull
+	@NotEmpty(message="Đơn vị cấp không được rỗng!")
+	@Column(name = "don_vi_cap", nullable = false, length = 255)
 	private String donViCap;
 
+	@NotNull
+	@NotEmpty(message="Mã nhân viên không được rỗng!")
 	@Column(name = "ma_nhan_vien")
 	private String maNhanVien;
 
