@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -228,39 +229,47 @@ public class NhanSuController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
 	}
 
+//	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", method = RequestMethod.GET)
+//	public ModelAndView getdeleteNhanSuByID(@PathVariable int id, Model model) {
+//
+//		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
+//		model.addAttribute("nhanSu", nhanSu);
+//
+//		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
+//		model.addAttribute("listTinhThanh", listTinhThanh);
+//
+//		List<QuanHuyen> listQuanHuyen = nhanSuService.listQuanHuyen();
+//		model.addAttribute("listQuanHuyen", listQuanHuyen);
+//		List<QuocTich> listQuocTich = nhanSuService.listQuocTich();
+//		model.addAttribute("listQuocTich", listQuocTich);
+//		List<XaPhuong> listXaPhuong = nhanSuService.listXaPhuong();
+//		model.addAttribute("listXaPhuong", listXaPhuong);
+//		List<TrangThaiNhanSu> listTrangThai = nhanSuService.listTrangThai();
+//		model.addAttribute("listTrangThai", listTrangThai);
+//		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
+//	}
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", method = RequestMethod.GET)
-	public ModelAndView getdeleteNhanSuByID(@PathVariable int id, Model model) {
-
-		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
-		model.addAttribute("nhanSu", nhanSu);
-		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
-		model.addAttribute("listChucDanh", listChucDanh);
-
-		List<PhongBan> listPhongBan = nhanSuService.listPhongBan();
-		model.addAttribute("listPhongBan", listPhongBan);
-
-		List<ThanhPho> listTinhThanh = nhanSuService.listTinhThanhPho();
-		model.addAttribute("listTinhThanh", listTinhThanh);
-
-		List<QuanHuyen> listQuanHuyen = nhanSuService.listQuanHuyen();
-		model.addAttribute("listQuanHuyen", listQuanHuyen);
-
-		List<XaPhuong> listXaPhuong = nhanSuService.listXaPhuong();
-		model.addAttribute("listXaPhuong", listXaPhuong);
-
-		return new ModelAndView("QuanTriNhanSu/nhanSu/deleteNhanSu");
-	}
-
-	// thực hiện lệnh xóa
-	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/delNS/{id}", method = RequestMethod.POST)
-	public String doDel(@PathVariable int id, @RequestParam("delete") String delete, Model model) {
-
-		if (delete.equals("xoa")) {
-			nhanSuService.delete(id);
-		}
+	public String getdeleteNhanSuByID(@PathVariable("id") int id) {
+		
+			NhanSu ns = nhanSuService.getNhanSuByID(id);
+			ns.setIdTrangThai(2);
+			nhanSuService.update(ns);
+	    
+		
 
 		return "redirect:/QuanTriNhanSu/danhsach_nhansu";
 	}
+
+	// thực hiện lệnh xóa
+//	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/delNS/{id}", method = RequestMethod.POST)
+//	public String doDel(@PathVariable int id, @RequestParam("delete") String delete, Model model) {
+//
+//		if (delete.equals("xoa")) {
+//			nhanSuService.delete(id);
+//		}
+//
+//		return "redirect:/QuanTriNhanSu/danhsach_nhansu";
+//	}
 
 	public String upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
 

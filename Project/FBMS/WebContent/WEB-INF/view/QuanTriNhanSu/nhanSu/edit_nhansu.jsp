@@ -163,10 +163,10 @@
 								</c:forEach>
 							</form:select>
 						</div>
-						<tr>
-							<td><input class="btn btn-primary" type="submit" value="Save" /></td>
-							<td><a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a></td>
-						</tr>
+						
+							<input class="btn btn-primary" type="submit" value="Save" />
+							<a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a>
+						
 					</form:form>
 				</div>
 			</div>

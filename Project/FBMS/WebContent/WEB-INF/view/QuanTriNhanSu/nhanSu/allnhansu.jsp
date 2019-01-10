@@ -248,7 +248,8 @@
 
 												<td><a href="editNS/${ns.id}"><button
 															class="btn btn-success">sửa</button></a> <a
-													href="DeleteNS/${ns.id}"><button class="btn btn-danger">Xóa</button></a></td>
+													href="DeleteNS/${ns.id}"><button class="btn btn-danger"
+															name="action" value="choose">Xóa</button></a></td>
 
 											</tr>
 										</c:forEach>

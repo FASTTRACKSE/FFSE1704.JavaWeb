@@ -195,6 +195,14 @@ public class NhanSuDaoImpl implements NhanSuDao {
 		return trangThai;
 	}
 
+	@Override
+	public TrangThaiNhanSu getTrangThaiById(int idTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(TrangThaiNhanSu.class);
+		TrangThaiNhanSu trangThai = (TrangThaiNhanSu) criteria.add(Restrictions.eq("idTrangThai", idTrangThai)).uniqueResult();
+		return trangThai;
+	}
+
 
 
 	

@@ -42,6 +42,31 @@
 		<div class="content-body">
 			<div class="main-content">
 				<div class="row">
+				
+				<div class="form-group col-md-12">
+
+									<div class="main-content">
+										<div class="row">
+											<p>
+												<img src="<c:url value="/uploads/${bangCap.anhDaiDien}"/>"
+													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+											</p>
+											<h1 style="text-align: center; color: green">
+												${bangCap.hoLot} ${bangCap.ten}</a>
+											</h1>
+											<p style="text-align: center;">
+												<a>Mã nhân viên:</a> ${bangCap.maNhanVien}
+											</p>
+											<p style="text-align: center;">
+												<a>Ngày sinh:</a> <fmt:formatDate value="${bangCap.namSinh}"
+														pattern="dd-MM-yyyy" />
+											</p>
+											<p style="text-align: center;">
+												Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+											</p>
+										</div>
+									</div>
+								</div>
 					<form:form method="post" 
 						action="/FBMS/saveBangCap/${bangCap.maNhanVien}" modelAttribute="bang">
 						<div class="form-group col-sm-6">

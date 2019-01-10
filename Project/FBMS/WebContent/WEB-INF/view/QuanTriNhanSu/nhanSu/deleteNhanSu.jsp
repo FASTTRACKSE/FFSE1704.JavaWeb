@@ -35,33 +35,25 @@
 						modelAttribute="nhanSu">
 
 						<div class="form-group">
-
 							<form:hidden path="id" />
 							<br>
-
 						</div>
 						<div class="form-group">
 							<label>Mã Nhân Viên:</label>
 							<form:input class="form-control" type="text" path="maNhanVien" />
-
 							<br>
 						</div>
-						
 						<div class="form-group col-sm-6">
 							<label>Tinh thanh</label>
-							
 							 <form:select path="tinhThanhPho"
 								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
 								<c:forEach items="${listTinhThanh}" var="ltt">
 									<form:option value="${ltt.matp}" label="${ltt.name}" />
 								</c:forEach>
 							</form:select> 
-
 						</div>
-						
 						<div class="form-group col-sm-6">
 							<label>Quận Huyện</label>
-							
 							 <form:select path="maQuanHuyen"
 								class="custom-select block round" id="idQuanHuyen" onchange="selectQuan()">
 								<option value="" selected="selected" disabled="disabled">Chọn quận huyện</option>
@@ -69,12 +61,9 @@
 									<form:option value="${lqh.maqh}" label="${lqh.name}" />
 								</c:forEach>
 							</form:select>
-
 						</div>
-						
 						<div class="form-group col-sm-6">
 							<label>Xã Phường</label>
-							
 							 <form:select path="maXaPhuong"
 								class="custom-select block round" id="idPhuongXa" >
 								<option value="" selected="selected" disabled="disabled">Chọn xã phường</option>
@@ -82,23 +71,25 @@
 									<form:option value="${lxp.xaid}" label="${lxp.name}" />
 								</c:forEach>
 							</form:select> 
-
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
-
 							<br>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên</label>
 							<form:input class="form-control" type="text" path="ten" />
-
 							<br>
 						</div>
-						<div class="form-group col-sm-6">
-							<label>Ảnh</label> <input id="upload" type="file"
-								class="form-control-file" name="file"> <br>
+						<div class="form-group col-sm-4">
+							<label>Ảnh</label> <input id="imgUrl" class="form-control"
+						type="file" name="file" /> <br>
+						<form:hidden path="anhDaiDien" />
+						 <img src="<c:url value="/uploads/${nhanSu.anhDaiDien}" />"
+						width="100" height="150">
+						<img id="img" src="#"
+						alt="your image" width="100" height="150" />
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Năm Sinh</label>
@@ -128,13 +119,15 @@
 
 							<br>
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Quốc Tịch</label>
-							<form:input class="form-control" type="text"
-								path="quocTich.maQuocTich" />
-							<br>
+							<form:select path="maQuocTich"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listQuocTich}" var="lqt">
+									<form:option value="${lqt.maQuocTich}" label="${lqt.tenQuocTich}" />
+								</c:forEach>
+							</form:select>
 						</div>
-
 						<div class="form-group col-sm-6">
 							<label>Tạm trú</label>
 							<form:input class="form-control" type="text" path="noiTamTru" />
@@ -170,19 +163,19 @@
 							<form:input class="form-control" type="Date" path="ngayCap" />
 							<br>
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-4">
 							<label>Trạng thái</label>
-							<form:input class="form-control" type="text" path="trangThai" />
-							<br>
+							<form:select path="idTrangThai"
+								class="custom-select block round" id="customSelect">
+								<c:forEach items="${listTrangThai}" var="ltt">
+									<form:option value="${ltt.idTrangThai}" label="${ltt.name}" />
+								</c:forEach>
+							</form:select>
 						</div>
-						<tr>
-							<td></td>
-							<td><input type="submit" class="button"
-								name="delete" value="xoa" /></td>
-							<td><input type="submit" class="button" 
-								name="delete"
-								 value="huy" /></td>
-						</tr>
+						
+							<input class="btn btn-primary" type="submit" value="Save" />
+							<a class="btn btn-danger" href="/FBMS/QuanTriNhanSu/danhsach_nhansu/" >Back</a>
+						
 					</form:form>
 				</div>
 			</div>

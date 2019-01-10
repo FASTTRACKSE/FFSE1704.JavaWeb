@@ -63,6 +63,7 @@ public class BangCapController {
 	public String ShowViewADD(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("bang", new BangCap());
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		List<TrinhDo> listTrinhDo = bangCapService.listTrinhDo();
 		model.addAttribute("listTrinhDo", listTrinhDo);
 		return "QuanTriNhanSu/BangCap/view_addBC";
@@ -112,6 +113,7 @@ public class BangCapController {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
 		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		List<TrinhDo> listTrinhDo = bangCapService.listTrinhDo();
 		model.addAttribute("listTrinhDo", listTrinhDo);
 		return "QuanTriNhanSu/BangCap/editBangCap";
@@ -135,6 +137,7 @@ public class BangCapController {
 
 		model.addAttribute("bangCap", bangCapService.getBangCapByID(maNhanVien));
 		model.addAttribute("bangCap2", bangCapService.getBangCapUpdate(id));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 
 		return "QuanTriNhanSu/BangCap/deleteBangCap";
 

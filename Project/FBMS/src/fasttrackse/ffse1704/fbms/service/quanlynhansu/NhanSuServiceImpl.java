@@ -67,11 +67,6 @@ public class NhanSuServiceImpl implements NhanSuService {
 	}
 
 
-	@Override
-	public void delete(int id) {
-		this.nhanSuDao.delete(id);
-		
-	}
 
 
 	@Override
@@ -161,6 +156,23 @@ public class NhanSuServiceImpl implements NhanSuService {
 		
 		return nhanSuDao.findNameNhanSuByIdTrangThai(maTrangThai);
 	}
+
+
+	@Override
+	public TrangThaiNhanSu getTrangThaiById(int idTrangThai) {
+		// TODO Auto-generated method stub
+		return nhanSuDao.getTrangThaiById(idTrangThai);
+	}
+
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		this.nhanSuDao.delete(id);
+	}
+
+
+
 
 
 
