@@ -45,18 +45,18 @@
 							<label>Mã Nhân Viên:</label>
 							<form:input class="form-control" type="text" path="maNhanVien" />
 							<form:errors path="maNhanVien" cssClass="error"
-								style="color:pink" />
+								style="color:red" />
 							<p style="color: red">${attenion}</p>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
-							<form:errors path="hoLot" cssClass="error" style="color:pink" />
+							<form:errors path="hoLot" cssClass="error" style="color:red" />
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Tên</label>
 							<form:input class="form-control" type="text" path="ten" />
-							<form:errors path="ten" cssClass="error" style="color:pink" />
+							<form:errors path="ten" cssClass="error" style="color:red" />
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Tinh thanh</label>
@@ -123,44 +123,44 @@
 						<div class="form-group col-sm-4">
 							<label>Địa chỉ</label>
 							<form:input class="form-control" type="text" path="queQuan" />
-							<form:errors path="queQuan" cssClass="error" style="color:pink" />
+							<form:errors path="queQuan" cssClass="error" style="color:red" />
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Dân tộc</label>
 							<form:input class="form-control" type="text" path="danToc" />
-							<form:errors path="danToc" cssClass="error" style="color:pink" />
+							<form:errors path="danToc" cssClass="error" style="color:red" />
 							<br>
 						</div>
 						
 						<div class="form-group col-sm-4">
 							<label>Tạm trú</label>
 							<form:input class="form-control" type="text" path="noiTamTru" />
-							<form:errors path="noiTamTru" cssClass="error" style="color:pink" />
+							<form:errors path="noiTamTru" cssClass="error" style="color:red" />
 
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Điện thoại</label>
 							<form:input class="form-control" type="text" path="soDienThoai" />
 							<form:errors path="soDienThoai" cssClass="error"
-								style="color:pink" />
+								style="color:red" />
 
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Email</label>
 							<form:input class="form-control" type="text" path="email" />
-							<form:errors path="email" cssClass="error" style="color:pink" />
+							<form:errors path="email" cssClass="error" style="color:red" />
 
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Chứng minh</label>
 							<form:input class="form-control" type="text" path="soCMND" />
-							<form:errors path="soCMND" cssClass="error" style="color:pink" />
+							<form:errors path="soCMND" cssClass="error" style="color:red" />
 
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Nơi cấp</label>
 							<form:input class="form-control" type="text" path="noiCap" />
-							<form:errors path="noiCap" cssClass="error" style="color:pink" />
+							<form:errors path="noiCap" cssClass="error" style="color:red" />
 
 						</div>
 						<div class="form-group col-sm-4">

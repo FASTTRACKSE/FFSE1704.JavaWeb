@@ -132,7 +132,8 @@ public class NhanSuController {
 	}
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu,@RequestParam("maNhanVien") String maNhanVien, BindingResult bindingResult,
+	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu,
+			BindingResult bindingResult,@RequestParam("maNhanVien") String maNhanVien,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
 		
@@ -141,12 +142,7 @@ public class NhanSuController {
 			nhanSu.setAnhDaiDien(fileName);
 		}
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("nhanSu", new NhanSu());
-
-			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
-			
-			model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
-			
+			//model.addAttribute("nhanSu", new NhanSu());
 			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
 			
 			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
@@ -158,7 +154,7 @@ public class NhanSuController {
 		}
 		boolean checkMaNhanSu = nhanSuService.checkExistMa(maNhanVien);
 		if(checkMaNhanSu) {
-			model.addAttribute("nhanSu", new NhanSu());
+			//model.addAttribute("nhanSu", new NhanSu());
 
 			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
 			
@@ -340,4 +336,6 @@ public class NhanSuController {
 		return "QuanTriNhanSu/nhanSu/ListNhanSuByTrangThai";
 
 	}
+
+	
 }
