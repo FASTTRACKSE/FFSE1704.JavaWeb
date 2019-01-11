@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import fasttrackse.ffse1704.fbms.dao.security.UserAccountDao;
+import fasttrackse.ffse1704.fbms.entity.security.CustomUserDetail;
 import fasttrackse.ffse1704.fbms.entity.security.UserAccount;
 
 @Service
@@ -15,19 +16,25 @@ public class UserServiceImpl implements UserService {
 	private UserAccountDao userDao;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) {
+	public CustomUserDetail loadUserByUsername(String username) {
 		UserAccount user = userDao.loadUserByUsername(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException("No user found with id:" + username);
 		}
 
-		boolean enabled = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
+        CustomUserDetail customUserDetail=new CustomUserDetail();
+        customUserDetail.setUser(user);
+        customUserDetail.setAuthorities(user.getAuthorities());
 
-		return new User(username, user.getPassword(), enabled, accountNonExpired, credentialsNonExpired,
-				accountNonLocked, user.getAuthorities());
+        return customUserDetail;
+
+//		boolean enabled = true;
+//		boolean accountNonExpired = true;
+//		boolean credentialsNonExpired = true;
+//		boolean accountNonLocked = true;
+//		
+//		return (new User(username, user.getPassword(), enabled, accountNonExpired, credentialsNonExpired,
+//				accountNonLocked, user.getAuthorities()));
 	}
 }

@@ -13,6 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fasttrackse.ffse1704.fbms.entity.security.CustomUserDetail;
+import fasttrackse.ffse1704.fbms.entity.security.HoSoNhanVien;
+
 @Controller
 public class LoginController {
 	@RequestMapping(value = { "/login" })

@@ -11,6 +11,11 @@
 		<div class="content-header row"></div>
 		<div class="content-body">
 			<!-- Stats -->
+			
+			Nhân viên: ${userLogin.maNhanVien} - ${userLogin.hoDem} ${userLogin.ten} <br />
+			Phòng ban: ${userLogin.phongBan.maPhongBan} - ${userLogin.phongBan.tenPhongBan}<br/>
+			Chức danh: ${userLogin.chucDanh.maChucDanh} - ${userLogin.chucDanh.tenChucDanh}
+			
 			<div class="row">
 				<div class="col-xl-3 col-lg-6 col-xs-12">
 					<div class="card">
