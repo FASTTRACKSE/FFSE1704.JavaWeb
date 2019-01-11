@@ -30,6 +30,8 @@ public interface LogworkService {
 	public List<VaiTroDuAnLogwork> listVaiTroDuAn();
 
 	public List<NhanVienLogwork> listNhanVien();
+	
+	public List<Logwork> listLogworkPhongBan(String maPhongBan, String date);
 
 	public void addNew(Logwork logwork);
 

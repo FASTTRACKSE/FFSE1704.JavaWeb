@@ -3,9 +3,12 @@ package fasttrackse.ffse1704.fbms.controller.quanlythoigian;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -182,9 +185,8 @@ public class LogworkController {
 		}
 		return "redirect:/QuanLyThoiGian/Logwork/list";
 	}
-	
-	
-	//PM
+
+	// PM
 	@RequestMapping(value = "/listDate/{date}")
 	public String pmViewLogwork(@PathVariable("date") String date, Model model,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int currentPage) {
@@ -204,48 +206,119 @@ public class LogworkController {
 		model.addAttribute("currentPage", currentPage);
 		return "QuanLyThoiGian/logwork/listdate";
 	}
-	
-	//view by pm
-	
-		@RequestMapping(value = "/pmview/{id}", method = RequestMethod.GET)
-		public String pmview(@PathVariable("id") int id, Model model) {
-			List<PhongBanLogwork> listPhongBan = logworkService.listPhongBan();
-			List<DuAnLogwork> listDuAn = logworkService.listDuAn();
-			List<NhanVienLogwork> listNhanVien = logworkService.listNhanVien();
-			List<VaiTroDuAnLogwork> listVaiTroDuAn = logworkService.listVaiTroDuAn();
-			model.addAttribute("dsPhongBan", listPhongBan);
-			model.addAttribute("dsDuAn", listDuAn);
-			model.addAttribute("dsVaiTroDuAn", listVaiTroDuAn);
-			model.addAttribute("dsNhanVien", listNhanVien);
-			model.addAttribute("editlogwork", logworkService.findByIdLogwork(id));
-			return "QuanLyThoiGian/logwork/viewbypm";
-		}
 
-		@RequestMapping(value = "/pmview/{id}", method = RequestMethod.POST)
-		public String pmPD(@PathVariable("id") int id,Model model, @ModelAttribute("pmPD") Logwork logwork,
-				final RedirectAttributes redirectAttributes, @RequestParam String action) {
-			Calendar ca = Calendar.getInstance();
-			int m = ca.get(Calendar.MONTH) + 1;
-			int d = ca.get(Calendar.DAY_OF_MONTH);
-			int y = ca.get(Calendar.YEAR);
+	// view by pm
 
-			try {
-				String msg = "";
-				if (action.equals("pheduyet")) {
-					msg = "Đã phê duyệt";
-					TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
-					trangThaiLogwork.setMaTrangThai(1);
-					logwork.setTrangThaiLogwork(trangThaiLogwork);
-				} else if (action.equals("exit")) {
-					return "redirect:/QuanLyThoiGian/Logwork/listDate/" + Integer.toString(y) + Integer.toString(m) + Integer.toString(d);	
-				}
-				logworkService.update(logwork);
-				redirectAttributes.addFlashAttribute("button", msg);
-			} catch (Exception e) {
-				redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
+	@RequestMapping(value = "/pmview/{id}", method = RequestMethod.GET)
+	public String pmview(@PathVariable("id") int id, Model model) {
+		List<PhongBanLogwork> listPhongBan = logworkService.listPhongBan();
+		List<DuAnLogwork> listDuAn = logworkService.listDuAn();
+		List<NhanVienLogwork> listNhanVien = logworkService.listNhanVien();
+		List<VaiTroDuAnLogwork> listVaiTroDuAn = logworkService.listVaiTroDuAn();
+		model.addAttribute("dsPhongBan", listPhongBan);
+		model.addAttribute("dsDuAn", listDuAn);
+		model.addAttribute("dsVaiTroDuAn", listVaiTroDuAn);
+		model.addAttribute("dsNhanVien", listNhanVien);
+		model.addAttribute("editlogwork", logworkService.findByIdLogwork(id));
+		return "QuanLyThoiGian/logwork/viewbypm";
+	}
+
+	@RequestMapping(value = "/pmview/{id}", method = RequestMethod.POST)
+	public String pmPD(@PathVariable("id") int id, Model model, @ModelAttribute("pmPD") Logwork logwork,
+			final RedirectAttributes redirectAttributes, @RequestParam String action) {
+		Calendar ca = Calendar.getInstance();
+		int m = ca.get(Calendar.MONTH) + 1;
+		int d = ca.get(Calendar.DAY_OF_MONTH);
+		int y = ca.get(Calendar.YEAR);
+
+		try {
+			String msg = "";
+			if (action.equals("pheduyet")) {
+				msg = "Đã phê duyệt";
+				TrangThaiLogwork trangThaiLogwork = new TrangThaiLogwork();
+				trangThaiLogwork.setMaTrangThai(1);
+				logwork.setTrangThaiLogwork(trangThaiLogwork);
+			} else if (action.equals("exit")) {
+				return "redirect:/QuanLyThoiGian/Logwork/listDate/" + Integer.toString(y) + Integer.toString(m)
+						+ Integer.toString(d);
 			}
-			
-			return "redirect:/QuanLyThoiGian/Logwork/listDate/" + Integer.toString(y) + Integer.toString(m) + Integer.toString(d);
+			logworkService.update(logwork);
+			redirectAttributes.addFlashAttribute("button", msg);
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
 
+		return "redirect:/QuanLyThoiGian/Logwork/listDate/" + Integer.toString(y) + Integer.toString(m)
+				+ Integer.toString(d);
+	}
+
+	// list phong ban
+	@RequestMapping(value = "/listphongban/{maPhongBan}")
+	public String phongBanLogwork(@PathVariable("maPhongBan") String maPhongBan, Model model,
+			@RequestParam(name = "xem", required = false) String action,
+			@RequestParam(name = "month", required = false) String month,
+			@RequestParam(name = "year", required = false) String year) {
+		String months, date;
+		if (month != null) {
+			if (Integer.parseInt(month) < 10) {
+				months = "0" + month;
+			} else {
+				months = month;
+			}
+			model.addAttribute("thang", months + "/" + year);
+			date = year + months;
+			// return "redirect:/QuanLyThoiGian/Logwork/listphongban/PDA1";
+		} else {
+			Calendar ca = Calendar.getInstance();
+			String mm;
+			int m = ca.get(Calendar.MONTH) + 1;
+			if (m < 10) {
+				mm = "0" + Integer.toString(m);
+			} else {
+				mm = Integer.toString(m);
+			}
+			int y = ca.get(Calendar.YEAR);
+			date = Integer.toString(y) + mm;
+			model.addAttribute("thang", mm + "/" + y);
+		}
+		List<Logwork> listLogWork = logworkService.listLogworkPhongBan(maPhongBan, date);
+		if (listLogWork.size() == 0) {
+			return "QuanLyThoiGian/logwork/thoigianlamviecphongban";
+		}
+		List<Logwork> listLogWorkReport = new ArrayList<Logwork>();
+
+		NhanVienLogwork currentNVLogwork = listLogWork.get(0).getMaNhanVien();
+		DuAnLogwork currentDALogwork = listLogWork.get(0).getMaDuAn();
+
+		double total = 0;
+		int stt = 0;
+
+		for (int i = 0; i < listLogWork.size(); i++) {
+			Logwork lg = listLogWork.get(i);
+
+			if (currentNVLogwork.getMaNVien().equals(lg.getMaNhanVien().getMaNVien())) {
+				if (currentDALogwork.getMaDAn().equals(lg.getMaDuAn().getMaDAn())) {
+					total += lg.getKhoangTG();
+				} else {
+					stt += 1;
+					listLogWorkReport.add(new Logwork(stt, currentDALogwork, currentNVLogwork, total));
+
+					currentDALogwork = lg.getMaDuAn();
+					total = lg.getKhoangTG();
+				}
+			} else {
+				stt += 1;
+				listLogWorkReport.add(new Logwork(stt, currentDALogwork, currentNVLogwork, total));
+
+				currentNVLogwork = lg.getMaNhanVien();
+				currentDALogwork = lg.getMaDuAn();
+				total = lg.getKhoangTG();
+			}
+		}
+		listLogWorkReport.add(new Logwork(stt, currentDALogwork, currentNVLogwork, total));
+		model.addAttribute("listDSPhongBan", listLogWorkReport);
+		model.addAttribute("phongBan", listLogWork.get(0).getMaPhongBan().getTenPhongBan());
+
+		return "QuanLyThoiGian/logwork/thoigianlamviecphongban";
+	}
 }

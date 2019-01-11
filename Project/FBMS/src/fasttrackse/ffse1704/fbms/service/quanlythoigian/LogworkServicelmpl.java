@@ -118,4 +118,9 @@ public class LogworkServicelmpl implements LogworkService {
 	public List<NhanVienLogwork> listNhanVien() {
 		return logworkDao.listNhanVien();
 	}
+
+	@Override
+	public List<Logwork> listLogworkPhongBan(String maPhongBan, String date) {
+		return logworkDao.listLogworkPhongBan(maPhongBan,date);
+	}
 }
