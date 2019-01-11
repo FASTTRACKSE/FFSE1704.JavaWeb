@@ -260,20 +260,6 @@
 					</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 <!-- ////////////////////////////////////////////////////////////////////////////-->
-<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
 
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.date.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/pickadate/picker.time.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/pickadate/legacy.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/vendors/js/pickers/daterange/daterangepicker.js"/> "></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/scripts/pickers/dateTime/picker-date-time.js"/> "></script>
+
 
