@@ -25,6 +25,8 @@ import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
+import fasttrackse.ffse1704.fbms.entity.security.ChucDanh;
+import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 
 @Entity
 @Table(name = "ho_so_nhan_su")
@@ -113,6 +115,54 @@ public class NhanSu implements Serializable {
 	@NotEmpty(message = "Vui Lòng Nhập quê quán nhân viên")
 	@Column(name = "que_quan")
 	private String queQuan;
+	
+	@NotEmpty
+	@Column(name = "ma_phong_ban")
+	private String maPhongBan;
+	
+	@NotEmpty
+	@Column(name = "ma_chuc_danh")
+	private String maChucDanh;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban",insertable = false, nullable = false, updatable = false)
+	private PhongBan phongBan;
+	
+	@ManyToOne
+	@JoinColumn(name = "ma_chuc_danh", referencedColumnName = "ma_chuc_danh",insertable = false, nullable = false, updatable = false)
+	private ChucDanh chucDanh;
+
+	public String getMaPhongBan() {
+		return maPhongBan;
+	}
+
+	public void setMaPhongBan(String maPhongBan) {
+		this.maPhongBan = maPhongBan;
+	}
+
+	public String getMaChucDanh() {
+		return maChucDanh;
+	}
+
+	public void setMaChucDanh(String maChucDanh) {
+		this.maChucDanh = maChucDanh;
+	}
+
+	public PhongBan getPhongBan() {
+		return phongBan;
+	}
+
+	public void setPhongBan(PhongBan phongBan) {
+		this.phongBan = phongBan;
+	}
+
+	public ChucDanh getChucDanh() {
+		return chucDanh;
+	}
+
+	public void setChucDanh(ChucDanh chucDanh) {
+		this.chucDanh = chucDanh;
+	}
 
 	@NotEmpty(message = "Vui Lòng Nhập dân tộc nhân viên")
 	@Column(name = "dan_toc")
