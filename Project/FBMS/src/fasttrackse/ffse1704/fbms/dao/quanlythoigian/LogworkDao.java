@@ -42,4 +42,6 @@ public interface LogworkDao {
 	public List<Logwork> listDate(int start, int total, String date);
 	
 	public List<Logwork> listAllDate(String date);
+	
+	public List<Logwork> listLogworkPhongBan(String maPhongBan, String date);
 }

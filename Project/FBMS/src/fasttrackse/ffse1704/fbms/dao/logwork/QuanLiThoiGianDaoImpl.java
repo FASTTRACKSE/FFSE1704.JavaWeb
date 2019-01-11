@@ -37,6 +37,8 @@ public interface QuanLiThoiGianDaoImpl {
 
 	public List<ThoiGianLamViec> listTheoTrangThai(int maTrangThai);
 
-	public List<ThoiGianLamViec> baoCaoTheoMaNV(int maNhanVien);
+	public List<ThoiGianLamViec> baoCaoTheoMaNV(String maNhanVien);
+
+	public List<ThoiGianLamViec> listLogworkPhongBan(String maPhongBan);
 
 }

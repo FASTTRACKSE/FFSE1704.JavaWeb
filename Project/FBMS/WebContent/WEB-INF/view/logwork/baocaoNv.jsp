@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -132,6 +133,10 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-6 col-xs-12">
+				<c:set var="total" value="${0}" />
+
+			</div>
 		</div>
 	</div>
 	<!-- End Path -->
@@ -191,7 +196,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:set var="total" value="${0}" />
+
 										<c:forEach var="lg" items="${baoCao}">
 											<tr>
 												<td>${lg.id}</td>
@@ -201,13 +206,12 @@
 												<td>${lg.maPhongBan.tenPhongBan}</td>
 												<td>${lg.moTa}</td>
 												<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-												<td><b style="text-align: left;">${lg.tongThoiGian}h</b></td>
-												 <c:set var="total" value="${total + lg.tongThoiGian}" />
+												<td><fmt:formatNumber value="${lg.tongThoiGian}" /></td>
+												<c:set var="total" value="${total + lg.tongThoiGian}" />
 											</tr>
 										</c:forEach>
-									
+
 									</tbody>
-										<tr> <td>Tổng Thời Gian Làm Việc: <p style="color:red";> ${total}h</p></td></tr>
 									<tbody>
 										<div class="modal fade" id="confirm-delete" tabindex="-1"
 											role="dialog" aria-labelledby="myModalLabel"
@@ -237,6 +241,13 @@
 										</div>
 									</tbody>
 								</table>
+								<div class="col-md-3"></div>
+								<div class="col-md-3"></div>
+								<div class="col-md-3"></div>
+								<div class="col-md-3">
+									Tổng Thời Gian Làm Việc:
+									<fmt:formatNumber value="${total}" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -244,7 +255,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

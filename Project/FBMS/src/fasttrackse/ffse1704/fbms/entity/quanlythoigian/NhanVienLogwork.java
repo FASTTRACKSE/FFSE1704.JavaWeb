@@ -1,10 +1,17 @@
 package fasttrackse.ffse1704.fbms.entity.quanlythoigian;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -66,6 +73,19 @@ public class NhanVienLogwork {
 	
 	public String getFullName() {
 		return hoDem + " " + ten ;
+	}
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	  @JoinTable(name = "phan_cong_nhiem_vu", 
+	    joinColumns = { @JoinColumn(name = "ma_nhan_vien") }, 
+	    inverseJoinColumns = {@JoinColumn(name = "ma_du_an") })
+	  private Set<DuAnLogwork> products = new HashSet<>();
+
+	public Set<DuAnLogwork> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<DuAnLogwork> products) {
+		this.products = products;
 	}
 	
 }

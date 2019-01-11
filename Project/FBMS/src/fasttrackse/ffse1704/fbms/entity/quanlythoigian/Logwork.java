@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 
@@ -49,7 +51,7 @@ public class Logwork {
 	@ManyToOne
 	@JoinColumn(name = "ma_vai_tro", nullable = false, referencedColumnName = "ma_vai_tro")
 	private VaiTroDuAnLogwork maVaiTroDuAn;
-	
+
 	public void setMaVaiTro(VaiTroDuAnLogwork maVaiTro) {
 		this.maVaiTroDuAn = maVaiTro;
 	}
@@ -57,11 +59,38 @@ public class Logwork {
 	@ManyToOne
 	@JoinColumn(name = "ma_phong_ban", nullable = false, referencedColumnName = "ma_phong_ban")
 	private PhongBanLogwork maPhongBan;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "trang_thai", nullable = false, referencedColumnName = "id_trang_thai")
 	private TrangThaiLogwork trangThaiLogwork;
+
+	@Transient
+	double khoangTG;
+
+	@Transient
+	public double getKhoangTGReport() {
+		return  khoangTG/60;
+	}
+
+	public double getKhoangTG() {
+		double tg = ((thoiGianKetThuc.getTime() - thoiGianBatDau.getTime()) / 1000 / 60);
+		return tg;
+	}
+
 	
+
+	public Logwork(int id, DuAnLogwork maDuAn, NhanVienLogwork maNhanVien, double khoangTG) {
+		super();
+		this.id = id;
+		this.maDuAn = maDuAn;
+		this.maNhanVien = maNhanVien;
+		this.khoangTG = khoangTG;
+	}
+
+	public void setKhoangTG(long khoangTG) {
+		this.khoangTG = khoangTG;
+	}
+
 	public NhanVienLogwork getMaNhanVien() {
 		return maNhanVien;
 	}
@@ -79,7 +108,7 @@ public class Logwork {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_bat_dau", nullable = true)
-	@NotNull	
+	@NotNull
 	private Date thoiGianBatDau;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -114,12 +143,9 @@ public class Logwork {
 		this.id = id;
 	}
 
-	
-	
-
 	public Logwork(int id, DuAnLogwork maDuAn, NhanVienLogwork maNhanVien, VaiTroDuAnLogwork maVaiTroDuAn,
 			PhongBanLogwork maPhongBan, TrangThaiLogwork trangThaiLogwork, String tenCongViec, String moTa,
-			Date thoiGianBatDau, Date thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
+			@NotNull Date thoiGianBatDau, @NotNull Date thoiGianKetThuc, String nhanXetPM, String nhanXetTPP) {
 		super();
 		this.id = id;
 		this.maDuAn = maDuAn;
@@ -159,11 +185,9 @@ public class Logwork {
 		this.moTa = moTa;
 	}
 
-
 	public Date getThoiGianBatDau() {
 		return thoiGianBatDau;
 	}
-
 
 	public Date getThoiGianKetThuc() {
 		return thoiGianKetThuc;

@@ -93,7 +93,7 @@
 							<button type="submit" name="action" value="submit"
 								class="btn btn-info">Submit</button>
 							<button type="submit" name="action" value="exit"
-								class="btn btn-warning">Exit</button>
+								class="btn btn-warning">Back</button>
 						</div>
 					</form:form>
 				</div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -63,9 +64,6 @@
 			<div class="content-header-right col-md-3 col-xs-12">
 				<div role="group" aria-label="Button group with nested dropdown"
 					class="btn-group float-md-right" id="add-new">
-					<a href="<c:url value = "/QuanLyThoiGian/Logwork/addlogwork"/>"
-						class="btn btn-primary"><span class="fa fa-plus"></span> Thêm
-						mới</a>
 				</div>
 			</div>
 		</div>
@@ -96,7 +94,7 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Danh sách Logwork</h4>
+							<h4 class="card-title">BÁO CÁO THỜI GIAN LÀM VIỆC PHÒNG BAN</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
 							<div class="heading-elements">
@@ -108,8 +106,28 @@
 								</ul>
 							</div>
 						</div>
+						<form action="">
+						<div class="form-group col-sm-2">
+							<select class="form-control" name="month" id="month">
+								<c:forEach var="i" begin="1" end="12">
+									<option value="${i}">Tháng ${i}</option>
+								</c:forEach>
 
+							</select>
+						</div>
+						<div class="form-group col-sm-2">
+							<select class="form-control" name="year" id="year">
+								<c:forEach var="i" begin="2013" end="2023">
+									<option value="${i}">Năm ${i}</option>
+								</c:forEach>
 
+							</select>
+						</div>
+						<div class="form-group col-sm-2">
+							<button type="submit" name="action" value="xem"
+								class="btn btn-success">Xem</button>
+						</div>
+						</form>
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
@@ -117,71 +135,44 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
-												<th scope="col">ID</th>
-												<th scope="col">Dự Án</th>
-												<th scope="col">Tên Nhân Viên</th>
-												<th scope="col">Vai Trò</th>
-												<th scope="col">Phòng Ban</th>
-												<th scope="col">Công Việc</th>
-												<th scope="col">Trạng Thái</th>
-												<th scope="col">Action</th>
+												<th scope="col">Phòng</th>
+												<th scope="col" style="color: red"><c:out value="${phongBan}" /></th>
+												<th scope="col"></th>
+												<th scope="col">Tháng</th>
+												<th scope="col" style="color: red">${thang}</th>
+											</tr>
+											<tr>
+												<th scope="col">STT</th>
+												<th scope="col">Nhân viên</th>
+												<th scope="col">Dự án</th>
+												<th scope="col">Thời gian</th>
+												<th scope="col">Thao tác</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="lg" items="${logwork}">
+											<c:set var="stt" value="${0}" />
+											<c:set var="nv" value="" />
+											<c:forEach var="lg" items="${listDSPhongBan}">
+												<c:set var="ttg" value="${lg.getKhoangTGReport()*100}" />
 												<tr>
-													<td>${lg.id}</td>
-													<td>${lg.maDuAn.tenDuAn}</td>
-													<td>${lg.maNhanVien.hoDem}${lg.maNhanVien.ten}</td>
-													<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
-													<td>${lg.maPhongBan.tenPhongBan}</td>
-													<td>${lg.tenCongViec}</td>
-													<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a>
-														<c:if
-															test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-															<a href="edit/${lg.id }"><i class="fa fa-pencil"></i></a>
-														</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-															<a href="delete/${lg.id }"
-																onclick="return confirm('Bạn có muốn xóa ?');"><i
-																class="fa fa-trash"></i></a>
+													<td><c:if test="${nv ne lg.maNhanVien.maNVien}">
+															<c:out value="${stt = stt + 1}" />
 														</c:if></td>
+													<td><c:if test="${nv ne lg.maNhanVien.maNVien}">${lg.maNhanVien.fullName}</c:if></td>
+													<td>${lg.maDuAn.tenDuAn}</td>
+													<td><fmt:formatNumber type="number" pattern="#.##"
+															value="${lg.getKhoangTGReport()}" /> h</td>
+													<%-- <td>${lg.thoiGian}</td> --%>
+													<td><a href="view/${lg.id }"><i class="fa fa-eye"></i></a></td>
 												</tr>
+												<c:set var="nv" value="${lg.maNhanVien.maNVien}" />
 											</c:forEach>
-										</tbody>
-										<tbody>
-											<div class="modal fade" id="confirm-delete" tabindex="-1"
-												role="dialog" aria-labelledby="myModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Bạn có
-																chắc muốn xóa</h4>
-														</div>
-
-														<div class="modal-body">
-															<p>Bạn có chắc muốn xóa</p>
-															<p class="debug-url"></p>
-														</div>
-
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Quay lại</button>
-															<a class="btn btn-danger btn-ok">Xóa</a>
-														</div>
-													</div>
-												</div>
-											</div>
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
-						<div class="card-header">
+						<%-- <div class="card-header">
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
 									<c:if test="${lastPage > 0 }">
@@ -210,36 +201,11 @@
 									</c:if>
 								</ul>
 							</nav>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	window.onload = function() {
-		$('#confirm-delete').on(
-				'show.bs.modal',
-				function(e) {
-					$(this).find('.btn-ok').attr('href',
-							$(e.relatedTarget).data('href'));
-				});
-
-		$('#datatable').dataTable().fnDestroy();
-
-		$("#datatable").dataTable({
-			responsive : true,
-			"order" : [ [ 1, "asc" ], [ 0, "desc" ] ],
-			"bServerSide" : true,
-			"sAjaxSource" : "/FBMS/QuanLyThoiGian/Logwork/list",
-		});
-	};
-
-	window.setTimeout(function() {
-		$(".alert").fadeTo(500, 0).slideUp(500, function() {
-			$(this).remove();
-		});
-	}, 2500);
-</script>
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />
