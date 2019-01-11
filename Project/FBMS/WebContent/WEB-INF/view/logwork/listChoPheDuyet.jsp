@@ -183,9 +183,10 @@
 														test="${lg.trangThaiLogwork.maTrangThai == 5 ||lg.trangThaiLogwork.maTrangThai == 3||lg.trangThaiLogwork.maTrangThai == 1}">
 														<td>${lg.id}</td>
 														<td>${lg.maDuAn.tenDuAn}</td>
-														<td>${lg.maNhanVien.hoDem}<b>${lg.maNhanVien.ten}</b></td>
+														<td>${lg.maNhanVien.fullName}</td>
 														<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
 														<td>${lg.maPhongBan.tenPhongBan}</td>
+														<td>${lg.moTa}</td>
 														<td>${lg.trangThaiLogwork.tenTrangThai}</td>
 														<td><a href="viewPheDuyet/${lg.id}"><button
 																	class="btn btn-success">View</button></a></td>

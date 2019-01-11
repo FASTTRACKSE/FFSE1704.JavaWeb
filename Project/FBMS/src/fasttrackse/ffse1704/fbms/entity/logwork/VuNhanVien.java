@@ -7,13 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "ho_so_nhan_vien")
+@Table(name = "ho_so_nhan_su")
 public class VuNhanVien {
 	@Id
 	@Column(name = "ma_nhan_vien")
-	int maNVien;
+	String maNVien;
 
 	@Column(name = "ho_dem")
 	String hoDem;
@@ -21,14 +22,21 @@ public class VuNhanVien {
 	@Column(name = "ten")
 	String ten;
 	
-	@OneToMany(mappedBy = "maNhanVien")
-	private Collection<ThoiGianLamViec> thoiGianLamViec;
+	@Transient
+	String fullName;
+	
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
-	public int getMaNVien() {
+	@OneToMany(mappedBy = "maNhanVien")
+	private Collection<ThoiGianLamViec> logworks;
+
+	public String getMaNVien() {
 		return maNVien;
 	}
 
-	public void setMaNVien(int maNVien) {
+	public void setMaNVien(String maNVien) {
 		this.maNVien = maNVien;
 	}
 
@@ -48,16 +56,16 @@ public class VuNhanVien {
 		this.ten = ten;
 	}
 
-	public Collection<ThoiGianLamViec> getThoiGianLamViec() {
-		return thoiGianLamViec;
+	public Collection<ThoiGianLamViec> getLogworks() {
+		return logworks;
 	}
 
-	public void setThoiGianLamViec(Collection<ThoiGianLamViec> thoiGianLamViec) {
-		this.thoiGianLamViec = thoiGianLamViec;
+	public void setLogworks(Collection<ThoiGianLamViec> logworks) {
+		this.logworks = logworks;
 	}
-
-	public String getTenNhanVien() {
-		return hoDem + ten ;
+	
+	public String getFullName() {
+		return hoDem + " " + ten ;
 	}
 	
 }

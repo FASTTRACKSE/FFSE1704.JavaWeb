@@ -20,6 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "thoi_gian_cong_viec")
 public class ThoiGianLamViec {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, length = 11)
@@ -66,18 +67,35 @@ public class ThoiGianLamViec {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "thoi_gian_ket_thuc", nullable = true)
 	private Date thoiGianKetThuc;
-	
-	@Transient
-	private long tongThoiGian; // = thoiGianKetThuc - thoiGianBatDau
 
-	public long getTongThoiGian() {
-		long secs = (this.thoiGianKetThuc.getTime() - this.thoiGianBatDau.getTime()) / 1000;
-		long mins = secs / 60;    
-		long hours = mins/60;
+	@Transient
+	private double tongThoiGian; // = thoiGianKetThuc - thoiGianBatDau
+
+	@Transient
+	public double getKhoangTGReport() {
+		return tongTg / 60;
+	}
+
+	@Transient
+	private double tongTg;
+
+	public double getTongTg() {
+		double tg = ((thoiGianKetThuc.getTime() - thoiGianBatDau.getTime()) / 1000 / 60);
+		return tg;
+	}
+
+	public void setTongTg(double tongTg) {
+		this.tongTg = tongTg;
+	}
+
+	public double getTongThoiGian() {
+		double secs = (this.thoiGianKetThuc.getTime() - this.thoiGianBatDau.getTime()) / 1000;
+		double mins = secs / 60;
+		double hours = mins / 60;
 		return hours;
 	}
 
-	public void setTongThoiGian(long tongThoiGian) {
+	public void setTongThoiGian(double tongThoiGian) {
 		this.tongThoiGian = tongThoiGian;
 	}
 
@@ -172,7 +190,7 @@ public class ThoiGianLamViec {
 	}
 
 	public void setTrangThaiLogwork(VuTrangThai trangThaiLogwork) {
-		this.trangThaiLogwork = trangThaiLogwork; 
+		this.trangThaiLogwork = trangThaiLogwork;
 	}
 
 	public void setMaDuAn(VuDuAnLogwork maDuAn) {
@@ -181,7 +199,17 @@ public class ThoiGianLamViec {
 
 	public ThoiGianLamViec() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	@Transient
+	private int stt;
+
+	public int getStt() {
+		return stt;
+	}
+
+	public void setStt(int stt) {
+		this.stt = stt;
 	}
 
 	public ThoiGianLamViec(int id, VuDuAnLogwork maDuAn, VuNhanVien maNhanVien, VuVaiTroDuAn maVaiTroDuAn,
@@ -200,6 +228,18 @@ public class ThoiGianLamViec {
 		this.thoiGianKetThuc = thoiGianKetThuc;
 		this.nhanXetPM = nhanXetPM;
 		this.nhanXetTPP = nhanXetTPP;
+	}
+
+	public ThoiGianLamViec(VuDuAnLogwork maDuAn, VuNhanVien maNhanVien, String tenCongViec, VuPhongBan maPhongBan,
+			VuTrangThai trangThaiLogwork, double tongTg) {
+		super();
+		this.maDuAn = maDuAn;
+		this.maNhanVien = maNhanVien;
+		this.tenCongViec = tenCongViec;
+		this.maPhongBan = maPhongBan;
+		this.trangThaiLogwork = trangThaiLogwork;
+
+		this.tongTg = tongTg;
 	}
 
 }

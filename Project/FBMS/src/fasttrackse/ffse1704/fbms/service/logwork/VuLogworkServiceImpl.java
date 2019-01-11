@@ -95,8 +95,12 @@ public class VuLogworkServiceImpl implements VuLogworkService {
 		return quanLiThoiGianDAO.listTheoTrangThai(maTrangThai);
 	}
 	@Override
-	public List<ThoiGianLamViec> baoCaoTheoMaNV(int maNhanVien) {
+	public List<ThoiGianLamViec> baoCaoTheoMaNV(String maNhanVien) {
 		return quanLiThoiGianDAO.baoCaoTheoMaNV(maNhanVien);
+	}
+	@Override
+	public List<ThoiGianLamViec> logworkTheoPB(String maPhongBan) {
+		return quanLiThoiGianDAO.listLogworkPhongBan(maPhongBan);
 	}
 	
 }

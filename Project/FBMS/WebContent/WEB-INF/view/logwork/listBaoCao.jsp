@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
 .tbl_actions a {
@@ -120,18 +121,8 @@
 						mới</a>
 				</div>
 			</div>
-			<div class="content-header-right col-md-6 col-xs-12">
-				<div class="card-header">
-					<div class="dropdown">
-						<button class="dropbtn">Tháng ${month}</button>
-						<div class="dropdown-content">
-							<c:forEach var="i" begin="1" end="12">
-								<a href="/FBMS/logwork/listMonth/${i}"><c:out value="${i}" /></a>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 	<!-- End Path -->
@@ -180,39 +171,34 @@
 									class="table table-striped table-bordered dataex-res-constructor">
 									<thead>
 										<tr>
-											<th scope="col">ID</th>
+											<th scope="col">STT</th>
+											<th scope="col">Mã Nhân Viên</th>
 											<th scope="col">Dự Án</th>
-											<th scope="col">Tên Nhân Viên</th>
-											<th scope="col">Vai Trò</th>
-											<th scope="col">Phòng Ban</th>
-											<th scope="col">Mô Tả</th>
-											<th scope="col">Trạng Thái</th>
-											<th scope="col">Action</th>
+											<th scope="col">Thời Gian (Giờ)</th>
+											<th scope="col">Chức Năng</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="lg" items="${logwork}">
+										<c:set var="currentMaNV" value="" />
+										<c:set var="stt" value="${0}" />
+
+										<c:forEach var="lg" items="${baocaologwork}">
 											<tr>
-												<td>${lg.id}</td>
+												<c:set var="stt" value="${stt = stt+1}" />
+												<td><c:out value="${stt}" /></td>
+												<td><c:if
+														test="${currentMaNV ne lg.maNhanVien.maNVien}">
+													${lg.maNhanVien.fullName}
+												</c:if></td>
 												<td>${lg.maDuAn.tenDuAn}</td>
-												<td>${lg.maNhanVien.fullName}</td>
-												<td>${lg.maVaiTroDuAn.tenVaiTro}</td>
-												<td>${lg.maPhongBan.tenPhongBan}</td>
-												<td>${lg.moTa}</td>
-												<td>${lg.trangThaiLogwork.tenTrangThai}</td>
-												<td><a href="/FBMS/logwork/view/${lg.id }"><button
-															class="btn btn-success">View</button></a> <c:if
-														test="${lg.trangThaiLogwork.maTrangThai == 4 || lg.trangThaiLogwork.maTrangThai == 3}">
-														<a href="/FBMS/logwork/editlogwork/${lg.id }"><button
-																class="btn btn-success">sửa</button></a>
-													</c:if> <c:if test="${lg.trangThaiLogwork.maTrangThai == 4 }">
-														<a href="/FBMS/logwork/deletelogwork/${lg.id }"><button
-																class="btn btn-danger"
-																onclick="return confirm('Bạn có muốn xóa sinh viên này?');">
-																xóa</button></a>
-													</c:if></td>
+												<td><fmt:formatNumber value="${lg.getKhoangTGReport()}" /></td>
+												<td><a
+													href="/FBMS/logwork/maNV/${lg.maNhanVien.maNVien }"><button
+															class="btn btn-success">Chi Tiết</button></a></td>
 											</tr>
+											<c:set var="currentMaNV" value="${lg.maNhanVien.maNVien}" />
 										</c:forEach>
+
 									</tbody>
 									<tbody>
 										<div class="modal fade" id="confirm-delete" tabindex="-1"
@@ -243,6 +229,7 @@
 										</div>
 									</tbody>
 								</table>
+
 							</div>
 						</div>
 					</div>
@@ -250,7 +237,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

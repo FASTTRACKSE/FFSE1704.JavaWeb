@@ -1,5 +1,6 @@
 package fasttrackse.ffse1704.fbms.controller.logwork;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fasttrackse.ffse1704.fbms.entity.logwork.ThoiGianLamViec;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuDuAnLogwork;
+import fasttrackse.ffse1704.fbms.entity.logwork.VuNhanVien;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuPhongBan;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuTrangThai;
 import fasttrackse.ffse1704.fbms.entity.logwork.VuVaiTroDuAn;
@@ -145,14 +147,14 @@ public class LogworkControllerVu {
 	}
 
 	@RequestMapping(value = "/maNV/{maNhanVien}", method = RequestMethod.GET)
-	public String viewBaoCaoTheoMaNV(@PathVariable("maNhanVien") int maNhanVien, Model model) {
+	public String viewBaoCaoTheoMaNV(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("maNhanVien", maNhanVien);
 		model.addAttribute("baoCao", service.baoCaoTheoMaNV(maNhanVien));
-		
+
 		return "logwork/baocaoNv";
 
 	}
-	
+
 	@RequestMapping(value = "/listChoPheDuyetPM", method = RequestMethod.GET)
 	public String viewChoPheDuyetPM(Model model) {
 		List<ThoiGianLamViec> allLogwork = service.findAll();
@@ -193,5 +195,44 @@ public class LogworkControllerVu {
 			redirectAttributes.addFlashAttribute("messageError", "Lỗi. Xin thử lại!");
 		}
 		return "redirect:/logwork/listChoPheDuyetPM";
+	}
+
+	@RequestMapping(value = "/viewBaoCaoLogwork/{maPhongBan}", method = RequestMethod.GET)
+	public String createLogWorkReport(@PathVariable("maPhongBan") String maPhongBan, Model model) {
+		
+		List<ThoiGianLamViec> listLogWork = service.logworkTheoPB(maPhongBan);
+		
+		List<ThoiGianLamViec> listLogWorkReport = new ArrayList<ThoiGianLamViec>();
+		VuNhanVien currentMaNV = listLogWork.get(0).getMaNhanVien();
+		VuDuAnLogwork currentDA = listLogWork.get(0).getMaDuAn();
+		String tenCongViec = listLogWork.get(0).getTenCongViec();
+		VuPhongBan maPhongBan1 = listLogWork.get(0).getMaPhongBan();
+		VuTrangThai maTrangThai = listLogWork.get(0).getTrangThaiLogwork();
+
+		double total = 0;
+		for (int i = 0; i < listLogWork.size(); i++) {
+			ThoiGianLamViec lg = listLogWork.get(i);
+			if (currentMaNV.getMaNVien().equals(lg.getMaNhanVien().getMaNVien())) {
+				if (currentDA.getMaDAn().equals(lg.getMaDuAn().getMaDAn())) {
+					
+					total += lg.getTongTg();
+				} else {
+					listLogWorkReport.add(new ThoiGianLamViec(currentDA , currentMaNV,tenCongViec,maPhongBan1,maTrangThai, total));
+					currentDA = lg.getMaDuAn();
+					currentMaNV = lg.getMaNhanVien();
+					
+					total = lg.getTongTg();
+				}
+			} else {
+				listLogWorkReport.add(new ThoiGianLamViec(currentDA , currentMaNV,tenCongViec,maPhongBan1,maTrangThai, total));
+				currentDA = lg.getMaDuAn();
+				currentMaNV = lg.getMaNhanVien();
+				total = lg.getTongTg();
+			}
+		}
+		listLogWorkReport.add(new ThoiGianLamViec(currentDA , currentMaNV,tenCongViec,maPhongBan1,maTrangThai, total));
+		model.addAttribute("baocaologwork", listLogWorkReport);
+		return "logwork/listBaoCao";
+
 	}
 }
