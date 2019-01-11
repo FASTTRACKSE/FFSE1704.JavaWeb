@@ -53,12 +53,35 @@ public class SoNgayNghiPhepDaoILMMinhtq implements SoNgayNghiPhepDaoMinhtq {
 		return list;
 	}
 
-	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep) {
+	public SoNgayNghiMinhtq getNgayNghi(String maNhanVien, String maNgayNghi) {
 		Session session = sessionFactory.getCurrentSession();
-		String rowCount = session.createSQLQuery("select * from quan_ly_so_ngay_nghi where ma_nhan_vien = '"
-				+ donnghiphep.getSoNgayNghiDNP().getMaNhanVien() + "' AND ma_ngay_nghi = '"
-				+ donnghiphep.getSoNgayNghiDNP().getMaNgayNghi() + "'").getSingleResult().toString();
-		return Integer.parseInt(rowCount);
+		
+		Query query = session.createQuery("from SoNgayNghiMinhtq where maNhanVien =:maNhanVien AND maNgayNghi =:maNgayNghi");
+		query.setParameter("maNhanVien", maNhanVien);
+		query.setParameter("maNgayNghi", maNgayNghi);
+		return (SoNgayNghiMinhtq) query.getSingleResult();
 	}
 
+	public void addSNN(String maNhanVien, String maNgayNghi, int soNgayDaNghi) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("update SoNgayNghiMinhtq set soNgayDaNghi = :soNgayDaNghi"
+				+ " where maNhanVien = :maNhanVien and maNgayNghi = :maNgayNghi");
+		query.setParameter("soNgayDaNghi", soNgayDaNghi);
+		query.setParameter("maNhanVien", maNhanVien);
+		query.setParameter("maNgayNghi", maNgayNghi);
+		query.executeUpdate();
+	}
+
+	@Override
+	public boolean chekSongayNghi(String maNhanVien, String maNgayNghi) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery(" from SoNgayNghiMinhtq where maNhanVien= :maNhanVien AND maNgayNghi = :maNgayNghi AND soNgayDaNghi>0");
+		query.setParameter("maNhanVien", maNhanVien);
+		query.setParameter("maNgayNghi", maNgayNghi);
+		int check = query.getResultList().size();
+
+		return (check > 0);
+
+	}
 }

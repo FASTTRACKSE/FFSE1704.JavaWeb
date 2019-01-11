@@ -11,6 +11,11 @@ public interface SoNgayNghiPhepDaoMinhtq {
 	public SoNgayNghiMinhtq getByIdSoNgayNghi(int id);
 
 	public List<SoNgayNghiMinhtq> listSoNgayNghi();
+
+	public SoNgayNghiMinhtq getNgayNghi(String maNhanVien, String maNgayNghi);
 	
-	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep);
+	public void addSNN(String maNhanVien, String maNgayNghi, int soNgayDaNghi);
+	
+	public boolean chekSongayNghi(String maNhanVien, String maNgayNghi);
+	
 }

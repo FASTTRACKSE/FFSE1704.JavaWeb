@@ -120,9 +120,9 @@
 												<th>mã nhân viên</th>
 												<th>phòng ban</th>
 												<th>loại ngày nghỉ</th>
-												<th>số lượng</th>
 												<th>thời gian bắt đầu</th>
 												<th>thời gian kết thúc</th>
+												<th>số lượng</th>
 												<th>ghi chú</th>
 												<th>trạng thái</th>
 												<th>chức năng</th>
@@ -135,9 +135,9 @@
 												<td>${dnpn.maNhanVien}</td>
 												<td>${dnpn.phongBan.tenPhongBan}</td>
 												<td>${dnpn.loaiNgayNghiPhep.tenLoaiNgayNghi}</td>
-												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.thoiGianBatDau}</td>
 												<td>${dnpn.thoiGianKetThuc}</td>
+												<td>${dnpn.soLuong}</td>
 												<td>${dnpn.ghiChu}</td>
 												<td>${dnpn.trangThaiDNP.tenTrangThai}</td>
 												<td><c:if

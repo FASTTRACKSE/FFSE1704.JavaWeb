@@ -1,6 +1,7 @@
 package fasttrackse.ffse1704.fbms.controller.quanlyvangnghi.minhtq;
 
 import java.io.IOException;
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -118,6 +119,12 @@ public class QuanLyVangNghiControllerMinhtq {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
 		} else {
+			String maNhanVien = donnghiphep.getMaNhanVien();
+			String maNgayNghi = donnghiphep.getLoaiNgayNghi();
+			int soluong = donnghiphep.getSoLuong();
+
+			SoNgayNghiMinhtq soNN = soNgayNghiService.getNgayNghi(maNhanVien, maNgayNghi);
+			int tongsongayduocnghi = soNN.getTongNgayDuocNghi();
 			if (action.equals("luunhap")) {
 
 				donnghiphep.setTrangThai("TT1");
@@ -125,16 +132,30 @@ public class QuanLyVangNghiControllerMinhtq {
 				redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1";
 			}
-			if (action.equals("chopheduyet")) {
+			if (soluong > tongsongayduocnghi) {
+				List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
+				List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
+				List<HoSoNhanVienMinhtq> manhanvien = donNghiPhepService.listMaNhanVien();
+				List<SoNgayNghiMinhtq> songaynghi = soNgayNghiService.listSoNgayNghi();
 
-				donnghiphep.setTrangThai("TT2");
-				donNghiPhepService.addDonNghiPhep(donnghiphep);
-				redirectAttributes.addFlashAttribute("messageSuccess",
-						"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
-				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2";
+				model.addAttribute("songaynghi", songaynghi);
+				model.addAttribute("manhanvien", manhanvien);
+				model.addAttribute("countryList", countryList);
+				model.addAttribute("phongban", phongban);
+				model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
+				redirectAttributes.addFlashAttribute("messageError", "Bạn không thể nghỉ quá số ngày quy định!");
+				return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
+			} else {
+				if (action.equals("chopheduyet")) {
+
+					donnghiphep.setTrangThai("TT2");
+					donNghiPhepService.addDonNghiPhep(donnghiphep);
+					redirectAttributes.addFlashAttribute("messageSuccess",
+							"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
+					url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2";
+				}
 			}
 		}
-
 		return url;
 	}
 
@@ -171,10 +192,12 @@ public class QuanLyVangNghiControllerMinhtq {
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1";
 			}
 			if (actional.equals("chopheduyet")) {
+
 				donnghiphep.setTrangThai("TT2");
 				donNghiPhepService.editDonNghiPhep(donnghiphep);
 				redirectAttributes.addFlashAttribute("messageSuccess", "Đã gửi lại đơn và đang chờ duyệt!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2";
+
 			}
 
 		}
@@ -210,10 +233,26 @@ public class QuanLyVangNghiControllerMinhtq {
 		} else {
 
 			if (action.equals("duyetdon")) {
+				String maNhanVien = donnghiphep.getMaNhanVien();
+				String maNgayNghi = donnghiphep.getLoaiNgayNghi();
+				int soNgayDaNghi = donnghiphep.getSoLuong();
+				boolean check = soNgayNghiService.chekSongayNghi(maNhanVien, maNgayNghi);
+				SoNgayNghiMinhtq snn = soNgayNghiService.getNgayNghi(maNhanVien, maNgayNghi);
+				int soNgayDaNghiCu = snn.getSoNgayDaNghi();
+				if (check) {
+					int SoNgayDaNghiMoi = soNgayDaNghiCu + soNgayDaNghi;
+					soNgayNghiService.addSNN(maNhanVien, maNgayNghi, SoNgayDaNghiMoi);
+					donnghiphep.setTrangThai("TT3");
+					donNghiPhepService.editDonNghiPhep(donnghiphep);
+					redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn!");
+				} else {
 
-				donnghiphep.setTrangThai("TT3");
-				donNghiPhepService.editDonNghiPhep(donnghiphep);
-				redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn!");
+					soNgayNghiService.addSNN(maNhanVien, maNgayNghi, soNgayDaNghi);
+
+					donnghiphep.setTrangThai("TT3");
+					donNghiPhepService.editDonNghiPhep(donnghiphep);
+					redirectAttributes.addFlashAttribute("messageSuccess", "Đã duyệt đơn!");
+				}
 				return "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT3";
 			}
 			if (action.equals("tuchoi")) {

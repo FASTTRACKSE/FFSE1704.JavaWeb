@@ -42,10 +42,23 @@ public class SoNgayNghiPhepServiceILMMinhtq  implements SoNgayNghiPhepServiceMin
 	}
 
 	@Override
-	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep) {
-		
-		return soNgayNghiPhepDao.KiemTraNgayNghi(donnghiphep);
+	public SoNgayNghiMinhtq getNgayNghi(String maNhanVien, String maNgayNghi) {
+		return soNgayNghiPhepDao.getNgayNghi(maNhanVien, maNgayNghi);
 	}
+
+	@Override
+	public void addSNN(String maNhanVien, String maNgayNghi, int soNgayDaNghi) {
+		soNgayNghiPhepDao.addSNN(maNhanVien, maNgayNghi, soNgayDaNghi);
+		
+	}
+
+	@Override
+	public boolean chekSongayNghi(String maNhanVien, String maNgayNghi) {
+		
+		return soNgayNghiPhepDao.chekSongayNghi(maNhanVien, maNgayNghi);
+	}
+
+	
 
 	
 

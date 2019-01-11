@@ -12,6 +12,10 @@ public interface SoNgayNghiPhepServiceMinhtq {
 
 	public List<SoNgayNghiMinhtq> listSoNgayNghi();
 
-	public int KiemTraNgayNghi(DonNghiPhepMinhtq donnghiphep);
+	public SoNgayNghiMinhtq getNgayNghi(String maNhanVien, String maNgayNghi);
+
+	public void addSNN(String maNhanVien, String maNgayNghi, int soNgayDaNghi);
+
+	public boolean chekSongayNghi(String maNhanVien, String maNgayNghi);
 
 }
