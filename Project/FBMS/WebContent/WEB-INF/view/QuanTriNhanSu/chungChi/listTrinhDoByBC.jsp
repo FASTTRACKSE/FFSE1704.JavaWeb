@@ -199,15 +199,10 @@
 												<th scope="col">ID</th>
 												<th>Mã Nhân Viên</th>
 												<th>Tên Nhân Viên</th>
-												<th>Ảnh đại diện</th>
 												<th>Ngày Sinh</th>
-												<th>Tên Trình Độ</th>
-												<th>Tên Ngành</th>
-												<th>Thời Gian Bắt Đầu</th>
-												<th>Thời Gian Kết Thúc</th>
-												<th>Xếp Loại</th>
-												<th>Nơi Cấp</th>
-												<th>Chi tiết</th>
+												<th>Ảnh đại diện</th>
+												<th>Tên trình Độ</th>
+												<th>Tên trạng thái</th>
 												<th>Gia đình</th>
 												<th>Trình độ</th>
 												<th>Hợp đồng/Chế độ TH</th>
@@ -218,19 +213,23 @@
 											<tr>
 												<td>${bc.id}</td>
 												<td>${bc.maNhanVien}</td>
-												<td>${bc.nhanSuBC.hoLot}${bc.nhanSuBC.ten}</td>
-												<td><img style="width: 70px;hight=70px;"
-													src="<c:url value="/uploads/${bc.nhanSuBC.anhDaiDien}"/>"></td>
+												<td>${bc.nhanSuBC.hoLot} ${bc.nhanSuBC.ten}</td>
 												<td><fmt:formatDate value="${bc.nhanSuBC.namSinh}"
 														pattern="dd-MM-yyyy" /></td>
+												<td><img style="width: 70px;hight=70px;"
+													src="<c:url value="/uploads/${bc.nhanSuBC.anhDaiDien}"/>"></td>
 												<td>${bc.trinhDo.tenTrinhDo}</td>
-												<td>${bc.tenNganh}</td>
-												<td><fmt:formatDate value="${bc.batDau}"
-														pattern="dd-MM-yyyy" /></td>
-												<td><fmt:formatDate value="${bc.ketThuc}"
-														pattern="dd-MM-yyyy" /></td>
-												<td>${bc.xepLoai}</td>
-												<td>${bc.noiCap}</td>
+												<td><c:choose>
+														<c:when test="${bc.nhanSuBC.idTrangThai == 1}">
+						    Còn Làm
+						  </c:when>
+														<c:when test="${bc.nhanSuBC.idTrangThai == 2}">
+						   Nghỉ
+						  </c:when>
+														<c:otherwise>
+						  ...
+						  </c:otherwise>
+													</c:choose></td>
 												<td><a href="/FBMS/thongTinNhanVien/${bc.maNhanVien}"
 													class="btn btn-success">Xem TT Chi Tiết</a></td>
 												<td><a href="/FBMS/ViewTT/${bc.maNhanVien}"

@@ -193,7 +193,7 @@
 												<td>${ns.maNhanVien}</td>
 												<td>${ns.phongBan.tenPhongBan}</td>
 												<td>${ns.chucDanh.tenChucDanh}</td>
-												<td>${ns.nhanSuFindByHD.hoLot}${ns.nhanSuFindByHD.ten}</td>
+												<td>${ns.nhanSuFindByHD.hoLot} ${ns.nhanSuFindByHD.ten}</td>
 												<td>
 												<fmt:formatDate value="${ns.nhanSuFindByHD.namSinh}"
 														pattern="dd-MM-yyyy" />

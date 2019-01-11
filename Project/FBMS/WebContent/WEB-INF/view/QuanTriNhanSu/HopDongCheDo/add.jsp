@@ -27,7 +27,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyNhiemVu/congviec/" />'>Thông tin
+								href='<c:url value="/thongTinHopDong/${thongTinNhanVien.maNhanVien}" />'>Thông tin
 									hợp đồng</a></li>
 							<li class="breadcrumb-item active">Thêm mới</li>
 						</ol>
@@ -80,12 +80,16 @@
 						<div class="form-group col-sm-4">
 							<label>Ngày bắt đầu</label>
 							<form:input class="form-control" type="Date" path="ngayBatDau" />
+							<form:errors path="ngayBatDau" cssClass="error"
+								style="color:pink" />
 
 						</div>
 
 						<div class="form-group col-sm-4">
 							<label>Ngày kết thúc</label>
 							<form:input class="form-control" type="Date" path="ngayKetThuc" />
+							<form:errors path="ngayKetThuc" cssClass="error"
+								style="color:pink" />
 
 						</div>
 						<div class="form-group col-sm-3">

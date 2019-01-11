@@ -105,4 +105,9 @@ public class HopDongServiceImpl implements HopDongService {
 		return hopDongDao.checkExistMaTT(maNhanVien, maTrangThai);
 	}
 
+	@Override
+	public boolean checkHDbyMaNV(int id, String tenNguoiCode) {
+		return hopDongDao.checkHDbyMaNV(id, tenNguoiCode);
+	}
+
 }

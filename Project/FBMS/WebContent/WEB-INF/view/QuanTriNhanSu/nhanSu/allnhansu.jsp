@@ -194,7 +194,7 @@
 											<tr>
 												<td>${ns.id}</td>
 												<td>${ns.maNhanVien}</td>
-												<td>${ns.hoLot}${ns.ten}</td>
+												<td>${ns.hoLot} ${ns.ten}</td>
 												<td><fmt:formatDate value="${ns.namSinh}"
 														pattern="dd-MM-yyyy" /></td>
 

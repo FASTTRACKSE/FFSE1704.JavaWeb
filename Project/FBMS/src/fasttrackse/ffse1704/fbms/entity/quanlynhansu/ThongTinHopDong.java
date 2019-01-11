@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -270,11 +271,13 @@ public class ThongTinHopDong implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_bat_dau", nullable = false)
+	@NotNull(message="Vui lòng chọn ngày bắt đầu")
 	private Date ngayBatDau;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_ket_thuc", nullable = false)
+	@NotNull(message="Vui lòng chọn ngày kết thúc")
 	private Date ngayKetThuc;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -102,15 +102,8 @@ public class HopDongCheDoController {
 	@RequestMapping(value = { "/saveHopDongCheDo/{maNhanVien}" }, method = RequestMethod.POST)
 	public String saveHopDongCheDo(@PathVariable("maNhanVien") String maNhanVien, @Valid ThongTinHopDong hopdongchedo,
 			BindingResult result, Model model) {
-		int soNgayNghi = hopdongchedo.getSoNgayNghiTrongNam();
-		String maHD = hopdongchedo.getMaHopDong();
-		String trangThaiHD = hopdongchedo.getMaTrangThai();
-		boolean checkMaNV = hopDongService.checkExistMaNV(maNhanVien);
-		boolean checkTT = hopDongService.checkExistMaTT(maNhanVien, trangThaiHD);
-		Date ngayBatDau = hopdongchedo.getNgayBatDau();
-		Date ngayKetThuc = hopdongchedo.getNgayKetThuc();
-		if(ngayBatDau.compareTo(ngayKetThuc)>0) {
-			model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
+		if (result.hasErrors()) {
+			model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
 			model.addAttribute("hopdongchedo", new ThongTinHopDong());
 			model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 			List<HopDong> listHD = hopDongService.listHopDong();
@@ -126,41 +119,69 @@ public class HopDongCheDoController {
 			model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
 			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			return "QuanTriNhanSu/HopDongCheDo/add";
-		}else {
-		if(checkTT && trangThaiHD.equals("ACTIVE")) {
-			model.addAttribute("attenion", "Nhân viên này đang có 1 hợp đồng còn hiệu lực, vui lòng kiểm tra lại!!!");
-			model.addAttribute("hopdongchedo", new ThongTinHopDong());
-			model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-			List<HopDong> listHD = hopDongService.listHopDong();
-			model.addAttribute("hd", listHD);
-			List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
-			model.addAttribute("cdh", listCDH);
-			List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
-			model.addAttribute("dscv", listDSCV);
-			List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
-			model.addAttribute("ddlv", listDDLV);
-			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-			model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
-			return "QuanTriNhanSu/HopDongCheDo/add";
-		}else {
-		
-		if (checkMaNV && maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
-				hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
-				hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
-
 		} else {
-			hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
+			int soNgayNghi = hopdongchedo.getSoNgayNghiTrongNam();
+			String maHD = hopdongchedo.getMaHopDong();
+			String trangThaiHD = hopdongchedo.getMaTrangThai();
+			boolean checkMaNV = hopDongService.checkExistMaNV(maNhanVien);
+			boolean checkTT = hopDongService.checkExistMaTT(maNhanVien, trangThaiHD);
+			Date ngayBatDau = hopdongchedo.getNgayBatDau();
+			Date ngayKetThuc = hopdongchedo.getNgayKetThuc();
+			if (ngayBatDau.compareTo(ngayKetThuc) > 0) { 
+				model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
+				model.addAttribute("hopdongchedo", new ThongTinHopDong());
+				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+				List<HopDong> listHD = hopDongService.listHopDong();
+				model.addAttribute("hd", listHD);
+				List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+				model.addAttribute("cdh", listCDH);
+				List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+				model.addAttribute("dscv", listDSCV);
+				List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+				model.addAttribute("ddlv", listDDLV);
+				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+				return "QuanTriNhanSu/HopDongCheDo/add";
+			} else {
+				if (checkTT && trangThaiHD.equals("ACTIVE")) {
+					model.addAttribute("attenion",
+							"Nhân viên này đang có 1 hợp đồng còn hiệu lực, vui lòng kiểm tra lại!!!");
+					model.addAttribute("hopdongchedo", new ThongTinHopDong());
+					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+					List<HopDong> listHD = hopDongService.listHopDong();
+					model.addAttribute("hd", listHD);
+					List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+					model.addAttribute("cdh", listCDH);
+					List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+					model.addAttribute("dscv", listDSCV);
+					List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+					model.addAttribute("ddlv", listDDLV);
+					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+					return "QuanTriNhanSu/HopDongCheDo/add";
+				} else {
+
+					if (checkMaNV && maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
+						hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
+						hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
+
+					} else {
+						hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
+					}
+				}
+			}
 		}
-		}
-		}
-		
+
 		return "redirect:/thongTinHopDong/{maNhanVien}";
 	}
 
 	@RequestMapping(value = "/editHopDong/{id}&{maNhanVien}", method = RequestMethod.GET)
 	public String editGiaBan(@PathVariable("id") int id, @PathVariable("maNhanVien") String maNhanVien, Model model) {
+
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		model.addAttribute("hopdong", hopDongService.findById(id));
 		List<HopDong> listHD = hopDongService.listHopDong();
@@ -185,13 +206,129 @@ public class HopDongCheDoController {
 		int soNgayNghi = thongtinhopdong.getSoNgayNghiTrongNam();
 		String maHD = thongtinhopdong.getMaHopDong();
 		String trangThaiHD = thongtinhopdong.getMaTrangThai();
-		if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
-			hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
-			hopDongService.editHopDong(thongtinhopdong);
+		String tenNguoiCode = "QuanLT";
+		// check xem hợp đồng có phải là Active, trước khi check lỗi .
+		boolean checkHD = hopDongService.checkHDbyMaNV(id, tenNguoiCode);
+
+		if (checkHD) {
+			//nếu phải là Active trước thì:
+			if (bindingResult.hasErrors()) {
+				model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
+				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+				model.addAttribute("hopdong", hopDongService.findById(id));
+				List<HopDong> listHD = hopDongService.listHopDong();
+				model.addAttribute("hd", listHD);
+				List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+				model.addAttribute("cdh", listCDH);
+				List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+				model.addAttribute("dscv", listDSCV);
+				List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+				model.addAttribute("ddlv", listDDLV);
+				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+				return "QuanTriNhanSu/HopDongCheDo/edit";
+			} else {
+				Date ngayBatDau = thongtinhopdong.getNgayBatDau();
+				Date ngayKetThuc = thongtinhopdong.getNgayKetThuc();
+				if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
+					model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
+					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+					model.addAttribute("hopdong", hopDongService.findById(id));
+					List<HopDong> listHD = hopDongService.listHopDong();
+					model.addAttribute("hd", listHD);
+					List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+					model.addAttribute("cdh", listCDH);
+					List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+					model.addAttribute("dscv", listDSCV);
+					List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+					model.addAttribute("ddlv", listDDLV);
+					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+					return "QuanTriNhanSu/HopDongCheDo/edit";
+				}else {
+					if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
+						hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
+						hopDongService.editHopDong(thongtinhopdong);
+					} else {
+						hopDongService.editHopDong(thongtinhopdong);
+					}
+					}
+				}
 		} else {
-			hopDongService.editHopDong(thongtinhopdong);
+			//nếu ko phải thì:
+			if (bindingResult.hasErrors()) {
+				model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
+				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+				model.addAttribute("hopdong", hopDongService.findById(id));
+				List<HopDong> listHD = hopDongService.listHopDong();
+				model.addAttribute("hd", listHD);
+				List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+				model.addAttribute("cdh", listCDH);
+				List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+				model.addAttribute("dscv", listDSCV);
+				List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+				model.addAttribute("ddlv", listDDLV);
+				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+				return "QuanTriNhanSu/HopDongCheDo/edit";
+			} else {
+				boolean checkTT = hopDongService.checkExistMaTT(maNhanVien, trangThaiHD);
+				Date ngayBatDau = thongtinhopdong.getNgayBatDau();
+				Date ngayKetThuc = thongtinhopdong.getNgayKetThuc();
+				if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
+					model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
+					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+					model.addAttribute("hopdong", hopDongService.findById(id));
+					List<HopDong> listHD = hopDongService.listHopDong();
+					model.addAttribute("hd", listHD);
+					List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+					model.addAttribute("cdh", listCDH);
+					List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+					model.addAttribute("dscv", listDSCV);
+					List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+					model.addAttribute("ddlv", listDDLV);
+					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+					return "QuanTriNhanSu/HopDongCheDo/edit";
+				} else {
+					if (checkTT && trangThaiHD.equals("ACTIVE")) {
+						model.addAttribute("attenion",
+								"Nhân viên này đang có 1 hợp đồng còn hiệu lực, vui lòng kiểm tra lại!!!");
+						model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+						model.addAttribute("hopdong", hopDongService.findById(id));
+						List<HopDong> listHD = hopDongService.listHopDong();
+						model.addAttribute("hd", listHD);
+						List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+						model.addAttribute("cdh", listCDH);
+						List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+						model.addAttribute("dscv", listDSCV);
+						List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+						model.addAttribute("ddlv", listDDLV);
+						model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+						model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+						model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+						model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+						return "QuanTriNhanSu/HopDongCheDo/edit";
+					} else {
+						if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
+							hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
+							hopDongService.editHopDong(thongtinhopdong);
+						} else {
+							hopDongService.editHopDong(thongtinhopdong);
+						}
+					}
+				}
+			}
 		}
-		return "redirect:/thongTinHopDong/{maNhanVien}";
+		return "redirect:/thongTinChiTietHopDong/{maNhanVien}&{id}";
 	}
 
 	@RequestMapping("/deleteHopDongCheDo/{id}&{maNhanVien}")

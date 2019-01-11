@@ -20,7 +20,6 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanLySoNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiHopDong;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 
 @Repository
 @Transactional(rollbackFor = Exception.class)
@@ -248,4 +247,17 @@ public class HopDongDaoImpl implements HopDongDao {
 		
 		return (check>0);
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean checkHDbyMaNV(int id, String tenNguoiCode) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(" from ThongTinHopDong where id= :id AND maTrangThai = :maTrangThai");
+		query.setParameter("id", id);
+		query.setParameter("maTrangThai", "ACTIVE");
+		int check = query.getResultList().size();
+		return (check>0);
+	}
+	
+	
 }

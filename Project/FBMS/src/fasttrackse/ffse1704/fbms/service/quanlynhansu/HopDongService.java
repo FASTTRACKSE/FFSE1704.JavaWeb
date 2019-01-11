@@ -29,4 +29,5 @@ public interface HopDongService {
 	public void editNgayNghiPhepNam(String maNhanVien, int soNgayNghi);
 	public boolean checkExistMaNV(String maNhanVien);
 	public boolean checkExistMaTT(String maNhanVien, String maTrangThai);
+	public boolean checkHDbyMaNV(int id, String tenNguoiCode);
 }

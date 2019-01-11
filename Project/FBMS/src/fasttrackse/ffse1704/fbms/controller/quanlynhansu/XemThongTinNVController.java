@@ -125,6 +125,7 @@ public class XemThongTinNVController {
 	@RequestMapping(value = "/thongTinKinhNghiem/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTingKinhNghiem(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinKinhNghiem";
 	}
 

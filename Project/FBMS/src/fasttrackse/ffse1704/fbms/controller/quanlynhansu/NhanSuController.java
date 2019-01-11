@@ -132,51 +132,49 @@ public class NhanSuController {
 	}
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/saveNhanSu", method = RequestMethod.POST)
-	public ModelAndView AddNhanSu(Model model,@ModelAttribute("nhanSu") @Valid NhanSu nhanSu,
-			BindingResult bindingResult,@RequestParam("maNhanVien") String maNhanVien,
+	public ModelAndView AddNhanSu(Model model, @ModelAttribute("nhanSu") @Valid NhanSu nhanSu,
+			BindingResult bindingResult, @RequestParam("maNhanVien") String maNhanVien,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 
-		
 		String fileName = upload(file);
 		if (!fileName.equals("")) {
 			nhanSu.setAnhDaiDien(fileName);
 		}
 		if (bindingResult.hasErrors()) {
-			//model.addAttribute("nhanSu", new NhanSu());
-			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
-			
-			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
-			model.addAttribute("listQuocTich",listQuocTich);
-			
-			List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
-			model.addAttribute("listTrangThai",listTrangThai);
+			// model.addAttribute("nhanSu", new NhanSu());
+			model.addAttribute("listTinhThanh", nhanSuService.listTinhThanhPho());
+
+			List<QuocTich> listQuocTich = nhanSuService.listQuocTich();
+			model.addAttribute("listQuocTich", listQuocTich);
+
+			List<TrangThaiNhanSu> listTrangThai = nhanSuService.listTrangThai();
+			model.addAttribute("listTrangThai", listTrangThai);
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		}
 		boolean checkMaNhanSu = nhanSuService.checkExistMa(maNhanVien);
-		if(checkMaNhanSu) {
-			//model.addAttribute("nhanSu", new NhanSu());
+		if (checkMaNhanSu) {
+			// model.addAttribute("nhanSu", new NhanSu());
 
-			model.addAttribute("listChucDanh",nhanSuService.listChucDanh());
-			
-			model.addAttribute("listPhongBan",nhanSuService.listPhongBan());
-			
-			model.addAttribute("listTinhThanh",nhanSuService.listTinhThanhPho());
-			
-			List<QuocTich> listQuocTich= nhanSuService.listQuocTich();
-			model.addAttribute("listQuocTich",listQuocTich);
-			
-			List<TrangThaiNhanSu> listTrangThai= nhanSuService.listTrangThai();
-			model.addAttribute("listTrangThai",listTrangThai);
+			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+
+			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+
+			model.addAttribute("listTinhThanh", nhanSuService.listTinhThanhPho());
+
+			List<QuocTich> listQuocTich = nhanSuService.listQuocTich();
+			model.addAttribute("listQuocTich", listQuocTich);
+
+			List<TrangThaiNhanSu> listTrangThai = nhanSuService.listTrangThai();
+			model.addAttribute("listTrangThai", listTrangThai);
 			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
-		}else {
+		} else {
 			nhanSuService.addNS(nhanSu);
-	}
-		//model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
+		}
+		// model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
 		return new ModelAndView("redirect:/QuanTriNhanSu/danhsach_nhansu");
 
 	}
-
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/editNS/{id}")
 	public String editNhanSuByID(@PathVariable int id, Model model) {
@@ -246,12 +244,10 @@ public class NhanSuController {
 //	}
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/DeleteNS/{id}", method = RequestMethod.GET)
 	public String getdeleteNhanSuByID(@PathVariable("id") int id) {
-		
-			NhanSu ns = nhanSuService.getNhanSuByID(id);
-			ns.setIdTrangThai(2);
-			nhanSuService.update(ns);
-	    
-		
+
+		NhanSu ns = nhanSuService.getNhanSuByID(id);
+		ns.setIdTrangThai(2);
+		nhanSuService.update(ns);
 
 		return "redirect:/QuanTriNhanSu/danhsach_nhansu";
 	}
@@ -332,10 +328,18 @@ public class NhanSuController {
 		model.addAttribute("trangThai", nhanSuService.findNameNhanSuByIdTrangThai(maTrangThai));
 		List<TrangThaiNhanSu> dsTrangThai = nhanSuService.listTrangThai();
 		model.addAttribute("dsTrangThai", dsTrangThai);
+		// by Quan LT
+		List<PhongBan> allPhongBan = xemThongTinNVService.listPhongBan();
+		model.addAttribute("dsPhongBan", allPhongBan);
+		List<HopDong> allHopDong = xemThongTinNVService.listHopDong();
+		model.addAttribute("dsHopDong", allHopDong);
+		List<TrinhDo> allTrinhDo = chungChiService.listTrinhDo();
+		model.addAttribute("dsTrinhDo", allTrinhDo);
+		List<QuanLyThongTinDuAnNS> allDuAn = xemThongTinNVService.listDuAn();
+		model.addAttribute("dsDuAn", allDuAn);
 
 		return "QuanTriNhanSu/nhanSu/ListNhanSuByTrangThai";
 
 	}
 
-	
 }

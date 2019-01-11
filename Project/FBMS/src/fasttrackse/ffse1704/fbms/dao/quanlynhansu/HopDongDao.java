@@ -31,4 +31,6 @@ public interface HopDongDao {
 	public boolean checkExistMaNV(String maNhanVien);
 	//check TrangThai trong thongTinHopDong
 	public boolean checkExistMaTT(String maNhanVien, String maTrangThai);
+	//check HopDongTruocKhiSua
+	public boolean checkHDbyMaNV(int id, String tenNguoiCode);
 }

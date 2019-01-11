@@ -17,7 +17,7 @@
 								href='<c:url value="/home" />'>Home</a></li>
 
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/dsphongban" />'>Danh sách nhân sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'>Danh sách nhân sự</a></li>
 
 							<li class="breadcrumb-item active">Thông tin danh sách kinh
 								nghiệm dự án</li>
@@ -72,6 +72,11 @@
 							<div class="card-body collapse in">
 								<div class="card-block card-dashboard">
 									<div class="table-responsive">
+										<p>
+											<img
+												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+										</p>
 										<h1 style="text-align: center; color: green">${thongTinNhanVien.hoLot}<a>
 												${thongTinNhanVien.ten}</a>
 										</h1>
@@ -82,8 +87,7 @@
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a></a> -
-											Chức vụ:<a></a>
+											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
 										</p>
 
 
