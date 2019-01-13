@@ -230,7 +230,7 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> - Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 										</p>
 
 

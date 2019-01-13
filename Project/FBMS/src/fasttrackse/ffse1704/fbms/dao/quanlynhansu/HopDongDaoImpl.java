@@ -240,7 +240,7 @@ public class HopDongDaoImpl implements HopDongDao {
 	public void addPhongBanChucDanhtoHoSo(String maNhanVien, String maChucDanh, String maPhongBan) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("update NhanSu set maPhongBan = :mpb , maChucDanh = :mcd"
-				+ " where maNhanVien = :mnv and maNgayNghi = :mnn");
+				+ " where maNhanVien = :mnv");
 		query.setParameter("mpb", maPhongBan);
 		query.setParameter("mcd", maChucDanh);
 		query.setParameter("mnv", maNhanVien);

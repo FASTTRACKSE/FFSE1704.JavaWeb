@@ -27,8 +27,8 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/thongTinHopDong/${thongTinNhanVien.maNhanVien}" />'>Thông tin
-									hợp đồng</a></li>
+								href='<c:url value="/thongTinHopDong/${thongTinNhanVien.maNhanVien}" />'>Thông
+									tin hợp đồng</a></li>
 							<li class="breadcrumb-item active">Thêm mới</li>
 						</ol>
 					</div>
@@ -55,7 +55,8 @@
 						<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 					</p>
 					<p style="text-align: center;">
-						Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+						Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> - Chức
+						vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 					</p>
 
 					<form:form method="post"
@@ -193,7 +194,7 @@
 
 							<td><input class="btn btn-primary" type="submit"
 								value="Thêm" /></td>
-								<p style="color: red">${attenion}</p>
+							<p style="color: red">${attenion}</p>
 							<td><a
 								href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
 								class="btn btn-secondary">Quay lại</a></td>

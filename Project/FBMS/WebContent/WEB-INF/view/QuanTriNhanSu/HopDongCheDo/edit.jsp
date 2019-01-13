@@ -21,7 +21,7 @@
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
 				<h3 class="content-header-title mb-0">Sửa TT hợp đồng và chế độ
 					thụ hưởng</h3>
-					
+
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -56,7 +56,8 @@
 						<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 					</p>
 					<p style="text-align: center;">
-						Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
+						Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> - Chức
+						vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 					</p>
 
 					<form:form method="post"
@@ -200,7 +201,7 @@
 								<td></td>
 								<td><input class="btn btn-success" type="submit"
 									value="Sửa thông tin" /></td>
-									<p style="color: red">${attenion}</p>
+								<p style="color: red">${attenion}</p>
 								<td><a
 									href="/FBMS/thongTinChiTietHopDong/${thongTinNhanVien.maNhanVien}&${hopdong.id}"
 									class="btn btn-secondary">Hủy</a></td>

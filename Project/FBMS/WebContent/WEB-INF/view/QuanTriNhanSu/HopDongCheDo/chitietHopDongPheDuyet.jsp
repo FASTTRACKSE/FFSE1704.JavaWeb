@@ -222,7 +222,7 @@ body, html {
 											<a>Ngày sinh:</a> ${thongTinNhanVien.namSinh}
 										</p>
 										<p style="text-align: center;">
-											Phòng ban: <a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ: <a>${pbcd.chucDanh.tenChucDanh}</a>
+											Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> - Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
 										</p>
 
 										<div class="col-sm-12 col-md-6">
@@ -394,7 +394,7 @@ body, html {
 											<tr>
 												<td></td>
 												<td><a
-													href="/FBMS/accessHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}&${hopDong.soNgayNghiTrongNam}&${hopDong.maHopDong}"
+													href="/FBMS/accessHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}&${hopDong.soNgayNghiTrongNam}&${hopDong.maHopDong}&${hopDong.maChucDanh}&${hopDong.maPhongBan}"
 													class="btn btn-success">Phê Duyệt</a></td>
 												<td><a class="btn btn-danger"
 													href="/FBMS/refuseHopDong/${hopDong.id}"

@@ -335,7 +335,7 @@
 								code="label.QuanTriNhanSu.qlns" /></span><i data-toggle="tooltip"
 						data-placement="right" data-original-title="Joker"
 						class=" ft-minus"></i></li>
-					<li class=" nav-item"><a href="/FBMS/dsphongban"><i
+					<li class=" nav-item"><a href="/FBMS/pheDuyetHopDong"><i
 							class="ft-bookmark"></i> <spring:message
 								code="label.QuanTriNhanSu.dspb" /></a></li>
 					<li class=" nav-item"><a

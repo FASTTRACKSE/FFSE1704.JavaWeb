@@ -76,7 +76,6 @@ public class HopDongCheDoController {
 			}
 		}
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		List<HopDong> listHD = hopDongService.listHopDong();
 		model.addAttribute("hd", listHD);
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
@@ -92,7 +91,6 @@ public class HopDongCheDoController {
 		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
 		model.addAttribute("dsnn", listDSNN);
 		model.addAttribute("hopDong", hopDongService.findById(id));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
 	}
 
@@ -111,7 +109,6 @@ public class HopDongCheDoController {
 		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/HopDongCheDo/add";
 	}
 
@@ -137,7 +134,6 @@ public class HopDongCheDoController {
 			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 			model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			return "QuanTriNhanSu/HopDongCheDo/add";
 		} else {
 			boolean checkMaNV = hopDongService.checkExistMaNV(maNhanVien);
@@ -156,7 +152,6 @@ public class HopDongCheDoController {
 				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 				return "QuanTriNhanSu/HopDongCheDo/add";
 			} else {
 				boolean checkHDChoPheDuyet = hopDongService.checkExistMaTT(maNhanVien, trangThai);
@@ -175,7 +170,6 @@ public class HopDongCheDoController {
 					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 					return "QuanTriNhanSu/HopDongCheDo/add";
 				} else {
 					hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
@@ -202,7 +196,6 @@ public class HopDongCheDoController {
 		model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 		model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/HopDongCheDo/edit";
 	}
 
@@ -227,7 +220,6 @@ public class HopDongCheDoController {
 			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 			model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			return "QuanTriNhanSu/HopDongCheDo/edit";
 		} else {
 			Date ngayBatDau = thongtinhopdong.getNgayBatDau();
@@ -247,7 +239,6 @@ public class HopDongCheDoController {
 				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
 				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
 				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 				return "QuanTriNhanSu/HopDongCheDo/edit";
 			} else {
 				hopDongService.editHopDong(thongtinhopdong);
@@ -274,8 +265,6 @@ public class HopDongCheDoController {
 		// Combobox Loai Hop Dong
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
 		// Combobox Trang thai HD
-		// Phong ban -ChucDanh
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		// ThonngTinNhanVien
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		if (maHopDong.equals("KO")) {
@@ -309,13 +298,12 @@ public class HopDongCheDoController {
 		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
 		model.addAttribute("dsnn", listDSNN);
 		model.addAttribute("hopDong", hopDongService.findById(id));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/HopDongCheDo/chitietHopDongPheDuyet";
 	}
 
-	@RequestMapping(value = "/accessHopDong/{id}&{maNhanVien}&{soNgayNghiTrongNam}&{maHopDong}", method = RequestMethod.GET)
+	@RequestMapping(value = "/accessHopDong/{id}&{maNhanVien}&{soNgayNghiTrongNam}&{maHopDong}&{maChucDanh}&{maPhongBan}", method = RequestMethod.GET)
 	public String pheDuyetHopDong(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id,
-			@PathVariable("soNgayNghiTrongNam") int soNgayNghiTrongNam, @PathVariable("maHopDong") String maHopDong,
+			@PathVariable("soNgayNghiTrongNam") int soNgayNghiTrongNam, @PathVariable("maHopDong") String maHopDong, @PathVariable("maChucDanh") String maChucDanh, @PathVariable("maPhongBan") String maPhongBan,
 			Model model) {
 		boolean checkMaNVTrongNN = hopDongService.checkExistMaNV(maNhanVien);
 		String trangThai = "NEXT";
@@ -323,13 +311,16 @@ public class HopDongCheDoController {
 			hopDongService.updateHopDongCu(maNhanVien, trangThai);
 			hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghiTrongNam);
 			hopDongService.pheDuyetHopDong(id);
+			hopDongService.addPhongBanChucDanhtoHoSo(maNhanVien, maChucDanh, maPhongBan);
 		} else if (!checkMaNVTrongNN && maHopDong.equals("HD3")) {
 			hopDongService.updateHopDongCu(maNhanVien, trangThai);
 			hopDongService.insertNgayNghi(maNhanVien, soNgayNghiTrongNam);
 			hopDongService.pheDuyetHopDong(id);
+			hopDongService.addPhongBanChucDanhtoHoSo(maNhanVien, maChucDanh, maPhongBan);
 		} else {
 			hopDongService.updateHopDongCu(maNhanVien, trangThai);
 			hopDongService.pheDuyetHopDong(id);
+			hopDongService.addPhongBanChucDanhtoHoSo(maNhanVien, maChucDanh, maPhongBan);
 		}
 		return "redirect:/pheDuyetHopDong";
 	}
