@@ -110,4 +110,51 @@ public class HopDongServiceImpl implements HopDongService {
 		return hopDongDao.checkHDbyMaNV(id, tenNguoiCode);
 	}
 
+	@Override
+	public void addPhongBanChucDanhtoHoSo(String maNhanVien, String maChucDanh, String maPhongBan) {
+		hopDongDao.addPhongBanChucDanhtoHoSo(maNhanVien, maChucDanh, maPhongBan);
+		
+	}
+
+	@Override
+	public void updateHopDongCu(String maNhanVien, String trangThai) {
+		hopDongDao.updateHopDongCu(maNhanVien, trangThai);
+		
+	}
+
+	@Override
+	public List<ThongTinHopDong> findByMTT(String maTrangThai) {
+		return hopDongDao.findByMTT(maTrangThai);
+	}
+
+	@Override
+	public List<ThongTinHopDong> findByMNV(String maNhanVien) {
+		// TODO Auto-generated method stub
+		return hopDongDao.findByMNV(maNhanVien);
+	}
+
+	@Override
+	public void updateHetHanHopDong(int id, String nguoiCode) {
+		// TODO Auto-generated method stub
+		hopDongDao.updateHetHanHopDong(id, nguoiCode);
+	}
+
+	@Override
+	public void pheDuyetHopDong(int id) {
+		// TODO Auto-generated method stub
+		hopDongDao.pheDuyetHopDong(id);
+	}
+
+	@Override
+	public void insertNgayNghi(String maNhanVien, int NgayNghiPhepNam) {
+		// TODO Auto-generated method stub
+		hopDongDao.insertNgayNghi(maNhanVien, NgayNghiPhepNam);
+	}
+
+	@Override
+	public void tuChoiHopDong(int id) {
+		hopDongDao.tuChoiHopDong(id);
+		
+	}
+
 }

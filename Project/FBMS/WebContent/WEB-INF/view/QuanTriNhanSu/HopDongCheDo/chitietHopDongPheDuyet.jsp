@@ -266,9 +266,9 @@ body, html {
 																	</td>
 																	<td class="type-info text-right"><a
 																		style="color: blue"><h6>
-																				<fmt:formatDate value="${hopDong.ngayBatDau}"
-																					pattern="dd-MM-yyyy" />
-																			</h6></a></td>
+																		<fmt:formatDate value="${hopDong.ngayBatDau}"
+														pattern="dd-MM-yyyy" />
+																		</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
@@ -276,9 +276,9 @@ body, html {
 																	</td>
 																	<td class="type-info text-right"><a
 																		style="color: blue"><h6>
-																				<fmt:formatDate value="${hopDong.ngayKetThuc}"
-																					pattern="dd-MM-yyyy" />
-																			</h6></a></td>
+																		<fmt:formatDate value="${hopDong.ngayKetThuc}"
+														pattern="dd-MM-yyyy" />
+																		</h6></a></td>
 																</tr>
 																<tr>
 																	<td>
@@ -354,18 +354,13 @@ body, html {
 																	<td class="type-info text-right"><a
 																		style="color: blue"><h6>${hopDong.cheDoHuong.luong}</h6></a></td>
 																</tr>
-																<c:forEach var="ngayNhi"
-																	items="${thongTinNhanVien.listNgayNghi}">
-																	<tr>
-																		<td>
-																			<h6>Số ${ngayNhi.danhSachNgayNghi.tenNgayNghi }</h6>
-																		</td>
-																		<td class="type-info text-right"><a
-																			style="color: blue"><h6>${ngayNhi.tongSoNgayDuocNghi}</a>
-																			-- Đã nghỉ <a style="color: blue">${ngayNhi.soNgayDaNghi}</a>
-																			</h6></td>
-																	</tr>
-																</c:forEach>
+																<tr>
+																	<td>
+																		<h6>Số ngày nghỉ phép năm</h6>
+																	</td>
+																	<td class="type-info text-right"><a
+																		style="color: blue"><h6>${hopDong.soNgayNghiTrongNam}</h6></a></td>
+																</tr>
 																<tr>
 																	<td>
 																		<h6>Hình thức thanh toán lương</h6>
@@ -373,7 +368,7 @@ body, html {
 																	<td class="type-info text-right"><a
 																		style="color: blue"><h6>
 																				<c:choose>
-																					<c:when test="${hopDong.hinhThucTraLuong == 0}">
+																				<c:when test="${hopDong.hinhThucTraLuong == 0}">
 						    Chưa được chọn
 						  </c:when>
 																					<c:when test="${hopDong.hinhThucTraLuong == 1}">
@@ -398,19 +393,15 @@ body, html {
 										<div style="padding-left: 350px;" class="form-group col-sm-12">
 											<tr>
 												<td></td>
-												<c:if test="${hopDong.maTrangThai == 'WAITING'}">
-													<td><a
-													href="/FBMS/editHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
-													class="btn btn-success">Sửa thông tin</a></td>
-													<td><a class="btn btn-danger"
-													href="/FBMS/deleteHopDongCheDo/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
+												<td><a
+													href="/FBMS/accessHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}&${hopDong.soNgayNghiTrongNam}&${hopDong.maHopDong}"
+													class="btn btn-success">Phê Duyệt</a></td>
+												<td><a class="btn btn-danger"
+													href="/FBMS/refuseHopDong/${hopDong.id}"
 													class="btn btn-danger"
-													onclick="return confirm('Bạn có muốn hợp đồng này?');">Xóa
-														hợp đồng</a></td>
-												</c:if>
-												
+													onclick="return confirm('Bạn có muốn từ chối hợp đồng này?');">Từ chối</a></td>
 												<td><a class="btn btn-success"
-													href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"
+													href="/FBMS/pheDuyetHopDong"
 													class="btn btn-secondarys">Quay lại</a></td>
 
 											</tr>
@@ -424,6 +415,5 @@ body, html {
 			</div>
 		</div>
 	</div>
-
-
-	<jsp:include page="/WEB-INF/view/templates/footer.jsp" />
+	</div>
+		<jsp:include page="/WEB-INF/view/templates/footer.jsp" />

@@ -75,35 +75,7 @@ public class HopDongDaoImpl implements HopDongDao {
 	@Override
 	public void saveHopDongCheDo(ThongTinHopDong thongtinhopdong, boolean checkMaNV) {
 		Session session = sessionFactory.getCurrentSession();
-
-		String maHD = thongtinhopdong.getMaHopDong();
-		String trangThaiHD = thongtinhopdong.getMaTrangThai();
-
-		if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE") && checkMaNV==false) {
-			String maNV = thongtinhopdong.getMaNhanVien();
-			int ngayNPN = thongtinhopdong.getSoNgayNghiTrongNam();
-			QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNV, "PN", ngayNPN, 0);
-			session.save(khoiTaoThongTinNgayNghi);
-			session.flush();
-			session.clear();
-
-			QuanLySoNgayNghi khoiTaoThongTinNgayNghi2 = new QuanLySoNgayNghi(maNV, "DO", 3, 0);
-			session.save(khoiTaoThongTinNgayNghi2);
-			session.flush();
-			session.clear();
-
-			QuanLySoNgayNghi khoiTaoThongTinNgayNghi3 = new QuanLySoNgayNghi(maNV, "TG", 3, 0);
-			session.save(khoiTaoThongTinNgayNghi3);
-
-			session.flush();
-			session.clear();
-
-			QuanLySoNgayNghi khoiTaoThongTinNgayNghi4 = new QuanLySoNgayNghi(maNV, "SD", 3, 0);
-			session.save(khoiTaoThongTinNgayNghi4);
-			session.save(thongtinhopdong);
-		} else {
-			session.save(thongtinhopdong);
-		}
+		session.save(thongtinhopdong);
 	}
 
 	@Override
@@ -213,19 +185,20 @@ public class HopDongDaoImpl implements HopDongDao {
 		query.setParameter("mtt", maTrangThai);
 		return (List<ThongTinHopDong>) query.list();
 	}
-	
+
 	@Override
 	@SuppressWarnings({ "rawtypes" })
 	public void editNgayNghiPhepNam(String maNhanVien, int soNgayNghi) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session
-				.createQuery("update QuanLySoNgayNghi set tongSoNgayDuocNghi = :sndn" + " where maNhanVien = :mnv and maNgayNghi = :mnn");
+		Query query = session.createQuery("update QuanLySoNgayNghi set tongSoNgayDuocNghi = :sndn"
+				+ " where maNhanVien = :mnv and maNgayNghi = :mnn");
 		query.setParameter("sndn", soNgayNghi);
 		query.setParameter("mnv", maNhanVien);
 		query.setParameter("mnn", "PN");
 		query.executeUpdate();
 		System.out.println(query.executeUpdate());
 	}
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean checkExistMaNV(String maNhanVien) {
@@ -233,21 +206,23 @@ public class HopDongDaoImpl implements HopDongDao {
 		Query query = session.createQuery(" from QuanLySoNgayNghi Where maNhanVien = :maNhanVien");
 		query.setParameter("maNhanVien", maNhanVien);
 		int check = query.getResultList().size();
-		
-		return (check>0);
+
+		return (check > 0);
 	}
+
 	@SuppressWarnings("rawtypes")
 	@Override
-	public boolean checkExistMaTT(String maNhanVien,String maTrangThai) {
+	public boolean checkExistMaTT(String maNhanVien, String maTrangThai) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery(" from ThongTinHopDong where maNhanVien= :maNhanVien AND maTrangThai = :maTrangThai");
+		Query query = session
+				.createQuery(" from ThongTinHopDong where maNhanVien= :maNhanVien AND maTrangThai = :maTrangThai");
 		query.setParameter("maNhanVien", maNhanVien);
 		query.setParameter("maTrangThai", maTrangThai);
 		int check = query.getResultList().size();
-		
-		return (check>0);
+
+		return (check > 0);
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean checkHDbyMaNV(int id, String tenNguoiCode) {
@@ -256,8 +231,109 @@ public class HopDongDaoImpl implements HopDongDao {
 		query.setParameter("id", id);
 		query.setParameter("maTrangThai", "ACTIVE");
 		int check = query.getResultList().size();
-		return (check>0);
+		return (check > 0);
+
 	}
-	
-	
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void addPhongBanChucDanhtoHoSo(String maNhanVien, String maChucDanh, String maPhongBan) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("update NhanSu set maPhongBan = :mpb , maChucDanh = :mcd"
+				+ " where maNhanVien = :mnv and maNgayNghi = :mnn");
+		query.setParameter("mpb", maPhongBan);
+		query.setParameter("mcd", maChucDanh);
+		query.setParameter("mnv", maNhanVien);
+		query.executeUpdate();
+
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void updateHopDongCu(String maNhanVien, String trangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"update ThongTinHopDong set maTrangThai = :mtt" + " where maNhanVien = :mnv and maTrangThai = :mtt1");
+		query.setParameter("mtt", trangThai);
+		query.setParameter("mnv", maNhanVien);
+		query.setParameter("mtt1", "ACTIVE");
+		query.executeUpdate();
+
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<ThongTinHopDong> findByMTT(String maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong tthd where tthd.maTrangThai = :mtt";
+		Query query = session.createQuery(hql);
+		query.setParameter("mtt", maTrangThai);
+		return (List<ThongTinHopDong>) query.list();
+	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<ThongTinHopDong> findByMNV(String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from ThongTinHopDong tthd where tthd.maNhanVien = :mnv";
+		Query query = session.createQuery(hql);
+		query.setParameter("mnv", maNhanVien);
+		return (List<ThongTinHopDong>) query.list();
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void updateHetHanHopDong(int id, String nguoiCode) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"update ThongTinHopDong set maTrangThai = :mtt" + " where id = :id");
+		query.setParameter("id", id);
+		query.setParameter("mtt", "END");
+		query.executeUpdate();
+		
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void pheDuyetHopDong(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"update ThongTinHopDong set maTrangThai = :mtt" + " where id = :id");
+		query.setParameter("id", id);
+		query.setParameter("mtt", "ACTIVE");
+		query.executeUpdate();
+		
+	}
+
+	@Override
+	public void insertNgayNghi(String maNhanVien, int NgayNghiPhepNam) {
+		Session session = sessionFactory.getCurrentSession();
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi = new QuanLySoNgayNghi(maNhanVien, "PN", NgayNghiPhepNam, 0);
+		session.save(khoiTaoThongTinNgayNghi);
+		session.flush();
+		session.clear();
+
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi2 = new QuanLySoNgayNghi(maNhanVien, "DO", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi2);
+		session.flush();
+		session.clear();
+
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi3 = new QuanLySoNgayNghi(maNhanVien, "TG", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi3);
+
+		session.flush();
+		session.clear();
+
+		QuanLySoNgayNghi khoiTaoThongTinNgayNghi4 = new QuanLySoNgayNghi(maNhanVien, "SD", 3, 0);
+		session.save(khoiTaoThongTinNgayNghi4);
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void tuChoiHopDong(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"update ThongTinHopDong set maTrangThai = :mtt" + " where id = :id");
+		query.setParameter("id", id);
+		query.setParameter("mtt", "OUT");
+		query.executeUpdate();
+		
+	}
+
 }

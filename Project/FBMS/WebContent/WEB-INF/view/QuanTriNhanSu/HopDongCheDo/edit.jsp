@@ -154,7 +154,6 @@
 								path="soNgayNghiTrongNam" />
 						</div>
 
-
 						<form:input value="FULL" path="ngayNghiDacBiet" type="hidden" />
 
 
@@ -182,7 +181,7 @@
 						<div class="form-group col-sm-4">
 							<label>Trạng thái </label>
 							<form:select path="maTrangThai" class="custom-select block round"
-								id="customSelect">
+								id="customSelect" disabled="true">
 								<c:forEach items="${listTrangThaiHopDong}" var="tt">
 									<form:option value="${tt.maTrangThai}"
 										label="${tt.tenTrangThai}" />

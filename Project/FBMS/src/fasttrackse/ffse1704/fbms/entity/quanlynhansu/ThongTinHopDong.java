@@ -268,6 +268,7 @@ public class ThongTinHopDong implements Serializable {
 	@JoinColumn(name = "ma_hop_dong", referencedColumnName = "ma_hop_dong", nullable = false, insertable = false, updatable = false)
 	private HopDong loaihopDong;
 
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "ngay_bat_dau", nullable = false)

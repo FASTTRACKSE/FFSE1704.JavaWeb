@@ -1,6 +1,7 @@
 package fasttrackse.ffse1704.fbms.controller.quanlynhansu;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachCongViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DiaDiemLamViec;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
+import fasttrackse.ffse1704.fbms.entity.quanlynhansu.NhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanLySoNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
@@ -60,11 +62,25 @@ public class HopDongCheDoController {
 
 	@RequestMapping(value = "/thongTinHopDong/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTinHopDong(@PathVariable("maNhanVien") String maNhanVien, Model model) {
+
+		List<ThongTinHopDong> listTTHD = hopDongService.findByMNV(maNhanVien);
+		for (int i = 0; i < listTTHD.size(); i++) {
+			int id = listTTHD.get(i).getId();
+			String nguoiCode = "QuanLT";
+			Date ngayKTTest = listTTHD.get(i).getNgayKetThuc();
+			Date today = new Date(System.currentTimeMillis());
+			if (ngayKTTest.compareTo(today) < 0) {
+				hopDongService.updateHetHanHopDong(id, nguoiCode);
+			} else {
+
+			}
+		}
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		List<HopDong> listHD = hopDongService.listHopDong();
 		model.addAttribute("hd", listHD);
 		model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDong";
 	}
 
@@ -102,6 +118,10 @@ public class HopDongCheDoController {
 	@RequestMapping(value = { "/saveHopDongCheDo/{maNhanVien}" }, method = RequestMethod.POST)
 	public String saveHopDongCheDo(@PathVariable("maNhanVien") String maNhanVien, @Valid ThongTinHopDong hopdongchedo,
 			BindingResult result, Model model) {
+		String trangThai = "WAITING";
+		Date ngayBatDau = hopdongchedo.getNgayBatDau();
+		Date ngayKetThuc = hopdongchedo.getNgayKetThuc();
+		hopdongchedo.setMaTrangThai(trangThai);
 		if (result.hasErrors()) {
 			model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
 			model.addAttribute("hopdongchedo", new ThongTinHopDong());
@@ -120,14 +140,8 @@ public class HopDongCheDoController {
 			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			return "QuanTriNhanSu/HopDongCheDo/add";
 		} else {
-			int soNgayNghi = hopdongchedo.getSoNgayNghiTrongNam();
-			String maHD = hopdongchedo.getMaHopDong();
-			String trangThaiHD = hopdongchedo.getMaTrangThai();
 			boolean checkMaNV = hopDongService.checkExistMaNV(maNhanVien);
-			boolean checkTT = hopDongService.checkExistMaTT(maNhanVien, trangThaiHD);
-			Date ngayBatDau = hopdongchedo.getNgayBatDau();
-			Date ngayKetThuc = hopdongchedo.getNgayKetThuc();
-			if (ngayBatDau.compareTo(ngayKetThuc) > 0) { 
+			if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
 				model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
 				model.addAttribute("hopdongchedo", new ThongTinHopDong());
 				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
@@ -145,9 +159,9 @@ public class HopDongCheDoController {
 				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 				return "QuanTriNhanSu/HopDongCheDo/add";
 			} else {
-				if (checkTT && trangThaiHD.equals("ACTIVE")) {
-					model.addAttribute("attenion",
-							"Nhân viên này đang có 1 hợp đồng còn hiệu lực, vui lòng kiểm tra lại!!!");
+				boolean checkHDChoPheDuyet = hopDongService.checkExistMaTT(maNhanVien, trangThai);
+				if (checkHDChoPheDuyet) {
+					model.addAttribute("attenion", "Nhân viên này đang có một hợp đồng đang đợi duyệt!!!");
 					model.addAttribute("hopdongchedo", new ThongTinHopDong());
 					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 					List<HopDong> listHD = hopDongService.listHopDong();
@@ -164,14 +178,7 @@ public class HopDongCheDoController {
 					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 					return "QuanTriNhanSu/HopDongCheDo/add";
 				} else {
-
-					if (checkMaNV && maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
-						hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
-						hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
-
-					} else {
-						hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
-					}
+					hopDongService.saveHopDongCheDo(hopdongchedo, checkMaNV);
 				}
 			}
 		}
@@ -203,65 +210,30 @@ public class HopDongCheDoController {
 	public String editGiaBan(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id, Model model,
 			@ModelAttribute("hopdong") @Valid ThongTinHopDong thongtinhopdong, HttpSession session, MultipartFile file,
 			BindingResult bindingResult) throws IllegalStateException, IOException {
-		int soNgayNghi = thongtinhopdong.getSoNgayNghiTrongNam();
-		String maHD = thongtinhopdong.getMaHopDong();
-		String trangThaiHD = thongtinhopdong.getMaTrangThai();
-		String tenNguoiCode = "QuanLT";
-		// check xem hợp đồng có phải là Active, trước khi check lỗi .
-		boolean checkHD = hopDongService.checkHDbyMaNV(id, tenNguoiCode);
-
-		if (checkHD) {
-			//nếu phải là Active trước thì:
-			if (bindingResult.hasErrors()) {
-				model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
-				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-				model.addAttribute("hopdong", hopDongService.findById(id));
-				List<HopDong> listHD = hopDongService.listHopDong();
-				model.addAttribute("hd", listHD);
-				List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
-				model.addAttribute("cdh", listCDH);
-				List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
-				model.addAttribute("dscv", listDSCV);
-				List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
-				model.addAttribute("ddlv", listDDLV);
-				model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-				model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-				model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
-				return "QuanTriNhanSu/HopDongCheDo/edit";
-			} else {
-				Date ngayBatDau = thongtinhopdong.getNgayBatDau();
-				Date ngayKetThuc = thongtinhopdong.getNgayKetThuc();
-				if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
-					model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
-					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-					model.addAttribute("hopdong", hopDongService.findById(id));
-					List<HopDong> listHD = hopDongService.listHopDong();
-					model.addAttribute("hd", listHD);
-					List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
-					model.addAttribute("cdh", listCDH);
-					List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
-					model.addAttribute("dscv", listDSCV);
-					List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
-					model.addAttribute("ddlv", listDDLV);
-					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
-					return "QuanTriNhanSu/HopDongCheDo/edit";
-				}else {
-					if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
-						hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
-						hopDongService.editHopDong(thongtinhopdong);
-					} else {
-						hopDongService.editHopDong(thongtinhopdong);
-					}
-					}
-				}
+		String trangThai = "WAITING";
+		thongtinhopdong.setMaTrangThai(trangThai);
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
+			model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+			model.addAttribute("hopdong", hopDongService.findById(id));
+			List<HopDong> listHD = hopDongService.listHopDong();
+			model.addAttribute("hd", listHD);
+			List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
+			model.addAttribute("cdh", listCDH);
+			List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
+			model.addAttribute("dscv", listDSCV);
+			List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
+			model.addAttribute("ddlv", listDDLV);
+			model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
+			model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
+			model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
+			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+			return "QuanTriNhanSu/HopDongCheDo/edit";
 		} else {
-			//nếu ko phải thì:
-			if (bindingResult.hasErrors()) {
-				model.addAttribute("attenion", "Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc hợp đồng!!!");
+			Date ngayBatDau = thongtinhopdong.getNgayBatDau();
+			Date ngayKetThuc = thongtinhopdong.getNgayKetThuc();
+			if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
+				model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
 				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 				model.addAttribute("hopdong", hopDongService.findById(id));
 				List<HopDong> listHD = hopDongService.listHopDong();
@@ -278,56 +250,11 @@ public class HopDongCheDoController {
 				model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 				return "QuanTriNhanSu/HopDongCheDo/edit";
 			} else {
-				boolean checkTT = hopDongService.checkExistMaTT(maNhanVien, trangThaiHD);
-				Date ngayBatDau = thongtinhopdong.getNgayBatDau();
-				Date ngayKetThuc = thongtinhopdong.getNgayKetThuc();
-				if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
-					model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
-					model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-					model.addAttribute("hopdong", hopDongService.findById(id));
-					List<HopDong> listHD = hopDongService.listHopDong();
-					model.addAttribute("hd", listHD);
-					List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
-					model.addAttribute("cdh", listCDH);
-					List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
-					model.addAttribute("dscv", listDSCV);
-					List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
-					model.addAttribute("ddlv", listDDLV);
-					model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-					model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-					model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-					model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
-					return "QuanTriNhanSu/HopDongCheDo/edit";
-				} else {
-					if (checkTT && trangThaiHD.equals("ACTIVE")) {
-						model.addAttribute("attenion",
-								"Nhân viên này đang có 1 hợp đồng còn hiệu lực, vui lòng kiểm tra lại!!!");
-						model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-						model.addAttribute("hopdong", hopDongService.findById(id));
-						List<HopDong> listHD = hopDongService.listHopDong();
-						model.addAttribute("hd", listHD);
-						List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
-						model.addAttribute("cdh", listCDH);
-						List<DanhSachCongViec> listDSCV = hopDongService.listDanhSachCongViec();
-						model.addAttribute("dscv", listDSCV);
-						List<DiaDiemLamViec> listDDLV = hopDongService.listDiaDiemLamViec();
-						model.addAttribute("ddlv", listDDLV);
-						model.addAttribute("listChucDanh", nhanSuService.listChucDanh());
-						model.addAttribute("listPhongBan", nhanSuService.listPhongBan());
-						model.addAttribute("listTrangThaiHopDong", hopDongService.TrangThaiHopDong());
-						model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
-						return "QuanTriNhanSu/HopDongCheDo/edit";
-					} else {
-						if (maHD.equals("HD3") && trangThaiHD.equals("ACTIVE")) {
-							hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghi);
-							hopDongService.editHopDong(thongtinhopdong);
-						} else {
-							hopDongService.editHopDong(thongtinhopdong);
-						}
-					}
-				}
+				hopDongService.editHopDong(thongtinhopdong);
+
 			}
 		}
+
 		return "redirect:/thongTinChiTietHopDong/{maNhanVien}&{id}";
 	}
 
@@ -365,5 +292,51 @@ public class HopDongCheDoController {
 			return "QuanTriNhanSu/xemThongTinHoSo/listthongtinHopDongSearch";
 		}
 
+	}
+
+	@RequestMapping(value = "/pheDuyetHopDong")
+	public String thongTinHopDong(Model model) {
+		String maTrangThai = "WAITING";
+		model.addAttribute("listHDPD", hopDongService.findByMTT(maTrangThai));
+		return "QuanTriNhanSu/HopDongCheDo/viewDSChuaPheDuyet";
+	}
+
+	@RequestMapping(value = "/thongTinChiTietHopDongPheDuyet/{maNhanVien}&{id}", method = RequestMethod.GET)
+	public String thongTinChiTietHopDongPheDuyet(@PathVariable("maNhanVien") String maNhanVien,
+			@PathVariable("id") int id, Model model) {
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+
+		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
+		model.addAttribute("dsnn", listDSNN);
+		model.addAttribute("hopDong", hopDongService.findById(id));
+		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
+		return "QuanTriNhanSu/HopDongCheDo/chitietHopDongPheDuyet";
+	}
+
+	@RequestMapping(value = "/accessHopDong/{id}&{maNhanVien}&{soNgayNghiTrongNam}&{maHopDong}", method = RequestMethod.GET)
+	public String pheDuyetHopDong(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id,
+			@PathVariable("soNgayNghiTrongNam") int soNgayNghiTrongNam, @PathVariable("maHopDong") String maHopDong,
+			Model model) {
+		boolean checkMaNVTrongNN = hopDongService.checkExistMaNV(maNhanVien);
+		String trangThai = "NEXT";
+		if (checkMaNVTrongNN && maHopDong.equals("HD3")) {
+			hopDongService.updateHopDongCu(maNhanVien, trangThai);
+			hopDongService.editNgayNghiPhepNam(maNhanVien, soNgayNghiTrongNam);
+			hopDongService.pheDuyetHopDong(id);
+		} else if (!checkMaNVTrongNN && maHopDong.equals("HD3")) {
+			hopDongService.updateHopDongCu(maNhanVien, trangThai);
+			hopDongService.insertNgayNghi(maNhanVien, soNgayNghiTrongNam);
+			hopDongService.pheDuyetHopDong(id);
+		} else {
+			hopDongService.updateHopDongCu(maNhanVien, trangThai);
+			hopDongService.pheDuyetHopDong(id);
+		}
+		return "redirect:/pheDuyetHopDong";
+	}
+
+	@RequestMapping(value = "/refuseHopDong/{id}", method = RequestMethod.GET)
+	public String pheDuyetHopDong(@PathVariable("id") int id, Model model) {
+		hopDongService.tuChoiHopDong(id);
+		return "redirect:/pheDuyetHopDong";
 	}
 }

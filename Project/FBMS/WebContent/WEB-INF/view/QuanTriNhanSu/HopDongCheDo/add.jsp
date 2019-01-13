@@ -182,17 +182,6 @@
 								</span>
 							</div>
 						</div>
-						<div class="form-group col-sm-4">
-							<label>Trạng thái </label>
-							<form:select path="maTrangThai" class="custom-select block round"
-								id="customSelect">
-								<c:forEach items="${listTrangThaiHopDong}" var="tt">
-									<form:option value="${tt.maTrangThai}"
-										label="${tt.tenTrangThai}" />
-								</c:forEach>
-							</form:select>
-
-						</div>
 						<div class="form-group col-sm-6">
 							<label>Hình thức trả lương: </label><br> Tiền mặt
 							<form:radiobutton path="hinhThucTraLuong" value="1" />
