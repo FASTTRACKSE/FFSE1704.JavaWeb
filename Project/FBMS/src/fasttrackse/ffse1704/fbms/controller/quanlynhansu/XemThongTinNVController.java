@@ -110,7 +110,6 @@ public class XemThongTinNVController {
 	@RequestMapping(value = "/thongTinNhanVien/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTinNhanVien(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/xemThongTinHoSo/listthongtin";
 	}
 
@@ -118,7 +117,6 @@ public class XemThongTinNVController {
 	public ModelAndView exportExcelFile(@PathVariable("maNhanVien") String maNhanVien) {
 		ModelAndView model = new ModelAndView("ExcelBuilder");
 		model.addObject("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-		model.addObject("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return model;
 	}
 

@@ -402,12 +402,14 @@ body, html {
 													<td><a
 													href="/FBMS/editHopDong/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
 													class="btn btn-success">Sửa thông tin</a></td>
-													<td><a class="btn btn-danger"
+												</c:if>
+												<c:if test="${hopDong.maTrangThai == 'WAITING' || hopDong.maTrangThai == 'OUT'}">
+												<td><a class="btn btn-danger"
 													href="/FBMS/deleteHopDongCheDo/${hopDong.id}&${thongTinNhanVien.maNhanVien}"
 													class="btn btn-danger"
 													onclick="return confirm('Bạn có muốn hợp đồng này?');">Xóa
 														hợp đồng</a></td>
-												</c:if>
+														</c:if>
 												
 												<td><a class="btn btn-success"
 													href="/FBMS/thongTinHopDong/${thongTinNhanVien.maNhanVien}"

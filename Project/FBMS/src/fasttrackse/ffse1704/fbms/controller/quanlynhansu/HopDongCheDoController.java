@@ -62,7 +62,7 @@ public class HopDongCheDoController {
 
 	@RequestMapping(value = "/thongTinHopDong/{maNhanVien}", method = RequestMethod.GET)
 	public String thongTinHopDong(@PathVariable("maNhanVien") String maNhanVien, Model model) {
-
+		//find list hợp đồng by Mã NV
 		List<ThongTinHopDong> listTTHD = hopDongService.findByMNV(maNhanVien);
 		for (int i = 0; i < listTTHD.size(); i++) {
 			int id = listTTHD.get(i).getId();
@@ -70,6 +70,8 @@ public class HopDongCheDoController {
 			Date ngayKTTest = listTTHD.get(i).getNgayKetThuc();
 			Date today = new Date(System.currentTimeMillis());
 			if (ngayKTTest.compareTo(today) < 0) {
+				//Kiểm tra xem có hợp đồng nào hết hạn không.
+				//Nếu có update trạng thái
 				hopDongService.updateHetHanHopDong(id, nguoiCode);
 			} else {
 
@@ -87,17 +89,20 @@ public class HopDongCheDoController {
 	public String thongTinChiTietHopDong(@PathVariable("maNhanVien") String maNhanVien, @PathVariable("id") int id,
 			Model model) {
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
-
+		
 		List<DanhSachNgayNghi> listDSNN = hopDongService.listDanhSachNgayNghi();
 		model.addAttribute("dsnn", listDSNN);
+		//chi tiết hợp đồng by id
 		model.addAttribute("hopDong", hopDongService.findById(id));
 		return "QuanTriNhanSu/xemThongTinHoSo/chitietHopDong";
 	}
 
 	@RequestMapping(value = "/addHopDongCheDo/{maNhanVien}")
 	public String addHopDongCheDo(Model model, @PathVariable("maNhanVien") String maNhanVien) {
+		//view add
 		model.addAttribute("hopdongchedo", new ThongTinHopDong());
 		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
+		//combobox
 		List<HopDong> listHD = hopDongService.listHopDong();
 		model.addAttribute("hd", listHD);
 		List<CheDoHuong> listCDH = hopDongService.listCheDoHuong();
@@ -115,6 +120,7 @@ public class HopDongCheDoController {
 	@RequestMapping(value = { "/saveHopDongCheDo/{maNhanVien}" }, method = RequestMethod.POST)
 	public String saveHopDongCheDo(@PathVariable("maNhanVien") String maNhanVien, @Valid ThongTinHopDong hopdongchedo,
 			BindingResult result, Model model) {
+		//trạng thái mặc định
 		String trangThai = "WAITING";
 		Date ngayBatDau = hopdongchedo.getNgayBatDau();
 		Date ngayKetThuc = hopdongchedo.getNgayKetThuc();
@@ -138,6 +144,7 @@ public class HopDongCheDoController {
 		} else {
 			boolean checkMaNV = hopDongService.checkExistMaNV(maNhanVien);
 			if (ngayBatDau.compareTo(ngayKetThuc) > 0) {
+				//Kiểm tra ô ngày bắt đầu có lớn hơn ngày kết thúc ??
 				model.addAttribute("attenion", "Ngày bắt đầu đã lớn hơn ngày kết thúc hợp đồng!!!");
 				model.addAttribute("hopdongchedo", new ThongTinHopDong());
 				model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
@@ -155,6 +162,7 @@ public class HopDongCheDoController {
 				return "QuanTriNhanSu/HopDongCheDo/add";
 			} else {
 				boolean checkHDChoPheDuyet = hopDongService.checkExistMaTT(maNhanVien, trangThai);
+				//Check xem có hợp đồng nào đang đợi duyệt ko?
 				if (checkHDChoPheDuyet) {
 					model.addAttribute("attenion", "Nhân viên này đang có một hợp đồng đang đợi duyệt!!!");
 					model.addAttribute("hopdongchedo", new ThongTinHopDong());

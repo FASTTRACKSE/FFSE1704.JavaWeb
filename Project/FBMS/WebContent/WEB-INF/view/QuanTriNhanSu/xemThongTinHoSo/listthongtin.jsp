@@ -210,17 +210,19 @@ body, html {
 										hồ sơ nhân viên</h1>
 									<p style="text-align: center;">Nhân viên:</p>
 									<p>
-											<img
-												src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
-												style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
-										</p>
+										<img
+											src="<c:url value="/uploads/${thongTinNhanVien.anhDaiDien}"/>"
+											style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
+									</p>
 
 									<h2 style="text-align: center;">${thongTinNhanVien.hoLot}<a>
 											${thongTinNhanVien.ten}</a>
 									</h2>
 									<p style="text-align: center;">
-											Phòng ban:<a>${pbcd.phongBan.tenPhongBan}</a> - Chức vụ:<a>${pbcd.chucDanh.tenChucDanh}</a>
-										</p>
+										Phòng ban:<a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
+										Chức vụ:<a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
+									</p>
+
 									<button class="tablink" onclick="openPage('Home', this, 'red')">Hồ
 										sơ</button>
 									<button class="tablink"
@@ -338,19 +340,19 @@ body, html {
 												</tr>
 											</thead>
 											<tbody>
-												
-													<c:forEach var="bangCap"
-														items="${thongTinNhanVien.listBangCap}">
-														<tr>
+
+												<c:forEach var="bangCap"
+													items="${thongTinNhanVien.listBangCap}">
+													<tr>
 														<td>${bangCap.trinhDo.tenTrinhDo}</td>
 														<td>${bangCap.tenNganh}</td>
 														<td>${bangCap.batDau}</td>
 														<td>${bangCap.ketThuc}</td>
 														<td>${bangCap.xepLoai}</td>
 														<td>${bangCap.noiCap}</td>
-															</tr>
-													</c:forEach>
-											
+													</tr>
+												</c:forEach>
+
 											</tbody>
 										</table>
 									</div>
@@ -368,6 +370,8 @@ body, html {
 													<th scope="col">Lương tháng 13</th>
 													<th scope="col">Các loại ngày nghỉ đặc biệt</th>
 													<th scope="col">Hình thức thanh toán lương</th>
+													<th scope="col">Trạng thái
+													<th>
 												</tr>
 											</thead>
 											<tbody>
@@ -380,7 +384,7 @@ body, html {
 														<td>${hopDong.ngayKetThuc}</td>
 														<td>${hopDong.congViec.tenCongViec}</td>
 														<td>${hopDong.diaDiem.tenDiaDiem}</td>
-														<td>${hopDong.thoiGianBatDauLamViec}  đến
+														<td>${hopDong.thoiGianBatDauLamViec}đến
 															${hopDong.thoiGianKetThucLamViec}</td>
 														<td>${hopDong.mucLuongBanDau}</td>
 														<td>${hopDong.cheDoHuong.luong}</td>
@@ -390,6 +394,7 @@ body, html {
 																<c:when test="${hopDong.hinhThucTraLuong == 2}">Ngân hàng</c:when>
 																<c:otherwise></c:otherwise>
 															</c:choose></td>
+														<td>${hopDong.trangthai.tenTrangThai}</td>
 													</tr>
 												</c:forEach>
 
@@ -443,14 +448,14 @@ body, html {
 													items="${thongTinNhanVien.listPhanCongNhiemVuNS}">
 													<tr>
 														<td>${hopDong.thongTinDuAn.maDuAn}</td>
-													<td>${hopDong.thongTinDuAn.tenDuAn}</td>
-													<td>${hopDong.vaiTro.tenVaiTro}</td>
-													<td>${hopDong.thongTinDuAn.domainNS.tenDomain}</td>
-													<td>${hopDong.thongTinDuAn.frameWorkNS.tenFramework}</td>
-													<td>${hopDong.thongTinDuAn.databaseNS.tenDatabase}</td>
-													<td>${hopDong.thongTinDuAn.programmingLaguageNS.tenProgrammingLanguage}</td>
-													<td>${hopDong.thongTinDuAn.moTa}</td>
-													<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
+														<td>${hopDong.thongTinDuAn.tenDuAn}</td>
+														<td>${hopDong.vaiTro.tenVaiTro}</td>
+														<td>${hopDong.thongTinDuAn.domainNS.tenDomain}</td>
+														<td>${hopDong.thongTinDuAn.frameWorkNS.tenFramework}</td>
+														<td>${hopDong.thongTinDuAn.databaseNS.tenDatabase}</td>
+														<td>${hopDong.thongTinDuAn.programmingLaguageNS.tenProgrammingLanguage}</td>
+														<td>${hopDong.thongTinDuAn.moTa}</td>
+														<td>${hopDong.thongTinDuAn.trangThaiDuAnNS.tenTrangThai}</td>
 
 
 													</tr>
