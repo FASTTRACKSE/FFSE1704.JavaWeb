@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import com.sun.istack.internal.NotNull;
 
 @Entity
-@Table(name = "tencongviec")
+@Table(name = "thong_tin_cong_viec")
 public class CongViecKhanhCN implements Serializable {
 
 	/**
@@ -29,12 +29,36 @@ public class CongViecKhanhCN implements Serializable {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "ma_du_an", nullable = false, referencedColumnName = "ma_du_an")
+	@JoinColumn(name = "ma_du_an", nullable = false, referencedColumnName = "ma_du_an", insertable = false, updatable = false)
 	private DuAnKhanhCN duAnKhanhCN;
 
+	@Column(name = "ma_du_an")
+	
+	private String maDuAn;
+
+	public String getMaDuAn() {
+		return maDuAn;
+	}
+
+	public void setMaDuAn(String maDuAn) {
+		this.maDuAn = maDuAn;
+	}
+
 	@ManyToOne
-	@JoinColumn(name = "ma_loai_congviec", nullable = false, referencedColumnName = "ma_loai_congviec")
+	@JoinColumn(name = "ma_loai_congviec", nullable = false, referencedColumnName = "ma_loai_congviec", insertable = false, updatable = false)
 	private LoaiCongViec loaiCongViec;
+
+	@Column(name = "ma_loai_congviec")
+
+	private String maLoaiCongViec;
+
+	public String getMaLoaiCongViec() {
+		return maLoaiCongViec;
+	}
+
+	public void setMaLoaiCongViec(String maLoaiCongViec) {
+		this.maLoaiCongViec = maLoaiCongViec;
+	}
 
 	@Column(name = "ten_cong_viec")
 	@NotEmpty
@@ -52,9 +76,9 @@ public class CongViecKhanhCN implements Serializable {
 	private String thoiGianKetThuc;
 
 	@ManyToOne
-	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien", insertable= false, updatable= false)
+	@JoinColumn(name = "nguoi_duoc_phan_cong", nullable = false, referencedColumnName = "ma_nhan_vien", insertable = false, updatable = false)
 	private NhanVienDuAn nhanVienDuAn;
-	
+
 	@Column(name = "nguoi_duoc_phan_cong")
 	private String nguoiPhanCong;
 
@@ -67,10 +91,10 @@ public class CongViecKhanhCN implements Serializable {
 	}
 
 	@Column(name = "thoigian_dukien_hoanthanh")
-	@NotEmpty
+
 	private String thoiGianDuKienHoanThanh;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "trang_thai", referencedColumnName = "ma_trangthai", insertable = false, updatable = false, nullable = false)
 	private TrangThaiKhanhCN trangThaiKhanhCN; // không phải cái này được lưu
 

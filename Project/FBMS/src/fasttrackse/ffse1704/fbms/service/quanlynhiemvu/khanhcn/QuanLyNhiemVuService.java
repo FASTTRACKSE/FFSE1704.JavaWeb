@@ -28,9 +28,25 @@ public interface QuanLyNhiemVuService {
 	public List<LoaiCongViec> loaiCongViec();
 
 	public List<DuAnKhanhCN> duAn();
-	
+
 	public List<NhanVienDuAn> nhanVienDuAn();
 
 	public List<NhanVienKhanhCN> nhanVien();
 
+	public List<CongViecKhanhCN> timTheoMaDuAn(String maDuAn);
+
+	public List<CongViecKhanhCN> timtheoMaNhanVien(String maNhanVien);
+
+	public List<CongViecKhanhCN> timtheoMaTrangThai(int maTrangThai);
+
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVien(String maDuAn, String maNhanVien);
+
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaTrangThai(String maDuAn, int maTrangThai);
+
+	public List<CongViecKhanhCN> timTheoMaNhanVienvaMaTrangThai(String maNhanVien, int maTrangThai);
+
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVienvaMaTrangThai(String maDuAn, String maNhanVien,
+			int maTrangThai);
+
+	public List<NhanVienDuAn> timNhanVienTheoDuAn(String maDuAn);
 }

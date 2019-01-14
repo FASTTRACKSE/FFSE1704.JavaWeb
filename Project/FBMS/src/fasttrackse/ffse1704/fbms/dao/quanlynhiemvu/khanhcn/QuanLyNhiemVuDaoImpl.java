@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,13 +62,17 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 		session.close();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void deleteCongViec(int id) {
-		Session session = this.sessionFactory.openSession();
-		Transaction pb = session.beginTransaction();
-		session.delete(session.get(CongViecKhanhCN.class, id));
-		pb.commit();
-		session.close();
+		Session session = this.sessionFactory.getCurrentSession();
+//		nhanSu.listHopDong.remove(findById(id));
+//		session.delete(findById(id));
+		String hql = "delete from CongViecKhanhCN where id= :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		query.executeUpdate();
+
 	}
 
 	@Override
@@ -116,6 +121,99 @@ public class QuanLyNhiemVuDaoImpl implements QuanLyNhiemVuDao {
 		Session session = sessionFactory.getCurrentSession();
 		List<NhanVienKhanhCN> cv = session.createQuery("from NhanVienKhanhCN").list();
 		return cv;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.maDuAn = :maDuAn";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("maDuAn", maDuAn);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVien(String maDuAn, String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.maDuAn = :maDuAn and cv.nguoiPhanCong = :nguoiPhanCong";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("maDuAn", maDuAn);
+		query.setParameter("nguoiPhanCong", maNhanVien);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVienvaMaTrangThai(String maDuAn, String maNhanVien,
+			int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.maDuAn = :maDuAn and cv.nguoiPhanCong = :nguoiPhanCong and cv.trangThai= :trangThai";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("maDuAn", maDuAn);
+		query.setParameter("nguoiPhanCong", maNhanVien);
+		query.setParameter("trangThai", maTrangThai);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timtheoMaNhanVien(String maNhanVien) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.nguoiPhanCong = :nguoiPhanCong";
+
+		Query query = session.createQuery(hql);;
+		query.setParameter("nguoiPhanCong", maNhanVien);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timtheoMaTrangThai(int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.trangThai = :trangThai";
+
+		Query query = session.createQuery(hql);;
+		query.setParameter("trangThai", maTrangThai);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timTheoMaNhanVienvaMaTrangThai(String maNhanVien, int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.nguoiPhanCong= :maNhanVien and cv.trangThai = :trangThai";
+
+		Query query = session.createQuery(hql);;
+		query.setParameter("nguoiPhanCong", maNhanVien);
+		query.setParameter("trangThai", maTrangThai);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaTrangThai(String maDuAn, int maTrangThai) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from CongViecKhanhCN cv where cv.maDuAn= :maDuAn and cv.trangThai = :trangThai";
+
+		Query query = session.createQuery(hql);;
+		query.setParameter("maDuAn", maDuAn);
+		query.setParameter("trangThai", maTrangThai);
+		return (List<CongViecKhanhCN>) query.list();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<NhanVienDuAn> timNhanVienTheoDuAn(String maDuAn) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from NhanVienDuAn nv where nv.maDuAn= :maDuAn";
+
+		Query query = session.createQuery(hql);;
+		query.setParameter("maDuAn", maDuAn);
+		return (List<NhanVienDuAn>) query.list();
 	}
 
 }

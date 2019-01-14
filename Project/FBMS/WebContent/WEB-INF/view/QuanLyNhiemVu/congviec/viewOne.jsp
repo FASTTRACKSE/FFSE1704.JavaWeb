@@ -10,7 +10,7 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Sửa công việc</h3>
+				<h3 class="content-header-title mb-0">Thông tin nhân viên</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
@@ -19,7 +19,7 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/QuanLyNhiemVu/cong_viec/danhsachcongviec" />'>Danh
 									sách công việc </a></li>
-							<li class="breadcrumb-item active">Sửa công việc</li>
+							<li class="breadcrumb-item active">Thông tin nhân viên</li>
 						</ol>
 					</div>
 				</div>
@@ -72,9 +72,10 @@
 
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<form:select class="custom-select block "  path="nguoiPhanCong" >
-							<c:forEach  items="${NhanVien}" var="nv">
-									<form:option  value="${nv.maNhanVien}" label=" ${nv.hoDem} ${nv.ten}" class="form-control"  />
+							<form:select class="custom-select block " path="nguoiPhanCong">
+								<c:forEach items="${NhanVien}" var="nv">
+									<form:option value="${nv.maNhanVien}"
+										label=" ${nv.hoDem} ${nv.ten}" class="form-control" />
 								</c:forEach>
 							</form:select>
 						</div>
@@ -92,10 +93,7 @@
 								itemValue="maTrangThai" itemLabel="tenTrangThai"
 								class="form-control" />
 						</div>
-						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-success">Lưu thông
-								tin</button>
-						</div>
+
 					</form:form>
 				</div>
 			</div>

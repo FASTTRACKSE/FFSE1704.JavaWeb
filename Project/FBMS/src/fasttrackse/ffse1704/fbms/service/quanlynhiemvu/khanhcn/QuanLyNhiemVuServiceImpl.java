@@ -94,4 +94,53 @@ public class QuanLyNhiemVuServiceImpl implements QuanLyNhiemVuService {
 		return congViecDao.nhanVien();
 	}
 
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAn(String maDuAn) {
+		// TODO Auto-generated method stub
+		return congViecDao.timTheoMaDuAn(maDuAn);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVien(String maDuAn, String maNhanVien) {
+		// TODO Auto-generated method stub
+		return congViecDao.timTheoMaDuAnvaMaNhanVien(maDuAn, maNhanVien);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaNhanVienvaMaTrangThai(String maDuAn, String maNhanVien,
+			int maTrangThai) {
+		// TODO Auto-generated method stub
+		return congViecDao.timTheoMaDuAnvaMaNhanVienvaMaTrangThai(maDuAn, maNhanVien, maTrangThai);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timtheoMaNhanVien(String maNhanVien) {
+		// TODO Auto-generated method stub
+		return congViecDao.timtheoMaNhanVien(maNhanVien);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timtheoMaTrangThai(int maTrangThai) {
+		// TODO Auto-generated method stub
+		return congViecDao.timtheoMaTrangThai(maTrangThai);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timTheoMaDuAnvaMaTrangThai(String maDuAn, int maTrangThai) {
+		// TODO Auto-generated method stub
+		return congViecDao.timTheoMaDuAnvaMaTrangThai(maDuAn, maTrangThai);
+	}
+
+	@Override
+	public List<CongViecKhanhCN> timTheoMaNhanVienvaMaTrangThai(String maNhanVien, int maTrangThai) {
+		// TODO Auto-generated method stub
+		return congViecDao.timTheoMaNhanVienvaMaTrangThai(maNhanVien, maTrangThai);
+	}
+
+	@Override
+	public List<NhanVienDuAn> timNhanVienTheoDuAn(String maDuAn) {
+		// TODO Auto-generated method stub
+		return congViecDao.timNhanVienTheoDuAn(maDuAn);
+	}
+
 }

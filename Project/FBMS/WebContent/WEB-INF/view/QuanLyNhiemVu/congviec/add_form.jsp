@@ -26,8 +26,8 @@
 							<li class="breadcrumb-item"><a
 								href='<c:url value="/home" />'>Home</a></li>
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/QuanLyNhiemVu/congviec/" />'>Danh sách
-									công việc</a></li>
+								href='<c:url value="/QuanLyNhiemVu/cong_viec/danhsachcongviec" />'>Danh
+									sách công việc</a></li>
 							<li class="breadcrumb-item active">Thêm mới công việc</li>
 						</ol>
 					</div>
@@ -43,22 +43,32 @@
 
 
 						<div class="form-group col-sm-6">
-							<label>Mã dự án</label>
-							<form:select path="duAnKhanhCN.maDAn" items="${DuAn}"
-								itemValue="maDAn" itemLabel="tenDuAn" class="form-control" />
+							<label>Dự án</label>
+							<form:select class="form-control" path="maDuAn" id="idDuAn"
+								onchange="selectNguoiDuocPC()">
+								<option value="" selected="selected" disabled="disabled">Chọn
+									dự án</option>
+								<c:forEach items="${DuAn}" var="duan">
+									<form:option value="${duan.maDAn}" label="${duan.tenDuAn}" />
+								</c:forEach>
+							</form:select>
 						</div>
 
 						<div class="form-group col-sm-6">
-							<label>Mã loại CV</label>
-							<form:select path="loaiCongViec.maLoaiCongViec"
-								items="${LoaiCongViec}" itemValue="maLoaiCongViec"
-								itemLabel="loaiCongViec" class="form-control" />
+							<label>Loại công việc </label>
+							<form:select path="maLoaiCongViec" class="form-control">
+								<option value="" selected="selected" disabled="disabled">Chọn
+									loại công việc</option>
+								<c:forEach items="${LoaiCongViec}" var="congviec">
+									<form:option value="${congviec.maLoaiCongViec}"
+										label="${congviec.loaiCongViec}" />
+								</c:forEach>
+							</form:select>
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Tên CV</label>
 							<form:input class="form-control" path="tenCongViec"
 								placeholder="Tên công việc" />
-
 						</div>
 						<div class="form-group col-sm-6">
 							<label>Mô tả</label>
@@ -92,10 +102,10 @@
 
 						<div class="form-group col-sm-6">
 							<label>Người được PC</label>
-							<form:select class="custom-select block "  path="nguoiPhanCong" >
-							<c:forEach  items="${NhanVien}" var="nv">
-									<form:option  value="${nv.maNhanVien}" label=" ${nv.hoDem} ${nv.ten}" class="form-control"  />
-								</c:forEach>
+							<form:select class="custom-select block " path="nguoiPhanCong"
+								id="idNguoiDuocPC">
+								<option value="" selected="selected" disabled="disabled">Chon
+									người được PC</option>
 							</form:select>
 						</div>
 
@@ -129,6 +139,31 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function selectNguoiDuocPC() {
+		var maDAn = $("#idDuAn").val();
+		$('#idNguoiDuocPC option').remove();
+		$.ajax({
+			url : "/FBMS/QuanLyNhiemVu/cong_viec/selectNhanVien/" + maDAn,
+			dataType : "json",
+			success : function(data) {
+				$('#idNguoiDuocPC').append($('<option>', {
+					value : '0',
+					text : 'Chọn người được phân công'
+				}));
+				$('#idNguoiDuocPC option[value=0]').attr('disabled', true);
+
+				for (var i = 0; i < data.length; i++) {
+					$('#idNguoiDuocPC').append($('<option>', {
+						value : data[i].maNguoiDuocPhanCong,
+						text : data[i].tenNguoiDuocPhanCong
+					}));
+				}
+
+			}
+		});
+	};
+</script>
 
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <jsp:include page="/WEB-INF/view/templates/footer.jsp" />

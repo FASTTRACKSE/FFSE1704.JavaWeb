@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "loaicongviec")
+@Table(name = "loai_cong_viec")
 public class LoaiCongViec implements Serializable {
 
 	/**
@@ -30,9 +30,7 @@ public class LoaiCongViec implements Serializable {
 	@NotEmpty
 	private String loaiCongViec;
 
-	@OneToMany(mappedBy = "loaiCongViec")
-	private List<CongViecKhanhCN> congViecKhanhCN = new ArrayList<CongViecKhanhCN>();
-
+	
 	public LoaiCongViec() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -52,14 +50,6 @@ public class LoaiCongViec implements Serializable {
 
 	public String getLoaiCongViec() {
 		return loaiCongViec;
-	}
-
-	public List<CongViecKhanhCN> getCongViecKhanhCN() {
-		return congViecKhanhCN;
-	}
-
-	public void setCongViecKhanhCN(List<CongViecKhanhCN> congViecKhanhCN) {
-		this.congViecKhanhCN = congViecKhanhCN;
 	}
 
 	public void setLoaiCongViec(String loaiCongViec) {

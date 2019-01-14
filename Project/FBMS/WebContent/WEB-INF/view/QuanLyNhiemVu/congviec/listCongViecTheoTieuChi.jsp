@@ -122,14 +122,12 @@
 									<c:forEach items="${DuAn}" var="DuAn">
 										<option value="${DuAn.maDAn}">${DuAn.tenDuAn}</option>
 									</c:forEach>
-
 								</select>
 							</div>
 							<div class="col-md-3">
 								<a style="color: blue">Nhân viên </a> <select
 									class="form-control" name="maNV" id="idNguoiDuocPC">
-									<option value="KO" >Không
-										chọn</option>
+									<option value="KO">Không chọn</option>
 									<%-- <option style="color: red" value="KO">Không chọn</option>
 									<c:forEach items="${NhanVien}" var="NhanVien">
 										<option value="${NhanVien.maNhanVien}">${NhanVien.hoDem}
@@ -152,8 +150,13 @@
 
 							<div class="col-md-3">
 								<input class="btn btn-success" type="submit" value="Xem">
+								<a class="btn btn-danger"
+									href="/FBMS/QuanLyNhiemVu/cong_viec/danhsachcongviec">Xem
+									tất cả </a>
 							</div>
 						</form>
+
+
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">
@@ -174,7 +177,7 @@
 												<th>Chức năng</th>
 											</tr>
 										</thead>
-										<c:forEach var="nv" items="${list}">
+										<c:forEach var="nv" items="${danhsach}">
 											<tr>
 												<td>${nv.id}</td>
 												<td>${nv.duAnKhanhCN.tenDuAn}</td>
@@ -230,8 +233,6 @@
 		</div>
 	</div>
 </div>
-
-
 <script type="text/javascript">
 	function selectNguoiDuocPC() {
 		var maDAn = $("#idDuAn").val();
