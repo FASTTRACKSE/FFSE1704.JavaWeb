@@ -116,11 +116,11 @@ public class NhanSu implements Serializable {
 	@Column(name = "que_quan")
 	private String queQuan;
 	
-	@NotEmpty
+	
 	@Column(name = "ma_phong_ban")
 	private String maPhongBan;
 	
-	@NotEmpty
+	
 	@Column(name = "ma_chuc_danh")
 	private String maChucDanh;
 	

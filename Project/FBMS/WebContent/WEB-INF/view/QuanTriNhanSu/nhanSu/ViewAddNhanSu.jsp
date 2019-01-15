@@ -49,6 +49,14 @@
 							<p style="color: red">${attenion}</p>
 						</div>
 						<div class="form-group col-sm-4">
+						
+							  <form:input  class="form-control" path="maPhongBan" type="hidden" />
+						</div>
+						<div class="form-group col-sm-4">
+						
+							<form:input  class="form-control"  path="maChucDanh" type="hidden"  />
+						</div>
+						<div class="form-group col-sm-4">
 							<label>Họ đệm</label>
 							<form:input class="form-control" type="text" path="hoLot" />
 							<form:errors path="hoLot" cssClass="error" style="color:red" />

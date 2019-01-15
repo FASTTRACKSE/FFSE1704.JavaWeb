@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 
 <div class="app-content content container-fluid">
@@ -39,7 +40,7 @@
 													style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; width: 200px; height: 150px; display: block; margin-left: auto; margin-right: auto;">
 											</p>
 											<h1 style="text-align: center; color: green">
-												${bangCap.hoLot} ${bangCap.ten}</a>
+												${bangCap.hoLot} ${bangCap.ten}
 											</h1>
 											<p style="text-align: center;">
 												<a>Mã nhân viên:</a> ${bangCap.maNhanVien}

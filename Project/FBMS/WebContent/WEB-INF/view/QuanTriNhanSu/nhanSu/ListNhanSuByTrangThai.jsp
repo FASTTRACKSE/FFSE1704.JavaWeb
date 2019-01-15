@@ -182,6 +182,8 @@
 											<tr>
 												<th scope="col">ID</th>
 												<th>Mã nhân viên</th>
+												<th>Phòng Ban</th>
+												<th>Chức Danh</th>
 												<th>Họ tên</th>
 												<th>Ngày sinh</th>
 												<th>Ảnh đại diện</th>
@@ -197,13 +199,14 @@
 											<tr>
 												<td>${ns.id}</td>
 												<td>${ns.maNhanVien}</td>
+												<td>${ns.phongBan.tenPhongBan}</td>
+												<td>${ns.chucDanh.tenChucDanh}</td>
 												<td>${ns.hoLot} ${ns.ten}</td>
 												<td><fmt:formatDate value="${ns.namSinh}"
 														pattern="dd-MM-yyyy" /></td>
 
 												<td><img style="width: 70px;hight=70px;"
 													src="<c:url value="/uploads/${ns.anhDaiDien}"/>"></td>
-
 												<%-- <td>${ns.namSinh}</td> --%>
 												<%-- <td><c:choose>
 														<c:when test="${ns.gioiTinh == 1}">

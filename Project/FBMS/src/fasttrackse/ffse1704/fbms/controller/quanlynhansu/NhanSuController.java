@@ -169,6 +169,8 @@ public class NhanSuController {
 			model.addAttribute("attenion", "Mã nhân viên đã tồn tại");
 			return new ModelAndView("QuanTriNhanSu/nhanSu/ViewAddNhanSu");
 		} else {
+			nhanSu.setMaChucDanh(null);
+			nhanSu.setMaPhongBan(null);
 			nhanSuService.addNS(nhanSu);
 		}
 		// model.addAttribute("messImages", "Vui lòng chọn ảnh đại diện");
@@ -178,9 +180,14 @@ public class NhanSuController {
 
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/editNS/{id}")
 	public String editNhanSuByID(@PathVariable int id, Model model) {
-
+		
 		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
 		model.addAttribute("nhanSu", nhanSu);
+
+//		if(nhanSu.getMaChucDanh().equals("NULL")) {
+//			nhanSu.setMaChucDanh("");
+//			nhanSu.setMaPhongBan("");
+//		}
 
 		List<ChucDanh> listChucDanh = nhanSuService.listChucDanh();
 		model.addAttribute("listChucDanh", listChucDanh);
