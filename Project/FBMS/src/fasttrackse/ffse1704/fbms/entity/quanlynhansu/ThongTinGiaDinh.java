@@ -36,7 +36,7 @@ public class ThongTinGiaDinh implements Serializable {
 	private NhanSu nhanSu;
 
 	@NotEmpty(message = "Tên không được rỗng!")
-	@Size(min = 10, max = 30)
+	@Size(min = 5)
 	@Column(name = "ho_va_ten", nullable = false, length = 255)
 	private String hoVaTen;
 

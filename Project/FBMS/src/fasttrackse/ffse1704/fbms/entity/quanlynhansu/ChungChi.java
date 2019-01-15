@@ -35,7 +35,7 @@ public class ChungChi {
 
 	@NotNull
 	@NotEmpty(message="Tên không được rỗng!")
-	@Size(min = 5, max = 30)
+	@Size(min = 2, max = 30)
 	@Column(name = "ten_chung_chi", nullable = false, length = 255)
 	private String tenChungChi;
 

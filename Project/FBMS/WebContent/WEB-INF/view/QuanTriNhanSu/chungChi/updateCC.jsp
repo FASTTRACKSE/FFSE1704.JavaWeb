@@ -58,12 +58,6 @@
 						<a><spring:message code="chungchi.QuanTriNhanSu.ngaysinh" />:</a>
 						<fmt:formatDate value="${chungChi.namSinh}" pattern="dd-MM-yyyy" />
 					</p>
-					<p style="text-align: center;">
-						<spring:message code="chungchi.QuanTriNhanSu.phongban" />
-						:<a>${pbcd.phongBan.tenPhongBan}</a> -
-						<spring:message code="chungchi.QuanTriNhanSu.chucdanh" />
-						:<a>${pbcd.chucDanh.tenChucDanh}</a>
-					</p>
 				</div>
 
 				<div class="form-group col-md-3"></div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/view/templates/header.jsp" />
 <style>
@@ -50,15 +51,18 @@
 		<!-- Path -->
 		<div class="content-header row">
 			<div class="content-header-left col-md-9 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0">Danh sách nhân sự</h3>
+				<h3 class="content-header-title mb-0">
+					<spring:message code="chungchi.QuanTriNhanSu.dsnhansu" />
+				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href='<c:url value="/home" />'>Home</a></li>
+								href='<c:url value="/home" />'><spring:message
+										code="chungchi.QuanTriNhanSu.trangchu" /></a></li>
 							<li class="breadcrumb-item active"><a
-								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'>Danh
-									Sách Nhân Sự</a></li>
+								href='<c:url value="/QuanTriNhanSu/danhsach_nhansu" />'><spring:message
+										code="chungchi.QuanTriNhanSu.dsnhansu" /></a></li>
 						</ol>
 					</div>
 				</div>
@@ -92,7 +96,8 @@
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">
-								Danh sách nhân sự Theo Trình Độ: <a style="color: red">${trinhdo.tenTrinhDo}</a>
+								<spring:message code="thongke.QuanTriNhanSu.dsnstd" />
+								: <a style="color: red">${trinhdo.tenTrinhDo}</a>
 							</h4>
 							<a class="heading-elements-toggle"><i
 								class="fa fa-ellipsis-v font-medium-3"></i></a>
@@ -133,7 +138,10 @@
 							</div> --%>
 							<div class="col-md-3">
 								<p>
-									Option: <br> Xem theo: <a style="color: red">Phòng ban</a>
+									<spring:message code="thongke.QuanTriNhanSu.chucnang" />
+									: <br>
+									<spring:message code="thongke.QuanTriNhanSu.xemtheo" />
+									: <a style="color: red">Phòng ban</a>
 								</p>
 								<form method="GET" action="/FBMS/listTTfindbyMaPhongBan"
 									style="width: 150px;">
@@ -143,12 +151,15 @@
 										<c:forEach items="${dsPhongBan}" var="pb">
 											<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
 										</c:forEach>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
+									</select> <input class="btn btn-success" type="submit"
+										value="<spring:message code="thongke.QuanTriNhanSu.xem" />">
 								</form>
 							</div>
 							<div class="col-md-3">
 								<p>
-									<br> Xem theo: <a style="color: red">Trình độ</a>
+									<br>
+									<spring:message code="thongke.QuanTriNhanSu.xemtheo" />
+									: <a style="color: red">Trình độ</a>
 								</p>
 								<form method="GET" action="/FBMS/listBCfindbyMaBangCap"
 									style="width: 150px;">
@@ -157,12 +168,15 @@
 										<c:forEach items="${dsTrinhDo}" var="td">
 											<option value="${td.id}">${td.tenTrinhDo}</option>
 										</c:forEach>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
+									</select> <input class="btn btn-success" type="submit"
+										value="<spring:message code="thongke.QuanTriNhanSu.xem" />">
 								</form>
 							</div>
 							<div class="col-md-3">
 								<p>
-									<br> Xem theo: <a style="color: red">Hợp đồng</a>
+									<br>
+									<spring:message code="thongke.QuanTriNhanSu.xemtheo" />
+									: <a style="color: red">Hợp đồng</a>
 								</p>
 								<form method="GET" action="/FBMS/listTTfindbyMaHopDong"
 									style="width: 150px;">
@@ -171,12 +185,15 @@
 										<c:forEach items="${dsHopDong}" var="hd">
 											<option value="${hd.maHopDong}">${hd.tenHopDong}</option>
 										</c:forEach>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
+									</select> <input class="btn btn-success" type="submit"
+										value="<spring:message code="thongke.QuanTriNhanSu.xem" />">
 								</form>
 							</div>
 							<div class="col-md-3">
 								<p>
-									<br> Xem theo: <a style="color: red">Trạng thái</a>
+									<br>
+									<spring:message code="thongke.QuanTriNhanSu.xemtheo" />
+									: <a style="color: red">Trạng thái</a>
 								</p>
 								<form method="GET" action="/FBMS/listTTfindbyMaTrangThai"
 									style="width: 150px;">
@@ -185,7 +202,8 @@
 										<c:forEach items="${dsTrangThai}" var="tt">
 											<option value="${tt.idTrangThai}">${tt.name}</option>
 										</c:forEach>
-									</select> <input class="btn btn-success" type="submit" value="Xem">
+									</select> <input class="btn btn-success" type="submit"
+										value="<spring:message code="thongke.QuanTriNhanSu.xem" />">
 								</form>
 							</div>
 						</div>
@@ -196,16 +214,19 @@
 										class="table table-striped table-bordered dataex-res-constructor">
 										<thead>
 											<tr>
-												<th scope="col">ID</th>
-												<th>Mã Nhân Viên</th>
-												<th>Tên Nhân Viên</th>
-												<th>Ngày Sinh</th>
-												<th>Ảnh đại diện</th>
-												<th>Tên trình Độ</th>
-												<th>Tên trạng thái</th>
-												<th>Gia đình</th>
-												<th>Trình độ</th>
-												<th>Hợp đồng/Chế độ TH</th>
+												<th scope="col"><spring:message
+														code="chungchi.QuanTriNhanSu.id" /></th>
+												<th><spring:message code="chungchi.QuanTriNhanSu.manv" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.tennv" /></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.ngaysinh" /></th>
+												<th><spring:message code="chungchi.QuanTriNhanSu.image" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.tentd" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.tentt" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.ttct" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.gd" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.td" /></th>
+												<th><spring:message code="thongke.QuanTriNhanSu.hdcd" /></th>
 												<th></th>
 											</tr>
 										</thead>
@@ -213,7 +234,7 @@
 											<tr>
 												<td>${bc.id}</td>
 												<td>${bc.maNhanVien}</td>
-												<td>${bc.nhanSuBC.hoLot} ${bc.nhanSuBC.ten}</td>
+												<td>${bc.nhanSuBC.hoLot}${bc.nhanSuBC.ten}</td>
 												<td><fmt:formatDate value="${bc.nhanSuBC.namSinh}"
 														pattern="dd-MM-yyyy" /></td>
 												<td><img style="width: 70px;hight=70px;"

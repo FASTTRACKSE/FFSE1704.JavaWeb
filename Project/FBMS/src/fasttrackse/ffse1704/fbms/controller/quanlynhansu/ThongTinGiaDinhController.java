@@ -46,7 +46,6 @@ public class ThongTinGiaDinhController {
 	@RequestMapping(value = "/ViewTT/{maNhanVien}", method = RequestMethod.GET)
 	public String ViewThongTinGiaDinh(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/thongTinGiaDinh/allthongtin";
 	}
 
@@ -54,7 +53,6 @@ public class ThongTinGiaDinhController {
 	public String ViewAddThongTin(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("thongTinGiaDinh", new ThongTinGiaDinh());
 		model.addAttribute("thongTinGiaDinh2", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/thongTinGiaDinh/addTT";
 	}
 
@@ -65,7 +63,6 @@ public class ThongTinGiaDinhController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("thongTinGiaDinh", new ThongTinGiaDinh());
 			model.addAttribute("thongTinGiaDinh2", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
-			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			model.addAttribute("thatbai", "Xin mời bạn nhập lại!");
 			return "QuanTriNhanSu/thongTinGiaDinh/addTT";
 		}
@@ -78,7 +75,6 @@ public class ThongTinGiaDinhController {
 			@PathVariable("id") int id) {
 		model.addAttribute("thongTinGiaDinh1", new ThongTinGiaDinh());
 		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		model.addAttribute("thongTinGiaDinh2", thongTinGiaDinhService.getThongTinGiaDinhUpdate(id));
 		return "QuanTriNhanSu/thongTinGiaDinh/updateTT";
 	}
@@ -96,7 +92,6 @@ public class ThongTinGiaDinhController {
 		model.addAttribute("thongTinGiaDinh1", new ThongTinGiaDinh());
 		model.addAttribute("thongTinGiaDinh", thongTinGiaDinhService.getThongTinGiaDinhByID(maNhanVien));
 		model.addAttribute("thongTinGiaDinh2", thongTinGiaDinhService.getThongTinGiaDinhUpdate(id));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/thongTinGiaDinh/deleteTT";
 	}
 

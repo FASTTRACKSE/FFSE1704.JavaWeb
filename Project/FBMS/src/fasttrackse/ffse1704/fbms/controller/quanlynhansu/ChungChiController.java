@@ -64,7 +64,6 @@ public class ChungChiController {
 	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
 	public String ViewChungChi(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/allchungchi";
 	}
 
@@ -72,7 +71,6 @@ public class ChungChiController {
 	public String ViewAddChungChi(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("chungChi", new ChungChi());
 		model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/addCC";
 	}
 
@@ -82,7 +80,6 @@ public class ChungChiController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("chungChi", new ChungChi());
 			model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
-			model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 			model.addAttribute("thatbai", "Xin mời bạn nhập lại!");
 			return "QuanTriNhanSu/chungChi/addCC";
 		}
@@ -97,7 +94,6 @@ public class ChungChiController {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/updateCC";
 	}
 
@@ -113,7 +109,6 @@ public class ChungChiController {
 			@PathVariable("id") int id) {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
-		model.addAttribute("pbcd", xemThongTinNVService.findPBCDByMaNhanVien(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
 		return "QuanTriNhanSu/chungChi/deleteCC";
 	}
