@@ -155,8 +155,8 @@ public class DonNghiPhepDaoILMMinhtq implements DonNghiPhepDaoMinhtq {
 	public LoaiNgayNghiMinhtq getByIdLoaiNgayNghi(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		LoaiNgayNghiMinhtq loaingaynghi = (LoaiNgayNghiMinhtq) session.get(LoaiNgayNghiMinhtq.class, id);
-
 		return loaingaynghi;
+		
 	}
 
 	// hết phần crud cho loại ngày nghỉ

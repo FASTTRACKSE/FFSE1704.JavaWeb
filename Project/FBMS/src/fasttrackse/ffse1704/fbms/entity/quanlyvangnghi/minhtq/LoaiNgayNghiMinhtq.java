@@ -32,6 +32,8 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	private String tenLoaiNgayNghi;
 
 	// liên kết với bảng đơn nghỉ phép
+
+	// liên kết với bảng đơn nghỉ phép
 	@OneToMany(mappedBy = "loaiNgayNghiPhep")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
 
@@ -42,8 +44,6 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 	public void setDonNghiPhepMinhtq(Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
-
-	
 
 	public int getId() {
 		return id;
@@ -80,8 +80,8 @@ public class LoaiNgayNghiMinhtq implements Serializable {
 		this.id = id;
 		this.maNgayNghi = maNgayNghi;
 		this.tenLoaiNgayNghi = tenLoaiNgayNghi;
+
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
-		
 	}
 
 }

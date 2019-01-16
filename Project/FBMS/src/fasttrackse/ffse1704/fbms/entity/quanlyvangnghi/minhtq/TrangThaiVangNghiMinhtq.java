@@ -25,6 +25,7 @@ public class TrangThaiVangNghiMinhtq implements Serializable {
 	@Column(name = "id")
 	int id;
 
+	
 	@Column(name = "ma_trang_thai")
 	String maTrangThai;
 

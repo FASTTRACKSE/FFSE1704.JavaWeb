@@ -46,9 +46,26 @@
 							${messageError}
 						</div>
 					</c:if>
+					<table>
+						<tr>
+							<td><p style="color: red">${attenion}</p></td>
+						</tr>
+						<tr>
+							<td>
+								<h6 style="color: blue">* số ngày nghỉ :
+									</h6> <br>
+								<h6 style="color: blue">* số ngày còn lại: ${songayconlai}
+									ngày</h6>
+							</td>
+
+						</tr>
+
+
+					</table>
 					<!-- End Show message -->
 					<form:form method="POST" modelAttribute="taodonmoi"
 						action="addDonNghiPhepNhap">
+
 						<div class="form-group col-md-12">
 							<label for="location1">mã nhân viên</label>
 							<form:select path="maNhanVien" class="custom-select form-control"

@@ -38,19 +38,31 @@ public class SoNgayNghiMinhtq implements Serializable {
 	@Column(name = "so_ngay_da_nghi")
 	private int soNgayDaNghi;
 
+	@ManyToOne
+	@JoinColumn(name = "ma_ngay_nghi", referencedColumnName = "ma_ngay_nghi", insertable = false, updatable = false, nullable = false)
+	private LoaiNgayNghiMinhtq loaiNgayNghiPhepDNP;
+
+	public LoaiNgayNghiMinhtq getLoaiNgayNghiPhepDNP() {
+		return loaiNgayNghiPhepDNP;
+	}
+
+	public void setLoaiNgayNghiPhepDNP(LoaiNgayNghiMinhtq loaiNgayNghiPhepDNP) {
+		this.loaiNgayNghiPhepDNP = loaiNgayNghiPhepDNP;
+	}
+
 	// liên kết với bảng số ngày nghỉ
 	@OneToMany(mappedBy = "soNgayNghiDNP")
 	private Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq;
 
-	
 	public SoNgayNghiMinhtq(int id, String maNhanVien, String maNgayNghi, int tongNgayDuocNghi, int soNgayDaNghi,
-			Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
+			LoaiNgayNghiMinhtq loaiNgayNghiPhepDNP, Collection<DonNghiPhepMinhtq> donNghiPhepMinhtq) {
 		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
 		this.maNgayNghi = maNgayNghi;
 		this.tongNgayDuocNghi = tongNgayDuocNghi;
 		this.soNgayDaNghi = soNgayDaNghi;
+		this.loaiNgayNghiPhepDNP = loaiNgayNghiPhepDNP;
 		this.donNghiPhepMinhtq = donNghiPhepMinhtq;
 	}
 

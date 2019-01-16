@@ -1,14 +1,16 @@
 package fasttrackse.ffse1704.fbms.controller.quanlyvangnghi.minhtq;
 
 import java.io.IOException;
-import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,12 +27,23 @@ import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.LoaiNgayNghiMinhtq
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.PhongBanMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.SoNgayNghiMinhtq;
 import fasttrackse.ffse1704.fbms.entity.quanlyvangnghi.minhtq.TrangThaiVangNghiMinhtq;
+import fasttrackse.ffse1704.fbms.entity.security.CustomUserDetail;
+import fasttrackse.ffse1704.fbms.entity.security.HoSoNhanVien;
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.DonNghiPhepServiceMinhtq;
 import fasttrackse.ffse1704.fbms.service.quanlyvangnghi.minhtq.SoNgayNghiPhepServiceMinhtq;
 
 @Controller
 @RequestMapping("/QuanLyVangNghi/minhtq")
 public class QuanLyVangNghiControllerMinhtq {
+	HoSoNhanVien userLogin;
+
+	@PostConstruct
+	public void initialize() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			userLogin = ((CustomUserDetail) auth.getPrincipal()).getUser().getNhanVien();
+		}
+	}
 
 	@Autowired
 	private DonNghiPhepServiceMinhtq donNghiPhepService;
@@ -95,6 +108,7 @@ public class QuanLyVangNghiControllerMinhtq {
 	// thêm một đơn nghỉ phép nháp và chờ phê duyệt
 	@RequestMapping(value = "/addDonNghiPhepMoi", method = RequestMethod.GET)
 	public String showForm(Model model) {
+		// String maNhanVien = userLogin.getMaNhanVien();
 		List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 		List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
 		List<HoSoNhanVienMinhtq> manhanvien = donNghiPhepService.listMaNhanVien();
@@ -112,38 +126,46 @@ public class QuanLyVangNghiControllerMinhtq {
 	public String createDonNhap(Model model, @ModelAttribute("taodonmoi") @Valid DonNghiPhepMinhtq donnghiphep,
 			BindingResult bindingResult, final RedirectAttributes redirectAttributes, @RequestParam String action)
 			throws IllegalStateException, IOException {
-
+		int songayconlai;
+		int tongsongayduocnghi;
+		int tongsongaydanghi;
+		int soluong;
 		String url = "";
+
+		String maNhanVien = donnghiphep.getMaNhanVien();
+		String maNgayNghi = donnghiphep.getLoaiNgayNghi();
+		soluong = donnghiphep.getSoLuong();
+
+		SoNgayNghiMinhtq soNN = soNgayNghiService.getNgayNghi(maNhanVien, maNgayNghi);
+		tongsongayduocnghi = soNN.getTongNgayDuocNghi();
+		tongsongaydanghi = soNN.getSoNgayDaNghi();
+		songayconlai = tongsongayduocnghi - tongsongaydanghi;
 
 		if (bindingResult.hasErrors()) {
 
 			return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
 		} else {
-			String maNhanVien = donnghiphep.getMaNhanVien();
-			String maNgayNghi = donnghiphep.getLoaiNgayNghi();
-			int soluong = donnghiphep.getSoLuong();
 
-			SoNgayNghiMinhtq soNN = soNgayNghiService.getNgayNghi(maNhanVien, maNgayNghi);
-			int tongsongayduocnghi = soNN.getTongNgayDuocNghi();
 			if (action.equals("luunhap")) {
 
 				donnghiphep.setTrangThai("TT1");
 				donNghiPhepService.addDonNghiPhep(donnghiphep);
-				redirectAttributes.addFlashAttribute("messageSuccess", "Bạn vừa thêm một đơn nghỉ phép nháp!");
+				redirectAttributes.addFlashAttribute("messageSuccess", "Đã lưu nháp!");
 				url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT1";
 			}
 			if (soluong > tongsongayduocnghi) {
 				List<LoaiNgayNghiMinhtq> countryList = donNghiPhepService.listLoaiNgayNghi();
 				List<PhongBanMinhtq> phongban = donNghiPhepService.listPhongBan();
 				List<HoSoNhanVienMinhtq> manhanvien = donNghiPhepService.listMaNhanVien();
-				List<SoNgayNghiMinhtq> songaynghi = soNgayNghiService.listSoNgayNghi();
+				SoNgayNghiMinhtq songaynghi = soNgayNghiService.getNgayNghi(maNhanVien, maNgayNghi);
 
+				model.addAttribute("songayconlai", songayconlai);
 				model.addAttribute("songaynghi", songaynghi);
 				model.addAttribute("manhanvien", manhanvien);
 				model.addAttribute("countryList", countryList);
 				model.addAttribute("phongban", phongban);
 				model.addAttribute("taodonmoi", new DonNghiPhepMinhtq());
-				redirectAttributes.addFlashAttribute("messageError", "Bạn không thể nghỉ quá số ngày quy định!");
+				model.addAttribute("attenion", " Error : Bạn không thể nghỉ quá số ngày quy định , mời nhập lại !");
 				return "/QuanLyVangNghi/minhtq/donnghiphep/add_form";
 			} else {
 				if (action.equals("chopheduyet")) {
@@ -151,7 +173,7 @@ public class QuanLyVangNghiControllerMinhtq {
 					donnghiphep.setTrangThai("TT2");
 					donNghiPhepService.addDonNghiPhep(donnghiphep);
 					redirectAttributes.addFlashAttribute("messageSuccess",
-							"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt!");
+							"Bạn vừa thêm một đơn nghỉ phép và đang chờ duyệt !");
 					url = "redirect:/QuanLyVangNghi/minhtq/listDonNghiPhep/TT2";
 				}
 			}
