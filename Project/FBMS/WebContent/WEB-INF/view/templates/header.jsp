@@ -465,13 +465,9 @@
 									href="<%=request.getContextPath()%>/quanlytailieu/documentRefuse">●
 										Tài liệu bị từ chối</a></li>
 							</ul></li>
-						<li class=""><a class="menu-item" href="#"> Theo Phòng
+						<li class=""><a class="menu-item" href="<%=request.getContextPath()%>/quanlytailieu/PhongBan"> Theo Phòng
 								Ban</a>
-							<ul class="menu-content" style="">
-								<li class=""><a class="menu-item"
-									href="<%=request.getContextPath()%>/quanlytailieu/DocumentPDA1">●
-										Phòng Dự Án 1</a></li>
-							</ul></li>
+							</li>
 						<li class=""><a class="menu-item"
 							href="<%=request.getContextPath()%>/quanlytailieu/pendingApprove">●
 								Phê duyệt tài liệu</a></li>

@@ -11,24 +11,32 @@
 	<div class="content-wrapper">
 		<div class="content-header row">
 			<div class="content-header-left col-md-6 col-xs-12 mb-2">
-				<h3 class="content-header-title mb-0"><spring:message code="tailieu.phongBan"/></h3>
+				<h3 class="content-header-title mb-0">
+					<spring:message code="tailieu.phongBan" />
+				</h3>
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a
-								href="<%=request.getContextPath()%>/home"><spring:message code="tailieu.home"/></a></li>
+								href="<%=request.getContextPath()%>/home"><spring:message
+										code="tailieu.home" /></a></li>
 						</ol>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div style="text-align: center; color: red;">
-			<h1><spring:message code="tailieu.phongBan"/></h1>
+			<h1>
+				<spring:message code="tailieu.phongBan" />
+			</h1>
 			<form method="GET" action="/FBMS/quanlytailieu/DocumentPB">
 
 				<select class="form-control" name="tlPhongBanId">
-			<option disabled="disabled"><spring:message code="tailieu.phongBan"/></option>
+					<option disabled="disabled"><spring:message
+							code="tailieu.phongBan" /></option>
+					<option value="">Tất cả</option>
 					<c:forEach items="${listQuyen}" var="pb">
+
 						<option value="${pb.maPhongBan}">${pb.tenPhongBan}</option>
 					</c:forEach>
 				</select> <input class="btn btn-success" type="submit" value="Xem">
@@ -36,7 +44,7 @@
 		</div>
 		<!-- ================-- form nhập dữ liệu --====================== -->
 
-	    <!-- ============= kết thúc nhập form dữ liệu ở đây ============= -->
+		<!-- ============= kết thúc nhập form dữ liệu ở đây ============= -->
 	</div>
 </div>
 <!-- code here end  -->

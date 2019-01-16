@@ -58,7 +58,7 @@ public class DanhMucControllerDung {
 				return "quanlytailieu/dung/AddDanhMuc";
 			}
 			String nameFile = file.getOriginalFilename();
-			File fileDir = new File("E:\\lp5");
+			File fileDir = new File("E:\\HOCT/images/");
 			byte[] bytes = file.getBytes();
 			if (!fileDir.exists()) {
 				fileDir.mkdir();
@@ -69,6 +69,10 @@ public class DanhMucControllerDung {
 			stream.flush();
 			stream.close();
 			danhmuc.setHinhAnh(File.separator+"FBMS"+File.separator + "uploads" + File.separator + nameFile);
+			
+			if (danhmuc.getMaPhongBan().getMaPhongBan().isEmpty()) {
+				danhmuc.setMaPhongBan(null);
+			}
 			danhMucService.addDanhMuc(danhmuc);
 		} catch (Exception e) {
 		}
@@ -97,7 +101,7 @@ public class DanhMucControllerDung {
 			if (nameFile.equals("") || nameFile == null) {
 				danhMucService.updateDanhMuc(danhmuc);
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));

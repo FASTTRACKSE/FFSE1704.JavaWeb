@@ -108,7 +108,7 @@ public class DocumentController {
 			if (nameFile.equals("") || nameFile == null) {
 				return "quanlytailieu/dung/documentInsert";
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				if (!fileDir.exists()) {
 					fileDir.mkdir();
@@ -149,7 +149,7 @@ public class DocumentController {
 				documentDung.setMaTrangThai(trangThai);
 				documentService.saveDraft(documentDung);
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
@@ -192,7 +192,7 @@ public class DocumentController {
 				}
 			} else {
 
-					File fileDir = new File("E:\\lp5");
+					File fileDir = new File("E:\\HOCT/images/");
 					byte[] bytes = file.getBytes();
 					File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
@@ -239,7 +239,7 @@ public class DocumentController {
 				documentService.updateDocument(document);
 
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
@@ -271,7 +271,7 @@ public class DocumentController {
 			if (nameFile.equals("") || nameFile == null) {
 				documentService.updateDocument(document);
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
@@ -307,7 +307,7 @@ public class DocumentController {
 			if (nameFile.equals("") || nameFile == null) {
 				documentService.updateDocument(document);
 			} else {
-				File fileDir = new File("E:\\lp5");
+				File fileDir = new File("E:\\HOCT/images/");
 				byte[] bytes = file.getBytes();
 				File serverFile = new File(fileDir.getAbsolutePath() + File.separator + nameFile);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));

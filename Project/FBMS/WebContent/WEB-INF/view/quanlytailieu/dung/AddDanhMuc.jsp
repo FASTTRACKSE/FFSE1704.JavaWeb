@@ -66,7 +66,8 @@
 					</label>
 					<div class="col-md-9">
 						<form:select path="maPhongBan.maPhongBan">
-							<c:forEach var="PhongBan" items="${listQuyen}">
+						<form:option value="" label = "all"/>
+							<c:forEach var="PhongBan" items="${listQuyen}">	
 								<form:option value="${PhongBan.maPhongBan}"
 									label="${PhongBan.tenPhongBan}" />
 							</c:forEach>

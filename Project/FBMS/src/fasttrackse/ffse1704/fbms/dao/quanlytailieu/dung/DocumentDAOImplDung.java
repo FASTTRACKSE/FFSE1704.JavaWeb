@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
@@ -101,7 +102,6 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 		}
 		
 		// List theo phòng ban
-		// Phòng dự án 1
 		public List<DocumentDung> getAllDocumentPDA(String maPhongBan) {
 			Session session = sessionFactory.getCurrentSession();
 			CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -109,11 +109,17 @@ public class DocumentDAOImplDung implements DocumentDAODung {
 			Root<DocumentDung> root = cq.from(DocumentDung.class);
 			Join<DocumentDung, TrangThaiDung> MaTrangThaiJoin = root.join("maTrangThai");
 			Join<DocumentDung, DanhMucDung> danhMucJoin = root.join("maDanhMuc");
-			Join<DanhMucDung, PhongBan> phongBanJoin = danhMucJoin.join("maPhongBan");
+			Join<DanhMucDung, PhongBan> phongBanJoin = danhMucJoin.join("maPhongBan",JoinType.LEFT);
+			if (maPhongBan.equals("") || maPhongBan == null) {
+				cq.select(root).where(cb.equal(danhMucJoin.get("maDanhMuc"), "public" ),
+						cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));			
+			} else {			
 			cq.select(root).where(cb.equal(phongBanJoin.get("maPhongBan"), maPhongBan),
-					cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));			
+					cb.equal(MaTrangThaiJoin.get("maTrangThai"), "da_phe_duyet"));		
+			}
 			List<DocumentDung> getDocumentPDA1 = session.createQuery(cq).getResultList();
 			return getDocumentPDA1;
+			
 		}
 		
 	public void saveDraft(final DocumentDung documentDung) {
