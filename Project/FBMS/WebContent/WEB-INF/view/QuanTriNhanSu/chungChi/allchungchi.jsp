@@ -129,6 +129,12 @@
 											<fmt:formatDate value="${chungChi.namSinh}"
 												pattern="dd-MM-yyyy" />
 										</p>
+										<p style="text-align: center;">
+											<spring:message code="chungchi.QuanTriNhanSu.phongban" />
+											: <a>${thongTinNhanVien.phongBan.tenPhongBan}</a> -
+											<spring:message code="chungchi.QuanTriNhanSu.chucdanh" />
+											: <a>${thongTinNhanVien.chucDanh.tenChucDanh}</a>
+										</p>
 									</div>
 
 									<div class="form-group col-md-3"></div>
@@ -147,7 +153,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						<div class="card-body collapse in">
 							<div class="card-block card-dashboard">
 								<div class="table-responsive">

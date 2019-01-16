@@ -64,6 +64,7 @@ public class ChungChiController {
 	@RequestMapping(value = "/ViewCC/{maNhanVien}", method = RequestMethod.GET)
 	public String ViewChungChi(@PathVariable("maNhanVien") String maNhanVien, Model model) {
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/allchungchi";
 	}
 
@@ -71,6 +72,7 @@ public class ChungChiController {
 	public String ViewAddChungChi(Model model, @PathVariable("maNhanVien") String maNhanVien) {
 		model.addAttribute("chungChi", new ChungChi());
 		model.addAttribute("chungChi2", chungChiService.getChungChiByID(maNhanVien));
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/addCC";
 	}
 
@@ -94,6 +96,7 @@ public class ChungChiController {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/updateCC";
 	}
 
@@ -110,6 +113,7 @@ public class ChungChiController {
 		model.addAttribute("chungChi1", new ChungChi());
 		model.addAttribute("chungChi", chungChiService.getChungChiByID(maNhanVien));
 		model.addAttribute("chungChi2", chungChiService.getChungChiUpdate(id));
+		model.addAttribute("thongTinNhanVien", xemThongTinNVService.findByMaNhanVien(maNhanVien));
 		return "QuanTriNhanSu/chungChi/deleteCC";
 	}
 

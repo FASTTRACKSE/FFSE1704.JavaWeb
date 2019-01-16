@@ -227,7 +227,8 @@
 												<th><spring:message code="thongke.QuanTriNhanSu.gd" /></th>
 												<th><spring:message code="thongke.QuanTriNhanSu.td" /></th>
 												<th><spring:message code="thongke.QuanTriNhanSu.hdcd" /></th>
-												<th></th>
+												<th><spring:message
+														code="chungchi.QuanTriNhanSu.chucnang" /></th>
 											</tr>
 										</thead>
 										<c:forEach var="bc" items="${trangThai}">
@@ -265,7 +266,11 @@
 													class="btn btn-warning">Hợp đồng</a> <a
 													href="/FBMS/thongTinKinhNghiem/${bc.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
-												<td></td>
+												<td><a href="#"><button class="btn btn-success">
+															<spring:message code="chungchi.QuanTriNhanSu.sua" />
+														</button></a> <a href="#"><button class="btn btn-danger">
+															<spring:message code="chungchi.QuanTriNhanSu.xoa" />
+														</button></a></td>
 											</tr>
 										</c:forEach>
 									</table>
