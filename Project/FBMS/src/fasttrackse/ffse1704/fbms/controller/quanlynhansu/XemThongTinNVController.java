@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import fasttrackse.ffse1704.fbms.dao.quanlynhansu.ExcelBuilder;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.BangCap;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.DanhSachNgayNghi;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.HopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.QuanHuyen;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.ThongTinHopDong;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrangThaiNhanSu;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.TrinhDo;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.XaPhuong;
-import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.PhanCongNhiemVuNS;
 import fasttrackse.ffse1704.fbms.entity.quanlynhansu.fromqlda.QuanLyThongTinDuAnNS;
 import fasttrackse.ffse1704.fbms.entity.security.PhongBan;
 import fasttrackse.ffse1704.fbms.service.quanlynhansu.ChungChiService;

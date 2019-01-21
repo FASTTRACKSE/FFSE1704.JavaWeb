@@ -215,6 +215,7 @@ public class NhanSuController {
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/update", method = RequestMethod.POST)
 	public String editNhanSuSave(@ModelAttribute("nhanSu") NhanSu nhanSu, Model model, BindingResult bindingResult,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		
 		String fileName = upload(file);
 		if (!fileName.equals("default.jpg")) {
 			nhanSu.setAnhDaiDien(fileName);

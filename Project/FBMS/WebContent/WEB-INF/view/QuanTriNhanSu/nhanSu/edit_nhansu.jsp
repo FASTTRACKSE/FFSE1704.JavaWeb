@@ -52,27 +52,7 @@
 							<label>Mã Nhân Viên:</label>
 							<form:input class="form-control" type="text" path="maNhanVien" />
 						</div>
-						<div class="form-group col-md-4">
-							<label>Chức Danh</label>
-							
-							 <form:select path="maChucDanh"
-								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
-								<c:forEach items="${listChucDanh}" var="lcd">
-									<form:option value="${lcd.maChucDanh}" label="${lcd.tenChucDanh}" />
-								</c:forEach>
-							</form:select> 
-						</div>
 						
-						<div class="form-group col-md-4">
-							<label>Phòng Ban</label>
-							
-							 <form:select path="maPhongBan"
-								class="custom-select block round" id="idThanhPho" onchange="selectThanhPho()">
-								<c:forEach items="${listPhongBan}" var="lpb">
-									<form:option value="${lpb.maPhongBan}" label="${lpb.tenPhongBan}" />
-								</c:forEach>
-							</form:select> 
-						</div>
 							<div class="form-group col-md-4">
 							<label>Tỉnh thành</label>
 							
@@ -204,7 +184,7 @@
         	 url: "/FBMS/QuanTriNhanSu/chonquan/" + maThanhPho, 
         	 dataType: "json",
         	 success: function(data){
-        		 alert('Hello');
+        		 
         		$('#idQuanHuyen').append($('<option>', { // insert default data in quan huyen
              		    value: 'noQuanHuyen',
              		    text: 'Chọn Quận Huyện'
@@ -240,7 +220,7 @@
         	 url: "/FBMS/QuanTriNhanSu/chonXaPhuong/" + maThanhPho, 
         	 dataType: "json",
         	 success: function(data){
-        		 alert('Hello');
+        		 
         		$('#idPhuongXa').append($('<option>', { // insert default data in quan huyen
              		    value: 'phuongxa',
              		    text: 'Chọn Xã Phường'

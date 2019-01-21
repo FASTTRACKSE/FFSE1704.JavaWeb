@@ -125,11 +125,11 @@ public class NhanSu implements Serializable {
 	private String maChucDanh;
 	
 	@ManyToOne
-	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban",insertable = false, nullable = false, updatable = false)
+	@JoinColumn(name = "ma_phong_ban", referencedColumnName = "ma_phong_ban",insertable = false, nullable = true, updatable = false)
 	private PhongBan phongBan;
 	
 	@ManyToOne
-	@JoinColumn(name = "ma_chuc_danh", referencedColumnName = "ma_chuc_danh",insertable = false, nullable = false, updatable = false)
+	@JoinColumn(name = "ma_chuc_danh", referencedColumnName = "ma_chuc_danh",insertable = false, nullable = true, updatable = false)
 	private ChucDanh chucDanh;
 
 	public String getMaPhongBan() {
