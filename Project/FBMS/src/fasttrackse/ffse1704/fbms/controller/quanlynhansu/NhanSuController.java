@@ -178,12 +178,18 @@ public class NhanSuController {
 
 	}
 
+	String maPB;
+	String maCD;
 	@RequestMapping(value = "/QuanTriNhanSu/danhsach_nhansu/editNS/{id}")
 	public String editNhanSuByID(@PathVariable int id, Model model) {
 		
 		NhanSu nhanSu = nhanSuService.getNhanSuByID(id);
+		maPB = nhanSu.getMaPhongBan();
+		maCD = nhanSu.getMaChucDanh();
 		model.addAttribute("nhanSu", nhanSu);
 
+		
+		
 //		if(nhanSu.getMaChucDanh().equals("NULL")) {
 //			nhanSu.setMaChucDanh("");
 //			nhanSu.setMaPhongBan("");
@@ -220,6 +226,8 @@ public class NhanSuController {
 		if (!fileName.equals("default.jpg")) {
 			nhanSu.setAnhDaiDien(fileName);
 		}
+		nhanSu.setMaPhongBan(maPB);
+		nhanSu.setMaChucDanh(maCD);
 		nhanSuService.update(nhanSu);
 
 		return "redirect:/QuanTriNhanSu/danhsach_nhansu";
@@ -275,7 +283,7 @@ public class NhanSuController {
 
 		String fileName = file.getOriginalFilename();
 
-		String path = "E:\\HOCT\\images";
+		String path = "F:\\images";
 		if (fileName.isEmpty()) {
 			fileName = "default.jpg";
 		} else {

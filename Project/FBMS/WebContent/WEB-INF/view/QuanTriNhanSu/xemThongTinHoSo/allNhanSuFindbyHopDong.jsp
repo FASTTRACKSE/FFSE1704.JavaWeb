@@ -231,9 +231,9 @@
 													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
-												<td><a href="editNS/${ns.nhanSu.id}"><button class="btn btn-success">Sửa</button></a>
+												<td><a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/editNS/${ns.nhanSu.id}"><button class="btn btn-success">Sửa</button></a>
 
-													<a href="DeleteNS/${ns.nhanSu.id}"><button class="btn btn-danger">Xóa</button></a></td>
+													<a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/DeleteNS/${ns.nhanSu.id}"><button class="btn btn-danger">Xóa</button></a></td>
 
 											</tr>
 										</c:forEach>

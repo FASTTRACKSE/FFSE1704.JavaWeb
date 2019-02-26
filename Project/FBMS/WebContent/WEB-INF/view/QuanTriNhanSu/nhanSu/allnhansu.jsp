@@ -243,10 +243,10 @@
 													href="/FBMS/thongTinKinhNghiem/${ns.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
 
-												<td><a href="editNS/${ns.id}"><button
-															class="btn btn-success">sửa</button></a> <a
-													href="DeleteNS/${ns.id}"><button class="btn btn-danger"
-															name="action" value="choose">Xóa</button></a></td>
+												<td><a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/editNS/${ns.id}"><button
+															class="btn btn-success">Sửa</button></a> <a
+													href="/FBMS/QuanTriNhanSu/danhsach_nhansu/DeleteNS/${ns.id}"><button class="btn btn-danger"
+															name="action" value="choose">Đã Nghỉ</button></a></td>
 
 											</tr>
 										</c:forEach>

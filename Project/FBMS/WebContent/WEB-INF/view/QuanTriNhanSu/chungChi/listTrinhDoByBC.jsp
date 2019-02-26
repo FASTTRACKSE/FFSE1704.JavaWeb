@@ -266,9 +266,9 @@
 													class="btn btn-warning">Hợp đồng</a> <a
 													href="/FBMS/thongTinKinhNghiem/${bc.maNhanVien}"
 													class="btn btn-primary">DS Kinh nghiệm DA</a></td>
-												<td><a href="#"><button class="btn btn-success">
+												<td><a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/editNS/${bc.id}"><button class="btn btn-success">
 															<spring:message code="chungchi.QuanTriNhanSu.sua" />
-														</button></a> <a href="#"><button class="btn btn-danger">
+														</button></a> <a href="/FBMS/QuanTriNhanSu/danhsach_nhansu/DeleteNS/${bc.id}"><button class="btn btn-danger">
 															<spring:message code="chungchi.QuanTriNhanSu.xoa" />
 														</button></a></td>
 											</tr>

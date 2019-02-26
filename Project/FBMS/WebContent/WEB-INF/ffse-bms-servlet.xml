@@ -68,12 +68,11 @@
     
     
     <!-- Resources files upload location -->	
-    <mvc:resources mapping="/uploads/**" location="file:/E:/HOCT/images/" />
+    <mvc:resources mapping="/uploads/**" location="file:/F:/images/" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />
 	</bean>
-
 	<!-- i18n -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
 		<property name="basename" value="resources/i18n/messages"></property>
